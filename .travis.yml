@@ -1,0 +1,11 @@
+language: php
+php:
+  - "hhvm"
+  - "5.5"
+  - "5.4"
+  - "5.3"
+before_script:
+  - COMPOSER=composer.aimeos.json composer install || sleep 60 && COMPOSER=composer.aimeos.json composer install
+  - mysql -e 'create database aimeos;'
+  - echo "<?php return array( 'db' => array( 'adapter' => 'mysql', 'host' => '127.0.0.1', 'database' => 'aimeos', 'username' => 'root', 'password' => '', 'limit' => 2, 'opt-persistent' => false, 'stmt' => array( \"SET NAMES 'utf8'\", \"SET SESSION sql_mode='ANSI'\" ) ) );" > vendor/arcavias/arcavias-core/config/resource.php
+script: "vendor/bin/phing"

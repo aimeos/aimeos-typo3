@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>module</type>
+        <description>Language labels for the Aimeos plugin</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="mlang_tabs_tab">Aimeos</label>
+            <label index="mlang_labels_tablabel">Aimeos Plugin</label>
+            <label index="mlang_labels_tabdescr">Administration for Aimeos</label>
+        </languageKey>
+		<languageKey index="de" type="array">
+			<label index="mlang_labels_tabdescr">Administration für Aimeos</label>
+		</languageKey>
+    </data>
+</T3locallang>

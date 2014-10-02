@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+	<title>Aimeos administration Interface</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript">
+
+	window.MShop = {
+
+			i18n: {
+				lang: '{lang}',
+				content: <f:format.html parseFuncTSPath="empty">{i18nContent}</f:format.html>
+			},
+
+			config: {
+				data: <f:format.html parseFuncTSPath="empty">{config}</f:format.html>,
+
+				site: <f:format.html parseFuncTSPath="empty">{site}</f:format.html>,
+
+				itemschema: <f:format.html parseFuncTSPath="empty">{itemSchemas}</f:format.html>,
+
+				searchschema: <f:format.html parseFuncTSPath="empty">{searchSchemas}</f:format.html>,
+
+				smd: <f:format.html parseFuncTSPath="empty">{smd}</f:format.html>,
+
+				urlTemplate: '<f:format.html parseFuncTSPath="empty">{urlTemplate}</f:format.html>',
+
+				activeTab: {activeTab},
+
+				baseurl: {
+					content: '../uploads/tx_aimeos/'
+				}
+			}
+		}
+
+	</script>
+
+	<f:format.html parseFuncTSPath="empty">{htmlHeader}</f:format.html>
+
+</head>
+<body>
+	<noscript><p>You need to enable javascript!</p></noscript>
+</body>
+</html>
