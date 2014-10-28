@@ -20,20 +20,9 @@ class Tx_Aimeos_Controller_LocaleController extends Tx_Aimeos_Controller_Abstrac
 	 */
 	public function selectAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Locale_Select_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Locale_Select_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 }

@@ -20,21 +20,10 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function filterAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_Filter_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_Filter_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -43,21 +32,10 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function countAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_Count_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_Count_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -66,21 +44,10 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function stageAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_Stage_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_Stage_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -89,21 +56,10 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function stockAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_Stock_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_Stock_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -112,25 +68,14 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function listAction()
 	{
-		try
-		{
-			if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
-				$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
-			}
-
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths );
-
-			return $this->_getClientOutput( $client );
+		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
+			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths );
+
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -139,21 +84,10 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function listsimpleAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths, 'Simple' );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths, 'Simple' );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -162,25 +96,14 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function detailAction()
 	{
-		try
-		{
-			if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
-				$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
-			}
-
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_Detail_Factory::createClient( $this->_getContext(), $templatePaths );
-
-			return $this->_getClientOutput( $client );
+		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
+			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_Detail_Factory::createClient( $this->_getContext(), $templatePaths );
+
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -189,20 +112,9 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function sessionAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Catalog_Session_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Catalog_Session_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 }

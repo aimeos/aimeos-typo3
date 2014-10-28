@@ -20,21 +20,10 @@ class Tx_Aimeos_Controller_CheckoutController extends Tx_Aimeos_Controller_Abstr
 	 */
 	public function indexAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Checkout_Standard_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Checkout_Standard_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			return $this->_getClientOutput( $client );
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $this->_getClientOutput( $client );
 	}
 
 
@@ -43,30 +32,19 @@ class Tx_Aimeos_Controller_CheckoutController extends Tx_Aimeos_Controller_Abstr
 	 */
 	public function confirmAction()
 	{
-		try
-		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Checkout_Confirm_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = Client_Html_Checkout_Confirm_Factory::createClient( $this->_getContext(), $templatePaths );
 
-			$view = $this->_createView();
-			$helper = new MW_View_Helper_Parameter_Default( $view, $_REQUEST );
-			$view->addHelper( 'param', $helper );
+		$view = $this->_createView();
+		$helper = new MW_View_Helper_Parameter_Default( $view, $_REQUEST );
+		$view->addHelper( 'param', $helper );
 
-			$client->setView( $view );
-			$client->process();
+		$client->setView( $view );
+		$client->process();
 
-			$this->response->addAdditionalHeaderData( $client->getHeader() );
+		$this->response->addAdditionalHeaderData( $client->getHeader() );
 
-			return $client->getBody();
-		}
-		catch( Exception $e )
-		{
-			t3lib_FlashMessageQueue::addMessage( new t3lib_FlashMessage(
-				'An error occured. Please go back to the previous page and try again',
-				'Error',
-				t3lib_Flashmessage::ERROR
-			) );
-		}
+		return $client->getBody();
 	}
 
 
