@@ -39,7 +39,7 @@ Tx_Extbase_Utility_Extension::registerPlugin( $_EXTKEY, 'locale-select', 'Aimeos
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-count'] = 'pi_flexform';
 t3lib_extMgm::addPiFlexFormValue( $pluginName . '_catalog-count', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogCount.xml' );
-Tx_Extbase_Utility_Extension::registerPlugin( $_EXTKEY, 'catalog-count', 'Aimeos - Catalog count source' );
+Tx_Extbase_Utility_Extension::registerPlugin( $_EXTKEY, 'catalog-count', 'Aimeos - Catalog count JSON' );
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-detail'] = 'pi_flexform';
 t3lib_extMgm::addPiFlexFormValue( $pluginName . '_catalog-detail', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogDetail.xml' );
@@ -55,7 +55,7 @@ Tx_Extbase_Utility_Extension::registerPlugin( $_EXTKEY, 'catalog-list', 'Aimeos 
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-listsimple'] = 'pi_flexform';
 t3lib_extMgm::addPiFlexFormValue( $pluginName . '_catalog-listsimple', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogListSimple.xml' );
-Tx_Extbase_Utility_Extension::registerPlugin( $_EXTKEY, 'catalog-listsimple', 'Aimeos - Catalog simple search list' );
+Tx_Extbase_Utility_Extension::registerPlugin( $_EXTKEY, 'catalog-listsimple', 'Aimeos - Catalog list JSON' );
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-session'] = 'pi_flexform';
 t3lib_extMgm::addPiFlexFormValue( $pluginName . '_catalog-session', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSession.xml' );
