@@ -21,7 +21,8 @@
 		"arcavias/arcavias-core": "dev-master",
 		"aimeos/extinstaller": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
-		"aimeos/ai-zend2": "dev-master"
+		"aimeos/ai-zend2": "dev-master",
+		"aimeos/ai-zend2-i18n": "dev-master"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "1.*",

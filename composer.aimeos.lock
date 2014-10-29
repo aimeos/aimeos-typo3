@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "56c99ce9593984f4897241261bb1330a",
+    "hash": "f3606472f074ee2942fc02ac63ca5ea9",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
@@ -44,19 +44,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2.git",
-                "reference": "666ec33fc6ee80c6599a8b6d1d9f0ad4efb763e6"
+                "reference": "c10f8c26264112bdf661774e70e18b17ad2b9cf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/666ec33fc6ee80c6599a8b6d1d9f0ad4efb763e6",
-                "reference": "666ec33fc6ee80c6599a8b6d1d9f0ad4efb763e6",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/c10f8c26264112bdf661774e70e18b17ad2b9cf9",
+                "reference": "c10f8c26264112bdf661774e70e18b17ad2b9cf9",
                 "shasum": ""
             },
             "require": {
-                "ext-intl": "*",
                 "php": ">=5.3.2",
                 "zendframework/zend-config": "2.3.*",
-                "zendframework/zend-i18n": "2.3.*",
                 "zendframework/zend-log": "2.3.*",
                 "zendframework/zend-mail": "2.3.*",
                 "zendframework/zend-mvc": "2.3.*"
@@ -76,7 +74,39 @@
             ],
             "description": "Aimeos extension for utilizing Zend Framework 2 components",
             "homepage": "http://aimeos.org",
-            "time": "2014-09-27 22:40:49"
+            "time": "2014-10-27 09:31:23"
+        },
+        {
+            "name": "aimeos/ai-zend2-i18n",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aimeos/ai-zend2-i18n.git",
+                "reference": "b6a8dc30e5517448bd9b8797173ae2de0db2950c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/b6a8dc30e5517448bd9b8797173ae2de0db2950c",
+                "reference": "b6a8dc30e5517448bd9b8797173ae2de0db2950c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "php": ">=5.3.2",
+                "zendframework/zend-i18n": "2.3.*"
+            },
+            "type": "aimeos-extension",
+            "autoload": {
+                "psr-0": {
+                    "MW": "lib/custom/src"
+                },
+                "classmap": [
+                    "lib/custom/src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Aimeos Zend Framework 2 translation extension",
+            "time": "2014-10-27 09:33:38"
         },
         {
             "name": "aimeos/extinstaller",
@@ -115,12 +145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nsendetzky/arcavias-core.git",
-                "reference": "c7a928011445888cda8d5df9799b043dddcf7aca"
+                "reference": "da4b8e3bf99fdee397f37b163ed425d8b1152fdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nsendetzky/arcavias-core/zipball/c7a928011445888cda8d5df9799b043dddcf7aca",
-                "reference": "c7a928011445888cda8d5df9799b043dddcf7aca",
+                "url": "https://api.github.com/repos/nsendetzky/arcavias-core/zipball/da4b8e3bf99fdee397f37b163ed425d8b1152fdd",
+                "reference": "da4b8e3bf99fdee397f37b163ed425d8b1152fdd",
                 "shasum": ""
             },
             "require": {
@@ -187,7 +217,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2014-10-02 17:50:16"
+            "time": "2014-10-03 09:07:43"
         },
         {
             "name": "zendframework/zend-config",
@@ -1359,16 +1389,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.37",
+            "version": "3.7.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ae6cefd7cc84586a5ef27e04bae11ee940ec63dc"
+                "reference": "38709dc22d519a3d1be46849868aa2ddf822bcf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ae6cefd7cc84586a5ef27e04bae11ee940ec63dc",
-                "reference": "ae6cefd7cc84586a5ef27e04bae11ee940ec63dc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/38709dc22d519a3d1be46849868aa2ddf822bcf6",
+                "reference": "38709dc22d519a3d1be46849868aa2ddf822bcf6",
                 "shasum": ""
             },
             "require": {
@@ -1428,7 +1458,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-04-30 12:24:19"
+            "time": "2014-10-17 09:04:17"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1556,17 +1586,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.5",
+            "version": "v2.5.6",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "b1dbc53593b98c2d694ebf383660ac9134d30b96"
+                "reference": "2d9f527449cabfa8543dd7fa3a466d6ae83d6726"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/b1dbc53593b98c2d694ebf383660ac9134d30b96",
-                "reference": "b1dbc53593b98c2d694ebf383660ac9134d30b96",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/2d9f527449cabfa8543dd7fa3a466d6ae83d6726",
+                "reference": "2d9f527449cabfa8543dd7fa3a466d6ae83d6726",
                 "shasum": ""
             },
             "require": {
@@ -1599,24 +1629,21 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-22 09:14:18"
+            "time": "2014-10-01 05:50:18"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "arcavias/arcavias-core": 20,
         "aimeos/extinstaller": 20,
         "aimeos/ai-typo3": 20,
-        "aimeos/ai-zend2": 20
+        "aimeos/ai-zend2": 20,
+        "aimeos/ai-zend2-i18n": 20
     },
     "prefer-stable": false,
     "platform": {
         "php": ">=5.3.2"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
