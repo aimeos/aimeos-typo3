@@ -3,6 +3,8 @@ page.includeJSFooterlibs.jquery = EXT:aimeos/Resources/Public/html/classic/js/jq
 page.includeJSFooterlibs.jquery-migrate = EXT:aimeos/Resources/Public/html/classic/js/jquery-migrate.js
 page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/html/classic/js/jquery-ui.custom.min.js
 page.includeJSFooter.tx_aimeos = EXT:aimeos/Resources/Public/html/classic/js/arcavias.js
+page.includeJSFooter.tx_aimeos_image = EXT:aimeos/Resources/Public/html/classic/js/arcavias-image.js
+page.includeJSFooter.tx_aimeos_detail = EXT:aimeos/Resources/Public/html/classic/js/arcavias-detail.js
 
 plugin.tx_aimeos {
 	mvc {
