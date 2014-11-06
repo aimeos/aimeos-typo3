@@ -6,3 +6,5 @@ useRealUrlAutoConfig = 1
 useAPC = 1
 # cat=tx_aimeos/basic; type=string; label=APC prefix:The prefix to distinguish configuration values from different instances
 apcPrefix = t3:
+# cat=tx_aimeos/basic; type=string; label=Cache name:Name of the used cache implementation ("Typo3" for native caching, "None" for no caching)
+cacheName = Typo3

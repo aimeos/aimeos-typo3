@@ -18,7 +18,6 @@ abstract class Tx_Aimeos_Controller_Abstract
 	extends Tx_Extbase_MVC_Controller_ActionController
 {
 	private $_aimeos;
-	static private $_cache;
 	static private $_locale;
 	static private $_context;
 	static private $_i18n = array();
@@ -43,85 +42,10 @@ abstract class Tx_Aimeos_Controller_Abstract
 		// Re-initialize the config object because the settings are different due to flexforms
 		$context->setConfig( $config );
 
-
-		if( !isset( self::$_locale ) )
-		{
-			$session = $context->getSession();
-
-
-			$current = $session->get( 'aimeos/locale/sitecode', 'default' );
-			$sitecode = $config->get( 'mshop/locale/site', $current );
-
-			if( $this->request->hasArgument( 'loc-site' ) === true ) {
-				$sitecode = $this->request->getArgument( 'loc-site' );
-			}
-
-			if( $sitecode !== $current ) {
-				$session->set( 'aimeos/locale/sitecode', $sitecode );
-			}
-
-
-			$current = $session->get( 'aimeos/locale/languageid', 'en' );
-			$langid = $config->get( 'mshop/locale/language', $current );
-
-			if( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
-				$langid = $GLOBALS['TSFE']->config['config']['language'];
-			}
-
-			if( $this->request->hasArgument( 'loc-language' ) === true ) {
-				$langid = $this->request->getArgument( 'loc-language' );
-			}
-
-			if( $langid !== $current ) {
-				$session->set( 'aimeos/locale/languageid', $langid );
-			}
-
-
-			$current = $session->get( 'aimeos/locale/currencyid', 'EUR' );
-			$currency = $config->get( 'mshop/locale/currency', $current );
-
-			if( $this->request->hasArgument( 'loc-currency' ) === true ) {
-				$currency = $this->request->getArgument( 'loc-currency' );
-			}
-
-			if( $currency !== $current ) {
-				$session->set( 'aimeos/locale/currencyid', $currency );
-			}
-
-
-			$localeManager = MShop_Locale_Manager_Factory::createManager( $context );
-			$locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
-
-			self::$_locale = $locale;
+		if( !isset( self::$_locale ) ) {
+			self::$_locale = $this->_getLocale();
 		}
 
-
-		if( !isset( self::$_cache ) )
-		{
-			/** @todo Use modern API in TYPO3 6.3 and above */
-			// \TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
-			// $cache = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
-
-			t3lib_cache::initializeCachingFramework();
-
-			try
-			{
-				$cache = $GLOBALS['typo3CacheManager']->getCache( 'aimeos' );
-			}
-			catch( t3lib_cache_exception_NoSuchCache $e )
-			{
-				$cache = $GLOBALS['typo3CacheFactory']->create( 'aimeos',
-					$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'],
-					$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['backend'],
-					$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options']
-				);
-			}
-
-			self::$_cache = new MW_Cache_Typo3( array( 'siteid' => self::$_locale->getSiteId() ), $cache );
-		}
-
-
-		$context->setCache( self::$_cache );
 		$context->setLocale( self::$_locale );
 		$context->setI18n( $this->_getI18n( array( self::$_locale->getLanguageId() ) ) );
 
@@ -187,6 +111,52 @@ abstract class Tx_Aimeos_Controller_Abstract
 
 
 	/**
+	 * Returns the cache object for the context
+	 *
+	 * @param \MW_Config_Interface $config Configuration object
+	 * @return \MW_Cache_Interface Cache object
+	 */
+	protected function _getCache( \MW_Config_Interface $config )
+	{
+		$name = Tx_Aimeos_Base::getExtConfig( 'cacheName', 'Typo3' );
+
+		switch( $name )
+		{
+			case 'Typo3':
+				/** @todo Use modern API in TYPO3 6.3 and above */
+				// \TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				// $cache = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
+
+				t3lib_cache::initializeCachingFramework();
+
+				try
+				{
+					$cache = $GLOBALS['typo3CacheManager']->getCache( 'aimeos' );
+				}
+				catch( t3lib_cache_exception_NoSuchCache $e )
+				{
+					$cache = $GLOBALS['typo3CacheFactory']->create( 'aimeos',
+						$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'],
+						$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['backend'],
+						$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options']
+					);
+				}
+
+				$config = array( 'siteid' => self::$_locale->getSiteId() );
+				break;
+
+			default:
+				$config->set( 'client/html/basket/cache/enable', false );
+				$name = 'None';
+				$cache = null;
+				$config = array();
+		}
+
+		return new MW_Cache_Factory( $name, $config, $cache );
+	}
+
+
+	/**
 	 * Creates a new configuration object.
 	 *
 	 * @return MW_Config_Interface Configuration object
@@ -223,9 +193,6 @@ abstract class Tx_Aimeos_Controller_Abstract
 			$dbm = new MW_DB_Manager_PDO( $config );
 			$context->setDatabaseManager( $dbm );
 
-			$cache = new MW_Cache_None();
-			$context->setCache( $cache );
-
 			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
 				$session = new MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
 			} else {
@@ -235,6 +202,8 @@ abstract class Tx_Aimeos_Controller_Abstract
 
 			$logger = MAdmin_Log_Manager_Factory::createManager( $context );
 			$context->setLogger( $logger );
+
+			$context->setCache( $this->_getCache( $config ) );
 
 			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
 			{
@@ -281,6 +250,62 @@ abstract class Tx_Aimeos_Controller_Abstract
 		}
 
 		return self::$_i18n;
+	}
+
+
+	/**
+	 * Returns the locale object for the context
+	 *
+	 * @return \MShop_Locale_Item_Interface Locale item object
+	 */
+	protected function _getLocale()
+	{
+		$session = $context->getSession();
+
+
+		$current = $session->get( 'aimeos/locale/sitecode', 'default' );
+		$sitecode = $config->get( 'mshop/locale/site', $current );
+
+		if( $this->request->hasArgument( 'loc-site' ) === true ) {
+			$sitecode = $this->request->getArgument( 'loc-site' );
+		}
+
+		if( $sitecode !== $current ) {
+			$session->set( 'aimeos/locale/sitecode', $sitecode );
+		}
+
+
+		$current = $session->get( 'aimeos/locale/languageid', 'en' );
+		$langid = $config->get( 'mshop/locale/language', $current );
+
+		if( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
+			$langid = $GLOBALS['TSFE']->config['config']['language'];
+		}
+
+		if( $this->request->hasArgument( 'loc-language' ) === true ) {
+			$langid = $this->request->getArgument( 'loc-language' );
+		}
+
+		if( $langid !== $current ) {
+			$session->set( 'aimeos/locale/languageid', $langid );
+		}
+
+
+		$current = $session->get( 'aimeos/locale/currencyid', 'EUR' );
+		$currency = $config->get( 'mshop/locale/currency', $current );
+
+		if( $this->request->hasArgument( 'loc-currency' ) === true ) {
+			$currency = $this->request->getArgument( 'loc-currency' );
+		}
+
+		if( $currency !== $current ) {
+			$session->set( 'aimeos/locale/currencyid', $currency );
+		}
+
+
+		$localeManager = MShop_Locale_Manager_Factory::createManager( $context );
+
+		return $localeManager->bootstrap( $sitecode, $langid, $currency );
 	}
 
 
