@@ -76,10 +76,16 @@ class Tx_Aimeos_Setup
 		$config = $ctx->getConfig();
 		$local = array();
 
-		if( ( $dbconfig = $config->get( 'resource/db' ) ) === null ) {
-			throw new Exception( 'Configuration for database adapter missing' );
+		$dbconfig = $config->get( 'resource', array() );
+
+		foreach( $dbconfig as $rname => $dbconf )
+		{
+			if( strncmp( $rname, 'db', 2 ) !== 0 ) {
+				unset( $dbconfig[$rname] );
+			} else {
+				$config->set( "resource/$rname/limit", 2 );
+			}
 		}
-		$config->set( 'resource/db/limit', 2 );
 
 		if( Tx_Aimeos_Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
 			$local = array( 'setup' => array( 'default' => array( 'demo' => true ) ) );
@@ -87,8 +93,8 @@ class Tx_Aimeos_Setup
 		$ctx->setConfig( new MW_Config_Decorator_Memory( $config, $local ) );
 
 
-		$manager = new MW_Setup_Manager_Default( $dbm->acquire(), $dbconfig, $taskPaths, $ctx );
-		$manager->run( $dbconfig['adapter'] );
+		$manager = new MW_Setup_Manager_Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
+		$manager->run( 'mysql' );
 	}
 
 

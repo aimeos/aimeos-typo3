@@ -12,8 +12,8 @@ require_once t3lib_extMgm::extPath( 'aimeos' ) . 'vendor' . DIRECTORY_SEPARATOR 
  * Include Aimeos extension directory
  */
 
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['confDirs'][$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Private/Config/';
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs'][$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Public/ext/';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['confDirs']['0_'.$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Private/Config/';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Public/ext/';
 
 
 /**

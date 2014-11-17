@@ -39,6 +39,8 @@ class Tx_Aimeos_Base
 			// Hook for processing extension config directories
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
 			{
+				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] );
+
 				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir )
 				{
 					$absPath = t3lib_div::getFileAbsFileName( $dir );
@@ -76,6 +78,8 @@ class Tx_Aimeos_Base
 			$extDirs = array();
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
 			{
+				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
+
 				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
 				{
 					$absPath = t3lib_div::getFileAbsFileName( $dir );
