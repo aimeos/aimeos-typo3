@@ -125,14 +125,14 @@ class Tx_Aimeos_Base
 	/**
 	 * Parses TypoScript configuration string.
 	 *
-	 * @param array $trans User-defined translation entries via TypoScript
+	 * @param array $entries User-defined translation entries via TypoScript
 	 * @return array Associative list of translation domain and original string / list of tranlations
 	 */
-	public static function parseTranslations( array $trans )
+	public static function parseTranslations( array $entries )
 	{
 		$translations = array();
 
-		foreach( $this->settings['i18n'][$langid] as $entry )
+		foreach( $entries as $entry )
 		{
 			if( isset( $entry['domain'] ) && isset( $entry['string'] ) && isset( $entry['trans'] ) )
 			{
