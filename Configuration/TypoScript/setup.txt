@@ -1,10 +1,10 @@
-page.includeCSS.tx_aimeos = EXT:aimeos/Resources/Public/html/classic/css/arcavias.css
-page.includeJSFooterlibs.jquery = EXT:aimeos/Resources/Public/html/classic/js/jquery.min.js
-page.includeJSFooterlibs.jquery-migrate = EXT:aimeos/Resources/Public/html/classic/js/jquery-migrate.js
-page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/html/classic/js/jquery-ui.custom.min.js
-page.includeJSFooter.tx_aimeos = EXT:aimeos/Resources/Public/html/classic/js/arcavias.js
-page.includeJSFooter.tx_aimeos_image = EXT:aimeos/Resources/Public/html/classic/js/arcavias-image.js
-page.includeJSFooter.tx_aimeos_detail = EXT:aimeos/Resources/Public/html/classic/js/arcavias-detail.js
+page.includeCSS.tx_aimeos = EXT:aimeos/Resources/Public/html/elegance/css/arcavias.css
+page.includeJSFooterlibs.jquery = EXT:aimeos/Resources/Public/html/elegance/js/jquery.min.js
+page.includeJSFooterlibs.jquery-migrate = EXT:aimeos/Resources/Public/html/elegance/js/jquery-migrate.js
+page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/html/elegance/js/jquery-ui.custom.min.js
+page.includeJSFooter.tx_aimeos = EXT:aimeos/Resources/Public/html/elegance/js/arcavias.js
+page.includeJSFooter.tx_aimeos_image = EXT:aimeos/Resources/Public/html/elegance/js/arcavias-image.js
+page.includeJSFooter.tx_aimeos_detail = EXT:aimeos/Resources/Public/html/elegance/js/arcavias-detail.js
 
 plugin.tx_aimeos {
 	mvc {
@@ -18,7 +18,7 @@ plugin.tx_aimeos {
 			html {
 				common {
 					content.baseurl = uploads/tx_aimeos
-					template.baseurl = typo3conf/ext/aimeos/Resources/Public/html/classic
+					template.baseurl = typo3conf/ext/aimeos/Resources/Public/html/elegance
 				}
 				account {
 					favorite.url.config.chash = 0
