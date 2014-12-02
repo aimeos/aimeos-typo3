@@ -12,13 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
-                "reference": "6c2b148e10784aea68c583fdd954c1415d69e655"
+                "reference": "ff835c82f5d76ff9a5dabc102c5c144e80eddd89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/6c2b148e10784aea68c583fdd954c1415d69e655",
-                "reference": "6c2b148e10784aea68c583fdd954c1415d69e655",
+                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/ff835c82f5d76ff9a5dabc102c5c144e80eddd89",
+                "reference": "ff835c82f5d76ff9a5dabc102c5c144e80eddd89",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
             },
             "type": "aimeos-extension",
             "autoload": {
@@ -36,7 +39,13 @@
             ],
             "description": "Aimeos extension for integration into TYPO3",
             "homepage": "http://aimeos.org",
-            "time": "2014-10-01 10:10:15"
+            "keywords": [
+                "adapter",
+                "aimeos",
+                "cms",
+                "typo3"
+            ],
+            "time": "2014-11-17 14:53:05"
         },
         {
             "name": "aimeos/ai-zend2",
@@ -44,12 +53,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2.git",
-                "reference": "c10f8c26264112bdf661774e70e18b17ad2b9cf9"
+                "reference": "c0eb7fe904021aba213b509e4ff79c010383d42d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/c10f8c26264112bdf661774e70e18b17ad2b9cf9",
-                "reference": "c10f8c26264112bdf661774e70e18b17ad2b9cf9",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/c0eb7fe904021aba213b509e4ff79c010383d42d",
+                "reference": "c0eb7fe904021aba213b509e4ff79c010383d42d",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +83,13 @@
             ],
             "description": "Aimeos extension for utilizing Zend Framework 2 components",
             "homepage": "http://aimeos.org",
-            "time": "2014-10-27 09:31:23"
+            "keywords": [
+                "adapter",
+                "aimeos",
+                "framework",
+                "zend"
+            ],
+            "time": "2014-11-06 18:34:32"
         },
         {
             "name": "aimeos/ai-zend2-i18n",
@@ -82,18 +97,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2-i18n.git",
-                "reference": "b6a8dc30e5517448bd9b8797173ae2de0db2950c"
+                "reference": "b6bbf8a606acd00c662c66d7e1ac345e9a9925f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/b6a8dc30e5517448bd9b8797173ae2de0db2950c",
-                "reference": "b6a8dc30e5517448bd9b8797173ae2de0db2950c",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/b6bbf8a606acd00c662c66d7e1ac345e9a9925f8",
+                "reference": "b6bbf8a606acd00c662c66d7e1ac345e9a9925f8",
                 "shasum": ""
             },
             "require": {
                 "ext-intl": "*",
                 "php": ">=5.3.2",
-                "zendframework/zend-i18n": "2.3.*"
+                "zendframework/zend-i18n": "2.3.*",
+                "zendframework/zend-servicemanager": "2.3.*"
             },
             "type": "aimeos-extension",
             "autoload": {
@@ -105,8 +121,19 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
             "description": "Aimeos Zend Framework 2 translation extension",
-            "time": "2014-10-27 09:33:38"
+            "homepage": "http://aimeos.org",
+            "keywords": [
+                "adapter",
+                "aimeos",
+                "i18n",
+                "translate",
+                "zend"
+            ],
+            "time": "2014-11-06 18:35:03"
         },
         {
             "name": "aimeos/extinstaller",
@@ -114,13 +141,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/aimeos-extinstaller.git",
-                "reference": "edb83d224101580d6d77b51b2cc1d319543c9937"
+                "reference": "e3be02d8a1596110d96a171c9ed9f2248cdda1c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/aimeos-extinstaller/zipball/edb83d224101580d6d77b51b2cc1d319543c9937",
-                "reference": "edb83d224101580d6d77b51b2cc1d319543c9937",
+                "url": "https://api.github.com/repos/aimeos/aimeos-extinstaller/zipball/e3be02d8a1596110d96a171c9ed9f2248cdda1c5",
+                "reference": "e3be02d8a1596110d96a171c9ed9f2248cdda1c5",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
             },
             "type": "composer-installer",
             "extra": {
@@ -137,7 +167,7 @@
             ],
             "description": "Custom composer installer for Aimeos extensions",
             "homepage": "http://aimeos.org",
-            "time": "2014-09-27 22:26:30"
+            "time": "2014-11-06 18:36:16"
         },
         {
             "name": "arcavias/arcavias-core",
@@ -145,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nsendetzky/arcavias-core.git",
-                "reference": "da4b8e3bf99fdee397f37b163ed425d8b1152fdd"
+                "reference": "386b772186e6eda80e785cdfce6a4de4950e1b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nsendetzky/arcavias-core/zipball/da4b8e3bf99fdee397f37b163ed425d8b1152fdd",
-                "reference": "da4b8e3bf99fdee397f37b163ed425d8b1152fdd",
+                "url": "https://api.github.com/repos/nsendetzky/arcavias-core/zipball/386b772186e6eda80e785cdfce6a4de4950e1b27",
+                "reference": "386b772186e6eda80e785cdfce6a4de4950e1b27",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +247,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2014-10-03 09:07:43"
+            "time": "2014-11-02 20:45:14"
         },
         {
             "name": "zendframework/zend-config",
@@ -1632,7 +1662,9 @@
             "time": "2014-10-01 05:50:18"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "arcavias/arcavias-core": 20,
@@ -1641,9 +1673,10 @@
         "aimeos/ai-zend2": 20,
         "aimeos/ai-zend2-i18n": 20
     },
-    "prefer-stable": false,
     "platform": {
         "php": ">=5.3.2"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

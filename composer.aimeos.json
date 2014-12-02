@@ -13,12 +13,12 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/nsendetzky/arcavias-core"
+			"url": "https://github.com/aimeos/arcavias-core"
 		}
 	],
 	"require": {
 		"php": ">=5.3.2",
-		"arcavias/arcavias-core": "dev-master",
+		"aimeos/arcavias-core": "dev-master",
 		"aimeos/extinstaller": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-zend2": "dev-master",
