@@ -1,10 +1,15 @@
-page.includeCSS.tx_aimeos = EXT:aimeos/Resources/Public/html/elegance/css/arcavias.css
-page.includeJSFooterlibs.jquery = EXT:aimeos/Resources/Public/html/elegance/js/jquery.min.js
-page.includeJSFooterlibs.jquery-migrate = EXT:aimeos/Resources/Public/html/elegance/js/jquery-migrate.js
-page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/html/elegance/js/jquery-ui.custom.min.js
-page.includeJSFooter.tx_aimeos = EXT:aimeos/Resources/Public/html/elegance/js/arcavias.js
-page.includeJSFooter.tx_aimeos_image = EXT:aimeos/Resources/Public/html/elegance/js/arcavias-image.js
-page.includeJSFooter.tx_aimeos_detail = EXT:aimeos/Resources/Public/html/elegance/js/arcavias-detail.js
+page.includeCSS.aimeos-common = EXT:aimeos/Resources/Public/html/elegance/common.css
+page.includeCSS.aimeos = EXT:aimeos/Resources/Public/html/elegance/aimeos.css
+
+page.includeJSFooterlibs.jquery = http://code.jquery.com/jquery-1.11.1.min.js
+page.includeJSFooterlibs.jquery.external = 1
+page.includeJSFooterlibs.jquery-migrate = http://code.jquery.com/jquery-migrate-1.2.1.min.js
+page.includeJSFooterlibs.jquery-migrate.external = 1
+page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/html/jquery-ui.custom.min.js
+
+page.includeJSFooter.aimeos = EXT:aimeos/Resources/Public/html/aimeos.js
+page.includeJSFooter.aimeos-detail = EXT:aimeos/Resources/Public/html/aimeos-detail.js
+page.includeJSFooter.aimeos-theme = EXT:aimeos/Resources/Public/html/elegance/aimeos.js
 
 plugin.tx_aimeos {
 	mvc {
