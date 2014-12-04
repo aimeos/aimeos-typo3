@@ -113,6 +113,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 	protected function _getCache( \MW_Config_Interface $config, $siteid )
 	{
 		$name = Tx_Aimeos_Base::getExtConfig( 'cacheName', 'Typo3' );
+		$prefix = $config->get( 'mshop/cache/prefix' );
 
 		switch( $name )
 		{
@@ -136,7 +137,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 					);
 				}
 
-				$config = array( 'siteid' => $siteid );
+				$config = array( 'siteid' => $prefix . $siteid );
 				break;
 
 			default:
