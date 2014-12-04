@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "8dc97198d7ba2a475a503fc2c9c0301f2da64c5a"
+                "reference": "3f2230c355e568e8197703b2a04970562992bee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/8dc97198d7ba2a475a503fc2c9c0301f2da64c5a",
-                "reference": "8dc97198d7ba2a475a503fc2c9c0301f2da64c5a",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/3f2230c355e568e8197703b2a04970562992bee4",
+                "reference": "3f2230c355e568e8197703b2a04970562992bee4",
                 "shasum": ""
             },
             "require": {
@@ -247,7 +247,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2014-12-04 14:13:42"
+            "time": "2014-12-04 15:36:54"
         },
         {
             "name": "zendframework/zend-config",
