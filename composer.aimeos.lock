@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f3606472f074ee2942fc02ac63ca5ea9",
+    "hash": "6ed85f3cdc89236902453c9be1184423",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
-                "reference": "ff835c82f5d76ff9a5dabc102c5c144e80eddd89"
+                "reference": "e8ead3b083bb6aaffc24ec0fd86384a5d9221011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/ff835c82f5d76ff9a5dabc102c5c144e80eddd89",
-                "reference": "ff835c82f5d76ff9a5dabc102c5c144e80eddd89",
+                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/e8ead3b083bb6aaffc24ec0fd86384a5d9221011",
+                "reference": "e8ead3b083bb6aaffc24ec0fd86384a5d9221011",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 "cms",
                 "typo3"
             ],
-            "time": "2014-11-17 14:53:05"
+            "time": "2014-12-02 17:29:21"
         },
         {
             "name": "aimeos/ai-zend2",
@@ -53,12 +53,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2.git",
-                "reference": "c0eb7fe904021aba213b509e4ff79c010383d42d"
+                "reference": "d0257382698177c3c32f0f9ced653f0ed7d55398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/c0eb7fe904021aba213b509e4ff79c010383d42d",
-                "reference": "c0eb7fe904021aba213b509e4ff79c010383d42d",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/d0257382698177c3c32f0f9ced653f0ed7d55398",
+                "reference": "d0257382698177c3c32f0f9ced653f0ed7d55398",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "framework",
                 "zend"
             ],
-            "time": "2014-11-06 18:34:32"
+            "time": "2014-12-02 17:30:55"
         },
         {
             "name": "aimeos/ai-zend2-i18n",
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2-i18n.git",
-                "reference": "b6bbf8a606acd00c662c66d7e1ac345e9a9925f8"
+                "reference": "77a6d568f9128fe9b4e6a142d7f13fa2d3ae0e48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/b6bbf8a606acd00c662c66d7e1ac345e9a9925f8",
-                "reference": "b6bbf8a606acd00c662c66d7e1ac345e9a9925f8",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/77a6d568f9128fe9b4e6a142d7f13fa2d3ae0e48",
+                "reference": "77a6d568f9128fe9b4e6a142d7f13fa2d3ae0e48",
                 "shasum": ""
             },
             "require": {
@@ -133,7 +133,7 @@
                 "translate",
                 "zend"
             ],
-            "time": "2014-11-06 18:35:03"
+            "time": "2014-12-02 17:31:06"
         },
         {
             "name": "aimeos/extinstaller",
@@ -174,13 +174,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nsendetzky/arcavias-core.git",
-                "reference": "386b772186e6eda80e785cdfce6a4de4950e1b27"
+                "url": "https://github.com/aimeos/arcavias-core.git",
+                "reference": "8dc97198d7ba2a475a503fc2c9c0301f2da64c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nsendetzky/arcavias-core/zipball/386b772186e6eda80e785cdfce6a4de4950e1b27",
-                "reference": "386b772186e6eda80e785cdfce6a4de4950e1b27",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/8dc97198d7ba2a475a503fc2c9c0301f2da64c5a",
+                "reference": "8dc97198d7ba2a475a503fc2c9c0301f2da64c5a",
                 "shasum": ""
             },
             "require": {
@@ -247,7 +247,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2014-11-02 20:45:14"
+            "time": "2014-12-04 14:13:42"
         },
         {
             "name": "zendframework/zend-config",
@@ -1616,17 +1616,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.6",
+            "version": "v2.6.1",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "2d9f527449cabfa8543dd7fa3a466d6ae83d6726"
+                "reference": "3346fc090a3eb6b53d408db2903b241af51dcb20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/2d9f527449cabfa8543dd7fa3a466d6ae83d6726",
-                "reference": "2d9f527449cabfa8543dd7fa3a466d6ae83d6726",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/3346fc090a3eb6b53d408db2903b241af51dcb20",
+                "reference": "3346fc090a3eb6b53d408db2903b241af51dcb20",
                 "shasum": ""
             },
             "require": {
@@ -1635,7 +1635,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -1659,7 +1659,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-10-01 05:50:18"
+            "time": "2014-12-02 20:19:20"
         }
     ],
     "aliases": [
