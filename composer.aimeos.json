@@ -1,24 +1,24 @@
 {
-	"name": "aimeos/typo3-extension",
+	"name": "aimeos/aimeos-typo3",
 	"description": "Aimeos TYPO3 extension for web shops, portals and market places",
-	"homepage": "http://www.aimeos.org",
+	"homepage": "http://aimeos.org",
 	"license": "LGPL-3.0",
 	"keywords": ["e-commerce", "shop", "portal", "market place"],
 	"support": {
-		"source": "https://github.com/aimeos/typo3-extension",
-		"issues": "https://github.com/aimeos/typo3-extension/issues",
+		"source": "https://github.com/aimeos/aimeos-typo3",
+		"issues": "https://github.com/aimeos/aimeos-typo3/issues",
 		"forum": "http://help.aimeos.org",
 		"wiki": "http://docs.aimeos.org"
 	},
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/nsendetzky/arcavias-core"
+			"url": "https://github.com/aimeos/arcavias-core"
 		}
 	],
 	"require": {
 		"php": ">=5.3.2",
-		"arcavias/arcavias-core": "dev-master",
+		"arcavias/arcavias-core": "2014.11",
 		"aimeos/extinstaller": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-zend2": "dev-master",
