@@ -1,15 +1,18 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Custom_RealurlTest
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Custom;
+
+
+class RealurlTest
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		$this->_object = new tx_aimeos_custom_realurl();
+		$this->_object = new \Aimeos\AimeosShop\Custom\Realurl();
 	}
 
 
@@ -24,7 +27,7 @@ class Tx_Aimeos_Tests_Unit_Custom_RealurlTest
 	 */
 	public function addAutoConfig()
 	{
-		$obj = new stdClass();
+		$obj = new \stdClass();
 		$result = $this->_object->addAutoConfig( array(), $obj );
 
 		$this->assertArrayHasKey( 'postVarSets', $result );

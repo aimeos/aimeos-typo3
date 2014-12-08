@@ -7,14 +7,19 @@
  * @package TYPO3_Aimeos
  */
 
+namespace Aimeos\AimeosShop\Controller;
+
+
+use Aimeos\AimeosShop\Base;
+
 
 /**
  * Abstract class with common functionality for all controllers.
  *
  * @package TYPO3_Aimeos
  */
-abstract class Tx_Aimeos_Controller_Abstract
-	extends Tx_Extbase_MVC_Controller_ActionController
+abstract class AbstractController
+	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 	private $_aimeos;
 	static private $_locale;
@@ -26,7 +31,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 	{
 		parent::__construct();
 
-		$this->_aimeos = Tx_Aimeos_Base::getAimeos();
+		$this->_aimeos = Base::getAimeos();
 	}
 
 
@@ -74,29 +79,29 @@ abstract class Tx_Aimeos_Controller_Abstract
 		$params = $this->request->getArguments();
 		$params['target'] = $GLOBALS["TSFE"]->id;
 
-		$view = new MW_View_Default();
+		$view = new \MW_View_Default();
 
-		$helper = new MW_View_Helper_Url_Typo3( $view, $this->uriBuilder );
+		$helper = new \MW_View_Helper_Url_Typo3( $view, $this->uriBuilder );
 		$view->addHelper( 'url', $helper );
 
-		$helper = new MW_View_Helper_Translate_Default( $view, $i18n[$langid] );
+		$helper = new \MW_View_Helper_Translate_Default( $view, $i18n[$langid] );
 		$view->addHelper( 'translate', $helper );
 
-		$helper = new MW_View_Helper_Parameter_Default( $view, $params );
+		$helper = new \MW_View_Helper_Parameter_Default( $view, $params );
 		$view->addHelper( 'param', $helper );
 
-		$helper = new MW_View_Helper_Config_Default( $view, $config );
+		$helper = new \MW_View_Helper_Config_Default( $view, $config );
 		$view->addHelper( 'config', $helper );
 
 		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
 		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
-		$helper = new MW_View_Helper_Number_Default( $view, $sepDec, $sep1000 );
+		$helper = new \MW_View_Helper_Number_Default( $view, $sepDec, $sep1000 );
 		$view->addHelper( 'number', $helper );
 
-		$helper = new MW_View_Helper_FormParam_Default( $view, array( $this->uriBuilder->getArgumentPrefix() ) );
+		$helper = new \MW_View_Helper_FormParam_Default( $view, array( $this->uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
 
-		$helper = new MW_View_Helper_Encoder_Default( $view );
+		$helper = new \MW_View_Helper_Encoder_Default( $view );
 		$view->addHelper( 'encoder', $helper );
 
 		return $view;
@@ -112,30 +117,14 @@ abstract class Tx_Aimeos_Controller_Abstract
 	 */
 	protected function _getCache( \MW_Config_Interface $config, $siteid )
 	{
-		$name = Tx_Aimeos_Base::getExtConfig( 'cacheName', 'Typo3' );
+		$name = Base::getExtConfig( 'cacheName', 'Typo3' );
 		$prefix = $config->get( 'mshop/cache/prefix' );
 
 		switch( $name )
 		{
 			case 'Typo3':
-				/** @todo Use modern API in TYPO3 6.3 and above */
-				// \TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
-				// $cache = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
-
-				t3lib_cache::initializeCachingFramework();
-
-				try
-				{
-					$cache = $GLOBALS['typo3CacheManager']->getCache( 'aimeos' );
-				}
-				catch( t3lib_cache_exception_NoSuchCache $e )
-				{
-					$cache = $GLOBALS['typo3CacheFactory']->create( 'aimeos',
-						$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'],
-						$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['backend'],
-						$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options']
-					);
-				}
+				\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				$cache = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
 
 				$config = array( 'siteid' => $prefix . $siteid );
 				break;
@@ -147,7 +136,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 				$config = array();
 		}
 
-		return MW_Cache_Factory::createManager( $name, $config, $cache );
+		return \MW_Cache_Factory::createManager( $name, $config, $cache );
 	}
 
 
@@ -162,11 +151,11 @@ abstract class Tx_Aimeos_Controller_Abstract
 
 		if( isset( $this->settings['typo3']['tsconfig'] ) )
 		{
-			$tsconfig = Tx_Aimeos_Base::parseTS( $this->settings['typo3']['tsconfig'] );
-			$settings = Tx_Extbase_Utility_Arrays::arrayMergeRecursiveOverrule( $settings, $tsconfig );
+			$tsconfig = Base::parseTS( $this->settings['typo3']['tsconfig'] );
+			$settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $settings, $tsconfig );
 		}
 
-		return Tx_Aimeos_Base::getConfig( $settings );
+		return Base::getConfig( $settings );
 	}
 
 
@@ -181,21 +170,21 @@ abstract class Tx_Aimeos_Controller_Abstract
 
 		if( self::$_context === null )
 		{
-			$context = new MShop_Context_Item_Default();
+			$context = new \MShop_Context_Item_Default();
 
 			$context->setConfig( $config );
 
-			$dbm = new MW_DB_Manager_PDO( $config );
+			$dbm = new \MW_DB_Manager_PDO( $config );
 			$context->setDatabaseManager( $dbm );
 
 			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
-				$session = new MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
+				$session = new \MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
 			} else {
-				$session = new MW_Session_None();
+				$session = new \MW_Session_None();
 			}
 			$context->setSession( $session );
 
-			$logger = MAdmin_Log_Manager_Factory::createManager( $context );
+			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
 			$context->setLogger( $logger );
 
 			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
@@ -221,22 +210,22 @@ abstract class Tx_Aimeos_Controller_Abstract
 	 */
 	protected function _getI18n( array $languageIds )
 	{
-		$i18nPaths = Tx_Aimeos_Base::getAimeos()->getI18nPaths();
+		$i18nPaths = Base::getAimeos()->getI18nPaths();
 
 		foreach( $languageIds as $langid )
 		{
 			if( !isset( self::$_i18n[$langid] ) )
 			{
-				$i18n = new MW_Translation_Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
+				$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
 
-				if( function_exists( 'apc_store' ) === true && Tx_Aimeos_Base::getExtConfig( 'useAPC', false ) == true ) {
-					$i18n = new MW_Translation_Decorator_APC( $i18n, Tx_Aimeos_Base::getExtConfig( 'apcPrefix', 't3:' ) );
+				if( function_exists( 'apc_store' ) === true && Base::getExtConfig( 'useAPC', false ) == true ) {
+					$i18n = new \MW_Translation_Decorator_APC( $i18n, Base::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
 				if( isset( $this->settings['i18n'][$langid] ) )
 				{
-					$translations = Tx_Aimeos_Base::parseTranslations( (array) $this->settings['i18n'][$langid] );
-					$i18n = new MW_Translation_Decorator_Memory( $i18n, $translations );
+					$translations = Base::parseTranslations( (array) $this->settings['i18n'][$langid] );
+					$i18n = new \MW_Translation_Decorator_Memory( $i18n, $translations );
 				}
 
 				self::$_i18n[$langid] = $i18n;
@@ -301,7 +290,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 			}
 
 
-			$localeManager = MShop_Locale_Manager_Factory::createManager( $context );
+			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
 
 			self::$_locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
 		}
@@ -316,7 +305,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 	 * @param Client_Html_Interface $client Html client object
 	 * @return string HTML code for inserting into the HTML body
 	 */
-	protected function _getClientOutput( Client_Html_Interface $client )
+	protected function _getClientOutput( \Client_Html_Interface $client )
 	{
 		$client->setView( $this->_createView() );
 		$client->process();

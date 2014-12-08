@@ -1,19 +1,18 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Scheduler_Task_Email6Test
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Scheduler\Task;
+
+
+class Email6Test
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		if( !class_exists( '\TYPO3\CMS\Scheduler\Task\AbstractTask' ) ) {
-			$this->markTestSkipped( 'Test is for TYPO3 6.x only' );
-		}
-
-		$this->_object = new Aimeos\Aimeos\Scheduler\Task\Email6();
+		$this->_object = new \Aimeos\AimeosShop\Scheduler\Task\Email6();
 	}
 
 

@@ -1,22 +1,25 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Controller_AccountControllerTest
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Controller;
+
+
+class AccountControllerTest
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		$this->_object = $this->getAccessibleMock( 'Tx_Aimeos_Controller_AccountController', array( 'dummy' ) );
+		$this->_object = $this->getAccessibleMock( 'Aimeos\\AimeosShop\\Controller\\AccountController', array( 'dummy' ) );
 
-		$objManager = new Tx_Extbase_Object_ObjectManager();
+		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 
-		$uriBuilder = $objManager->get( 'Tx_Extbase_MVC_Web_Routing_UriBuilder' );
-		$response = $objManager->get( 'Tx_Extbase_MVC_Web_Response' );
-		$request = $objManager->get( 'Tx_Extbase_MVC_Web_Request' );
-
+		$uriBuilder = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder' );
+		$response = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response' );
+		$request = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' );
+		
 		$uriBuilder->setRequest( $request );
 
 		if( method_exists( $response, 'setRequest' ) ) {
@@ -48,29 +51,10 @@ class Tx_Aimeos_Tests_Unit_Controller_AccountControllerTest
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		Client_Html_Account_History_Factory::injectClient( $name, $client );
+		\Client_Html_Account_History_Factory::injectClient( $name, $client );
 		$output = $this->_object->historyAction();
-		Client_Html_Account_History_Factory::injectClient( $name, null );
+		\Client_Html_Account_History_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
-	}
-
-
-	/**
-	 * @test
-	 */
-	public function historyActionException()
-	{
-		$name = 'Client_Html_Account_History_Default';
-		$client = $this->getMock( $name, array( 'process' ), array(), '', false );
-
-		$client->expects( $this->once() )->method( 'process' )->will( $this->throwException( new Exception() ) );
-
-		Client_Html_Account_History_Factory::injectClient( $name, $client );
-		$output = $this->_object->historyAction();
-		Client_Html_Account_History_Factory::injectClient( $name, null );
-
-		$this->assertEquals( 1, count( t3lib_FlashMessageQueue::getAllMessagesAndFlush() ) );
-		$this->assertNull( $output );
 	}
 }

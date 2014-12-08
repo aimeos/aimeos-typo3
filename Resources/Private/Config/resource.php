@@ -1,15 +1,13 @@
 <?php
 
-$typo3_db_config_parts = explode( ':', TYPO3_db_host );
-
 return array(
 	'db' => array(
 		'adapter' => 'mysql',
-		'host' => $typo3_db_config_parts[0],
-		'port' => ( isset( $typo3_db_config_parts[1] ) ? $typo3_db_config_parts[1] : '' ),
-		'database' => TYPO3_db,
-		'username' => TYPO3_db_username,
-		'password' => TYPO3_db_password,
+		'host' => $GLOBALS['TYPO3_CONF_VARS']['DB']['host'],
+		'port' => $GLOBALS['TYPO3_CONF_VARS']['DB']['port'],
+		'database' => $GLOBALS['TYPO3_CONF_VARS']['DB']['database'],
+		'username' => $GLOBALS['TYPO3_CONF_VARS']['DB']['username'],
+		'password' => $GLOBALS['TYPO3_CONF_VARS']['DB']['password'],
 		'stmt' => array(
 			"SET NAMES 'utf8'",
 			"SET SESSION sql_mode='ANSI'",

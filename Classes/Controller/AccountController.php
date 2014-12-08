@@ -8,20 +8,26 @@
  */
 
 
+namespace Aimeos\AimeosShop\Controller;
+
+
+use Aimeos\AimeosShop\Base;
+
+
 /**
  * Aimeos account controller.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Controller_AccountController extends Tx_Aimeos_Controller_Abstract
+class AccountController extends AbstractController
 {
 	/**
 	 * Renders the account history.
 	 */
 	public function historyAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Account_History_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Account_History_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -32,8 +38,8 @@ class Tx_Aimeos_Controller_AccountController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function favoriteAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Account_Favorite_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Account_Favorite_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -44,8 +50,8 @@ class Tx_Aimeos_Controller_AccountController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function watchAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Account_Watch_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Account_Watch_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}

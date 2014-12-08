@@ -38,7 +38,7 @@ class ext_update
 
 		try
 		{
-			Tx_Aimeos_Setup::execute();
+			\Aimeos\AimeosShop\Setup::execute();
 			$output = ob_get_contents();
 		}
 		catch( Exception $e )

@@ -8,12 +8,15 @@
  */
 
 
+namespace Aimeos\AimeosShop\Custom;
+
+
 /**
  * Aimeos RealURL configuraiton.
  *
  * @package TYPO3_Aimeos
  */
-class tx_aimeos_custom_realurl
+class Realurl
 {
 	/**
 	 * Generates additional RealURL configuration and merges it with provided configuration
@@ -38,7 +41,7 @@ class tx_aimeos_custom_realurl
 			),
 			'postVarSets' => array(
 				'_DEFAULT' => array(
-					'aimeos' => array(
+					'aimeos_shop' => array(
 						array(
 							'GETvar' => 'ai[controller]',
 							'noMatch' => 'bypass',

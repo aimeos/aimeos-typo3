@@ -1,19 +1,21 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Scheduler\Provider;
+
+
+use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
+
+
+class Typo6Test
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		if( !interface_exists( 'TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface' ) ) {
-			$this->markTestSkipped( 'Test is for TYPO3 6.x only' );
-		}
-
-		$this->_object = new Aimeos\Aimeos\Scheduler\Provider\Typo6();
+		$this->_object = new \Aimeos\AimeosShop\Scheduler\Provider\Typo6();
 	}
 
 
@@ -29,7 +31,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 	public function getAdditionalFields()
 	{
 		$taskInfo = array();
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 		$module->CMD = 'edit';
 
 		$result = $this->_object->getAdditionalFields( $taskInfo, $this->_object, $module );
@@ -46,15 +48,15 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 	 */
 	public function getAdditionalFieldsException()
 	{
-		$manager = MShop_Attribute_Manager_Factory::createManager( Tx_Aimeos_Scheduler_Base::getContext() );
+		$manager = \MShop_Attribute_Manager_Factory::createManager( \Aimeos\AimeosShop\Scheduler\Base::getContext() );
 
 		$taskInfo = array();
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 		$module->CMD = 'edit';
 
-		MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', $manager );
+		\MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', $manager );
 		$result = $this->_object->getAdditionalFields( $taskInfo, $this->_object, $module );
-		MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', null );
+		\MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', null );
 
 		$this->assertEquals( array(), $result );
 	}
@@ -70,7 +72,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 			'aimeos_controller' => 'testcntl',
 			'aimeos_config' => 'testconf',
 		);
-		$task = new Aimeos\Aimeos\Scheduler\Task\Typo6();
+		$task = new \Aimeos\AimeosShop\Scheduler\Task\Typo6();
 
 		$this->_object->saveAdditionalFields( $data, $task );
 
@@ -86,7 +88,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 	public function validateAdditionalFieldsNoController()
 	{
 		$data = array();
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -100,7 +102,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 		$data = array(
 			'aimeos_controller' => 'testcntl',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -116,7 +118,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 			'aimeos_sitecode' => 'testsite',
 			'aimeos_config' => 'testconf',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -131,7 +133,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Typo6Test
 			'aimeos_sitecode' => 'default',
 			'aimeos_controller' => 'catalog/index/optimize',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertTrue( $this->_object->validateAdditionalFields( $data, $module ) );
 	}

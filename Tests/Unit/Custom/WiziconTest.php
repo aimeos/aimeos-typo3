@@ -1,15 +1,18 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Custom_WiziconTest
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Custom;
+
+
+class WiziconTest
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		$this->_object = new tx_aimeos_custom_wizicon();
+		$this->_object = new \Aimeos\AimeosShop\Custom\Wizicon();
 	}
 
 

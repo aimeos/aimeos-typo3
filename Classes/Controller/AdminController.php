@@ -8,12 +8,18 @@
  */
 
 
+namespace Aimeos\AimeosShop\Controller;
+
+
+use Aimeos\AimeosShop\Base;
+
+
 /**
  * Controller for adminisration interface.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
+class AdminController extends AbstractController
 {
 	private $_controller;
 
@@ -22,8 +28,8 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 	{
 		parent::__construct();
 
-		$cntlPaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'controller/extjs' );
-		$this->_controller = new Controller_ExtJS_JsonRpc( $this->_getContext(), $cntlPaths );
+		$cntlPaths = Base::getAimeos()->getCustomPaths( 'controller/extjs' );
+		$this->_controller = new \Controller_ExtJS_JsonRpc( $this->_getContext(), $cntlPaths );
 	}
 
 
@@ -38,7 +44,7 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 		$abslen = strlen( PATH_site );
 		$langid = $this->_getContext()->getLocale()->getLanguageId();
 
-		foreach( Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/extjs' ) as $base => $paths )
+		foreach( Base::getAimeos()->getCustomPaths( 'client/extjs' ) as $base => $paths )
 		{
 			$relJsbPath = '../' . substr( $base, $abslen );
 
@@ -47,18 +53,18 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 				$jsbAbsPath = $base . '/' . $path;
 
 				if( !is_file( $jsbAbsPath ) ) {
-					throw new Exception( sprintf( 'JSB2 file "%1$s" not found', $jsbAbsPath ) );
+					throw new \Exception( sprintf( 'JSB2 file "%1$s" not found', $jsbAbsPath ) );
 				}
 
-				$jsb2 = new MW_Jsb2_Default( $jsbAbsPath, $relJsbPath . '/' . dirname( $path ) );
+				$jsb2 = new \MW_Jsb2_Default( $jsbAbsPath, $relJsbPath . '/' . dirname( $path ) );
 				$html .= $jsb2->getHTML( 'css' );
 				$html .= $jsb2->getHTML( 'js' );
 			}
 		}
 
 		// rawurldecode() is necessary for ExtJS templates to replace "{site}" properly
-		$urlTemplate = rawurldecode( t3lib_BEfunc::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
-		$serviceUrl = t3lib_BEfunc::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Admin', 'action' => 'do' ) ) );
+		$urlTemplate = rawurldecode( \TYPO3\CMS\Backend\Utility\BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeosshop_web_aimeosshoptxaimeosshopadmin' => array( 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
+		$serviceUrl = \TYPO3\CMS\Backend\Utility\BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeosshop_web_aimeosshoptxaimeosshopadmin' => array( 'controller' => 'Admin', 'action' => 'do' ) ) );
 
 		$this->view->assign( 'htmlHeader', $html );
 		$this->view->assign( 'lang', $langid );
@@ -80,7 +86,7 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 	 */
 	public function doAction()
 	{
-		$this->view->assign( 'response', $this->_controller->process( t3lib_div::_POST(), 'php://input' ) );
+		$this->view->assign( 'response', $this->_controller->process( $this->request->getArguments(), 'php://input' ) );
 	}
 
 
@@ -95,17 +101,25 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 		}
 
 		$context = $this->_getContext();
-
+		
 		$conf = $this->_getConfig( ( is_array( $this->settings ) ? $this->settings : array() ) );
 		$context->setConfig( $conf );
 
-		$context->setI18n( $this->_getI18n( array( $langid ) ) );
-		$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
+		$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
+		
+		try {
+			$sitecode = $conf->get( 'mshop/locale/site', 'default' );
+			$localeItem = $localeManager->bootstrap( $sitecode, $langid, '', false );
+		} catch( \MShop_Locale_Exception $e ) {
+			$localeItem = $localeManager->createItem();
+		}
 
-		$localeManager = MShop_Locale_Manager_Factory::createManager( $context );
-		$localeItem = $localeManager->createItem();
 		$localeItem->setLanguageId( $langid );
 		$context->setLocale( $localeItem );
+
+		$context->setCache( $this->_getCache( $conf, $localeItem->getSiteId() ) );
+		$context->setI18n( $this->_getI18n( array( $langid ) ) );
+		$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
 	}
 
 
@@ -116,7 +130,7 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 	 */
 	protected function resolveView()
 	{
-		return Tx_Extbase_MVC_Controller_ActionController::resolveView();
+		return \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::resolveView();
 	}
 
 
@@ -140,8 +154,8 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 	 */
 	protected function _getJsonClientI18n( $lang )
 	{
-		$i18nPaths = Tx_Aimeos_Base::getAimeos()->getI18nPaths();
-		$i18n = new MW_Translation_Zend2( $i18nPaths, 'gettext', $lang, array('disableNotices'=>true) );
+		$i18nPaths = Base::getAimeos()->getI18nPaths();
+		$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $lang, array('disableNotices'=>true) );
 
 		$content = array(
 			'client/extjs' => $i18n->getAll( 'client/extjs' ),
@@ -155,13 +169,13 @@ class Tx_Aimeos_Controller_AdminController extends Tx_Aimeos_Controller_Abstract
 	/**
 	 * Returns the JSON encoded site item.
 	 *
-	 * @param Tx_Extbase_MVC_RequestInterface $request TYPO3 request object
+	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request TYPO3 request object
 	 * @return string JSON encoded site item object
 	 * @throws Exception If no site item was found for the code
 	 */
-	protected function _getSite( Tx_Extbase_MVC_RequestInterface $request )
+	protected function _getSite( \TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
-		$localeManager = MShop_Locale_Manager_Factory::createManager( $this->_getContext() );
+		$localeManager = \MShop_Locale_Manager_Factory::createManager( $this->_getContext() );
 		$manager = $localeManager->getSubManager( 'site' );
 
 		$site = 'default';

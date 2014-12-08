@@ -7,13 +7,19 @@
  * @package TYPO3_Aimeos
  */
 
+namespace Aimeos\AimeosShop\Scheduler\Provider;
+
+
+use Aimeos\AimeosShop\Base;
+use Aimeos\AimeosShop\Scheduler;
+
 
 /**
  * Common methods for Aimeos' additional field providers.
  *
  * @package TYPO3_Aimeos
  */
-abstract class Tx_Aimeos_Scheduler_Provider_Abstract
+abstract class AbstractProvider
 {
 	private $_fieldSite = 'aimeos_sitecode';
 	private $_fieldController = 'aimeos_controller';
@@ -127,20 +133,20 @@ abstract class Tx_Aimeos_Scheduler_Provider_Abstract
 	protected function _validateAdditionalFields( array &$submittedData, $parentObject )
 	{
 		if( count( (array) $submittedData[$this->_fieldController] ) < 1 ) {
-			throw new Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.controller.missing' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.controller.missing' ) );
 		}
 
 		if( count( (array) $submittedData[$this->_fieldSite] ) < 1 ) {
-			throw new Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode.missing' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode.missing' ) );
 		}
 
-		Tx_Aimeos_Base::parseTS( $submittedData[$this->_fieldTSconfig] );
+		Base::parseTS( $submittedData[$this->_fieldTSconfig] );
 
 
-		$context = Tx_Aimeos_Scheduler_Base::getContext();
+		$context = Scheduler\Base::getContext();
 
 
-		$manager = MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'site' );
+		$manager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'site' );
 
 		$search = $manager->createSearch( true );
 		$expr = array(
@@ -154,11 +160,11 @@ abstract class Tx_Aimeos_Scheduler_Provider_Abstract
 		}
 
 
-		$aimeos = Tx_Aimeos_Base::getAimeos();
+		$aimeos = Base::getAimeos();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
 		foreach( (array) $submittedData[$this->_fieldController] as $name ) {
-			Controller_Jobs_Factory::createController( $context, $aimeos, $name );
+			\Controller_Jobs_Factory::createController( $context, $aimeos, $name );
 		}
 
 		return true;
@@ -172,8 +178,8 @@ abstract class Tx_Aimeos_Scheduler_Provider_Abstract
 	 */
 	protected function _getAvailableSites()
 	{
-		$context = Tx_Aimeos_Scheduler_Base::getContext();
-		$manager = MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'site' );
+		$context = Scheduler\Base::getContext();
+		$manager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'site' );
 
 		$search = $manager->createSearch();
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
@@ -226,11 +232,11 @@ abstract class Tx_Aimeos_Scheduler_Provider_Abstract
 	protected function _getControllerOptions( array $selected )
 	{
 		$html = '';
-		$aimeos = Tx_Aimeos_Base::getAimeos();
-		$context = Tx_Aimeos_Scheduler_Base::getContext();
+		$aimeos = Base::getAimeos();
+		$context = Scheduler\Base::getContext();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
-		$controllers = Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
+		$controllers = \Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
 
 		foreach( $controllers as $name => $controller )
 		{

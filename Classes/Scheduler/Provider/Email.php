@@ -8,13 +8,15 @@
  */
 
 
+namespace Aimeos\AimeosShop\Scheduler\Provider;
+
+
 /**
  * Common methods for Aimeos' e-mail additional field providers.
  *
  * @package TYPO3_Aimeos
  */
-abstract class Tx_Aimeos_Scheduler_Provider_Email
- extends Tx_Aimeos_Scheduler_Provider_Abstract
+abstract class Email extends AbstractProvider
 {
 	private $_fieldSenderFrom = 'aimeos_sender_from';
 	private $_fieldSenderEmail = 'aimeos_sender_email';
@@ -206,11 +208,11 @@ abstract class Tx_Aimeos_Scheduler_Provider_Email
 	protected function _getControllerOptions( array $selected )
 	{
 		$html = '';
-		$aimeos = Tx_Aimeos_Base::getAimeos();
-		$context = Tx_Aimeos_Scheduler_Base::getContext();
+		$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
+		$context = \Aimeos\AimeosShop\Scheduler\Base::getContext();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
-		$controllers = Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
+		$controllers = \Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
 
 		foreach( $controllers as $name => $controller )
 		{

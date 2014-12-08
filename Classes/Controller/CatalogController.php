@@ -8,20 +8,26 @@
  */
 
 
+namespace Aimeos\AimeosShop\Controller;
+
+
+use Aimeos\AimeosShop\Base;
+
+
 /**
  * Aimeos catalog controller.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstract
+class CatalogController extends AbstractController
 {
 	/**
 	 * Renders the catalog filter section.
 	 */
 	public function filterAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_Filter_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_Filter_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -32,8 +38,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function countAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_Count_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_Count_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -44,8 +50,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function stageAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_Stage_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_Stage_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -56,8 +62,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function stockAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_Stock_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_Stock_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -72,8 +78,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -84,8 +90,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function listsimpleAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths, 'Simple' );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths, 'Simple' );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -100,8 +106,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_Detail_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_Detail_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -112,8 +118,8 @@ class Tx_Aimeos_Controller_CatalogController extends Tx_Aimeos_Controller_Abstra
 	 */
 	public function sessionAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Catalog_Session_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Catalog_Session_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}

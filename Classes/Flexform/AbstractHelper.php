@@ -8,12 +8,15 @@
  */
 
 
+namespace Aimeos\AimeosShop\Flexform;
+
+
 /**
  * Aimeos abstract flexform helper.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Flexform_Abstract
+abstract class AbstractHelper
 {
 	private $_context;
 
@@ -30,21 +33,21 @@ class Tx_Aimeos_Flexform_Abstract
 			$ds = DIRECTORY_SEPARATOR;
 
 			// Important! Sets include paths
-			$aimeos = Tx_Aimeos_Base::getAimeos();
-			$context = new MShop_Context_Item_Default();
+			$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
+			$context = new \MShop_Context_Item_Default();
 
 
 			$configPaths = $aimeos->getConfigPaths( 'mysql' );
-			$configPaths[] = t3lib_extMgm::extPath( 'aimeos' ) . 'Resources' . $ds . 'Private' . $ds . 'Config';
+			$configPaths[] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos_shop' ) . 'Resources' . $ds . 'Private' . $ds . 'Config';
 
-			$conf = new MW_Config_Array( array(), $configPaths );
-			$conf = new MW_Config_Decorator_Memory( $conf );
+			$conf = new \MW_Config_Array( array(), $configPaths );
+			$conf = new \MW_Config_Decorator_Memory( $conf );
 			$context->setConfig( $conf );
 
-			$dbm = new MW_DB_Manager_PDO( $conf );
+			$dbm = new \MW_DB_Manager_PDO( $conf );
 			$context->setDatabaseManager( $dbm );
 
-			$logger = MAdmin_Log_Manager_Factory::createManager( $context );
+			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
 			$context->setLogger( $logger );
 
 			$context->setEditor( 'flexform' );

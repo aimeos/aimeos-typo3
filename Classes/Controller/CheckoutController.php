@@ -8,20 +8,26 @@
  */
 
 
+namespace Aimeos\AimeosShop\Controller;
+
+
+use Aimeos\AimeosShop\Base;
+
+
 /**
  * Aimeos checkout controller.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Controller_CheckoutController extends Tx_Aimeos_Controller_Abstract
+class CheckoutController extends AbstractController
 {
 	/**
 	 * Processes requests and renders the checkout process.
 	 */
 	public function indexAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Checkout_Standard_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Checkout_Standard_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}
@@ -32,11 +38,11 @@ class Tx_Aimeos_Controller_CheckoutController extends Tx_Aimeos_Controller_Abstr
 	 */
 	public function confirmAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Checkout_Confirm_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Checkout_Confirm_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		$view = $this->_createView();
-		$helper = new MW_View_Helper_Parameter_Default( $view, $_REQUEST );
+		$helper = new \MW_View_Helper_Parameter_Default( $view, $_REQUEST );
 		$view->addHelper( 'param', $helper );
 
 		$client->setView( $view );
@@ -55,11 +61,11 @@ class Tx_Aimeos_Controller_CheckoutController extends Tx_Aimeos_Controller_Abstr
 	{
 		try
 		{
-			$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = Client_Html_Checkout_Update_Factory::createClient( $this->_getContext(), $templatePaths );
+			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+			$client = \Client_Html_Checkout_Update_Factory::createClient( $this->_getContext(), $templatePaths );
 
 			$view = $this->_createView();
-			$helper = new MW_View_Helper_Parameter_Default( $view, $_REQUEST );
+			$helper = new \MW_View_Helper_Parameter_Default( $view, $_REQUEST );
 			$view->addHelper( 'param', $helper );
 
 			$client->setView( $view );

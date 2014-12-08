@@ -1,19 +1,22 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Scheduler\Provider;
+
+
+use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
+use Aimeos\AimeosShop\Scheduler;
+
+
+class Email6Test
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		if( !interface_exists( 'TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface' ) ) {
-			$this->markTestSkipped( 'Test is for TYPO3 6.x only' );
-		}
-
-		$this->_object = new Aimeos\Aimeos\Scheduler\Provider\Email6();
+		$this->_object = new Scheduler\Provider\Email6();
 	}
 
 
@@ -29,7 +32,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 	public function getAdditionalFields()
 	{
 		$taskInfo = array();
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 		$module->CMD = 'edit';
 
 		$result = $this->_object->getAdditionalFields( $taskInfo, $this->_object, $module );
@@ -49,15 +52,15 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 	 */
 	public function getAdditionalFieldsException()
 	{
-		$manager = MShop_Attribute_Manager_Factory::createManager( Tx_Aimeos_Scheduler_Base::getContext() );
+		$manager = \MShop_Attribute_Manager_Factory::createManager( Scheduler\Base::getContext() );
 
 		$taskInfo = array();
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 		$module->CMD = 'edit';
 
-		MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', $manager );
+		\MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', $manager );
 		$result = $this->_object->getAdditionalFields( $taskInfo, $this->_object, $module );
-		MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', null );
+		\MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', null );
 
 		$this->assertEquals( array(), $result );
 	}
@@ -76,7 +79,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_reply_email' => 'reply@test',
 		);
-		$task = new Aimeos\Aimeos\Scheduler\Task\Typo6();
+		$task = new Scheduler\Task\Typo6();
 
 		$this->_object->saveAdditionalFields( $data, $task );
 
@@ -95,7 +98,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 	public function validateAdditionalFieldsNoController()
 	{
 		$data = array();
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -109,7 +112,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 		$data = array(
 			'aimeos_controller' => 'testcntl',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -126,7 +129,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_config' => 'testconf',
 			'aimeos_sender_email' => 'sender@test',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -142,7 +145,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_sitecode' => 'testsite',
 			'aimeos_config' => 'testconf',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -159,7 +162,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_config' => 'testconf',
 			'aimeos_sender_email' => 'sender-test',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -177,7 +180,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_reply_email' => 'reply-test',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -194,7 +197,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_pageid_detail' => 'a',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -211,7 +214,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_content_baseurl' => 'localhost',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -228,7 +231,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_content_baseurl' => 'https:///',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
 	}
@@ -246,7 +249,7 @@ class Tx_Aimeos_Tests_Unit_Scheduler_Provider_Email6Test
 			'aimeos_pageid_detail' => '123',
 			'aimeos_content_baseurl' => 'https://www.aimeos.org:80/up/tx_/',
 		);
-		$module = new \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController();
+		$module = new SchedulerModuleController();
 
 		$this->assertTrue( $this->_object->validateAdditionalFields( $data, $module ) );
 	}

@@ -8,7 +8,10 @@
  */
 
 
-require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+namespace Aimeos\AimeosShop;
+
+
+require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 
 /**
@@ -16,7 +19,7 @@ require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEP
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Base
+class Base
 {
 	static private $_aimeos;
 	static private $_config;
@@ -37,29 +40,29 @@ class Tx_Aimeos_Base
 			$configPaths = self::getAimeos()->getConfigPaths( 'mysql' );
 
 			// Hook for processing extension config directories
-			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
+			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos_shop']['confDirs'] ) )
 			{
-				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] );
+				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos_shop']['confDirs'] );
 
-				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir )
+				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos_shop']['confDirs'] as $dir )
 				{
-					$absPath = t3lib_div::getFileAbsFileName( $dir );
+					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
 					if( !empty( $absPath ) ) {
 						$configPaths[] = $absPath;
 					}
 				}
 			}
 
-			$conf = new MW_Config_Array( array(), $configPaths );
+			$conf = new \MW_Config_Array( array(), $configPaths );
 
 			if( function_exists( 'apc_store' ) === true && self::getExtConfig( 'useAPC', false ) == true ) {
-				$conf = new MW_Config_Decorator_APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
+				$conf = new \MW_Config_Decorator_APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
 			self::$_config = $conf;
 		}
 
-		return new MW_Config_Decorator_Memory( self::$_config, $local );
+		return new \MW_Config_Decorator_Memory( self::$_config, $local );
 	}
 
 
@@ -72,24 +75,26 @@ class Tx_Aimeos_Base
 	{
 		if( self::$_aimeos === null )
 		{
-			$libPath = t3lib_extMgm::extPath( 'aimeos' ) . 'vendor/arcavias/arcavias-core';
+			$ds = DIRECTORY_SEPARATOR;
+			$libPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos_shop' );
+			$libPath .= 'Resources' . $ds . 'Libraries' . $ds . 'arcavias' . $ds . 'arcavias-core';
 
 			// Hook for processing extension directories
 			$extDirs = array();
-			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
+			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos_shop']['extDirs'] ) )
 			{
-				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
+				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos_shop']['extDirs'] );
 
-				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
+				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos_shop']['extDirs'] as $dir )
 				{
-					$absPath = t3lib_div::getFileAbsFileName( $dir );
+					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
 					if( !empty( $absPath ) ) {
 						$extDirs[] = $absPath;
 					}
 				}
 			}
 
-			self::$_aimeos = new Arcavias( $extDirs, false, $libPath );
+			self::$_aimeos = new \Arcavias( $extDirs, false, $libPath );
 		}
 
 		return self::$_aimeos;
@@ -107,7 +112,7 @@ class Tx_Aimeos_Base
 	{
 		if( self::$_extConfig === null )
 		{
-			if( ( $conf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] ) ) === false ) {
+			if( ( $conf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos_shop'] ) ) === false ) {
 				$conf = array();
 			}
 
@@ -160,22 +165,22 @@ class Tx_Aimeos_Base
 	 */
 	public static function parseTS( $tsString )
 	{
-		$parser = t3lib_div::makeInstance( 't3lib_tsparser' );
+		$parser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\TypoScript\\Parser\\TypoScriptParser' );
 		$parser->parse( $tsString );
 
 		if( !empty( $parser->errors ) )
 		{
-			$msg = $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.tsconfig.invalid' );
+			$msg = $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos_shop/Resources/Private/Language/Scheduler.xml:default.error.tsconfig.invalid' );
 			throw new Exception( $msg );
 		}
 
 		$tsConfig = self::_convertTypoScriptArrayToPlainArray( $parser->setup );
 
-		// Allows "plugin.tx_aimeos.settings." prefix everywhere
-		if( isset( $tsConfig['plugin']['tx_aimeos']['settings'] )
-			&& is_array( $tsConfig['plugin']['tx_aimeos']['settings'] )
+		// Allows "plugin.tx_aimeosshop.settings." prefix everywhere
+		if( isset( $tsConfig['plugin']['tx_aimeosshop']['settings'] )
+			&& is_array( $tsConfig['plugin']['tx_aimeosshop']['settings'] )
 		) {
-			return $tsConfig['plugin']['tx_aimeos']['settings'];
+			return $tsConfig['plugin']['tx_aimeosshop']['settings'];
 		}
 
 		return $tsConfig;

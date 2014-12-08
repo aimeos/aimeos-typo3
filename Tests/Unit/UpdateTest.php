@@ -1,18 +1,21 @@
 <?php
 
 
+namespace Aimeos\AimeosShop\Tests\Unit;
+
+
 require_once dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'class.ext_update.php';
 
 
-class Tx_Aimeos_Tests_Unit_UpdateTest
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+class UpdateTest
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		$this->_object = new ext_update();
+		$this->_object = new \ext_update();
 	}
 
 

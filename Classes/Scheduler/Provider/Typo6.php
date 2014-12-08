@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\Aimeos\Scheduler\Provider;
+namespace Aimeos\AimeosShop\Scheduler\Provider;
 
 
 /**
@@ -16,8 +16,7 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
  *
  * @package TYPO3_Aimeos
  */
-class Typo6
-	extends \Tx_Aimeos_Scheduler_Provider_Abstract
+class Typo6 extends AbstractProvider
 	implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface
 {
 	/**

@@ -2,16 +2,16 @@
 <T3locallang>
     <meta type="array">
         <type>module</type>
-        <description>Language labels for the Aimeos plugin</description>
+        <description>Language labels for Aimeos Shop plugins</description>
     </meta>
     <data type="array">
         <languageKey index="default" type="array">
-            <label index="mlang_tabs_tab">Aimeos</label>
-            <label index="mlang_labels_tablabel">Aimeos Plugin</label>
-            <label index="mlang_labels_tabdescr">Administration for Aimeos</label>
+            <label index="mlang_tabs_tab">Aimeos Shop</label>
+            <label index="mlang_labels_tablabel">Aimeos Shop Plugin</label>
+            <label index="mlang_labels_tabdescr">Administration Aimeos Shop</label>
         </languageKey>
 		<languageKey index="de" type="array">
-			<label index="mlang_labels_tabdescr">Administration für Aimeos</label>
+			<label index="mlang_labels_tabdescr">Administration Aimeos Shop</label>
 		</languageKey>
     </data>
 </T3locallang>

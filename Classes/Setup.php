@@ -7,7 +7,10 @@
  */
 
 
-require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+namespace Aimeos\AimeosShop;
+
+
+require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 
 /**
@@ -15,7 +18,7 @@ require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEP
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Setup
+class Setup
 {
 	/**
 	 * Autoloader for setup tasks.
@@ -55,7 +58,7 @@ class Tx_Aimeos_Setup
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		$aimeos = Tx_Aimeos_Base::getAimeos();
+		$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
 		$taskPaths = $aimeos->getSetupPaths( 'default' );
 
 		$includePaths = $taskPaths;
@@ -65,8 +68,8 @@ class Tx_Aimeos_Setup
 			throw new Exception( 'Unable to extend include path' );
 		}
 
-		if( spl_autoload_register( 'Tx_Aimeos_Setup::autoload' ) === false ) {
-			throw new Exception( 'Unable to register Tx_Aimeos_Setup::autoload' );
+		if( spl_autoload_register( 'Aimeos\\Aimeos\\Setup::autoload' ) === false ) {
+			throw new Exception( 'Unable to register Aimeos\\Aimeos\\Setup::autoload' );
 		}
 
 
@@ -87,14 +90,26 @@ class Tx_Aimeos_Setup
 			}
 		}
 
-		if( Tx_Aimeos_Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
+		if( \Aimeos\AimeosShop\Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
 			$local = array( 'setup' => array( 'default' => array( 'demo' => true ) ) );
 		}
-		$ctx->setConfig( new MW_Config_Decorator_Memory( $config, $local ) );
+		$ctx->setConfig( new \MW_Config_Decorator_Memory( $config, $local ) );
 
 
-		$manager = new MW_Setup_Manager_Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
+		$manager = new \MW_Setup_Manager_Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->run( 'mysql' );
+	}
+
+
+	/**
+	 * Executes the setup tasks if extension is installed.
+	 *
+	 */
+	public static function executeOnSignal( $extname )
+	{
+		if( $extname === 'aimeos' ) {
+			self::execute();
+		}
 	}
 
 
@@ -105,21 +120,21 @@ class Tx_Aimeos_Setup
 	 */
 	protected static function _getContext()
 	{
-		$ctx = new MShop_Context_Item_Default();
+		$ctx = new \MShop_Context_Item_Default();
 
-		$conf = Tx_Aimeos_Base::getConfig();
+		$conf = \Aimeos\AimeosShop\Base::getConfig();
 		$ctx->setConfig( $conf );
 
-		$dbm = new MW_DB_Manager_PDO( $conf );
+		$dbm = new \MW_DB_Manager_PDO( $conf );
 		$ctx->setDatabaseManager( $dbm );
 
-		$logger = new MW_Logger_Errorlog( MW_Logger_ABSTRACT::INFO );
+		$logger = new \MW_Logger_Errorlog( \MW_Logger_ABSTRACT::INFO );
 		$ctx->setLogger( $logger );
 
-		$session = new MW_Session_None();
+		$session = new \MW_Session_None();
 		$ctx->setSession( $session );
 
-		$cache = new MW_Cache_None();
+		$cache = new \MW_Cache_None();
 		$ctx->setCache( $cache );
 
 		return $ctx;

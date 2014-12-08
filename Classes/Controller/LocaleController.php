@@ -8,20 +8,26 @@
  */
 
 
+namespace Aimeos\AimeosShop\Controller;
+
+
+use Aimeos\AimeosShop\Base;
+
+
 /**
  * Aimeos locale controller.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Controller_LocaleController extends Tx_Aimeos_Controller_Abstract
+class LocaleController extends AbstractController
 {
 	/**
 	 * Processes requests and renders the locale selector.
 	 */
 	public function selectAction()
 	{
-		$templatePaths = Tx_Aimeos_Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = Client_Html_Locale_Select_Factory::createClient( $this->_getContext(), $templatePaths );
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Client_Html_Locale_Select_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}

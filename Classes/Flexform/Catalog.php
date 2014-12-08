@@ -8,13 +8,15 @@
  */
 
 
+namespace Aimeos\AimeosShop\Flexform;
+
+
 /**
  * Aimeos catalog flexform helper.
  *
  * @package TYPO3_Aimeos
  */
-class Tx_Aimeos_Flexform_Catalog
-	extends Tx_Aimeos_Flexform_Abstract
+class Catalog extends AbstractHelper
 {
 	/**
 	 * Returns the list of categories with their ID.
@@ -28,7 +30,7 @@ class Tx_Aimeos_Flexform_Catalog
 	{
 		if( isset( $config['row'] ) && isset( $config['row']['pid'] ) )
 		{
-			$pageTSConfig = t3lib_BEfunc::getModTSconfig( $config['row']['pid'], 'tx_aimeos' );
+			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $config['row']['pid'], 'tx_aimeosshop' );
 
 			if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
 				$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];
@@ -39,12 +41,12 @@ class Tx_Aimeos_Flexform_Catalog
 		{
 			$context = $this->_getContext();
 
-			$localeManager = MShop_Locale_Manager_Factory::createManager( $context );
+			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );
 
 
-			$manager = MShop_Catalog_Manager_Factory::createManager( $context );
-			$item = $manager->getTree( null, array(), MW_Tree_Manager_Abstract::LEVEL_TREE );
+			$manager = \MShop_Catalog_Manager_Factory::createManager( $context );
+			$item = $manager->getTree( null, array(), \MW_Tree_Manager_Abstract::LEVEL_TREE );
 
 
 			$config['items'] = array_merge( $config['items'], $this->_getCategoryList( $item, 0 ) );
@@ -65,10 +67,10 @@ class Tx_Aimeos_Flexform_Catalog
 	 * @param unknown_type $level Current level on indention
 	 * @return array Associative array of category label / ID pairs
 	 */
-	protected function _getCategoryList( MShop_Catalog_Item_Interface $item, $level )
+	protected function _getCategoryList( \MShop_Catalog_Item_Interface $item, $level )
 	{
 		$result = array();
-		$result[] = array( str_repeat( '&nbsp', $level * 4 ) . $item->getName(), $item->getId() );
+		$result[] = array( str_repeat( '.', $level * 4 ) . $item->getName(), $item->getId() );
 
 		foreach( $item->getChildren() as $child ) {
 			$result = array_merge( $result, $this->_getCategoryList( $child, $level + 1 ) );

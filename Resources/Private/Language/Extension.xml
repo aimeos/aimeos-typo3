@@ -2,11 +2,11 @@
 <T3locallang>
 	<meta type="array">
 		<type>module</type>
-		<description>Language labels for extension 'aimeos'</description>
+		<description>Language labels for extension 'aimeos_shop'</description>
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="ext-wizard-title">Aimeos</label>
+			<label index="ext-wizard-title">Aimeos Ashop</label>
 			<label index="ext-wizard-description">High performance e-commerce in TYPO3</label>
 		</languageKey>
 	</data>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3locallang>
 	<meta type="array">
-		<description>General database field labels for extension 'aimeos'.</description>
+		<description>General database field labels for extension 'aimeos_shop'.</description>
 		<type>database</type>
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="default.name">Aimeos scheduler</label>
-			<label index="default.description">Executes the selected Aimeos jobs</label>
+			<label index="default.name">Aimeos Shop scheduler</label>
+			<label index="default.description">Executes the selected Aimeos Shop jobs</label>
 			<label index="default.label.controller">Jobs</label>
 			<label index="default.label.sitecode">Sites</label>
 			<label index="default.label.tsconfig">TypoScript configuration</label>
@@ -15,7 +15,7 @@
 			<label index="default.error.sitecode.missing">Please choose at least one site</label>
 			<label index="default.error.controller.missing">Please choose at least one job</label>
 			<label index="default.error.tsconfig.invalid">The TypoScript configuration is invalid</label>
-			<label index="email.name">Aimeos e-mail scheduler</label>
+			<label index="email.name">Aimeos Shop e-mail scheduler</label>
 			<label index="email.description">Specialized task for sending the e-mails</label>
 			<label index="email.label.from-name">Sender name</label>
 			<label index="email.label.from-email">Sender e-mail</label>
@@ -25,11 +25,11 @@
 			<label index="email.error.from-email.invalid">The sender e-mail address is invalid or none was entered</label>
 			<label index="email.error.reply-email.invalid">The reply e-mail address is invalid</label>
 			<label index="email.error.page-detail.invalid">The page ID of the product detail page is invalid</label>
-			<label index="email.error.content-baseurl.invalid">The base URL to the product images is invalid. Use a base URL including the protocol and the domain like "https://www.aimeos.org/uploads/tx_aimeos"</label>
+			<label index="email.error.content-baseurl.invalid">The base URL to the product images is invalid. Use a base URL including the protocol and the domain like "https://aimeos.org/uploads/tx_aimeos_shop"</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="default.name">Aimeos Aufgaben</label>
-			<label index="default.description">Führt die ausgewählten Aimeos Aufgaben aus</label>
+			<label index="default.name">Aimeos Shop Aufgaben</label>
+			<label index="default.description">Führt die ausgewählten Aimeos Shop Aufgaben aus</label>
 			<label index="default.label.controller">Aufgaben</label>
 			<label index="default.label.sitecode">Mandanten</label>
 			<label index="default.label.tsconfig">TypoScript Konfiguration</label>
@@ -37,17 +37,17 @@
 			<label index="default.error.sitecode.missing">Bitte wählen sie mindestens eine Site aus</label>
 			<label index="default.error.controller.missing">Bitte wählen sie mindestens eine Aufgabe aus</label>
 			<label index="default.error.tsconfig.invalid">Die TypoScript Konfiguration ist ungültig</label>
-			<label index="email.name">Aimeos E-Mails</label>
+			<label index="email.name">Aimeos Shop E-Mails</label>
 			<label index="email.description">Spezialisierte Aufgabe zum Versenden der E-Mails</label>
 			<label index="email.label.from-name">Absendername</label>
 			<label index="email.label.from-email">Absender E-Mailadresse</label>
 			<label index="email.label.reply-email">E-Mailadresse für Antworten</label>
 			<label index="email.label.page-detail">Seiten-ID der Produktdetailseite</label>
-			<label index="email.label.content-baseurl">Basis-URL zu den Produktbildern inklusive der Domain, z.B. https://www.aimeos.org/uploads/tx_aimeos</label>
+			<label index="email.label.content-baseurl">Basis-URL zu den Produktbildern inklusive der Domain, z.B. https://aimeos.org/uploads/tx_aimeos_shop</label>
 			<label index="email.error.from-email.invalid">Die Absender E-Mailadresse ist ungültig oder es wurde keine eingetragen</label>
 			<label index="email.error.reply-email.invalid">Die E-Mailadresse für Rückantworten ist ungültig</label>
 			<label index="email.error.page-detail.invalid">Die Seiten-ID der Produktdetailseite ist ungültig</label>
-			<label index="email.error.content-baseurl.invalid">Die Basis-URL zu den Produktbildern ist ungültig. Sie muss das Protokoll und die Domain umfassen wie z.B. "https://www.aimeos.org/uploads/tx_aimeos"</label>
+			<label index="email.error.content-baseurl.invalid">Die Basis-URL zu den Produktbildern ist ungültig. Sie muss das Protokoll und die Domain umfassen wie z.B. "https://aimeos.org/uploads/tx_aimeos_shop"</label>
 		</languageKey>
 	</data>
 </T3locallang>

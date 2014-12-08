@@ -8,12 +8,15 @@
  */
 
 
+namespace Aimeos\AimeosShop\Custom;
+
+
 /**
  * Class that adds the wizard icon.
  *
  * @package TYPO3_Aimeos
  */
-class tx_aimeos_custom_wizicon
+class Wizicon
 {
 	/**
 	 * Adds the wizard icon
@@ -23,11 +26,12 @@ class tx_aimeos_custom_wizicon
 	 */
 	public function proc( $wizardItems )
 	{
-		$file = t3lib_extMgm::extPath( 'aimeos' ) . 'Resources/Private/Language/Extension.xml';
-		$xml = t3lib_div::readLLfile( $file, $GLOBALS['LANG']->lang );
+		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos_shop' );
+		$file = $path . 'Resources/Private/Language/Extension.xml';
+		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( $file, $GLOBALS['LANG']->lang );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
-			'icon' => t3lib_extMgm::extRelPath( 'aimeos' ) . 'Resources/Public/images/aimeos-wizicon.png',
+			'icon' => $path . 'Resources/Public/images/aimeos-wizicon.png',
 			'title' => $GLOBALS['LANG']->getLLL( 'ext-wizard-title', $xml ),
 			'description' => $GLOBALS['LANG']->getLLL( 'ext-wizard-description', $xml ),
 			'params' => '&defVals[tt_content][CType]=list'

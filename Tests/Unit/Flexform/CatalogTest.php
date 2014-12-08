@@ -1,15 +1,18 @@
 <?php
 
 
-class Tx_Aimeos_Tests_Unit_Flexform_CatalogTest
-	extends Tx_Extbase_Tests_Unit_BaseTestCase
+namespace Aimeos\AimeosShop\Tests\Unit\Flexform;
+
+
+class CatalogTest
+	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $_object;
 
 
 	public function setUp()
 	{
-		$this->_object = new tx_aimeos_flexform_catalog();
+		$this->_object = new \Aimeos\AimeosShop\Flexform\Catalog();
 	}
 
 
