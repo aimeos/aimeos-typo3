@@ -31,7 +31,7 @@ class Wizicon
 		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( $file, $GLOBALS['LANG']->lang );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
-			'icon' => $path . 'Resources/Public/images/aimeos-wizicon.png',
+			'icon' => $path . 'Resources/Public/Images/aimeos-wizicon.png',
 			'title' => $GLOBALS['LANG']->getLLL( 'ext-wizard-title', $xml ),
 			'description' => $GLOBALS['LANG']->getLLL( 'ext-wizard-description', $xml ),
 			'params' => '&defVals[tt_content][CType]=list'
