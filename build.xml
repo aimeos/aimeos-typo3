@@ -2,10 +2,10 @@
 
 <project name="Aimeos TYPO3 extension" default="all">
 
-	<property name="coredir" value="${project.basedir}/vendor/arcavias/arcavias-core" />
+	<property name="coredir" value="${project.basedir}/Resources/Libraries/arcavias/arcavias-core" />
 	<property name="confdir" value="${project.basedir}/Resources/Private/Config" />
-	<property name="extdir" value="${project.basedir}/Resources/Public/ext" />
-	<property name="bindir" value="${project.basedir}/vendor/bin/" />
+	<property name="bindir" value="${project.basedir}/Resources/Libraries/bin/" />
+	<property name="extdir" value="${project.basedir}/Resources/Extensions" />
 	<property name="codestddir" value="${coredir}/misc/coding" />
 
 
