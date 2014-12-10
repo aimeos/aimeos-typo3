@@ -5,9 +5,6 @@ if ( ! defined( 'TYPO3_MODE' ) ) {
 }
 
 
-require_once t3lib_extMgm::extPath( 'aimeos' ) . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-
-
 /**
  * Include Aimeos extension directory
  */
