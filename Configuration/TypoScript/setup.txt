@@ -1,5 +1,5 @@
 page.includeCSS.aimeos-common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
-page.includeCSS.aimeos = EXT:aimeos/Resources/Public/html/elegance/aimeos.css
+page.includeCSS.aimeos = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
 
 page.includeJSFooterlibs.jquery = http://code.jquery.com/jquery-1.11.1.min.js
 page.includeJSFooterlibs.jquery.external = 1
