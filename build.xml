@@ -90,7 +90,7 @@
 
 
 	<target name="update" description="Updates the Arcavias core">
-		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
+		<exec command="git pull https://github.com/aimeos/aimeos-typo3 1.x" checkreturn="true" logoutput="true" />
 		<exec command="COMPOSER=composer.aimeos.json composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 		<copy todir="Resources/Public/html/">
 			<fileset dir="${coredir}/client/html/lib/" expandsymboliclinks="true" />
