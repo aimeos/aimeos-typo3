@@ -10,6 +10,7 @@
 		"forum": "http://help.aimeos.org",
 		"wiki": "http://docs.aimeos.org"
 	},
+	"minimum-stability": "dev",
 	"repositories": [
 		{
 			"type": "vcs",
@@ -18,7 +19,7 @@
 	],
 	"require": {
 		"php": ">=5.3.2",
-		"arcavias/arcavias-core": "2014.11",
+		"arcavias/arcavias-core": "2014.11.x-dev",
 		"aimeos/extinstaller": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-zend2": "dev-master",
