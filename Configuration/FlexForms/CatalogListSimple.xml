@@ -7,7 +7,7 @@
 		<el>
 			<settings.typo3.tsconfig>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:default.typo3.tsconfig</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:default.typo3.tsconfig</label>
 					<config>
 						<type>text</type>
 						<size>40</size>

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Scheduler\Provider;
+namespace Aimeos\Aimeos\Tests\Unit\Scheduler\Provider;
 
 
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
@@ -15,7 +15,7 @@ class Typo6Test
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\AimeosShop\Scheduler\Provider\Typo6();
+		$this->_object = new \Aimeos\Aimeos\Scheduler\Provider\Typo6();
 	}
 
 
@@ -48,7 +48,7 @@ class Typo6Test
 	 */
 	public function getAdditionalFieldsException()
 	{
-		$manager = \MShop_Attribute_Manager_Factory::createManager( \Aimeos\AimeosShop\Scheduler\Base::getContext() );
+		$manager = \MShop_Attribute_Manager_Factory::createManager( \Aimeos\Aimeos\Scheduler\Base::getContext() );
 
 		$taskInfo = array();
 		$module = new SchedulerModuleController();
@@ -72,7 +72,7 @@ class Typo6Test
 			'aimeos_controller' => 'testcntl',
 			'aimeos_config' => 'testconf',
 		);
-		$task = new \Aimeos\AimeosShop\Scheduler\Task\Typo6();
+		$task = new \Aimeos\Aimeos\Scheduler\Task\Typo6();
 
 		$this->_object->saveAdditionalFields( $data, $task );
 

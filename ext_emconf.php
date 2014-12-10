@@ -1,7 +1,7 @@
 <?php
 
 ########################################################################
-# Extension Manager/Repository config file for ext: "aimeos_shop"
+# Extension Manager/Repository config file for ext: "aimeos"
 #
 # Manual updates:
 # Only the data in the array - anything else is removed by next write.

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Controller;
+namespace Aimeos\Aimeos\Tests\Unit\Controller;
 
 
 class AccountControllerTest
@@ -12,7 +12,7 @@ class AccountControllerTest
 
 	public function setUp()
 	{
-		$this->_object = $this->getAccessibleMock( 'Aimeos\\AimeosShop\\Controller\\AccountController', array( 'dummy' ) );
+		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AccountController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 

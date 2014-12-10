@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Flexform;
+namespace Aimeos\Aimeos\Flexform;
 
 
 /**
@@ -30,7 +30,7 @@ class Catalog extends AbstractHelper
 	{
 		if( isset( $config['row'] ) && isset( $config['row']['pid'] ) )
 		{
-			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $config['row']['pid'], 'tx_aimeosshop' );
+			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $config['row']['pid'], 'tx_aimeos' );
 
 			if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
 				$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];

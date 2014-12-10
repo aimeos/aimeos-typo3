@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Controller;
+namespace Aimeos\Aimeos\Tests\Unit\Controller;
 
 
 class AdminControllerTest
@@ -12,7 +12,7 @@ class AdminControllerTest
 
 	public function setUp()
 	{
-		$this->_object = $this->getAccessibleMock( 'Aimeos\\AimeosShop\\Controller\\AdminController', array( 'dummy' ) );
+		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AdminController', array( 'dummy' ) );
 		$this->_view = $this->getMock( 'TYPO3\\CMS\\Fluid\\View\\TemplateView', array(), array(), '', false );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();

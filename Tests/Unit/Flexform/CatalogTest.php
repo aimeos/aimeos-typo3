@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Flexform;
+namespace Aimeos\Aimeos\Tests\Unit\Flexform;
 
 
 class CatalogTest
@@ -12,7 +12,7 @@ class CatalogTest
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\AimeosShop\Flexform\Catalog();
+		$this->_object = new \Aimeos\Aimeos\Flexform\Catalog();
 	}
 
 

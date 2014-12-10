@@ -8,10 +8,10 @@
  */
 
 
-namespace Aimeos\AimeosShop\Controller;
+namespace Aimeos\Aimeos\Controller;
 
 
-use Aimeos\AimeosShop\Base;
+use Aimeos\Aimeos\Base;
 
 
 /**

@@ -1,10 +1,10 @@
-# cat=tx_aimeos_shop/basic; type=boolean; label=Add demo data:Creates a complete set of demo data during execution of the update script. If unchecked, the demo data is completely removed again.
+# cat=tx_aimeos/basic; type=boolean; label=Add demo data:Creates a complete set of demo data during execution of the update script. If unchecked, the demo data is completely removed again.
 useDemoData = 1
-# cat=tx_aimeos_shop/basic; type=boolean; label=Use auto-configuration for RealUrl:If the internal RealUrl auto-configuration for Aimeos plugins should be used
+# cat=tx_aimeos/basic; type=boolean; label=Use auto-configuration for RealUrl:If the internal RealUrl auto-configuration for Aimeos plugins should be used
 useRealUrlAutoConfig = 1
-# cat=tx_aimeos_shop/basic; type=boolean; label=Use APC cache:If Aimeos configuration values should be cached in the APC user cache
+# cat=tx_aimeos/basic; type=boolean; label=Use APC cache:If Aimeos configuration values should be cached in the APC user cache
 useAPC = 1
-# cat=tx_aimeos_shop/basic; type=string; label=APC prefix:The prefix to distinguish configuration values from different instances
+# cat=tx_aimeos/basic; type=string; label=APC prefix:The prefix to distinguish configuration values from different instances
 apcPrefix = t3:
-# cat=tx_aimeos_shop/basic; type=string; label=Cache name:Name of the used cache implementation ("Typo3" for native caching, "None" for no caching)
+# cat=tx_aimeos/basic; type=string; label=Cache name:Name of the used cache implementation ("Typo3" for native caching, "None" for no caching)
 cacheName = Typo3

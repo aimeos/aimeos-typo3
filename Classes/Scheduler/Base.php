@@ -7,10 +7,10 @@
  * @package TYPO3_Aimeos
  */
 
-namespace Aimeos\AimeosShop\Scheduler;
+namespace Aimeos\Aimeos\Scheduler;
 
 
-use Aimeos\AimeosShop;
+use Aimeos\Aimeos;
 
 
 /**
@@ -60,13 +60,13 @@ class Base
 	 * @param string $langid Two letter ISO language code of the backend user
 	 * @throws Controller_Jobs_Exception If a job can't be executed
 	 * @throws MShop_Exception If an error in a manager occurs
-	 * @throws MW_DB_Exception If a dataAimeosShop\Base error occurs
+	 * @throws MW_DB_Exception If a dataAimeos\Base error occurs
 	 */
 	public static function execute( array $sitecodes, array $controllers, $tsconfig, $langid )
 	{
-		$conf = AimeosShop\Base::parseTS( $tsconfig );
+		$conf = Aimeos\Base::parseTS( $tsconfig );
 		$context = self::getContext( $conf );
-		$aimeos = AimeosShop\Base::getAimeos();
+		$aimeos = Aimeos\Base::getAimeos();
 
 		$manager = \MShop_Locale_Manager_Factory::createManager( $context );
 
@@ -95,11 +95,11 @@ class Base
 		if( self::$_context === null )
 		{
 			// Important! Sets include paths
-			$aimeos = AimeosShop\Base::getAimeos();
+			$aimeos = Aimeos\Base::getAimeos();
 			$context = new \MShop_Context_Item_Default();
 
 
-			$conf = AimeosShop\Base::getConfig( $localConf );
+			$conf = Aimeos\Base::getConfig( $localConf );
 			$context->setConfig( $conf );
 
 			$dbm = new \MW_DB_Manager_PDO( $conf );
@@ -154,7 +154,7 @@ class Base
 
 			if( ( $entries = $config->get( 'i18n/' . $id ) ) !== null )
 			{
-				$translations = AimeosShop\Base::parseTranslations( (array) $entries );
+				$translations = Aimeos\Base::parseTranslations( (array) $entries );
 				$i18n = new \MW_Translation_Decorator_Memory( $i18n, $translations );
 			}
 

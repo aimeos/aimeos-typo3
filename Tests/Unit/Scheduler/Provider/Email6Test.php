@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Scheduler\Provider;
+namespace Aimeos\Aimeos\Tests\Unit\Scheduler\Provider;
 
 
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
-use Aimeos\AimeosShop\Scheduler;
+use Aimeos\Aimeos\Scheduler;
 
 
 class Email6Test

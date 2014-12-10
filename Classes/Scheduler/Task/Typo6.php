@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Scheduler\Task;
+namespace Aimeos\Aimeos\Scheduler\Task;
 
 
 /**
@@ -40,6 +40,6 @@ class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 		$controllers = (array) $this->{$this->_fieldController};
 		$tsconfig = $this->{$this->_fieldTSconfig};
 
-		return \Aimeos\AimeosShop\Scheduler\Base::execute( $sitecodes, $controllers, $tsconfig, $langid );
+		return \Aimeos\Aimeos\Scheduler\Base::execute( $sitecodes, $controllers, $tsconfig, $langid );
 	}
 }

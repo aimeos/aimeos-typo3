@@ -7,7 +7,7 @@
  */
 
 
-namespace Aimeos\AimeosShop;
+namespace Aimeos\Aimeos;
 
 
 require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
@@ -58,7 +58,7 @@ class Setup
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$taskPaths = $aimeos->getSetupPaths( 'default' );
 
 		$includePaths = $taskPaths;
@@ -90,7 +90,7 @@ class Setup
 			}
 		}
 
-		if( \Aimeos\AimeosShop\Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
+		if( \Aimeos\Aimeos\Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
 			$local = array( 'setup' => array( 'default' => array( 'demo' => true ) ) );
 		}
 		$ctx->setConfig( new \MW_Config_Decorator_Memory( $config, $local ) );
@@ -122,7 +122,7 @@ class Setup
 	{
 		$ctx = new \MShop_Context_Item_Default();
 
-		$conf = \Aimeos\AimeosShop\Base::getConfig();
+		$conf = \Aimeos\Aimeos\Base::getConfig();
 		$ctx->setConfig( $conf );
 
 		$dbm = new \MW_DB_Manager_PDO( $conf );

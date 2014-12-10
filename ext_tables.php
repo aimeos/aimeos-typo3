@@ -7,7 +7,7 @@ if ( ! defined( 'TYPO3_MODE' ) ) {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile( $_EXTKEY, 'Configuration/TypoScript/', 'Aimeos Shop configuration' );
 
-$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\AimeosShop\\Custom\\Wizicon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( $_EXTKEY ) . 'Classes/Custom/Wizicon.php';
+$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Custom\\Wizicon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( $_EXTKEY ) . 'Classes/Custom/Wizicon.php';
 
 
 if ( TYPO3_MODE === 'BE' )
@@ -15,7 +15,7 @@ if ( TYPO3_MODE === 'BE' )
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		'Aimeos.' . $_EXTKEY,
 		'web',
-		'tx_aimeos_shop_admin',
+		'tx_aimeos_admin',
 		'', // position
 		array(
 			'Admin' => 'index,do',

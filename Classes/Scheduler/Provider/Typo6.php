@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Scheduler\Provider;
+namespace Aimeos\Aimeos\Scheduler\Provider;
 
 
 /**

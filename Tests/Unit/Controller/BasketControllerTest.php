@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Controller;
+namespace Aimeos\Aimeos\Tests\Unit\Controller;
 
 
 class BasketControllerTest
@@ -12,7 +12,7 @@ class BasketControllerTest
 
 	public function setUp()
 	{
-		$this->_object = $this->getAccessibleMock( 'Aimeos\\AimeosShop\\Controller\\BasketController', array( 'dummy' ) );
+		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\BasketController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 

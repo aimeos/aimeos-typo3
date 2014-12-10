@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Custom;
+namespace Aimeos\Aimeos\Tests\Unit\Custom;
 
 
 class RealurlTest
@@ -12,7 +12,7 @@ class RealurlTest
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\AimeosShop\Custom\Realurl();
+		$this->_object = new \Aimeos\Aimeos\Custom\Realurl();
 	}
 
 

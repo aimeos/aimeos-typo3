@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Custom;
+namespace Aimeos\Aimeos\Custom;
 
 
 /**
@@ -26,7 +26,7 @@ class Wizicon
 	 */
 	public function proc( $wizardItems )
 	{
-		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos_shop' );
+		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 		$file = $path . 'Resources/Private/Language/Extension.xml';
 		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( $file, $GLOBALS['LANG']->lang );
 

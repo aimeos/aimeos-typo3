@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Flexform;
+namespace Aimeos\Aimeos\Flexform;
 
 
 /**
@@ -33,12 +33,12 @@ abstract class AbstractHelper
 			$ds = DIRECTORY_SEPARATOR;
 
 			// Important! Sets include paths
-			$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
+			$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 			$context = new \MShop_Context_Item_Default();
 
 
 			$configPaths = $aimeos->getConfigPaths( 'mysql' );
-			$configPaths[] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos_shop' ) . 'Resources' . $ds . 'Private' . $ds . 'Config';
+			$configPaths[] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' ) . 'Resources' . $ds . 'Private' . $ds . 'Config';
 
 			$conf = new \MW_Config_Array( array(), $configPaths );
 			$conf = new \MW_Config_Decorator_Memory( $conf );

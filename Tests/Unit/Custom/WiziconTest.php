@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Custom;
+namespace Aimeos\Aimeos\Tests\Unit\Custom;
 
 
 class WiziconTest
@@ -12,7 +12,7 @@ class WiziconTest
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\AimeosShop\Custom\Wizicon();
+		$this->_object = new \Aimeos\Aimeos\Custom\Wizicon();
 	}
 
 

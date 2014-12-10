@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Scheduler\Provider;
+namespace Aimeos\Aimeos\Scheduler\Provider;
 
 
 /**
@@ -208,8 +208,8 @@ abstract class Email extends AbstractProvider
 	protected function _getControllerOptions( array $selected )
 	{
 		$html = '';
-		$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
-		$context = \Aimeos\AimeosShop\Scheduler\Base::getContext();
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$context = \Aimeos\Aimeos\Scheduler\Base::getContext();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
 		$controllers = \Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );

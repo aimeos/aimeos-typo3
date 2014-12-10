@@ -5,7 +5,7 @@ if ( ! defined( 'TYPO3_MODE' ) ) {
 }
 
 
-$aimeospath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos_shop' );
+$aimeospath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 require_once $aimeospath . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 
@@ -156,17 +156,17 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
  * Aimeos scheduler tasks
  */
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\AimeosShop\\Scheduler\\Task\\Typo6'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Typo6'] = array(
 	'extension'        => $_EXTKEY,
 	'title'            => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/Scheduler.xml:default.name',
 	'description'      => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/Scheduler.xml:default.description',
-	'additionalFields' => 'Aimeos\\AimeosShop\\Scheduler\\Provider\\Typo6',
+	'additionalFields' => 'Aimeos\\Aimeos\\Scheduler\\Provider\\Typo6',
 );
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\AimeosShop\\Scheduler\\Task\\Email6'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Email6'] = array(
 	'extension'        => $_EXTKEY,
 	'title'            => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/Scheduler.xml:email.name',
 	'description'      => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/Scheduler.xml:email.description',
-	'additionalFields' => 'Aimeos\\AimeosShop\\Scheduler\\Provider\\Email6',
+	'additionalFields' => 'Aimeos\\Aimeos\\Scheduler\\Provider\\Email6',
 );
 
 
@@ -174,9 +174,9 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\AimeosS
  * Add RealURL configuration
  */
 
-if( \Aimeos\AimeosShop\Base::getExtConfig( 'useRealUrlAutoConfig', 1 ) != 0 ) {
+if( \Aimeos\Aimeos\Base::getExtConfig( 'useRealUrlAutoConfig', 1 ) != 0 ) {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['extensionConfiguration']['aimeos'] =
-		'EXT:aimeos_shop/Classes/Custom/Realurl.php:Aimeos\\AimeosShop\\Custom\\Realurl->addAutoConfig';
+		'EXT:aimeos/Classes/Custom/Realurl.php:Aimeos\\Aimeos\\Custom\\Realurl->addAutoConfig';
 }
 
 
@@ -202,7 +202,7 @@ if (TYPO3_MODE === 'BE') {
 	$signalSlotDispatcher->connect(
 		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
 		'hasInstalledExtensions',
-		'Aimeos\\AimeosShop\\Setup',
+		'Aimeos\\Aimeos\\Setup',
 		'executeOnSignal'
 	);
 }

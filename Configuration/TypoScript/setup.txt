@@ -1,17 +1,17 @@
-page.includeCSS.aimeosshop-common = EXT:aimeos_shop/Resources/Public/Themes/elegance/common.css
-page.includeCSS.aimeosshop = EXT:aimeos_shop/Resources/Public/html/elegance/aimeos.css
+page.includeCSS.aimeos-common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
+page.includeCSS.aimeos = EXT:aimeos/Resources/Public/html/elegance/aimeos.css
 
 page.includeJSFooterlibs.jquery = http://code.jquery.com/jquery-1.11.1.min.js
 page.includeJSFooterlibs.jquery.external = 1
 page.includeJSFooterlibs.jquery-migrate = http://code.jquery.com/jquery-migrate-1.2.1.min.js
 page.includeJSFooterlibs.jquery-migrate.external = 1
-page.includeJSFooterlibs.jquery-ui = EXT:aimeos_shop/Resources/Public/Themes/jquery-ui.custom.min.js
+page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
-page.includeJSFooter.aimeosshop = EXT:aimeos_shop/Resources/Public/Themes/aimeos.js
-page.includeJSFooter.aimeosshop-detail = EXT:aimeos_shop/Resources/Public/Themes/aimeos-detail.js
-page.includeJSFooter.aimeosshop-theme = EXT:aimeos_shop/Resources/Public/Themes/elegance/aimeos.js
+page.includeJSFooter.aimeos = EXT:aimeos/Resources/Public/Themes/aimeos.js
+page.includeJSFooter.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
+page.includeJSFooter.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
 
-plugin.tx_aimeosshop {
+plugin.tx_aimeos {
 	mvc {
 		callDefaultActionIfActionCantBeResolved = 1
 	}
@@ -22,8 +22,8 @@ plugin.tx_aimeosshop {
 		client {
 			html {
 				common {
-					content.baseurl = uploads/tx_aimeosshop
-					template.baseurl = typo3conf/ext/aimeos_shop/Resources/Public/Themes/elegance
+					content.baseurl = uploads/tx_aimeos
+					template.baseurl = typo3conf/ext/aimeos/Resources/Public/Themes/elegance
 				}
 				account {
 					favorite.url.config.chash = 0

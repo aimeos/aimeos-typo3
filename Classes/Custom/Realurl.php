@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Custom;
+namespace Aimeos\Aimeos\Custom;
 
 
 /**
@@ -41,7 +41,7 @@ class Realurl
 			),
 			'postVarSets' => array(
 				'_DEFAULT' => array(
-					'aimeos_shop' => array(
+					'aimeos' => array(
 						array(
 							'GETvar' => 'ai[controller]',
 							'noMatch' => 'bypass',

@@ -8,7 +8,7 @@
  */
 
 
-namespace Aimeos\AimeosShop\Scheduler\Task;
+namespace Aimeos\Aimeos\Scheduler\Task;
 
 
 /**
@@ -42,7 +42,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 		}
 
 
-		$conf = \Aimeos\AimeosShop\Base::parseTS( $this->{$this->_fieldTSconfig} );
+		$conf = \Aimeos\Aimeos\Base::parseTS( $this->{$this->_fieldTSconfig} );
 
 		if( $this->{$this->_fieldSenderFrom} != '' ) {
 			$conf['client']['html']['email']['from-name'] = $this->{$this->_fieldSenderFrom};
@@ -64,8 +64,8 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			$conf['client']['html']['catalog']['detail']['url']['target'] = $this->{$this->_fieldPageDetail};
 		}
 
-		$context = \Aimeos\AimeosShop\Scheduler\Base::getContext( $conf );
-		$aimeos = \Aimeos\AimeosShop\Base::getAimeos();
+		$context = \Aimeos\Aimeos\Scheduler\Base::getContext( $conf );
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 
 		$manager = \MShop_Locale_Manager_Factory::createManager( $context );
 

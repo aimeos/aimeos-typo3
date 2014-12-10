@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit;
+namespace Aimeos\Aimeos\Tests\Unit;
 
 
 require_once dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'class.ext_update.php';

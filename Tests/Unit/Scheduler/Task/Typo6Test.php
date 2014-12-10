@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Aimeos\AimeosShop\Tests\Unit\Scheduler\Task;
+namespace Aimeos\Aimeos\Tests\Unit\Scheduler\Task;
 
 
 class Typo6Test
@@ -12,7 +12,7 @@ class Typo6Test
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\AimeosShop\Scheduler\Task\Typo6();
+		$this->_object = new \Aimeos\Aimeos\Scheduler\Task\Typo6();
 	}
 
 

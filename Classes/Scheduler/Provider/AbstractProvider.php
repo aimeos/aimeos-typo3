@@ -7,11 +7,11 @@
  * @package TYPO3_Aimeos
  */
 
-namespace Aimeos\AimeosShop\Scheduler\Provider;
+namespace Aimeos\Aimeos\Scheduler\Provider;
 
 
-use Aimeos\AimeosShop\Base;
-use Aimeos\AimeosShop\Scheduler;
+use Aimeos\Aimeos\Base;
+use Aimeos\Aimeos\Scheduler;
 
 
 /**

@@ -7,7 +7,7 @@
 		<el>
 			<settings.client.html.catalog.detail.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:catalog-detail.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:catalog-detail.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -21,7 +21,7 @@
 			</settings.client.html.catalog.detail.url.target>
 			<settings.client.html.basket.standard.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:basket-standard.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:basket-standard.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -35,7 +35,7 @@
 			</settings.client.html.basket.standard.url.target>
 			<settings.client.html.checkout.standard.summary.option.terms.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:checkout-standard-summary-option-terms.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:checkout-standard-summary-option-terms.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -49,7 +49,7 @@
 			</settings.client.html.checkout.standard.summary.option.terms.url.target>
 			<settings.client.html.checkout.standard.summary.option.terms.privacy.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:checkout-standard-summary-option-terms-privacy.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:checkout-standard-summary-option-terms-privacy.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -63,7 +63,7 @@
 			</settings.client.html.checkout.standard.summary.option.terms.privacy.url.target>
 			<settings.client.html.checkout.confirm.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:checkout-confirm.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:checkout-confirm.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -77,7 +77,7 @@
 			</settings.client.html.checkout.confirm.url.target>
 			<settings.client.html.checkout.update.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:checkout-update.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:checkout-update.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -91,7 +91,7 @@
 			</settings.client.html.checkout.update.url.target>
 			<settings.typo3.tsconfig>
 				<TCEforms>
-					<label>LLL:EXT:aimeos_shop/Resources/Private/Language/Plugins.xml:default.typo3.tsconfig</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/Plugins.xml:default.typo3.tsconfig</label>
 					<config>
 						<type>text</type>
 						<size>40</size>
