@@ -27,18 +27,9 @@ class Realurl
 	 */
 	public function addAutoConfig( $params, &$pObj )
 	{
-		$params['config']['init']['emptySegmentValue'] = '-';
+		$params['config']['init']['emptySegmentValue'] = '';
 
 		return array_merge_recursive( $params['config'], array(
-			'preVars' => array(
-				array(
-					'GETvar' => 'no_cache',
-						'valueMap' => array(
-						'nc' => 1,
-					),
-					'noMatch' => 'bypass',
-				),
-			),
 			'postVarSets' => array(
 				'_DEFAULT' => array(
 					'aimeos' => array(
@@ -53,7 +44,6 @@ class Realurl
 					),
 					'l' => array(
 						array( 'GETvar' => 'ai[f-catalog-id]' ),
-						array( 'GETvar' => 'ai[l-page]' ),
 						array(
 							'GETvar' => 'ai[f-sort]',
 							'valueMap' => array(
@@ -65,16 +55,20 @@ class Realurl
 							),
 							'noMatch' => 'bypass',
 						),
+						array( 'GETvar' => 'ai[l-page]' ),
 					),
 					'd' => array(
 						array( 'GETvar' => 'ai[d-product-id]' ),
 						array( 'GETvar' => 'ai[l-pos]' ),
 					),
+					'n' => array(
+						array( 'GETvar' => 'ai[a-name]' ),
+					),
 					'f' => array(
 						array( 'GETvar' => 'ai[f-search-text]' ),
 					),
-					'n' => array(
-						array( 'GETvar' => 'ai[a-name]' ),
+					'a' => array(
+						array( 'GETvar' => 'ai[f-attr-id]' ),
 					),
 					'pin' => array(
 						array( 'GETvar' => 'ai[pin-action]' ),
