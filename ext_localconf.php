@@ -5,10 +5,6 @@ if ( ! defined( 'TYPO3_MODE' ) ) {
 }
 
 
-$aimeospath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
-require_once $aimeospath . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
-
-
 /**
  * Include Aimeos extension directory
  */
