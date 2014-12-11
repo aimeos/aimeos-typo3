@@ -33,10 +33,10 @@ Extension Name
 		2014
 
 	:Author:
-		Metaways software engineering team
+		Aimeos
 
 	:Email:
-		typo3@metaways.de
+		aimeos@aimeos.org
 
 	:License:
 		This document is published under the Open Content License
