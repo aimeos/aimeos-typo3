@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32px"
+   height="32px"
+   id="svg2999"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="ext_icon.svg">
+  <defs
+     id="defs3001">
+    <clipPath
+       id="presentation_clip_path"
+       clipPathUnits="userSpaceOnUse">
+      <rect
+         x="0"
+         y="0"
+         width="21000"
+         height="29700"
+         id="rect7" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="20.125"
+     inkscape:cx="8.9689441"
+     inkscape:cy="16.993789"
+     inkscape:current-layer="layer2"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1600"
+     inkscape:window-height="841"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3004">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Hintergrund">
+    <rect
+       style="fill:#e6e6e6"
+       id="rect3000"
+       width="32"
+       height="32"
+       x="0"
+       y="3.5527137e-15" />
+    <path
+       style="fill:#e6e6e6;stroke:none"
+       d="m 0.01987578,16.014907 0,-15.97515545 15.97515522,0 15.975155,0 0,15.97515545 0,15.975155 -15.975155,0 -15.97515522,0 0,-15.975155 z"
+       id="path3002"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#DDDDDD;stroke:none"
+       d="m 0.01987578,16.014907 0,-15.97515545 15.97515522,0 15.975155,0 0,15.97515545 0,15.975155 -15.975155,0 -15.97515522,0 0,-15.975155 z"
+       id="path3004"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#dddddd;stroke:none;fill-opacity:1"
+       d="m 0.01490683,16.014907 0,-15.97515545 15.97515517,0 15.975155,0 0,15.97515545 0,15.975155 -15.975155,0 -15.97515517,0 0,-15.975155 z"
+       id="path3774"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#dddddd;stroke:none;fill-opacity:1"
+       d="m 0.01490683,16.014907 0,-15.97515545 15.97515517,0 15.975155,0 0,15.97515545 0,15.975155 -15.975155,0 -15.97515517,0 0,-15.975155 z"
+       id="path3776"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     style="display:inline">
+    <g
+       transform="matrix(0.03011811,0,0,0.03011811,-227.73186,-259.9057)"
+       class="SlideGroup"
+       id="g49">
+      <g
+         id="g51"
+         transform="matrix(0.95,0,0,0.95,404.775,457.15)">
+        <g
+           id="id1"
+           class="Slide"
+           clip-path="url(#presentation_clip_path)">
+          <g
+             class="Page"
+             id="g54">
+            <g
+               class="Group"
+               id="g56">
+              <g
+                 class="Group"
+                 id="g58">
+                <g
+                   class="com.sun.star.drawing.ClosedBezierShape"
+                   id="g60">
+                  <g
+                     id="id3">
+                    <path
+                       style="fill:#003050;stroke:none"
+                       inkscape:connector-curvature="0"
+                       d="m 8164,9575 c -9,-27 -18,-55 -28,-83 -10,-29 -20,-57 -30,-86 l -304,0 c -10,29 -20,57 -30,86 -11,28 -20,56 -28,83 l -183,0 c 30,-84 57,-162 84,-233 26,-72 52,-139 77,-202 25,-63 50,-123 74,-180 25,-57 50,-112 77,-166 l 168,0 c 25,54 50,109 75,166 25,57 50,117 75,180 25,63 51,130 78,202 26,71 54,149 83,233 l -188,0 z m -211,-604 c -4,11 -10,26 -17,46 -8,19 -16,42 -26,68 -10,25 -21,53 -32,84 -12,31 -24,63 -36,97 l 222,0 c -12,-34 -23,-66 -35,-97 -11,-31 -22,-59 -32,-84 -10,-26 -19,-49 -26,-68 -8,-20 -14,-35 -18,-46 z"
+                       id="path63" />
+                  </g>
+                </g>
+                <g
+                   class="com.sun.star.drawing.PolyPolygonShape"
+                   id="g65">
+                  <g
+                     id="id4">
+                    <path
+                       style="fill:#003050;stroke:none"
+                       inkscape:connector-curvature="0"
+                       d="m 8614,9575 -168,0 0,-593 168,0 0,593 z"
+                       id="path68" />
+                  </g>
+                </g>
+                <g
+                   class="com.sun.star.drawing.ClosedBezierShape"
+                   id="g70">
+                  <g
+                     id="id5">
+                    <path
+                       style="fill:#503000;stroke:none"
+                       inkscape:connector-curvature="0"
+                       d="m 8630,8810 c 0,31 -10,55 -30,73 -20,18 -43,26 -71,26 -27,0 -50,-8 -70,-26 -20,-18 -30,-42 -30,-73 0,-31 10,-55 30,-72 20,-18 43,-27 70,-27 28,0 51,9 71,27 20,17 30,41 30,72 z"
+                       id="path73" />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
