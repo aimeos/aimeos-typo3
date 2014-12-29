@@ -188,7 +188,7 @@ abstract class AbstractProvider
 		$sites = $manager->searchItems( $search );
 
 		foreach( $sites as $id => $siteItem ) {
-			$sites[$id] = $manager->getTree( $id, array(), MW_Tree_Manager_Abstract::LEVEL_TREE );
+			$sites[$id] = $manager->getTree( $id, array(), \MW_Tree_Manager_Abstract::LEVEL_TREE );
 		}
 
 		return $sites;
