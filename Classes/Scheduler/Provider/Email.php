@@ -216,7 +216,7 @@ abstract class Email extends AbstractProvider
 
 		foreach( $controllers as $name => $controller )
 		{
-			if( strncmp( $name, 'order/email/', 12 ) === 0 )
+			if( strstr( $name, 'email' ) !== false )
 			{
 				$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
 				$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );

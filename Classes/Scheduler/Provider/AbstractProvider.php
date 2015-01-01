@@ -156,7 +156,7 @@ abstract class AbstractProvider
 		$search->setConditions( $search->combine( '&&', $expr ) );
 
 		if( count( $manager->searchItems( $search ) ) !== count( $submittedData[$this->_fieldSite] ) ) {
-			throw new Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode' ) );
 		}
 
 
