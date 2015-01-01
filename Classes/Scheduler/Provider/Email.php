@@ -214,7 +214,7 @@ abstract class Tx_Aimeos_Scheduler_Provider_Email
 
 		foreach( $controllers as $name => $controller )
 		{
-			if( strncmp( $name, 'order/email/', 12 ) === 0 )
+			if( strstr( $name, 'email' ) !== false )
 			{
 				$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
 				$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
