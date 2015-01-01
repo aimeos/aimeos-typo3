@@ -170,7 +170,9 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\
  * Add RealURL configuration
  */
 
-if( \Aimeos\Aimeos\Base::getExtConfig( 'useRealUrlAutoConfig', 1 ) != 0 ) {
+if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] ) ) !== false
+	&& isset( $aimeosExtConf['useRealUrlAutoConfig'] ) && $aimeosExtConf['useRealUrlAutoConfig'] != 0
+) {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['extensionConfiguration']['aimeos'] =
 		'EXT:aimeos/Classes/Custom/Realurl.php:Aimeos\\Aimeos\\Custom\\Realurl->addAutoConfig';
 }
