@@ -109,8 +109,8 @@
 		    </replaceregexp>
 		  </filterchain>
 		</reflexive>
-		<exec command="zip -r ../aimeos-typo3_${version}.zip * -x \*.git\* \*.exclude \*.travis.yml" checkreturn="true" logoutput="true"/>
-		<filehash file="../aimeos-typo3_${version}.zip" hashtype="1" />
+		<exec command="zip -r ../aimeos_${version}.zip * -x \*.git\*" checkreturn="true" logoutput="true"/>
+		<filehash file="../aimeos_${version}.zip" hashtype="1" />
 		<echo msg="SHA1 hash value: ${filehashvalue}" />
 	</target>
 
