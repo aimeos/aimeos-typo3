@@ -76,7 +76,7 @@ abstract class Tx_Aimeos_Controller_Abstract
 
 		$view = new MW_View_Default();
 
-		$helper = new MW_View_Helper_Url_Typo3( $view, $this->uriBuilder );
+		$helper = new MW_View_Helper_Url_Typo3( $view, $this->uriBuilder, $this->_getFixedParams( $config ) );
 		$view->addHelper( 'url', $helper );
 
 		$helper = new MW_View_Helper_Translate_Default( $view, $i18n[$langid] );
@@ -117,10 +117,6 @@ abstract class Tx_Aimeos_Controller_Abstract
 		switch( $name )
 		{
 			case 'Typo3':
-				/** @todo Use modern API in TYPO3 6.3 and above */
-				// \TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
-				// $cache = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
-
 				t3lib_cache::initializeCachingFramework();
 
 				try
@@ -260,43 +256,31 @@ abstract class Tx_Aimeos_Controller_Abstract
 			$config = $context->getConfig();
 
 
-			$current = $session->get( 'aimeos/locale/sitecode', 'default' );
-			$sitecode = $config->get( 'mshop/locale/site', $current );
+			$sitecode = $config->get( 'mshop/locale/site', 'default' );
+			$name = $config->get( 'typo3/param/name/site', 'loc-site' );
 
-			if( $this->request->hasArgument( 'loc-site' ) === true ) {
-				$sitecode = $this->request->getArgument( 'loc-site' );
-			}
-
-			if( $sitecode !== $current ) {
-				$session->set( 'aimeos/locale/sitecode', $sitecode );
+			if( $this->request->hasArgument( $name ) === true ) {
+				$sitecode = $this->request->getArgument( $name );
 			}
 
 
-			$current = $session->get( 'aimeos/locale/languageid', 'en' );
-			$langid = $config->get( 'mshop/locale/language', $current );
+			$langid = $config->get( 'mshop/locale/language', 'en' );
+			$name = $config->get( 'typo3/param/name/language', 'loc-language' );
 
 			if( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
 				$langid = $GLOBALS['TSFE']->config['config']['language'];
 			}
 
-			if( $this->request->hasArgument( 'loc-language' ) === true ) {
-				$langid = $this->request->getArgument( 'loc-language' );
-			}
-
-			if( $langid !== $current ) {
-				$session->set( 'aimeos/locale/languageid', $langid );
+			if( $this->request->hasArgument( $name ) === true ) {
+				$langid = $this->request->getArgument( $name );
 			}
 
 
-			$current = $session->get( 'aimeos/locale/currencyid', 'EUR' );
-			$currency = $config->get( 'mshop/locale/currency', $current );
+			$currency = $config->get( 'mshop/locale/currency', 'EUR' );
+			$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
 
-			if( $this->request->hasArgument( 'loc-currency' ) === true ) {
-				$currency = $this->request->getArgument( 'loc-currency' );
-			}
-
-			if( $currency !== $current ) {
-				$session->set( 'aimeos/locale/currencyid', $currency );
+			if( $this->request->hasArgument( $name ) === true ) {
+				$currency = $this->request->getArgument( $name );
 			}
 
 
@@ -306,6 +290,33 @@ abstract class Tx_Aimeos_Controller_Abstract
 		}
 
 		return self::$_locale;
+	}
+
+
+	/**
+	 * Returns the fixed parameters that should be included in every URL
+	 *
+	 * @param \MW_Config_Interface $config Config object
+	 * @return array Associative list of site, language and currency if available
+	 */
+	protected function _getFixedParams( \MW_Config_Interface $config )
+	{
+		$name = $config->get( 'typo3/param/name/site', 'loc-site' );
+		if( $this->request->hasArgument( $name ) === true ) {
+			$fixed[$name] = $this->request->getArgument( $name );
+		}
+
+		$name = $config->get( 'typo3/param/name/language', 'loc-language' );
+		if( $this->request->hasArgument( $name ) === true ) {
+			$fixed[$name] = $this->request->getArgument( $name );
+		}
+
+		$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
+		if( $this->request->hasArgument( $name ) === true ) {
+			$fixed[$name] = $this->request->getArgument( $name );
+		}
+
+		return $fixed;
 	}
 
 

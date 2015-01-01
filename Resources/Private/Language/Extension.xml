@@ -6,7 +6,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="ext-wizard-title">Aimeos</label>
+			<label index="ext-wizard-title">Aimeos shop</label>
 			<label index="ext-wizard-description">High performance e-commerce in TYPO3</label>
 		</languageKey>
 	</data>
