@@ -295,6 +295,8 @@ abstract class AbstractController
 	 */
 	protected function _getFixedParams( \MW_Config_Interface $config )
 	{
+		$fixed = array();
+
 		$name = $config->get( 'typo3/param/name/site', 'loc-site' );
 		if( $this->request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $this->request->getArgument( $name );
