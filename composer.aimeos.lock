@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
-                "reference": "e8ead3b083bb6aaffc24ec0fd86384a5d9221011"
+                "reference": "5f653e1529d1a82228c4ae81e147b707aaffb30c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/e8ead3b083bb6aaffc24ec0fd86384a5d9221011",
-                "reference": "e8ead3b083bb6aaffc24ec0fd86384a5d9221011",
+                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/5f653e1529d1a82228c4ae81e147b707aaffb30c",
+                "reference": "5f653e1529d1a82228c4ae81e147b707aaffb30c",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 "cms",
                 "typo3"
             ],
-            "time": "2014-12-02 17:29:21"
+            "time": "2014-12-19 13:28:08"
         },
         {
             "name": "aimeos/ai-zend2",
@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "06ea839b426df93595ec47471698a2821b52b811"
+                "reference": "154415ffe4f73e51c0a50d38d7867f7e53afcd12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/06ea839b426df93595ec47471698a2821b52b811",
-                "reference": "06ea839b426df93595ec47471698a2821b52b811",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/154415ffe4f73e51c0a50d38d7867f7e53afcd12",
+                "reference": "154415ffe4f73e51c0a50d38d7867f7e53afcd12",
                 "shasum": ""
             },
             "require": {
@@ -247,7 +247,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2014-12-09 16:45:27"
+            "time": "2015-01-02 13:45:47"
         },
         {
             "name": "zendframework/zend-config",
@@ -1662,9 +1662,7 @@
             "time": "2014-12-02 20:19:20"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "arcavias/arcavias-core": 20,
@@ -1673,10 +1671,9 @@
         "aimeos/ai-zend2": 20,
         "aimeos/ai-zend2-i18n": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">=5.3.2"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
