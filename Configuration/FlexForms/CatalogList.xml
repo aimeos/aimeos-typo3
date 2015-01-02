@@ -39,7 +39,7 @@
 					<config>
 						<type>select</type>
 						<multiple>0</multiple>
-						<itemsProcFunc>tx_aimeos_flexform_catalog->getCategories</itemsProcFunc>
+						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
 						<items type="array">
 							<numIndex index="0" type="array">
 								<numIndex index="0"></numIndex>
