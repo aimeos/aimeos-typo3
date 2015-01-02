@@ -104,8 +104,9 @@ class Setup
 	/**
 	 * Executes the setup tasks if extension is installed.
 	 *
+	 * @param string|null $extname Installed extension name
 	 */
-	public static function executeOnSignal( $extname )
+	public function executeOnSignal( $extname = null )
 	{
 		if( $extname === 'aimeos' ) {
 			self::execute();
