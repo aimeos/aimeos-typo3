@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
-                "reference": "5f653e1529d1a82228c4ae81e147b707aaffb30c"
+                "reference": "bac2acbfc8c6534542a414c2f80c16e335fd91ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/5f653e1529d1a82228c4ae81e147b707aaffb30c",
-                "reference": "5f653e1529d1a82228c4ae81e147b707aaffb30c",
+                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/bac2acbfc8c6534542a414c2f80c16e335fd91ab",
+                "reference": "bac2acbfc8c6534542a414c2f80c16e335fd91ab",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 "cms",
                 "typo3"
             ],
-            "time": "2014-12-19 13:28:08"
+            "time": "2015-01-02 22:17:15"
         },
         {
             "name": "aimeos/ai-zend2",
@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "154415ffe4f73e51c0a50d38d7867f7e53afcd12"
+                "reference": "717d06d1b3cabf9eab1476eeb523347fb4bcd70c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/154415ffe4f73e51c0a50d38d7867f7e53afcd12",
-                "reference": "154415ffe4f73e51c0a50d38d7867f7e53afcd12",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/717d06d1b3cabf9eab1476eeb523347fb4bcd70c",
+                "reference": "717d06d1b3cabf9eab1476eeb523347fb4bcd70c",
                 "shasum": ""
             },
             "require": {
@@ -247,7 +247,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-01-02 13:45:47"
+            "time": "2015-01-02 23:00:06"
         },
         {
             "name": "zendframework/zend-config",
