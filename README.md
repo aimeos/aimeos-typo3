@@ -6,7 +6,7 @@ detail views, for searching products as well as baskets and the checkout process
 
 ## Links
 
-* [Web site](http://www.aimeos.org/)
+* [Web site](http://aimeos.org/)
 * [Help](http://help.aimeos.org/)
 * [Documentation](http://docs.aimeos.org/TYPO3)
 * [Issue tracker](https://github.com/aimeos/aimeos-typo3/issues)
