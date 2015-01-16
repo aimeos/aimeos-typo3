@@ -18,6 +18,7 @@
 	max-width: 98%;
 	margin: 1em 1%;
 	padding: 0;
+	width: 98%;
 }
 
 
@@ -85,7 +86,7 @@
 	padding: 0.5em 1em;
 	margin: 0.5em;
 	margin-top: 0;
-	font-size: normal;
+	font-size: 100%;
 }
 
 .common-summary-address h2,
