@@ -42,10 +42,11 @@ class Realurl
 							'noMatch' => 'bypass',
 						),
 					),
-					'l' => array(
-						array( 'GETvar' => 'ai[f-catalog-id]' ),
+					'f' => array(
+						array( 'GETvar' => 'ai[f_catid]' ),
+						array( 'GETvar' => 'ai[f_name]' ),
 						array(
-							'GETvar' => 'ai[f-sort]',
+							'GETvar' => 'ai[f_sort]',
 							'valueMap' => array(
 								'name' => 'name',
 								'-name' => '-name',
@@ -55,41 +56,39 @@ class Realurl
 							),
 							'noMatch' => 'bypass',
 						),
-						array( 'GETvar' => 'ai[l-page]' ),
+						array( 'GETvar' => 'ai[l_page]' ),
 					),
 					'd' => array(
-						array( 'GETvar' => 'ai[d-product-id]' ),
-						array( 'GETvar' => 'ai[l-pos]' ),
+						array( 'GETvar' => 'ai[d_prodid]' ),
+						array( 'GETvar' => 'ai[d_name]' ),
+						array( 'GETvar' => 'ai[l_pos]' ),
 					),
-					'n' => array(
-						array( 'GETvar' => 'ai[a-name]' ),
+					'fs' => array(
+						array( 'GETvar' => 'ai[f_search]' ),
 					),
-					'f' => array(
-						array( 'GETvar' => 'ai[f-search-text]' ),
-					),
-					'a' => array(
-						array( 'GETvar' => 'ai[f-attr-id]' ),
+					'fa' => array(
+						array( 'GETvar' => 'ai[f_attrid]' ),
 					),
 					'pin' => array(
-						array( 'GETvar' => 'ai[pin-action]' ),
-						array( 'GETvar' => 'ai[pin-id]' ),
+						array( 'GETvar' => 'ai[pin_action]' ),
+						array( 'GETvar' => 'ai[pin_id]' ),
 					),
 					'fav' => array(
-						array( 'GETvar' => 'ai[fav-action]' ),
-						array( 'GETvar' => 'ai[fav-id]' ),
+						array( 'GETvar' => 'ai[fav_action]' ),
+						array( 'GETvar' => 'ai[fav_id]' ),
 					),
 					'watch' => array(
-						array( 'GETvar' => 'ai[watch-action]' ),
-						array( 'GETvar' => 'ai[watch-id]' ),
+						array( 'GETvar' => 'ai[wat_action]' ),
+						array( 'GETvar' => 'ai[wat_id]' ),
 					),
 					'bt' => array(
-						array( 'GETvar' => 'ai[b-action]' ),
-						array( 'GETvar' => 'ai[b-position]' ),
-						array( 'GETvar' => 'ai[b-quantity]' ),
-						array( 'GETvar' => 'ai[b-coupon]' ),
+						array( 'GETvar' => 'ai[b_action]' ),
+						array( 'GETvar' => 'ai[b_position]' ),
+						array( 'GETvar' => 'ai[b_quantity]' ),
+						array( 'GETvar' => 'ai[b_coupon]' ),
 					),
 					'co' => array(
-						array( 'GETvar' => 'ai[c-step]' ),
+						array( 'GETvar' => 'ai[c_step]' ),
 					),
 					'json' => array(
 						'type' => 'single',
