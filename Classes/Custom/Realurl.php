@@ -81,6 +81,10 @@ class Realurl
 						array( 'GETvar' => 'ai[wat_action]' ),
 						array( 'GETvar' => 'ai[wat_id]' ),
 					),
+					'history' => array(
+						array( 'GETvar' => 'ai[his_action]' ),
+						array( 'GETvar' => 'ai[his_id]' ),
+					),
 					'bt' => array(
 						array( 'GETvar' => 'ai[b_action]' ),
 						array( 'GETvar' => 'ai[b_position]' ),

@@ -97,16 +97,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2-i18n.git",
-                "reference": "77a6d568f9128fe9b4e6a142d7f13fa2d3ae0e48"
+                "reference": "c9be407f5dc91f766d6d5e7709c74efad39173e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/77a6d568f9128fe9b4e6a142d7f13fa2d3ae0e48",
-                "reference": "77a6d568f9128fe9b4e6a142d7f13fa2d3ae0e48",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/c9be407f5dc91f766d6d5e7709c74efad39173e5",
+                "reference": "c9be407f5dc91f766d6d5e7709c74efad39173e5",
                 "shasum": ""
             },
             "require": {
-                "ext-intl": "*",
                 "php": ">=5.3.2",
                 "zendframework/zend-i18n": "2.3.*",
                 "zendframework/zend-servicemanager": "2.3.*"
@@ -133,7 +132,7 @@
                 "translate",
                 "zend"
             ],
-            "time": "2014-12-02 17:31:06"
+            "time": "2015-01-19 10:22:28"
         },
         {
             "name": "aimeos/extinstaller",
@@ -175,12 +174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "e9251086e5e154499ab856eba627f43766292846"
+                "reference": "d3753547c3261624c56f056d404dcab45aae3b0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/e9251086e5e154499ab856eba627f43766292846",
-                "reference": "e9251086e5e154499ab856eba627f43766292846",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/d3753547c3261624c56f056d404dcab45aae3b0b",
+                "reference": "d3753547c3261624c56f056d404dcab45aae3b0b",
                 "shasum": ""
             },
             "require": {
@@ -249,7 +248,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-01-16 14:59:26"
+            "time": "2015-01-20 15:35:03"
         },
         {
             "name": "zendframework/zend-config",
