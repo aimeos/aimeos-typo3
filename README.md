@@ -9,16 +9,16 @@ detail views, for searching products as well as baskets and the checkout process
 
 # Table of content
 
-- [Installation](#Installation)
-    - [Composer](#Composer)
-    - [TYPO3](#TYPO3)
-    - [Database](#Database)
-- [Setup](#Setup)
-    - [Upload the page tree file](#Upload-the-page-tree-file)
-    - [Go to the import view](#Go-to-the-import-view)
-    - [Import the uploaded page tree file](#Import-the-uploaded-page-tree-file)
-- [License](#License)
-- [Links](#Links)
+- [Installation](#installation)
+    - [Composer](#composer)
+    - [TYPO3](#typo3)
+    - [Database](#database)
+- [Setup](#setup)
+    - [Upload the page tree file](#upload-the-page-tree-file)
+    - [Go to the import view](#go-to-the-import-view)
+    - [Import the uploaded page tree file](#import-the-uploaded-page-tree-file)
+- [License](#license)
+- [Links](#links)
 
 # Installation
 
