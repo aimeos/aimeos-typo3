@@ -32,18 +32,18 @@ COMPOSER=composer.aimeos.json composer update
 cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/ Resources/Public/Themes/
 ```
 
-[![Install Aimeos TYPO3 extension](http://docs.aimeos.org/images/Aimeos-typo3-extmngr-install.png)]
+![Install Aimeos TYPO3 extension](http://docs.aimeos.org/images/Aimeos-typo3-extmngr-install.png)
 
 * Log into the TYPO3 back end
 * Click on ''Admin Tools::Extension Manager'' in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry (looks like a lego brick)
 * If a pop-up opens (only TYPO3 4.x) choose ''Make updates'' and "Close window" after the installation is done
 
-<b>Caution:</b> Install the ```RealURL extension before the Aimeos extension``` to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards!
+**Caution:** Install the **RealURL extension before the Aimeos extension** to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards!
 
 Afterwards, you have to execute the update script of the extension to create the required database structure:
 
-[![Execute update script](http://docs.aimeos.org/images/Aimeos-typo3-extmngr-update-6.x.png)]
+![Execute update script](http://docs.aimeos.org/images/Aimeos-typo3-extmngr-update-6.x.png)
 
 # Setup
 
@@ -57,7 +57,7 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * Choose the file you've downloaded
 * Press the "Upload files" button
 
-[![Upload the page tree file](http://docs.aimeos.org/images/Aimeos-typo3-pages-upload.png)]
+![Upload the page tree file](http://docs.aimeos.org/images/Aimeos-typo3-pages-upload.png)
 
 ## Go to the import view
 
@@ -66,7 +66,7 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * Move the cursor to "Branch actions"
 * In the sub-menu, click on "Import from .t3d"
 
-[![Go to the import view](http://docs.aimeos.org/images/Aimeos-typo3-pages-menu.png)]
+![Go to the import view](http://docs.aimeos.org/images/Aimeos-typo3-pages-menu.png)
 
 ## Import the uploaded page tree file
 
@@ -77,7 +77,7 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * Click on the "Import" button that has appeared
 * Confirm to import the pages
 
-[![Import the uploaded page tree file](http://docs.aimeos.org/images/Aimeos-typo3-pages-import.png)]
+![Import the uploaded page tree file](http://docs.aimeos.org/images/Aimeos-typo3-pages-import.png)
 
 Now you have a new page "Shop" in your page tree including all required sub-pages.
 
