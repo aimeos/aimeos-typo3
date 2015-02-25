@@ -117,7 +117,7 @@ class AdminController extends AbstractController
 		$localeItem->setLanguageId( $langid );
 		$context->setLocale( $localeItem );
 
-		$context->setCache( $this->_getCache( $conf, $localeItem->getSiteId() ) );
+		$context->setCache( $this->_getCache( $context, $localeItem->getSiteId() ) );
 		$context->setI18n( $this->_getI18n( array( $langid ) ) );
 		$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
 	}
