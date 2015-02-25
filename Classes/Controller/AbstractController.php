@@ -44,7 +44,7 @@ abstract class AbstractController
 		$locale = $this->_getLocale( $context );
 
 		$context->setLocale( $locale );
-		$context->setCache( $this->_getCache( $context->getConfig(), $locale->getSiteId() ) );
+		$context->setCache( $this->_getCache( $context, $locale->getSiteId() ) );
 		$context->setI18n( $this->_getI18n( array( $locale->getLanguageId() ) ) );
 
 		$this->uriBuilder->setArgumentPrefix( 'ai' );
@@ -112,32 +112,30 @@ abstract class AbstractController
 	/**
 	 * Returns the cache object for the context
 	 *
-	 * @param \MW_Config_Interface $config Configuration object
+	 * @param \MShop_Context_Item_Interface $context Context object including config
 	 * @param string $siteid Unique site ID
 	 * @return \MW_Cache_Interface Cache object
 	 */
-	protected function _getCache( \MW_Config_Interface $config, $siteid )
+	protected function _getCache( \MShop_Context_Item_Interface $context, $siteid )
 	{
-		$name = Base::getExtConfig( 'cacheName', 'Typo3' );
-		$prefix = $config->get( 'mshop/cache/prefix' );
+		$config = $context->getConfig();
 
-		switch( $name )
+		switch( Base::getExtConfig( 'cacheName', 'Typo3' ) )
 		{
 			case 'Typo3':
 				\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
 				$cache = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
 
-				$config = array( 'siteid' => $prefix . $siteid );
-				break;
+				$conf = array( 'siteid' => $config->get( 'mshop/cache/prefix' ) . $siteid );
+				return \MW_Cache_Factory::createManager( 'Typo3', $conf, $cache );
+
+			case 'None':
+				$config->set( 'client/html/basket/cache/enable', false );
+				return \MW_Cache_Factory::createManager( 'None', array(), null );
 
 			default:
-				$config->set( 'client/html/basket/cache/enable', false );
-				$name = 'None';
-				$cache = null;
-				$config = array();
+				return new MAdmin_Cache_Proxy_Default( $context );
 		}
-
-		return \MW_Cache_Factory::createManager( $name, $config, $cache );
 	}
 
 
