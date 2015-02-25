@@ -6,17 +6,7 @@
 ChangeLog
 =========
 
-The following is a very high level overview of the changes in this extension. For more
-details, `read the commit log <https://github.com/aimeos/typo3-extension/commits/master>`_.
+For a full list of changes you should read the commit logs of the
 
-The latest stable version is available
-
-=======  ===========================================================================
-Version  Changes
-=======  ===========================================================================
-1.0.0    - Update to latest stable Arcavias core
-         - Adds option to create demo data during installation/update
-         - Implements catalog session plugin
-         - Adds documentation
-         - Uses custom composer file as workaround for TYPO3 6.2
-=======  ===========================================================================
+- `TYPO3 extension <https://github.com/aimeos/aimeos-typo3/commits>`_
+- `Core library <https://github.com/aimeos/arcavias-core/commits>`_

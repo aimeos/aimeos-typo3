@@ -57,5 +57,7 @@ Extension Name
 	:glob:
 
 	Introduction
+	Installation
+	Upgrade
 	Configuration
 	ChangeLog

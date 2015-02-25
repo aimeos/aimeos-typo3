@@ -6,7 +6,7 @@
 Configuration Reference
 =======================
 
-Besides the huge list of possible `configuration options <https://docs.aimeos.org/Configuration>`_
+Besides the huge list of possible `configuration options <http://aimeos.org/docs/Configuration>`_
 in Aimeos, the TYPO3 extension has a some Typoscript configuration as well.
 
 Target group: **Developers**
@@ -28,18 +28,26 @@ TypoScript Reference
 Properties
 ^^^^^^^^^^
 
-page.includeCSS.tx_aimeos
-"""""""""""""""""""""""""""
+page.includeCSS.aimeos-common
+"""""""""""""""""""""""""""""
 
-page.includeCSS.tx_aimeos = EXT:aimeos/Resources/Public/html/classic/css/arcavias.css
+:typoscript:`page.includeCSS.aimeos-common` = EXT:aimeos/Resources/Public/Themes/elegance/common.css
 
-Location of the CSS file for the layout.
+Location of the shared theme CSS file for the layout and the e-mails.
+
+
+page.includeCSS.aimeos
+""""""""""""""""""""""
+
+:typoscript:`page.includeCSS.aimeos` = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
+
+Location of the theme CSS file for the layout.
 
 
 page.includeJSFooterlibs.jquery
 """""""""""""""""""""""""""""""
 
-page.includeJSFooterlibs.jquery = EXT:aimeos/Resources/Public/html/classic/js/jquery.min.js
+:typoscript:`page.includeJSFooterlibs.jquery` = http://code.jquery.com/jquery-1.11.1.min.js
 
 Location of the jQuery Javascript library.
 
@@ -47,7 +55,7 @@ Location of the jQuery Javascript library.
 page.includeJSFooterlibs.jquery-migrate
 """""""""""""""""""""""""""""""""""""""
 
-page.includeJSFooterlibs.jquery-migrate = EXT:aimeos/Resources/Public/html/classic/js/jquery-migrate.js
+:typoscript:`page.includeJSFooterlibs.jquery-migrate` = http://code.jquery.com/jquery-migrate-1.2.1.min.js
 
 Location of the compatibility layer for the jQuery Javascript library version 1.10 and above.
 
@@ -55,30 +63,30 @@ Location of the compatibility layer for the jQuery Javascript library version 1.
 page.includeJSFooterlibs.jquery-ui
 """"""""""""""""""""""""""""""""""
 
-page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/html/classic/js/jquery-ui.custom.min.js
+:typoscript:`page.includeJSFooterlibs.jquery-ui` = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
 Location of the customer jQuery UI library with additional effects and features.
 
 
 page.includeJSFooter.tx_aimeos
-""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 
-:typoscript:`page.includeJSFooter.tx_aimeos` = EXT:aimeos/Resources/Public/html/classic/js/arcavias.js
+:typoscript:`page.includeJSFooter.aimeos` = EXT:aimeos/Resources/Public/Themes/aimeos.js
 
-Location of the Arcavias Javascript file which contains the common code for the views.
+Location of the shared Aimeos Javascript file which contains the common code for all themes.
 
 
-client.html.common.content.baseurl
+page.includeJSFooter.aimeos-detail
 """"""""""""""""""""""""""""""""""
 
-:typoscript:`plugin.tx_aimeos.client.html.common.content.baseurl` = uploads/tx_aimeos
+:typoscript:`page.includeJSFooter.aimeos-detail` = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
 
-Location of the uploaded media files
+Location of the Aimeos Javascript file for the detail page shared by all themes.
 
 
-client.html.common.template.baseurl
-"""""""""""""""""""""""""""""""""""
+page.includeJSFooter.aimeos-theme
+"""""""""""""""""""""""""""""""""
 
-:typoscript:`plugin.tx_aimeos.client.html.common.template.baseurl` = typo3conf/ext/aimeos/Resources/Public/html/classic
+:typoscript:`page.includeJSFooter.aimeos-theme` = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
 
-Location of the CSS, Javascript and image files for the Arcavias front-end.
+Location of the theme specific Aimeos Javascript file.
