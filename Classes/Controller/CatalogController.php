@@ -88,10 +88,10 @@ class CatalogController extends AbstractController
 	/**
 	 * Renders a list of product names in JSON format.
 	 */
-	public function listsimpleAction()
+	public function suggestAction()
 	{
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Catalog_List_Factory::createClient( $this->_getContext(), $templatePaths, 'Simple' );
+		$client = \Client_Html_Catalog_Suggest_Factory::createClient( $this->_getContext(), $templatePaths );
 
 		return $this->_getClientOutput( $client );
 	}

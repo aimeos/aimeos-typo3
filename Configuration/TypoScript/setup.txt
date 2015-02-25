@@ -41,7 +41,7 @@ plugin.tx_aimeos {
 					list.url.config {
 						chash = 0
 					}
-					listsimple.url.config {
+					suggest.url.config {
 						type = 191351524
 						chash = 0
 					}

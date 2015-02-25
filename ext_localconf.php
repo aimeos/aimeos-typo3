@@ -62,9 +62,9 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.' . $_EXTKEY,
-	'catalog-listsimple',
-	array( 'Catalog' => 'listsimple' ),
-	array( 'Catalog' => 'listsimple' )
+	'catalog-suggest',
+	array( 'Catalog' => 'suggest' ),
+	array( 'Catalog' => 'suggest' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
