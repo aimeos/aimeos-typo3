@@ -86,7 +86,7 @@ class AdminController extends AbstractController
 	 */
 	public function doAction()
 	{
-		$this->view->assign( 'response', $this->_controller->process( $this->request->getArguments(), 'php://input' ) );
+		$this->view->assign( 'response', $this->_controller->process( \TYPO3\CMS\Core\Utility\GeneralUtility::_POST(), 'php://input' ) );
 	}
 
 
