@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b9f28800985ac88a036e428498a62f5e",
+    "hash": "d8c3edeadb017937628d2e5aea883b1d",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
@@ -12,16 +12,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
-                "reference": "d47e0d145c71ca1717a40d03712bc095fd7f4a58"
+                "reference": "e6aebc59f6c4d567d0656d6c47675f2bca45a8ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/d47e0d145c71ca1717a40d03712bc095fd7f4a58",
-                "reference": "d47e0d145c71ca1717a40d03712bc095fd7f4a58",
+                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/e6aebc59f6c4d567d0656d6c47675f2bca45a8ee",
+                "reference": "e6aebc59f6c4d567d0656d6c47675f2bca45a8ee",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "aimeos-extension",
             "autoload": {
@@ -45,7 +48,7 @@
                 "cms",
                 "typo3"
             ],
-            "time": "2015-01-03 11:41:48"
+            "time": "2015-02-25 10:57:17"
         },
         {
             "name": "aimeos/ai-zend2",
@@ -135,55 +138,21 @@
             "time": "2015-01-19 10:22:28"
         },
         {
-            "name": "aimeos/extinstaller",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aimeos/aimeos-extinstaller.git",
-                "reference": "e3be02d8a1596110d96a171c9ed9f2248cdda1c5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/aimeos-extinstaller/zipball/e3be02d8a1596110d96a171c9ed9f2248cdda1c5",
-                "reference": "e3be02d8a1596110d96a171c9ed9f2248cdda1c5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "type": "composer-installer",
-            "extra": {
-                "class": "Aimeos\\Composer\\ExtensionInstaller"
-            },
-            "autoload": {
-                "psr-0": {
-                    "Aimeos\\Composer": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "description": "Custom composer installer for Aimeos extensions",
-            "homepage": "http://aimeos.org",
-            "time": "2014-11-06 18:36:16"
-        },
-        {
             "name": "arcavias/arcavias-core",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "d3753547c3261624c56f056d404dcab45aae3b0b"
+                "reference": "5a9c91215f2e97f1206db1eb6ad88862cd89bec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/d3753547c3261624c56f056d404dcab45aae3b0b",
-                "reference": "d3753547c3261624c56f056d404dcab45aae3b0b",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/5a9c91215f2e97f1206db1eb6ad88862cd89bec9",
+                "reference": "5a9c91215f2e97f1206db1eb6ad88862cd89bec9",
                 "shasum": ""
             },
             "require": {
-                "aimeos/extinstaller": "dev-master",
+                "composer/installers": "~1.0",
                 "ext-curl": "*",
                 "ext-dom": "*",
                 "ext-json": "*",
@@ -248,7 +217,102 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-01-20 15:35:03"
+            "time": "2015-02-25 11:05:28"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.0.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "shasum": ""
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Composer\\Installers\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "MODX Evo",
+                "OXID",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "zend",
+                "zikula"
+            ],
+            "time": "2015-02-18 17:17:01"
         },
         {
             "name": "zendframework/zend-config",
@@ -1620,17 +1684,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "82462a90848a52c2533aa6b598b107d68076b018"
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/82462a90848a52c2533aa6b598b107d68076b018",
-                "reference": "82462a90848a52c2533aa6b598b107d68076b018",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/60ed7751671113cf1ee7d7778e691642c2e9acd8",
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8",
                 "shasum": ""
             },
             "require": {
@@ -1663,19 +1727,19 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-03 15:33:07"
+            "time": "2015-01-25 04:39:26"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "arcavias/arcavias-core": 20,
-        "aimeos/extinstaller": 20,
         "aimeos/ai-typo3": 20,
         "aimeos/ai-zend2": 20,
         "aimeos/ai-zend2-i18n": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.2"
     },

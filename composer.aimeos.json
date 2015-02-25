@@ -19,7 +19,6 @@
 	"require": {
 		"php": ">=5.3.2",
 		"arcavias/arcavias-core": "dev-master",
-		"aimeos/extinstaller": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-zend2": "dev-master",
 		"aimeos/ai-zend2-i18n": "dev-master"
@@ -33,6 +32,8 @@
 		"vendor-dir": "Resources/Libraries"
 	},
 	"extra": {
-		"ext-path": "Resources/Extensions/"
+		"installer-paths": {
+			"Resources/Extensions/{$name}/": ["type:aimeos-extension"]
+		}
 	}
 }

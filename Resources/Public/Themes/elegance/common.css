@@ -5,6 +5,11 @@
  * @copyright Aimeos (aimeos.org), 2014
  */
 
+.aimeos a:link,
+.aimeos a:visited {
+	color: #B0A060;
+}
+
 .aimeos li.attr-item,
 .aimeos li.form-item {
 	list-style: none;
@@ -19,6 +24,37 @@
 	margin: 1em 1%;
 	padding: 0;
 	width: 98%;
+}
+
+.aimeos .price-list {
+	font-weight: normal;
+	text-align: left;
+	color: #555;
+	height: 1em;
+	padding: 0;
+	margin: 0;
+}
+
+.aimeos .price-item {
+	display: none;
+}
+
+.aimeos .price-item:first-child {
+	display: block;
+}
+
+.aimeos .price-item:first-child .quantity,
+.aimeos .price-item:first-child .rebate,
+.aimeos .price-item:first-child .costs,
+.aimeos .price-item:first-child .taxrate {
+	display: none;
+}
+
+.aimeos .price-item .rebatepercent {
+	background-color: #A03030;
+	padding: 0em 0.25em;
+	margin-left: 2em;
+	color: #FFF;
 }
 
 
@@ -86,7 +122,6 @@
 	padding: 0.5em 1em;
 	margin: 0.5em;
 	margin-top: 0;
-	font-size: 100%;
 }
 
 .common-summary-address h2,

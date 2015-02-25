@@ -25,11 +25,6 @@
 	font-size: 110%;
 }
 
-.aimeos a:link,
-.aimeos a:visited {
-	color: #B0A060;
-}
-
 .aimeos .standardbutton {
 	background-color: #B0A060;
 	border: none;
@@ -396,10 +391,10 @@
 	display: inline-block;
 	font-size: 100%;
 	cursor: pointer;
-	padding: 0.5em;
-	margin: 0;
 	float: left;
-	width: 49.9%;
+	width: 49.99%;
+	padding: 0.5em;
+	margin: 0 0 1em 0;
 }
 
 .catalog-filter-tree ul {
@@ -450,10 +445,10 @@ html.no-js .catalog-filter-tree:hover > ul {
 	text-align: center;
 	font-size: 100%;
 	cursor: pointer;
-	width: 49.9%;
+	width: 49.99%;
 	float: right;
-	margin: 0;
 	padding: 0.5em;
+	margin: 0 0 1em 0;
 }
 
 .catalog-filter-attribute .attribute-lists {
@@ -600,6 +595,7 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 /* Product list, stage section */
 .catalog-stage {
 	color: #B0A060;
+	clear: both;
 }
 
 .catalog-stage-breadcrumb {
@@ -744,32 +740,7 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 
 /* price list */
 .catalog-list .price-list {
-	font-weight: normal;
-	text-align: left;
 	padding: 0.5em;
-	color: #555;
-}
-
-.catalog-list .price-item {
-	display: none;
-}
-
-.catalog-list .price-item:first-child {
-	display: block;
-}
-
-.catalog-list .price-item .rebatepercent {
-	background-color: #A03030;
-	padding: 0em 0.25em;
-	margin-left: 2em;
-	color: #FFF;
-}
-
-.catalog-list .price-item .quantity,
-.catalog-list .price-item .rebate,
-.catalog-list .price-item .costs,
-.catalog-list .price-item .taxrate {
-	display: none;
 }
 
 /* Stock level */
@@ -880,15 +851,6 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 
 
 /* Product details */
-
-.catalog-detail .header {
-	border-bottom: solid 1px #B0A060;
-	font-weight: bold;
-	font-size: 1em;
-	line-height: 2em;
-	height: 2em;
-	padding: 0 1em;
-}
 
 /* Product images */
 .catalog-detail-image {
@@ -1110,9 +1072,6 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	color: #555;
 }
 
-.catalog-detail-basket .price-item {
-}
-
 .catalog-detail-basket .price-item:first-child {
 	display: block;
 	cursor: pointer;
@@ -1157,13 +1116,6 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 .catalog-detail-basket .price-item .rebate,
 .catalog-detail-basket .price-item .taxrate {
 	display: none;
-}
-
-.catalog-detail-basket .price-item .rebatepercent {
-	background-color: #A03030;
-	padding: 0em 0.25em;
-	margin-left: 2em;
-	color: #FFF;
 }
 
 .catalog-detail-basket .price-item .taxrate {
@@ -1451,10 +1403,7 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	text-transform: uppercase;
 	text-align: left;
 	font-weight: normal;
-	font-size: 1em;
-	line-height: 2em;
-	height: 2em;
-	padding: 0 1em;
+	padding: 0.5em 1em;
 	color: #555;
 }
 
@@ -1520,87 +1469,6 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	text-transform: uppercase
 }
 
-.account-watch .price-list,
-.account-favorite .price-list,
-.basket-related-bought .price-list,
-.catalog-detail-bought .price-list,
-.catalog-detail-bundle .price-list,
-.catalog-detail-suggest .price-list,
-.catalog-session-seen .price-list,
-.catalog-session-pinned .price-list {
-	font-weight: normal;
-	text-align: left;
-	color: #555;
-	height: 1em;
-	padding: 0;
-	margin: 0;
-}
-
-.account-watch .price-item,
-.account-favorite .price-item,
-.basket-related-bought .price-item,
-.catalog-detail-bought .price-item,
-.catalog-detail-bundle .price-item,
-.catalog-detail-suggest .price-item,
-.catalog-session-seen .price-item,
-.catalog-session-pinned .price-item {
-	display: none;
-}
-
-.account-watch .price-item:first-child,
-.account-favorite .price-item:first-child,
-.basket-related-bought .price-item:first-child,
-.catalog-detail-bought .price-item:first-child,
-.catalog-detail-bundle .price-item:first-child,
-.catalog-detail-suggest .price-item:first-child,
-.catalog-session-seen .price-item:first-child,
-.catalog-session-pinned .price-item:first-child {
-	display: block;
-}
-
-.account-watch .price-item:first-child .quantity,
-.account-watch .price-item:first-child .rebatepercent,
-.account-watch .price-item:first-child .rebate,
-.account-watch .price-item:first-child .costs,
-.account-watch .price-item:first-child .taxrate,
-.account-favorite .price-item:first-child .quantity,
-.account-favorite .price-item:first-child .rebatepercent,
-.account-favorite .price-item:first-child .rebate,
-.account-favorite .price-item:first-child .costs,
-.account-favorite .price-item:first-child .taxrate,
-.basket-related-bought .price-item:first-child .quantity,
-.basket-related-bought .price-item:first-child .rebatepercent,
-.basket-related-bought .price-item:first-child .rebate,
-.basket-related-bought .price-item:first-child .costs,
-.basket-related-bought .price-item:first-child .taxrate,
-.catalog-detail-bought .price-item:first-child .quantity,
-.catalog-detail-bought .price-item:first-child .rebatepercent,
-.catalog-detail-bought .price-item:first-child .rebate,
-.catalog-detail-bought .price-item:first-child .costs,
-.catalog-detail-bought .price-item:first-child .taxrate,
-.catalog-detail-bundle .price-item:first-child .quantity,
-.catalog-detail-bundle .price-item:first-child .rebatepercent,
-.catalog-detail-bundle .price-item:first-child .rebate,
-.catalog-detail-bundle .price-item:first-child .costs,
-.catalog-detail-bundle .price-item:first-child .taxrate,
-.catalog-detail-suggest .price-item:first-child .quantity,
-.catalog-detail-suggest .price-item:first-child .rebatepercent,
-.catalog-detail-suggest .price-item:first-child .rebate,
-.catalog-detail-suggest .price-item:first-child .costs,
-.catalog-detail-suggest .price-item:first-child .taxrate,
-.catalog-session-seen .price-item:first-child .quantity,
-.catalog-session-seen .price-item:first-child .rebatepercent,
-.catalog-session-seen .price-item:first-child .rebate,
-.catalog-session-seen .price-item:first-child .costs,
-.catalog-session-seen .price-item:first-child .taxrate,
-.catalog-session-pinned .price-item:first-child .quantity,
-.catalog-session-pinned .price-item:first-child .rebatepercent,
-.catalog-session-pinned .price-item:first-child .rebate,
-.catalog-session-pinned .price-item:first-child .costs,
-.catalog-session-pinned .price-item:first-child .taxrate {
-	display: none;
-}
-
 .account-watch .modify,
 .account-favorite .modify,
 .catalog-session-pinned .modify {
@@ -1660,8 +1528,10 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 }
 
 .checkout-confirm-basic,
-.account-history-detail-service,
-.account-history-detail-basket {
+.checkout-confirm-order-service,
+.checkout-confirm-order-detail,
+.account-history-order-service,
+.account-history-order-detail {
 	padding: 0 1em 1em 1em;
 	border: solid 1px #D0D0D0;
 	margin: 0 0 8px 0;
@@ -2060,14 +1930,15 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 
 /* Checkout summary */
 .checkout-standard-summary h3,
-.account-history-detail h3 {
+.checkout-confirm-order h3,
+.account-history-order h3 {
 	display: inline-block;
 	font-size: 1em;
 	margin: 0;
 }
 
 .checkout-standard-summary a:hover,
-.account-history-detail a:hover {
+.account-history-order a:hover {
 	text-decoration: underline;
 }
 
@@ -2169,11 +2040,12 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	content: ": ";
 }
 
-.account-history-detail h2 {
+.checkout-confirm-order h2,
+.account-history-order h2 {
 	margin: 0.5em 0;
 }
 
-.account-history-detail .modify {
+.account-history-order .modify {
 	float: right;
 	margin: 0.5em 1em;
 }
