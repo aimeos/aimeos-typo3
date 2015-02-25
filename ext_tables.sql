@@ -11,6 +11,7 @@ CREATE TABLE fe_users (
 	zip varchar(20) DEFAULT '' NOT NULL,
 	date_of_birth int(11) DEFAULT '0' NOT NULL,
 	vatid varchar(32) DEFAULT '' NOT NULL,
+	vdate date DEFAULT NULL,
 );
 
 
