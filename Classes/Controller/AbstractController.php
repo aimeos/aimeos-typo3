@@ -257,7 +257,7 @@ abstract class AbstractController
 			}
 
 
-			$langid = $config->get( 'mshop/locale/language', 'en' );
+			$langid = $config->get( 'mshop/locale/language', '' );
 			$name = $config->get( 'typo3/param/name/language', 'loc-language' );
 
 			if( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
@@ -269,7 +269,7 @@ abstract class AbstractController
 			}
 
 
-			$currency = $config->get( 'mshop/locale/currency', 'EUR' );
+			$currency = $config->get( 'mshop/locale/currency', '' );
 			$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
 
 			if( $this->request->hasArgument( $name ) === true ) {
