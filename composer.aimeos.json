@@ -16,12 +16,14 @@
 			"url": "https://github.com/aimeos/arcavias-core"
 		}
 	],
+	"prefer-stable": true,
+	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.3.2",
-		"arcavias/arcavias-core": "dev-master",
-		"aimeos/ai-typo3": "dev-master",
-		"aimeos/ai-zend2": "dev-master",
-		"aimeos/ai-zend2-i18n": "dev-master"
+		"arcavias/arcavias-core": "2015.03.*",
+		"aimeos/ai-typo3": "2015.03.*",
+		"aimeos/ai-zend2": "2015.03.*",
+		"aimeos/ai-zend2-i18n": "2015.03.*"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "1.*",

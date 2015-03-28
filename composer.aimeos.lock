@@ -4,11 +4,11 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "50fe31ef4ee3d4dd1084dc67f41d06a0",
+    "hash": "79198a4a04de23def9f22e27ade23d64",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
-            "version": "dev-master",
+            "version": "2015.03.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
@@ -52,7 +52,7 @@
         },
         {
             "name": "aimeos/ai-zend2",
-            "version": "dev-master",
+            "version": "2015.03.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2.git",
@@ -96,16 +96,16 @@
         },
         {
             "name": "aimeos/ai-zend2-i18n",
-            "version": "dev-master",
+            "version": "2015.03.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2-i18n.git",
-                "reference": "9ff833e8a499aea959578f360e1d286c8ed46156"
+                "reference": "c9be407f5dc91f766d6d5e7709c74efad39173e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/9ff833e8a499aea959578f360e1d286c8ed46156",
-                "reference": "9ff833e8a499aea959578f360e1d286c8ed46156",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/c9be407f5dc91f766d6d5e7709c74efad39173e5",
+                "reference": "c9be407f5dc91f766d6d5e7709c74efad39173e5",
                 "shasum": ""
             },
             "require": {
@@ -135,20 +135,20 @@
                 "translate",
                 "zend"
             ],
-            "time": "2015-03-11 08:34:50"
+            "time": "2015-01-19 10:22:28"
         },
         {
             "name": "arcavias/arcavias-core",
-            "version": "dev-master",
+            "version": "2015.03.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "4c0f9c3d28b4d912cb2d59d322f708609eeac4cf"
+                "reference": "c747da3d54b7e7110926de3f813bdb2f135a7cc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/4c0f9c3d28b4d912cb2d59d322f708609eeac4cf",
-                "reference": "4c0f9c3d28b4d912cb2d59d322f708609eeac4cf",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/c747da3d54b7e7110926de3f813bdb2f135a7cc2",
+                "reference": "c747da3d54b7e7110926de3f813bdb2f135a7cc2",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-03-19 10:42:01"
+            "time": "2015-03-28 20:50:21"
         },
         {
             "name": "composer/installers",
@@ -1734,14 +1734,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {
-        "arcavias/arcavias-core": 20,
-        "aimeos/ai-typo3": 20,
-        "aimeos/ai-zend2": 20,
-        "aimeos/ai-zend2-i18n": 20
-    },
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.2"
