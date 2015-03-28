@@ -15,6 +15,7 @@
 			<label index="catalog-suggest.target">Page with suggestions for search filter</label>
 			<label index="catalog-list.catid-default">Default category if no parameter is available</label>
 			<label index="catalog-detail.target">Catalog detail page</label>
+			<label index="catalog-session-pinned.target">Page with catalog session plugin</label>
 			<label index="catalog-count.target">Page with product counts for catalog filter</label>
 			<label index="catalog-stock.target">Page with stock level data</label>
 			<label index="basket-standard.target">Basket page</label>
@@ -36,6 +37,7 @@
 			<label index="catalog-suggest.target">Seite für Vorschlagsliste im Suchfilter</label>
 			<label index="catalog-list.catid-default">Standardkategorie, falls keine per Parameter übergeben wurde</label>
 			<label index="catalog-detail.target">Detailseite des Katalogs</label>
+			<label index="catalog-session-pinned.target">Katalogseite mit dem Session-Plugin</label>
 			<label index="catalog-count.target">Seite mit den Produktzahlen für den Katalogfilter</label>
 			<label index="catalog-stock.target">Seite mit Lagerbestandsdaten</label>
 			<label index="basket-standard.target">Seite des Warenkorbs</label>
