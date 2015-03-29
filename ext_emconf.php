@@ -10,7 +10,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Aimeos web shop',
-	'description' => 'Aimeos is a flexible, high performance shop system available in multiple languages (also available as TYPO3 distribution). Several plugins e.g. for facetted search, product listing, detail view, basket, checkout process and other parts of a shop are available. Furthermore, Aimeos offers powerful interfaces to integrate CRM and ERP systems as well as payment and delivery service providers',
+	'description' => 'Aimeos is a fast, flexible and usability optimized shop system available in multiple languages (also available as TYPO3 distribution). Several plugins e.g. for facetted search, product listing, detail view, basket, checkout process and other parts of a shop are available. Furthermore, Aimeos offers powerful interfaces to integrate CRM and ERP systems as well as payment and delivery service providers',
 	'category' => 'plugin',
 	'version' => '2.2.0',
 	'module' => '',
