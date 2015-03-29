@@ -27,11 +27,13 @@ class Wizicon
 	public function proc( $wizardItems )
 	{
 		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
+		$relpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath( 'aimeos' );
+
 		$file = $path . 'Resources/Private/Language/Extension.xml';
 		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( $file, $GLOBALS['LANG']->lang );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
-			'icon' => $path . 'Resources/Public/Images/aimeos-wizicon.png',
+			'icon' => $relpath . 'Resources/Public/Images/aimeos-wizicon.png',
 			'title' => $GLOBALS['LANG']->getLLL( 'ext-wizard-title', $xml ),
 			'description' => $GLOBALS['LANG']->getLLL( 'ext-wizard-description', $xml ),
 			'params' => '&defVals[tt_content][CType]=list'
