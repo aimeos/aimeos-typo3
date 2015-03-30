@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "50fe31ef4ee3d4dd1084dc67f41d06a0",
+    "hash": "6670ce6d0fddef03afa27975206c1b9a",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
@@ -143,12 +143,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "d9ceded2955b280210cccd976927116e96944473"
+                "reference": "3c82154ef4dc6d2b0d58d095f10cf471b0392dad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/d9ceded2955b280210cccd976927116e96944473",
-                "reference": "d9ceded2955b280210cccd976927116e96944473",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/3c82154ef4dc6d2b0d58d095f10cf471b0392dad",
+                "reference": "3c82154ef4dc6d2b0d58d095f10cf471b0392dad",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-03-28 20:45:46"
+            "time": "2015-03-30 11:05:41"
         },
         {
             "name": "composer/installers",
@@ -1734,14 +1734,14 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "arcavias/arcavias-core": 20,
         "aimeos/ai-typo3": 20,
         "aimeos/ai-zend2": 20,
         "aimeos/ai-zend2-i18n": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.2"
