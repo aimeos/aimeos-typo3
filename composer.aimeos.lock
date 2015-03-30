@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "79198a4a04de23def9f22e27ade23d64",
+    "hash": "1b107db5688edff85836427e6b444cc3",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
@@ -143,12 +143,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "c747da3d54b7e7110926de3f813bdb2f135a7cc2"
+                "reference": "6875dd21e08f60ad6430453572e50c529b62906f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/c747da3d54b7e7110926de3f813bdb2f135a7cc2",
-                "reference": "c747da3d54b7e7110926de3f813bdb2f135a7cc2",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/6875dd21e08f60ad6430453572e50c529b62906f",
+                "reference": "6875dd21e08f60ad6430453572e50c529b62906f",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-03-28 20:50:21"
+            "time": "2015-03-29 09:54:21"
         },
         {
             "name": "composer/installers",
