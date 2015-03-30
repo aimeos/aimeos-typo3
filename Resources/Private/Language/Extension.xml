@@ -6,8 +6,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="ext-wizard-title">Aimeos Ashop</label>
-			<label index="ext-wizard-description">High performance e-commerce in TYPO3</label>
+			<label index="ext-wizard-title">Aimeos web shop</label>
+			<label index="ext-wizard-description">Fast, flexible and usability optimized web shop components for TYPO3</label>
 		</languageKey>
 	</data>
 </T3locallang>

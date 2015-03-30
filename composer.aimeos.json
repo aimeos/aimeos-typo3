@@ -16,8 +16,8 @@
 			"url": "https://github.com/aimeos/arcavias-core"
 		}
 	],
-	"prefer-stable": true,
 	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"require": {
 		"php": ">=5.3.2",
 		"arcavias/arcavias-core": "2015.03.*",
