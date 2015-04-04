@@ -1,91 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-04-04T14:18:19Z" product-name="aimeos">
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en">
 		<header/>
 		<body>
-			<trans-unit id="account-favorite.target" xml:space="preserve" approved="yes">
+			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
 				<target>Seite der Produktfavoriten</target>
 			</trans-unit>
-			<trans-unit id="account-watch.target" xml:space="preserve" approved="yes">
+			<trans-unit id="account-watch.target" xml:space="preserve">
 				<source>Watched products page</source>
 				<target>Seite der beobachteten Produkte</target>
 			</trans-unit>
-			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
 				<source>Display categories beginning from the following node</source>
-				<target></target>
+				<target>Nur Kategorien inklusive der folgenden anzeigen</target>
 			</trans-unit>
-			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
 				<source>Always display these category levels</source>
 				<target>Zeige immer alle Kategorien bis zu dieser Tiefe</target>
 			</trans-unit>
-			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
 				<target>Zeige nur die Kategorien bis zu dieser Tiefe</target>
 			</trans-unit>
-			<trans-unit id="catalog-list.target" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
 				<target>Listenseite des Katalogs</target>
 			</trans-unit>
-			<trans-unit id="catalog-suggest.target" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
 				<target>Seite für Vorschlagsliste im Suchfilter</target>
 			</trans-unit>
-			<trans-unit id="catalog-list.catid-default" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category if no parameter is available</source>
 				<target>Standardkategorie, falls keine per Parameter übergeben wurde</target>
 			</trans-unit>
-			<trans-unit id="catalog-detail.target" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
 				<target>Detailseite des Katalogs</target>
 			</trans-unit>
-			<trans-unit id="catalog-session-pinned.target" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>Katalogseite mit dem Session-Plugin</target>
 			</trans-unit>
-			<trans-unit id="catalog-count.target" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-count.target" xml:space="preserve">
 				<source>Page with product counts for catalog filter</source>
 				<target>Seite mit den Produktzahlen für den Katalogfilter</target>
 			</trans-unit>
-			<trans-unit id="catalog-stock.target" xml:space="preserve" approved="yes">
+			<trans-unit id="catalog-stock.target" xml:space="preserve">
 				<source>Page with stock level data</source>
 				<target>Seite mit Lagerbestandsdaten</target>
 			</trans-unit>
-			<trans-unit id="basket-standard.target" xml:space="preserve" approved="yes">
+			<trans-unit id="basket-standard.target" xml:space="preserve">
 				<source>Basket page</source>
 				<target>Seite des Warenkorbs</target>
 			</trans-unit>
-			<trans-unit id="checkout-standard.target" xml:space="preserve" approved="yes">
+			<trans-unit id="checkout-standard.target" xml:space="preserve">
 				<source>Checkout page</source>
 				<target>Seite &quot;zur Kasse&quot;</target>
 			</trans-unit>
-			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve" approved="yes">
+			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
 				<source>Terms and conditions page</source>
 				<target>Seite der AGBs</target>
 			</trans-unit>
-			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve" approved="yes">
+			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
 				<source>Privacy policy page</source>
 				<target>Seite der Datenschutzerklärung</target>
 			</trans-unit>
-			<trans-unit id="checkout-confirm.target" xml:space="preserve" approved="yes">
+			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
 				<target>Bestätigungsseite</target>
 			</trans-unit>
-			<trans-unit id="checkout-update.target" xml:space="preserve" approved="yes">
+			<trans-unit id="checkout-update.target" xml:space="preserve">
 				<source>Page with &quot;checkout payment update&quot; plugin</source>
 				<target>Seite für Aktualisierungen durch externe Zahlungsdienstleister</target>
 			</trans-unit>
-			<trans-unit id="default.typo3.tsconfig" xml:space="preserve" approved="yes">
+			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
 				<target>TypoScript Konfiguration</target>
 			</trans-unit>
-			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve" approved="yes">
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
 				<source>The TypoScript configuration is invalid</source>
 				<target>Die TypoScript Konfiguration ist ungültig</target>
-			</trans-unit>
-			<trans-unit id="catalog-filter.tree-start" xml:space="preserve" approved="yes">
-				<source></source>
-				<target>Zeige Kategorien erst ab folgendem Knoten an</target>
 			</trans-unit>
 		</body>
 	</file>
