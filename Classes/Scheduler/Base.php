@@ -31,10 +31,19 @@ class Base
 	 */
 	public static function createView( \MW_Config_Interface $config )
 	{
+		$aimeos = Aimeos\Base::getAimeos();
+		$templatePaths = $aimeos->getCustomPath( 'controller/jobs/layouts' );
+
 		$view = new \MW_View_Default();
 
 		$helper = new \MW_View_Helper_Config_Default( $view, $config );
 		$view->addHelper( 'config', $helper );
+
+		$helper = new \MW_View_Helper_Partial_Default( $view, $config, $templatePaths );
+		$view->addHelper( 'partial', $helper );
+
+		$helper = new \MW_View_Helper_Parameter_Default( $view, array() );
+		$view->addHelper( 'param', $helper );
 
 		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
 		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
@@ -43,6 +52,9 @@ class Base
 
 		$helper = new \MW_View_Helper_Url_None( $view );
 		$view->addHelper( 'url', $helper );
+
+		$helper = new \MW_View_Helper_FormParam_Default( $view, array( 'ai' ) );
+		$view->addHelper( 'formparam', $helper );
 
 		$helper = new \MW_View_Helper_Encoder_Default( $view );
 		$view->addHelper( 'encoder', $helper );

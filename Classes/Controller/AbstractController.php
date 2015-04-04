@@ -71,6 +71,7 @@ abstract class AbstractController
 	{
 		$context = $this->_getContext();
 		$config = $context->getConfig();
+		$templatePaths = $this->_aimeos->getCustomPath( 'client/html' );
 
 		$langid = $context->getLocale()->getLanguageId();
 		$i18n = $this->_getI18n( array( $langid ) );
@@ -87,6 +88,9 @@ abstract class AbstractController
 
 		$helper = new \MW_View_Helper_Translate_Default( $view, $i18n[$langid] );
 		$view->addHelper( 'translate', $helper );
+
+		$helper = new \MW_View_Helper_Partial_Default( $view, $config, $templatePaths );
+		$view->addHelper( 'partial', $helper );
 
 		$helper = new \MW_View_Helper_Parameter_Default( $view, $params );
 		$view->addHelper( 'param', $helper );
