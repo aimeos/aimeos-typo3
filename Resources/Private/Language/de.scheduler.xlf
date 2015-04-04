@@ -4,11 +4,11 @@
 		<body>
 			<trans-unit id="default.name" xml:space="preserve">
 				<source>Aimeos Shop scheduler</source>
-				<target>Aimeos Shop Aufgaben</target>
+				<target>Aimeos Shop Planer</target>
 			</trans-unit>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
-				<target>Führt die ausgewählten Aimeos Shop Aufgaben aus</target>
+				<target>Führt die ausgewählten Aufgaben im Aimeos Shop aus</target>
 			</trans-unit>
 			<trans-unit id="default.label.controller" xml:space="preserve">
 				<source>Jobs</source>
@@ -28,7 +28,7 @@
 			</trans-unit>
 			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
 				<source>Please choose at least one site</source>
-				<target>Bitte wählen sie mindestens eine Site aus</target>
+				<target>Bitte wählen sie mindestens einen Mandanten aus</target>
 			</trans-unit>
 			<trans-unit id="default.error.controller.missing" xml:space="preserve">
 				<source>Please choose at least one job</source>
@@ -40,7 +40,7 @@
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Aimeos Shop E-Mails</target>
+				<target>Planer für Aimeos Shop E-Mails</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
