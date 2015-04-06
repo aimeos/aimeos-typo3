@@ -171,7 +171,7 @@ class Base
 		if( !empty( $parser->errors ) )
 		{
 			$msg = $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.tsconfig.invalid' );
-			throw new Exception( $msg );
+			throw new \Exception( $msg );
 		}
 
 		$tsConfig = self::_convertTypoScriptArrayToPlainArray( $parser->setup );

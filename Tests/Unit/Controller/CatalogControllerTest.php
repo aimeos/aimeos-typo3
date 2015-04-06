@@ -19,7 +19,7 @@ class CatalogControllerTest
 		$uriBuilder = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder' );
 		$response = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response' );
 		$request = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' );
-		
+
 		$uriBuilder->setRequest( $request );
 
 		if( method_exists( $response, 'setRequest' ) ) {
@@ -119,16 +119,16 @@ class CatalogControllerTest
 	/**
 	 * @test
 	 */
-	public function listsimpleAction()
+	public function suggestAction()
 	{
-		$name = 'Client_Html_Catalog_List_Simple';
+		$name = 'Client_Html_Catalog_Suggest_Default';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_List_Factory::injectClient( $name, $client );
-		$output = $this->_object->listsimpleAction();
+		$output = $this->_object->suggestAction();
 		\Client_Html_Catalog_List_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
