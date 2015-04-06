@@ -1,0 +1,87 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en">
+		<header/>
+		<body>
+			<trans-unit id="default.name" xml:space="preserve">
+				<source>Aimeos Shop scheduler</source>
+				<target>Terminarz sklepu Aimeos</target>
+			</trans-unit>
+			<trans-unit id="default.description" xml:space="preserve">
+				<source>Executes the selected Aimeos Shop jobs</source>
+				<target>Wykonuje wybrane zadania sklepu Aimeos</target>
+			</trans-unit>
+			<trans-unit id="default.label.controller" xml:space="preserve">
+				<source>Jobs</source>
+				<target>Zadania</target>
+			</trans-unit>
+			<trans-unit id="default.label.sitecode" xml:space="preserve">
+				<source>Sites</source>
+				<target>Strony</target>
+			</trans-unit>
+			<trans-unit id="default.label.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Konfiguracja TypoScriptu</target>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode" xml:space="preserve">
+				<source>One or more sites is invalid or already disabled</source>
+				<target>Jedna lub więcej stron jest niepoprawna lub już wyłączona</target>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
+				<source>Please choose at least one site</source>
+				<target>Proszę wybrać co najmniej jedną stronę</target>
+			</trans-unit>
+			<trans-unit id="default.error.controller.missing" xml:space="preserve">
+				<source>Please choose at least one job</source>
+				<target>Proszę wybrać co najmniej jedno zadanie</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>Błędna konfiguracja TypoScriptu</target>
+			</trans-unit>
+			<trans-unit id="email.name" xml:space="preserve">
+				<source>Aimeos Shop e-mail scheduler</source>
+				<target>Terminarz mailowy sklepu Aimeos</target>
+			</trans-unit>
+			<trans-unit id="email.description" xml:space="preserve">
+				<source>Specialized task for sending the e-mails</source>
+				<target>Zadanie specjalizowane do wysyłania e-maili</target>
+			</trans-unit>
+			<trans-unit id="email.label.from-name" xml:space="preserve">
+				<source>Sender name</source>
+				<target>Nazwa nadawcy</target>
+			</trans-unit>
+			<trans-unit id="email.label.from-email" xml:space="preserve">
+				<source>Sender e-mail</source>
+				<target>E-mail nadawcy</target>
+			</trans-unit>
+			<trans-unit id="email.label.reply-email" xml:space="preserve">
+				<source>Reply e-mail</source>
+				<target>E-mail odpowiedzi</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-detail" xml:space="preserve">
+				<source>Product detail page ID</source>
+				<target>ID widoku szczegółowego produktu</target>
+			</trans-unit>
+			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
+				<source>Base URL to the product images</source>
+				<target>Base URL zdjęć produktu</target>
+			</trans-unit>
+			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
+				<source>The sender e-mail address is invalid or none was entered</source>
+				<target>Nie podano adresu mailowego nadawcy lub jest on niepoprawny</target>
+			</trans-unit>
+			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
+				<source>The reply e-mail address is invalid</source>
+				<target>adres emailowy odpowiedzi jest niepoprawny</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
+				<source>The page ID of the product detail page is invalid</source>
+				<target>Id strony z widokiem szczegółowym jest niepoprawny</target>
+			</trans-unit>
+			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
+				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
+				<target>Adres base URL zdjęć produktów jest niepoprawny. Użyj base URL zawierający nazwę protokołu i nazwę domeny, na przykład &quot;https://aiemos.org/uploads/tx_aimeos&quot;</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
