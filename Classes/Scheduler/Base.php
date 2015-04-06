@@ -32,7 +32,7 @@ class Base
 	public static function createView( \MW_Config_Interface $config )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
-		$templatePaths = $aimeos->getCustomPath( 'controller/jobs/layouts' );
+		$templatePaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
 
 		$view = new \MW_View_Default();
 

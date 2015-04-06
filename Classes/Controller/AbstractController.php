@@ -71,7 +71,7 @@ abstract class AbstractController
 	{
 		$context = $this->_getContext();
 		$config = $context->getConfig();
-		$templatePaths = $this->_aimeos->getCustomPath( 'client/html' );
+		$templatePaths = $this->_aimeos->getCustomPaths( 'client/html' );
 
 		$langid = $context->getLocale()->getLanguageId();
 		$i18n = $this->_getI18n( array( $langid ) );
