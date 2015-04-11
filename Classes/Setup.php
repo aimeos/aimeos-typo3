@@ -59,6 +59,7 @@ class Setup
 		ini_set( 'max_execution_time', 0 );
 
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$taskPaths = $aimeos->getSetupPaths( 'default' );
 
 		$includePaths = $taskPaths;
@@ -78,6 +79,8 @@ class Setup
 		$dbm = $ctx->getDatabaseManager();
 		$config = $ctx->getConfig();
 		$local = array();
+
+		$config->set( 'setup/site', $sitecode );
 
 		$dbconfig = $config->get( 'resource', array() );
 
