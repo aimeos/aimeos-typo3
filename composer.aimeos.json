@@ -37,5 +37,13 @@
 		"installer-paths": {
 			"Resources/Extensions/{$name}/": ["type:aimeos-extension"]
 		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/* Resources/Public/Themes/"
+		],
+		"post-update-cmd": [
+			"cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/* Resources/Public/Themes/"
+		]
 	}
 }
