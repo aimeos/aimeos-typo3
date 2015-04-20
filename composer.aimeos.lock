@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1b107db5688edff85836427e6b444cc3",
+    "hash": "eb03f94aae33d07a9198936d2e66aa4d",
     "packages": [
         {
             "name": "aimeos/ai-typo3",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-typo3.git",
-                "reference": "e6aebc59f6c4d567d0656d6c47675f2bca45a8ee"
+                "reference": "7267ac71fcf553e60c51749b7f4880cc20678a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/e6aebc59f6c4d567d0656d6c47675f2bca45a8ee",
-                "reference": "e6aebc59f6c4d567d0656d6c47675f2bca45a8ee",
+                "url": "https://api.github.com/repos/aimeos/ai-typo3/zipball/7267ac71fcf553e60c51749b7f4880cc20678a43",
+                "reference": "7267ac71fcf553e60c51749b7f4880cc20678a43",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "cms",
                 "typo3"
             ],
-            "time": "2015-02-25 10:57:17"
+            "time": "2015-04-13 08:40:24"
         },
         {
             "name": "aimeos/ai-zend2",
@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2.git",
-                "reference": "d0257382698177c3c32f0f9ced653f0ed7d55398"
+                "reference": "f067d9646eb2f6892d005a05676f65796c196f50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/d0257382698177c3c32f0f9ced653f0ed7d55398",
-                "reference": "d0257382698177c3c32f0f9ced653f0ed7d55398",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2/zipball/f067d9646eb2f6892d005a05676f65796c196f50",
+                "reference": "f067d9646eb2f6892d005a05676f65796c196f50",
                 "shasum": ""
             },
             "require": {
@@ -92,7 +92,7 @@
                 "framework",
                 "zend"
             ],
-            "time": "2014-12-02 17:30:55"
+            "time": "2015-04-13 08:38:08"
         },
         {
             "name": "aimeos/ai-zend2-i18n",
@@ -100,12 +100,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/ai-zend2-i18n.git",
-                "reference": "c9be407f5dc91f766d6d5e7709c74efad39173e5"
+                "reference": "d77c6d4e8890a7edbffe4d87066b1c3ef7a68bae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/c9be407f5dc91f766d6d5e7709c74efad39173e5",
-                "reference": "c9be407f5dc91f766d6d5e7709c74efad39173e5",
+                "url": "https://api.github.com/repos/aimeos/ai-zend2-i18n/zipball/d77c6d4e8890a7edbffe4d87066b1c3ef7a68bae",
+                "reference": "d77c6d4e8890a7edbffe4d87066b1c3ef7a68bae",
                 "shasum": ""
             },
             "require": {
@@ -135,20 +135,20 @@
                 "translate",
                 "zend"
             ],
-            "time": "2015-01-19 10:22:28"
+            "time": "2015-04-13 09:07:59"
         },
         {
             "name": "arcavias/arcavias-core",
-            "version": "2015.03.x-dev",
+            "version": "2015.03.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aimeos/arcavias-core.git",
-                "reference": "6875dd21e08f60ad6430453572e50c529b62906f"
+                "reference": "83bd520875a824e8354f841e3e39886090f399d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/6875dd21e08f60ad6430453572e50c529b62906f",
-                "reference": "6875dd21e08f60ad6430453572e50c529b62906f",
+                "url": "https://api.github.com/repos/aimeos/arcavias-core/zipball/83bd520875a824e8354f841e3e39886090f399d9",
+                "reference": "83bd520875a824e8354f841e3e39886090f399d9",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
                 "forum": "https://forum.arcavias.com",
                 "wiki": "https://docs.arcavias.com"
             },
-            "time": "2015-03-29 09:54:21"
+            "time": "2015-04-19 18:48:12"
         },
         {
             "name": "composer/installers",
@@ -1304,31 +1304,33 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.3.4",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb"
+                "reference": "a923bb15680d0089e2316f7a4af8f437046e96bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/acd690379117b042d1c8af1fafd61bde001bf6bb",
-                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/a923bb15680d0089e2316f7a4af8f437046e96bb",
+                "reference": "a923bb15680d0089e2316f7a4af8f437046e96bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
-                    "File/"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1345,7 +1347,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2013-10-10 15:34:57"
+            "time": "2015-04-02 05:19:05"
         },
         {
             "name": "phpunit/php-text-template",
@@ -1684,17 +1686,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.5",
+            "version": "v2.6.6",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "0cd8e72071e46e15fc072270ae39ea1b66b10a9d"
+                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/0cd8e72071e46e15fc072270ae39ea1b66b10a9d",
-                "reference": "0cd8e72071e46e15fc072270ae39ea1b66b10a9d",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/174f009ed36379a801109955fc5a71a49fe62dd4",
+                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4",
                 "shasum": ""
             },
             "require": {
@@ -1730,7 +1732,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2015-03-12 10:28:44"
+            "time": "2015-03-30 15:54:10"
         }
     ],
     "aliases": [],
