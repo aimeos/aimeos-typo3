@@ -34,7 +34,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'conflicts' => array(
 		),
 		'suggests' => array(
-			'realurl' => '1.12.8-1.99.99',
+			'realurl' => '1.12.8-2.99.99',
 		),
 	),
 );
