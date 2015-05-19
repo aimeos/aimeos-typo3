@@ -1,0 +1,87 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en">
+		<header/>
+		<body>
+			<trans-unit id="account-favorite.target" xml:space="preserve">
+				<source>Favorite products page</source>
+				<target>صفحه محصولات مورد علاقه</target>
+			</trans-unit>
+			<trans-unit id="account-watch.target" xml:space="preserve">
+				<source>Watched products page</source>
+				<target>صفحه محصولات بازدید شده</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
+				<source>Display categories beginning from the following node</source>
+				<target>نمایش دسته ها را از این گره آغاز کن</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
+				<source>Always display these category levels</source>
+				<target>همیشه دسته های در این سطح را نمایش بده</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
+				<source>Only display up to these category levels</source>
+				<target>فقط تا این سطح از دسته ها را نمایش بده</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.target" xml:space="preserve">
+				<source>Catalog list page</source>
+				<target>صفحه ی لیست فروشگاه</target>
+			</trans-unit>
+			<trans-unit id="catalog-suggest.target" xml:space="preserve">
+				<source>Page with suggestions for search filter</source>
+				<target>ارائه پیشنهاد برای فیلتر کردن جستجوها در صفحه</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
+				<source>Default category if no parameter is available</source>
+				<target>دسته ی پیشفرض  اگر هیچ پارامتری وارد نشده باشد</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.target" xml:space="preserve">
+				<source>Catalog detail page</source>
+				<target>صفحه ی جزئیات فروشگاه</target>
+			</trans-unit>
+			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
+				<source>Page with catalog session plugin</source>
+				<target>صفحه  همراه با افزونه جلسه فروشگاه</target>
+			</trans-unit>
+			<trans-unit id="catalog-count.target" xml:space="preserve">
+				<source>Page with product counts for catalog filter</source>
+				<target>صفحه همراه با شمارش محصولات برای فیلتر های فروشگاه</target>
+			</trans-unit>
+			<trans-unit id="catalog-stock.target" xml:space="preserve">
+				<source>Page with stock level data</source>
+				<target>صفحه ی اطلاعات سطح سهام</target>
+			</trans-unit>
+			<trans-unit id="basket-standard.target" xml:space="preserve">
+				<source>Basket page</source>
+				<target>صفحه ی سبد خرید</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard.target" xml:space="preserve">
+				<source>Checkout page</source>
+				<target>صفحه ی تسویه حساب</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
+				<source>Terms and conditions page</source>
+				<target>صفحه ی شرایط استفاده</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
+				<source>Privacy policy page</source>
+				<target>صفحه ی حریم خصوصی</target>
+			</trans-unit>
+			<trans-unit id="checkout-confirm.target" xml:space="preserve">
+				<source>Confirmation page</source>
+				<target>صفحه ی تایید</target>
+			</trans-unit>
+			<trans-unit id="checkout-update.target" xml:space="preserve">
+				<source>Page with &quot;checkout payment update&quot; plugin</source>
+				<target>صفحه با افزونه ی &quot;بروزرسانی تصویه حساب&quot;</target>
+			</trans-unit>
+			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>تنظیمات TypoScript</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>تنظیمات TypoScript اشتباه می باشد</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
