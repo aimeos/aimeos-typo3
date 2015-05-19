@@ -609,7 +609,7 @@ AimeosCatalogList = {
 	 */
 	setupImageSwitch: function() {
 
-		$(".aimeos .product .media-list").on("mouseenter", function() {
+		$(".catalog-list-items .product .media-list").on("mouseenter", function() {
 			var list = $(".media-item", this);
 
 			if( list.length > 1 ) {
@@ -627,7 +627,7 @@ AimeosCatalogList = {
 			}
 		});
 
-		$(".aimeos .product .media-list").on("mouseleave", function() {
+		$(".catalog-list-items .product .media-list").on("mouseleave", function() {
 			var list = $(".media-item", this);
 
 			if( list.length > 1 ) {
@@ -638,6 +638,10 @@ AimeosCatalogList = {
 					list.first().fadeTo(400, 1);
 				});
 			}
+		});
+
+		$(".catalog-list-items .product .media-list a").on("click", function(ev) {
+			window.location.href = $(this).attr('href');
 		});
 	},
 
@@ -758,9 +762,9 @@ AimeosCheckoutStandard = {
 		});
 
 		/* Delivery/payment form slide up/down when selected */
-		$(".checkout-standard-delivery, .checkout-standard-payment .option").on("click", function(ev) {
-			$(".checkout-standard .form-list").slideUp(400);
-			$(".checkout-standard .item-service").has(this).find(".form-list").slideDown(400);
+		$(".checkout-standard-delivery, .checkout-standard-payment").on("click", ".option", function(ev) {
+			$(".form-list", ev.delegateTarget).slideUp(400);
+			$(".item-service", ev.delegateTarget).has(this).find(".form-list").slideDown(400);
 		});
 	},
 
@@ -784,17 +788,28 @@ AimeosCheckoutStandard = {
 
 		$(".checkout-standard form").on("submit", function(ev) {
 			var retval = true;
+			var nodes = [];
 
-			$(".checkout-standard .item-new, .item-service").has(".header,label").has("input:checked") // combining in one has() doesn't work
-			.find(".form-list .mandatory").each(function() {
+			$(".checkout-standard .item-new, .item-service")
+				.has(".header,label").has("input:checked") // combining in one has() doesn't work
+				.find(".form-list .mandatory").each(function() {
+
 				var value = $(this).find("input,select").val();
+
 				if(value === null || value.trim() === "") {
 					$(this).addClass("error");
+					nodes.push(this);
 					retval = false;
 				} else {
 					$(this).removeClass("error");
 				}
 			});
+
+			if( nodes.length !== 0 ) {
+				$('html, body').animate({
+					scrollTop: $(nodes).first().offset().top + 'px'
+				});
+			}
 
 			return retval;
 		});
