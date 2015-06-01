@@ -37,11 +37,7 @@ abstract class AbstractHelper
 			$context = new \MShop_Context_Item_Default();
 
 
-			$configPaths = $aimeos->getConfigPaths( 'mysql' );
-			$configPaths[] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' ) . 'Resources' . $ds . 'Private' . $ds . 'Config';
-
-			$conf = new \MW_Config_Array( array(), $configPaths );
-			$conf = new \MW_Config_Decorator_Memory( $conf );
+			$conf = \Aimeos\Aimeos\Base::getConfig();
 			$context->setConfig( $conf );
 
 			$dbm = new \MW_DB_Manager_PDO( $conf );
