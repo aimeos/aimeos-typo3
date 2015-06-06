@@ -22,11 +22,11 @@ class Catalog extends AbstractHelper
 	 * Returns the list of categories with their ID.
 	 *
 	 * @param array $config Associative array of existing configurations
-	 * @param \TYPO3\CMS\Backend\Form\FormEngine $tceForms TCE forms object
+	 * @param \TYPO3\CMS\Backend\Form\FormEngine|\TYPO3\CMS\Backend\Form\DataPreprocessor $tceForms TCE forms object
 	 * @param string $sitecode Unique code of the site to retrieve the categories for
 	 * @return array Associative array with existing and new entries
 	 */
-	public function getCategories( array $config, \TYPO3\CMS\Backend\Form\FormEngine $tceForms = null, $sitecode = 'default' )
+	public function getCategories( array $config, $tceForms = null, $sitecode = 'default' )
 	{
 		if( isset( $config['row'] ) && isset( $config['row']['pid'] ) )
 		{
