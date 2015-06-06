@@ -4,83 +4,83 @@
 		<body>
 			<trans-unit id="default.name" xml:space="preserve">
 				<source>Aimeos Shop scheduler</source>
-				<target>زمان بند فروشگاه ایمیوس</target>
+				<target>Aimeos planlegger</target>
 			</trans-unit>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
-				<target>کارهای انتخاب شده ی فروشگاه ایمیوس را اجرا کن</target>
+				<target>Kjører valgte Aimeos-jobber</target>
 			</trans-unit>
 			<trans-unit id="default.label.controller" xml:space="preserve">
 				<source>Jobs</source>
-				<target>کارها</target>
+				<target>Jobber</target>
 			</trans-unit>
 			<trans-unit id="default.label.sitecode" xml:space="preserve">
 				<source>Sites</source>
-				<target>سایت ها</target>
+				<target>Sider</target>
 			</trans-unit>
 			<trans-unit id="default.label.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
-				<target>تنظیمات TypoScript</target>
+				<target>Typoscript-konfigurasjon</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode" xml:space="preserve">
 				<source>One or more sites is invalid or already disabled</source>
-				<target>یک یا چندین سایت اشتباه است یا غیرفعال شده است</target>
+				<target>En eller flere av sidene er ugyldig eller allerede deaktivert</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
 				<source>Please choose at least one site</source>
-				<target>لطفا حداقل یک سایت را انتخاب کنید</target>
+				<target>Vennligst velg minst en side</target>
 			</trans-unit>
 			<trans-unit id="default.error.controller.missing" xml:space="preserve">
 				<source>Please choose at least one job</source>
-				<target>لطفا حداقل یک کار را انتخاب کنید</target>
+				<target>Vennligst velg minst en jobb</target>
 			</trans-unit>
 			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
 				<source>The TypoScript configuration is invalid</source>
-				<target>تنظیمات TypoScript اشتباه می باشد</target>
+				<target>Typoskript-konfigurasjonen er ugyldig</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop e-mail scheduler</source>
-				<target>زمان بند پست الکترونیک فروشگاه ایمیوس</target>
+				<target>Aimeos nettbutikk epostplanlegger</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
-				<target>وظیفه ی تخصصی برای ارسال پست های الکترونیک</target>
+				<target>Spesialisert oppgave for sending av e-poster</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-name" xml:space="preserve">
 				<source>Sender name</source>
-				<target>نام فرستنده</target>
+				<target>Avsenders navn</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-email" xml:space="preserve">
 				<source>Sender e-mail</source>
-				<target>پست الکترونیک فرستنده</target>
+				<target>Avsenders e-post</target>
 			</trans-unit>
 			<trans-unit id="email.label.reply-email" xml:space="preserve">
 				<source>Reply e-mail</source>
-				<target>پست الکترونیک دریافت پاسخ</target>
+				<target>Svar til e-post</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
-				<target>شناسه صفحه ی جزئیات محصول</target>
+				<target>ID for side med produktdetaljer</target>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images</source>
-				<target>لینک پایه ی عکس های محصولات</target>
+				<target>Base-URL for produktbilder</target>
 			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
-				<target>پست الکترونیک فرستنده اشتباه است یا وارد نشده است</target>
+				<target>Avsenders e-postadresse er ugyldig eller ble ikke skrevet inn</target>
 			</trans-unit>
 			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
 				<source>The reply e-mail address is invalid</source>
-				<target>پست الکترونیک دریافت پاسخ اشتباه است</target>
+				<target>Oppgitt e-postadresse for avsesnder er ugyldig</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
-				<target>شناسه صفحه ی جزئیات محصول، اشتباه می باشد</target>
+				<target>Oppgitt ID for side med produktdetaljer er ugyldig.</target>
 			</trans-unit>
 			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
 				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
-				<target>لینک پایه ی عکس های محصولات اشتباه می باشد ، لینک باید حاوی پروتوکل و آدرس دامین باشد مثل  &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
+				<target>Base-URL'en til produktbildene er ugyldig. Bruk en base-URL som inkluderer protokoll og domene som for eksempel &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
 			</trans-unit>
 		</body>
 	</file>
