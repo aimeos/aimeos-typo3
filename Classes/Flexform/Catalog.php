@@ -10,13 +10,15 @@
 
 namespace Aimeos\Aimeos\Flexform;
 
+use Aimeos\Aimeos\Base;
+
 
 /**
  * Aimeos catalog flexform helper.
  *
  * @package TYPO3_Aimeos
  */
-class Catalog extends AbstractHelper
+class Catalog
 {
 	/**
 	 * Returns the list of categories with their ID.
@@ -39,7 +41,8 @@ class Catalog extends AbstractHelper
 
 		try
 		{
-			$context = $this->_getContext();
+			$context = Base::getContext( Base::getConfig() );
+			$context->setEditor( 'flexform' );
 
 			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );

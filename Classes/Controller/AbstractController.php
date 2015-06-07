@@ -21,126 +21,8 @@ use Aimeos\Aimeos\Base;
 abstract class AbstractController
 	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-	private $_aimeos;
-	static private $_locale;
-	static private $_context;
-	static private $_i18n = array();
-
-
-	public function __construct()
-	{
-		parent::__construct();
-
-		$this->_aimeos = Base::getAimeos();
-	}
-
-
-	/**
-	 * Initializes the object before the real action is called.
-	 */
-	protected function initializeAction()
-	{
-		$context = $this->_getContext();
-		$locale = $this->_getLocale( $context );
-
-		$context->setLocale( $locale );
-		$context->setCache( $this->_getCache( $context, $locale->getSiteId() ) );
-		$context->setI18n( $this->_getI18n( array( $locale->getLanguageId() ) ) );
-
-		$this->uriBuilder->setArgumentPrefix( 'ai' );
-	}
-
-
-	/**
-	 * Disables Fluid views for performance reasons.
-	 *
-	 * return Tx_Extbase_MVC_View_ViewInterface View object
-	 */
-	protected function resolveView()
-	{
-		return null;
-	}
-
-
-	/**
-	 * Creates the view object for the HTML client.
-	 *
-	 * @return MW_View_Interface View object
-	 */
-	protected function _createView()
-	{
-		$context = $this->_getContext();
-		$config = $context->getConfig();
-		$templatePaths = $this->_aimeos->getCustomPaths( 'client/html' );
-
-		$langid = $context->getLocale()->getLanguageId();
-		$i18n = $this->_getI18n( array( $langid ) );
-
-		// required for reloading to the current page
-		$params = $this->request->getArguments();
-		$params['target'] = $GLOBALS["TSFE"]->id;
-
-
-		$view = new \MW_View_Default();
-
-		$helper = new \MW_View_Helper_Url_Typo3( $view, $this->uriBuilder, $this->_getFixedParams( $config ) );
-		$view->addHelper( 'url', $helper );
-
-		$helper = new \MW_View_Helper_Translate_Default( $view, $i18n[$langid] );
-		$view->addHelper( 'translate', $helper );
-
-		$helper = new \MW_View_Helper_Partial_Default( $view, $config, $templatePaths );
-		$view->addHelper( 'partial', $helper );
-
-		$helper = new \MW_View_Helper_Parameter_Default( $view, $params );
-		$view->addHelper( 'param', $helper );
-
-		$helper = new \MW_View_Helper_Config_Default( $view, $config );
-		$view->addHelper( 'config', $helper );
-
-		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
-		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
-		$helper = new \MW_View_Helper_Number_Default( $view, $sepDec, $sep1000 );
-		$view->addHelper( 'number', $helper );
-
-		$helper = new \MW_View_Helper_FormParam_Default( $view, array( $this->uriBuilder->getArgumentPrefix() ) );
-		$view->addHelper( 'formparam', $helper );
-
-		$helper = new \MW_View_Helper_Encoder_Default( $view );
-		$view->addHelper( 'encoder', $helper );
-
-		return $view;
-	}
-
-
-	/**
-	 * Returns the cache object for the context
-	 *
-	 * @param \MShop_Context_Item_Interface $context Context object including config
-	 * @param string $siteid Unique site ID
-	 * @return \MW_Cache_Interface Cache object
-	 */
-	protected function _getCache( \MShop_Context_Item_Interface $context, $siteid )
-	{
-		$config = $context->getConfig();
-
-		switch( Base::getExtConfig( 'cacheName', 'Typo3' ) )
-		{
-			case 'Typo3':
-				\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
-				$cache = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
-
-				$conf = array( 'siteid' => $config->get( 'mshop/cache/prefix' ) . $siteid );
-				return \MW_Cache_Factory::createManager( 'Typo3', $conf, $cache );
-
-			case 'None':
-				$config->set( 'client/html/basket/cache/enable', false );
-				return \MW_Cache_Factory::createManager( 'None', array(), null );
-
-			default:
-				return new MAdmin_Cache_Proxy_Default( $context );
-		}
-	}
+	private $_context;
+	private static $_locale;
 
 
 	/**
@@ -163,32 +45,25 @@ abstract class AbstractController
 
 
 	/**
-	 * Returns the current context.
+	 * Returns the context item
 	 *
-	 * @return MShop_Context_Item_Interface Context object
+	 * @return \MShop_Context_Item_Interface Context item
 	 */
 	protected function _getContext()
 	{
-		$config = $this->_getConfig();
-
-		if( self::$_context === null )
+		if( !isset( $this->_context ) )
 		{
-			$context = new \MShop_Context_Item_Default();
+			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+			$config = $this->_getConfig( $this->settings );
+			$context = Base::getContext( $config );
 
-			$context->setConfig( $config );
+			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
+			$locale = $this->_getLocale( $context );
+			$langid = $locale->getLanguageId();
 
-			$dbm = new \MW_DB_Manager_PDO( $config );
-			$context->setDatabaseManager( $dbm );
-
-			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
-				$session = new \MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
-			} else {
-				$session = new \MW_Session_None();
-			}
-			$context->setSession( $session );
-
-			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
-			$context->setLogger( $logger );
+			$context->setLocale( $locale );
+			$context->setI18n( Base::getI18n( array( $langid ), $localI18n ) );
+			$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
 			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
 			{
@@ -196,46 +71,10 @@ abstract class AbstractController
 				$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
 			}
 
-			self::$_context = $context;
+			$this->_context = $context;
 		}
 
-		self::$_context->setConfig( $config );
-
-		return self::$_context;
-	}
-
-
-	/**
-	 * Creates new translation objects.
-	 *
-	 * @param array $langIds List of two letter ISO language IDs
-	 * @return array List of translation objects implementing MW_Translation_Interface
-	 */
-	protected function _getI18n( array $languageIds )
-	{
-		$i18nPaths = Base::getAimeos()->getI18nPaths();
-
-		foreach( $languageIds as $langid )
-		{
-			if( !isset( self::$_i18n[$langid] ) )
-			{
-				$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
-
-				if( function_exists( 'apc_store' ) === true && Base::getExtConfig( 'useAPC', false ) == true ) {
-					$i18n = new \MW_Translation_Decorator_APC( $i18n, Base::getExtConfig( 'apcPrefix', 't3:' ) );
-				}
-
-				if( isset( $this->settings['i18n'][$langid] ) )
-				{
-					$translations = Base::parseTranslations( (array) $this->settings['i18n'][$langid] );
-					$i18n = new \MW_Translation_Decorator_Memory( $i18n, $translations );
-				}
-
-				self::$_i18n[$langid] = $i18n;
-			}
-		}
-
-		return self::$_i18n;
+		return $this->_context;
 	}
 
 
@@ -290,35 +129,6 @@ abstract class AbstractController
 
 
 	/**
-	 * Returns the fixed parameters that should be included in every URL
-	 *
-	 * @param \MW_Config_Interface $config Config object
-	 * @return array Associative list of site, language and currency if available
-	 */
-	protected function _getFixedParams( \MW_Config_Interface $config )
-	{
-		$fixed = array();
-
-		$name = $config->get( 'typo3/param/name/site', 'loc-site' );
-		if( $this->request->hasArgument( $name ) === true ) {
-			$fixed[$name] = $this->request->getArgument( $name );
-		}
-
-		$name = $config->get( 'typo3/param/name/language', 'loc-language' );
-		if( $this->request->hasArgument( $name ) === true ) {
-			$fixed[$name] = $this->request->getArgument( $name );
-		}
-
-		$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
-		if( $this->request->hasArgument( $name ) === true ) {
-			$fixed[$name] = $this->request->getArgument( $name );
-		}
-
-		return $fixed;
-	}
-
-
-	/**
 	 * Returns the output of the client and adds the header.
 	 *
 	 * @param Client_Html_Interface $client Html client object
@@ -326,11 +136,31 @@ abstract class AbstractController
 	 */
 	protected function _getClientOutput( \Client_Html_Interface $client )
 	{
-		$client->setView( $this->_createView() );
+		$client->setView( $this->_getContext()->getView() );
 		$client->process();
 
 		$this->response->addAdditionalHeaderData( (string) $client->getHeader() );
 
 		return $client->getBody();
+	}
+
+
+	/**
+	 * Initializes the object before the real action is called.
+	 */
+	protected function initializeAction()
+	{
+		$this->uriBuilder->setArgumentPrefix( 'ai' );
+	}
+
+
+	/**
+	 * Disables Fluid views for performance reasons.
+	 *
+	 * return Tx_Extbase_MVC_View_ViewInterface View object
+	 */
+	protected function resolveView()
+	{
+		return null;
 	}
 }

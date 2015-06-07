@@ -21,10 +21,75 @@ require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_
  */
 class Base
 {
-	static private $_aimeos;
-	static private $_config;
-	static private $_context;
-	static private $_extConfig;
+	private static $_aimeos;
+	private static $_config;
+	private static $_context;
+	private static $_extConfig;
+	private static $_i18n = array();
+
+
+	/**
+	 * Returns the Aimeos object.
+	 *
+	 * @return Aimeos Aimeos object
+	 */
+	public static function getAimeos()
+	{
+		if( self::$_aimeos === null )
+		{
+			$ds = DIRECTORY_SEPARATOR;
+			$libPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
+			$libPath .= 'Resources' . $ds . 'Libraries' . $ds . 'arcavias' . $ds . 'arcavias-core';
+
+			// Hook for processing extension directories
+			$extDirs = array();
+			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
+			{
+				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
+
+				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
+				{
+					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
+					if( !empty( $absPath ) ) {
+						$extDirs[] = $absPath;
+					}
+				}
+			}
+
+			self::$_aimeos = new \Arcavias( $extDirs, false, $libPath );
+		}
+
+		return self::$_aimeos;
+	}
+
+
+	/**
+	 * Returns the cache object for the context
+	 *
+	 * @param \MShop_Context_Item_Interface $context Context object including config
+	 * @param string $siteid Unique site ID
+	 * @return \MW_Cache_Interface Cache object
+	 */
+	protected static function _getCache( \MShop_Context_Item_Interface $context )
+	{
+		$config = $context->getConfig();
+
+		switch( Base::getExtConfig( 'cacheName', 'Typo3' ) )
+		{
+			case 'None':
+				$config->set( 'client/html/basket/cache/enable', false );
+				return \MW_Cache_Factory::createManager( 'None', array(), null );
+
+			case 'Typo3':
+				\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				$manager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
+
+				return new \MAdmin_Cache_Proxy_Typo3( $context, $manager->getCache( 'aimeos' ) );
+
+			default:
+				return new \MAdmin_Cache_Proxy_Default( $context );
+		}
+	}
 
 
 	/**
@@ -67,37 +132,43 @@ class Base
 
 
 	/**
-	 * Returns the Aimeos object.
+	 * Returns the current context.
 	 *
-	 * @return Aimeos Aimeos object
+	 * @param \MW_Config_Interface Configuration object
+	 * @return MShop_Context_Item_Interface Context object
 	 */
-	public static function getAimeos()
+	public static function getContext( \MW_Config_Interface $config )
 	{
-		if( self::$_aimeos === null )
+		if( self::$_context === null )
 		{
-			$ds = DIRECTORY_SEPARATOR;
-			$libPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
-			$libPath .= 'Resources' . $ds . 'Libraries' . $ds . 'arcavias' . $ds . 'arcavias-core';
+			$context = new \MShop_Context_Item_Default();
+			$context->setConfig( $config );
 
-			// Hook for processing extension directories
-			$extDirs = array();
-			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
-			{
-				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
+			$dbm = new \MW_DB_Manager_PDO( $config );
+			$context->setDatabaseManager( $dbm );
 
-				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
-				{
-					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
-					if( !empty( $absPath ) ) {
-						$extDirs[] = $absPath;
-					}
-				}
+			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
+			$context->setLogger( $logger );
+
+			$cache = self::_getCache( $context );
+			$context->setCache( $cache );
+
+			$mailer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
+			$context->setMail( new \MW_Mail_Typo3( $mailer ) );
+
+			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
+				$session = new \MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
+			} else {
+				$session = new \MW_Session_None();
 			}
+			$context->setSession( $session );
 
-			self::$_aimeos = new \Arcavias( $extDirs, false, $libPath );
+			self::$_context = $context;
 		}
 
-		return self::$_aimeos;
+		self::$_context->setConfig( $config );
+
+		return self::$_context;
 	}
 
 
@@ -124,6 +195,108 @@ class Base
 		}
 
 		return $default;
+	}
+
+
+	/**
+	 * Creates new translation objects.
+	 *
+	 * @param array $langIds List of two letter ISO language IDs
+	 * @param array $local List of local translation entries overwriting the standard ones
+	 * @return array List of translation objects implementing MW_Translation_Interface
+	 */
+	public function getI18n( array $languageIds, array $local = array() )
+	{
+		$i18nList = array();
+		$i18nPaths = self::getAimeos()->getI18nPaths();
+
+		foreach( $languageIds as $langid )
+		{
+			if( !isset( self::$_i18n[$langid] ) )
+			{
+				$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
+
+				if( function_exists( 'apc_store' ) === true && self::getExtConfig( 'useAPC', false ) == true ) {
+					$i18n = new \MW_Translation_Decorator_APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
+				}
+
+				self::$_i18n[$langid] = $i18n;
+			}
+
+			$i18nList[$langid] = self::$_i18n[$langid];
+
+			if( isset( $local[$langid] ) )
+			{
+				$translations = self::parseTranslations( (array) $local[$langid] );
+				$i18nList[$langid] = new \MW_Translation_Decorator_Memory( $i18nList[$langid], $translations );
+			}
+		}
+
+		return $i18nList;
+	}
+
+
+	/**
+	 * Creates the view object for the HTML client.
+	 *
+	 * @param \MW_Config_Interface $config Configuration object
+	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
+	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
+	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
+	 * @param string|null $locale Code of the current language or null for no translation
+	 * @return MW_View_Interface View object
+	 */
+	public static function getView( \MW_Config_Interface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
+		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
+	{
+		$params = $fixed = array();
+
+		if( $request !== null && $locale !== null )
+		{
+			$fixed = self::_getFixedParams( $config, $request );
+
+			// required for reloading to the current page
+			$params = $request->getArguments();
+			$params['target'] = $GLOBALS["TSFE"]->id;
+
+			$i18n = Base::getI18n( array( $locale ), $config->get( 'i18n', array() ) );
+			$translation = $i18n[$locale];
+		}
+		else
+		{
+			$translation = new \MW_Translation_None( 'en' );
+		}
+
+
+		$view = new \MW_View_Default();
+
+		$helper = new \MW_View_Helper_Url_Typo3( $view, $uriBuilder, $fixed );
+		$view->addHelper( 'url', $helper );
+
+		$helper = new \MW_View_Helper_Translate_Default( $view, $translation );
+		$view->addHelper( 'translate', $helper );
+
+		$helper = new \MW_View_Helper_Partial_Default( $view, $config, $templatePaths );
+		$view->addHelper( 'partial', $helper );
+
+		$helper = new \MW_View_Helper_Parameter_Default( $view, $params );
+		$view->addHelper( 'param', $helper );
+
+		$helper = new \MW_View_Helper_Config_Default( $view, $config );
+		$view->addHelper( 'config', $helper );
+
+		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
+		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
+		$helper = new \MW_View_Helper_Number_Default( $view, $sepDec, $sep1000 );
+		$view->addHelper( 'number', $helper );
+
+		$helper = new \MW_View_Helper_FormParam_Default( $view, array( $uriBuilder->getArgumentPrefix() ) );
+		$view->addHelper( 'formparam', $helper );
+
+		$helper = new \MW_View_Helper_Encoder_Default( $view );
+		$view->addHelper( 'encoder', $helper );
+
+		return $view;
 	}
 
 
@@ -212,5 +385,36 @@ class Base
 			}
 		}
 		return $typoScriptArray;
+	}
+
+
+	/**
+	 * Returns the fixed parameters that should be included in every URL
+	 *
+	 * @param \MW_Config_Interface $config Config object
+	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request Request object
+	 * @return array Associative list of site, language and currency if available
+	 */
+	protected static function _getFixedParams( \MW_Config_Interface $config,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
+	{
+		$fixed = array();
+
+		$name = $config->get( 'typo3/param/name/site', 'loc-site' );
+		if( $request->hasArgument( $name ) === true ) {
+			$fixed[$name] = $request->getArgument( $name );
+		}
+
+		$name = $config->get( 'typo3/param/name/language', 'loc-language' );
+		if( $request->hasArgument( $name ) === true ) {
+			$fixed[$name] = $request->getArgument( $name );
+		}
+
+		$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
+		if( $request->hasArgument( $name ) === true ) {
+			$fixed[$name] = $request->getArgument( $name );
+		}
+
+		return $fixed;
 	}
 }

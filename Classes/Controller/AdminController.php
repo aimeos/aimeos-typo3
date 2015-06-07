@@ -21,28 +21,19 @@ use Aimeos\Aimeos\Base;
  */
 class AdminController extends AbstractController
 {
+	private $_context;
 	private $_controller;
 
 
-	public function __construct()
-	{
-		parent::__construct();
-
-		$cntlPaths = Base::getAimeos()->getCustomPaths( 'controller/extjs' );
-		$this->_controller = new \Controller_ExtJS_JsonRpc( $this->_getContext(), $cntlPaths );
-	}
-
-
 	/**
-	 * Sends the index file for the admin interface.
-	 *
-	 * @return Index file
+	 * Generates the index file for the admin interface.
 	 */
 	public function indexAction()
 	{
 		$html = '';
 		$abslen = strlen( PATH_site );
 		$langid = $this->_getContext()->getLocale()->getLanguageId();
+		$controller = $this->_getController();
 
 		foreach( Base::getAimeos()->getCustomPaths( 'client/extjs' ) as $base => $paths )
 		{
@@ -71,9 +62,9 @@ class AdminController extends AbstractController
 		$this->view->assign( 'i18nContent', $this->_getJsonClientI18n( $langid ) );
 		$this->view->assign( 'config', $this->_getJsonClientConfig() );
 		$this->view->assign( 'site', $this->_getSite( $this->request ) );
-		$this->view->assign( 'smd', $this->_controller->getJsonSmd( $serviceUrl ) );
-		$this->view->assign( 'itemSchemas', $this->_controller->getJsonItemSchemas() );
-		$this->view->assign( 'searchSchemas', $this->_controller->getJsonSearchSchemas() );
+		$this->view->assign( 'smd', $controller->getJsonSmd( $serviceUrl ) );
+		$this->view->assign( 'itemSchemas', $controller->getJsonItemSchemas() );
+		$this->view->assign( 'searchSchemas', $controller->getJsonSearchSchemas() );
 		$this->view->assign( 'activeTab', ( $this->request->hasArgument( 'tab' ) ? (int) $this->request->getArgument( 'tab' ) : 0 ) );
 		$this->view->assign( 'urlTemplate', $urlTemplate );
 	}
@@ -86,51 +77,53 @@ class AdminController extends AbstractController
 	 */
 	public function doAction()
 	{
-		$this->view->assign( 'response', $this->_controller->process( \TYPO3\CMS\Core\Utility\GeneralUtility::_POST(), 'php://input' ) );
+		$param = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
+		$this->view->assign( 'response', $this->_getController()->process( $param, 'php://input' ) );
 	}
 
 
 	/**
-	 * Initializes the object before the real action is called.
-	 */
-	protected function initializeAction()
-	{
-		$langid = 'en';
-		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
-			$langid = $GLOBALS['BE_USER']->uc['lang'];
-		}
-
-		$context = $this->_getContext();
-		
-		$conf = $this->_getConfig( ( is_array( $this->settings ) ? $this->settings : array() ) );
-		$context->setConfig( $conf );
-
-		$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
-		
-		try {
-			$sitecode = $conf->get( 'mshop/locale/site', 'default' );
-			$localeItem = $localeManager->bootstrap( $sitecode, $langid, '', false );
-		} catch( \MShop_Locale_Exception $e ) {
-			$localeItem = $localeManager->createItem();
-		}
-
-		$localeItem->setLanguageId( $langid );
-		$context->setLocale( $localeItem );
-
-		$context->setCache( $this->_getCache( $context, $localeItem->getSiteId() ) );
-		$context->setI18n( $this->_getI18n( array( $langid ) ) );
-		$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
-	}
-
-
-	/**
-	 * Uses default view.
+	 * Returns the context item
 	 *
-	 * return Tx_Extbase_MVC_View_ViewInterface View object
+	 * @return \MShop_Context_Item_Interface Context item
 	 */
-	protected function resolveView()
+	protected function _getContext()
 	{
-		return \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::resolveView();
+		if( !isset( $this->_context ) )
+		{
+			$config = $this->_getConfig( $this->settings );
+			$context = Base::getContext( $config );
+
+			$localeItem = $this->_getLocale( $context );
+			$context->setLocale( $localeItem );
+
+			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
+			$i18n = Base::getI18n( array( $localeItem->getLanguageId() ), $localI18n );
+
+			$context->setI18n( $i18n );
+			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
+
+			$this->_context = $context;
+		}
+
+		return $this->_context;
+	}
+
+
+	/**
+	 * Returns the ExtJS JSON RPC controller
+	 *
+	 * @return \Controller_ExtJS_JsonRpc ExtJS JSON RPC controller
+	 */
+	protected function _getController()
+	{
+		if( !isset( $this->_controller ) )
+		{
+			$cntlPaths = Base::getAimeos()->getCustomPaths( 'controller/extjs' );
+			$this->_controller = new \Controller_ExtJS_JsonRpc( $this->_getContext(), $cntlPaths );
+		}
+
+		return $this->_controller;
 	}
 
 
@@ -141,8 +134,8 @@ class AdminController extends AbstractController
 	 */
 	protected function _getJsonClientConfig()
 	{
-		$config = $this->_getContext()->getConfig()->get( 'client/extjs', array() );
-		return json_encode( array( 'client' => array( 'extjs' => $config ) ), JSON_FORCE_OBJECT );
+		$conf = $this->_getContext()->getConfig()->get( 'client/extjs', array() );
+		return json_encode( array( 'client' => array( 'extjs' => $conf ) ), JSON_FORCE_OBJECT );
 	}
 
 
@@ -163,6 +156,34 @@ class AdminController extends AbstractController
 		);
 
 		return json_encode( $content, JSON_FORCE_OBJECT );
+	}
+
+
+	/**
+	 * Returns the locale object for the context
+	 *
+	 * @param \MShop_Context_Item_Interface $context Context object
+	 * @return \MShop_Locale_Item_Interface Locale item object
+	 */
+	protected function _getLocale( \MShop_Context_Item_Interface $context )
+	{
+		$langid = 'en';
+		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+			$langid = $GLOBALS['BE_USER']->uc['lang'];
+		}
+
+		$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
+
+		try {
+			$sitecode = $context->getConfig()->get( 'mshop/locale/site', 'default' );
+			$localeItem = $localeManager->bootstrap( $sitecode, $langid, '', false );
+		} catch( \MShop_Locale_Exception $e ) {
+			$localeItem = $localeManager->createItem();
+		}
+
+		$localeItem->setLanguageId( $langid );
+
+		return $localeItem;
 	}
 
 
@@ -192,5 +213,16 @@ class AdminController extends AbstractController
 		}
 
 		return json_encode( $item->toArray() );
+	}
+
+
+	/**
+	 * Uses default view.
+	 *
+	 * return Tx_Extbase_MVC_View_ViewInterface View object
+	 */
+	protected function resolveView()
+	{
+		return \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::resolveView();
 	}
 }

@@ -38,10 +38,11 @@ class CheckoutController extends AbstractController
 	 */
 	public function confirmAction()
 	{
+		$context = $this->_getContext();
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Checkout_Confirm_Factory::createClient( $this->_getContext(), $templatePaths );
+		$client = \Client_Html_Checkout_Confirm_Factory::createClient( $context, $templatePaths );
 
-		$view = $this->_createView();
+		$view = $context->getView();
 		$helper = new \MW_View_Helper_Parameter_Default( $view, $_REQUEST );
 		$view->addHelper( 'param', $helper );
 
@@ -61,10 +62,11 @@ class CheckoutController extends AbstractController
 	{
 		try
 		{
+			$context = $this->_getContext();
 			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = \Client_Html_Checkout_Update_Factory::createClient( $this->_getContext(), $templatePaths );
+			$client = \Client_Html_Checkout_Update_Factory::createClient( $context, $templatePaths );
 
-			$view = $this->_createView();
+			$view = $context->getView();
 			$helper = new \MW_View_Helper_Parameter_Default( $view, $_REQUEST );
 			$view->addHelper( 'param', $helper );
 
