@@ -12,6 +12,8 @@ class CheckoutControllerTest
 
 	public function setUp()
 	{
+		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
+
 		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\CheckoutController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
@@ -19,7 +21,7 @@ class CheckoutControllerTest
 		$uriBuilder = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder' );
 		$response = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response' );
 		$request = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' );
-		
+
 		$uriBuilder->setRequest( $request );
 
 		if( method_exists( $response, 'setRequest' ) ) {

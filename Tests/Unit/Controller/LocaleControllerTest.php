@@ -12,6 +12,8 @@ class LocaleControllerTest
 
 	public function setUp()
 	{
+		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
+
 		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\LocaleController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();

@@ -12,6 +12,8 @@ class AdminControllerTest
 
 	public function setUp()
 	{
+		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
+
 		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AdminController', array( 'dummy' ) );
 		$this->_view = $this->getMock( 'TYPO3\\CMS\\Fluid\\View\\TemplateView', array(), array(), '', false );
 
@@ -20,7 +22,7 @@ class AdminControllerTest
 		$uriBuilder = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder' );
 		$response = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response' );
 		$request = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' );
-		
+
 		$uriBuilder->setRequest( $request );
 
 		if( method_exists( $response, 'setRequest' ) ) {
