@@ -53,12 +53,12 @@ abstract class Email extends AbstractProvider
 
 		$taskInfo[$this->_fieldSenderFrom] = htmlspecialchars( $taskInfo[$this->_fieldSenderFrom], ENT_QUOTES, 'UTF-8' );
 
-		$fieldStr = '<input name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
 		$fieldCode = sprintf( $fieldStr, $this->_fieldSenderFrom, $taskInfo[$this->_fieldSenderFrom] );
 
 		$additionalFields[$this->_fieldSenderFrom] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.label.from-name',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.from-name',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldSenderFrom
 		);
@@ -71,12 +71,12 @@ abstract class Email extends AbstractProvider
 
 		$taskInfo[$this->_fieldSenderEmail] = htmlspecialchars( $taskInfo[$this->_fieldSenderEmail], ENT_QUOTES, 'UTF-8' );
 
-		$fieldStr = '<input name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
 		$fieldCode = sprintf( $fieldStr, $this->_fieldSenderEmail, $taskInfo[$this->_fieldSenderEmail] );
 
 		$additionalFields[$this->_fieldSenderEmail] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.label.from-email',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.from-email',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldSenderEmail
 		);
@@ -89,12 +89,12 @@ abstract class Email extends AbstractProvider
 
 		$taskInfo[$this->_fieldReplyEmail] = htmlspecialchars( $taskInfo[$this->_fieldReplyEmail], ENT_QUOTES, 'UTF-8' );
 
-		$fieldStr = '<input name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
 		$fieldCode = sprintf( $fieldStr, $this->_fieldReplyEmail, $taskInfo[$this->_fieldReplyEmail] );
 
 		$additionalFields[$this->_fieldReplyEmail] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.label.reply-email',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.reply-email',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldReplyEmail
 		);
@@ -107,12 +107,12 @@ abstract class Email extends AbstractProvider
 
 		$taskInfo[$this->_fieldPageDetail] = htmlspecialchars( $taskInfo[$this->_fieldPageDetail], ENT_QUOTES, 'UTF-8' );
 
-		$fieldStr = '<input name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
 		$fieldCode = sprintf( $fieldStr, $this->_fieldPageDetail, $taskInfo[$this->_fieldPageDetail] );
 
 		$additionalFields[$this->_fieldPageDetail] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.label.page-detail',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-detail',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldPageDetail
 		);
@@ -125,12 +125,12 @@ abstract class Email extends AbstractProvider
 
 		$taskInfo[$this->_fieldContentBaseurl] = htmlspecialchars( $taskInfo[$this->_fieldContentBaseurl], ENT_QUOTES, 'UTF-8' );
 
-		$fieldStr = '<input name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
 		$fieldCode = sprintf( $fieldStr, $this->_fieldContentBaseurl, $taskInfo[$this->_fieldContentBaseurl] );
 
 		$additionalFields[$this->_fieldContentBaseurl] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.label.content-baseurl',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.content-baseurl',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldContentBaseurl
 		);

@@ -53,13 +53,13 @@ abstract class AbstractProvider
 
 		$taskInfo[$this->_fieldController] = (array) $taskInfo[$this->_fieldController];
 
-		$fieldCode = sprintf( '<select name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldController );
+		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldController );
 		$fieldCode .= $this->_getControllerOptions( $taskInfo[$this->_fieldController] );
 		$fieldCode .= '</select>';
 
 		$additionalFields[$this->_fieldController] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.label.controller',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.controller',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldController
 		);
@@ -72,13 +72,13 @@ abstract class AbstractProvider
 
 		$taskInfo[$this->_fieldSite] = (array) $taskInfo[$this->_fieldSite];
 
-		$fieldCode = sprintf( '<select name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldSite );
+		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldSite );
 		$fieldCode .= $this->_getSiteOptions( $this->_getAvailableSites(), $taskInfo[$this->_fieldSite], 0 );
 		$fieldCode .= '</select>';
 
 		$additionalFields[$this->_fieldSite] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.label.sitecode',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.sitecode',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldSite
 		);
@@ -91,12 +91,12 @@ abstract class AbstractProvider
 
 		$taskInfo[$this->_fieldTSconfig] = htmlspecialchars( $taskInfo[$this->_fieldTSconfig], ENT_QUOTES, 'UTF-8' );
 
-		$fieldStr = '<textarea name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
+		$fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
 		$fieldCode = sprintf( $fieldStr, $this->_fieldTSconfig, $taskInfo[$this->_fieldTSconfig] );
 
 		$additionalFields[$this->_fieldTSconfig] = array(
 			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.label.tsconfig',
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.tsconfig',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->_fieldTSconfig
 		);
