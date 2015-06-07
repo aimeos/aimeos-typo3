@@ -29,7 +29,7 @@ class Wizicon
 		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 		$relpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath( 'aimeos' );
 
-		$file = $path . 'Resources/Private/Language/Extension.xml';
+		$file = $path . 'Resources/Private/Language/extension.xlf';
 		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( $file, $GLOBALS['LANG']->lang );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
