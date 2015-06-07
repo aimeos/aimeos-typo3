@@ -38,7 +38,6 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
 					<config>
 						<type>text</type>
-						<size>40</size>
 						<rows>10</rows>
 					</config>
 				</TCEforms>
