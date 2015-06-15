@@ -10,6 +10,9 @@
 
 namespace Aimeos\Aimeos\Scheduler\Task;
 
+use Aimeos\Aimeos\Base;
+use Aimeos\Aimeos\Scheduler;
+
 
 /**
  * Aimeos e-mail scheduler.
@@ -26,23 +29,26 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	private $_fieldReplyEmail = 'aimeos_reply_email';
 	private $_fieldPageDetail = 'aimeos_pageid_detail';
 	private $_fieldContentBaseurl = 'aimeos_content_baseurl';
+	private $_fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
 
 	/**
 	 * Executes the configured tasks.
 	 *
-	 * @return boolean True if success, false if not
+	 * @return boolean True if success
 	 * @throws Exception If an error occurs
 	 */
 	public function execute()
 	{
-		$langid = 'en';
-		if( isset( $GLOBALS['BE_USER']->user['lang'] ) && $GLOBALS['BE_USER']->user['lang'] != '' ) {
-			$langid = $GLOBALS['BE_USER']->user['lang'];
+		$conf = Base::parseTS( $this->{$this->_fieldTSconfig} );
+
+		if( !isset( $conf['client']['html']['catalog']['detail']['url']['config'] ) ) {
+			$conf['client']['html']['catalog']['detail']['url']['config'] = array(
+				'plugin' => 'catalog-detail',
+				'extension' => 'aimeos',
+				'absoluteUri' => 1,
+			);
 		}
-
-
-		$conf = \Aimeos\Aimeos\Base::parseTS( $this->{$this->_fieldTSconfig} );
 
 		if( $this->{$this->_fieldSenderFrom} != '' ) {
 			$conf['client']['html']['email']['from-name'] = $this->{$this->_fieldSenderFrom};
@@ -56,28 +62,30 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			$conf['client']['html']['email']['reply-email'] = $this->{$this->_fieldReplyEmail};
 		}
 
-		if( $this->{$this->_fieldContentBaseurl} != '' ) {
-			$conf['client']['html']['common']['content']['baseurl'] = $this->{$this->_fieldContentBaseurl};
-		}
-
 		if( $this->{$this->_fieldPageDetail} != '' ) {
 			$conf['client']['html']['catalog']['detail']['url']['target'] = $this->{$this->_fieldPageDetail};
 		}
 
-		$context = \Aimeos\Aimeos\Scheduler\Base::getContext( $conf );
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-
-		$manager = \MShop_Locale_Manager_Factory::createManager( $context );
-
-		foreach( (array) $this->{$this->_fieldSite} as $sitecode )
-		{
-			$localeItem = $manager->bootstrap( $sitecode, $langid, '', false );
-			$context->setLocale( $localeItem );
-
-			foreach( (array) $this->{$this->_fieldController} as $name ) {
-				\Controller_Jobs_Factory::createController( $context, $aimeos, $name )->run();
-			}
+		if( $this->{$this->_fieldContentBaseurl} != '' ) {
+			$conf['client']['html']['common']['content']['baseurl'] = $this->{$this->_fieldContentBaseurl};
 		}
+
+		if( $this->{$this->_fieldTemplateBaseurl} != '' )
+		{
+			$themeDir = $this->{$this->_fieldTemplateBaseurl};
+
+			if( $themeDir != '' && $themeDir[0] !== '/' ) {
+				realpath( PATH_site . $themeDir );
+			}
+
+			$conf['client']['html']['common']['template']['baseurl'] = $this->{$this->_fieldTemplateBaseurl};
+		}
+
+		Scheduler\Base::initFrontend( $this->{$this->_fieldPageDetail} );
+
+		$context = Scheduler\Base::getContext( $conf );
+
+		Scheduler\Base::execute( $context, $this->{$this->_fieldController}, $this->{$this->_fieldSite} );
 
 		return true;
 	}

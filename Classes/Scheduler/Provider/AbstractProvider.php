@@ -54,7 +54,7 @@ abstract class AbstractProvider
 		$taskInfo[$this->_fieldController] = (array) $taskInfo[$this->_fieldController];
 
 		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldController );
-		$fieldCode .= $this->_getControllerOptions( $taskInfo[$this->_fieldController] );
+		$fieldCode .= $this->_getControllerOptions( $taskInfo[$this->_fieldController], $this->_getJobFilter() );
 		$fieldCode .= '</select>';
 
 		$additionalFields[$this->_fieldController] = array(
@@ -144,18 +144,9 @@ abstract class AbstractProvider
 
 
 		$context = Scheduler\Base::getContext();
+		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->_fieldSite] );
 
-
-		$manager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'site' );
-
-		$search = $manager->createSearch( true );
-		$expr = array(
-			$search->compare( '==', 'locale.site.code', $submittedData[$this->_fieldSite] ),
-			$search->getConditions(),
-		);
-		$search->setConditions( $search->combine( '&&', $expr ) );
-
-		if( count( $manager->searchItems( $search ) ) !== count( $submittedData[$this->_fieldSite] ) ) {
+		if( count( $siteItems ) !== count( $submittedData[$this->_fieldSite] ) ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode' ) );
 		}
 
@@ -178,8 +169,7 @@ abstract class AbstractProvider
 	 */
 	protected function _getAvailableSites()
 	{
-		$context = Scheduler\Base::getContext();
-		$manager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'site' );
+		$manager = \MShop_Factory::createManager( Scheduler\Base::getContext(), 'locale/site' );
 
 		$search = $manager->createSearch();
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
@@ -192,6 +182,17 @@ abstract class AbstractProvider
 		}
 
 		return $sites;
+	}
+
+
+	/**
+	 * Returns the string that must be part of the controller names
+	 *
+	 * @return string|null Controller name part
+	 */
+	protected function _getJobFilter()
+	{
+		return null;
 	}
 
 
@@ -227,19 +228,33 @@ abstract class AbstractProvider
 	 * Returns the HTML code for the controller control.
 	 *
 	 * @param array $selected List of site codes that were previously selected by the user
+	 * @param string|null $filter String that must be part of the controller name
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function _getControllerOptions( array $selected )
+	protected function _getControllerOptions( array $selected, $filter = null )
 	{
 		$html = '';
 		$aimeos = Base::getAimeos();
 		$context = Scheduler\Base::getContext();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
+		$langid = 'en';
+		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+			$langid = $GLOBALS['BE_USER']->uc['lang'];
+		}
+
+		$localeItem = \MShop_Factory::createManager( $context, 'locale' )->createItem();
+		$localeItem->setLanguageId( $langid );
+		$context->setLocale( $localeItem );
+
 		$controllers = \Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
 
 		foreach( $controllers as $name => $controller )
 		{
+			if( $filter !== null && strstr( $name, $filter ) === false ) {
+				continue;
+			}
+
 			$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
 			$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
 			$cntl = htmlspecialchars( $controller->getName(), ENT_QUOTES, 'UTF-8' );

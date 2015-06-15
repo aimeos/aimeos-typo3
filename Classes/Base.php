@@ -270,7 +270,12 @@ class Base
 
 		$view = new \MW_View_Default();
 
-		$helper = new \MW_View_Helper_Url_Typo3( $view, $uriBuilder, $fixed );
+		// workaround for TYPO3 6.2 bug (UriBuilder is incomplete)
+		if( \TYPO3\CMS\Core\Utility\VersionNumberUtility::getNumericTypo3Version() >= '7.0.0' ) {
+			$helper = new \MW_View_Helper_Url_Typo3( $view, $uriBuilder, $fixed );
+		} else {
+			$helper = new \MW_View_Helper_Url_None( $view );
+		}
 		$view->addHelper( 'url', $helper );
 
 		$helper = new \MW_View_Helper_Translate_Default( $view, $translation );

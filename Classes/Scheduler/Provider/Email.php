@@ -10,6 +10,9 @@
 
 namespace Aimeos\Aimeos\Scheduler\Provider;
 
+use Aimeos\Aimeos\Base;
+use Aimeos\Aimeos\Scheduler;
+
 
 /**
  * Common methods for Aimeos' e-mail additional field providers.
@@ -23,6 +26,18 @@ abstract class Email extends AbstractProvider
 	private $_fieldReplyEmail = 'aimeos_reply_email';
 	private $_fieldPageDetail = 'aimeos_pageid_detail';
 	private $_fieldContentBaseurl = 'aimeos_content_baseurl';
+	private $_fieldTemplateBaseurl = 'aimeos_template_baseurl';
+
+
+	/**
+	 * Returns the string that must be part of the controller names
+	 *
+	 * @return string|null Controller name part
+	 */
+	protected function _getJobFilter()
+	{
+		return 'email';
+	}
 
 
 	/**
@@ -136,6 +151,28 @@ abstract class Email extends AbstractProvider
 		);
 
 
+		// In case of editing a task, set to the internal value if data wasn't already submitted
+		if( empty( $taskInfo[$this->_fieldTemplateBaseurl] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->_fieldTemplateBaseurl] = $task->{$this->_fieldTemplateBaseurl};
+		}
+
+		$taskInfo[$this->_fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->_fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8' );
+
+		if( $taskInfo[$this->_fieldTemplateBaseurl] == '' ) {
+			$taskInfo[$this->_fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/elegance';
+		}
+
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldCode = sprintf( $fieldStr, $this->_fieldTemplateBaseurl, $taskInfo[$this->_fieldTemplateBaseurl] );
+
+		$additionalFields[$this->_fieldTemplateBaseurl] = array(
+				'code'     => $fieldCode,
+				'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.template-baseurl',
+				'cshKey'   => 'xMOD_tx_aimeos',
+				'cshLabel' => $this->_fieldTemplateBaseurl
+		);
+
+
 		$additionalFields += parent::_getAdditionalFields( $taskInfo, $task, $parentObject );
 
 		return $additionalFields;
@@ -159,6 +196,7 @@ abstract class Email extends AbstractProvider
 		$task->{$this->_fieldReplyEmail} = $submittedData[$this->_fieldReplyEmail];
 		$task->{$this->_fieldPageDetail} = $submittedData[$this->_fieldPageDetail];
 		$task->{$this->_fieldContentBaseurl} = $submittedData[$this->_fieldContentBaseurl];
+		$task->{$this->_fieldTemplateBaseurl} = $submittedData[$this->_fieldTemplateBaseurl];
 	}
 
 
@@ -196,37 +234,5 @@ abstract class Email extends AbstractProvider
 		parent::_validateAdditionalFields( $submittedData, $parentObject );
 
 		return true;
-	}
-
-
-	/**
-	 * Returns the HTML code for the controller control.
-	 *
-	 * @param array $selected List of site codes that were previously selected by the user
-	 * @return string HTML code with <option> tags for the select box
-	 */
-	protected function _getControllerOptions( array $selected )
-	{
-		$html = '';
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-		$context = \Aimeos\Aimeos\Scheduler\Base::getContext();
-		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
-
-		$controllers = \Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
-
-		foreach( $controllers as $name => $controller )
-		{
-			if( strstr( $name, 'email' ) !== false )
-			{
-				$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
-				$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
-				$cntl = htmlspecialchars( $controller->getName(), ENT_QUOTES, 'UTF-8' );
-				$name = htmlspecialchars( $name, ENT_QUOTES, 'UTF-8' );
-
-				$html .= sprintf( '<option value="%1$s" title="%2$s" %3$s>%4$s</option>', $name, $title, $active, $cntl );
-			}
-		}
-
-		return $html;
 	}
 }

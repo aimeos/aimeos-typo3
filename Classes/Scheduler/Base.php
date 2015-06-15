@@ -24,75 +24,29 @@ class Base
 
 
 	/**
-	 * Creates the view object for the HTML client.
+	 * Execute the list of jobs for the given sites
 	 *
-	 * @param MW_Config_Interface $config Configuration object
-	 * @return MW_View_Interface View object
+	 * @param \MShop_Context_Item_Interface $context Context item
+	 * @param array $jobs List of job names
+	 * @param string $sites List of site names
 	 */
-	public static function createView( \MW_Config_Interface $config )
+	public static function execute( \MShop_Context_Item_Interface $context, array $jobs, $sites )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
-		$templatePaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
+		$manager = \MShop_Factory::createManager( $context, 'locale' );
 
-		$view = new \MW_View_Default();
-
-		$helper = new \MW_View_Helper_Config_Default( $view, $config );
-		$view->addHelper( 'config', $helper );
-
-		$helper = new \MW_View_Helper_Partial_Default( $view, $config, $templatePaths );
-		$view->addHelper( 'partial', $helper );
-
-		$helper = new \MW_View_Helper_Parameter_Default( $view, array() );
-		$view->addHelper( 'param', $helper );
-
-		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
-		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
-		$helper = new \MW_View_Helper_Number_Default( $view, $sepDec, $sep1000 );
-		$view->addHelper( 'number', $helper );
-
-		$helper = new \MW_View_Helper_Url_None( $view );
-		$view->addHelper( 'url', $helper );
-
-		$helper = new \MW_View_Helper_FormParam_Default( $view, array( 'ai' ) );
-		$view->addHelper( 'formparam', $helper );
-
-		$helper = new \MW_View_Helper_Encoder_Default( $view );
-		$view->addHelper( 'encoder', $helper );
-
-		return $view;
-	}
-
-
-	/**
-	 * Executes the jobs.
-	 *
-	 * @param array $sitecodes List of site codes
-	 * @param array $controllers List of controller names
-	 * @param string $tsconfig TypoScript configuration string
-	 * @param string $langid Two letter ISO language code of the backend user
-	 * @throws Controller_Jobs_Exception If a job can't be executed
-	 * @throws MShop_Exception If an error in a manager occurs
-	 * @throws MW_DB_Exception If a dataAimeos\Base error occurs
-	 */
-	public static function execute( array $sitecodes, array $controllers, $tsconfig, $langid )
-	{
-		$conf = Aimeos\Base::parseTS( $tsconfig );
-		$context = self::getContext( $conf );
-		$aimeos = Aimeos\Base::getAimeos();
-
-		$manager = \MShop_Locale_Manager_Factory::createManager( $context );
-
-		foreach( $sitecodes as $sitecode )
+		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
 		{
-			$localeItem = $manager->bootstrap( $sitecode, $langid, '', false );
+			$localeItem = $manager->bootstrap( $siteItem->getCode(), '', '', false );
+			$localeItem->setLanguageId( null );
+			$localeItem->setCurrencyId( null );
+
 			$context->setLocale( $localeItem );
 
-			foreach( (array) $controllers as $name ) {
-				\Controller_Jobs_Factory::createController( $context, $aimeos, $name )->run();
+			foreach( $jobs as $jobname ) {
+				\Controller_Jobs_Factory::createController( $context, $aimeos, $jobname )->run();
 			}
 		}
-
-		return true;
 	}
 
 
@@ -106,39 +60,27 @@ class Base
 	{
 		if( self::$_context === null )
 		{
-			// Important! Sets include paths
 			$aimeos = Aimeos\Base::getAimeos();
-			$context = new \MShop_Context_Item_Default();
+			$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
+			$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html' ) );
 
+			$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
+			$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
+			$uriBuilder->setArgumentPrefix( 'ai' );
 
-			$conf = Aimeos\Base::getConfig( $localConf );
-			$context->setConfig( $conf );
+			$config = Aimeos\Base::getConfig( $localConf );
+			$context = Aimeos\Base::getContext( $config );
 
-			$dbm = new \MW_DB_Manager_PDO( $conf );
-			$context->setDataBaseManager( $dbm );
+			$langManager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'language' );
+			$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
 
-			$cache = new \MW_Cache_None();
-			$context->setCache( $cache );
-
-			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
-			$context->setLogger( $logger );
-
-			$mail = new \MW_Mail_Typo3( \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Mail\\MailMessage' ) );
-			$context->setMail( $mail );
-
-			$i18n = self::_createI18n( $context, $aimeos->getI18nPaths() );
+			$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
 			$context->setI18n( $i18n );
 
-			$view = self::createView( $conf );
+			$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
 			$context->setView( $view );
 
 			$context->setEditor( 'scheduler' );
-
-			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
-			$localeItem = $localeManager->createItem();
-			$localeItem->setLanguageId( 'en' );
-			$context->setLocale( $localeItem );
-
 
 			self::$_context = $context;
 		}
@@ -148,31 +90,57 @@ class Base
 
 
 	/**
-	 * Creates new translation objects.
+	 * Returns the enabled site items which may be limited by the input arguments.
 	 *
-	 * @param MShop_Context_Item_Interface $context Context object
-	 * @param array List of paths to the i18n files
-	 * @return array List of translation objects implementing MW_Translation_Interface
+	 * @param \MShop_Context_Item_Interface $context Context item object
+	 * @param string $sites Unique site codes
+	 * @return \MShop_Locale_Item_Site_Interface[] List of site items
 	 */
-	protected static function _createI18n( \MShop_Context_Item_Interface $context, array $i18nPaths )
+	public static function getSiteItems( \MShop_Context_Item_Interface $context, $sites )
 	{
-		$list = array();
-		$config = $context->getConfig();
-		$langManager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'language' );
-
-		foreach( $langManager->searchItems( $langManager->createSearch( true ) ) as $id => $langItem )
-		{
-			$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $id, array( 'disableNotices' => true ) );
-
-			if( ( $entries = $config->get( 'i18n/' . $id ) ) !== null )
-			{
-				$translations = Aimeos\Base::parseTranslations( (array) $entries );
-				$i18n = new \MW_Translation_Decorator_Memory( $i18n, $translations );
-			}
-
-			$list[$id] = $i18n;
+		if( !is_array( $sites )  ) {
+			$sites = explode( ' ', $sites );
 		}
 
-		return $list;
+		$manager = \MShop_Factory::createManager( $context, 'locale/site' );
+		$search = $manager->createSearch();
+
+		if( !empty( $sites ) ) {
+			$search->setConditions( $search->compare( '==', 'locale.site.code', $sites ) );
+		}
+
+		return $manager->searchItems( $search );
+	}
+
+
+	/**
+	 * Initializes the frontend to render frontend links in scheduler tasks
+	 *
+	 * @param integer $pageid Page ID for the frontend configuration
+	 */
+	public static function initFrontend( $pageid )
+	{
+		$type = 0;
+		$name = 'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController';
+
+		if( !is_object( $GLOBALS['TT'] ) )
+		{
+			$GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\TimeTracker();
+			$GLOBALS['TT']->start();
+		}
+
+		$GLOBALS['TSFE'] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $name,  $GLOBALS['TYPO3_CONF_VARS'], $pageid, $type );
+		$GLOBALS['TSFE']->connectToDB();
+		$GLOBALS['TSFE']->initFEuser();
+		$GLOBALS['TSFE']->determineId();
+		$GLOBALS['TSFE']->initTemplate();
+		$GLOBALS['TSFE']->getConfigArray();
+
+		if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'realurl' ) )
+		{
+			$rootline = \TYPO3\CMS\Backend\Utility\BackendUtility::BEgetRootLine( $pageid );
+			$host = \TYPO3\CMS\Backend\Utility\BackendUtility::firstDomainRecord( $rootline );
+			$_SERVER['HTTP_HOST'] = $host;
+		}
 	}
 }

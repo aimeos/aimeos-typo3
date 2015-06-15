@@ -10,6 +10,9 @@
 
 namespace Aimeos\Aimeos\Scheduler\Task;
 
+use Aimeos\Aimeos\Base;
+use Aimeos\Aimeos\Scheduler;
+
 
 /**
  * Aimeos scheduler.
@@ -31,15 +34,15 @@ class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	 */
 	public function execute()
 	{
-		$langid = 'en';
-		if( isset( $GLOBALS['BE_USER']->user['lang'] ) && $GLOBALS['BE_USER']->user['lang'] != '' ) {
-			$langid = $GLOBALS['BE_USER']->user['lang'];
-		}
-
 		$sitecodes = (array) $this->{$this->_fieldSite};
 		$controllers = (array) $this->{$this->_fieldController};
 		$tsconfig = $this->{$this->_fieldTSconfig};
 
-		return \Aimeos\Aimeos\Scheduler\Base::execute( $sitecodes, $controllers, $tsconfig, $langid );
+		$conf = Base::parseTS( $tsconfig );
+		$context = Scheduler\Base::getContext( $conf );
+
+		Scheduler\Base::execute( $context, $controllers, $sitecodes );
+
+		return true;
 	}
 }
