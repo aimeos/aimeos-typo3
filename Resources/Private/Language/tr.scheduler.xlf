@@ -66,6 +66,9 @@
 				<source>Base URL to the product images</source>
 				<target>Ürün resimlerine temel URL</target>
 			</trans-unit>
+			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
+				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
 				<target>Gönderen e-mail adresi geçersiz veya hiçbiri girilmedi</target>

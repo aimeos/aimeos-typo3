@@ -66,6 +66,10 @@
 				<source>Base URL to the product images</source>
 				<target>Basis-URL zu den Produktbildern inklusive der Domain, z.B. https://aimeos.org/uploads/tx_aimeos</target>
 			</trans-unit>
+			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
+				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+				<target>Absoluter Pfad oder Pfad relativ vom TYPO3 Basisverzeichnis zu den CSS Dateien des Themes</target>
+			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
 				<target>Die Absender E-Mailadresse ist ungültig oder es wurde keine eingetragen</target>
