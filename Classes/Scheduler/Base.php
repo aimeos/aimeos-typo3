@@ -20,9 +20,6 @@ use Aimeos\Aimeos;
  */
 class Base
 {
-	static private $context;
-
-
 	/**
 	 * Execute the list of jobs for the given sites
 	 *
@@ -58,34 +55,29 @@ class Base
 	 */
 	public static function getContext( array $localConf = array() )
 	{
-		if( self::$context === null )
-		{
-			$aimeos = Aimeos\Base::getAimeos();
-			$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
-			$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html' ) );
+		$aimeos = Aimeos\Base::getAimeos();
+		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
+		$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html' ) );
 
-			$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
-			$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
-			$uriBuilder->setArgumentPrefix( 'ai' );
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
+		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
+		$uriBuilder->setArgumentPrefix( 'ai' );
 
-			$config = Aimeos\Base::getConfig( $localConf );
-			$context = Aimeos\Base::getContext( $config );
+		$config = Aimeos\Base::getConfig( $localConf );
+		$context = Aimeos\Base::getContext( $config );
 
-			$langManager = \MShop_Locale_Manager_Factory::createManager( $context )->getSubManager( 'language' );
-			$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
+		$langManager = \MShop_Factory::createManager( $context, 'locale/language' );
+		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
 
-			$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
-			$context->setI18n( $i18n );
+		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
+		$context->setI18n( $i18n );
 
-			$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
-			$context->setView( $view );
+		$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
+		$context->setView( $view );
 
-			$context->setEditor( 'scheduler' );
+		$context->setEditor( 'scheduler' );
 
-			self::$context = $context;
-		}
-
-		return self::$context;
+		return $context;
 	}
 
 

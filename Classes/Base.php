@@ -205,7 +205,7 @@ class Base
 	 * @param array $local List of local translation entries overwriting the standard ones
 	 * @return array List of translation objects implementing MW_Translation_Interface
 	 */
-	public function getI18n( array $languageIds, array $local = array() )
+	public static function getI18n( array $languageIds, array $local = array() )
 	{
 		$i18nList = array();
 		$i18nPaths = self::getAimeos()->getI18nPaths();
