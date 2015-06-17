@@ -21,15 +21,15 @@ use Aimeos\Aimeos\Scheduler;
  */
 class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {
-	private $_fieldSite = 'aimeos_sitecode';
-	private $_fieldController = 'aimeos_controller';
-	private $_fieldTSconfig = 'aimeos_config';
-	private $_fieldSenderFrom = 'aimeos_sender_from';
-	private $_fieldSenderEmail = 'aimeos_sender_email';
-	private $_fieldReplyEmail = 'aimeos_reply_email';
-	private $_fieldPageDetail = 'aimeos_pageid_detail';
-	private $_fieldContentBaseurl = 'aimeos_content_baseurl';
-	private $_fieldTemplateBaseurl = 'aimeos_template_baseurl';
+	private $fieldSite = 'aimeos_sitecode';
+	private $fieldController = 'aimeos_controller';
+	private $fieldTSconfig = 'aimeos_config';
+	private $fieldSenderFrom = 'aimeos_sender_from';
+	private $fieldSenderEmail = 'aimeos_sender_email';
+	private $fieldReplyEmail = 'aimeos_reply_email';
+	private $fieldPageDetail = 'aimeos_pageid_detail';
+	private $fieldContentBaseurl = 'aimeos_content_baseurl';
+	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
 
 	/**
@@ -40,7 +40,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	 */
 	public function execute()
 	{
-		$conf = Base::parseTS( $this->{$this->_fieldTSconfig} );
+		$conf = Base::parseTS( $this->{$this->fieldTSconfig} );
 
 		if( !isset( $conf['client']['html']['catalog']['detail']['url']['config'] ) ) {
 			$conf['client']['html']['catalog']['detail']['url']['config'] = array(
@@ -50,42 +50,42 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			);
 		}
 
-		if( $this->{$this->_fieldSenderFrom} != '' ) {
-			$conf['client']['html']['email']['from-name'] = $this->{$this->_fieldSenderFrom};
+		if( $this->{$this->fieldSenderFrom} != '' ) {
+			$conf['client']['html']['email']['from-name'] = $this->{$this->fieldSenderFrom};
 		}
 
-		if( $this->{$this->_fieldSenderEmail} != '' ) {
-			$conf['client']['html']['email']['from-email'] = $this->{$this->_fieldSenderEmail};
+		if( $this->{$this->fieldSenderEmail} != '' ) {
+			$conf['client']['html']['email']['from-email'] = $this->{$this->fieldSenderEmail};
 		}
 
-		if( $this->{$this->_fieldReplyEmail} != '' ) {
-			$conf['client']['html']['email']['reply-email'] = $this->{$this->_fieldReplyEmail};
+		if( $this->{$this->fieldReplyEmail} != '' ) {
+			$conf['client']['html']['email']['reply-email'] = $this->{$this->fieldReplyEmail};
 		}
 
-		if( $this->{$this->_fieldPageDetail} != '' ) {
-			$conf['client']['html']['catalog']['detail']['url']['target'] = $this->{$this->_fieldPageDetail};
+		if( $this->{$this->fieldPageDetail} != '' ) {
+			$conf['client']['html']['catalog']['detail']['url']['target'] = $this->{$this->fieldPageDetail};
 		}
 
-		if( $this->{$this->_fieldContentBaseurl} != '' ) {
-			$conf['client']['html']['common']['content']['baseurl'] = $this->{$this->_fieldContentBaseurl};
+		if( $this->{$this->fieldContentBaseurl} != '' ) {
+			$conf['client']['html']['common']['content']['baseurl'] = $this->{$this->fieldContentBaseurl};
 		}
 
-		if( $this->{$this->_fieldTemplateBaseurl} != '' )
+		if( $this->{$this->fieldTemplateBaseurl} != '' )
 		{
-			$themeDir = $this->{$this->_fieldTemplateBaseurl};
+			$themeDir = $this->{$this->fieldTemplateBaseurl};
 
 			if( $themeDir != '' && $themeDir[0] !== '/' ) {
 				realpath( PATH_site . $themeDir );
 			}
 
-			$conf['client']['html']['common']['template']['baseurl'] = $this->{$this->_fieldTemplateBaseurl};
+			$conf['client']['html']['common']['template']['baseurl'] = $this->{$this->fieldTemplateBaseurl};
 		}
 
-		Scheduler\Base::initFrontend( $this->{$this->_fieldPageDetail} );
+		Scheduler\Base::initFrontend( $this->{$this->fieldPageDetail} );
 
 		$context = Scheduler\Base::getContext( $conf );
 
-		Scheduler\Base::execute( $context, $this->{$this->_fieldController}, $this->{$this->_fieldSite} );
+		Scheduler\Base::execute( $context, (array) $this->{$this->fieldController}, $this->{$this->fieldSite} );
 
 		return true;
 	}

@@ -21,9 +21,9 @@ use Aimeos\Aimeos\Scheduler;
  */
 abstract class AbstractProvider
 {
-	private $_fieldSite = 'aimeos_sitecode';
-	private $_fieldController = 'aimeos_controller';
-	private $_fieldTSconfig = 'aimeos_config';
+	private $fieldSite = 'aimeos_sitecode';
+	private $fieldController = 'aimeos_controller';
+	private $fieldTSconfig = 'aimeos_config';
 
 
 	/**
@@ -42,63 +42,63 @@ abstract class AbstractProvider
 	 *			['cshKey']		=> The CSH key for the field
 	 *			['cshLabel']	=> The code of the CSH label
 	 */
-	protected function _getAdditionalFields( array &$taskInfo, $task, $parentObject )
+	protected function getFields( array &$taskInfo, $task, $parentObject )
 	{
 		$additionalFields = array();
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldController] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldController] = $task->{$this->_fieldController};
+		if( empty( $taskInfo[$this->fieldController] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldController] = $task->{$this->fieldController};
 		}
 
-		$taskInfo[$this->_fieldController] = (array) $taskInfo[$this->_fieldController];
+		$taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
 
-		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldController );
-		$fieldCode .= $this->_getControllerOptions( $taskInfo[$this->_fieldController], $this->_getJobFilter() );
+		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController );
+		$fieldCode .= $this->getControllerOptions( $taskInfo[$this->fieldController], $this->getJobFilter() );
 		$fieldCode .= '</select>';
 
-		$additionalFields[$this->_fieldController] = array(
+		$additionalFields[$this->fieldController] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.controller',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldController
+			'cshLabel' => $this->fieldController
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldSite] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldSite] = $task->{$this->_fieldSite};
+		if( empty( $taskInfo[$this->fieldSite] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldSite] = $task->{$this->fieldSite};
 		}
 
-		$taskInfo[$this->_fieldSite] = (array) $taskInfo[$this->_fieldSite];
+		$taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite];
 
-		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->_fieldSite );
-		$fieldCode .= $this->_getSiteOptions( $this->_getAvailableSites(), $taskInfo[$this->_fieldSite], 0 );
+		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldSite );
+		$fieldCode .= $this->getSiteOptions( $this->getAvailableSites(), $taskInfo[$this->fieldSite], 0 );
 		$fieldCode .= '</select>';
 
-		$additionalFields[$this->_fieldSite] = array(
+		$additionalFields[$this->fieldSite] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.sitecode',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldSite
+			'cshLabel' => $this->fieldSite
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldTSconfig] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldTSconfig] = $task->{$this->_fieldTSconfig};
+		if( empty( $taskInfo[$this->fieldTSconfig] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig};
 		}
 
-		$taskInfo[$this->_fieldTSconfig] = htmlspecialchars( $taskInfo[$this->_fieldTSconfig], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldTSconfig] = htmlspecialchars( $taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8' );
 
 		$fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldTSconfig, $taskInfo[$this->_fieldTSconfig] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldTSconfig, $taskInfo[$this->fieldTSconfig] );
 
-		$additionalFields[$this->_fieldTSconfig] = array(
+		$additionalFields[$this->fieldTSconfig] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.tsconfig',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldTSconfig
+			'cshLabel' => $this->fieldTSconfig
 		);
 
 		return $additionalFields;
@@ -113,11 +113,11 @@ abstract class AbstractProvider
 	 * @param array $submittedData Array containing the data submitted by the user
 	 * @param object $task Reference to the current task object
 	 */
-	protected function _saveAdditionalFields( array $submittedData, $task )
+	protected function saveFields( array $submittedData, $task )
 	{
-		$task->{$this->_fieldSite} = $submittedData[$this->_fieldSite];
-		$task->{$this->_fieldController} = $submittedData[$this->_fieldController];
-		$task->{$this->_fieldTSconfig} = $submittedData[$this->_fieldTSconfig];
+		$task->{$this->fieldSite} = $submittedData[$this->fieldSite];
+		$task->{$this->fieldController} = $submittedData[$this->fieldController];
+		$task->{$this->fieldTSconfig} = $submittedData[$this->fieldTSconfig];
 	}
 
 
@@ -130,23 +130,23 @@ abstract class AbstractProvider
 	 * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
 	 * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
 	 */
-	protected function _validateAdditionalFields( array &$submittedData, $parentObject )
+	protected function validateFields( array &$submittedData, $parentObject )
 	{
-		if( count( (array) $submittedData[$this->_fieldController] ) < 1 ) {
+		if( count( (array) $submittedData[$this->fieldController] ) < 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.controller.missing' ) );
 		}
 
-		if( count( (array) $submittedData[$this->_fieldSite] ) < 1 ) {
+		if( count( (array) $submittedData[$this->fieldSite] ) < 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode.missing' ) );
 		}
 
-		Base::parseTS( $submittedData[$this->_fieldTSconfig] );
+		Base::parseTS( $submittedData[$this->fieldTSconfig] );
 
 
 		$context = Scheduler\Base::getContext();
-		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->_fieldSite] );
+		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
-		if( count( $siteItems ) !== count( $submittedData[$this->_fieldSite] ) ) {
+		if( count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode' ) );
 		}
 
@@ -154,7 +154,7 @@ abstract class AbstractProvider
 		$aimeos = Base::getAimeos();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
-		foreach( (array) $submittedData[$this->_fieldController] as $name ) {
+		foreach( (array) $submittedData[$this->fieldController] as $name ) {
 			\Controller_Jobs_Factory::createController( $context, $aimeos, $name );
 		}
 
@@ -167,7 +167,7 @@ abstract class AbstractProvider
 	 *
 	 * @return array Associative list of items and children implementing MShop_Locale_Item_Site_Interface
 	 */
-	protected function _getAvailableSites()
+	protected function getAvailableSites()
 	{
 		$manager = \MShop_Factory::createManager( Scheduler\Base::getContext(), 'locale/site' );
 
@@ -190,7 +190,7 @@ abstract class AbstractProvider
 	 *
 	 * @return string|null Controller name part
 	 */
-	protected function _getJobFilter()
+	protected function getJobFilter()
 	{
 		return null;
 	}
@@ -205,7 +205,7 @@ abstract class AbstractProvider
 	 * @param integer $level Nesting level of the sites (should start with 0)
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function _getSiteOptions( array $siteItems, array $selected, $level )
+	protected function getSiteOptions( array $siteItems, array $selected, $level )
 	{
 		$html = '';
 		$prefix = str_repeat( '-', $level ) . ' ';
@@ -217,7 +217,7 @@ abstract class AbstractProvider
 			$string = '<option value="%1$s" %2$s %3$s>%4$s</option>';
 			$html .= sprintf( $string, $item->getCode(), $active, $disabled, $prefix . $item->getLabel() );
 
-			$html .= $this->_getSiteOptions( $item->getChildren(), $selected, $level+1 );
+			$html .= $this->getSiteOptions( $item->getChildren(), $selected, $level+1 );
 		}
 
 		return $html;
@@ -231,7 +231,7 @@ abstract class AbstractProvider
 	 * @param string|null $filter String that must be part of the controller name
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function _getControllerOptions( array $selected, $filter = null )
+	protected function getControllerOptions( array $selected, $filter = null )
 	{
 		$html = '';
 		$aimeos = Base::getAimeos();

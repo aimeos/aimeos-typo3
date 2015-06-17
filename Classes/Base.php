@@ -21,11 +21,11 @@ require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_
  */
 class Base
 {
-	private static $_aimeos;
-	private static $_config;
-	private static $_context;
-	private static $_extConfig;
-	private static $_i18n = array();
+	private static $aimeos;
+	private static $config;
+	private static $context;
+	private static $extConfig;
+	private static $i18n = array();
 
 
 	/**
@@ -35,7 +35,7 @@ class Base
 	 */
 	public static function getAimeos()
 	{
-		if( self::$_aimeos === null )
+		if( self::$aimeos === null )
 		{
 			$ds = DIRECTORY_SEPARATOR;
 			$libPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
@@ -56,10 +56,10 @@ class Base
 				}
 			}
 
-			self::$_aimeos = new \Arcavias( $extDirs, false, $libPath );
+			self::$aimeos = new \Arcavias( $extDirs, false, $libPath );
 		}
 
-		return self::$_aimeos;
+		return self::$aimeos;
 	}
 
 
@@ -70,7 +70,7 @@ class Base
 	 * @param string $siteid Unique site ID
 	 * @return \MW_Cache_Interface Cache object
 	 */
-	protected static function _getCache( \MShop_Context_Item_Interface $context )
+	protected static function getCache( \MShop_Context_Item_Interface $context )
 	{
 		$config = $context->getConfig();
 
@@ -100,7 +100,7 @@ class Base
 	 */
 	public static function getConfig( array $local = array() )
 	{
-		if( self::$_config === null )
+		if( self::$config === null )
 		{
 			$configPaths = self::getAimeos()->getConfigPaths( 'mysql' );
 
@@ -124,10 +124,10 @@ class Base
 				$conf = new \MW_Config_Decorator_APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
-			self::$_config = $conf;
+			self::$config = $conf;
 		}
 
-		return new \MW_Config_Decorator_Memory( self::$_config, $local );
+		return new \MW_Config_Decorator_Memory( self::$config, $local );
 	}
 
 
@@ -139,7 +139,7 @@ class Base
 	 */
 	public static function getContext( \MW_Config_Interface $config )
 	{
-		if( self::$_context === null )
+		if( self::$context === null )
 		{
 			$context = new \MShop_Context_Item_Default();
 			$context->setConfig( $config );
@@ -150,7 +150,7 @@ class Base
 			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
 			$context->setLogger( $logger );
 
-			$cache = self::_getCache( $context );
+			$cache = self::getCache( $context );
 			$context->setCache( $cache );
 
 			$mailer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
@@ -163,12 +163,12 @@ class Base
 			}
 			$context->setSession( $session );
 
-			self::$_context = $context;
+			self::$context = $context;
 		}
 
-		self::$_context->setConfig( $config );
+		self::$context->setConfig( $config );
 
-		return self::$_context;
+		return self::$context;
 	}
 
 
@@ -181,17 +181,17 @@ class Base
 	 */
 	public static function getExtConfig( $name, $default = null )
 	{
-		if( self::$_extConfig === null )
+		if( self::$extConfig === null )
 		{
 			if( ( $conf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] ) ) === false ) {
 				$conf = array();
 			}
 
-			self::$_extConfig = $conf;
+			self::$extConfig = $conf;
 		}
 
-		if( isset( self::$_extConfig[$name] ) ) {
-			return self::$_extConfig[$name];
+		if( isset( self::$extConfig[$name] ) ) {
+			return self::$extConfig[$name];
 		}
 
 		return $default;
@@ -212,7 +212,7 @@ class Base
 
 		foreach( $languageIds as $langid )
 		{
-			if( !isset( self::$_i18n[$langid] ) )
+			if( !isset( self::$i18n[$langid] ) )
 			{
 				$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
 
@@ -220,10 +220,10 @@ class Base
 					$i18n = new \MW_Translation_Decorator_APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
-				self::$_i18n[$langid] = $i18n;
+				self::$i18n[$langid] = $i18n;
 			}
 
-			$i18nList[$langid] = self::$_i18n[$langid];
+			$i18nList[$langid] = self::$i18n[$langid];
 
 			if( isset( $local[$langid] ) )
 			{
@@ -253,7 +253,7 @@ class Base
 
 		if( $request !== null && $locale !== null )
 		{
-			$fixed = self::_getFixedParams( $config, $request );
+			$fixed = self::getFixedParams( $config, $request );
 
 			// required for reloading to the current page
 			$params = $request->getArguments();
@@ -352,7 +352,7 @@ class Base
 			throw new \Exception( $msg );
 		}
 
-		$tsConfig = self::_convertTypoScriptArrayToPlainArray( $parser->setup );
+		$tsConfig = self::convertTypoScriptArrayToPlainArray( $parser->setup );
 
 		// Allows "plugin.tx_aimeos.settings." prefix everywhere
 		if( isset( $tsConfig['plugin']['tx_aimeos']['settings'] )
@@ -371,7 +371,7 @@ class Base
 	 * @param array $typoScriptArray TypoScript configuration array
 	 * @return array Multi-dimensional, associative list of key/value pairs without dots in keys
 	 */
-	protected static function _convertTypoScriptArrayToPlainArray(array $typoScriptArray)
+	protected static function convertTypoScriptArrayToPlainArray(array $typoScriptArray)
 	{
 		foreach ($typoScriptArray as $key => &$value) {
 			if (substr($key, -1) === '.') {
@@ -379,7 +379,7 @@ class Base
 				$hasNodeWithoutDot = array_key_exists($keyWithoutDot, $typoScriptArray);
 				$typoScriptNodeValue = $hasNodeWithoutDot ? $typoScriptArray[$keyWithoutDot] : NULL;
 				if (is_array($value)) {
-					$typoScriptArray[$keyWithoutDot] = self::_convertTypoScriptArrayToPlainArray($value);
+					$typoScriptArray[$keyWithoutDot] = self::convertTypoScriptArrayToPlainArray($value);
 					if (!is_null($typoScriptNodeValue)) {
 						$typoScriptArray[$keyWithoutDot]['_typoScriptNodeValue'] = $typoScriptNodeValue;
 					}
@@ -400,7 +400,7 @@ class Base
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request Request object
 	 * @return array Associative list of site, language and currency if available
 	 */
-	protected static function _getFixedParams( \MW_Config_Interface $config,
+	protected static function getFixedParams( \MW_Config_Interface $config,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
 		$fixed = array();

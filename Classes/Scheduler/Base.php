@@ -20,7 +20,7 @@ use Aimeos\Aimeos;
  */
 class Base
 {
-	static private $_context;
+	static private $context;
 
 
 	/**
@@ -58,7 +58,7 @@ class Base
 	 */
 	public static function getContext( array $localConf = array() )
 	{
-		if( self::$_context === null )
+		if( self::$context === null )
 		{
 			$aimeos = Aimeos\Base::getAimeos();
 			$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
@@ -82,10 +82,10 @@ class Base
 
 			$context->setEditor( 'scheduler' );
 
-			self::$_context = $context;
+			self::$context = $context;
 		}
 
-		return self::$_context;
+		return self::$context;
 	}
 
 
@@ -140,7 +140,7 @@ class Base
 		{
 			$rootline = \TYPO3\CMS\Backend\Utility\BackendUtility::BEgetRootLine( $pageid );
 			$host = \TYPO3\CMS\Backend\Utility\BackendUtility::firstDomainRecord( $rootline );
-			$_SERVER['HTTP_HOST'] = $host;
+			$SERVER['HTTP_HOST'] = $host;
 		}
 	}
 }

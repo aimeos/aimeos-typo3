@@ -21,12 +21,12 @@ use Aimeos\Aimeos\Scheduler;
  */
 abstract class Email extends AbstractProvider
 {
-	private $_fieldSenderFrom = 'aimeos_sender_from';
-	private $_fieldSenderEmail = 'aimeos_sender_email';
-	private $_fieldReplyEmail = 'aimeos_reply_email';
-	private $_fieldPageDetail = 'aimeos_pageid_detail';
-	private $_fieldContentBaseurl = 'aimeos_content_baseurl';
-	private $_fieldTemplateBaseurl = 'aimeos_template_baseurl';
+	private $fieldSenderFrom = 'aimeos_sender_from';
+	private $fieldSenderEmail = 'aimeos_sender_email';
+	private $fieldReplyEmail = 'aimeos_reply_email';
+	private $fieldPageDetail = 'aimeos_pageid_detail';
+	private $fieldContentBaseurl = 'aimeos_content_baseurl';
+	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
 
 	/**
@@ -34,7 +34,7 @@ abstract class Email extends AbstractProvider
 	 *
 	 * @return string|null Controller name part
 	 */
-	protected function _getJobFilter()
+	protected function getJobFilter()
 	{
 		return 'email';
 	}
@@ -56,124 +56,124 @@ abstract class Email extends AbstractProvider
 	 *			['cshKey']		=> The CSH key for the field
 	 *			['cshLabel']	=> The code of the CSH label
 	 */
-	protected function _getAdditionalFields( array &$taskInfo, $task, $parentObject )
+	protected function getFields( array &$taskInfo, $task, $parentObject )
 	{
 		$additionalFields = array();
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldSenderFrom] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldSenderFrom] = $task->{$this->_fieldSenderFrom};
+		if( empty( $taskInfo[$this->fieldSenderFrom] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom};
 		}
 
-		$taskInfo[$this->_fieldSenderFrom] = htmlspecialchars( $taskInfo[$this->_fieldSenderFrom], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldSenderFrom] = htmlspecialchars( $taskInfo[$this->fieldSenderFrom], ENT_QUOTES, 'UTF-8' );
 
 		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldSenderFrom, $taskInfo[$this->_fieldSenderFrom] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldSenderFrom, $taskInfo[$this->fieldSenderFrom] );
 
-		$additionalFields[$this->_fieldSenderFrom] = array(
+		$additionalFields[$this->fieldSenderFrom] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.from-name',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldSenderFrom
+			'cshLabel' => $this->fieldSenderFrom
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldSenderEmail] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldSenderEmail] = $task->{$this->_fieldSenderEmail};
+		if( empty( $taskInfo[$this->fieldSenderEmail] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail};
 		}
 
-		$taskInfo[$this->_fieldSenderEmail] = htmlspecialchars( $taskInfo[$this->_fieldSenderEmail], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldSenderEmail] = htmlspecialchars( $taskInfo[$this->fieldSenderEmail], ENT_QUOTES, 'UTF-8' );
 
 		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldSenderEmail, $taskInfo[$this->_fieldSenderEmail] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldSenderEmail, $taskInfo[$this->fieldSenderEmail] );
 
-		$additionalFields[$this->_fieldSenderEmail] = array(
+		$additionalFields[$this->fieldSenderEmail] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.from-email',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldSenderEmail
+			'cshLabel' => $this->fieldSenderEmail
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldReplyEmail] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldReplyEmail] = $task->{$this->_fieldReplyEmail};
+		if( empty( $taskInfo[$this->fieldReplyEmail] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail};
 		}
 
-		$taskInfo[$this->_fieldReplyEmail] = htmlspecialchars( $taskInfo[$this->_fieldReplyEmail], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldReplyEmail] = htmlspecialchars( $taskInfo[$this->fieldReplyEmail], ENT_QUOTES, 'UTF-8' );
 
 		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldReplyEmail, $taskInfo[$this->_fieldReplyEmail] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldReplyEmail, $taskInfo[$this->fieldReplyEmail] );
 
-		$additionalFields[$this->_fieldReplyEmail] = array(
+		$additionalFields[$this->fieldReplyEmail] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.reply-email',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldReplyEmail
+			'cshLabel' => $this->fieldReplyEmail
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldPageDetail] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldPageDetail] = $task->{$this->_fieldPageDetail};
+		if( empty( $taskInfo[$this->fieldPageDetail] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail};
 		}
 
-		$taskInfo[$this->_fieldPageDetail] = htmlspecialchars( $taskInfo[$this->_fieldPageDetail], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldPageDetail] = htmlspecialchars( $taskInfo[$this->fieldPageDetail], ENT_QUOTES, 'UTF-8' );
 
 		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldPageDetail, $taskInfo[$this->_fieldPageDetail] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldPageDetail, $taskInfo[$this->fieldPageDetail] );
 
-		$additionalFields[$this->_fieldPageDetail] = array(
+		$additionalFields[$this->fieldPageDetail] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-detail',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldPageDetail
+			'cshLabel' => $this->fieldPageDetail
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldContentBaseurl] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldContentBaseurl] = $task->{$this->_fieldContentBaseurl};
+		if( empty( $taskInfo[$this->fieldContentBaseurl] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldContentBaseurl] = $task->{$this->fieldContentBaseurl};
 		}
 
-		$taskInfo[$this->_fieldContentBaseurl] = htmlspecialchars( $taskInfo[$this->_fieldContentBaseurl], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldContentBaseurl] = htmlspecialchars( $taskInfo[$this->fieldContentBaseurl], ENT_QUOTES, 'UTF-8' );
 
 		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldContentBaseurl, $taskInfo[$this->_fieldContentBaseurl] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldContentBaseurl, $taskInfo[$this->fieldContentBaseurl] );
 
-		$additionalFields[$this->_fieldContentBaseurl] = array(
+		$additionalFields[$this->fieldContentBaseurl] = array(
 			'code'     => $fieldCode,
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.content-baseurl',
 			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->_fieldContentBaseurl
+			'cshLabel' => $this->fieldContentBaseurl
 		);
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->_fieldTemplateBaseurl] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->_fieldTemplateBaseurl] = $task->{$this->_fieldTemplateBaseurl};
+		if( empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl};
 		}
 
-		$taskInfo[$this->_fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->_fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8' );
+		$taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8' );
 
-		if( $taskInfo[$this->_fieldTemplateBaseurl] == '' ) {
-			$taskInfo[$this->_fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/elegance';
+		if( $taskInfo[$this->fieldTemplateBaseurl] == '' ) {
+			$taskInfo[$this->fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/elegance';
 		}
 
 		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->_fieldTemplateBaseurl, $taskInfo[$this->_fieldTemplateBaseurl] );
+		$fieldCode = sprintf( $fieldStr, $this->fieldTemplateBaseurl, $taskInfo[$this->fieldTemplateBaseurl] );
 
-		$additionalFields[$this->_fieldTemplateBaseurl] = array(
+		$additionalFields[$this->fieldTemplateBaseurl] = array(
 				'code'     => $fieldCode,
 				'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.template-baseurl',
 				'cshKey'   => 'xMOD_tx_aimeos',
-				'cshLabel' => $this->_fieldTemplateBaseurl
+				'cshLabel' => $this->fieldTemplateBaseurl
 		);
 
 
-		$additionalFields += parent::_getAdditionalFields( $taskInfo, $task, $parentObject );
+		$additionalFields += parent::getFields( $taskInfo, $task, $parentObject );
 
 		return $additionalFields;
 	}
@@ -187,16 +187,16 @@ abstract class Email extends AbstractProvider
 	 * @param array $submittedData Array containing the data submitted by the user
 	 * @param object $task Reference to the current task object
 	 */
-	protected function _saveAdditionalFields( array $submittedData, $task )
+	protected function saveFields( array $submittedData, $task )
 	{
-		parent::_saveAdditionalFields( $submittedData, $task );
+		parent::saveFields( $submittedData, $task );
 
-		$task->{$this->_fieldSenderFrom} = $submittedData[$this->_fieldSenderFrom];
-		$task->{$this->_fieldSenderEmail} = $submittedData[$this->_fieldSenderEmail];
-		$task->{$this->_fieldReplyEmail} = $submittedData[$this->_fieldReplyEmail];
-		$task->{$this->_fieldPageDetail} = $submittedData[$this->_fieldPageDetail];
-		$task->{$this->_fieldContentBaseurl} = $submittedData[$this->_fieldContentBaseurl];
-		$task->{$this->_fieldTemplateBaseurl} = $submittedData[$this->_fieldTemplateBaseurl];
+		$task->{$this->fieldSenderFrom} = $submittedData[$this->fieldSenderFrom];
+		$task->{$this->fieldSenderEmail} = $submittedData[$this->fieldSenderEmail];
+		$task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail];
+		$task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail];
+		$task->{$this->fieldContentBaseurl} = $submittedData[$this->fieldContentBaseurl];
+		$task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl];
 	}
 
 
@@ -209,29 +209,29 @@ abstract class Email extends AbstractProvider
 	 * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
 	 * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
 	 */
-	protected function _validateAdditionalFields( array &$submittedData, $parentObject )
+	protected function validateFields( array &$submittedData, $parentObject )
 	{
-		if( preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->_fieldSenderEmail] ) !== 1 ) {
+		if( preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.from-email.invalid' ) );
 		}
 
-		if( $submittedData[$this->_fieldReplyEmail] != ''
-			&& preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->_fieldReplyEmail] ) !== 1
+		if( $submittedData[$this->fieldReplyEmail] != ''
+			&& preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1
 		) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.reply-email.invalid' ) );
 		}
 
-		if( $submittedData[$this->_fieldPageDetail] != ''
-			&& preg_match( '/^[0-9]+$/', $submittedData[$this->_fieldPageDetail] ) !== 1 ) {
+		if( $submittedData[$this->fieldPageDetail] != ''
+			&& preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.page-detail.invalid' ) );
 		}
 
-		if( $submittedData[$this->_fieldContentBaseurl] != ''
-			&& preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->_fieldContentBaseurl] ) !== 1 ) {
+		if( $submittedData[$this->fieldContentBaseurl] != ''
+			&& preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.content-baseurl.invalid' ) );
 		}
 
-		parent::_validateAdditionalFields( $submittedData, $parentObject );
+		parent::validateFields( $submittedData, $parentObject );
 
 		return true;
 	}

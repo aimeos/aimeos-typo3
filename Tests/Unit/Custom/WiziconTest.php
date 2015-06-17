@@ -7,18 +7,18 @@ namespace Aimeos\Aimeos\Tests\Unit\Custom;
 class WiziconTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\Aimeos\Custom\Wizicon();
+		$this->object = new \Aimeos\Aimeos\Custom\Wizicon();
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -27,7 +27,7 @@ class WiziconTest
 	 */
 	public function proc()
 	{
-		$result = $this->_object->proc( array() );
+		$result = $this->object->proc( array() );
 
 		$this->assertArrayHasKey( 'plugins_tx_aimeos', $result );
 		$this->assertArrayHasKey( 'icon', $result['plugins_tx_aimeos'] );

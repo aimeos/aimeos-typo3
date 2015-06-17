@@ -74,7 +74,7 @@ class Setup
 		}
 
 
-		$ctx = self::_getContext();
+		$ctx = self::getContext();
 
 		$dbm = $ctx->getDatabaseManager();
 		$config = $ctx->getConfig();
@@ -122,7 +122,7 @@ class Setup
 	 *
 	 * @return MShop_Context_Item_Interface Context object
 	 */
-	protected static function _getContext()
+	protected static function getContext()
 	{
 		$ctx = new \MShop_Context_Item_Default();
 

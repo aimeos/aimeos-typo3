@@ -27,9 +27,9 @@ class CheckoutController extends AbstractController
 	public function indexAction()
 	{
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Checkout_Standard_Factory::createClient( $this->_getContext(), $templatePaths );
+		$client = \Client_Html_Checkout_Standard_Factory::createClient( $this->getContext(), $templatePaths );
 
-		return $this->_getClientOutput( $client );
+		return $this->getClientOutput( $client );
 	}
 
 
@@ -38,7 +38,7 @@ class CheckoutController extends AbstractController
 	 */
 	public function confirmAction()
 	{
-		$context = $this->_getContext();
+		$context = $this->getContext();
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
 		$client = \Client_Html_Checkout_Confirm_Factory::createClient( $context, $templatePaths );
 
@@ -62,7 +62,7 @@ class CheckoutController extends AbstractController
 	{
 		try
 		{
-			$context = $this->_getContext();
+			$context = $this->getContext();
 			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
 			$client = \Client_Html_Checkout_Update_Factory::createClient( $context, $templatePaths );
 

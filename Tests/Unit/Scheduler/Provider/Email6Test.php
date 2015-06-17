@@ -11,18 +11,18 @@ use Aimeos\Aimeos\Scheduler;
 class Email6Test
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
-		$this->_object = new Scheduler\Provider\Email6();
+		$this->object = new Scheduler\Provider\Email6();
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -35,7 +35,7 @@ class Email6Test
 		$module = new SchedulerModuleController();
 		$module->CMD = 'edit';
 
-		$result = $this->_object->getAdditionalFields( $taskInfo, $this->_object, $module );
+		$result = $this->object->getAdditionalFields( $taskInfo, $this->object, $module );
 
 		$this->assertInternalType( 'array', $result );
 		$this->assertArrayHasKey( 'aimeos_controller', $result );
@@ -52,15 +52,16 @@ class Email6Test
 	 */
 	public function getAdditionalFieldsException()
 	{
-		$manager = \MShop_Attribute_Manager_Factory::createManager( Scheduler\Base::getContext() );
-
 		$taskInfo = array();
 		$module = new SchedulerModuleController();
 		$module->CMD = 'edit';
 
-		\MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', $manager );
-		$result = $this->_object->getAdditionalFields( $taskInfo, $this->_object, $module );
-		\MShop_Locale_Manager_Factory::injectManager( 'MShop_Locale_Manager_Default', null );
+		$mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Email6' )
+			->setMethods( array( 'getFields' ) )->getMock();
+
+		$mock->method( 'getFields' )->will( $this->throwException( new \Exception()  ) );
+
+		$result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
 
 		$this->assertEquals( array(), $result );
 	}
@@ -81,7 +82,7 @@ class Email6Test
 		);
 		$task = new Scheduler\Task\Typo6();
 
-		$this->_object->saveAdditionalFields( $data, $task );
+		$this->object->saveAdditionalFields( $data, $task );
 
 		$this->assertEquals( 'testsite', $task->aimeos_sitecode );
 		$this->assertEquals( 'testcntl', $task->aimeos_controller );
@@ -100,7 +101,7 @@ class Email6Test
 		$data = array();
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -114,7 +115,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -131,7 +132,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -147,7 +148,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -164,7 +165,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -182,7 +183,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -199,7 +200,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -216,7 +217,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -233,7 +234,7 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertFalse( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 
 
@@ -251,6 +252,6 @@ class Email6Test
 		);
 		$module = new SchedulerModuleController();
 
-		$this->assertTrue( $this->_object->validateAdditionalFields( $data, $module ) );
+		$this->assertTrue( $this->object->validateAdditionalFields( $data, $module ) );
 	}
 }

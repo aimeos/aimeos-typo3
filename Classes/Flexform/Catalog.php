@@ -52,7 +52,7 @@ class Catalog
 			$item = $manager->getTree( null, array(), \MW_Tree_Manager_Abstract::LEVEL_TREE );
 
 
-			$config['items'] = array_merge( $config['items'], $this->_getCategoryList( $item, 0 ) );
+			$config['items'] = array_merge( $config['items'], $this->getCategoryList( $item, 0 ) );
 		}
 		catch( Exception $e )
 		{
@@ -70,13 +70,13 @@ class Catalog
 	 * @param unknown_type $level Current level on indention
 	 * @return array Associative array of category label / ID pairs
 	 */
-	protected function _getCategoryList( \MShop_Catalog_Item_Interface $item, $level )
+	protected function getCategoryList( \MShop_Catalog_Item_Interface $item, $level )
 	{
 		$result = array();
 		$result[] = array( str_repeat( '.', $level * 4 ) . $item->getName(), $item->getId() );
 
 		foreach( $item->getChildren() as $child ) {
-			$result = array_merge( $result, $this->_getCategoryList( $child, $level + 1 ) );
+			$result = array_merge( $result, $this->getCategoryList( $child, $level + 1 ) );
 		}
 
 		return $result;

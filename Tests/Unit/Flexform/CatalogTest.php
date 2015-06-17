@@ -7,18 +7,18 @@ namespace Aimeos\Aimeos\Tests\Unit\Flexform;
 class CatalogTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
-		$this->_object = new \Aimeos\Aimeos\Flexform\Catalog();
+		$this->object = new \Aimeos\Aimeos\Flexform\Catalog();
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -27,7 +27,7 @@ class CatalogTest
 	 */
 	public function getCategories()
 	{
-		$result = $this->_object->getCategories( array( 'items' => array() ) );
+		$result = $this->object->getCategories( array( 'items' => array() ) );
 
 		$this->assertArrayHasKey( 'items', $result );
 	}

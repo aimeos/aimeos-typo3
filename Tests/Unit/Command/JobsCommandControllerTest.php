@@ -7,7 +7,7 @@ namespace Aimeos\Aimeos\Tests\Unit\Command;
 class JobsCommandControllerTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
@@ -15,14 +15,14 @@ class JobsCommandControllerTest
 		$name = 'TYPO3\CMS\Extbase\Object\ObjectManager';
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $name );
 
-		$this->_object = new \Aimeos\Aimeos\Command\JobsCommandController();
-		$this->_object->injectObjectManager( $objectManager );
+		$this->object = new \Aimeos\Aimeos\Command\JobsCommandController();
+		$this->object->injectObjectManager( $objectManager );
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -31,7 +31,7 @@ class JobsCommandControllerTest
 	 */
 	public function runCommand()
 	{
-		$this->_object->runCommand( 'catalog/index/optimize' );
+		$this->object->runCommand( 'catalog/index/optimize' );
 	}
 
 
@@ -40,6 +40,6 @@ class JobsCommandControllerTest
 	 */
 	public function emailCommand()
 	{
-		$this->_object->emailCommand( 'catalog/index/optimize' );
+		$this->object->emailCommand( 'catalog/index/optimize' );
 	}
 }

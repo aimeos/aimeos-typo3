@@ -10,18 +10,18 @@ require_once dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'class.ext_up
 class UpdateTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
-		$this->_object = new \ext_update();
+		$this->object = new \ext_update();
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -30,7 +30,7 @@ class UpdateTest
 	 */
 	public function access()
 	{
-		$this->assertTrue( $this->_object->access() );
+		$this->assertTrue( $this->object->access() );
 	}
 
 
@@ -39,7 +39,7 @@ class UpdateTest
 	 */
 	public function main()
 	{
-		$result = $this->_object->main();
+		$result = $this->object->main();
 
 		$this->assertContains( 'Setup process lasted', $result );
 	}

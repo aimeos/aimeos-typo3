@@ -21,8 +21,8 @@ use Aimeos\Aimeos\Base;
  */
 class AdminController extends AbstractController
 {
-	private $_context;
-	private $_controller;
+	private $context;
+	private $controller;
 
 
 	/**
@@ -32,8 +32,8 @@ class AdminController extends AbstractController
 	{
 		$html = '';
 		$abslen = strlen( PATH_site );
-		$langid = $this->_getContext()->getLocale()->getLanguageId();
-		$controller = $this->_getController();
+		$langid = $this->getContext()->getLocale()->getLanguageId();
+		$controller = $this->getController();
 
 		foreach( Base::getAimeos()->getCustomPaths( 'client/extjs' ) as $base => $paths )
 		{
@@ -59,9 +59,9 @@ class AdminController extends AbstractController
 
 		$this->view->assign( 'htmlHeader', $html );
 		$this->view->assign( 'lang', $langid );
-		$this->view->assign( 'i18nContent', $this->_getJsonClientI18n( $langid ) );
-		$this->view->assign( 'config', $this->_getJsonClientConfig() );
-		$this->view->assign( 'site', $this->_getSite( $this->request ) );
+		$this->view->assign( 'i18nContent', $this->getJsonClientI18n( $langid ) );
+		$this->view->assign( 'config', $this->getJsonClientConfig() );
+		$this->view->assign( 'site', $this->getSite( $this->request ) );
 		$this->view->assign( 'smd', $controller->getJsonSmd( $serviceUrl ) );
 		$this->view->assign( 'itemSchemas', $controller->getJsonItemSchemas() );
 		$this->view->assign( 'searchSchemas', $controller->getJsonSearchSchemas() );
@@ -78,7 +78,7 @@ class AdminController extends AbstractController
 	public function doAction()
 	{
 		$param = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
-		$this->view->assign( 'response', $this->_getController()->process( $param, 'php://input' ) );
+		$this->view->assign( 'response', $this->getController()->process( $param, 'php://input' ) );
 	}
 
 
@@ -87,14 +87,14 @@ class AdminController extends AbstractController
 	 *
 	 * @return \MShop_Context_Item_Interface Context item
 	 */
-	protected function _getContext()
+	protected function getContext()
 	{
-		if( !isset( $this->_context ) )
+		if( !isset( $this->context ) )
 		{
-			$config = $this->_getConfig( $this->settings );
+			$config = $this->getConfig( $this->settings );
 			$context = Base::getContext( $config );
 
-			$localeItem = $this->_getLocale( $context );
+			$localeItem = $this->getLocale( $context );
 			$context->setLocale( $localeItem );
 
 			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
@@ -103,10 +103,10 @@ class AdminController extends AbstractController
 			$context->setI18n( $i18n );
 			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
 
-			$this->_context = $context;
+			$this->context = $context;
 		}
 
-		return $this->_context;
+		return $this->context;
 	}
 
 
@@ -115,15 +115,15 @@ class AdminController extends AbstractController
 	 *
 	 * @return \Controller_ExtJS_JsonRpc ExtJS JSON RPC controller
 	 */
-	protected function _getController()
+	protected function getController()
 	{
-		if( !isset( $this->_controller ) )
+		if( !isset( $this->controller ) )
 		{
 			$cntlPaths = Base::getAimeos()->getCustomPaths( 'controller/extjs' );
-			$this->_controller = new \Controller_ExtJS_JsonRpc( $this->_getContext(), $cntlPaths );
+			$this->controller = new \Controller_ExtJS_JsonRpc( $this->getContext(), $cntlPaths );
 		}
 
-		return $this->_controller;
+		return $this->controller;
 	}
 
 
@@ -132,9 +132,9 @@ class AdminController extends AbstractController
 	 *
 	 * @return string JSON encoded configuration object
 	 */
-	protected function _getJsonClientConfig()
+	protected function getJsonClientConfig()
 	{
-		$conf = $this->_getContext()->getConfig()->get( 'client/extjs', array() );
+		$conf = $this->getContext()->getConfig()->get( 'client/extjs', array() );
 		return json_encode( array( 'client' => array( 'extjs' => $conf ) ), JSON_FORCE_OBJECT );
 	}
 
@@ -145,7 +145,7 @@ class AdminController extends AbstractController
 	 * @param string $lang ISO language code like "en" or "en_GB"
 	 * @return string JSON encoded translation object
 	 */
-	protected function _getJsonClientI18n( $lang )
+	protected function getJsonClientI18n( $lang )
 	{
 		$i18nPaths = Base::getAimeos()->getI18nPaths();
 		$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $lang, array('disableNotices'=>true) );
@@ -165,7 +165,7 @@ class AdminController extends AbstractController
 	 * @param \MShop_Context_Item_Interface $context Context object
 	 * @return \MShop_Locale_Item_Interface Locale item object
 	 */
-	protected function _getLocale( \MShop_Context_Item_Interface $context )
+	protected function getLocale( \MShop_Context_Item_Interface $context )
 	{
 		$langid = 'en';
 		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
@@ -194,9 +194,9 @@ class AdminController extends AbstractController
 	 * @return string JSON encoded site item object
 	 * @throws Exception If no site item was found for the code
 	 */
-	protected function _getSite( \TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
+	protected function getSite( \TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
-		$localeManager = \MShop_Locale_Manager_Factory::createManager( $this->_getContext() );
+		$localeManager = \MShop_Locale_Manager_Factory::createManager( $this->getContext() );
 		$manager = $localeManager->getSubManager( 'site' );
 
 		$site = 'default';

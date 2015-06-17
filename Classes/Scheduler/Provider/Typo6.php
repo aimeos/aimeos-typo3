@@ -38,7 +38,7 @@ class Typo6 extends AbstractProvider
 	public function getAdditionalFields( array &$taskInfo, $task, \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController $parentObject )
 	{
 		try {
-			return $this->_getAdditionalFields( $taskInfo, $task, $parentObject );
+			return $this->getFields( $taskInfo, $task, $parentObject );
 		} catch( \Exception $e ) {
 			$parentObject->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
 		}
@@ -57,7 +57,7 @@ class Typo6 extends AbstractProvider
 	 */
 	public function saveAdditionalFields( array $submittedData, \TYPO3\CMS\Scheduler\Task\AbstractTask $task )
 	{
-		$this->_saveAdditionalFields( $submittedData, $task );
+		$this->saveFields( $submittedData, $task );
 	}
 
 
@@ -73,7 +73,7 @@ class Typo6 extends AbstractProvider
 	public function validateAdditionalFields( array &$submittedData, \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController $parentObject )
 	{
 		try {
-			return $this->_validateAdditionalFields( $submittedData, $parentObject );
+			return $this->validateFields( $submittedData, $parentObject );
 		} catch( \Exception $e ) {
 			$parentObject->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
 		}

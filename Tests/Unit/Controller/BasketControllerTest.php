@@ -7,14 +7,14 @@ namespace Aimeos\Aimeos\Tests\Unit\Controller;
 class BasketControllerTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
 		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
 
-		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\BasketController', array( 'dummy' ) );
+		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\BasketController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 
@@ -28,17 +28,17 @@ class BasketControllerTest
 			$response->setRequest( $request );
 		}
 
-		$this->_object->_set( 'uriBuilder', $uriBuilder );
-		$this->_object->_set( 'response', $response );
-		$this->_object->_set( 'request', $request );
+		$this->object->_set( 'uriBuilder', $uriBuilder );
+		$this->object->_set( 'response', $response );
+		$this->object->_set( 'request', $request );
 
-		$this->_object->_call( 'initializeAction' );
+		$this->object->_call( 'initializeAction' );
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -54,7 +54,7 @@ class BasketControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Basket_Standard_Factory::injectClient( $name, $client );
-		$output = $this->_object->indexAction();
+		$output = $this->object->indexAction();
 		\Client_Html_Basket_Standard_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -73,7 +73,7 @@ class BasketControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Basket_Mini_Factory::injectClient( $name, $client );
-		$output = $this->_object->smallAction();
+		$output = $this->object->smallAction();
 		\Client_Html_Basket_Mini_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );

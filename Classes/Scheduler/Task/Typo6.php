@@ -21,9 +21,9 @@ use Aimeos\Aimeos\Scheduler;
  */
 class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {
-	private $_fieldSite = 'aimeos_sitecode';
-	private $_fieldController = 'aimeos_controller';
-	private $_fieldTSconfig = 'aimeos_config';
+	private $fieldSite = 'aimeos_sitecode';
+	private $fieldController = 'aimeos_controller';
+	private $fieldTSconfig = 'aimeos_config';
 
 
 	/**
@@ -34,9 +34,9 @@ class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	 */
 	public function execute()
 	{
-		$sitecodes = (array) $this->{$this->_fieldSite};
-		$controllers = (array) $this->{$this->_fieldController};
-		$tsconfig = $this->{$this->_fieldTSconfig};
+		$sitecodes = (array) $this->{$this->fieldSite};
+		$controllers = (array) $this->{$this->fieldController};
+		$tsconfig = $this->{$this->fieldTSconfig};
 
 		$conf = Base::parseTS( $tsconfig );
 		$context = Scheduler\Base::getContext( $conf );

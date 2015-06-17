@@ -7,14 +7,14 @@ namespace Aimeos\Aimeos\Tests\Unit\Controller;
 class AccountControllerTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
 		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
 
-		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AccountController', array( 'dummy' ) );
+		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AccountController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 
@@ -28,17 +28,17 @@ class AccountControllerTest
 			$response->setRequest( $request );
 		}
 
-		$this->_object->_set( 'uriBuilder', $uriBuilder );
-		$this->_object->_set( 'response', $response );
-		$this->_object->_set( 'request', $request );
+		$this->object->_set( 'uriBuilder', $uriBuilder );
+		$this->object->_set( 'response', $response );
+		$this->object->_set( 'request', $request );
 
-		$this->_object->_call( 'initializeAction' );
+		$this->object->_call( 'initializeAction' );
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -54,7 +54,7 @@ class AccountControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Account_History_Factory::injectClient( $name, $client );
-		$output = $this->_object->historyAction();
+		$output = $this->object->historyAction();
 		\Client_Html_Account_History_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );

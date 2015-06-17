@@ -21,8 +21,8 @@ use Aimeos\Aimeos\Base;
 abstract class AbstractController
 	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-	private $_context;
-	private static $_locale;
+	private $context;
+	private static $locale;
 
 
 	/**
@@ -30,7 +30,7 @@ abstract class AbstractController
 	 *
 	 * @return MW_Config_Interface Configuration object
 	 */
-	protected function _getConfig()
+	protected function getConfig()
 	{
 		$settings = (array) $this->settings;
 
@@ -49,16 +49,16 @@ abstract class AbstractController
 	 *
 	 * @return \MShop_Context_Item_Interface Context item
 	 */
-	protected function _getContext()
+	protected function getContext()
 	{
-		if( !isset( $this->_context ) )
+		if( !isset( $this->context ) )
 		{
 			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-			$config = $this->_getConfig( $this->settings );
+			$config = $this->getConfig( $this->settings );
 			$context = Base::getContext( $config );
 
 			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
-			$locale = $this->_getLocale( $context );
+			$locale = $this->getLocale( $context );
 			$langid = $locale->getLanguageId();
 
 			$context->setLocale( $locale );
@@ -71,10 +71,10 @@ abstract class AbstractController
 				$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
 			}
 
-			$this->_context = $context;
+			$this->context = $context;
 		}
 
-		return $this->_context;
+		return $this->context;
 	}
 
 
@@ -84,9 +84,9 @@ abstract class AbstractController
 	 * @param \MShop_Context_Item_Interface $context Context object
 	 * @return \MShop_Locale_Item_Interface Locale item object
 	 */
-	protected function _getLocale( \MShop_Context_Item_Interface $context )
+	protected function getLocale( \MShop_Context_Item_Interface $context )
 	{
-		if( !isset( self::$_locale ) )
+		if( !isset( self::$locale ) )
 		{
 			$session = $context->getSession();
 			$config = $context->getConfig();
@@ -121,10 +121,10 @@ abstract class AbstractController
 
 
 			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
-			self::$_locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
+			self::$locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
 		}
 
-		return self::$_locale;
+		return self::$locale;
 	}
 
 
@@ -134,9 +134,9 @@ abstract class AbstractController
 	 * @param Client_Html_Interface $client Html client object
 	 * @return string HTML code for inserting into the HTML body
 	 */
-	protected function _getClientOutput( \Client_Html_Interface $client )
+	protected function getClientOutput( \Client_Html_Interface $client )
 	{
-		$client->setView( $this->_getContext()->getView() );
+		$client->setView( $this->getContext()->getView() );
 		$client->process();
 
 		$this->response->addAdditionalHeaderData( (string) $client->getHeader() );

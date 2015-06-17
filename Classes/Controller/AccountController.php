@@ -27,9 +27,9 @@ class AccountController extends AbstractController
 	public function historyAction()
 	{
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Account_History_Factory::createClient( $this->_getContext(), $templatePaths );
+		$client = \Client_Html_Account_History_Factory::createClient( $this->getContext(), $templatePaths );
 
-		return $this->_getClientOutput( $client );
+		return $this->getClientOutput( $client );
 	}
 
 
@@ -39,9 +39,9 @@ class AccountController extends AbstractController
 	public function favoriteAction()
 	{
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Account_Favorite_Factory::createClient( $this->_getContext(), $templatePaths );
+		$client = \Client_Html_Account_Favorite_Factory::createClient( $this->getContext(), $templatePaths );
 
-		return $this->_getClientOutput( $client );
+		return $this->getClientOutput( $client );
 	}
 
 
@@ -51,8 +51,8 @@ class AccountController extends AbstractController
 	public function watchAction()
 	{
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Account_Watch_Factory::createClient( $this->_getContext(), $templatePaths );
+		$client = \Client_Html_Account_Watch_Factory::createClient( $this->getContext(), $templatePaths );
 
-		return $this->_getClientOutput( $client );
+		return $this->getClientOutput( $client );
 	}
 }

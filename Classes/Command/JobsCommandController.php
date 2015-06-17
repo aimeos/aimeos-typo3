@@ -88,7 +88,7 @@ class JobsCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCon
 		$conf['client']['html']['common']['template']['baseurl'] = $themeDir;
 		$conf['client']['html']['catalog']['detail']['url']['target'] = $detailPid;
 
-		$context = $this->_getContext( $conf );
+		$context = $this->getContext( $conf );
 
 		Scheduler\Base::execute( $context, explode( ' ', $jobs ), $sites );
 
@@ -102,7 +102,7 @@ class JobsCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCon
 	 * @param array $localConf Local TypoScript configuration settings
 	 * @return \MShop_Context_Item_Default Context object
 	 */
-	protected function _getContext( array $localConf = array() )
+	protected function getContext( array $localConf = array() )
 	{
 		$aimeos = Base::getAimeos();
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );

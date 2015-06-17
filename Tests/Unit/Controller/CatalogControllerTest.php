@@ -7,14 +7,14 @@ namespace Aimeos\Aimeos\Tests\Unit\Controller;
 class CatalogControllerTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $_object;
+	private $object;
 
 
 	public function setUp()
 	{
 		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
 
-		$this->_object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\CatalogController', array( 'dummy' ) );
+		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\CatalogController', array( 'dummy' ) );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 
@@ -28,17 +28,17 @@ class CatalogControllerTest
 			$response->setRequest( $request );
 		}
 
-		$this->_object->_set( 'uriBuilder', $uriBuilder );
-		$this->_object->_set( 'response', $response );
-		$this->_object->_set( 'request', $request );
+		$this->object->_set( 'uriBuilder', $uriBuilder );
+		$this->object->_set( 'response', $response );
+		$this->object->_set( 'request', $request );
 
-		$this->_object->_call( 'initializeAction' );
+		$this->object->_call( 'initializeAction' );
 	}
 
 
 	public function tearDown()
 	{
-		unset( $this->_object );
+		unset( $this->object );
 	}
 
 
@@ -54,7 +54,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_Count_Factory::injectClient( $name, $client );
-		$output = $this->_object->countAction();
+		$output = $this->object->countAction();
 		\Client_Html_Catalog_Count_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -73,7 +73,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_Detail_Factory::injectClient( $name, $client );
-		$output = $this->_object->detailAction();
+		$output = $this->object->detailAction();
 		\Client_Html_Catalog_Detail_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -92,7 +92,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_Filter_Factory::injectClient( $name, $client );
-		$output = $this->_object->filterAction();
+		$output = $this->object->filterAction();
 		\Client_Html_Catalog_Filter_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -111,7 +111,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_List_Factory::injectClient( $name, $client );
-		$output = $this->_object->listAction();
+		$output = $this->object->listAction();
 		\Client_Html_Catalog_List_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -130,7 +130,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_List_Factory::injectClient( $name, $client );
-		$output = $this->_object->suggestAction();
+		$output = $this->object->suggestAction();
 		\Client_Html_Catalog_List_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -149,7 +149,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_Session_Factory::injectClient( $name, $client );
-		$output = $this->_object->sessionAction();
+		$output = $this->object->sessionAction();
 		\Client_Html_Catalog_Session_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -168,7 +168,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_Stage_Factory::injectClient( $name, $client );
-		$output = $this->_object->stageAction();
+		$output = $this->object->stageAction();
 		\Client_Html_Catalog_Stage_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
@@ -187,7 +187,7 @@ class CatalogControllerTest
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
 		\Client_Html_Catalog_Stock_Factory::injectClient( $name, $client );
-		$output = $this->_object->stockAction();
+		$output = $this->object->stockAction();
 		\Client_Html_Catalog_Stock_Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
