@@ -29,7 +29,7 @@ plugin.tx_aimeos {
 					favorite.url.config.chash = 0
 					watch.url.config.chash = 0
 				}
-				basket.standard.url.config.chash = 0
+				basket.standard.url.config.chash = 1
 				catalog {
 					count.url.config {
 						type = 191351524
