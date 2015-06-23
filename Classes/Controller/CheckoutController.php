@@ -43,7 +43,8 @@ class CheckoutController extends AbstractController
 		$client = \Client_Html_Checkout_Confirm_Factory::createClient( $context, $templatePaths );
 
 		$view = $context->getView();
-		$helper = new \MW_View_Helper_Parameter_Default( $view, $_REQUEST );
+		$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
+		$helper = new \MW_View_Helper_Parameter_Default( $view, $param );
 		$view->addHelper( 'param', $helper );
 
 		$client->setView( $view );
@@ -67,7 +68,8 @@ class CheckoutController extends AbstractController
 			$client = \Client_Html_Checkout_Update_Factory::createClient( $context, $templatePaths );
 
 			$view = $context->getView();
-			$helper = new \MW_View_Helper_Parameter_Default( $view, $_REQUEST );
+			$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
+			$helper = new \MW_View_Helper_Parameter_Default( $view, $param );
 			$view->addHelper( 'param', $helper );
 
 			$client->setView( $view );
