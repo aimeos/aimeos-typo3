@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:16:04Z" original="messages" product-name="aimeos" source-language="en">
+	<file datatype="plaintext" date="2015-04-04T14:16:04Z" original="messages" product-name="aimeos" source-language="en" target-language="de">
 		<header/>
 		<body>
 			<trans-unit id="ext-wizard-title" xml:space="preserve">

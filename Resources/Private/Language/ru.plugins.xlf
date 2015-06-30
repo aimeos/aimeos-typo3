@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="ru">
 		<header/>
 		<body>
 			<trans-unit id="account-favorite.target" xml:space="preserve">

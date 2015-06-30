@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en">
+	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="tr">
 		<header/>
 		<body>
 			<trans-unit id="default.name" xml:space="preserve">
@@ -68,6 +68,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+				<target>Typo3 kökünden tema dizininin CSS dosyalarına mutlak yol veya bağıl yol</target>
 			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
