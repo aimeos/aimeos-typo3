@@ -66,6 +66,7 @@ class AdminController extends AbstractController
 		$this->view->assign( 'itemSchemas', $controller->getJsonItemSchemas() );
 		$this->view->assign( 'searchSchemas', $controller->getJsonSearchSchemas() );
 		$this->view->assign( 'activeTab', ( $this->request->hasArgument( 'tab' ) ? (int) $this->request->getArgument( 'tab' ) : 0 ) );
+		$this->view->assign( 'version', $this->getVersion() );
 		$this->view->assign( 'urlTemplate', $urlTemplate );
 	}
 
@@ -213,6 +214,24 @@ class AdminController extends AbstractController
 		}
 
 		return json_encode( $item->toArray() );
+	}
+
+
+	/**
+	 * Returns the version of the Aimeos TYPO3 extension
+	 *
+	 * @return string Version string
+	 */
+	protected function getVersion()
+	{
+		$match = array();
+		$content = @file_get_contents( dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
+
+		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
+			return $match[1];
+		}
+
+		return '';
 	}
 
 
