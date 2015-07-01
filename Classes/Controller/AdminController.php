@@ -75,6 +75,7 @@ class AdminController extends AbstractController
 		$this->view->assign( 'itemSchemas', $this->_controller->getJsonItemSchemas() );
 		$this->view->assign( 'searchSchemas', $this->_controller->getJsonSearchSchemas() );
 		$this->view->assign( 'activeTab', ( $this->request->hasArgument( 'tab' ) ? (int) $this->request->getArgument( 'tab' ) : 0 ) );
+		$this->view->assign( 'version', $this->getVersion() );
 		$this->view->assign( 'urlTemplate', $urlTemplate );
 	}
 
@@ -101,12 +102,12 @@ class AdminController extends AbstractController
 		}
 
 		$context = $this->_getContext();
-		
+
 		$conf = $this->_getConfig( ( is_array( $this->settings ) ? $this->settings : array() ) );
 		$context->setConfig( $conf );
 
 		$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
-		
+
 		try {
 			$sitecode = $conf->get( 'mshop/locale/site', 'default' );
 			$localeItem = $localeManager->bootstrap( $sitecode, $langid, '', false );
@@ -192,5 +193,23 @@ class AdminController extends AbstractController
 		}
 
 		return json_encode( $item->toArray() );
+	}
+
+
+	/**
+	 * Returns the version of the Aimeos TYPO3 extension
+	 *
+	 * @return string Version string
+	 */
+	protected function getVersion()
+	{
+		$match = array();
+		$content = @file_get_contents( dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
+
+		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
+			return $match[1];
+		}
+
+		return '';
 	}
 }

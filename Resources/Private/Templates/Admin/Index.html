@@ -9,7 +9,7 @@
 	window.MShop = {
 
 			i18n: {
-				lang: '{lang}',
+				lang: '<f:format.html parseFuncTSPath="empty">{lang}</f:format.html>',
 				content: <f:format.html parseFuncTSPath="empty">{i18nContent}</f:format.html>
 			},
 
@@ -26,10 +26,15 @@
 
 				urlTemplate: '<f:format.html parseFuncTSPath="empty">{urlTemplate}</f:format.html>',
 
-				activeTab: {activeTab},
+				activeTab: <f:format.html parseFuncTSPath="empty">{activeTab}</f:format.html>,
 
 				baseurl: {
 					content: '../uploads/tx_aimeos/'
+				},
+
+				update: {
+					type: 'TYPO3',
+					version: '<f:format.html parseFuncTSPath="empty">{version}</f:format.html>'
 				}
 			}
 		}
