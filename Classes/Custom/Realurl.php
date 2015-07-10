@@ -93,6 +93,8 @@ class Realurl
 					),
 					'co' => array(
 						array( 'GETvar' => 'ai[c_step]' ),
+						array( 'GETvar' => 'code' ),
+						array( 'GETvar' => 'orderid' ),
 					),
 					'json' => array(
 						'type' => 'single',

@@ -301,6 +301,13 @@ class Base
 		$helper = new \MW_View_Helper_Encoder_Default( $view );
 		$view->addHelper( 'encoder', $helper );
 
+		$helper = new \MW_View_Helper_Csrf_Default( $view );
+		$view->addHelper( 'csrf', $helper );
+
+		$body = @file_get_contents( 'php://input' );
+		$helper = new \MW_View_Helper_Request_Default( $view, $body, $_SERVER['REMOTE_ADDR'] );
+		$view->addHelper( 'request', $helper );
+
 		return $view;
 	}
 

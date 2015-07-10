@@ -60,11 +60,13 @@ plugin.tx_aimeos {
 					}
 					confirm.url.config {
 						absoluteUri = 1
+						namespace = 0
 						chash = 0
 					}
 					update.url.config {
 						absoluteUri = 1
 						type = 191351525
+						namespace = 0
 						chash = 0
 					}
 				}

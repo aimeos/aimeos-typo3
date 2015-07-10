@@ -808,7 +808,7 @@ AimeosCheckoutStandard = {
 				.has(".header,label").has("input:checked") // combining in one has() doesn't work
 				.find(".form-list .mandatory").each(testfn);
 
-			$(".checkout-standard-order-payment .form-list .mandatory").each(testfn);
+			$(".checkout-standard-process .form-list .mandatory").each(testfn);
 
 			if( nodes.length !== 0 ) {
 				$('html, body').animate({
@@ -827,14 +827,10 @@ AimeosCheckoutStandard = {
 	setupPaymentRedirect: function() {
 
 		var form = $("form").first();
-		var node = $(".checkout-standard-order-payment", form);
+		var node = $(".checkout-standard-process", form);
 
-		if(node.length > 0 && node.has(".mandatory").length == 0
-			&& node.has(".optional").length == 0 && form.submit() === false
-		) {
-			if(node.data("url")) {
-				window.location = node.data("url");
-			}
+		if(node.length > 0 && node.has(".mandatory").length == 0 && node.has(".optional").length == 0 && form.attr("action") != '' ) {
+			form.submit();
 		}
 	},
 
