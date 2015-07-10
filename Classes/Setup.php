@@ -10,7 +10,7 @@
 namespace Aimeos\Aimeos;
 
 
-require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
+require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 
 
 /**
