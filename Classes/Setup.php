@@ -10,7 +10,7 @@
 namespace Aimeos\Aimeos;
 
 
-require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
+require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 
 
 /**
@@ -35,7 +35,7 @@ class Setup
 
 			foreach( $paths as $path )
 			{
-				$file = $path . DIRECTORY_SEPARATOR . $fileName;
+				$file = $path . '/' . $fileName;
 
 				if( file_exists( $file ) === true && ( include_once $file ) !== false ) {
 					return true;

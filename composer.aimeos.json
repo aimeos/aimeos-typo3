@@ -10,17 +10,11 @@
 		"forum": "http://help.aimeos.org",
 		"wiki": "http://docs.aimeos.org"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/aimeos/arcavias-core"
-		}
-	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
 		"php": ">=5.3.2",
-		"arcavias/arcavias-core": "dev-master",
+		"aimeos/aimeos-core": "dev-master",
 		"aimeos/ai-zend2-i18n": "dev-master",
 		"aimeos/ai-typo3": "dev-master"
 	},
@@ -39,10 +33,10 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/"
 		],
 		"post-update-cmd": [
-			"cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/"
 		]
 	}
 }

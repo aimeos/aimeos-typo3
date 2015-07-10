@@ -11,7 +11,7 @@
 namespace Aimeos\Aimeos;
 
 
-require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'Libraries' . DIRECTORY_SEPARATOR . 'autoload.php';
+require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 
 
 /**
@@ -37,9 +37,8 @@ class Base
 	{
 		if( self::$aimeos === null )
 		{
-			$ds = DIRECTORY_SEPARATOR;
 			$libPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
-			$libPath .= 'Resources' . $ds . 'Libraries' . $ds . 'arcavias' . $ds . 'arcavias-core';
+			$libPath .= 'Resources/Libraries/aimeos/aimeos-core';
 
 			// Hook for processing extension directories
 			$extDirs = array();
