@@ -123,7 +123,9 @@ abstract class AbstractController
 		switch( Base::getExtConfig( 'cacheName', 'Typo3' ) )
 		{
 			case 'Typo3':
-				\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				if( class_exists( '\TYPO3\CMS\Core\Cache\Cache' ) ) {
+					\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				}
 				$cache = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' )->getCache( 'aimeos' );
 
 				$conf = array( 'siteid' => $config->get( 'mshop/cache/prefix' ) . $siteid );
