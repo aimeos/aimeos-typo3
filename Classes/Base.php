@@ -80,7 +80,9 @@ class Base
 				return \MW_Cache_Factory::createManager( 'None', array(), null );
 
 			case 'Typo3':
-				\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				if( class_exists( '\TYPO3\CMS\Core\Cache\Cache' ) ) {
+					\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
+				}
 				$manager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
 
 				return new \MAdmin_Cache_Proxy_Typo3( $context, $manager->getCache( 'aimeos' ) );
