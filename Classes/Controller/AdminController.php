@@ -12,6 +12,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use \TYPO3\CMS\Backend\Utility\BackendUtility;
 
 
 /**
@@ -54,8 +55,8 @@ class AdminController extends AbstractController
 		}
 
 		// rawurldecode() is necessary for ExtJS templates to replace "{site}" properly
-		$urlTemplate = rawurldecode( \TYPO3\CMS\Backend\Utility\BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
-		$serviceUrl = \TYPO3\CMS\Backend\Utility\BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Admin', 'action' => 'do' ) ) );
+		$urlTemplate = rawurldecode( BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
+		$serviceUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Admin', 'action' => 'do' ) ) );
 
 		$this->view->assign( 'htmlHeader', $html );
 		$this->view->assign( 'lang', $langid );

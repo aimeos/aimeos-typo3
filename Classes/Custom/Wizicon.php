@@ -10,6 +10,10 @@
 
 namespace Aimeos\Aimeos\Custom;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Localization\LocalizationFactory;
+
 
 /**
  * Class that adds the wizard icon.
@@ -26,11 +30,12 @@ class Wizicon
 	 */
 	public function proc( $wizardItems )
 	{
-		$path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
-		$relpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath( 'aimeos' );
+		$path = ExtensionManagementUtility::extPath( 'aimeos' );
+		$relpath = ExtensionManagementUtility::extRelPath( 'aimeos' );
+		$langfile = $path . 'Resources/Private/Language/extension.xlf';
 
-		$file = $path . 'Resources/Private/Language/extension.xlf';
-		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( $file, $GLOBALS['LANG']->lang );
+		$languageFactory = GeneralUtility::makeInstance( LocalizationFactory::class );
+		$xml = $languageFactory->getParsedData( $langfile, $GLOBALS['LANG']->lang );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
 			'icon' => $relpath . 'Resources/Public/Images/aimeos-wizicon.png',
