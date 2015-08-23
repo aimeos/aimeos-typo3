@@ -142,7 +142,7 @@ class Base
 	{
 		if( self::$context === null )
 		{
-			$context = new \MShop_Context_Item_Default();
+			$context = new \MShop_Context_Item_Typo3();
 			$context->setConfig( $config );
 
 			$dbm = new \MW_DB_Manager_PDO( $config );
@@ -156,6 +156,13 @@ class Base
 
 			$mailer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
 			$context->setMail( new \MW_Mail_Typo3( $mailer ) );
+
+			if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'saltedpasswords' )
+				&& \TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled( 'FE' )
+			) {
+				$object = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance();
+				$context->setHasherTypo3( $object );
+			}
 
 			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
 				$session = new \MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
