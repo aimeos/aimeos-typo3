@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2012
- * @copyright Aimeos (aimeos.org), 2014
+ * @copyright Aimeos (aimeos.org), 2014-2015
  * @package TYPO3_Aimeos
  */
 
@@ -23,13 +23,14 @@ class Base
 	/**
 	 * Execute the list of jobs for the given sites
 	 *
-	 * @param \MShop_Context_Item_Interface $context Context item
+	 * @param array $conf Multi-dimensional array of configuration options
 	 * @param array $jobs List of job names
 	 * @param string $sites List of site names
 	 */
-	public static function execute( \MShop_Context_Item_Interface $context, array $jobs, $sites )
+	public static function execute( array $conf, array $jobs, $sites )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
+		$context = self::getContext( $conf );
 		$manager = \MShop_Factory::createManager( $context, 'locale' );
 
 		foreach( self::getSiteItems( $context, $sites ) as $siteItem )

@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014
+ * @copyright Aimeos (aimeos.org), 2014-2015
  * @package TYPO3_Aimeos
  */
 
@@ -82,10 +82,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 		}
 
 		Scheduler\Base::initFrontend( $this->{$this->fieldPageDetail} );
-
-		$context = Scheduler\Base::getContext( $conf );
-
-		Scheduler\Base::execute( $context, (array) $this->{$this->fieldController}, $this->{$this->fieldSite} );
+		Scheduler\Base::execute( $conf, (array) $this->{$this->fieldController}, $this->{$this->fieldSite} );
 
 		return true;
 	}

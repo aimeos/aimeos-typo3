@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014
+ * @copyright Aimeos (aimeos.org), 2014-2015
  * @package TYPO3_Aimeos
  */
 
@@ -39,9 +39,7 @@ class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 		$tsconfig = $this->{$this->fieldTSconfig};
 
 		$conf = Base::parseTS( $tsconfig );
-		$context = Scheduler\Base::getContext( $conf );
-
-		Scheduler\Base::execute( $context, $controllers, $sitecodes );
+		Scheduler\Base::execute( $conf, $controllers, $sitecodes );
 
 		return true;
 	}
