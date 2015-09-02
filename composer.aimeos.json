@@ -20,7 +20,7 @@
 	"prefer-stable": true,
 	"require": {
 		"php": ">=5.3.2",
-		"arcavias/arcavias-core": "2015.03.*",
+		"aimeos/aimeos-core": "2015.03.*",
 		"aimeos/ai-zend2-i18n": "2015.03.*",
 		"aimeos/ai-typo3": "2015.03.*"
 	},
@@ -39,10 +39,10 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/"
 		],
 		"post-update-cmd": [
-			"cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/"
 		]
 	}
 }
