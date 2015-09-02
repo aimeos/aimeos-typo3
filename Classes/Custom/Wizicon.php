@@ -35,7 +35,7 @@ class Wizicon
 		$langfile = $path . 'Resources/Private/Language/extension.xlf';
 
 		$languageFactory = GeneralUtility::makeInstance( LocalizationFactory::class );
-		$xml = $languageFactory->getParsedData( $langfile, $GLOBALS['LANG']->lang );
+		$xml = $languageFactory->getParsedData( $langfile, $GLOBALS['LANG']->lang, '', 0 );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
 			'icon' => $relpath . 'Resources/Public/Images/aimeos-wizicon.png',
