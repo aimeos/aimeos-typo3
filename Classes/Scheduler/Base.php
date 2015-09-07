@@ -60,7 +60,7 @@ class Base
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
 		$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html' ) );
 
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
 		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
 		$uriBuilder->setArgumentPrefix( 'ai' );
 
