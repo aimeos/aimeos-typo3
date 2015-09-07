@@ -28,7 +28,7 @@
 	},
 	"extra": {
 		"installer-paths": {
-			"Resources/Extensions/{$name}/": ["type:aimeos-extension"]
+			"Resources/Private/Extensions/{$name}/": ["type:aimeos-extension"]
 		}
 	},
 	"scripts": {

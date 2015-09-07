@@ -3,9 +3,9 @@
 <project name="Aimeos TYPO3 extension" default="all">
 
 	<property name="coredir" value="${project.basedir}/Resources/Libraries/aimeos/aimeos-core" />
+	<property name="extdir" value="${project.basedir}/Resources/Private/Extensions" />
 	<property name="confdir" value="${project.basedir}/Resources/Private/Config" />
 	<property name="bindir" value="${project.basedir}/Resources/Libraries/bin/" />
-	<property name="extdir" value="${project.basedir}/Resources/Extensions" />
 	<property name="codestddir" value="${coredir}/misc/coding" />
 
 

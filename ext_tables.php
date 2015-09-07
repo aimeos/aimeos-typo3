@@ -18,7 +18,7 @@ if ( TYPO3_MODE === 'BE' )
 		'tx_aimeos_admin',
 		'', // position
 		array(
-			'Admin' => 'index,do',
+			'Admin' => 'index,do,file',
 		),
 		array(
 			'access' => 'user,group',
