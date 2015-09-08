@@ -33,6 +33,20 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.stock.url.target>
+			<settings.client.html.basket.standard.url.target>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:basket-standard.target</label>
+					<config>
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>pages</allowed>
+						<size>1</size>
+						<maxitems>1</maxitems>
+						<minitems>1</minitems>
+						<show_thumbs>1</show_thumbs>
+					</config>
+				</TCEforms>
+			</settings.client.html.basket.standard.url.target>
 			<settings.client.html.catalog.list.catid-default>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.catid-default</label>
