@@ -1,9 +1,9 @@
 page.includeCSS.aimeos-common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
 page.includeCSS.aimeos = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
 
-page.includeJSFooterlibs.jquery = //code.jquery.com/jquery-1.11.1.min.js
+page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-1.11.1.min.js
 page.includeJSFooterlibs.jquery.external = 1
-page.includeJSFooterlibs.jquery-migrate = //code.jquery.com/jquery-migrate-1.2.1.min.js
+page.includeJSFooterlibs.jquery-migrate = https://code.jquery.com/jquery-migrate-1.2.1.min.js
 page.includeJSFooterlibs.jquery-migrate.external = 1
 page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
