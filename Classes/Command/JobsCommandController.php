@@ -34,10 +34,7 @@ class JobsCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCon
 	 */
 	public function runCommand( $jobs, $sites = 'default', $tsconfig = '' )
 	{
-		$conf = Base::parseTS( $tsconfig );
-		$context = Scheduler\Base::getContext( $conf );
-
-		Scheduler\Base::execute( $context, explode( ' ', $jobs ), $sites );
+		Scheduler\Base::execute( Base::parseTS( $tsconfig ), explode( ' ', $jobs ), $sites );
 
 		return true;
 	}
@@ -88,43 +85,8 @@ class JobsCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCon
 		$conf['client']['html']['common']['template']['baseurl'] = $themeDir;
 		$conf['client']['html']['catalog']['detail']['url']['target'] = $detailPid;
 
-		$context = $this->getContext( $conf );
-
-		Scheduler\Base::execute( $context, explode( ' ', $jobs ), $sites );
+		Scheduler\Base::execute( $conf, explode( ' ', $jobs ), $sites );
 
 		return true;
-	}
-
-
-	/**
-	 * Returns a context object for the jobs command
-	 *
-	 * @param array $localConf Local TypoScript configuration settings
-	 * @return \MShop_Context_Item_Default Context object
-	 */
-	protected function getContext( array $localConf = array() )
-	{
-		$aimeos = Base::getAimeos();
-		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
-		$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html' ) );
-
-		$uriBuilder = $this->objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
-		$uriBuilder->setArgumentPrefix( 'ai' );
-
-		$config = Base::getConfig( $localConf );
-		$context = Base::getContext( $config );
-
-		$langManager = \MShop_Factory::createManager( $context, 'locale/language' );
-		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
-
-		$i18n = Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
-		$context->setI18n( $i18n );
-
-		$view = Base::getView( $config, $uriBuilder, $tmplPaths, $this->request );
-		$context->setView( $view );
-
-		$context->setEditor( 'aimeos:jobs' );
-
-		return $context;
 	}
 }
