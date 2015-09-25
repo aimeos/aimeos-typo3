@@ -68,7 +68,18 @@ class Base
 		$context = Aimeos\Base::getContext( $config );
 
 		$langManager = \MShop_Factory::createManager( $context, 'locale/language' );
-		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
+		$search = $langManager->createSearch( true );
+
+		$expr = array();
+		$expr[] = $search->getConditions();
+		$expr[] = $search->compare( '==', 'locale.language.id', 'en' ); // default language
+
+		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) { // BE language
+			$expr[] = $search->compare( '==', 'locale.language.id', $GLOBALS['BE_USER']->uc['lang'] );
+		}
+
+		$search->setConditions( $search->combine( '||', $expr ) );
+		$langids = array_keys( $langManager->searchItems( $search ) );
 
 		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
 		$context->setI18n( $i18n );
