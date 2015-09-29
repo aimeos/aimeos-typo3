@@ -1,0 +1,87 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="fr">
+		<header/>
+		<body>
+			<trans-unit id="account-favorite.target" xml:space="preserve">
+				<source>Favorite products page</source>
+				<target>Page des produits préférés</target>
+			</trans-unit>
+			<trans-unit id="account-watch.target" xml:space="preserve">
+				<source>Watched products page</source>
+				<target>Page des produits consultés</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
+				<source>Display categories beginning from the following node</source>
+				<target>Afficher les catégories commençant à partir du noeud suivant</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
+				<source>Always display these category levels</source>
+				<target>Toujours afficher ces niveaux de catégories</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
+				<source>Only display up to these category levels</source>
+				<target>Afficher uniquement jusqu'à ces niveaux de catégories</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.target" xml:space="preserve">
+				<source>Catalog list page</source>
+				<target>Page Catalogue de la liste</target>
+			</trans-unit>
+			<trans-unit id="catalog-suggest.target" xml:space="preserve">
+				<source>Page with suggestions for search filter</source>
+				<target>Page avec des suggestions pour filtre de recherche</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
+				<source>Default category if no parameter is available</source>
+				<target>Catégorie par défaut si aucun paramètre disponible</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.target" xml:space="preserve">
+				<source>Catalog detail page</source>
+				<target>Page détail du catalogue</target>
+			</trans-unit>
+			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
+				<source>Page with catalog session plugin</source>
+				<target>Page avec le plugin de session du catalogue</target>
+			</trans-unit>
+			<trans-unit id="catalog-count.target" xml:space="preserve">
+				<source>Page with product counts for catalog filter</source>
+				<target>Page avec le nombre de produit pour les filtres catalogue</target>
+			</trans-unit>
+			<trans-unit id="catalog-stock.target" xml:space="preserve">
+				<source>Page with stock level data</source>
+				<target>Page des données du niveau de stock</target>
+			</trans-unit>
+			<trans-unit id="basket-standard.target" xml:space="preserve">
+				<source>Basket page</source>
+				<target>Page panier de commande</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard.target" xml:space="preserve">
+				<source>Checkout page</source>
+				<target>Page de commande</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
+				<source>Terms and conditions page</source>
+				<target>Page des termes et conditions</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
+				<source>Privacy policy page</source>
+				<target>Page politique de confidentialité </target>
+			</trans-unit>
+			<trans-unit id="checkout-confirm.target" xml:space="preserve">
+				<source>Confirmation page</source>
+				<target>Page de confirmation</target>
+			</trans-unit>
+			<trans-unit id="checkout-update.target" xml:space="preserve">
+				<source>Page with &quot;checkout payment update&quot; plugin</source>
+				<target>Page avec plugin de &quot;Mise à jour du paiement de la commande&quot;</target>
+			</trans-unit>
+			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Configuration TypoScript</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>La configuration TypoScript est invalide</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
