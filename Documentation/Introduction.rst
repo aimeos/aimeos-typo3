@@ -17,7 +17,7 @@ Introduction
 What does it do?
 ----------------
 
-The Aimeos TYPO3 extension is a high performance web shop based on the Arcavias web shop
+The Aimeos TYPO3 extension is a high performance web shop based on the Aimeos web shop
 library. It integrates natively into TYPO3, uses the TYPO3 infrastructure and is fully
 configurable via TypoScript.
 

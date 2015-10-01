@@ -55,7 +55,7 @@ class Base
 				}
 			}
 
-			self::$aimeos = new \Arcavias( $extDirs, false, $libPath );
+			self::$aimeos = new \Aimeos( $extDirs, false, $libPath );
 		}
 
 		return self::$aimeos;
