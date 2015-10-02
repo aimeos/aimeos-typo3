@@ -34,7 +34,7 @@ class Wizicon
 		$relpath = ExtensionManagementUtility::extRelPath( 'aimeos' );
 		$langfile = $path . 'Resources/Private/Language/extension.xlf';
 
-		$languageFactory = GeneralUtility::makeInstance( LocalizationFactory::class );
+		$languageFactory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Localization\LocalizationFactory' );
 		$xml = $languageFactory->getParsedData( $langfile, $GLOBALS['LANG']->lang, '', 0 );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
