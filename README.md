@@ -40,7 +40,7 @@ If you don't have phing available, you can also execute the required steps by ha
 php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
 git pull https://github.com/aimeos/aimeos-typo3.git
 COMPOSER=composer.aimeos.json composer update
-cp -r Resources/Libraries/arcavias/arcavias-core/client/html/themes/ Resources/Public/Themes/
+cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/ Resources/Public/Themes/
 ```
 ### TYPO3
 
