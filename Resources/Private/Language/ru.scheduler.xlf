@@ -68,6 +68,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+				<target>Абсолютный путь или путь, относительно корневой директории TYPO3, до директории с файлами CSS темы.</target>
 			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
