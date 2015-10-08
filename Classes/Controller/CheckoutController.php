@@ -27,7 +27,7 @@ class CheckoutController extends AbstractController
 	public function indexAction()
 	{
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Checkout_Standard_Factory::createClient( $this->getContext(), $templatePaths );
+		$client = \Aimeos\Client\Html\Checkout\Standard\Factory::createClient( $this->getContext(), $templatePaths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -40,11 +40,11 @@ class CheckoutController extends AbstractController
 	{
 		$context = $this->getContext();
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Client_Html_Checkout_Confirm_Factory::createClient( $context, $templatePaths );
+		$client = \Aimeos\Client\Html\Checkout\Confirm\Factory::createClient( $context, $templatePaths );
 
 		$view = $context->getView();
 		$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
-		$helper = new \MW_View_Helper_Parameter_Default( $view, $param );
+		$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $param );
 		$view->addHelper( 'param', $helper );
 
 		$client->setView( $view );
@@ -65,11 +65,11 @@ class CheckoutController extends AbstractController
 		{
 			$context = $this->getContext();
 			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-			$client = \Client_Html_Checkout_Update_Factory::createClient( $context, $templatePaths );
+			$client = \Aimeos\Client\Html\Checkout\Update\Factory::createClient( $context, $templatePaths );
 
 			$view = $context->getView();
 			$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
-			$helper = new \MW_View_Helper_Parameter_Default( $view, $param );
+			$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $param );
 			$view->addHelper( 'param', $helper );
 
 			$client->setView( $view );

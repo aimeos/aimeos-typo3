@@ -47,7 +47,7 @@ abstract class AbstractController
 	/**
 	 * Returns the context item
 	 *
-	 * @return \MShop_Context_Item_Interface Context item
+	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
 	protected function getContext()
 	{
@@ -81,10 +81,10 @@ abstract class AbstractController
 	/**
 	 * Returns the locale object for the context
 	 *
-	 * @param \MShop_Context_Item_Interface $context Context object
-	 * @return \MShop_Locale_Item_Interface Locale item object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	protected function getLocale( \MShop_Context_Item_Interface $context )
+	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context )
 	{
 		if( !isset( self::$locale ) )
 		{
@@ -120,7 +120,7 @@ abstract class AbstractController
 			}
 
 
-			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
+			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
 			self::$locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
 		}
 
@@ -134,7 +134,7 @@ abstract class AbstractController
 	 * @param Client_Html_Interface $client Html client object
 	 * @return string HTML code for inserting into the HTML body
 	 */
-	protected function getClientOutput( \Client_Html_Interface $client )
+	protected function getClientOutput( \Aimeos\Client\Html\Iface $client )
 	{
 		$client->setView( $this->getContext()->getView() );
 		$client->process();

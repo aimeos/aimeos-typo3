@@ -155,7 +155,7 @@ abstract class AbstractProvider
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
 		foreach( (array) $submittedData[$this->fieldController] as $name ) {
-			\Controller_Jobs_Factory::createController( $context, $aimeos, $name );
+			\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $name );
 		}
 
 		return true;
@@ -169,7 +169,7 @@ abstract class AbstractProvider
 	 */
 	protected function getAvailableSites()
 	{
-		$manager = \MShop_Factory::createManager( Scheduler\Base::getContext(), 'locale/site' );
+		$manager = \Aimeos\MShop\Factory::createManager( Scheduler\Base::getContext(), 'locale/site' );
 
 		$search = $manager->createSearch();
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
@@ -178,7 +178,7 @@ abstract class AbstractProvider
 		$sites = $manager->searchItems( $search );
 
 		foreach( $sites as $id => $siteItem ) {
-			$sites[$id] = $manager->getTree( $id, array(), \MW_Tree_Manager_Abstract::LEVEL_TREE );
+			$sites[$id] = $manager->getTree( $id, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
 		}
 
 		return $sites;
@@ -243,11 +243,11 @@ abstract class AbstractProvider
 			$langid = $GLOBALS['BE_USER']->uc['lang'];
 		}
 
-		$localeItem = \MShop_Factory::createManager( $context, 'locale' )->createItem();
+		$localeItem = \Aimeos\MShop\Factory::createManager( $context, 'locale' )->createItem();
 		$localeItem->setLanguageId( $langid );
 		$context->setLocale( $localeItem );
 
-		$controllers = \Controller_Jobs_Factory::getControllers( $context, $aimeos, $cntlPaths );
+		$controllers = \Aimeos\Controller\Jobs\Factory::getControllers( $context, $aimeos, $cntlPaths );
 
 		foreach( $controllers as $name => $controller )
 		{

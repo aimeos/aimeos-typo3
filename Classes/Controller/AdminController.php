@@ -48,7 +48,7 @@ class AdminController extends AbstractController
 					throw new \Exception( sprintf( 'JSB2 file "%1$s" not found', $jsbAbsPath ) );
 				}
 
-				$jsb2 = new \MW_Jsb2_Default( $jsbAbsPath, $relJsbPath . '/' . dirname( $path ) );
+				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, $relJsbPath . '/' . dirname( $path ) );
 				$cssHeader .= $jsb2->getHtml( 'css' );
 			}
 		}
@@ -98,7 +98,7 @@ class AdminController extends AbstractController
 			foreach( $paths as $path )
 			{
 				$jsbAbsPath = $base . '/' . $path;
-				$jsb2 = new \MW_Jsb2_Default( $jsbAbsPath, dirname( $jsbAbsPath ) );
+				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, dirname( $jsbAbsPath ) );
 				$jsFiles = array_merge( $jsFiles, $jsb2->getUrls( 'js', '' ) );
 			}
 		}
@@ -123,7 +123,7 @@ class AdminController extends AbstractController
 	/**
 	 * Returns the context item
 	 *
-	 * @return \MShop_Context_Item_Interface Context item
+	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
 	protected function getContext()
 	{
@@ -151,14 +151,14 @@ class AdminController extends AbstractController
 	/**
 	 * Returns the ExtJS JSON RPC controller
 	 *
-	 * @return \Controller_ExtJS_JsonRpc ExtJS JSON RPC controller
+	 * @return \Aimeos\Controller\ExtJS\JsonRpc ExtJS JSON RPC controller
 	 */
 	protected function getController()
 	{
 		if( !isset( $this->controller ) )
 		{
 			$cntlPaths = Base::getAimeos()->getCustomPaths( 'controller/extjs' );
-			$this->controller = new \Controller_ExtJS_JsonRpc( $this->getContext(), $cntlPaths );
+			$this->controller = new \Aimeos\Controller\ExtJS\JsonRpc( $this->getContext(), $cntlPaths );
 		}
 
 		return $this->controller;
@@ -186,7 +186,7 @@ class AdminController extends AbstractController
 	protected function getJsonClientI18n( $lang )
 	{
 		$i18nPaths = Base::getAimeos()->getI18nPaths();
-		$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $lang, array('disableNotices'=>true) );
+		$i18n = new \Aimeos\MW\Translation\Zend2( $i18nPaths, 'gettext', $lang, array('disableNotices'=>true) );
 
 		$content = array(
 			'client/extjs' => $i18n->getAll( 'client/extjs' ),
@@ -200,22 +200,22 @@ class AdminController extends AbstractController
 	/**
 	 * Returns the locale object for the context
 	 *
-	 * @param \MShop_Context_Item_Interface $context Context object
-	 * @return \MShop_Locale_Item_Interface Locale item object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	protected function getLocale( \MShop_Context_Item_Interface $context )
+	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context )
 	{
 		$langid = 'en';
 		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
 			$langid = $GLOBALS['BE_USER']->uc['lang'];
 		}
 
-		$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
+		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
 
 		try {
 			$sitecode = $context->getConfig()->get( 'mshop/locale/site', 'default' );
 			$localeItem = $localeManager->bootstrap( $sitecode, $langid, '', false );
-		} catch( \MShop_Locale_Exception $e ) {
+		} catch( \Aimeos\MShop\Locale\Exception $e ) {
 			$localeItem = $localeManager->createItem();
 		}
 
@@ -234,7 +234,7 @@ class AdminController extends AbstractController
 	 */
 	protected function getSite( \TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
-		$localeManager = \MShop_Locale_Manager_Factory::createManager( $this->getContext() );
+		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $this->getContext() );
 		$manager = $localeManager->getSubManager( 'site' );
 
 		$site = 'default';

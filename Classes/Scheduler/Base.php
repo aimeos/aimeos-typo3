@@ -31,7 +31,7 @@ class Base
 	{
 		$aimeos = Aimeos\Base::getAimeos();
 		$context = self::getContext( $conf );
-		$manager = \MShop_Factory::createManager( $context, 'locale' );
+		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
 
 		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
 		{
@@ -42,7 +42,7 @@ class Base
 			$context->setLocale( $localeItem );
 
 			foreach( $jobs as $jobname ) {
-				\Controller_Jobs_Factory::createController( $context, $aimeos, $jobname )->run();
+				\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $jobname )->run();
 			}
 		}
 	}
@@ -67,7 +67,7 @@ class Base
 		$config = Aimeos\Base::getConfig( $localConf );
 		$context = Aimeos\Base::getContext( $config );
 
-		$langManager = \MShop_Factory::createManager( $context, 'locale/language' );
+		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
 		$search = $langManager->createSearch( true );
 
 		$expr = array();
@@ -96,17 +96,17 @@ class Base
 	/**
 	 * Returns the enabled site items which may be limited by the input arguments.
 	 *
-	 * @param \MShop_Context_Item_Interface $context Context item object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context item object
 	 * @param string $sites Unique site codes
-	 * @return \MShop_Locale_Item_Site_Interface[] List of site items
+	 * @return \Aimeos\MShop\Locale\Item\Site\Iface[] List of site items
 	 */
-	public static function getSiteItems( \MShop_Context_Item_Interface $context, $sites )
+	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites )
 	{
 		if( !is_array( $sites )  ) {
 			$sites = explode( ' ', $sites );
 		}
 
-		$manager = \MShop_Factory::createManager( $context, 'locale/site' );
+		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale/site' );
 		$search = $manager->createSearch();
 
 		if( !empty( $sites ) ) {

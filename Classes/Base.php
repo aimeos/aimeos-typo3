@@ -55,7 +55,7 @@ class Base
 				}
 			}
 
-			self::$aimeos = new \Aimeos( $extDirs, false, $libPath );
+			self::$aimeos = new \Aimeos\Bootstrap( $extDirs, false, $libPath );
 		}
 
 		return self::$aimeos;
@@ -65,11 +65,11 @@ class Base
 	/**
 	 * Returns the cache object for the context
 	 *
-	 * @param \MShop_Context_Item_Interface $context Context object including config
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
 	 * @param string $siteid Unique site ID
-	 * @return \MW_Cache_Interface Cache object
+	 * @return \Aimeos\MW\Cache\Iface Cache object
 	 */
-	protected static function getCache( \MShop_Context_Item_Interface $context )
+	protected static function getCache( \Aimeos\MShop\Context\Item\Iface $context )
 	{
 		$config = $context->getConfig();
 
@@ -77,7 +77,7 @@ class Base
 		{
 			case 'None':
 				$config->set( 'client/html/basket/cache/enable', false );
-				return \MW_Cache_Factory::createManager( 'None', array(), null );
+				return \Aimeos\MW\Cache\Factory::createManager( 'None', array(), null );
 
 			case 'Typo3':
 				if( class_exists( '\TYPO3\CMS\Core\Cache\Cache' ) ) {
@@ -85,10 +85,10 @@ class Base
 				}
 				$manager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
 
-				return new \MAdmin_Cache_Proxy_Typo3( $context, $manager->getCache( 'aimeos' ) );
+				return new \Aimeos\MAdmin\Cache\Proxy\Typo3( $context, $manager->getCache( 'aimeos' ) );
 
 			default:
-				return new \MAdmin_Cache_Proxy_Default( $context );
+				return new \Aimeos\MAdmin\Cache\Proxy\Standard( $context );
 		}
 	}
 
@@ -119,43 +119,43 @@ class Base
 				}
 			}
 
-			$conf = new \MW_Config_Array( array(), $configPaths );
+			$conf = new \Aimeos\MW\Config\PHPArray( array(), $configPaths );
 
 			if( function_exists( 'apc_store' ) === true && self::getExtConfig( 'useAPC', false ) == true ) {
-				$conf = new \MW_Config_Decorator_APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
+				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
 			self::$config = $conf;
 		}
 
-		return new \MW_Config_Decorator_Memory( self::$config, $local );
+		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );
 	}
 
 
 	/**
 	 * Returns the current context.
 	 *
-	 * @param \MW_Config_Interface Configuration object
+	 * @param \Aimeos\MW\Config\Iface Configuration object
 	 * @return MShop_Context_Item_Interface Context object
 	 */
-	public static function getContext( \MW_Config_Interface $config )
+	public static function getContext( \Aimeos\MW\Config\Iface $config )
 	{
 		if( self::$context === null )
 		{
-			$context = new \MShop_Context_Item_Typo3();
+			$context = new \Aimeos\MShop\Context\Item\Typo3();
 			$context->setConfig( $config );
 
-			$dbm = new \MW_DB_Manager_PDO( $config );
+			$dbm = new \Aimeos\MW\DB\Manager\PDO( $config );
 			$context->setDatabaseManager( $dbm );
 
-			$logger = \MAdmin_Log_Manager_Factory::createManager( $context );
+			$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
 			$context->setLogger( $logger );
 
 			$cache = self::getCache( $context );
 			$context->setCache( $cache );
 
 			$mailer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
-			$context->setMail( new \MW_Mail_Typo3( $mailer ) );
+			$context->setMail( new \Aimeos\MW\Mail\Typo3( $mailer ) );
 
 			if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'saltedpasswords' )
 				&& \TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled( 'FE' )
@@ -165,9 +165,9 @@ class Base
 			}
 
 			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
-				$session = new \MW_Session_Typo3( $GLOBALS['TSFE']->fe_user );
+				$session = new \Aimeos\MW\Session\Typo3( $GLOBALS['TSFE']->fe_user );
 			} else {
-				$session = new \MW_Session_None();
+				$session = new \Aimeos\MW\Session\None();
 			}
 			$context->setSession( $session );
 
@@ -222,10 +222,10 @@ class Base
 		{
 			if( !isset( self::$i18n[$langid] ) )
 			{
-				$i18n = new \MW_Translation_Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
+				$i18n = new \Aimeos\MW\Translation\Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
 
 				if( function_exists( 'apc_store' ) === true && self::getExtConfig( 'useAPC', false ) == true ) {
-					$i18n = new \MW_Translation_Decorator_APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
+					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
 				self::$i18n[$langid] = $i18n;
@@ -236,7 +236,7 @@ class Base
 			if( isset( $local[$langid] ) )
 			{
 				$translations = self::parseTranslations( (array) $local[$langid] );
-				$i18nList[$langid] = new \MW_Translation_Decorator_Memory( $i18nList[$langid], $translations );
+				$i18nList[$langid] = new \Aimeos\MW\Translation\Decorator\Memory( $i18nList[$langid], $translations );
 			}
 		}
 
@@ -247,14 +247,14 @@ class Base
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \MW_Config_Interface $config Configuration object
+	 * @param \Aimeos\MW\Config\Iface $config Configuration object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
 	 * @return MW_View_Interface View object
 	 */
-	public static function getView( \MW_Config_Interface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
+	public static function getView( \Aimeos\MW\Config\Iface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
 		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
 	{
 		$params = $fixed = array();
@@ -272,48 +272,48 @@ class Base
 		}
 		else
 		{
-			$translation = new \MW_Translation_None( 'en' );
+			$translation = new \Aimeos\MW\Translation\None( 'en' );
 		}
 
 
-		$view = new \MW_View_Default();
+		$view = new \Aimeos\MW\View\Standard();
 
 		// workaround for TYPO3 6.2 bug (UriBuilder is incomplete)
 		if( $request !== null || \TYPO3\CMS\Core\Utility\VersionNumberUtility::getNumericTypo3Version() >= '7.0.0' ) {
-			$helper = new \MW_View_Helper_Url_Typo3( $view, $uriBuilder, $fixed );
+			$helper = new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
 		} else {
-			$helper = new \MW_View_Helper_Url_None( $view );
+			$helper = new \Aimeos\MW\View\Helper\Url\None( $view );
 		}
 		$view->addHelper( 'url', $helper );
 
-		$helper = new \MW_View_Helper_Translate_Default( $view, $translation );
+		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
 		$view->addHelper( 'translate', $helper );
 
-		$helper = new \MW_View_Helper_Partial_Default( $view, $config, $templatePaths );
+		$helper = new \Aimeos\MW\View\Helper\Partial\Standard( $view, $config, $templatePaths );
 		$view->addHelper( 'partial', $helper );
 
-		$helper = new \MW_View_Helper_Parameter_Default( $view, $params );
+		$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
 
-		$helper = new \MW_View_Helper_Config_Default( $view, $config );
+		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $config );
 		$view->addHelper( 'config', $helper );
 
 		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
 		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
-		$helper = new \MW_View_Helper_Number_Default( $view, $sepDec, $sep1000 );
+		$helper = new \Aimeos\MW\View\Helper\Number\Standard( $view, $sepDec, $sep1000 );
 		$view->addHelper( 'number', $helper );
 
-		$helper = new \MW_View_Helper_FormParam_Default( $view, array( $uriBuilder->getArgumentPrefix() ) );
+		$helper = new \Aimeos\MW\View\Helper\FormParam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
 
-		$helper = new \MW_View_Helper_Encoder_Default( $view );
+		$helper = new \Aimeos\MW\View\Helper\Encoder\Standard( $view );
 		$view->addHelper( 'encoder', $helper );
 
-		$helper = new \MW_View_Helper_Csrf_Default( $view );
+		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view );
 		$view->addHelper( 'csrf', $helper );
 
 		$body = @file_get_contents( 'php://input' );
-		$helper = new \MW_View_Helper_Request_Default( $view, $body, $_SERVER['REMOTE_ADDR'] );
+		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $_SERVER['REMOTE_ADDR'] );
 		$view->addHelper( 'request', $helper );
 
 		return $view;
@@ -411,11 +411,11 @@ class Base
 	/**
 	 * Returns the fixed parameters that should be included in every URL
 	 *
-	 * @param \MW_Config_Interface $config Config object
+	 * @param \Aimeos\MW\Config\Iface $config Config object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request Request object
 	 * @return array Associative list of site, language and currency if available
 	 */
-	protected static function getFixedParams( \MW_Config_Interface $config,
+	protected static function getFixedParams( \Aimeos\MW\Config\Iface $config,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
 		$fixed = array();

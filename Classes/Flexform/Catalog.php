@@ -44,12 +44,12 @@ class Catalog
 			$context = Base::getContext( Base::getConfig() );
 			$context->setEditor( 'flexform' );
 
-			$localeManager = \MShop_Locale_Manager_Factory::createManager( $context );
+			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );
 
 
-			$manager = \MShop_Catalog_Manager_Factory::createManager( $context );
-			$item = $manager->getTree( null, array(), \MW_Tree_Manager_Abstract::LEVEL_TREE );
+			$manager = \Aimeos\MShop\Catalog\Manager\Factory::createManager( $context );
+			$item = $manager->getTree( null, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
 
 
 			$config['items'] = array_merge( $config['items'], $this->getCategoryList( $item, 0 ) );
@@ -70,7 +70,7 @@ class Catalog
 	 * @param unknown_type $level Current level on indention
 	 * @return array Associative array of category label / ID pairs
 	 */
-	protected function getCategoryList( \MShop_Catalog_Item_Interface $item, $level )
+	protected function getCategoryList( \Aimeos\MShop\Catalog\Item\Iface $item, $level )
 	{
 		$result = array();
 		$result[] = array( str_repeat( '.', $level * 4 ) . $item->getName(), $item->getId() );

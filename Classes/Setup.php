@@ -96,10 +96,10 @@ class Setup
 		if( \Aimeos\Aimeos\Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
 			$local = array( 'setup' => array( 'default' => array( 'demo' => true ) ) );
 		}
-		$ctx->setConfig( new \MW_Config_Decorator_Memory( $config, $local ) );
+		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
 
-		$manager = new \MW_Setup_Manager_Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
+		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->run( 'mysql' );
 	}
 
@@ -124,21 +124,21 @@ class Setup
 	 */
 	protected static function getContext()
 	{
-		$ctx = new \MShop_Context_Item_Default();
+		$ctx = new \Aimeos\MShop\Context\Item\Standard();
 
 		$conf = \Aimeos\Aimeos\Base::getConfig();
 		$ctx->setConfig( $conf );
 
-		$dbm = new \MW_DB_Manager_PDO( $conf );
+		$dbm = new \Aimeos\MW\DB\Manager\PDO( $conf );
 		$ctx->setDatabaseManager( $dbm );
 
-		$logger = new \MW_Logger_Errorlog( \MW_Logger_ABSTRACT::INFO );
+		$logger = new \Aimeos\MW\Logger\Errorlog( \Aimeos\MW\Logger\Base::INFO );
 		$ctx->setLogger( $logger );
 
-		$session = new \MW_Session_None();
+		$session = new \Aimeos\MW\Session\None();
 		$ctx->setSession( $session );
 
-		$cache = new \MW_Cache_None();
+		$cache = new \Aimeos\MW\Cache\None();
 		$ctx->setCache( $cache );
 
 		return $ctx;
