@@ -11,9 +11,6 @@
 namespace Aimeos\Aimeos;
 
 
-require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
-
-
 /**
  * Aimeos base class with common functionality.
  *
