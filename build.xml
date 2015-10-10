@@ -93,9 +93,6 @@
 		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
 		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
 		<exec command="COMPOSER=composer.aimeos.json composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
-		<copy todir="Resources/Public/Themes/">
-			<fileset dir="${coredir}/client/html/themes/" expandsymboliclinks="true" />
-		</copy>
 	</target>
 
 
