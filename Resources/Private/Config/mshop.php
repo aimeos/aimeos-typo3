@@ -1,13 +1,11 @@
 <?php
 
 return array(
-	'catalog' => array(
+	'index' => array(
 		'manager' => array(
-			'index' => array(
+			'name' => 'MySQL',
+			'text' => array(
 				'name' => 'MySQL',
-				'text' => array(
-					'name' => 'MySQL',
-				),
 			),
 		),
 	),
