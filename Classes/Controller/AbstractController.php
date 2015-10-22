@@ -69,6 +69,7 @@ abstract class AbstractController
 			{
 				$context->setEditor( $GLOBALS['TSFE']->fe_user->user['username'] );
 				$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
+				$context->setGroupIds( \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] ) );
 			}
 
 			$this->context = $context;
