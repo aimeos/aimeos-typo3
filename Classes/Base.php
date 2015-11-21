@@ -417,20 +417,21 @@ class Base
 	{
 		$fixed = array();
 
-		$name = $config->get( 'typo3/param/name/site', 'loc-site' );
+		$name = $config->get( 'typo3/param/name/site', 'site' );
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}
 
-		$name = $config->get( 'typo3/param/name/language', 'loc-language' );
+		$name = $config->get( 'typo3/param/name/language', 'locale' );
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}
 
-		$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
+		$name = $config->get( 'typo3/param/name/currency', 'currency' );
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}
+error_log( print_r( $fixed, true ) );
 
 		return $fixed;
 	}
