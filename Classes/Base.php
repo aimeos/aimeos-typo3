@@ -431,7 +431,6 @@ class Base
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}
-error_log( print_r( $fixed, true ) );
 
 		return $fixed;
 	}
