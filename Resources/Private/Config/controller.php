@@ -143,5 +143,15 @@ return array(
 			),
 		),
 	),
+	'jsonadm' => array(
+		'url' => array(
+			'action' => 'Jsonadm',
+			'action' => 'index',
+			'config' => array(
+				'absoluteUri' => true,
+				'BE' => true,
+			),
+		),
+	),
 );
 

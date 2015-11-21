@@ -19,6 +19,7 @@ if ( TYPO3_MODE === 'BE' )
 		'', // position
 		array(
 			'Admin' => 'index,do,file',
+			'Jsonadm' => 'index',
 		),
 		array(
 			'access' => 'user,group',
