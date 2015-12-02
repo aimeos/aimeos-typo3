@@ -145,6 +145,9 @@ class Base
 			$dbm = new \Aimeos\MW\DB\Manager\PDO( $config );
 			$context->setDatabaseManager( $dbm );
 
+			$fsm = new \Aimeos\MW\Filesystem\Manager\Standard( $config );
+			$context->setFilesystemManager( $fsm );
+
 			$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
 			$context->setLogger( $logger );
 

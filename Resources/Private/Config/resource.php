@@ -14,4 +14,9 @@ return array(
 			"SET SESSION sql_mode='ANSI'",
 		),
 	),
+	'fs' => array(
+		'adapter' => 'Standard',
+		'basedir' => PATH_site . 'uploads/tx_aimeos',
+		'tempdir' => PATH_site . 'typo3temp',
+	),
 );
