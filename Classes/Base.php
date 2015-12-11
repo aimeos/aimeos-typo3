@@ -276,7 +276,7 @@ class Base
 		}
 
 
-		$view = new \Aimeos\MW\View\Standard();
+		$view = new \Aimeos\MW\View\Standard( $templatePaths );
 
 		// workaround for TYPO3 6.2 bug (UriBuilder is incomplete)
 		if( $request !== null || \TYPO3\CMS\Core\Utility\VersionNumberUtility::getNumericTypo3Version() >= '7.0.0' ) {
@@ -288,9 +288,6 @@ class Base
 
 		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
 		$view->addHelper( 'translate', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Partial\Standard( $view, $config, $templatePaths );
-		$view->addHelper( 'partial', $helper );
 
 		$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
@@ -305,12 +302,6 @@ class Base
 
 		$helper = new \Aimeos\MW\View\Helper\FormParam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Encoder\Standard( $view );
-		$view->addHelper( 'encoder', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view );
-		$view->addHelper( 'csrf', $helper );
 
 		$body = @file_get_contents( 'php://input' );
 		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $_SERVER['REMOTE_ADDR'] );
