@@ -261,11 +261,8 @@ class Base
 
 		if( $request !== null && $locale !== null )
 		{
-			$fixed = self::getFixedParams( $config, $request );
-
-			// required for reloading to the current page
 			$params = $request->getArguments();
-			$params['target'] = $GLOBALS["TSFE"]->id;
+			$fixed = self::getFixedParams( $config, $request );
 
 			$i18n = Base::getI18n( array( $locale ), $config->get( 'i18n', array() ) );
 			$translation = $i18n[$locale];
@@ -289,7 +286,7 @@ class Base
 		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
 		$view->addHelper( 'translate', $helper );
 
-		$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $params );
+		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
 
 		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $config );
@@ -300,11 +297,11 @@ class Base
 		$helper = new \Aimeos\MW\View\Helper\Number\Standard( $view, $sepDec, $sep1000 );
 		$view->addHelper( 'number', $helper );
 
-		$helper = new \Aimeos\MW\View\Helper\FormParam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
+		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
 
 		$body = @file_get_contents( 'php://input' );
-		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $_SERVER['REMOTE_ADDR'] );
+		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $_SERVER['REMOTE_ADDR'], $GLOBALS["TSFE"]->id );
 		$view->addHelper( 'request', $helper );
 
 		return $view;

@@ -53,7 +53,7 @@ abstract class AbstractController
 	{
 		if( !isset( $this->context ) )
 		{
-			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
+			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
 			$config = $this->getConfig( $this->settings );
 			$context = Base::getContext( $config );
 
