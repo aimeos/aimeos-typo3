@@ -28,9 +28,9 @@ class Setup
 	 */
 	public static function autoload( $classname )
 	{
-		if( strncmp( $classname, 'MW_Setup_Task_', 14 ) === 0 )
+		if( strncmp( $classname, 'Aimeos\\MW\\Setup\\Task\\', 21 ) === 0 )
 		{
-		    $fileName = substr( $classname, 14 ) . '.php';
+		    $fileName = substr( $classname, 21 ) . '.php';
 			$paths = explode( PATH_SEPARATOR, get_include_path() );
 
 			foreach( $paths as $path )
@@ -66,11 +66,11 @@ class Setup
 		$includePaths[] = get_include_path();
 
 		if( set_include_path( implode( PATH_SEPARATOR, $includePaths ) ) === false ) {
-			throw new Exception( 'Unable to extend include path' );
+			throw new \Exception( 'Unable to extend include path' );
 		}
 
 		if( spl_autoload_register( 'Aimeos\\Aimeos\\Setup::autoload' ) === false ) {
-			throw new Exception( 'Unable to register Aimeos\\Aimeos\\Setup::autoload' );
+			throw new \Exception( 'Unable to register Aimeos\\Aimeos\\Setup::autoload' );
 		}
 
 

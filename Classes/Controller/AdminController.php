@@ -247,7 +247,7 @@ class AdminController extends AbstractController
 		$items = $manager->searchItems( $criteria );
 
 		if( ( $item = reset( $items ) ) === false ) {
-			throw new Exception( sprintf( 'No site found for code "%1$s"', $site ) );
+			throw new \Exception( sprintf( 'No site found for code "%1$s"', $site ) );
 		}
 
 		return json_encode( $item->toArray() );
