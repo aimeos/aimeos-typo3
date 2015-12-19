@@ -36,7 +36,7 @@ class AdminController extends AbstractController
 		$langid = $this->getContext()->getLocale()->getLanguageId();
 		$controller = $this->getController();
 
-		foreach( Base::getAimeos()->getCustomPaths( 'client/extjs' ) as $base => $paths )
+		foreach( Base::getAimeos()->getCustomPaths( 'admin/extjs' ) as $base => $paths )
 		{
 			$relJsbPath = '../' . substr( $base, $abslen );
 
@@ -93,7 +93,7 @@ class AdminController extends AbstractController
 		$contents = '';
 		$jsFiles = array();
 
-		foreach( Base::getAimeos()->getCustomPaths( 'client/extjs' ) as $base => $paths )
+		foreach( Base::getAimeos()->getCustomPaths( 'admin/extjs' ) as $base => $paths )
 		{
 			foreach( $paths as $path )
 			{
@@ -172,8 +172,8 @@ class AdminController extends AbstractController
 	 */
 	protected function getJsonClientConfig()
 	{
-		$conf = $this->getContext()->getConfig()->get( 'client/extjs', array() );
-		return json_encode( array( 'client' => array( 'extjs' => $conf ) ), JSON_FORCE_OBJECT );
+		$conf = $this->getContext()->getConfig()->get( 'admin/extjs', array() );
+		return json_encode( array( 'admin' => array( 'extjs' => $conf ) ), JSON_FORCE_OBJECT );
 	}
 
 
@@ -189,8 +189,8 @@ class AdminController extends AbstractController
 		$i18n = new \Aimeos\MW\Translation\Zend2( $i18nPaths, 'gettext', $lang, array('disableNotices'=>true) );
 
 		$content = array(
-			'client/extjs' => $i18n->getAll( 'client/extjs' ),
-			'client/extjs/ext' => $i18n->getAll( 'client/extjs/ext' ),
+			'admin' => $i18n->getAll( 'admin' ),
+			'admin/ext' => $i18n->getAll( 'admin/ext' ),
 		);
 
 		return json_encode( $content, JSON_FORCE_OBJECT );
