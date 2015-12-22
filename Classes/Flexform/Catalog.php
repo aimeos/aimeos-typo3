@@ -30,9 +30,9 @@ class Catalog
 	 */
 	public function getCategories( array $config, $tceForms = null, $sitecode = 'default' )
 	{
-		if( isset( $config['row'] ) && isset( $config['row']['pid'] ) )
+		if( isset( $config['row'] ) && isset( $config['row']['uid'] ) )
 		{
-			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $config['row']['pid'], 'tx_aimeos' );
+			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $config['row']['uid'], 'tx_aimeos' );
 
 			if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
 				$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];
