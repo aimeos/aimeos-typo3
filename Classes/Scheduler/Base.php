@@ -54,7 +54,7 @@ class Base
 	 * @param array Multi-dimensional associative list of key/value pairs
 	 * @return MShop_Context_Item_Interface Context object
 	 */
-	public static function getContext( array $localConf = array() )
+	public static function getContext( array $conf = array() )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
@@ -64,7 +64,7 @@ class Base
 		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
 		$uriBuilder->setArgumentPrefix( 'ai' );
 
-		$config = Aimeos\Base::getConfig( $localConf );
+		$config = Aimeos\Base::getConfig( $conf );
 		$context = Aimeos\Base::getContext( $config );
 
 		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
