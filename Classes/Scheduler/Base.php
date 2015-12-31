@@ -57,7 +57,7 @@ class Base
 	public static function getContext( array $localConf = array() )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
-		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/layouts' );
+		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
 		$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html' ) );
 
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
