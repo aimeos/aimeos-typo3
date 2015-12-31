@@ -74,11 +74,11 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 		{
 			$themeDir = $this->{$this->fieldTemplateBaseurl};
 
-			if( $themeDir != '' && $themeDir[0] !== '/' ) {
-				realpath( PATH_site . $themeDir );
+			if( $themeDir[0] !== '/' ) {
+				$themeDir = realpath( PATH_site . $themeDir );
 			}
 
-			$conf['client']['html']['common']['template']['baseurl'] = $this->{$this->fieldTemplateBaseurl};
+			$conf['client']['html']['common']['template']['baseurl'] = $themeDir;
 		}
 
 		Scheduler\Base::initFrontend( $this->{$this->fieldPageDetail} );
