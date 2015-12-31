@@ -1,6 +1,6 @@
 # cat=tx_aimeos/basic; type=string; label=Site code:Create or update the site with this code
 siteCode = default
-# cat=tx_aimeos/basic; type=boolean; label=Add demo data:Creates a complete set of demo data during execution of the update script. If unchecked, the demo data is completely removed again.
+# cat=tx_aimeos/basic; type=options[Remove=0,Keep=,Overwrite=1]; label=Updates demo data:Adds a new set of demo data, keeps the current set untouched or removes the existing demo data during execution of the update script.
 useDemoData = 1
 # cat=tx_aimeos/basic; type=boolean; label=Use auto-configuration for RealUrl:If the internal RealUrl auto-configuration for Aimeos plugins should be used
 useRealUrlAutoConfig = 1
