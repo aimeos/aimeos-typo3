@@ -60,7 +60,7 @@ class Setup
 
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
-		$taskPaths = $aimeos->getSetupPaths( 'default' );
+		$taskPaths = $aimeos->getSetupPaths( $sitecode );
 
 		$includePaths = $taskPaths;
 		$includePaths[] = get_include_path();
@@ -78,7 +78,6 @@ class Setup
 
 		$dbm = $ctx->getDatabaseManager();
 		$config = $ctx->getConfig();
-		$local = array();
 
 		$config->set( 'setup/site', $sitecode );
 
@@ -93,14 +92,23 @@ class Setup
 			}
 		}
 
-		if( \Aimeos\Aimeos\Base::getExtConfig( 'useDemoData', 1 ) == 1 ) {
-			$local = array( 'setup' => array( 'default' => array( 'demo' => true ) ) );
-		}
-		$ctx->setConfig( new \MW_Config_Decorator_Memory( $config, $local ) );
 
+		$class = '\TYPO3\CMS\Extbase\Object\ObjectManager';
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
+		$utility = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' );
+
+		$conf = $utility->getCurrentConfiguration( 'aimeos' );
+
+
+		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $conf['useDemoData'] ) ) );
+		$ctx->setConfig( new \MW_Config_Decorator_Memory( $config, $local ) );
 
 		$manager = new \MW_Setup_Manager_Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->run( 'mysql' );
+
+
+		$conf['useDemoData'] = '';
+		$utility->writeConfiguration( $conf, 'aimeos' );
 	}
 
 
