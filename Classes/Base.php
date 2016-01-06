@@ -300,8 +300,12 @@ class Base
 		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
 
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$target = $GLOBALS["TSFE"]->id;
 		$body = @file_get_contents( 'php://input' );
-		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $_SERVER['REMOTE_ADDR'], $GLOBALS["TSFE"]->id );
+		$files = ( is_array( $_FILES ) ? $_FILES : array() );
+
+		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $ip, $target, $files );
 		$view->addHelper( 'request', $helper );
 
 		return $view;
