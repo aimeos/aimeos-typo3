@@ -275,8 +275,8 @@ class Base
 
 		$view = new \Aimeos\MW\View\Standard( $templatePaths );
 
-		// workaround for TYPO3 6.2 bug (UriBuilder is incomplete)
-		if( $request !== null || \TYPO3\CMS\Core\Utility\VersionNumberUtility::getNumericTypo3Version() >= '7.0.0' ) {
+		// workaround for TYPO3 bug (UriBuilder is incomplete in CLI environment)
+		if( $request !== null ) {
 			$helper = new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
 		} else {
 			$helper = new \Aimeos\MW\View\Helper\Url\None( $view );
