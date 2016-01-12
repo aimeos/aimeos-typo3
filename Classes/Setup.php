@@ -93,14 +93,15 @@ class Setup
 		}
 
 
-		$class = '\TYPO3\CMS\Extbase\Object\ObjectManager';
+		$class = 'TYPO3\CMS\Extbase\Object\ObjectManager';
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
 		$utility = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' );
 
 		$conf = $utility->getCurrentConfiguration( 'aimeos' );
+		$value = ( isset( $conf['useDemoData']['value'] ) ? $conf['useDemoData']['value'] : '' );
 
 
-		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $conf['useDemoData'] ) ) );
+		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $value ) ) );
 		$ctx->setConfig( new \MW_Config_Decorator_Memory( $config, $local ) );
 
 		$manager = new \MW_Setup_Manager_Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
