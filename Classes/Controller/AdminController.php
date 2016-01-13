@@ -114,9 +114,8 @@ class AdminController extends AbstractController
 
 		$response = $this->getControllerContext()->getResponse();
 		$response->setHeader( 'Content-Type', 'application/javascript' );
-		$response->setContent( $contents );
 
-		return $response;
+		return $contents;
 	}
 
 
