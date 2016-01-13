@@ -99,7 +99,7 @@ class AdminController extends AbstractController
 			{
 				$jsbAbsPath = $base . '/' . $path;
 				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, dirname( $jsbAbsPath ) );
-				$jsFiles = array_merge( $jsFiles, $jsb2->getUrls( 'js', '' ) );
+				$jsFiles = array_merge( $jsFiles, $jsb2->getFiles( 'js' ) );
 			}
 		}
 
@@ -114,9 +114,8 @@ class AdminController extends AbstractController
 
 		$response = $this->getControllerContext()->getResponse();
 		$response->setHeader( 'Content-Type', 'application/javascript' );
-		$response->setContent( $contents );
 
-		return $response;
+		return $contents;
 	}
 
 
