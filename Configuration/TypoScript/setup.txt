@@ -80,6 +80,9 @@ plugin.tx_aimeos {
 }
 
 
+module.tx_aimeos.settings.client.html.common.content.baseurl = ../uploads/tx_aimeos
+
+
 aimeosJson = PAGE
 aimeosJson {
 	typeNum = 191351524

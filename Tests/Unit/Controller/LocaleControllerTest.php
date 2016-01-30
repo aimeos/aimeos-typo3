@@ -47,15 +47,15 @@ class LocaleControllerTest
 	 */
 	public function selectAction()
 	{
-		$name = 'Client_Html_Locale_Select_Default';
+		$name = '\\Aimeos\\Client\\Html\\Locale\\Select\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Locale_Select_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Locale\Select\Factory::injectClient( $name, $client );
 		$output = $this->object->selectAction();
-		\Client_Html_Locale_Select_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Locale\Select\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}

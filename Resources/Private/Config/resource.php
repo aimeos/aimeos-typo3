@@ -19,4 +19,9 @@ return array(
 		'basedir' => PATH_site . 'uploads/tx_aimeos',
 		'tempdir' => PATH_site . 'typo3temp',
 	),
+	'fs-admin' => array(
+		'adapter' => 'Standard',
+		'basedir' => PATH_site . 'typo3temp',
+		'tempdir' => PATH_site . 'typo3temp',
+	),
 );

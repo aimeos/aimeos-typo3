@@ -145,7 +145,14 @@ return array(
 	),
 	'jsonadm' => array(
 		'url' => array(
-			'action' => 'Jsonadm',
+			'controller' => 'Jsonadm',
+			'action' => 'index',
+			'config' => array(
+				'absoluteUri' => true,
+				'BE' => true,
+			),
+		'options' => array(
+			'controller' => 'Jsonadm',
 			'action' => 'index',
 			'config' => array(
 				'absoluteUri' => true,
@@ -153,5 +160,5 @@ return array(
 			),
 		),
 	),
+	),
 );
-

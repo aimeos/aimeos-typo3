@@ -2,8 +2,8 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2015
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2015-2016
+ * @package TYPO3
  */
 
 
@@ -16,7 +16,7 @@ use \Aimeos\Aimeos\Base;
 /**
  * Controller for the JSON API
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class JsonadmController extends AbstractController
 {

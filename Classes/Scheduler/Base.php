@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2012
- * @copyright Aimeos (aimeos.org), 2014-2015
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 namespace Aimeos\Aimeos\Scheduler;
@@ -16,7 +16,7 @@ use Aimeos\Aimeos;
 /**
  * Aimeos common scheduler class.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class Base
 {

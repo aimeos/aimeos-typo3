@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 namespace Aimeos\Aimeos\Controller;
@@ -16,7 +16,7 @@ use Aimeos\Aimeos\Base;
 /**
  * Abstract class with common functionality for all controllers.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 abstract class AbstractController
 	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController

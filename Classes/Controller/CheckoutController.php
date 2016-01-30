@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -17,7 +17,7 @@ use Aimeos\Aimeos\Base;
 /**
  * Aimeos checkout controller.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class CheckoutController extends AbstractController
 {
@@ -44,7 +44,7 @@ class CheckoutController extends AbstractController
 
 		$view = $context->getView();
 		$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
-		$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $param );
+		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 		$view->addHelper( 'param', $helper );
 
 		$client->setView( $view );
@@ -69,7 +69,7 @@ class CheckoutController extends AbstractController
 
 			$view = $context->getView();
 			$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
-			$helper = new \Aimeos\MW\View\Helper\Parameter\Standard( $view, $param );
+			$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 			$view->addHelper( 'param', $helper );
 
 			$client->setView( $view );

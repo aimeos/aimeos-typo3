@@ -47,15 +47,15 @@ class BasketControllerTest
 	 */
 	public function indexAction()
 	{
-		$name = 'Client_Html_Basket_Standard_Default';
+		$name = '\\Aimeos\\Client\\Html\\Basket\\Standard\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Basket_Standard_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Basket\Standard\Factory::injectClient( $name, $client );
 		$output = $this->object->indexAction();
-		\Client_Html_Basket_Standard_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Basket\Standard\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -66,15 +66,15 @@ class BasketControllerTest
 	 */
 	public function smallAction()
 	{
-		$name = 'Client_Html_Basket_Mini_Default';
+		$name = '\\Aimeos\\Client\\Html\\Basket\\Mini\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Basket_Mini_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Basket\Mini\Factory::injectClient( $name, $client );
 		$output = $this->object->smallAction();
-		\Client_Html_Basket_Mini_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Basket\Mini\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}

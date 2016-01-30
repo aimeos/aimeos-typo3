@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014-2015
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -17,7 +17,7 @@ use Aimeos\Aimeos\Scheduler;
 /**
  * Aimeos e-mail scheduler.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {

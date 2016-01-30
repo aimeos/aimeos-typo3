@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2012
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -16,11 +16,11 @@ use \TYPO3\CMS\Backend\Utility\BackendUtility;
 
 
 /**
- * Controller for adminisration interface.
+ * Controller for ExtJS adminisration interface.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
-class AdminController extends AbstractController
+class ExtadmController extends AbstractController
 {
 	private $context;
 	private $controller;
@@ -33,8 +33,11 @@ class AdminController extends AbstractController
 	{
 		$cssHeader = '';
 		$abslen = strlen( PATH_site );
-		$langid = $this->getContext()->getLocale()->getLanguageId();
 		$controller = $this->getController();
+
+		$locale = $this->getContext()->getLocale();
+		$site = $locale->getSite()->getCode();
+		$langid = $locale->getLanguageId();
 
 		foreach( Base::getAimeos()->getCustomPaths( 'admin/extjs' ) as $base => $paths )
 		{
@@ -54,8 +57,9 @@ class AdminController extends AbstractController
 		}
 
 		// rawurldecode() is necessary for ExtJS templates to replace "{site}" properly
-		$urlTemplate = rawurldecode( BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
-		$serviceUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Admin', 'action' => 'do' ) ) );
+		$urlTemplate = rawurldecode( BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Extadm', 'action' => 'index', 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
+		$serviceUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Extadm', 'action' => 'do' ) ) );
+		$jqadmUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Jqadm', 'action' => 'search', 'site' => $site, 'resource' => 'product' ) ) );
 
 		$this->view->assign( 'cssHeader', $cssHeader );
 		$this->view->assign( 'lang', $langid );
@@ -66,8 +70,9 @@ class AdminController extends AbstractController
 		$this->view->assign( 'itemSchemas', $controller->getJsonItemSchemas() );
 		$this->view->assign( 'searchSchemas', $controller->getJsonSearchSchemas() );
 		$this->view->assign( 'activeTab', ( $this->request->hasArgument( 'tab' ) ? (int) $this->request->getArgument( 'tab' ) : 0 ) );
-		$this->view->assign( 'version', $this->getVersion() );
+		$this->view->assign( 'version', Base::getVersion() );
 		$this->view->assign( 'urlTemplate', $urlTemplate );
+		$this->view->assign( 'jqadmurl', $jqadmUrl );
 	}
 
 
@@ -86,7 +91,7 @@ class AdminController extends AbstractController
 	/**
 	 * Returns the JS file content
 	 *
-	 * @return Response Response object
+	 * @return string Javascript files content
 	 */
 	public function fileAction()
 	{
@@ -112,8 +117,7 @@ class AdminController extends AbstractController
 			$contents .= $content;
 		}
 
-		$response = $this->getControllerContext()->getResponse();
-		$response->setHeader( 'Content-Type', 'application/javascript' );
+		$this->response->setHeader( 'Content-Type', 'application/javascript' );
 
 		return $contents;
 	}
@@ -250,24 +254,6 @@ class AdminController extends AbstractController
 		}
 
 		return json_encode( $item->toArray() );
-	}
-
-
-	/**
-	 * Returns the version of the Aimeos TYPO3 extension
-	 *
-	 * @return string Version string
-	 */
-	protected function getVersion()
-	{
-		$match = array();
-		$content = @file_get_contents( dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
-
-		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
-			return $match[1];
-		}
-
-		return '';
 	}
 
 

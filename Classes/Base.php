@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -14,7 +14,7 @@ namespace Aimeos\Aimeos;
 /**
  * Aimeos base class with common functionality.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class Base
 {
@@ -100,7 +100,7 @@ class Base
 	{
 		if( self::$config === null )
 		{
-			$configPaths = self::getAimeos()->getConfigPaths( 'mysql' );
+			$configPaths = self::getAimeos()->getConfigPaths();
 
 			// Hook for processing extension config directories
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
@@ -241,6 +241,24 @@ class Base
 		}
 
 		return $i18nList;
+	}
+
+
+	/**
+	 * Returns the version of the Aimeos TYPO3 extension
+	 *
+	 * @return string Version string
+	 */
+	public static function getVersion()
+	{
+		$match = array();
+		$content = @file_get_contents( dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
+
+		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
+			return $match[1];
+		}
+
+		return '';
 	}
 
 

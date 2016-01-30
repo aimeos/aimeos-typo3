@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -14,7 +14,7 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
 /**
  * Additional field provider for Aimeos e-mail scheduler.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class Email6 extends Email
 	implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface

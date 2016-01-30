@@ -4,7 +4,7 @@
 namespace Aimeos\Aimeos\Tests\Unit\Controller;
 
 
-class AdminControllerTest
+class ExtadmControllerTest
 	extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $object;
@@ -14,7 +14,7 @@ class AdminControllerTest
 	{
 		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
 
-		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AdminController', array( 'dummy' ) );
+		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\ExtadmController', array( 'dummy' ) );
 		$this->view = $this->getMock( 'TYPO3\\CMS\\Fluid\\View\\TemplateView', array(), array(), '', false );
 
 		$objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
@@ -64,5 +64,14 @@ class AdminControllerTest
 			->with( $this->equalTo( 'response' ), $this->stringContains( '{' ) );
 
 		$this->object->doAction();
+	}
+
+
+	/**
+	 * @test
+	 */
+	public function fileAction()
+	{
+		$this->assertInternalType( 'string', $this->object->fileAction() );
 	}
 }

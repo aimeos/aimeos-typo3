@@ -55,7 +55,8 @@ class Typo6Test
 		$mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Typo6' )
 			->setMethods( array( 'getFields' ) )->getMock();
 
-		$mock->method( 'getFields' )->will( $this->throwException( new \Exception()  ) );
+		$mock->expects( $this->once() )->method( 'getFields' )
+			->will( $this->throwException( new \Exception()  ) );
 
 		$result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
 
@@ -132,7 +133,7 @@ class Typo6Test
 	{
 		$data = array(
 			'aimeos_sitecode' => 'default',
-			'aimeos_controller' => 'catalog/index/optimize',
+			'aimeos_controller' => 'index/optimize',
 		);
 		$module = new SchedulerModuleController();
 

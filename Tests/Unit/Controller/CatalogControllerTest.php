@@ -47,15 +47,15 @@ class CatalogControllerTest
 	 */
 	public function countAction()
 	{
-		$name = 'Client_Html_Catalog_Count_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Count\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_Count_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Count\Factory::injectClient( $name, $client );
 		$output = $this->object->countAction();
-		\Client_Html_Catalog_Count_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Count\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -66,15 +66,15 @@ class CatalogControllerTest
 	 */
 	public function detailAction()
 	{
-		$name = 'Client_Html_Catalog_Detail_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Detail\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_Detail_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Detail\Factory::injectClient( $name, $client );
 		$output = $this->object->detailAction();
-		\Client_Html_Catalog_Detail_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Detail\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -85,15 +85,15 @@ class CatalogControllerTest
 	 */
 	public function filterAction()
 	{
-		$name = 'Client_Html_Catalog_Filter_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Filter\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_Filter_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Filter\Factory::injectClient( $name, $client );
 		$output = $this->object->filterAction();
-		\Client_Html_Catalog_Filter_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Filter\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -104,15 +104,15 @@ class CatalogControllerTest
 	 */
 	public function listAction()
 	{
-		$name = 'Client_Html_Catalog_List_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Lists\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_List_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Lists\Factory::injectClient( $name, $client );
 		$output = $this->object->listAction();
-		\Client_Html_Catalog_List_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Lists\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -123,15 +123,15 @@ class CatalogControllerTest
 	 */
 	public function suggestAction()
 	{
-		$name = 'Client_Html_Catalog_Suggest_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Suggest\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_List_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Suggest\Factory::injectClient( $name, $client );
 		$output = $this->object->suggestAction();
-		\Client_Html_Catalog_List_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Suggest\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -142,15 +142,15 @@ class CatalogControllerTest
 	 */
 	public function sessionAction()
 	{
-		$name = 'Client_Html_Catalog_Session_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Session\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_Session_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Session\Factory::injectClient( $name, $client );
 		$output = $this->object->sessionAction();
-		\Client_Html_Catalog_Session_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Session\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -161,15 +161,15 @@ class CatalogControllerTest
 	 */
 	public function stageAction()
 	{
-		$name = 'Client_Html_Catalog_Stage_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Stage\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_Stage_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Stage\Factory::injectClient( $name, $client );
 		$output = $this->object->stageAction();
-		\Client_Html_Catalog_Stage_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Stage\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -180,15 +180,15 @@ class CatalogControllerTest
 	 */
 	public function stockAction()
 	{
-		$name = 'Client_Html_Catalog_Stock_Default';
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Stock\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Catalog_Stock_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Catalog\Stock\Factory::injectClient( $name, $client );
 		$output = $this->object->stockAction();
-		\Client_Html_Catalog_Stock_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Catalog\Stock\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}

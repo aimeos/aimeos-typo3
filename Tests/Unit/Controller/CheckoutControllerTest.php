@@ -47,15 +47,15 @@ class CheckoutControllerTest
 	 */
 	public function indexAction()
 	{
-		$name = 'Client_Html_Checkout_Standard_Default';
+		$name = '\\Aimeos\\Client\\Html\\Checkout\\Standard\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Account_History_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Checkout\Standard\Factory::injectClient( $name, $client );
 		$output = $this->object->indexAction();
-		\Client_Html_Account_History_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Checkout\Standard\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -66,15 +66,15 @@ class CheckoutControllerTest
 	 */
 	public function confirmAction()
 	{
-		$name = 'Client_Html_Checkout_Confirm_Default';
+		$name = '\\Aimeos\\Client\\Html\\Checkout\\Confirm\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Account_History_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Checkout\Confirm\Factory::injectClient( $name, $client );
 		$output = $this->object->confirmAction();
-		\Client_Html_Account_History_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Checkout\Confirm\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}
@@ -85,15 +85,15 @@ class CheckoutControllerTest
 	 */
 	public function updateAction()
 	{
-		$name = 'Client_Html_Checkout_Update_Default';
+		$name = '\\Aimeos\\Client\\Html\\Checkout\\Update\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Account_History_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Checkout\Update\Factory::injectClient( $name, $client );
 		$output = $this->object->updateAction();
-		\Client_Html_Account_History_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Checkout\Update\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}

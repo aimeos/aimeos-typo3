@@ -32,11 +32,9 @@
 		}
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/"
-		],
 		"post-update-cmd": [
-			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Libraries/aimeos/aimeos-core/client/html/themes/* Resources/Public/Themes/",
+			"cp -r Resources/Libraries/aimeos/aimeos-core/admin/jqadm/themes/* Resources/Public/Themes/"
 		]
 	}
 }

@@ -3,8 +3,8 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -17,7 +17,7 @@ use Aimeos\Aimeos\Scheduler;
 /**
  * Common methods for Aimeos' e-mail additional field providers.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 abstract class Email extends AbstractProvider
 {

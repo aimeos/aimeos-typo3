@@ -47,15 +47,15 @@ class AccountControllerTest
 	 */
 	public function historyAction()
 	{
-		$name = 'Client_Html_Account_History_Default';
+		$name = '\\Aimeos\\Client\\Html\\Account\\History\\Standard';
 		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
 
 		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
 		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
 
-		\Client_Html_Account_History_Factory::injectClient( $name, $client );
+		\Aimeos\Client\Html\Account\History\Factory::injectClient( $name, $client );
 		$output = $this->object->historyAction();
-		\Client_Html_Account_History_Factory::injectClient( $name, null );
+		\Aimeos\Client\Html\Account\History\Factory::injectClient( $name, null );
 
 		$this->assertEquals( 'body', $output );
 	}

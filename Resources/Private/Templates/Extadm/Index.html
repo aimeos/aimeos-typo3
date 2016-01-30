@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+	<title>Aimeos administration Interface</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<f:format.html parseFuncTSPath="empty">{cssHeader}</f:format.html>
+
+	<script type="text/javascript">
+
+	window.MShop = {
+
+			i18n: {
+				lang: '<f:format.htmlspecialchars>{lang}</f:format.htmlspecialchars>',
+				content: <f:format.raw>{i18nContent}</f:format.raw>
+			},
+
+			config: {
+				data: <f:format.raw>{config}</f:format.raw>,
+
+				site: <f:format.raw>{site}</f:format.raw>,
+
+				itemschema: <f:format.raw>{itemSchemas}</f:format.raw>,
+
+				searchschema: <f:format.raw>{searchSchemas}</f:format.raw>,
+
+				smd: <f:format.raw>{smd}</f:format.raw>,
+
+				urlTemplate: '<f:format.raw>{urlTemplate}</f:format.raw>',
+
+				jqadmurl: '<f:format.raw>{jqadmurl}</f:format.raw>',
+
+				activeTab: <f:format.number decimals="0" decimalSeparator="" thousandsSeparator="">{activeTab}</f:format.number>,
+
+				baseurl: {
+					content: '../uploads/tx_aimeos/'
+				},
+
+				update: {
+					type: 'TYPO3',
+					version: '<f:format.htmlspecialchars>{version}</f:format.htmlspecialchars>'
+				}
+			}
+		}
+
+	</script>
+
+	<script type="text/javascript" src="{f:uri.action(action: 'file')}"></script>
+
+</head>
+<body>
+	<noscript><p>You need to enable javascript!</p></noscript>
+</body>
+</html>

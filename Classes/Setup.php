@@ -2,8 +2,8 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2014
- * @package TYPO3_Aimeos
+ * @copyright Aimeos (aimeos.org), 2014-2016
+ * @package TYPO3
  */
 
 
@@ -16,7 +16,7 @@ require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 /**
  * Aimeos setup class.
  *
- * @package TYPO3_Aimeos
+ * @package TYPO3
  */
 class Setup
 {

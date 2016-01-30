@@ -59,7 +59,8 @@ class Email6Test
 		$mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Email6' )
 			->setMethods( array( 'getFields' ) )->getMock();
 
-		$mock->method( 'getFields' )->will( $this->throwException( new \Exception()  ) );
+		$mock->expects( $this->once() )->method( 'getFields' )
+			->will( $this->throwException( new \Exception()  ) );
 
 		$result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
 
@@ -245,7 +246,7 @@ class Email6Test
 	{
 		$data = array(
 			'aimeos_sitecode' => 'default',
-			'aimeos_controller' => 'catalog/index/optimize',
+			'aimeos_controller' => 'index/optimize',
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_pageid_detail' => '123',
 			'aimeos_content_baseurl' => 'https://www.aimeos.org:80/up/tx_/',
