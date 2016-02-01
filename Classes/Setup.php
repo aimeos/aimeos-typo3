@@ -60,7 +60,7 @@ class Setup
 
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
-		$taskPaths = $aimeos->getSetupPaths( $sitecode );
+		$taskPaths = $aimeos->getSetupPaths( 'default' );
 
 		$includePaths = $taskPaths;
 		$includePaths[] = get_include_path();
