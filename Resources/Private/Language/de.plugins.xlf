@@ -38,6 +38,10 @@
 				<source>Catalog detail page</source>
 				<target>Detailseite des Katalogs</target>
 			</trans-unit>
+			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
+				<source>Default product ID if no parameter is available</source>
+				<target>Standardprodukt-ID, falls keine per Parameter übergeben wurde</target>
+			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>Katalogseite mit dem Session-Plugin</target>
