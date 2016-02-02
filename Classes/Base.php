@@ -118,7 +118,7 @@ class Base
 
 			$conf = new \Aimeos\MW\Config\PHPArray( array(), $configPaths );
 
-			if( function_exists( 'apc_store' ) === true && self::getExtConfig( 'useAPC', false ) == true ) {
+			if( function_exists( 'apc_store' ) === true && (bool) self::getExtConfig( 'useAPC', false ) === true ) {
 				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
@@ -224,7 +224,7 @@ class Base
 			{
 				$i18n = new \Aimeos\MW\Translation\Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
 
-				if( function_exists( 'apc_store' ) === true && self::getExtConfig( 'useAPC', false ) == true ) {
+				if( function_exists( 'apc_store' ) === true && (bool) self::getExtConfig( 'useAPC', false ) === true ) {
 					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
