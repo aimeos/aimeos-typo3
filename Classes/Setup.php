@@ -97,8 +97,8 @@ class Setup
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
 		$utility = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' );
 
-		$conf = $utility->getCurrentConfiguration( 'aimeos' );
-		$value = ( isset( $conf['useDemoData']['value'] ) ? $conf['useDemoData']['value'] : '' );
+		$conf = $utility->convertValuedToNestedConfiguration( $utility->getCurrentConfiguration( 'aimeos' ) );
+		$value = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
 
 
 		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $value ) ) );
