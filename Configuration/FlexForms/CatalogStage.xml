@@ -5,7 +5,7 @@
 	<ROOT>
 		<type>array</type>
 		<el>
-			<settings.client.html.catalog.list.url.target>
+			<settings.client.html.catalog.lists.url.target>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.target</label>
 					<config>
@@ -18,7 +18,7 @@
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
-			</settings.client.html.catalog.list.url.target>
+			</settings.client.html.catalog.lists.url.target>
 			<settings.typo3.tsconfig>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>

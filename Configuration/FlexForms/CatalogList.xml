@@ -47,7 +47,7 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.basket.standard.url.target>
-			<settings.client.html.catalog.list.catid-default>
+			<settings.client.html.catalog.lists.catid-default>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.catid-default</label>
 					<config>
@@ -65,7 +65,7 @@
 						<minitems>0</minitems>
 					</config>
 				</TCEforms>
-			</settings.client.html.catalog.list.catid-default>
+			</settings.client.html.catalog.lists.catid-default>
 			<settings.typo3.tsconfig>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
