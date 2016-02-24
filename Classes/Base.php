@@ -222,7 +222,7 @@ class Base
 		{
 			if( !isset( self::$i18n[$langid] ) )
 			{
-				$i18n = new \Aimeos\MW\Translation\Zend2( $i18nPaths, 'gettext', $langid, array( 'disableNotices' => true ) );
+				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
 
 				if( function_exists( 'apc_store' ) === true && (bool) self::getExtConfig( 'useAPC', false ) === true ) {
 					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
