@@ -84,7 +84,12 @@ class ExtadmController extends AbstractController
 	public function doAction()
 	{
 		$param = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
-		$this->view->assign( 'response', $this->getController()->process( $param, 'php://input' ) );
+
+		if( ( $content = file_get_contents( 'php://input' ) ) === false ) {
+			throw new \Exception( 'Unable to get request content' );
+		}
+
+		$this->view->assign( 'response', $this->getController()->process( $param, $content ) );
 	}
 
 
