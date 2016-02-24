@@ -26,6 +26,10 @@ plugin.tx_aimeos {
 					template.baseurl = typo3conf/ext/aimeos/Resources/Public/Themes/elegance
 				}
 				account {
+					download.url.config {
+						type = 191351526
+						chash = 0
+					}
 					favorite.url.config.chash = 0
 					watch.url.config.chash = 0
 				}
@@ -117,6 +121,23 @@ aimeosPlain {
 	}
 }
 
-[globalVar = TSFE:type=191351524][globalVar = TSFE:type=191351525]
+aimeosPlain = PAGE
+aimeosPlain {
+	typeNum = 191351526
+	config {
+		no_cache = 1
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:application/octet-stream
+		disablePrefixComment = 1
+	}
+	10 = CONTENT
+	10 {
+		table = tt_content
+		select.orderBy = sorting
+		select.languageField = sys_language_uid
+	}
+}
+
+[globalVar = TSFE:type=191351524][globalVar = TSFE:type=191351525][globalVar = TSFE:type=191351526]
 tt_content.stdWrap >
 [end]

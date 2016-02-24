@@ -25,6 +25,7 @@ abstract class Email extends AbstractProvider
 	private $fieldSenderEmail = 'aimeos_sender_email';
 	private $fieldReplyEmail = 'aimeos_reply_email';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
+	private $fieldPageDownload = 'aimeos_pageid_download';
 	private $fieldContentBaseurl = 'aimeos_content_baseurl';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
@@ -134,6 +135,24 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
+		if( empty( $taskInfo[$this->fieldPageDownload] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload};
+		}
+
+		$taskInfo[$this->fieldPageDownload] = htmlspecialchars( $taskInfo[$this->fieldPageDownload], ENT_QUOTES, 'UTF-8' );
+
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldCode = sprintf( $fieldStr, $this->fieldPageDownload, $taskInfo[$this->fieldPageDownload] );
+
+		$additionalFields[$this->fieldPageDownload] = array(
+				'code'     => $fieldCode,
+				'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-download',
+				'cshKey'   => 'xMOD_tx_aimeos',
+				'cshLabel' => $this->fieldPageDownload
+		);
+
+
+		// In case of editing a task, set to the internal value if data wasn't already submitted
 		if( empty( $taskInfo[$this->fieldContentBaseurl] ) && $parentObject->CMD === 'edit' ) {
 			$taskInfo[$this->fieldContentBaseurl] = $task->{$this->fieldContentBaseurl};
 		}
@@ -198,6 +217,7 @@ abstract class Email extends AbstractProvider
 		$task->{$this->fieldSenderEmail} = $submittedData[$this->fieldSenderEmail];
 		$task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail];
 		$task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail];
+		$task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload];
 		$task->{$this->fieldContentBaseurl} = $submittedData[$this->fieldContentBaseurl];
 		$task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl];
 	}
@@ -227,6 +247,11 @@ abstract class Email extends AbstractProvider
 		if( $submittedData[$this->fieldPageDetail] != ''
 			&& preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.page-detail.invalid' ) );
+		}
+
+		if( $submittedData[$this->fieldPageDownload] != ''
+		&& preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ) !== 1 ) {
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.page-download.invalid' ) );
 		}
 
 		if( $submittedData[$this->fieldContentBaseurl] != ''

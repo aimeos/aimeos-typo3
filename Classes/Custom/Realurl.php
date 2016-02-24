@@ -69,6 +69,9 @@ class Realurl
 					'fa' => array(
 						array( 'GETvar' => 'ai[f_attrid]' ),
 					),
+					'dl' => array(
+						array( 'GETvar' => 'ai[dl_id]' ),
+					),
 					'pin' => array(
 						array( 'GETvar' => 'ai[pin_action]' ),
 						array( 'GETvar' => 'ai[pin_id]' ),
@@ -106,6 +109,12 @@ class Realurl
 						'type' => 'single',
 						'keyValues' => array(
 							'type' => 191351525
+						),
+					),
+					'bin' => array(
+						'type' => 'single',
+						'keyValues' => array(
+							'type' => 191351526
 						),
 					),
 				),

@@ -98,6 +98,10 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_checkout
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'checkout-update', 'Aimeos Shop - Checkout payment update' );
 
 
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_account-download'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_account-download', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/AccountDownload.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'account-download', 'Aimeos Shop - Account download' );
+
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_account-history'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_account-history', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/AccountHistory.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'account-history', 'Aimeos Shop - Account history' );

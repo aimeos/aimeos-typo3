@@ -318,13 +318,17 @@ class Base
 		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
 
-		$ip = $_SERVER['REMOTE_ADDR'];
-		$target = $GLOBALS["TSFE"]->id;
-		$body = @file_get_contents( 'php://input' );
 		$files = ( is_array( $_FILES ) ? $_FILES : array() );
+		$cookie = ( is_array( $_COOKIE ) ? $_COOKIE : array() );
+		$server = ( is_array( $_SERVER ) ? $_SERVER : array() );
+		$get = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET();
+		$post = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
 
-		$helper = new \Aimeos\MW\View\Helper\Request\Standard( $view, $body, $ip, $target, $files );
+		$helper = new \Aimeos\MW\View\Helper\Request\Typo3( $view, $target, $files, $get, $post, $cookie, $server );
 		$view->addHelper( 'request', $helper );
+
+		$helper = new \Aimeos\MW\View\Helper\Response\Typo3( $view );
+		$view->addHelper( 'response', $helper );
 
 		return $view;
 	}

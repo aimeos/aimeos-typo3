@@ -28,6 +28,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	private $fieldSenderEmail = 'aimeos_sender_email';
 	private $fieldReplyEmail = 'aimeos_reply_email';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
+	private $fieldPageDownload = 'aimeos_pageid_download';
 	private $fieldContentBaseurl = 'aimeos_content_baseurl';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
@@ -64,6 +65,10 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 
 		if( $this->{$this->fieldPageDetail} != '' ) {
 			$conf['client']['html']['catalog']['detail']['url']['target'] = $this->{$this->fieldPageDetail};
+		}
+
+		if( $this->{$this->fieldPageDownload} != '' ) {
+			$conf['client']['html']['account']['download']['url']['target'] = $this->{$this->fieldPageDownload};
 		}
 
 		if( $this->{$this->fieldContentBaseurl} != '' ) {

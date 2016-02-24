@@ -22,6 +22,29 @@ use Aimeos\Aimeos\Base;
 class AccountController extends AbstractController
 {
 	/**
+	 * Renders the account download
+	 */
+	public function downloadAction()
+	{
+		$context = $this->getContext();
+		$view = $context->getView();
+
+		$client = \Aimeos\Client\Html\Account\Download\Factory::createClient( $context, array() );
+		$client->setView( $view );
+		$client->process();
+
+		$response = $view->response();
+		$this->response->setStatus( $response->getStatusCode() );
+
+		foreach( $response->getHeaders() as $key => $value ) {
+			$this->response->setHeader( $key, implode( ', ', $value ) );
+		}
+
+		return (string) $response->getBody();
+	}
+
+
+	/**
 	 * Renders the account history.
 	 */
 	public function historyAction()
