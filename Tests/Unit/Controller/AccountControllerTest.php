@@ -48,16 +48,13 @@ class AccountControllerTest
 	public function downloadAction()
 	{
 		$name = '\\Aimeos\\Client\\Html\\Account\\Download\\Standard';
-		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
-
-		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
-		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
+		$client = $this->getMock( $name, array( 'process' ), array(), '', false );
 
 		\Aimeos\Client\Html\Account\Download\Factory::injectClient( $name, $client );
 		$output = $this->object->downloadAction();
 		\Aimeos\Client\Html\Account\Download\Factory::injectClient( $name, null );
 
-		$this->assertEquals( 'body', $output );
+		$this->assertEquals( '', $output );
 	}
 
 

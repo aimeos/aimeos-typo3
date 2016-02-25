@@ -61,7 +61,7 @@ class JqadmControllerTest
 		$this->request->expects( $this->any() )->method( 'getArgument' )
 			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
 
-		$this->view->expects( $this->once() )->method( 'assign' );
+		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
 		$this->object->copyAction();
 	}
@@ -78,7 +78,7 @@ class JqadmControllerTest
 		$this->request->expects( $this->any() )->method( 'getArgument' )
 			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
 
-		$this->view->expects( $this->once() )->method( 'assign' );
+		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
 		$this->object->createAction();
 	}
@@ -95,7 +95,7 @@ class JqadmControllerTest
 		$this->request->expects( $this->any() )->method( 'getArgument' )
 			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
 
-		$this->view->expects( $this->once() )->method( 'assign' );
+		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
 		$this->object->deleteAction();
 	}
@@ -112,7 +112,7 @@ class JqadmControllerTest
 		$this->request->expects( $this->any() )->method( 'getArgument' )
 			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
 
-		$this->view->expects( $this->once() )->method( 'assign' );
+		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
 		$this->object->getAction();
 	}
@@ -129,7 +129,7 @@ class JqadmControllerTest
 		$this->request->expects( $this->any() )->method( 'getArgument' )
 			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
 
-		$this->view->expects( $this->once() )->method( 'assign' );
+		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
 		$this->object->saveAction();
 	}
@@ -146,7 +146,7 @@ class JqadmControllerTest
 		$this->request->expects( $this->any() )->method( 'getArgument' )
 			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
 
-		$this->view->expects( $this->once() )->method( 'assign' );
+		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
 		$this->object->searchAction();
 	}
