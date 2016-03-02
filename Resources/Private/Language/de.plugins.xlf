@@ -2,6 +2,10 @@
 	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="de">
 		<header/>
 		<body>
+			<trans-unit id="account-download.target" xml:space="preserve">
+				<source>Account download page</source>
+				<target>Seite für Produktdownloads</target>
+			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
 				<target>Seite der Produktfavoriten</target>

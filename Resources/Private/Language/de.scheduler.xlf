@@ -2,25 +2,9 @@
 	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="de">
 		<header/>
 		<body>
-			<trans-unit id="default.name" xml:space="preserve">
-				<source>Aimeos Shop scheduler</source>
-				<target>Aimeos Shop Planer</target>
-			</trans-unit>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
 				<target>Führt die ausgewählten Aufgaben im Aimeos Shop aus</target>
-			</trans-unit>
-			<trans-unit id="default.label.controller" xml:space="preserve">
-				<source>Jobs</source>
-				<target>Aufgaben</target>
-			</trans-unit>
-			<trans-unit id="default.label.sitecode" xml:space="preserve">
-				<source>Sites</source>
-				<target>Mandanten</target>
-			</trans-unit>
-			<trans-unit id="default.label.tsconfig" xml:space="preserve">
-				<source>TypoScript configuration</source>
-				<target>TypoScript Konfiguration</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode" xml:space="preserve">
 				<source>One or more sites is invalid or already disabled</source>
@@ -38,13 +22,49 @@
 				<source>The TypoScript configuration is invalid</source>
 				<target>Die TypoScript Konfiguration ist ungültig</target>
 			</trans-unit>
-			<trans-unit id="email.name" xml:space="preserve">
-				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Planer für Aimeos Shop E-Mails</target>
+			<trans-unit id="default.label.controller" xml:space="preserve">
+				<source>Jobs</source>
+				<target>Aufgaben</target>
+			</trans-unit>
+			<trans-unit id="default.label.sitecode" xml:space="preserve">
+				<source>Sites</source>
+				<target>Mandanten</target>
+			</trans-unit>
+			<trans-unit id="default.label.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>TypoScript Konfiguration</target>
+			</trans-unit>
+			<trans-unit id="default.name" xml:space="preserve">
+				<source>Aimeos Shop scheduler</source>
+				<target>Aimeos Shop Planer</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
 				<target>Spezialisierte Aufgabe zum Versenden der E-Mails</target>
+			</trans-unit>
+			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
+				<source>The sender e-mail address is invalid or none was entered</source>
+				<target>Die Absender E-Mailadresse ist ungültig oder es wurde keine eingetragen</target>
+			</trans-unit>
+			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
+				<source>The reply e-mail address is invalid</source>
+				<target>Die E-Mailadresse für Rückantworten ist ungültig</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
+				<source>The page ID of the product detail page is invalid</source>
+				<target>Die Seiten-ID der Produktdetailseite ist ungültig</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
+				<source>The page ID of the account download page is invalid</source>
+				<target>Die Seiten-ID der Produktdownloadseite ist ungültig</target>
+			</trans-unit>
+			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
+				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+				<target>Die Webseiten-URL ist ungültig. Sie muss das Protokoll und die Domain umfassen wie z.B. &quot;https://aimeos.org/&quot;</target>
+			</trans-unit>
+			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
+				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
+				<target>Die Basis-URL zu den Produktbildern ist ungültig. Sie muss das Protokoll und die Domain umfassen wie z.B. &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-name" xml:space="preserve">
 				<source>Sender name</source>
@@ -62,6 +82,14 @@
 				<source>Product detail page ID</source>
 				<target>Seiten-ID der Produktdetailseite</target>
 			</trans-unit>
+			<trans-unit id="email.label.page-download" xml:space="preserve">
+				<source>Account download page ID</source>
+				<target>Seiten-ID der Produktdownloadseite</target>
+			</trans-unit>
+			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
+				<source>Web site URL</source>
+				<target>Webseiten-URL</target>
+			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images</source>
 				<target>Basis-URL zu den Produktbildern inklusive der Domain, z.B. https://aimeos.org/uploads/tx_aimeos</target>
@@ -70,21 +98,9 @@
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
 				<target>Absoluter Pfad oder Pfad relativ vom TYPO3 Basisverzeichnis zu den CSS Dateien des Themes</target>
 			</trans-unit>
-			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
-				<source>The sender e-mail address is invalid or none was entered</source>
-				<target>Die Absender E-Mailadresse ist ungültig oder es wurde keine eingetragen</target>
-			</trans-unit>
-			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
-				<source>The reply e-mail address is invalid</source>
-				<target>Die E-Mailadresse für Rückantworten ist ungültig</target>
-			</trans-unit>
-			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
-				<source>The page ID of the product detail page is invalid</source>
-				<target>Die Seiten-ID der Produktdetailseite ist ungültig</target>
-			</trans-unit>
-			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
-				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
-				<target>Die Basis-URL zu den Produktbildern ist ungültig. Sie muss das Protokoll und die Domain umfassen wie z.B. &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
+			<trans-unit id="email.name" xml:space="preserve">
+				<source>Aimeos Shop e-mail scheduler</source>
+				<target>Planer für Aimeos Shop E-Mails</target>
 			</trans-unit>
 		</body>
 	</file>

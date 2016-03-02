@@ -45,6 +45,9 @@
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
 			</trans-unit>
+			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
+				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+			</trans-unit>
 			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
 				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
 			</trans-unit>
@@ -62,6 +65,9 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
+			</trans-unit>
+			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
+				<source>Web site URL</source>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images</source>

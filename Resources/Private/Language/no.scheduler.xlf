@@ -2,25 +2,9 @@
 	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="no">
 		<header/>
 		<body>
-			<trans-unit id="default.name" xml:space="preserve">
-				<source>Aimeos Shop scheduler</source>
-				<target>Aimeos planlegger</target>
-			</trans-unit>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
 				<target>Kjører valgte Aimeos-jobber</target>
-			</trans-unit>
-			<trans-unit id="default.label.controller" xml:space="preserve">
-				<source>Jobs</source>
-				<target>Jobber</target>
-			</trans-unit>
-			<trans-unit id="default.label.sitecode" xml:space="preserve">
-				<source>Sites</source>
-				<target>Sider</target>
-			</trans-unit>
-			<trans-unit id="default.label.tsconfig" xml:space="preserve">
-				<source>TypoScript configuration</source>
-				<target>Typoscript-konfigurasjon</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode" xml:space="preserve">
 				<source>One or more sites is invalid or already disabled</source>
@@ -38,13 +22,47 @@
 				<source>The TypoScript configuration is invalid</source>
 				<target>Typoskript-konfigurasjonen er ugyldig</target>
 			</trans-unit>
-			<trans-unit id="email.name" xml:space="preserve">
-				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Aimeos nettbutikk epostplanlegger</target>
+			<trans-unit id="default.label.controller" xml:space="preserve">
+				<source>Jobs</source>
+				<target>Jobber</target>
+			</trans-unit>
+			<trans-unit id="default.label.sitecode" xml:space="preserve">
+				<source>Sites</source>
+				<target>Sider</target>
+			</trans-unit>
+			<trans-unit id="default.label.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Typoscript-konfigurasjon</target>
+			</trans-unit>
+			<trans-unit id="default.name" xml:space="preserve">
+				<source>Aimeos Shop scheduler</source>
+				<target>Aimeos planlegger</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
 				<target>Spesialisert oppgave for sending av e-poster</target>
+			</trans-unit>
+			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
+				<source>The sender e-mail address is invalid or none was entered</source>
+				<target>Avsenders e-postadresse er ugyldig eller ble ikke skrevet inn</target>
+			</trans-unit>
+			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
+				<source>The reply e-mail address is invalid</source>
+				<target>Oppgitt e-postadresse for avsesnder er ugyldig</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
+				<source>The page ID of the product detail page is invalid</source>
+				<target>Oppgitt ID for side med produktdetaljer er ugyldig.</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
+				<source>The page ID of the account download page is invalid</source>
+			</trans-unit>
+			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
+				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+			</trans-unit>
+			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
+				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
+				<target>Base-URL'en til produktbildene er ugyldig. Bruk en base-URL som inkluderer protokoll og domene som for eksempel &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-name" xml:space="preserve">
 				<source>Sender name</source>
@@ -62,6 +80,12 @@
 				<source>Product detail page ID</source>
 				<target>ID for side med produktdetaljer</target>
 			</trans-unit>
+			<trans-unit id="email.label.page-download" xml:space="preserve">
+				<source>Account download page ID</source>
+			</trans-unit>
+			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
+				<source>Web site URL</source>
+			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images</source>
 				<target>Base-URL for produktbilder</target>
@@ -69,21 +93,9 @@
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
 			</trans-unit>
-			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
-				<source>The sender e-mail address is invalid or none was entered</source>
-				<target>Avsenders e-postadresse er ugyldig eller ble ikke skrevet inn</target>
-			</trans-unit>
-			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
-				<source>The reply e-mail address is invalid</source>
-				<target>Oppgitt e-postadresse for avsesnder er ugyldig</target>
-			</trans-unit>
-			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
-				<source>The page ID of the product detail page is invalid</source>
-				<target>Oppgitt ID for side med produktdetaljer er ugyldig.</target>
-			</trans-unit>
-			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
-				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
-				<target>Base-URL'en til produktbildene er ugyldig. Bruk en base-URL som inkluderer protokoll og domene som for eksempel &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
+			<trans-unit id="email.name" xml:space="preserve">
+				<source>Aimeos Shop e-mail scheduler</source>
+				<target>Aimeos nettbutikk epostplanlegger</target>
 			</trans-unit>
 		</body>
 	</file>
