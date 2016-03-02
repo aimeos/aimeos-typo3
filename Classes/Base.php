@@ -270,7 +270,7 @@ class Base
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
-	 * @return MW_View_Interface View object
+	 * @return \Aimeos\MW\View\Iface View object
 	 */
 	public static function getView( \Aimeos\MW\Config\Iface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
 		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
@@ -293,22 +293,14 @@ class Base
 
 		$view = new \Aimeos\MW\View\Standard( $templatePaths );
 
-		// workaround for TYPO3 bug (UriBuilder is incomplete in CLI environment)
-		if( $request !== null ) {
-			$helper = new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
-		} else {
-			$helper = new \Aimeos\MW\View\Helper\Url\None( $view );
-		}
-		$view->addHelper( 'url', $helper );
+		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $config );
+		$view->addHelper( 'config', $helper );
 
 		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
 		$view->addHelper( 'translate', $helper );
 
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $config );
-		$view->addHelper( 'config', $helper );
 
 		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
 		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
@@ -317,6 +309,8 @@ class Base
 
 		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
+
+		$view->addHelper( 'url', self::getUrlHelper( $view, $uriBuilder, $request, $fixed ) );
 
 		$files = ( is_array( $_FILES ) ? $_FILES : array() );
 		$cookie = ( is_array( $_COOKIE ) ? $_COOKIE : array() );
@@ -450,5 +444,27 @@ class Base
 		}
 
 		return $fixed;
+	}
+
+
+	/**
+	 * Creates the URL view helper
+	 *
+	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
+	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
+	 * @param array $fixed Associative list of parameters that are always part of the URL
+	 * @return \Aimeos\MW\View\Helper\Url\Iface URL view helper
+	 */
+	private static function getUrlHelper( \Aimeos\MW\View\Iface $view, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, array $fixed = array() )
+	{
+		if( $request === null )
+		{
+			$baseurl = $view->config( 'typo3/baseurl', '/' );
+			return new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $baseurl, $uriBuilder->getArgumentPrefix(), $fixed );
+		}
+
+		return new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
 	}
 }

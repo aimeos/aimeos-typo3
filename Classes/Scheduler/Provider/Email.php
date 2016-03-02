@@ -26,6 +26,7 @@ abstract class Email extends AbstractProvider
 	private $fieldReplyEmail = 'aimeos_reply_email';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
 	private $fieldPageDownload = 'aimeos_pageid_download';
+	private $fieldSiteBaseurl = 'aimeos_site_baseurl';
 	private $fieldContentBaseurl = 'aimeos_content_baseurl';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
@@ -145,10 +146,28 @@ abstract class Email extends AbstractProvider
 		$fieldCode = sprintf( $fieldStr, $this->fieldPageDownload, $taskInfo[$this->fieldPageDownload] );
 
 		$additionalFields[$this->fieldPageDownload] = array(
-				'code'     => $fieldCode,
-				'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-download',
-				'cshKey'   => 'xMOD_tx_aimeos',
-				'cshLabel' => $this->fieldPageDownload
+			'code'     => $fieldCode,
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-download',
+			'cshKey'   => 'xMOD_tx_aimeos',
+			'cshLabel' => $this->fieldPageDownload
+		);
+
+
+		// In case of editing a task, set to the internal value if data wasn't already submitted
+		if( empty( $taskInfo[$this->fieldSiteBaseurl] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldSiteBaseurl] = $task->{$this->fieldSiteBaseurl};
+		}
+
+		$taskInfo[$this->fieldSiteBaseurl] = htmlspecialchars( $taskInfo[$this->fieldSiteBaseurl], ENT_QUOTES, 'UTF-8' );
+
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldCode = sprintf( $fieldStr, $this->fieldSiteBaseurl, $taskInfo[$this->fieldSiteBaseurl] );
+
+		$additionalFields[$this->fieldSiteBaseurl] = array(
+			'code'     => $fieldCode,
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.site-baseurl',
+			'cshKey'   => 'xMOD_tx_aimeos',
+			'cshLabel' => $this->fieldSiteBaseurl
 		);
 
 
@@ -188,10 +207,10 @@ abstract class Email extends AbstractProvider
 		$fieldCode = sprintf( $fieldStr, $this->fieldTemplateBaseurl, $path );
 
 		$additionalFields[$this->fieldTemplateBaseurl] = array(
-				'code'     => $fieldCode,
-				'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.template-baseurl',
-				'cshKey'   => 'xMOD_tx_aimeos',
-				'cshLabel' => $this->fieldTemplateBaseurl
+			'code'     => $fieldCode,
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.template-baseurl',
+			'cshKey'   => 'xMOD_tx_aimeos',
+			'cshLabel' => $this->fieldTemplateBaseurl
 		);
 
 
@@ -218,6 +237,7 @@ abstract class Email extends AbstractProvider
 		$task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail];
 		$task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail];
 		$task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload];
+		$task->{$this->fieldSiteBaseurl} = $submittedData[$this->fieldSiteBaseurl];
 		$task->{$this->fieldContentBaseurl} = $submittedData[$this->fieldContentBaseurl];
 		$task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl];
 	}
@@ -238,24 +258,23 @@ abstract class Email extends AbstractProvider
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.from-email.invalid' ) );
 		}
 
-		if( $submittedData[$this->fieldReplyEmail] != ''
-			&& preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1
-		) {
+		if( $submittedData[$this->fieldReplyEmail] != '' && preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.reply-email.invalid' ) );
 		}
 
-		if( $submittedData[$this->fieldPageDetail] != ''
-			&& preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
+		if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.page-detail.invalid' ) );
 		}
 
-		if( $submittedData[$this->fieldPageDownload] != ''
-		&& preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ) !== 1 ) {
+		if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.page-download.invalid' ) );
 		}
 
-		if( $submittedData[$this->fieldContentBaseurl] != ''
-			&& preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
+		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldSiteBaseurl] ) !== 1 ) {
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.site-baseurl.invalid' ) );
+		}
+
+		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.content-baseurl.invalid' ) );
 		}
 

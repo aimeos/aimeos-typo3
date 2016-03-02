@@ -19,6 +19,20 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.detail.url.target>
+			<settings.client.html.account.download.url.target>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:account-download.target</label>
+					<config>
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>pages</allowed>
+						<size>1</size>
+						<maxitems>1</maxitems>
+						<minitems>1</minitems>
+						<show_thumbs>1</show_thumbs>
+					</config>
+				</TCEforms>
+			</settings.client.html.account.download.url.target>
 			<settings.typo3.tsconfig>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
