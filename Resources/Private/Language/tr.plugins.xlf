@@ -4,6 +4,7 @@
 		<body>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
+				<target>Hesap indirme sayfası</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
