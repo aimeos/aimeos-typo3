@@ -146,6 +146,9 @@ class ExtadmController extends AbstractController
 			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
 			$i18n = Base::getI18n( array( $localeItem->getLanguageId() ), $localI18n );
 
+			$view = Base::getView( $config, $this->uriBuilder, array() );
+			$context->setView( $view );
+
 			$context->setI18n( $i18n );
 			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
 
