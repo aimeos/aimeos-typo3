@@ -30,13 +30,16 @@ class Catalog
 	 */
 	public function getCategories( array $config, $tceForms = null, $sitecode = 'default' )
 	{
-		if( isset( $config['row'] ) && isset( $config['row']['uid'] ) )
-		{
-			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $config['row']['uid'], 'tx_aimeos' );
+		if( isset( $config['flexParentDatabaseRow']['pid'] ) ) { // TYPO3 7+
+			$pid = $config['flexParentDatabaseRow']['pid'];
+		} elseif( isset( $config['row']['pid'] ) ) { // TYPO3 6.2
+			$pid = $config['row']['pid'];
+		}
 
-			if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
-				$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];
-			}
+		$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $pid, 'tx_aimeos' );
+
+		if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
+			$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];
 		}
 
 		try
