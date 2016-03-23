@@ -208,6 +208,24 @@ class Email6Test
 	/**
 	 * @test
 	 */
+	public function validateAdditionalFieldsInvalidDownloadPage()
+	{
+		$data = array(
+			'aimeos_controller' => 'testcntl',
+			'aimeos_sitecode' => 'testsite',
+			'aimeos_sender_email' => 'sender@test',
+			'aimeos_pageid_detail' => '123',
+			'aimeos_pageid_download' => 'a',
+		);
+		$module = new SchedulerModuleController();
+
+		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+	}
+
+
+	/**
+	 * @test
+	 */
 	public function validateAdditionalFieldsInvalidBaseurlNoProtocol()
 	{
 		$data = array(
@@ -249,7 +267,10 @@ class Email6Test
 			'aimeos_controller' => 'index/optimize',
 			'aimeos_sender_email' => 'sender@test',
 			'aimeos_pageid_detail' => '123',
+			'aimeos_pageid_download' => '456',
+			'aimeos_site_baseurl' => 'https://www.aimeos.org:80/',
 			'aimeos_content_baseurl' => 'https://www.aimeos.org:80/up/tx_/',
+			'aimeos_template_baseurl' => 'https://www.aimeos.org:80/fa/elegance',
 		);
 		$module = new SchedulerModuleController();
 
