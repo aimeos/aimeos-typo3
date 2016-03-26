@@ -276,6 +276,7 @@ class Base
 		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
 	{
 		$params = $fixed = array();
+		$baseurl = $config->get( 'typo3/baseurl', '/' );
 
 		if( $request !== null && $locale !== null )
 		{
@@ -293,14 +294,15 @@ class Base
 
 		$view = new \Aimeos\MW\View\Standard( $templatePaths );
 
-		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $config );
-		$view->addHelper( 'config', $helper );
-
 		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
 		$view->addHelper( 'translate', $helper );
 
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
+
+		$conf = new \Aimeos\MW\Config\Decorator\Protect( clone $config, array( 'admin', 'client' ) );
+		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $conf );
+		$view->addHelper( 'config', $helper );
 
 		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
 		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
@@ -310,7 +312,7 @@ class Base
 		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		$view->addHelper( 'formparam', $helper );
 
-		$view->addHelper( 'url', self::getUrlHelper( $view, $uriBuilder, $request, $fixed ) );
+		$view->addHelper( 'url', self::getUrlHelper( $view, $uriBuilder, $request, $baseurl, $fixed ) );
 
 		$files = ( is_array( $_FILES ) ? $_FILES : array() );
 		$cookie = ( is_array( $_COOKIE ) ? $_COOKIE : array() );
@@ -453,15 +455,14 @@ class Base
 	 * @param \Aimeos\MW\View\Iface $view View object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
+	 * @param string $baseurl URL of the web site
 	 * @param array $fixed Associative list of parameters that are always part of the URL
 	 * @return \Aimeos\MW\View\Helper\Url\Iface URL view helper
 	 */
 	private static function getUrlHelper( \Aimeos\MW\View\Iface $view, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, array $fixed = array() )
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $baseurl = '', array $fixed = array() )
 	{
-		if( $request === null )
-		{
-			$baseurl = $view->config( 'typo3/baseurl', '/' );
+		if( $request === null ) {
 			return new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $baseurl, $uriBuilder->getArgumentPrefix(), $fixed );
 		}
 
