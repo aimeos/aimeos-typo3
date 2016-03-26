@@ -30,6 +30,46 @@ class JqadmController extends AbstractController
 
 
 	/**
+	 * Returns the CSS/JS file content
+	 *
+	 * @return string CSS/JS files content
+	 */
+	public function fileAction()
+	{
+		$contents = '';
+		$files = array();
+		$type = $this->request->getArgument( 'type' );
+
+		foreach( Base::getAimeos()->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
+		{
+			foreach( $paths as $path )
+			{
+				$jsbAbsPath = $base . '/' . $path;
+				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, dirname( $jsbAbsPath ) );
+				$files = array_merge( $files, $jsb2->getFiles( $type ) );
+			}
+		}
+
+		foreach( $files as $file )
+		{
+			if( ( $content = file_get_contents( $file ) ) === false ) {
+				throw new \Exception( sprintf( 'File "%1$s" not found', $jsbAbsPath ) );
+			}
+
+			$contents .= $content;
+		}
+
+		if( $type === 'js' ) {
+			$this->response->setHeader( 'Content-Type', 'application/javascript' );
+		} elseif( $type === 'css' ) {
+			$this->response->setHeader( 'Content-Type', 'text/css' );
+		}
+
+		return $contents;
+	}
+
+
+	/**
 	 * Returns the HTML code for a copy of a resource object
 	 *
 	 * @return string Generated output

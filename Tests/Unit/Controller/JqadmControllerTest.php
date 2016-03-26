@@ -23,6 +23,11 @@ class JqadmControllerTest
 			->disableOriginalConstructor()
 			->getMock();
 
+		$this->response = $this->getMockBuilder( 'TYPO3\CMS\Extbase\Mvc\Web\Response' )
+			->setMethods( array( 'setHeader' ) )
+			->disableOriginalConstructor()
+			->getMock();
+
 		$this->view = $this->getMockBuilder( 'TYPO3\CMS\Extbase\Mvc\View\EmptyView' )
 			->setMethods( array( 'assign' ) )
 			->disableOriginalConstructor()
@@ -37,6 +42,7 @@ class JqadmControllerTest
 		$uriBuilder->expects( $this->any() )->method( 'buildBackendUri' );
 
 		$this->object->_set( 'uriBuilder', $uriBuilder );
+		$this->object->_set( 'response', $this->response );
 		$this->object->_set( 'request', $this->request );
 		$this->object->_set( 'view', $this->view );
 
@@ -47,6 +53,34 @@ class JqadmControllerTest
 	public function tearDown()
 	{
 		unset( $this->object, $this->request, $this->view );
+	}
+
+
+	/**
+	 * @test
+	 */
+	public function fileActionCss()
+	{
+		$this->request->expects( $this->any() )->method( 'getArgument' )
+			->will( $this->returnValue( 'css' ) );
+
+		$result = $this->object->fileAction();
+
+		$this->assertContains( '.aimeos', $result );
+	}
+
+
+	/**
+	 * @test
+	 */
+	public function fileActionJs()
+	{
+		$this->request->expects( $this->any() )->method( 'getArgument' )
+		->will( $this->returnValue( 'js' ) );
+
+		$result = $this->object->fileAction();
+
+		$this->assertContains( 'Aimeos = {', $result );
 	}
 
 
