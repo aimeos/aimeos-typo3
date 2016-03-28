@@ -80,4 +80,15 @@ class Typo6 extends AbstractProvider
 
 		return false;
 	}
+
+
+	/**
+	 * Returns the string that must be part of the controller names
+	 *
+	 * @return string|null Controller name part
+	 */
+	protected function getJobFilter()
+	{
+		return '/^((?!email).)*$/';
+	}
 }

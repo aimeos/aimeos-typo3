@@ -251,7 +251,7 @@ abstract class AbstractProvider
 
 		foreach( $controllers as $name => $controller )
 		{
-			if( $filter !== null && strstr( $name, $filter ) === false ) {
+			if( $filter !== null &&  preg_match( $filter, $name ) !== 1 ) {
 				continue;
 			}
 

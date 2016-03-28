@@ -38,7 +38,7 @@ abstract class Email extends AbstractProvider
 	 */
 	protected function getJobFilter()
 	{
-		return 'email';
+		return '/email/';
 	}
 
 
