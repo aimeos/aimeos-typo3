@@ -270,11 +270,11 @@ abstract class Email extends AbstractProvider
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid' ) );
 		}
 
-		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldSiteBaseurl] ) !== 1 ) {
+		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?(/.*)?$#', $submittedData[$this->fieldSiteBaseurl] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.site-baseurl.invalid' ) );
 		}
 
-		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
+		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?(/.*)?$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.content-baseurl.invalid' ) );
 		}
 
