@@ -230,7 +230,7 @@ abstract class Email extends AbstractProvider
 		}
 
 		if( $submittedData[$this->fieldContentBaseurl] != ''
-			&& preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
+			&& preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?(/.*)?$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
 			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.content-baseurl.invalid' ) );
 		}
 
