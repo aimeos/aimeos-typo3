@@ -215,23 +215,23 @@ abstract class Email extends AbstractProvider
 	protected function validateFields( array &$submittedData, $parentObject )
 	{
 		if( preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail] ) !== 1 ) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.from-email.invalid' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.from-email.invalid' ) );
 		}
 
 		if( $submittedData[$this->fieldReplyEmail] != ''
 			&& preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1
 		) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.reply-email.invalid' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid' ) );
 		}
 
 		if( $submittedData[$this->fieldPageDetail] != ''
 			&& preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.page-detail.invalid' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-detail.invalid' ) );
 		}
 
 		if( $submittedData[$this->fieldContentBaseurl] != ''
 			&& preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?/.*$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:email.error.content-baseurl.invalid' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.content-baseurl.invalid' ) );
 		}
 
 		parent::validateFields( $submittedData, $parentObject );
