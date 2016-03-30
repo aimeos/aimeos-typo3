@@ -144,6 +144,7 @@ abstract class AbstractProvider
 
 
 		$context = Scheduler\Base::getContext();
+		$submittedData[$this->fieldSite] = array_unique( (array) $submittedData[$this->fieldSite] );
 		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
 		if( count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
@@ -153,8 +154,9 @@ abstract class AbstractProvider
 
 		$aimeos = Base::getAimeos();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
+		$submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] );
 
-		foreach( (array) $submittedData[$this->fieldController] as $name ) {
+		foreach( $submittedData[$this->fieldController] as $name ) {
 			\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $name );
 		}
 
