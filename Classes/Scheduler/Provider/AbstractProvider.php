@@ -133,11 +133,11 @@ abstract class AbstractProvider
 	protected function validateFields( array &$submittedData, $parentObject )
 	{
 		if( count( (array) $submittedData[$this->fieldController] ) < 1 ) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.controller.missing' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing' ) );
 		}
 
 		if( count( (array) $submittedData[$this->fieldSite] ) < 1 ) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode.missing' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode.missing' ) );
 		}
 
 		Base::parseTS( $submittedData[$this->fieldTSconfig] );
@@ -147,7 +147,7 @@ abstract class AbstractProvider
 		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
 		if( count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
-			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.sitecode' ) );
+			throw new \Exception( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode' ) );
 		}
 
 
