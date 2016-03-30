@@ -29,4 +29,8 @@ return array(
 		'basedir' => PATH_site . 'uploads/tx_aimeos/.secure',
 		'tempdir' => PATH_site . 'typo3temp',
 	),
+	'mq' => array(
+		'adapter' => 'Standard',
+		'db' => 'db',
+	),
 );

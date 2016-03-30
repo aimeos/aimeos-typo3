@@ -148,6 +148,9 @@ class Base
 			$fsm = new \Aimeos\MW\Filesystem\Manager\Standard( $config );
 			$context->setFilesystemManager( $fsm );
 
+			$mq = new \Aimeos\MW\MQueue\Manager\Standard( $config );
+			$context->setMessageQueueManager( $mq );
+
 			$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
 			$context->setLogger( $logger );
 
