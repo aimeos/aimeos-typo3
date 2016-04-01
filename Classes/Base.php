@@ -157,8 +157,9 @@ class Base
 			$cache = self::getCache( $context );
 			$context->setCache( $cache );
 
-			$mailer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
-			$context->setMail( new \Aimeos\MW\Mail\Typo3( $mailer ) );
+			$context->setMail( new \Aimeos\MW\Mail\Typo3( function() {
+				return \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
+			} ) );
 
 			if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'saltedpasswords' )
 				&& \TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled( 'FE' )
