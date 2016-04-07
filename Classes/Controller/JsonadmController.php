@@ -221,6 +221,12 @@ class JsonadmController extends AbstractController
 		$client = $this->createClient( $site, $resource, $lang );
 		$result = $client->options( $content, $header, $status );
 
+		if( ( $json = json_decode( $result, true ) ) !== null )
+		{
+			$json['meta']['prefix'] = $this->uriBuilder->getArgumentPrefix();
+			$result = json_encode( $json );
+		}
+
 		$this->setResponse( $status, $header );
 		return $result;
 	}
