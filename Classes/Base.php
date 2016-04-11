@@ -434,17 +434,17 @@ class Base
 	{
 		$fixed = array();
 
-		$name = $config->get( 'typo3/param/name/site', 'site' );
+		$name = $config->get( 'typo3/param/name/site', 'loc_site' );
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}
 
-		$name = $config->get( 'typo3/param/name/language', 'locale' );
+		$name = $config->get( 'typo3/param/name/language', 'loc_locale' );
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}
 
-		$name = $config->get( 'typo3/param/name/currency', 'currency' );
+		$name = $config->get( 'typo3/param/name/currency', 'loc_currency' );
 		if( $request->hasArgument( $name ) === true ) {
 			$fixed[$name] = $request->getArgument( $name );
 		}

@@ -94,30 +94,34 @@ abstract class AbstractController
 
 
 			$sitecode = $config->get( 'mshop/locale/site', 'default' );
-			$name = $config->get( 'typo3/param/name/site', 'loc-site' );
+			$name = $config->get( 'typo3/param/name/site', 'loc_site' );
 
 			if( $this->request->hasArgument( $name ) === true ) {
 				$sitecode = $this->request->getArgument( $name );
+			} elseif( ( $value = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP( 'S' ) ) !== null ) {
+				$sitecode = $value;
 			}
 
 
 			$langid = $config->get( 'mshop/locale/language', '' );
-			$name = $config->get( 'typo3/param/name/language', 'loc-language' );
-
-			if( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
-				$langid = $GLOBALS['TSFE']->config['config']['language'];
-			}
+			$name = $config->get( 'typo3/param/name/language', 'loc_language' );
 
 			if( $this->request->hasArgument( $name ) === true ) {
 				$langid = $this->request->getArgument( $name );
+			} elseif( ( $value = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP( 'L' ) ) !== null ) {
+				$langid = $value;
+			} elseif( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
+				$langid = $GLOBALS['TSFE']->config['config']['language'];
 			}
 
 
 			$currency = $config->get( 'mshop/locale/currency', '' );
-			$name = $config->get( 'typo3/param/name/currency', 'loc-currency' );
+			$name = $config->get( 'typo3/param/name/currency', 'loc_currency' );
 
 			if( $this->request->hasArgument( $name ) === true ) {
 				$currency = $this->request->getArgument( $name );
+			} elseif( ( $value = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP( 'C' ) ) !== null ) {
+				$currency = $value;
 			}
 
 
