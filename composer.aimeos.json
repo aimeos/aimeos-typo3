@@ -14,9 +14,9 @@
 	"prefer-stable": true,
 	"require": {
 		"php": ">=5.3.2",
-		"aimeos/aimeos-core": "dev-master",
-		"aimeos/ai-gettext": "dev-master",
-		"aimeos/ai-typo3": "dev-master"
+		"aimeos/aimeos-core": "~2016.04",
+		"aimeos/ai-gettext": "~2016.04",
+		"aimeos/ai-typo3": "~2016.04"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "1.*",
