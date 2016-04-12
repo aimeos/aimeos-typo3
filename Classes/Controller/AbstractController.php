@@ -108,8 +108,6 @@ abstract class AbstractController
 
 			if( $this->request->hasArgument( $name ) === true ) {
 				$langid = $this->request->getArgument( $name );
-			} elseif( ( $value = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP( 'L' ) ) !== null ) {
-				$langid = $value;
 			} elseif( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
 				$langid = $GLOBALS['TSFE']->config['config']['language'];
 			}
