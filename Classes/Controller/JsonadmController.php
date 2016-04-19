@@ -223,7 +223,7 @@ class JsonadmController extends AbstractController
 
 		if( ( $json = json_decode( $result, true ) ) !== null )
 		{
-			$json['meta']['prefix'] = $this->uriBuilder->getArgumentPrefix();
+			$json['meta']['prefix'] = 'tx_aimeos_web_aimeostxaimeosadmin';
 			$result = json_encode( $json );
 		}
 
