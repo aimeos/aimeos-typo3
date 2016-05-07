@@ -1,60 +1,9 @@
 <?php
 
 return array(
-	'extjs' => array(
-		'attribute' =>  array(
-			'import' => array(
-				'text' => array(
-					'default' => array(
-						'uploaddir' => PATH_site . 'typo3temp',
-						'fileperms' => 0660,
-					),
-				),
-			),
-			'export' => array(
-				'text' => array(
-					'default' => array(
-						'downloaddir' => '../typo3temp',
-						'exportdir' => PATH_site . 'typo3temp',
-					),
-				),
-			),
-		),
-		'catalog' =>  array(
-			'import' => array(
-				'text' => array(
-					'default' => array(
-						'uploaddir' => PATH_site . 'typo3temp',
-						'fileperms' => 0660,
-					),
-				),
-			),
-			'export' => array(
-				'text' => array(
-					'default' => array(
-						'downloaddir' => '../typo3temp',
-						'exportdir' => PATH_site . 'typo3temp',
-					),
-				),
-			),
-		),
+	'common' => array(
 		'media' => array(
-			'default' => array(
-
-				// Base directory to the document root of the website, must be absolute by beginning with "/"
-				'basedir' => PATH_site . 'uploads/tx_aimeos',
-
-				// Upload related settings
-				'upload' => array(
-					// Media directory where the uploaded files will be stored, must be relative to the path in "basedir"
-					'directory' => '',
-
-					// Directory permissions (in octal notation) which are applied to newly created directories
-					// 'dirperms' => 0775,
-
-					// File permissions (in octal notation) which are applied to newly created files
-					// 'fileperms' => 0664,
-				),
+			'standard' => array(
 
 				// Mime icon related settings
 				'mimeicon' => array(
@@ -63,18 +12,6 @@ return array(
 
 					// File extension of mime type icons
 					// 'extension' => '.png',
-				),
-
-				// Unix commands executed on a shell
-				'command' => array(
-					// "file" command for identifying the mime type of a file
-					'file' => 'PATH=/opt/local/bin/64:$PATH file -b --mime-type %1$s 2>&1',
-
-					// ImageMagick "identfy" command for identifying the type of an image
-					// 'identify' => 'identify -format "%%m" %1$s 2>&1',
-
-					// ImageMagick "convert" command for converting an image
-					// 'convert' => 'convert %1$s -resize %3$sx%4$s %2$s 2>&1',
 				),
 
 				// Parameter for images
@@ -121,6 +58,44 @@ return array(
 					// doesn't restrict the size of the image if it's scaled due to a value
 					// in the "maxwidth" parameter
 					// 'maxheight' => 280,
+				),
+			),
+		),
+	),
+	'extjs' => array(
+		'attribute' =>  array(
+			'import' => array(
+				'text' => array(
+					'default' => array(
+						'uploaddir' => PATH_site . 'typo3temp',
+						'fileperms' => 0660,
+					),
+				),
+			),
+			'export' => array(
+				'text' => array(
+					'default' => array(
+						'downloaddir' => '../typo3temp',
+						'exportdir' => PATH_site . 'typo3temp',
+					),
+				),
+			),
+		),
+		'catalog' =>  array(
+			'import' => array(
+				'text' => array(
+					'default' => array(
+						'uploaddir' => PATH_site . 'typo3temp',
+						'fileperms' => 0660,
+					),
+				),
+			),
+			'export' => array(
+				'text' => array(
+					'default' => array(
+						'downloaddir' => '../typo3temp',
+						'exportdir' => PATH_site . 'typo3temp',
+					),
 				),
 			),
 		),
