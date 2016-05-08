@@ -37,6 +37,7 @@
 	},
 	"scripts": {
 		"post-update-cmd": [
+            "cp -r Resources/Private/Extensions/ai-admin-extadm/admin/extjs/resources/* Resources/Public/Admin/extjs/resources/",
 			"cp -r Resources/Private/Extensions/ai-client-html/client/html/themes/* Resources/Public/Themes/"
 		]
 	}

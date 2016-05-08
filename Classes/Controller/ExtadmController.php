@@ -31,7 +31,7 @@ class ExtadmController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		$cssHeader = '';
+		$cssFiles = array();
 		$abslen = strlen( PATH_site );
 		$controller = $this->getController();
 
@@ -51,8 +51,8 @@ class ExtadmController extends AbstractController
 					throw new \Exception( sprintf( 'JSB2 file "%1$s" not found', $jsbAbsPath ) );
 				}
 
-				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, $relJsbPath . '/' . dirname( $path ) );
-				$cssHeader .= $jsb2->getHtml( 'css' );
+				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, '' );
+				$cssFiles = array_merge( $cssFiles, $jsb2->getUrls( 'css' ) );
 			}
 		}
 
@@ -61,7 +61,7 @@ class ExtadmController extends AbstractController
 		$serviceUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Extadm', 'action' => 'do' ) ) );
 		$jqadmUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Jqadm', 'action' => 'search', 'site' => $site, 'resource' => 'product' ) ) );
 
-		$this->view->assign( 'cssHeader', $cssHeader );
+		$this->view->assign( 'cssFiles', $cssFiles );
 		$this->view->assign( 'lang', $langid );
 		$this->view->assign( 'i18nContent', $this->getJsonClientI18n( $langid ) );
 		$this->view->assign( 'config', $this->getJsonClientConfig() );

@@ -9,8 +9,9 @@
 
 	<link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/extjs/3.4.1-1/resources/css/ext-all.css" />
 	<link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/extjs/3.4.1-1/resources/css/xtheme-gray.css" />
-<f:format.html parseFuncTSPath="empty">{cssHeader}</f:format.html>
-
+<f:for each="{cssFiles}" as="cssFile">
+	<link type="text/css" rel="stylesheet" href="{f:uri.resource(path: 'Admin/extjs')}{cssFile}" />
+</f:for>
 	<script type="text/javascript">
 
 	window.MShop = {
