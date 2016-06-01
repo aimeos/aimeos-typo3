@@ -20,7 +20,8 @@
 		"aimeos/ai-admin-extadm": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
-		"aimeos/ai-client-html": "dev-master"
+		"aimeos/ai-client-html": "dev-master",
+		"doctrine/dbal": "2.4.*"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "1.*",

@@ -138,7 +138,7 @@ class Setup
 		$conf = \Aimeos\Aimeos\Base::getConfig();
 		$ctx->setConfig( $conf );
 
-		$dbm = new \Aimeos\MW\DB\Manager\PDO( $conf );
+		$dbm = new \Aimeos\MW\DB\Manager\DBAL( $conf );
 		$ctx->setDatabaseManager( $dbm );
 
 		$logger = new \Aimeos\MW\Logger\Errorlog( \Aimeos\MW\Logger\Base::INFO );
