@@ -10,7 +10,11 @@
 namespace Aimeos\Aimeos;
 
 
-require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
+$localautoloader = dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
+
+if( file_exists( $localautoloader ) === true ) {
+	require_once $localautoloader;
+}
 
 
 /**
