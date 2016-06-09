@@ -57,15 +57,12 @@ class Setup
 	 * The setup tasks print their information directly to the standard output.
 	 * To avoid this, it's necessary to use the output buffering handler
 	 * (ob_start(), ob_get_contents() and ob_end_clean()).
-	 *
-	 * @param array $extDirs List of directories including Aimeos extensions
-	 * @param boolean $mode True if within TYPO3 context, false if not
 	 */
-	public static function execute( array $extDirs = array(), $mode = true )
+	public static function execute()
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos( $extDirs );
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$taskPaths = $aimeos->getSetupPaths( 'default' );
 
@@ -100,29 +97,23 @@ class Setup
 		}
 
 
-		if( $mode === true )
-		{
-			$class = 'TYPO3\CMS\Extbase\Object\ObjectManager';
-			$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
-			$utility = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' );
+		$class = 'TYPO3\CMS\Extbase\Object\ObjectManager';
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
+		$utility = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' );
 
-			$conf = $utility->convertValuedToNestedConfiguration( $utility->getCurrentConfiguration( 'aimeos' ) );
-			$value = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
+		$conf = $utility->convertValuedToNestedConfiguration( $utility->getCurrentConfiguration( 'aimeos' ) );
+		$value = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
 
-			$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $value ) ) );
-			$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
-			$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
-			$manager->migrate();
+		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $value ) ) );
+		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
-			$conf['useDemoData'] = '';
-			$utility->writeConfiguration( $conf, 'aimeos' );
-		}
-		else
-		{
-			$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
-			$manager->migrate();
-		}
+		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
+		$manager->migrate();
+
+
+		$conf['useDemoData'] = '';
+		$utility->writeConfiguration( $conf, 'aimeos' );
 	}
 
 
