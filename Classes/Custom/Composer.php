@@ -30,7 +30,7 @@ class Composer
 		$vendorDir = $event->getComposer()->getConfig()->get( 'vendor-dir' );
 		require_once $vendorDir . '/autoload.php';
 
-		\Aimeos\Aimeos\Setup::execute();
+		\Aimeos\Aimeos\Setup::execute( false );
 	}
 
 
@@ -44,24 +44,26 @@ class Composer
 	{
 		$event->getIO()->write( 'Installing the Aimeos public files' );
 
-		$t3package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/aimeos-typo3', '*' );
+		$repository = $event->getComposer()->getRepositoryManager();
+		$t3package = $repository->findPackage( 'aimeos/aimeos-typo3', '*' );
 
 		if( $t3package !== null )
 		{
-			$t3path = $event->getComposer()->getInstallerManager()->getInstallPath( $t3package );
-			$package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/ai-client-html', '*' );
+			$installer = $event->getComposer()->getInstallationManager();
+			$t3path = $installer->getInstallPath( $t3package );
+			$package = $repository->findPackage( 'aimeos/ai-client-html', '*' );
 
 			if( $package !== null )
 			{
-				$path = $event->getComposer()->getInstallerManager()->getInstallPath( $package );
+				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 			}
 
-			$package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/ai-admin-extadm', '*' );
+			$package = $repository->findPackage( 'aimeos/ai-admin-extadm', '*' );
 
 			if( $package !== null )
 			{
-				$path = $event->getComposer()->getInstallerManager()->getInstallPath( $package );
+				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
 			}
 		}
