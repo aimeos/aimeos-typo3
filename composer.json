@@ -4,7 +4,7 @@
 	"keywords": ["e-commerce", "shop", "portal", "market place"],
 	"homepage": "https://www.aimeos.org",
 	"type": "typo3-cms-extension",
-	"license": "LGPL-3.0",
+	"license": "GPL-3.0",
 	"support": {
 		"source": "https://github.com/aimeos/aimeos-typo3",
 		"issues": "https://github.com/aimeos/aimeos-typo3/issues",
@@ -29,6 +29,5 @@
 		"psr-4": {
 			"Aimeos\\Aimeos\\": "Classes"
 		}
-        }
-    }
+	}
 }

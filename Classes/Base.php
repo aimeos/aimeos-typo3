@@ -26,19 +26,16 @@ class Base
 
 
 	/**
-	 * Returns the Aimeos object.
+	 * Returns the Aimeos bootstrap object
 	 *
-	 * @return Aimeos Aimeos object
+	 * @param array $extDirs List of directories with Aimeos extensions
+	 * @return \Aimeos\Bootstrap Aimeos bootstrap object
 	 */
-	public static function getAimeos()
+	public static function getAimeos( $extDirs = array() )
 	{
 		if( self::$aimeos === null )
 		{
-			$libPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
-			$libPath .= 'Resources/Libraries/aimeos/aimeos-core';
-
 			// Hook for processing extension directories
-			$extDirs = array();
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
 			{
 				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
@@ -52,7 +49,7 @@ class Base
 				}
 			}
 
-			self::$aimeos = new \Aimeos\Bootstrap( $extDirs, false, $libPath );
+			self::$aimeos = new \Aimeos\Bootstrap( $extDirs, false );
 		}
 
 		return self::$aimeos;

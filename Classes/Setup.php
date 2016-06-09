@@ -109,7 +109,7 @@ class Setup
 		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
-		$manager->run( 'mysql' );
+		$manager->migrate();
 
 
 		$conf['useDemoData'] = '';
