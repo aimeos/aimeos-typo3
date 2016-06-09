@@ -25,7 +25,7 @@ class Composer
 	 */
 	public static function install( \Composer\Script\Event $event )
 	{
-		$event->getIO()->write( 'Installing the Aimeos public files' );
+		$event->getIO()->write( 'Installing Aimeos public files' );
 
 		$repository = $event->getComposer()->getRepositoryManager();
 		$t3package = $repository->findPackage( 'aimeos/aimeos-typo3', '*' );
