@@ -22,10 +22,10 @@ class Composer
 	/**
 	 * Sets up the shop database.
 	 *
-	 * @param CommandEvent $event CommandEvent instance
+	 * @param Event $event Event instance
 	 * @throws \RuntimeException If an error occured
 	 */
-	public static function setup( CommandEvent $event )
+	public static function setup( Event $event )
 	{
 		$event->getIO()->write( 'Setup the Aimeos database' );
 
@@ -39,19 +39,19 @@ class Composer
 	/**
 	 * Installs the shop files.
 	 *
-	 * @param CommandEvent $event CommandEvent instance
+	 * @param Event $event Event instance
 	 * @throws \RuntimeException If an error occured
 	 */
-	public static function install( CommandEvent $event )
+	public static function install( Event $event )
 	{
 		$event->getIO()->write( 'Installing the Aimeos public files' );
 
-		$t3package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/aimeos-typo3' );
+		$t3package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/aimeos-typo3', '*' );
 
 		if( $t3package !== null )
 		{
 			$t3path = $event->getComposer()->getInstallerManager()->getInstallPath( $t3package );
-			$package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/ai-client-html' );
+			$package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/ai-client-html', '*' );
 
 			if( $package !== null )
 			{
@@ -59,7 +59,7 @@ class Composer
 				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 			}
 
-			$package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/ai-admin-extadm' );
+			$package = $event->getComposer()->getRepositoryManager()->findPackage( 'aimeos/ai-admin-extadm', '*' );
 
 			if( $package !== null )
 			{
