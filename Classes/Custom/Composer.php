@@ -9,8 +9,6 @@
 
 namespace Aimeos\Aimeos\Custom;
 
-use Composer\Script\CommandEvent;
-
 
 /**
  * Performs setup and installation steps during composer installs
@@ -22,10 +20,10 @@ class Composer
 	/**
 	 * Sets up the shop database.
 	 *
-	 * @param Event $event Event instance
+	 * @param \Composer\Script\Event $event Event instance
 	 * @throws \RuntimeException If an error occured
 	 */
-	public static function setup( Event $event )
+	public static function setup( \Composer\Script\Event $event )
 	{
 		$event->getIO()->write( 'Setup the Aimeos database' );
 
@@ -39,10 +37,10 @@ class Composer
 	/**
 	 * Installs the shop files.
 	 *
-	 * @param Event $event Event instance
+	 * @param \Composer\Script\Event $event Event instance
 	 * @throws \RuntimeException If an error occured
 	 */
-	public static function install( Event $event )
+	public static function install( \Composer\Script\Event $event )
 	{
 		$event->getIO()->write( 'Installing the Aimeos public files' );
 
