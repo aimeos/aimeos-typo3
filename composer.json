@@ -3,8 +3,8 @@
 	"description": "Aimeos TYPO3 extension for web shops, portals and market places",
 	"keywords": ["e-commerce", "shop", "portal", "market place"],
 	"homepage": "https://www.aimeos.org",
-    "type": "typo3-cms-extension",
-	"license": "LGPL-3.0",
+	"type": "typo3-cms-extension",
+	"license": "GPL-3.0",
 	"support": {
 		"source": "https://github.com/aimeos/aimeos-typo3",
 		"issues": "https://github.com/aimeos/aimeos-typo3/issues",
@@ -22,17 +22,12 @@
 		"aimeos/ai-client-html": "dev-master",
 		"doctrine/dbal": "~2.4"
 	},
-	"extra": {
-		"installer-paths": {
-			"Resources/Private/Extensions/{$name}/": ["type:aimeos-extension"]
-		}
+	"replace": {
+		"aimeos/aimeos": "self.version"
 	},
-    "replace": {
-        "aimeos": "self.version"
-    },
-    "autoload": {
-        "psr-4": {
-            "Aimeos\\Aimeos\\": "Classes"
-        }
-    }
+	"autoload": {
+		"psr-4": {
+			"Aimeos\\Aimeos\\": "Classes"
+		}
+	}
 }
