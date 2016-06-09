@@ -58,13 +58,14 @@ class Setup
 	 * To avoid this, it's necessary to use the output buffering handler
 	 * (ob_start(), ob_get_contents() and ob_end_clean()).
 	 *
+	 * @param array $extDirs List of directories including Aimeos extensions
 	 * @param boolean $mode True if within TYPO3 context, false if not
 	 */
-	public static function execute( $mode = true )
+	public static function execute( array $extDirs = array(), $mode = true )
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos( $extDirs );
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$taskPaths = $aimeos->getSetupPaths( 'default' );
 

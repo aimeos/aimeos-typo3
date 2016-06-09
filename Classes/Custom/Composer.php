@@ -27,10 +27,17 @@ class Composer
 	{
 		$event->getIO()->write( 'Setup the Aimeos database' );
 
+		$extDirs = array();
+		$repository = $event->getComposer()->getRepositoryManager();
+
+		if( ( $t3package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null ) {
+			$extDirs[] = dirname( $t3package );
+		}
+
 		$vendorDir = $event->getComposer()->getConfig()->get( 'vendor-dir' );
 		require_once $vendorDir . '/autoload.php';
 
-		\Aimeos\Aimeos\Setup::execute( false );
+		\Aimeos\Aimeos\Setup::execute( $extDirs, false );
 	}
 
 
