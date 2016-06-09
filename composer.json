@@ -23,7 +23,7 @@
 		"doctrine/dbal": "~2.4"
 	},
 	"replace": {
-		"aimeos": "*"
+		"aimeos": "self.version"
 	},
 	"autoload": {
 		"psr-4": {
