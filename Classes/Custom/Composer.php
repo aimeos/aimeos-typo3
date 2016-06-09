@@ -34,20 +34,24 @@ class Composer
 		{
 			$installer = $event->getComposer()->getInstallationManager();
 			$t3path = $installer->getInstallPath( $t3package );
-			$package = $repository->findPackage( 'aimeos/ai-client-html', '*' );
 
-			if( $package !== null )
+			if( ( $package = $repository->findPackage( 'aimeos/ai-client-html', '*' ) ) !== null )
 			{
 				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 			}
 
-			$package = $repository->findPackage( 'aimeos/ai-admin-extadm', '*' );
-
-			if( $package !== null )
+			if( ( $package = $repository->findPackage( 'aimeos/ai-admin-extadm', '*' ) ) !== null )
 			{
 				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
+			}
+
+			if( file_exists( $t3path . '/Resources/Private/Extensions' ) === false
+				&& ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null
+			) {
+				$path = dirname( $installer->getInstallPath( $package ) );
+				symlink( $path, $t3path . '/Resources/Private/Extensions' );
 			}
 		}
 	}
