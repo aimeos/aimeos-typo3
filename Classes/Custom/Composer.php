@@ -25,8 +25,6 @@ class Composer
 	 */
 	public static function install( \Composer\Script\Event $event )
 	{
-		$event->getIO()->write( 'Installing Aimeos public files' );
-
 		$repository = $event->getComposer()->getRepositoryManager();
 		$t3package = $repository->findPackage( 'aimeos/aimeos-typo3', '*' );
 
@@ -37,12 +35,16 @@ class Composer
 
 			if( ( $package = $repository->findPackage( 'aimeos/ai-client-html', '*' ) ) !== null )
 			{
+				$event->getIO()->write( 'Installing Aimeos public files from HTML client' );
+
 				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 			}
 
 			if( ( $package = $repository->findPackage( 'aimeos/ai-admin-extadm', '*' ) ) !== null )
 			{
+				$event->getIO()->write( 'Installing Aimeos public files from ExtJS admin' );
+
 				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
 			}
@@ -50,8 +52,10 @@ class Composer
 			if( file_exists( $t3path . '/Resources/Private/Extensions' ) === false
 				&& ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null
 			) {
+				$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
+
 				$path = dirname( $installer->getInstallPath( $package ) );
-				// symlink( $path, $t3path . '/Resources/Private/Extensions' );
+				symlink( getcwd() . '/' . $path, $t3path . '/Resources/Private/Extensions' );
 			}
 		}
 	}
