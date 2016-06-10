@@ -51,7 +51,7 @@ class Composer
 				&& ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null
 			) {
 				$path = dirname( $installer->getInstallPath( $package ) );
-				symlink( $path, $t3path . '/Resources/Private/Extensions' );
+				// symlink( $path, $t3path . '/Resources/Private/Extensions' );
 			}
 		}
 	}
