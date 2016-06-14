@@ -84,7 +84,7 @@ class Base
 		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
 		$context->setI18n( $i18n );
 
-		$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
+		$view = Aimeos\Base::getView( $context, $uriBuilder, $tmplPaths );
 		$context->setView( $view );
 
 		$context->setEditor( 'scheduler' );

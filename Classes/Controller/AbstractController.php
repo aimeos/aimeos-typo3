@@ -63,7 +63,7 @@ abstract class AbstractController
 
 			$context->setLocale( $locale );
 			$context->setI18n( Base::getI18n( array( $langid ), $localI18n ) );
-			$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+			$context->setView( Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
 			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
 			{

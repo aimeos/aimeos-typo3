@@ -170,7 +170,7 @@ class JqadmController extends AbstractController
 		$context = Base::getContext( $config );
 		$context = $this->setLocale( $context, $site, $lang );
 
-		$view = Base::getView( $context->getConfig(), $this->uriBuilder, $templatePaths, $this->request, $lang );
+		$view = Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource );

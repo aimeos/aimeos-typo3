@@ -246,7 +246,7 @@ class JsonadmController extends AbstractController
 		$context = $this->getContext( $sitecode, $lang );
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'admin/jsonadm/templates' );
 
-		$view = Base::getView( $context->getConfig(), $this->uriBuilder, $templatePaths, $this->request, $lang );
+		$view = Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
