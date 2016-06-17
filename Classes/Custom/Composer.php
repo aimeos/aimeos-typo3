@@ -47,7 +47,7 @@ class Composer
 
 				$path = $installer->getInstallPath( $package );
 				self::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
-				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/Portal/resources', $t3path . 'Resources/Public/Admin/extjs/lib/ext.ux/Portal' );
+				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/Portal/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/Portal' );
 				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/AdvancedSearch/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/AdvancedSearch' );
 			}
 
