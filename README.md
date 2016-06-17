@@ -93,21 +93,11 @@ composer update
 
 Afterwards, you have to execute the update script of the extension to create the required database structure:
 
-![Execute update script](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-update-6.x.png)
+![Execute update script](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-update-7.x.png)
 
 ## Page setup
 
 The page setup for an Aimeos web shop is easy if you import the [standard page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_2.1.6.t3d) into your TYPO3 installation.
-
-### Upload the page tree file
-
-* In "File::Filelist"
-* Select the "fileadmin" folder in the middle column
-* Click on the upload icon on top of the right column
-* Choose the file you've downloaded
-* Press the "Upload files" button
-
-![Upload the page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-upload.png)
 
 ### Go to the import view
 
@@ -117,6 +107,16 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * In the sub-menu, click on "Import from .t3d"
 
 ![Go to the import view](https://aimeos.org/docs/images/Aimeos-typo3-pages-menu.png)
+
+### Upload the page tree file
+
+* In the page import dialog
+* Select the "Upload" tab (2nd one)
+* Click on the "Select" dialog
+* Choose the file you've downloaded
+* Press the "Upload files" button
+
+![Upload the page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-upload.png)
 
 ### Import the uploaded page tree file
 
