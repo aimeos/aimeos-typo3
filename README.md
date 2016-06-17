@@ -1,5 +1,5 @@
-<a href="http://aimeos.org/">
-    <img src="http://aimeos.org/fileadmin/template/icons/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
+<a href="https://aimeos.org/">
+    <img src="https://aimeos.org/fileadmin/template/icons/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
 </a>
 
 Aimeos TYPO3 extension
@@ -9,7 +9,7 @@ The repository contains the TYPO3 extension integrating the Aimeos e-commerce
 library into TYPO3. The extension provides plugins for e.g. filter, list and
 detail views, for searching products as well as baskets and the checkout process.
 
-[![Aimeos Symfony2 demo](http://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
+[![Aimeos TYPO3 demo](https://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
 
 ## Table of content
 
@@ -36,7 +36,7 @@ For new TYPO3 installations, there's a 1-click [Aimeos distribution](https://typ
 
 ### Composer
 
-The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the [composer](http://getcomposer.org/) package first if it isn't already available:
+The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the [composer](https://getcomposer.org/) package first if it isn't already available:
 ```
 php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
 ```
@@ -87,17 +87,17 @@ composer update
 
 **Caution:** Install the **RealURL extension before the Aimeos extension** to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards!
 
-![Install Aimeos TYPO3 extension](http://docs.aimeos.org/images/Aimeos-typo3-extmngr-install.png)
+![Install Aimeos TYPO3 extension](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-install.png)
 
 ### Database
 
 Afterwards, you have to execute the update script of the extension to create the required database structure:
 
-![Execute update script](http://docs.aimeos.org/images/Aimeos-typo3-extmngr-update-6.x.png)
+![Execute update script](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-update-6.x.png)
 
 ## Page setup
 
-The page setup for an Aimeos web shop is easy if you import the [standard page tree](http://aimeos.org/fileadmin/download/Aimeos-pages_three-columns_1.3.t3d) into your TYPO3 installation.
+The page setup for an Aimeos web shop is easy if you import the [standard page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_2.1.6.t3d) into your TYPO3 installation.
 
 ### Upload the page tree file
 
@@ -107,7 +107,7 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * Choose the file you've downloaded
 * Press the "Upload files" button
 
-![Upload the page tree file](http://docs.aimeos.org/images/Aimeos-typo3-pages-upload.png)
+![Upload the page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-upload.png)
 
 ### Go to the import view
 
@@ -116,7 +116,7 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * Move the cursor to "Branch actions"
 * In the sub-menu, click on "Import from .t3d"
 
-![Go to the import view](http://docs.aimeos.org/images/Aimeos-typo3-pages-menu.png)
+![Go to the import view](https://aimeos.org/docs/images/Aimeos-typo3-pages-menu.png)
 
 ### Import the uploaded page tree file
 
@@ -127,7 +127,7 @@ The page setup for an Aimeos web shop is easy if you import the [standard page t
 * Click on the "Import" button that has appeared
 * Confirm to import the pages
 
-![Import the uploaded page tree file](http://docs.aimeos.org/images/Aimeos-typo3-pages-import.png)
+![Import the uploaded page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-import.png)
 
 Now you have a new page "Shop" in your page tree including all required sub-pages.
 
