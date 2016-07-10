@@ -18,11 +18,7 @@ namespace Aimeos\Aimeos;
  */
 class Base
 {
-	private static $aimeos;
-	private static $config;
-	private static $context;
 	private static $extConfig;
-	private static $i18n = array();
 
 
 	/**
@@ -33,156 +29,57 @@ class Base
 	 */
 	public static function getAimeos( $extDirs = array() )
 	{
-		if( self::$aimeos === null )
-		{
-			// Hook for processing extension directories
-			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
-			{
-				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
+		$className = 'Aimeos\Aimeos\Base\Aimeos';
 
-				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
-				{
-					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
-					if( !empty( $absPath ) ) {
-						$extDirs[] = $absPath;
-					}
-				}
-			}
-
-			self::$aimeos = new \Aimeos\Bootstrap( $extDirs, false );
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'];
 		}
 
-		return self::$aimeos;
+		$object =  new $className();
+		return $object->get( $extDirs );
 	}
 
 
 	/**
-	 * Returns the cache object for the context
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
-	 * @param string $siteid Unique site ID
-	 * @return \Aimeos\MW\Cache\Iface Cache object
-	 */
-	protected static function getCache( \Aimeos\MShop\Context\Item\Iface $context )
-	{
-		$config = $context->getConfig();
-
-		switch( Base::getExtConfig( 'cacheName', 'Typo3' ) )
-		{
-			case 'None':
-				$config->set( 'client/html/basket/cache/enable', false );
-				return \Aimeos\MW\Cache\Factory::createManager( 'None', array(), null );
-
-			case 'Typo3':
-				if( class_exists( '\TYPO3\CMS\Core\Cache\Cache' ) ) {
-					\TYPO3\CMS\Core\Cache\Cache::initializeCachingFramework();
-				}
-				$manager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
-
-				return new \Aimeos\MAdmin\Cache\Proxy\Typo3( $context, $manager->getCache( 'aimeos' ) );
-
-			default:
-				return new \Aimeos\MAdmin\Cache\Proxy\Standard( $context );
-		}
-	}
-
-
-	/**
-	 * Creates a new configuration object.
+	 * Creates a new configuration object
 	 *
 	 * @param array $local Multi-dimensional associative list with local configuration
 	 * @return MW_Config_Interface Configuration object
 	 */
 	public static function getConfig( array $local = array() )
 	{
-		if( self::$config === null )
-		{
-			$configPaths = self::getAimeos()->getConfigPaths();
+		$className = 'Aimeos\Aimeos\Base\Config';
 
-			// Hook for processing extension config directories
-			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
-			{
-				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] );
-
-				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir )
-				{
-					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
-					if( !empty( $absPath ) ) {
-						$configPaths[] = $absPath;
-					}
-				}
-			}
-
-			$conf = new \Aimeos\MW\Config\PHPArray( array(), $configPaths );
-
-			if( function_exists( 'apc_store' ) === true && (bool) self::getExtConfig( 'useAPC', false ) === true ) {
-				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, self::getExtConfig( 'apcPrefix', 't3:' ) );
-			}
-
-			self::$config = $conf;
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'];
 		}
 
-		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );
+		$object =  new $className( self::getAimeos() );
+		return $object->get( $local );
 	}
 
 
 	/**
-	 * Returns the current context.
+	 * Returns the current context
 	 *
 	 * @param \Aimeos\MW\Config\Iface Configuration object
-	 * @return MShop_Context_Item_Interface Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
 	public static function getContext( \Aimeos\MW\Config\Iface $config )
 	{
-		if( self::$context === null )
-		{
-			$context = new \Aimeos\MShop\Context\Item\Typo3();
-			$context->setConfig( $config );
+		$className = 'Aimeos\Aimeos\Base\Context';
 
-			$dbm = new \Aimeos\MW\DB\Manager\PDO( $config );
-			$context->setDatabaseManager( $dbm );
-
-			$fsm = new \Aimeos\MW\Filesystem\Manager\Standard( $config );
-			$context->setFilesystemManager( $fsm );
-
-			$mq = new \Aimeos\MW\MQueue\Manager\Standard( $config );
-			$context->setMessageQueueManager( $mq );
-
-			$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
-			$context->setLogger( $logger );
-
-			$cache = self::getCache( $context );
-			$context->setCache( $cache );
-
-			$context->setMail( new \Aimeos\MW\Mail\Typo3( function() {
-				return \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
-			} ) );
-
-			if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'saltedpasswords' )
-				&& \TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled( 'FE' )
-			) {
-				$object = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance();
-				$context->setHasherTypo3( $object );
-			}
-
-			if( isset( $GLOBALS['TSFE']->fe_user ) ) {
-				$session = new \Aimeos\MW\Session\Typo3( $GLOBALS['TSFE']->fe_user );
-			} else {
-				$session = new \Aimeos\MW\Session\None();
-			}
-			$context->setSession( $session );
-
-			self::$context = $context;
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'];
 		}
 
-		self::$context->setConfig( $config );
-
-		return self::$context;
+		$object =  new $className();
+		return $object->get( $config );
 	}
 
 
 	/**
-	 * Returns the extension configuration.
+	 * Returns the extension configuration
 	 *
 	 * @param string Name of the configuration setting
 	 * @param mixed Value returned if no value in extension configuration was found
@@ -208,40 +105,42 @@ class Base
 
 
 	/**
-	 * Creates new translation objects.
+	 * Creates new translation objects
 	 *
-	 * @param array $langIds List of two letter ISO language IDs
+	 * @param array $languageIds List of two letter ISO language IDs
 	 * @param array $local List of local translation entries overwriting the standard ones
 	 * @return array List of translation objects implementing MW_Translation_Interface
 	 */
 	public static function getI18n( array $languageIds, array $local = array() )
 	{
-		$i18nList = array();
-		$i18nPaths = self::getAimeos()->getI18nPaths();
+		$className = 'Aimeos\Aimeos\Base\I18n';
 
-		foreach( $languageIds as $langid )
-		{
-			if( !isset( self::$i18n[$langid] ) )
-			{
-				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
-
-				if( function_exists( 'apc_store' ) === true && (bool) self::getExtConfig( 'useAPC', false ) === true ) {
-					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, self::getExtConfig( 'apcPrefix', 't3:' ) );
-				}
-
-				self::$i18n[$langid] = $i18n;
-			}
-
-			$i18nList[$langid] = self::$i18n[$langid];
-
-			if( isset( $local[$langid] ) )
-			{
-				$translations = self::parseTranslations( (array) $local[$langid] );
-				$i18nList[$langid] = new \Aimeos\MW\Translation\Decorator\Memory( $i18nList[$langid], $translations );
-			}
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'];
 		}
 
-		return $i18nList;
+		$object =  new $className( self::getAimeos() );
+		return $object->get( $languageIds, $local );
+	}
+
+
+	/**
+	 * Creates a new locale object
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
+	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
+	 */
+	public static function getLocale( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+	{
+		$className = 'Aimeos\Aimeos\Base\Locale';
+
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
+		}
+
+		$object =  new $className();
+		return $object->get( $context, $request );
 	}
 
 
@@ -253,7 +152,7 @@ class Base
 	public static function getVersion()
 	{
 		$match = array();
-		$content = @file_get_contents( dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
+		$content = @file_get_contents( dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
 
 		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
 			return $match[1];
@@ -277,95 +176,14 @@ class Base
 	public static function getView( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
 		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null, $frontend = true )
 	{
-		$params = $fixed = array();
-		$config = $context->getConfig();
-		$baseurl = $config->get( 'typo3/baseurl', '/' );
+		$className = 'Aimeos\Aimeos\Base\View';
 
-		if( $request !== null && $locale !== null )
-		{
-			$params = $request->getArguments();
-			$fixed = self::getFixedParams( $config, $request );
-
-			$i18n = Base::getI18n( array( $locale ), $config->get( 'i18n', array() ) );
-			$translation = $i18n[$locale];
-		}
-		else
-		{
-			$translation = new \Aimeos\MW\Translation\None( 'en' );
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'];
 		}
 
-
-		$view = new \Aimeos\MW\View\Standard( $templatePaths );
-
-		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
-		$view->addHelper( 'translate', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $params );
-		$view->addHelper( 'param', $helper );
-
-		$conf = new \Aimeos\MW\Config\Decorator\Protect( clone $config, array( 'admin', 'client' ) );
-		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $conf );
-		$view->addHelper( 'config', $helper );
-
-		$sepDec = $config->get( 'client/html/common/format/seperatorDecimal', '.' );
-		$sep1000 = $config->get( 'client/html/common/format/seperator1000', ' ' );
-		$helper = new \Aimeos\MW\View\Helper\Number\Standard( $view, $sepDec, $sep1000 );
-		$view->addHelper( 'number', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, array( $uriBuilder->getArgumentPrefix() ) );
-		$view->addHelper( 'formparam', $helper );
-
-		$view->addHelper( 'url', self::getUrlHelper( $view, $uriBuilder, $request, $baseurl, $fixed ) );
-
-		$files = ( is_array( $_FILES ) ? $_FILES : array() );
-		$cookie = ( is_array( $_COOKIE ) ? $_COOKIE : array() );
-		$server = ( is_array( $_SERVER ) ? $_SERVER : array() );
-		$get = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET();
-		$post = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
-
-		$helper = new \Aimeos\MW\View\Helper\Request\Typo3( $view, $target, $files, $get, $post, $cookie, $server );
-		$view->addHelper( 'request', $helper );
-
-		$helper = new \Aimeos\MW\View\Helper\Response\Typo3( $view );
-		$view->addHelper( 'response', $helper );
-
-		if( $frontend === true ) {
-			$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, self::getGroups( $context ) );
-		} else {
-			$helper = new \Aimeos\MW\View\Helper\Access\All( $view );
-		}
-		$view->addHelper( 'access', $helper );
-
-		return $view;
-	}
-
-
-	/**
-	 * Parses TypoScript configuration string.
-	 *
-	 * @param array $entries User-defined translation entries via TypoScript
-	 * @return array Associative list of translation domain and original string / list of tranlations
-	 */
-	public static function parseTranslations( array $entries )
-	{
-		$translations = array();
-
-		foreach( $entries as $entry )
-		{
-			if( isset( $entry['domain'] ) && isset( $entry['string'] ) && isset( $entry['trans'] ) )
-			{
-				$string = str_replace( '\\n', "\n", $entry['string'] );
-				$trans = array();
-
-				foreach( (array) $entry['trans'] as $tx ) {
-					$trans[] = str_replace( '\\n', "\n", $tx );
-				}
-
-				$translations[$entry['domain']][$string] = $trans;
-			}
-		}
-
-		return $translations;
+		$object =  new $className();
+		return $object->get( $context, $uriBuilder, $templatePaths, $request, $locale, $frontend );
 	}
 
 
@@ -425,82 +243,5 @@ class Base
 			}
 		}
 		return $typoScriptArray;
-	}
-
-
-	/**
-	 * Returns the fixed parameters that should be included in every URL
-	 *
-	 * @param \Aimeos\MW\Config\Iface $config Config object
-	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request Request object
-	 * @return array Associative list of site, language and currency if available
-	 */
-	protected static function getFixedParams( \Aimeos\MW\Config\Iface $config,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
-	{
-		$fixed = array();
-
-		$name = $config->get( 'typo3/param/name/site', 'loc_site' );
-		if( $request->hasArgument( $name ) === true ) {
-			$fixed[$name] = $request->getArgument( $name );
-		}
-
-		$name = $config->get( 'typo3/param/name/language', 'loc_locale' );
-		if( $request->hasArgument( $name ) === true ) {
-			$fixed[$name] = $request->getArgument( $name );
-		}
-
-		$name = $config->get( 'typo3/param/name/currency', 'loc_currency' );
-		if( $request->hasArgument( $name ) === true ) {
-			$fixed[$name] = $request->getArgument( $name );
-		}
-
-		return $fixed;
-	}
-
-
-	/**
-	 * Returns the closure for retrieving the user groups
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Closure Function which returns the user group codes
-	 */
-	protected static function getGroups( \Aimeos\MShop\Context\Item\Iface $context )
-	{
-		return function() use ( $context )
-		{
-			$list = array();
-			$manager = \Aimeos\MShop\Factory::createManager( $context, 'customer/group' );
-
-			$search = $manager->createSearch();
-			$search->setConditions( $search->compare( '==', 'customer.group.id', $context->getGroupIds() ) );
-
-			foreach( $manager->searchItems( $search ) as $item ) {
-				$list[] = $item->getCode();
-			}
-
-			return $list;
-		};
-	}
-
-
-	/**
-	 * Creates the URL view helper
-	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
-	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
-	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
-	 * @param string $baseurl URL of the web site
-	 * @param array $fixed Associative list of parameters that are always part of the URL
-	 * @return \Aimeos\MW\View\Helper\Url\Iface URL view helper
-	 */
-	private static function getUrlHelper( \Aimeos\MW\View\Iface $view, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $baseurl = '', array $fixed = array() )
-	{
-		if( $request === null ) {
-			return new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $baseurl, $uriBuilder->getArgumentPrefix(), $fixed );
-		}
-
-		return new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
 	}
 }

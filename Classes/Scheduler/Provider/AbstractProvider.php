@@ -167,7 +167,7 @@ abstract class AbstractProvider
 	/**
 	 * Returns the list of site trees.
 	 *
-	 * @return array Associative list of items and children implementing MShop_Locale_Item_Site_Interface
+	 * @return array Associative list of items and children implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
 	protected function getAvailableSites()
 	{
@@ -202,7 +202,7 @@ abstract class AbstractProvider
 	 * Returns the HTML code for the select control.
 	 * The method adds every site and its children recursively.
 	 *
-	 * @param array $siteItems List of items implementing MShop_Locale_Item_Site_Interface
+	 * @param array $siteItems List of items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 * @param array $selected List of site codes that were previously selected by the user
 	 * @param integer $level Nesting level of the sites (should start with 0)
 	 * @return string HTML code with <option> tags for the select box
