@@ -1,106 +1,106 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="no">
+	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="zh">
 		<header/>
 		<body>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
-				<target>Kjører valgte Aimeos-jobber</target>
+				<target>執行選定的Aimeos商店工作</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode" xml:space="preserve">
 				<source>One or more sites is invalid or already disabled</source>
-				<target>En eller flere av sidene er ugyldig eller allerede deaktivert</target>
+				<target>一個或多個分站無效或是已停用</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
 				<source>Please choose at least one site</source>
-				<target>Vennligst velg minst en side</target>
+				<target>請至少選擇一個分站</target>
 			</trans-unit>
 			<trans-unit id="default.error.controller.missing" xml:space="preserve">
 				<source>Please choose at least one job</source>
-				<target>Vennligst velg minst en jobb</target>
+				<target>請至少選擇一個工作</target>
 			</trans-unit>
 			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
 				<source>The TypoScript configuration is invalid</source>
-				<target>Typoskript-konfigurasjonen er ugyldig</target>
+				<target>TypoScript設定無效</target>
 			</trans-unit>
 			<trans-unit id="default.label.controller" xml:space="preserve">
 				<source>Jobs</source>
-				<target>Jobber</target>
+				<target>工作</target>
 			</trans-unit>
 			<trans-unit id="default.label.sitecode" xml:space="preserve">
 				<source>Sites</source>
-				<target>Sider</target>
+				<target>分站</target>
 			</trans-unit>
 			<trans-unit id="default.label.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
-				<target>Typoscript-konfigurasjon</target>
+				<target>TypoScript設定</target>
 			</trans-unit>
 			<trans-unit id="default.name" xml:space="preserve">
 				<source>Aimeos Shop scheduler</source>
-				<target>Aimeos planlegger</target>
+				<target>Aimeos商店排程</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
-				<target>Spesialisert oppgave for sending av e-poster</target>
+				<target>發送e-mail的專用任務</target>
 			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
-				<target>Avsenders e-postadresse er ugyldig eller ble ikke skrevet inn</target>
+				<target>發送者e-mail無效或是未輸入</target>
 			</trans-unit>
 			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
 				<source>The reply e-mail address is invalid</source>
-				<target>Oppgitt e-postadresse for avsesnder er ugyldig</target>
+				<target>回覆e-mail地址無效</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
-				<target>Oppgitt ID for side med produktdetaljer er ugyldig.</target>
+				<target>商品詳細頁面的頁面ID無效</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
-				<target>Side-ID for nedlastingssiden er ikke gyldig.</target>
+				<target>帳戶下載的頁面ID無效</target>
 			</trans-unit>
 			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
 				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
-				<target>URL'en er ugyldig. Bruk er URL som inkluderer protokoll og domene, ssom for eksempel &quot;https://aimeos.org/&quot;</target>
+				<target>網站URL無效, 必須包含協定與網域名, 例如&quot;https://aimeos.org/&quot;</target>
 			</trans-unit>
 			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
 				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
-				<target>Base-URL'en til produktbildene er ugyldig. Bruk en base-URL som inkluderer protokoll og domene som for eksempel &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
+				<target>商品圖片URL無效, 必須包含協定與網域名, 例如 &quot;https://aimeos.org/uploads/tx_aimeos&quot;</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-name" xml:space="preserve">
 				<source>Sender name</source>
-				<target>Avsenders navn</target>
+				<target>寄件人名稱</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-email" xml:space="preserve">
 				<source>Sender e-mail</source>
-				<target>Avsenders e-post</target>
+				<target>寄件人e-mail</target>
 			</trans-unit>
 			<trans-unit id="email.label.reply-email" xml:space="preserve">
 				<source>Reply e-mail</source>
-				<target>Svar til e-post</target>
+				<target>回覆e-mail</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
-				<target>ID for side med produktdetaljer</target>
+				<target>商品詳細頁面ID</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
-				<target>ID for min konto nedlastingsside</target>
+				<target>帳戶下載頁面ID</target>
 			</trans-unit>
 			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
 				<source>Web site URL</source>
-				<target>URL</target>
+				<target>網站URL</target>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images</source>
-				<target>Base-URL for produktbilder</target>
+				<target>產品圖片的URL路徑</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
-				<target>Absolutt sti relativ fra Typo3-roten til css-filen malsett-området</target>
+				<target>主題資料夾 的 絕對路徑 或 相對於TYPO3 root to the CSS 檔案</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Aimeos nettbutikk epostplanlegger</target>
+				<target>Aimeos商店e-mail排程</target>
 			</trans-unit>
 		</body>
 	</file>
