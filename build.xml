@@ -1,103 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Aimeos TYPO3 extension" default="all">
-
-	<property name="coredir" value="${project.basedir}/Resources/Libraries/aimeos/aimeos-core" />
-	<property name="extdir" value="${project.basedir}/Resources/Private/Extensions" />
-	<property name="confdir" value="${project.basedir}/Resources/Private/Config" />
-	<property name="bindir" value="${project.basedir}/Resources/Libraries/bin/" />
-	<property name="codestddir" value="${coredir}/misc/coding" />
-
-
-
-	<target name="config" description="Provides the database configuration">
-		<property name="config-available" value="0" />
-		<available file="${coredir}/config/resource.php" property="config-available" value="1" />
-		<if>
-			<equals arg1="${config-available}" arg2="0" />
-			<then>
-				<input propertyName="dbhost" promptChar=" :" defaultValue="localhost" >Server host</input>
-				<input propertyName="dbport" promptChar="      :" defaultValue="3306" >Server port</input>
-				<input propertyName="dbname" promptChar=":" defaultValue="aimeos" >Database name</input>
-				<input propertyName="dbuser" promptChar="        :" defaultValue="root" >User name</input>
-				<input propertyName="dbpass" promptChar="             :" defaultValue="" >Password</input>
-				<echo file="${coredir}/config/resource.php" msg="&lt;?php return array( 'db' => array( 'adapter' => 'mysql', 'host' => '${dbhost}', 'database' => '${dbname}', 'username' => '${dbuser}', 'password' => '${dbpass}', 'limit' => 2, 'opt-persistent' => false, 'stmt' => array( 'SET NAMES \'utf8\'', 'SET SESSION sql_mode=\'ANSI\'' ) ) );" />
-			</then>
-		</if>
-		<copy file="${coredir}/config/resource.php" tofile="${coredir}/lib/mwlib/config/resource.php" overwrite="true" />
-	</target>
-
-	<target name="setup" depends="config" description="Sets up database incl. unit test data">
-		<echo msg="Setting up test database" />
-		<exec command="php ${coredir}/setup.php --config=${confdir} --config=${coredir}/config --extdir=${extdir} unittest" checkreturn="true" logoutput="true"/>
-	</target>
-
-	<target name="setupperf" depends="config" description="Sets up database incl. performance test data">
-		<echo msg="Setting up performance data" />
-		<exec command="php ${coredir}/setup.php --config=${confdir} --config=${coredir}/config --extdir=${extdir} unitperf" checkreturn="true" logoutput="true"/>
-	</target>
-
-
-	<target name="coverage" description="Creates coverage reports">
-		<phing target="coverage" haltonfailure="true" dir="${coredir}" />
-		<phing target="coverage" haltonfailure="true">
-			<fileset dir="${extdir}" expandsymboliclinks="true" >
-				<include name="**/phing.xml" />
-			</fileset>
-		</phing>
-	</target>
-
-
-	<target name="test" description="Executes unit tests">
-		<phing target="test" haltonfailure="true" dir="${coredir}" />
-		<phing target="test" haltonfailure="true">
-			<fileset dir="${extdir}" expandsymboliclinks="true" >
-				<include name="**/phing.xml" />
-			</fileset>
-		</phing>
-	</target>
-
-	<target name="testperf" description="Executes performance tests">
-		<phing target="testperf" haltonfailure="true" dir="${coredir}" />
-		<phing target="testperf" haltonfailure="true">
-			<fileset dir="${extdir}" expandsymboliclinks="true" >
-				<include name="**/phing.xml" />
-			</fileset>
-		</phing>
-	</target>
-
-
-	<target name="check" description="Executes all checks">
-		<phing target="check" dir="${coredir}" />
-		<phing target="check">
-			<fileset dir="${extdir}" expandsymboliclinks="true" >
-				<include name="**/phing.xml" />
-			</fileset>
-		</phing>
-	</target>
-
-
-	<target name="clean" description="Cleans up temporary files">
-		<delete file="${coredir}/config/resource.php" quiet="true" />
-		<delete file="${coredir}/lib/mwlib/config/resource.php" quiet="true" />
-		<phing target="clean" dir="${coredir}" />
-		<phing target="clean">
-			<fileset dir="${extdir}" expandsymboliclinks="true" >
-				<include name="**/phing.xml" />
-			</fileset>
-		</phing>
-	</target>
-
+<project name="Aimeos TYPO3 extension" default="update">
 
 	<target name="update" description="Updates the Aimeos core">
 		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
 		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
-		<exec command="COMPOSER=composer.aimeos.json composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 	</target>
 
-
-	<target name="deploy" description="Executes all deployments" depends="clean">
-		<exec command="COMPOSER=composer.aimeos.json composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+	<target name="deploy" description="Creates new package">
+		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
 		<reflexive>
 		  <fileset dir="." includes="ext_emconf.php" />
@@ -112,16 +24,12 @@
 		<echo msg="SHA1 hash value: ${filehashvalue}" />
 	</target>
 
-
-	<target name="release" description="Creates new release" depends="clean">
+	<target name="release" description="Creates new release">
 		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
 		<exec command="git branch ${version}" checkreturn="true" logoutput="true" />
 		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true" />
 		<exec command="git push origin ${version}" checkreturn="true" logoutput="true" />
 		<exec command="git push --tags" checkreturn="true" logoutput="true" />
 	</target>
-
-
-	<target name="all" depends="setup,test,check,clean" description="Executes all essential targets for testing" />
 
 </project>
