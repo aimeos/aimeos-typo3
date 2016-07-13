@@ -57,6 +57,13 @@ abstract class AbstractController
 			$config = $this->getConfig( $this->settings );
 			$context = Base::getContext( $config );
 
+			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
+			{
+				$context->setEditor( $GLOBALS['TSFE']->fe_user->user['username'] );
+				$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
+				$context->setGroupIds( \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] ) );
+			}
+
 			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
 			$locale = $this->getLocale( $context );
 			$langid = $locale->getLanguageId();
@@ -64,13 +71,6 @@ abstract class AbstractController
 			$context->setLocale( $locale );
 			$context->setI18n( Base::getI18n( array( $langid ), $localI18n ) );
 			$context->setView( Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
-
-			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
-			{
-				$context->setEditor( $GLOBALS['TSFE']->fe_user->user['username'] );
-				$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
-				$context->setGroupIds( \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] ) );
-			}
 
 			$this->context = $context;
 		}
