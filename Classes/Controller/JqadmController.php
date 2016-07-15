@@ -150,7 +150,7 @@ class JqadmController extends AbstractController
 	{
 		$lang = 'en';
 		$site = 'default';
-		$resource = 'product';
+		$resource = 'dashboard';
 
 		if( $this->request->hasArgument( 'resource' ) ) {
 			$resource = $this->request->getArgument( 'resource' );
