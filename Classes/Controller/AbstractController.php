@@ -49,19 +49,19 @@ abstract class AbstractController
 		if( !isset( self::$context ) )
 		{
 			$context = Base::getContext( $config );
-			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
 			$locale = Base::getLocale( $context, $this->request );
-			$langid = $locale->getLanguageId();
-
+			$context->setI18n( Base::getI18n( array( $locale->getLanguageId() ), $config->get( 'i18n', array() ) ) );
 			$context->setLocale( $locale );
-			$context->setI18n( Base::getI18n( array( $langid ), $config->get( 'i18n', array() ) ) );
-			$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
 			self::$context = $context;
 		}
 
 		// Use plugin specific configuration
 		self::$context->setConfig( $config );
+
+		$langid = self::$context->getLocale()->getLanguageId();
+		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
+		self::$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
 		return self::$context;
 	}
@@ -154,9 +154,9 @@ abstract class AbstractController
 
 
 	/**
-	 * Disables Fluid views for performance reasons.
+	 * Disables Fluid views for performance reasons
 	 *
-	 * return Tx_Extbase_MVC_View_ViewInterface View object
+	 * return null
 	 */
 	protected function resolveView()
 	{
