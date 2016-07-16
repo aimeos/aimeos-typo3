@@ -20,9 +20,6 @@ use \Aimeos\Aimeos\Base;
  */
 class JsonadmController extends AbstractController
 {
-	private $context;
-
-
 	/**
 	 * Initializes the object before the real action is called.
 	 */
@@ -39,28 +36,20 @@ class JsonadmController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		$resource = $site = $id = null;
+		$resource = null;
 
 		if( $this->request->hasArgument( 'resource' ) ) {
 			$resource = $this->request->getArgument( 'resource' );
 		}
 
-		if( $this->request->hasArgument( 'site' ) ) {
-			$site = $this->request->getArgument( 'site' );
-		}
-
-		if( $this->request->hasArgument( 'id' ) ) {
-			$id = $this->request->getArgument( 'id' );
-		}
-
 		switch( $this->request->getMethod() )
 		{
-			case 'DELETE': return $this->deleteAction( $resource, $site, $id );
-			case 'PATCH': return $this->patchAction( $resource, $site, $id );
-			case 'POST': return $this->postAction( $resource, $site, $id );
-			case 'PUT': return $this->putAction( $resource, $site, $id );
-			case 'GET': return $this->getAction( $resource, $site, $id );
-			default: return $this->optionsAction( $resource, $site );
+			case 'DELETE': return $this->deleteAction( $resource );
+			case 'PATCH': return $this->patchAction( $resource );
+			case 'POST': return $this->postAction( $resource );
+			case 'PUT': return $this->putAction( $resource );
+			case 'GET': return $this->getAction( $resource );
+			default: return $this->optionsAction( $resource );
 		}
 	}
 
@@ -69,22 +58,15 @@ class JsonadmController extends AbstractController
 	 * Deletes the resource object or a list of resource objects
 	 *
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $sitecode Unique site code
-	 * @param integer $id Unique resource ID
 	 * @return string Generated output
 	 */
-	public function deleteAction( $resource, $site = 'default', $id = '' )
+	public function deleteAction( $resource )
 	{
 		$content = file_get_contents( 'php://input' );
 		$header = array();
 		$status = 500;
-		$lang = null;
 
-		if( $this->request->hasArgument( 'lang' ) ) {
-			$lang = $this->request->getArgument( 'lang' );
-		}
-
-		$client = $this->createClient( $site, $resource, $lang );
+		$client = $this->createClient( $resource );
 		$result = $client->delete( $content, $header, $status );
 
 		$this->setResponse( $status, $header );
@@ -96,22 +78,15 @@ class JsonadmController extends AbstractController
 	 * Returns the requested resource object or list of resource objects
 	 *
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $sitecode Unique site code
-	 * @param integer $id Unique resource ID
 	 * @return string Generated output
 	 */
-	public function getAction( $resource, $site = 'default', $id = '' )
+	public function getAction( $resource )
 	{
 		$content = file_get_contents( 'php://input' );
 		$header = array();
 		$status = 500;
-		$lang = null;
 
-		if( $this->request->hasArgument( 'lang' ) ) {
-			$lang = $this->request->getArgument( 'lang' );
-		}
-
-		$client = $this->createClient( $site, $resource, $lang );
+		$client = $this->createClient( $resource );
 		$result = $client->get( $content, $header, $status );
 
 		$this->setResponse( $status, $header );
@@ -123,22 +98,15 @@ class JsonadmController extends AbstractController
 	 * Updates a resource object or a list of resource objects
 	 *
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $sitecode Unique site code
-	 * @param integer $id Unique resource ID
 	 * @return string Generated output
 	 */
-	public function patchAction( $resource, $site = 'default', $id = '' )
+	public function patchAction( $resource )
 	{
 		$content = file_get_contents( 'php://input' );
 		$header = array();
 		$status = 500;
-		$lang = null;
 
-		if( $this->request->hasArgument( 'lang' ) ) {
-			$lang = $this->request->getArgument( 'lang' );
-		}
-
-		$client = $this->createClient( $site, $resource, $lang );
+		$client = $this->createClient( $resource );
 		$result = $client->patch( $content, $header, $status );
 
 		$this->setResponse( $status, $header );
@@ -150,22 +118,15 @@ class JsonadmController extends AbstractController
 	 * Creates a new resource object or a list of resource objects
 	 *
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $sitecode Unique site code
-	 * @param integer $id Unique ID of the resource
 	 * @return string Generated output
 	 */
-	public function postAction( $resource, $site = 'default', $id = '' )
+	public function postAction( $resource )
 	{
 		$content = file_get_contents( 'php://input' );
 		$header = array();
 		$status = 500;
-		$lang = null;
 
-		if( $this->request->hasArgument( 'lang' ) ) {
-			$lang = $this->request->getArgument( 'lang' );
-		}
-
-		$client = $this->createClient( $site, $resource, $lang );
+		$client = $this->createClient( $resource );
 		$result = $client->post( $content, $header, $status );
 
 		$this->setResponse( $status, $header );
@@ -177,22 +138,15 @@ class JsonadmController extends AbstractController
 	 * Creates or updates a single resource object
 	 *
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $sitecode Unique site code
-	 * @param integer $id Unique resource ID
 	 * @return string Generated output
 	 */
-	public function putAction( $resource, $site = 'default', $id = '' )
+	public function putAction( $resource )
 	{
 		$content = file_get_contents( 'php://input' );
 		$header = array();
 		$status = 500;
-		$lang = null;
 
-		if( $this->request->hasArgument( 'lang' ) ) {
-			$lang = $this->request->getArgument( 'lang' );
-		}
-
-		$client = $this->createClient( $site, $resource, $lang );
+		$client = $this->createClient( $resource );
 		$result = $client->put( $content, $header, $status );
 
 		$this->setResponse( $status, $header );
@@ -204,21 +158,16 @@ class JsonadmController extends AbstractController
 	 * Returns the available HTTP verbs and the resource URLs
 	 *
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $sitecode Unique site code
 	 * @return string Generated output
 	 */
-	public function optionsAction( $resource = '', $site = 'default' )
+	public function optionsAction( $resource )
 	{
 		$content = file_get_contents( 'php://input' );
 		$header = array();
 		$status = 500;
 		$lang = null;
 
-		if( $this->request->hasArgument( 'lang' ) ) {
-			$lang = $this->request->getArgument( 'lang' );
-		}
-
-		$client = $this->createClient( $site, $resource, $lang );
+		$client = $this->createClient( $resource );
 		$result = $client->options( $content, $header, $status );
 
 		if( ( $json = json_decode( $result, true ) ) !== null )
@@ -233,63 +182,17 @@ class JsonadmController extends AbstractController
 
 
 	/**
-	 * Returns the resource controller
+	 * Returns the resource client
 	 *
-	 * @param string $sitecode Unique site code
 	 * @param string Resource location, e.g. "product/stock/wareshouse"
-	 * @param string $lang Language code
-	 * @return \Aimeos\MShop\Context\Item\Iface Context item
+	 * @return \Aimeos\Admin\JsonAdm\Iface Jsonadm client
 	 */
-	protected function createClient( $sitecode, $resource, $lang )
+	protected function createClient( $resource )
 	{
-		$lang = ( $lang ? $lang : 'en' );
-		$context = $this->getContext( $sitecode, $lang );
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'admin/jsonadm/templates' );
-
-		$view = Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
-		$context->setView( $view );
+		$context = $this->getContextBackend( $templatePaths );
 
 		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
-	}
-
-
-	/**
-	 * Sets the locale item in the given context
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param string $sitecode Unique site code
-	 * @param string $lang ISO language code, e.g. "en" or "en_GB"
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
-	 */
-	protected function getContext( $sitecode, $lang )
-	{
-		if( !isset( $this->context ) )
-		{
-			$config = $this->getConfig( $this->settings );
-			$context = Base::getContext( $config );
-
-			$localeManager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
-
-			try
-			{
-				$localeItem = $localeManager->bootstrap( $sitecode, '', '', false );
-				$localeItem->setLanguageId( null );
-				$localeItem->setCurrencyId( null );
-			}
-			catch( \Aimeos\MShop\Locale\Exception $e )
-			{
-				$localeItem = $localeManager->createItem();
-			}
-
-			$context->setLocale( $localeItem );
-			$context->setI18n( Base::getI18n( array( $lang ) ) );
-
-			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
-
-			$this->context = $context;
-		}
-
-		return $this->context;
 	}
 
 

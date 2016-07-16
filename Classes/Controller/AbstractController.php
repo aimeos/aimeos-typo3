@@ -21,61 +21,96 @@ use Aimeos\Aimeos\Base;
 abstract class AbstractController
 	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-	private $context;
-	private static $locale;
+	private static $context;
+	private $contextBE;
 
 
 	/**
 	 * Creates a new configuration object.
 	 *
-	 * @return MW_Config_Interface Configuration object
+	 * @return \Aimeos\MW\Config\Iface Configuration object
+	 * @deprecated Use \Aimeos\Aimeos\Base::getConfig() directly
 	 */
 	protected function getConfig()
 	{
-		$settings = (array) $this->settings;
-
-		if( isset( $this->settings['typo3']['tsconfig'] ) )
-		{
-			$tsconfig = Base::parseTS( $this->settings['typo3']['tsconfig'] );
-			$settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $settings, $tsconfig );
-		}
-
-		return Base::getConfig( $settings );
+		return Base::getConfig( (array) $this->settings );
 	}
 
 
 	/**
-	 * Returns the context item
+	 * Returns the context item for the frontend
 	 *
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
 	protected function getContext()
 	{
-		if( !isset( $this->context ) )
-		{
-			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
-			$config = $this->getConfig( $this->settings );
-			$context = Base::getContext( $config );
+		$config = Base::getConfig( (array) $this->settings );
 
-			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
-			$locale = $this->getLocale( $context );
+		if( !isset( self::$context ) )
+		{
+			$context = Base::getContext( $config );
+			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
+			$locale = Base::getLocale( $context, $this->request );
 			$langid = $locale->getLanguageId();
 
 			$context->setLocale( $locale );
-			$context->setI18n( Base::getI18n( array( $langid ), $localI18n ) );
-			$context->setView( Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+			$context->setI18n( Base::getI18n( array( $langid ), $config->get( 'i18n', array() ) ) );
+			$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
-			if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
-			{
-				$context->setEditor( $GLOBALS['TSFE']->fe_user->user['username'] );
-				$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
-				$context->setGroupIds( \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] ) );
-			}
-
-			$this->context = $context;
+			self::$context = $context;
 		}
 
-		return $this->context;
+		// Use plugin specific configuration
+		self::$context->setConfig( $config );
+
+		return self::$context;
+	}
+
+
+	/**
+	 * Returns the context item for backend operations
+	 *
+	 * @param array $templatePaths List of paths to the view templates
+	 * @return \Aimeos\MShop\Context\Item\Iface Context item
+	 */
+	protected function getContextBackend( array $templatePaths = array(), $withView = true )
+	{
+		if( !isset( $this->contextBE ) )
+		{
+			$lang = 'en';
+			$site = 'default';
+
+			if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+				$lang = $GLOBALS['BE_USER']->uc['lang'];
+			}
+
+			if( $this->request->hasArgument( 'lang' ) ) {
+				$lang = $this->request->getArgument( 'lang' );
+			}
+
+			if( $this->request->hasArgument( 'site' ) ) {
+				$site = $this->request->getArgument( 'site' );
+			}
+
+			$config = $this->getConfig( $this->settings );
+			$context = Base::getContext( $config );
+
+			$locale = Base::getLocaleBackend( $context, $site );
+			$context->setLocale( $locale );
+
+			$i18n = Base::getI18n( array( $lang, 'en' ), $config->get( 'i18n', array() ) );
+			$context->setI18n( $i18n );
+
+			if( $withView )
+			{
+				$view = Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
+				$context->setView( $view );
+			}
+
+			$this->contextBE = $context;
+		}
+
+		return $this->contextBE;
 	}
 
 
@@ -84,10 +119,11 @@ abstract class AbstractController
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
+	 * @deprecated Use \Aimeos\Aimeos\Base::getLocale() directly
 	 */
 	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context )
 	{
-		return \Aimeos\Aimeos\Base::getLocale( $context, $this->request );
+		return Base::getLocale( $context, $this->request );
 	}
 
 

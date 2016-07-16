@@ -148,30 +148,14 @@ class JqadmController extends AbstractController
 	 */
 	protected function createClient()
 	{
-		$lang = 'en';
-		$site = 'default';
 		$resource = 'dashboard';
 
 		if( $this->request->hasArgument( 'resource' ) ) {
 			$resource = $this->request->getArgument( 'resource' );
 		}
 
-		if( $this->request->hasArgument( 'site' ) ) {
-			$site = $this->request->getArgument( 'site' );
-		}
-
-		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
-			$lang = $GLOBALS['BE_USER']->uc['lang'];
-		}
-
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'admin/jqadm/templates' );
-
-		$config = $this->getConfig();
-		$context = Base::getContext( $config );
-		$context = $this->setLocale( $context, $site, $lang );
-
-		$view = Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
-		$context->setView( $view );
+		$context = $this->getContextBackend( $templatePaths );
 
 		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource );
 	}
@@ -194,42 +178,10 @@ class JqadmController extends AbstractController
 	/**
 	 * Uses default view.
 	 *
-	 * return Tx_Extbase_MVC_View_ViewInterface View object
+	 * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface View object
 	 */
 	protected function resolveView()
 	{
 		return \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::resolveView();
-	}
-
-
-	/**
-	 * Sets the locale item in the given context
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param string $sitecode Unique site code
-	 * @param string $lang ISO language code, e.g. "en" or "en_GB"
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
-	 */
-	protected function setLocale( \Aimeos\MShop\Context\Item\Iface $context, $sitecode, $lang )
-	{
-		$localeManager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
-
-		try
-		{
-			$localeItem = $localeManager->bootstrap( $sitecode, '', '', false );
-			$localeItem->setLanguageId( null );
-			$localeItem->setCurrencyId( null );
-		}
-		catch( \Aimeos\MShop\Locale\Exception $e )
-		{
-			$localeItem = $localeManager->createItem();
-		}
-
-		$context->setLocale( $localeItem );
-
-		$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
-		$context->setI18n( Base::getI18n( array( $lang, 'en' ), $localI18n ) );
-
-		return $context;
 	}
 }

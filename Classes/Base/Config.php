@@ -17,55 +17,45 @@ namespace Aimeos\Aimeos\Base;
  */
 class Config
 {
-    private $aimeos;
 	private static $config;
-
-
-    /**
-     * Initializes the object
-     *
-     * @param \Aimeos\Bootstrap $aimeos Aimeos bootstrap object
-     */
-    public function __construct( \Aimeos\Bootstrap $aimeos )
-    {
-        $this->aimeos = $aimeos;
-    }
 
 
 	/**
 	 * Creates a new configuration object.
 	 *
+     * @param array $paths Paths to the configuration directories
 	 * @param array $local Multi-dimensional associative list with local configuration
-	 * @return MW_Config_Interface Configuration object
+	 * @return \Aimeos\MW\Config\Iface Configuration object
 	 */
-	public function get( array $local = array() )
+	public static function get( array $paths, array $local = array() )
 	{
 		if( self::$config === null )
 		{
-			$configPaths = $this->aimeos->getConfigPaths();
-
-			// Hook for processing extension config directories
+			// Using extension config directories
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
 			{
 				ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] );
-
 				foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir )
 				{
-					$absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
-
-					if( !empty( $absPath ) ) {
-						$configPaths[] = $absPath;
+					if( ( $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir ) ) !== '' ) {
+						$paths[] = $absPath;
 					}
 				}
 			}
 
-			$conf = new \Aimeos\MW\Config\PHPArray( array(), $configPaths );
+			$conf = new \Aimeos\MW\Config\PHPArray( array(), $paths );
 
 			if( function_exists( 'apc_store' ) === true && (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
 				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
 			self::$config = $conf;
+		}
+
+		if( isset( $local['typo3']['tsconfig'] ) )
+		{
+			$tsconfig = \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] );
+			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
 		}
 
 		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );

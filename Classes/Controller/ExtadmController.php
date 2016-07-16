@@ -35,9 +35,14 @@ class ExtadmController extends AbstractController
 		$abslen = strlen( PATH_site );
 		$controller = $this->getController();
 
-		$locale = $this->getContext()->getLocale();
+		$locale = $this->getContextBackend()->getLocale();
 		$site = $locale->getSite()->getCode();
-		$langid = $locale->getLanguageId();
+		$langid = 'en';
+
+		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+			$langid = $GLOBALS['BE_USER']->uc['lang'];
+		}
+
 
 		foreach( Base::getAimeos()->getCustomPaths( 'admin/extjs' ) as $base => $paths )
 		{
@@ -129,37 +134,6 @@ class ExtadmController extends AbstractController
 
 
 	/**
-	 * Returns the context item
-	 *
-	 * @return \Aimeos\MShop\Context\Item\Iface Context item
-	 */
-	protected function getContext()
-	{
-		if( !isset( $this->context ) )
-		{
-			$config = $this->getConfig( $this->settings );
-			$context = Base::getContext( $config );
-
-			$localeItem = $this->getLocale( $context );
-			$context->setLocale( $localeItem );
-
-			$localI18n = ( isset( $this->settings['i18n'] ) ? $this->settings['i18n'] : array() );
-			$i18n = Base::getI18n( array( $localeItem->getLanguageId() ), $localI18n );
-
-			$view = Base::getView( $context, $this->uriBuilder, array(), null, null, false );
-			$context->setView( $view );
-
-			$context->setI18n( $i18n );
-			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
-
-			$this->context = $context;
-		}
-
-		return $this->context;
-	}
-
-
-	/**
 	 * Returns the ExtJS JSON RPC controller
 	 *
 	 * @return \Aimeos\Controller\ExtJS\JsonRpc ExtJS JSON RPC controller
@@ -169,7 +143,7 @@ class ExtadmController extends AbstractController
 		if( !isset( $this->controller ) )
 		{
 			$cntlPaths = Base::getAimeos()->getCustomPaths( 'controller/extjs' );
-			$this->controller = new \Aimeos\Controller\ExtJS\JsonRpc( $this->getContext(), $cntlPaths );
+			$this->controller = new \Aimeos\Controller\ExtJS\JsonRpc( $this->getContextBackend(), $cntlPaths );
 		}
 
 		return $this->controller;
@@ -183,7 +157,7 @@ class ExtadmController extends AbstractController
 	 */
 	protected function getJsonClientConfig()
 	{
-		$conf = $this->getContext()->getConfig()->get( 'admin/extjs', array() );
+		$conf = $this->getContextBackend()->getConfig()->get( 'admin/extjs', array() );
 		return json_encode( array( 'admin' => array( 'extjs' => $conf ) ), JSON_FORCE_OBJECT );
 	}
 
@@ -209,34 +183,6 @@ class ExtadmController extends AbstractController
 
 
 	/**
-	 * Returns the locale object for the context
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
-	 */
-	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context )
-	{
-		$langid = 'en';
-		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
-			$langid = $GLOBALS['BE_USER']->uc['lang'];
-		}
-
-		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
-
-		try {
-			$sitecode = $context->getConfig()->get( 'mshop/locale/site', 'default' );
-			$localeItem = $localeManager->bootstrap( $sitecode, $langid, '', false );
-		} catch( \Aimeos\MShop\Locale\Exception $e ) {
-			$localeItem = $localeManager->createItem();
-		}
-
-		$localeItem->setLanguageId( $langid );
-
-		return $localeItem;
-	}
-
-
-	/**
 	 * Returns the JSON encoded site item.
 	 *
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request TYPO3 request object
@@ -245,7 +191,7 @@ class ExtadmController extends AbstractController
 	 */
 	protected function getSite( \TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
-		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $this->getContext() );
+		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $this->getContextBackend() );
 		$manager = $localeManager->getSubManager( 'site' );
 
 		$site = 'default';
@@ -268,7 +214,7 @@ class ExtadmController extends AbstractController
 	/**
 	 * Uses default view.
 	 *
-	 * return Tx_Extbase_MVC_View_ViewInterface View object
+	 * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface View object
 	 */
 	protected function resolveView()
 	{

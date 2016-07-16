@@ -17,19 +17,20 @@ namespace Aimeos\Aimeos\Base;
  */
 class Aimeos
 {
-	private $aimeos;
+	private static $aimeos;
 
 
 	/**
 	 * Returns the Aimeos bootstrap object
 	 *
-	 * @param array $extDirs List of directories with Aimeos extensions
 	 * @return \Aimeos\Bootstrap Aimeos bootstrap object
 	 */
-	public function get( $extDirs = array() )
+	public static function get()
 	{
-		if( $this->aimeos === null )
+		if( self::$aimeos === null )
 		{
+			$extDirs = array();
+
 			// Extension directories
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
 			{
@@ -45,9 +46,9 @@ class Aimeos
 				}
 			}
 
-			$this->aimeos = new \Aimeos\Bootstrap( $extDirs, false );
+			self::$aimeos = new \Aimeos\Bootstrap( $extDirs, false );
 		}
 
-		return $this->aimeos;
+		return self::$aimeos;
 	}
 }

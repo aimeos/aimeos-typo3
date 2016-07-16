@@ -24,10 +24,9 @@ class Base
 	/**
 	 * Returns the Aimeos bootstrap object
 	 *
-	 * @param array $extDirs List of directories with Aimeos extensions
 	 * @return \Aimeos\Bootstrap Aimeos bootstrap object
 	 */
-	public static function getAimeos( $extDirs = array() )
+	public static function getAimeos()
 	{
 		$className = 'Aimeos\Aimeos\Base\Aimeos';
 
@@ -35,8 +34,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'];
 		}
 
-		$object =  new $className();
-		return $object->get( $extDirs );
+		return $className::get();
 	}
 
 
@@ -54,8 +52,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'];
 		}
 
-		$object =  new $className( self::getAimeos() );
-		return $object->get( $local );
+		return $className::get( self::getAimeos()->getConfigPaths(), $local );
 	}
 
 
@@ -73,8 +70,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'];
 		}
 
-		$object =  new $className();
-		return $object->get( $config );
+		return $className::get( $config );
 	}
 
 
@@ -119,8 +115,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'];
 		}
 
-		$object =  new $className( self::getAimeos() );
-		return $object->get( $languageIds, $local );
+		return $className::get( self::getAimeos()->getI18nPaths(), $languageIds, $local );
 	}
 
 
@@ -139,8 +134,26 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
 		}
 
-		$object =  new $className();
-		return $object->get( $context, $request );
+		return $className::get( $context, $request );
+	}
+
+
+	/**
+	 * Creates a new locale object
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param string $sitecode Unique site code
+	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
+	 */
+	public static function getLocaleBackend( \Aimeos\MShop\Context\Item\Iface $context, $sitecode )
+	{
+		$className = 'Aimeos\Aimeos\Base\Locale';
+
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'] ) ) {
+			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
+		}
+
+		return $className::getBackend( $context, $sitecode );
 	}
 
 
@@ -165,16 +178,15 @@ class Base
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MW\Config\Iface $context Config object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
-	 * @param boolean $frontend True if the view is for the frontend, false for the backend
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public static function getView( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
-		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null, $frontend = true )
+	public static function getView( \Aimeos\MW\Config\Iface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
+		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
 	{
 		$className = 'Aimeos\Aimeos\Base\View';
 
@@ -182,8 +194,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'];
 		}
 
-		$object =  new $className();
-		return $object->get( $context, $uriBuilder, $templatePaths, $request, $locale, $frontend );
+		return $className::get( $config, $uriBuilder, $templatePaths, $request, $locale );
 	}
 
 

@@ -17,32 +17,20 @@ namespace Aimeos\Aimeos\Base;
  */
 class I18n
 {
-	private $aimeos;
 	private static $i18n = array();
-
-
-    /**
-     * Initializes the object
-     *
-     * @param \Aimeos\Bootstrap $aimeos Aimeos bootstrap object
-     */
-    public function __construct( \Aimeos\Bootstrap $aimeos )
-    {
-        $this->aimeos = $aimeos;
-    }
 
 
 	/**
 	 * Creates new translation objects.
 	 *
+     * @param array $i18nPaths Paths to the translation directories
 	 * @param array $langIds List of two letter ISO language IDs
 	 * @param array $local List of local translation entries overwriting the standard ones
 	 * @return array List of translation objects implementing MW_Translation_Interface
 	 */
-	public function get( array $languageIds, array $local = array() )
+	public static function get( array $i18nPaths, array $languageIds, array $local = array() )
 	{
 		$i18nList = array();
-		$i18nPaths = $this->aimeos->getI18nPaths();
 
 		foreach( $languageIds as $langid )
 		{
@@ -61,7 +49,7 @@ class I18n
 
 			if( isset( $local[$langid] ) )
 			{
-				$translations = $this->parseTranslations( (array) $local[$langid] );
+				$translations = self::parseTranslations( (array) $local[$langid] );
 				$i18nList[$langid] = new \Aimeos\MW\Translation\Decorator\Memory( $i18nList[$langid], $translations );
 			}
 		}
@@ -76,7 +64,7 @@ class I18n
 	 * @param array $entries User-defined translation entries via TypoScript
 	 * @return array Associative list of translation domain and original string / list of tranlations
 	 */
-	public function parseTranslations( array $entries )
+	protected static function parseTranslations( array $entries )
 	{
 		$translations = array();
 

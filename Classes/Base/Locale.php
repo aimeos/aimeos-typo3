@@ -21,17 +21,16 @@ class Locale
 
 
 	/**
-	 * Returns the locale object for the context
+	 * Returns the locale object for frontend
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public function get( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+	public static function get( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
 	{
 		if( !isset( self::$locale ) )
 		{
-			$session = $context->getSession();
 			$config = $context->getConfig();
 
 
@@ -70,5 +69,29 @@ class Locale
 		}
 
 		return self::$locale;
+	}
+
+
+	/**
+	 * Returns the locale item for the backend
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param string $sitecode Unique site code
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	public static function getBackend( \Aimeos\MShop\Context\Item\Iface $context, $sitecode )
+	{
+		$localeManager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
+
+		try {
+			$localeItem = $localeManager->bootstrap( $sitecode, '', '', false );
+		} catch( \Aimeos\MShop\Locale\Exception $e ) {
+			$localeItem = $localeManager->createItem();
+		}
+
+		$localeItem->setLanguageId( null );
+		$localeItem->setCurrencyId( null );
+
+		return $localeItem;
 	}
 }
