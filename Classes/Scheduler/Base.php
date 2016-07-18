@@ -56,16 +56,9 @@ class Base
 	 */
 	public static function getContext( array $conf = array() )
 	{
-		$aimeos = Aimeos\Base::getAimeos();
-		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
-		$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html/templates' ) );
-
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
-		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
-		$uriBuilder->setArgumentPrefix( 'ai' );
-
 		$config = Aimeos\Base::getConfig( $conf );
 		$context = Aimeos\Base::getContext( $config );
+
 
 		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
 		$search = $langManager->createSearch( true );
@@ -84,7 +77,13 @@ class Base
 		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
 		$context->setI18n( $i18n );
 
-		$view = Aimeos\Base::getView( $context, $uriBuilder, $tmplPaths );
+
+		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'client/html/templates' );
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
+		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
+		$uriBuilder->setArgumentPrefix( 'ai' );
+
+		$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
 		$context->setView( $view );
 
 		$context->setEditor( 'scheduler' );
