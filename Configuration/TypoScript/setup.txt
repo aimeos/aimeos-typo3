@@ -42,7 +42,7 @@ plugin.tx_aimeos {
 					detail.url.config {
 						chash = 0
 					}
-					list.url.config {
+					lists.url.config {
 						chash = 0
 					}
 					suggest.url.config {
