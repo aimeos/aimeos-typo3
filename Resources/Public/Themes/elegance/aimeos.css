@@ -958,25 +958,6 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	clear: both;
 }
 
-/* Product list type switcher */
-.catalog-list-type {
-	text-align: right;
-}
-
-.catalog-list-type .type-item {
-	padding: 0.5em;
-}
-
-.catalog-list-type .type-grid:after {
-	font: normal normal normal 20px/1 FontAwesome;
-	content: "\f00a";
-}
-
-.catalog-list-type .type-list:after {
-	font: normal normal normal 20px/1 FontAwesome;
-	content: "\f00b";
-}
-
 
 /* Product details */
 

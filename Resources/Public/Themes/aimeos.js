@@ -19,7 +19,7 @@
 
 /**
  * Aimeos related Javascript code
- *
+ * 
  * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  * @copyright Metaways Infosystems GmbH, 2012
  * @copyright Aimeos (aimeos.org), 2014
@@ -722,7 +722,7 @@ AimeosCatalogFilter = {
 				return false;
 			}
 		}).autocomplete("instance")._renderItem = function(ul, item) {
-			return $(item.html).appendTo(ul);
+			return $("<li>").append(item.value).appendTo(ul);
 		};
 	},
 
