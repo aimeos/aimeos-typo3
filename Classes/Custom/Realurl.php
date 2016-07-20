@@ -48,6 +48,8 @@ class Realurl
 						array(
 							'GETvar' => 'ai[f_sort]',
 							'valueMap' => array(
+								'code' => 'code',
+								'-code' => '-code',
 								'name' => 'name',
 								'-name' => '-name',
 								'price' => 'price',
