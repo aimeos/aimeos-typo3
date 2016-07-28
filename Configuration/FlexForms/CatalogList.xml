@@ -52,7 +52,6 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.catid-default</label>
 					<config>
 						<type>select</type>
-						<multiple>0</multiple>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
 						<items type="array">
 							<numIndex index="0" type="array">
@@ -61,8 +60,7 @@
 							</numIndex>
 						</items>
 						<size>10</size>
-						<maxitems>1</maxitems>
-						<minitems>0</minitems>
+						<maxitems>100</maxitems>
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.lists.catid-default>
