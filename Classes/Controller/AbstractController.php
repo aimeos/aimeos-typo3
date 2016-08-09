@@ -92,7 +92,7 @@ abstract class AbstractController
 				$site = $this->request->getArgument( 'site' );
 			}
 
-			$config = $this->getConfig( $this->settings );
+			$config = Base::getConfig( (array) $this->settings );
 			$context = Base::getContext( $config );
 
 			$locale = Base::getLocaleBackend( $context, $site );
