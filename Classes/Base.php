@@ -165,7 +165,7 @@ class Base
 	public static function getVersion()
 	{
 		$match = array();
-		$content = @file_get_contents( dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
+		$content = @file_get_contents( dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
 
 		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
 			return $match[1];
