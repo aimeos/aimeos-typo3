@@ -1,0 +1,95 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="pt">
+		<header/>
+		<body>
+			<trans-unit id="account-download.target" xml:space="preserve">
+				<source>Account download page</source>
+				<target>Página de download da conta</target>
+			</trans-unit>
+			<trans-unit id="account-favorite.target" xml:space="preserve">
+				<source>Favorite products page</source>
+				<target>Página de produtos favoritos</target>
+			</trans-unit>
+			<trans-unit id="account-watch.target" xml:space="preserve">
+				<source>Watched products page</source>
+				<target>Página de produtos observados</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
+				<source>Display categories beginning from the following node</source>
+				<target>Mostrar categorias a partir do seguinte nó</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
+				<source>Always display these category levels</source>
+				<target>Sempre exibir os níveis de categoria</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
+				<source>Only display up to these category levels</source>
+				<target>Exibir somente até esses níveis de categoria</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.target" xml:space="preserve">
+				<source>Catalog list page</source>
+				<target>Página da lista de catálogo</target>
+			</trans-unit>
+			<trans-unit id="catalog-suggest.target" xml:space="preserve">
+				<source>Page with suggestions for search filter</source>
+				<target>Página com sugestões para o filtro de pesquisa</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
+				<source>Default category if no parameter is available</source>
+				<target>Categoria padrão se nenhum parâmetro estiver disponível</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.target" xml:space="preserve">
+				<source>Catalog detail page</source>
+				<target>Página de detalhe de catálogo</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
+				<source>Default product ID if no parameter is available</source>
+				<target>ID de produto padrão se nenhum parâmetro estiver disponível</target>
+			</trans-unit>
+			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
+				<source>Page with catalog session plugin</source>
+				<target>Página com plugin de sessão de catálogos</target>
+			</trans-unit>
+			<trans-unit id="catalog-count.target" xml:space="preserve">
+				<source>Page with product counts for catalog filter</source>
+				<target>Página com contagem de produtos para o filtro dos catálogos</target>
+			</trans-unit>
+			<trans-unit id="catalog-stock.target" xml:space="preserve">
+				<source>Page with stock level data</source>
+				<target>Página com os dados de nível de estoque</target>
+			</trans-unit>
+			<trans-unit id="basket-standard.target" xml:space="preserve">
+				<source>Basket page</source>
+				<target>Página do carrinho</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard.target" xml:space="preserve">
+				<source>Checkout page</source>
+				<target>Página de finalização</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
+				<source>Terms and conditions page</source>
+				<target>Página de termos e condições</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
+				<source>Privacy policy page</source>
+				<target>Página de política de privacidade</target>
+			</trans-unit>
+			<trans-unit id="checkout-confirm.target" xml:space="preserve">
+				<source>Confirmation page</source>
+				<target>Página de confirmação</target>
+			</trans-unit>
+			<trans-unit id="checkout-update.target" xml:space="preserve">
+				<source>Page with &quot;checkout payment update&quot; plugin</source>
+				<target>Página com plugin de &quot;atualização de pagamento&quot;</target>
+			</trans-unit>
+			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Configuração TypoScript</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>A configuração TypoScript é inválida</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
