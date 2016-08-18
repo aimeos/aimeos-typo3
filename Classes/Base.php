@@ -11,6 +11,13 @@
 namespace Aimeos\Aimeos;
 
 
+$localautoloader = dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
+
+if( file_exists( $localautoloader ) === true ) {
+	require_once $localautoloader;
+}
+
+
 /**
  * Aimeos base class with common functionality.
  *
