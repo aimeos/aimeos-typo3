@@ -8,6 +8,13 @@
  */
 
 
+$localautoloader = __DIR__ . '/Resources/Libraries/autoload.php';
+
+if( file_exists( $localautoloader ) === true ) {
+	require_once $localautoloader;
+}
+
+
 /**
  * Update class for Aimeos TYPO3 extension.
  *
