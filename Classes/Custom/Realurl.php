@@ -95,6 +95,8 @@ class Realurl
 					),
 					'co' => array(
 						array( 'GETvar' => 'ai[c_step]' ),
+					),
+					'cc' => array(
 						array( 'GETvar' => 'code' ),
 						array( 'GETvar' => 'orderid' ),
 					),
