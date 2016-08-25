@@ -78,7 +78,7 @@ class Base
 		$context->setI18n( $i18n );
 
 
-		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'client/html/templates' );
+		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'controller/jobs/templates' );
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
 		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
 		$uriBuilder->setArgumentPrefix( 'ai' );
