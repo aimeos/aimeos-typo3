@@ -156,6 +156,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.' . $_EXTKEY,
+	'account-profile',
+	array( 'Account' => 'profile' ),
+	array( 'Account' => 'profile' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
 	'account-watch',
 	array( 'Account' => 'watch' ),
 	array( 'Account' => 'watch' )
