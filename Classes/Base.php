@@ -217,10 +217,8 @@ class Base
 		$parser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\TypoScript\\Parser\\TypoScriptParser' );
 		$parser->parse( $tsString );
 
-		if( !empty( $parser->errors ) )
-		{
-			$msg = $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/Scheduler.xml:default.error.tsconfig.invalid' );
-			throw new \Exception( $msg );
+		if( !empty( $parser->errors ) ) {
+			throw new \Exception( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
 		}
 
 		$tsConfig = self::convertTypoScriptArrayToPlainArray( $parser->setup );
