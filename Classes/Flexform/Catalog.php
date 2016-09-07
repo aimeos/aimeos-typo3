@@ -55,7 +55,7 @@ class Catalog
 			$item = $manager->getTree( null, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
 
 
-			$config['items'] = array_merge( $config['items'], $this->getCategoryList( $item, 0 ) );
+			$config['items'] = array_merge( $config['items'], $this->getCategoryList( $item, $item->getName() ) );
 		}
 		catch( \Exception $e )
 		{
@@ -70,16 +70,16 @@ class Catalog
 	 * Returns the list of category label / ID pairs for the given node and all children
 	 *
 	 * @param MShop_Catalog_Item_Interface $item Catalog item to start from
-	 * @param unknown_type $level Current level on indention
+	 * @param string $breadcrumb Breadcrumb of the parent nodes
 	 * @return array Associative array of category label / ID pairs
 	 */
-	protected function getCategoryList( \Aimeos\MShop\Catalog\Item\Iface $item, $level )
+	protected function getCategoryList( \Aimeos\MShop\Catalog\Item\Iface $item, $breadcrumb )
 	{
 		$result = array();
-		$result[] = array( str_repeat( '.', $level * 4 ) . $item->getName(), $item->getId() );
+		$result[] = array( $breadcrumb, $item->getId() );
 
 		foreach( $item->getChildren() as $child ) {
-			$result = array_merge( $result, $this->getCategoryList( $child, $level + 1 ) );
+			$result = array_merge( $result, $this->getCategoryList( $child, $breadcrumb . ' > ' . $child->getName() ) );
 		}
 
 		return $result;
