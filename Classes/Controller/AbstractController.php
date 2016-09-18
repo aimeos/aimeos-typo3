@@ -61,7 +61,7 @@ abstract class AbstractController
 
 		$langid = self::$context->getLocale()->getLanguageId();
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
-		self::$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+		self::$context->setView( Base::getView( self::$context, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
 		return self::$context;
 	}
@@ -103,7 +103,7 @@ abstract class AbstractController
 
 			if( $withView )
 			{
-				$view = Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
+				$view = Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
 				$context->setView( $view );
 			}
 

@@ -185,15 +185,16 @@ class Base
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MW\Config\Iface $context Config object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $langid ISO code of the current language ("de"/"de_CH") or null for no translation
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public static function getView( \Aimeos\MW\Config\Iface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
-		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $langid = null )
+	public static function getView( \Aimeos\MShop\Context\Item\Iface $context,
+		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $langid = null )
 	{
 		$className = 'Aimeos\Aimeos\Base\View';
 
@@ -201,7 +202,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'];
 		}
 
-		return $className::get( $config, $uriBuilder, $templatePaths, $request, $langid );
+		return $className::get( $context->getConfig(), $uriBuilder, $templatePaths, $request, $langid );
 	}
 
 

@@ -83,7 +83,7 @@ class Base
 		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
 		$uriBuilder->setArgumentPrefix( 'ai' );
 
-		$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
+		$view = Aimeos\Base::getView( $context, $uriBuilder, $tmplPaths );
 		$context->setView( $view );
 
 		$context->setEditor( 'scheduler' );
