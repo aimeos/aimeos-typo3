@@ -1909,6 +1909,10 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	text-align: center !important;
 }
 
+.basket-standard .basket-related h1 {
+	display: none;
+}
+
 
 /* Checkout */
 .checkout-standard .button-group {
