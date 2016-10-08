@@ -38,7 +38,7 @@ class Wizicon
 		$xml = $languageFactory->getParsedData( $langfile, $GLOBALS['LANG']->lang, '', 0 );
 
 		$wizardItems['plugins_tx_aimeos'] = array(
-			'icon' => $relpath . 'Resources/Public/Images/aimeos-wizicon.png',
+			'icon' => $relpath . 'Resources/Public/Icons/Extension.png',
 			'title' => $GLOBALS['LANG']->getLLL( 'ext-wizard-title', $xml ),
 			'description' => $GLOBALS['LANG']->getLLL( 'ext-wizard-description', $xml ),
 			'params' => '&defVals[tt_content][CType]=list'
