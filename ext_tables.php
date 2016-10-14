@@ -31,7 +31,7 @@ if ( TYPO3_MODE === 'BE' )
 		),
 		array(
 			'access' => 'user,group',
-			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.png',
+			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
 			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/admin.xlf',
 		)
 	);
