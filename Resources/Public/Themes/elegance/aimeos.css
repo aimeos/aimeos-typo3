@@ -1333,6 +1333,9 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	list-style: none;
 	color: #999;
 	padding: 0;
+    max-width: 20em;
+    max-height: 10em;
+    overflow-y: auto;
 }
 
 .catalog-detail-basket-service .service-name {
