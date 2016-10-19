@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   enable-background="new"
+   version="1.1"
+   id="svg3403"
+   viewBox="0 0 32 32.000001"
+   height="32"
+   width="32">
+  <defs
+     id="defs3405" />
+  <metadata
+     id="metadata3408">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer2">
+    <rect
+       y="-0.0092088487"
+       x="0"
+       height="32.009209"
+       width="32.009209"
+       id="rect4300"
+       style="fill:#103050;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <g
+     style="display:inline;opacity:1"
+     transform="translate(0,-1020.3622)"
+     id="layer1">
+    <path
+       style="display:inline;fill:#ffffff"
+       id="path13"
+       d="m 12.514759,1030.1248 c -1.002375,0 -2.01675,0.1286 -3.0405004,0.3859 -1.024125,0.258 -1.969875,0.6131 -2.837625,1.0665 l 0.8625,2.0854 c 0.711,-0.3297 1.471125,-0.6278 2.2815,-0.8952 0.8096254,-0.2681 1.6695004,-0.402 2.5785004,-0.402 1.243125,0 2.147625,0.3057 2.712,0.9184 0.564375,0.6139 0.845625,1.5638 0.845625,2.8515 l 0,1.0043 -2.91525,0.1083 c -5.5072504,0.1643 -8.2612504,1.9665 -8.2612504,5.4064 0,1.5971 0.481125,2.8339 1.44225,3.7091 0.96225,0.8753 2.289,1.3129 3.9828754,1.3129 1.2945,0 2.3685,-0.189 3.220125,-0.5636 0.852,-0.3765 1.705875,-1.0939 2.563125,-2.1555 l 0.125625,0 0.548625,2.4105 2.05425,0 0,-11.5575 c 0,-1.977 -0.507375,-3.4193 -1.521,-4.3264 -1.014375,-0.9064 -2.560875,-1.359 -4.641375,-1.359 z m 3.370875,10.4753 c 0,1.545 -0.452625,2.7378 -1.356,3.5763 -0.90375,0.84 -2.145375,1.2597 -3.723375,1.2597 -0.9930004,0 -1.7640004,-0.2382 -2.3118754,-0.7114 -0.547875,-0.4733 -0.823125,-1.1531 -0.823125,-2.0389 0,-1.1749 0.451875,-2.034 1.356,-2.5811 0.904125,-0.5456 2.3445004,-0.8539 4.3188754,-0.927 l 2.5395,-0.1073 0,1.5297 z" />
+    <rect
+       style="display:inline;fill:#ffffff"
+       id="rect15"
+       height="16.964624"
+       width="2.821125"
+       y="1030.4028"
+       x="24.005884" />
+    <rect
+       id="rect25"
+       height="2.82075"
+       width="2.821125"
+       y="1025.3545"
+       x="24.005884"
+       style="display:inline;opacity:1;fill:#ba9a5a" />
+  </g>
+</svg>
