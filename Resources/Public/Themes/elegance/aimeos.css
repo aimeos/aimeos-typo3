@@ -332,11 +332,11 @@
 
 .catalog-filter-tree .media-list {
 	display: inline-block;
+	vertical-align: top;
 	margin: 0px 0.5em;
 }
 
 .catalog-filter-tree .media-item img {
-	vertical-align: top;
 	height: 1.25em;
 	width: 1.25em;
 }
@@ -831,15 +831,6 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 }
 
 /* price list */
-.catalog-list .price-list,
-.catalog-list .price {
-	display: none;
-}
-
-.catalog-list .price-actual {
-	display: block;
-}
-
 .catalog-list .price {
 	box-sizing: content-box;
 	text-align: left;
@@ -940,6 +931,7 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 .catalog-list-promo .promo-items {
     white-space: nowrap;
 	overflow: auto;
+	font-size: 90%;
 	padding: 0;
 }
 
