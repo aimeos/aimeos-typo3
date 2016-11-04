@@ -42,7 +42,7 @@ php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=comp
 ```
 
 In order to tell composer what it should install, you have to create a basic `composer.json` file in the directory of you VHost. It should look similar to this one:
-```
+```json
 {
     "name": "vendor/mysite",
     "description" : "My new TYPO3 web site",
