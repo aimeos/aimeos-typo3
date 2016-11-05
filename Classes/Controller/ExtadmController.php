@@ -53,7 +53,7 @@ class ExtadmController extends AbstractController
 				$jsbAbsPath = $base . '/' . $path;
 
 				if( !is_file( $jsbAbsPath ) ) {
-					throw new \RuntimeException( sprintf( 'JSB2 file "%1$s" not found', $jsbAbsPath ) );
+					throw new \Exception( sprintf( 'JSB2 file "%1$s" not found', $jsbAbsPath ) );
 				}
 
 				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, '' );
@@ -91,7 +91,7 @@ class ExtadmController extends AbstractController
 		$param = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
 
 		if( ( $content = file_get_contents( 'php://input' ) ) === false ) {
-			throw new \RuntimeException( 'Unable to get request content' );
+			throw new \Exception( 'Unable to get request content' );
 		}
 
 		$this->view->assign( 'response', $this->getController()->process( $param, $content ) );
@@ -121,7 +121,7 @@ class ExtadmController extends AbstractController
 		foreach( $jsFiles as $file )
 		{
 			if( ( $content = file_get_contents( $file ) ) === false ) {
-				throw new \RuntimeException( sprintf( 'File "%1$s" not found', $jsbAbsPath ) );
+				throw new \Exception( sprintf( 'File "%1$s" not found', $jsbAbsPath ) );
 			}
 
 			$contents .= $content;
@@ -187,7 +187,7 @@ class ExtadmController extends AbstractController
 	 *
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request TYPO3 request object
 	 * @return string JSON encoded site item object
-	 * @throws \RuntimeException If no site item was found for the code
+	 * @throws Exception If no site item was found for the code
 	 */
 	protected function getSite( \TYPO3\CMS\Extbase\Mvc\RequestInterface $request )
 	{
@@ -204,7 +204,7 @@ class ExtadmController extends AbstractController
 		$items = $manager->searchItems( $criteria );
 
 		if( ( $item = reset( $items ) ) === false ) {
-			throw new \RuntimeException( sprintf( 'No site found for code "%1$s"', $site ) );
+			throw new \Exception( sprintf( 'No site found for code "%1$s"', $site ) );
 		}
 
 		return json_encode( $item->toArray() );

@@ -53,7 +53,7 @@ class JqadmController extends AbstractController
 		foreach( $files as $file )
 		{
 			if( ( $content = file_get_contents( $file ) ) === false ) {
-				throw new \RuntimeException( sprintf( 'File "%1$s" not found', $jsbAbsPath ) );
+				throw new \Exception( sprintf( 'File "%1$s" not found', $jsbAbsPath ) );
 			}
 
 			$contents .= $content;

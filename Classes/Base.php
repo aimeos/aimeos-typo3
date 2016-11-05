@@ -59,7 +59,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'];
 		}
 
-		return $className::get( static::getAimeos()->getConfigPaths(), $local );
+		return $className::get( self::getAimeos()->getConfigPaths(), $local );
 	}
 
 
@@ -90,17 +90,17 @@ class Base
 	 */
 	public static function getExtConfig( $name, $default = null )
 	{
-		if( static::$extConfig === null )
+		if( self::$extConfig === null )
 		{
 			if( ( $conf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] ) ) === false ) {
 				$conf = array();
 			}
 
-			static::$extConfig = $conf;
+			self::$extConfig = $conf;
 		}
 
-		if( isset( static::$extConfig[$name] ) ) {
-			return static::$extConfig[$name];
+		if( isset( self::$extConfig[$name] ) ) {
+			return self::$extConfig[$name];
 		}
 
 		return $default;
@@ -122,7 +122,7 @@ class Base
 			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'];
 		}
 
-		return $className::get( static::getAimeos()->getI18nPaths(), $languageIds, $local );
+		return $className::get( self::getAimeos()->getI18nPaths(), $languageIds, $local );
 	}
 
 
@@ -218,10 +218,10 @@ class Base
 		$parser->parse( $tsString );
 
 		if( !empty( $parser->errors ) ) {
-			throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
+			throw new \Exception( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
 		}
 
-		$tsConfig = static::convertTypoScriptArrayToPlainArray( $parser->setup );
+		$tsConfig = self::convertTypoScriptArrayToPlainArray( $parser->setup );
 
 		// Allows "plugin.tx_aimeos.settings." prefix everywhere
 		if( isset( $tsConfig['plugin']['tx_aimeos']['settings'] )
@@ -248,7 +248,7 @@ class Base
 				$hasNodeWithoutDot = array_key_exists($keyWithoutDot, $typoScriptArray);
 				$typoScriptNodeValue = $hasNodeWithoutDot ? $typoScriptArray[$keyWithoutDot] : NULL;
 				if (is_array($value)) {
-					$typoScriptArray[$keyWithoutDot] = static::convertTypoScriptArrayToPlainArray($value);
+					$typoScriptArray[$keyWithoutDot] = self::convertTypoScriptArrayToPlainArray($value);
 					if (!is_null($typoScriptNodeValue)) {
 						$typoScriptArray[$keyWithoutDot]['_typoScriptNodeValue'] = $typoScriptNodeValue;
 					}

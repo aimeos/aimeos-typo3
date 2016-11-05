@@ -39,7 +39,7 @@ class Typo6 extends AbstractProvider
 	{
 		try {
 			return $this->getFields( $taskInfo, $task, $parentObject );
-		} catch( \RuntimeException $e ) {
+		} catch( \Exception $e ) {
 			$parentObject->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
 		}
 
@@ -74,7 +74,7 @@ class Typo6 extends AbstractProvider
 	{
 		try {
 			return $this->validateFields( $submittedData, $parentObject );
-		} catch( \RuntimeException $e ) {
+		} catch( \Exception $e ) {
 			$parentObject->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
 		}
 
