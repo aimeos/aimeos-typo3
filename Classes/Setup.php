@@ -78,7 +78,7 @@ class Setup
 		}
 
 
-		$ctx = self::getContext();
+		$ctx = static::getContext();
 
 		$dbm = $ctx->getDatabaseManager();
 		$config = $ctx->getConfig();
@@ -125,7 +125,7 @@ class Setup
 	public function executeOnSignal( $extname = null )
 	{
 		if( $extname === 'aimeos' ) {
-			self::execute();
+			static::execute();
 		}
 	}
 

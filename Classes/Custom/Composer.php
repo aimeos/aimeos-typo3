@@ -38,7 +38,7 @@ class Composer
 				$event->getIO()->write( 'Installing Aimeos public files from HTML client' );
 
 				$path = $installer->getInstallPath( $package );
-				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
+				static::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 			}
 
 			if( ( $package = $repository->findPackage( 'aimeos/ai-admin-extadm', '*' ) ) !== null )
@@ -46,9 +46,9 @@ class Composer
 				$event->getIO()->write( 'Installing Aimeos public files from ExtJS admin' );
 
 				$path = $installer->getInstallPath( $package );
-				self::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
-				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/Portal/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/Portal' );
-				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/AdvancedSearch/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/AdvancedSearch' );
+				static::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
+				static::copyRecursive( $path . '/admin/extjs/lib/ext.ux/Portal/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/Portal' );
+				static::copyRecursive( $path . '/admin/extjs/lib/ext.ux/AdvancedSearch/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/AdvancedSearch' );
 			}
 
 			if( file_exists( $t3path . '/Resources/Private/Extensions' ) === false
@@ -72,7 +72,7 @@ class Composer
 	 */
 	protected static function copyRecursive( $src, $dest )
 	{
-		self::createDirectory( $dest );
+		static::createDirectory( $dest );
 
 		$iterator = new \RecursiveIteratorIterator(
 			new \RecursiveDirectoryIterator( $src, \RecursiveDirectoryIterator::SKIP_DOTS ),
@@ -91,7 +91,7 @@ class Composer
 			}
 			else
 			{
-				self::createDirectory( $target );
+				static::createDirectory( $target );
 			}
 		}
 	}

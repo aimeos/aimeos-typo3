@@ -27,7 +27,7 @@ class Aimeos
 	 */
 	public static function get()
 	{
-		if( self::$aimeos === null )
+		if( static::$aimeos === null )
 		{
 			$extDirs = array();
 
@@ -46,9 +46,9 @@ class Aimeos
 				}
 			}
 
-			self::$aimeos = new \Aimeos\Bootstrap( $extDirs, false );
+			static::$aimeos = new \Aimeos\Bootstrap( $extDirs, false );
 		}
 
-		return self::$aimeos;
+		return static::$aimeos;
 	}
 }

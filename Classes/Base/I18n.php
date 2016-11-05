@@ -34,7 +34,7 @@ class I18n
 
 		foreach( $languageIds as $langid )
 		{
-			if( !isset( self::$i18n[$langid] ) )
+			if( !isset( static::$i18n[$langid] ) )
 			{
 				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
 
@@ -42,14 +42,14 @@ class I18n
 					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
-				self::$i18n[$langid] = $i18n;
+				static::$i18n[$langid] = $i18n;
 			}
 
-			$i18nList[$langid] = self::$i18n[$langid];
+			$i18nList[$langid] = static::$i18n[$langid];
 
 			if( isset( $local[$langid] ) )
 			{
-				$translations = self::parseTranslations( (array) $local[$langid] );
+				$translations = static::parseTranslations( (array) $local[$langid] );
 				$i18nList[$langid] = new \Aimeos\MW\Translation\Decorator\Memory( $i18nList[$langid], $translations );
 			}
 		}
