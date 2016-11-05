@@ -33,15 +33,15 @@ class View
 	{
 		$view = new \Aimeos\MW\View\Standard( $templatePaths );
 
-		static::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
-		static::addParam( $view, $request );
-		static::addConfig( $view, $config );
-		static::addNumber( $view, $config );
-		static::addFormparam( $view, array( $uriBuilder->getArgumentPrefix() ) );
-		static::addUrl( $view, $config, $uriBuilder, $request );
-		static::addRequest( $view, $request );
-		static::addResponse( $view );
-		static::addAccess( $view );
+		self::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
+		self::addParam( $view, $request );
+		self::addConfig( $view, $config );
+		self::addNumber( $view, $config );
+		self::addFormparam( $view, array( $uriBuilder->getArgumentPrefix() ) );
+		self::addUrl( $view, $config, $uriBuilder, $request );
+		self::addRequest( $view, $request );
+		self::addResponse( $view );
+		self::addAccess( $view );
 
 		return $view;
 	}

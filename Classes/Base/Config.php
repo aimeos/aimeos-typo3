@@ -29,7 +29,7 @@ class Config
 	 */
 	public static function get( array $paths, array $local = array() )
 	{
-		if( static::$config === null )
+		if( self::$config === null )
 		{
 			// Using extension config directories
 			if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
@@ -49,7 +49,7 @@ class Config
 				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
-			static::$config = $conf;
+			self::$config = $conf;
 		}
 
 		if( isset( $local['typo3']['tsconfig'] ) )
@@ -58,6 +58,6 @@ class Config
 			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
 		}
 
-		return new \Aimeos\MW\Config\Decorator\Memory( static::$config, $local );
+		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );
 	}
 }

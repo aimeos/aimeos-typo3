@@ -29,7 +29,7 @@ class Locale
 	 */
 	public static function get( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
 	{
-		if( !isset( static::$locale ) )
+		if( !isset( self::$locale ) )
 		{
 			$config = $context->getConfig();
 
@@ -65,10 +65,10 @@ class Locale
 
 
 			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
-			static::$locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
+			self::$locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
 		}
 
-		return static::$locale;
+		return self::$locale;
 	}
 
 

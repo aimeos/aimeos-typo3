@@ -30,10 +30,10 @@ class Base
 	public static function execute( array $conf, array $jobs, $sites )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
-		$context = static::getContext( $conf );
+		$context = self::getContext( $conf );
 		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
 
-		foreach( static::getSiteItems( $context, $sites ) as $siteItem )
+		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
 		{
 			$localeItem = $manager->bootstrap( $siteItem->getCode(), '', '', false );
 			$localeItem->setLanguageId( null );

@@ -46,24 +46,24 @@ abstract class AbstractController
 	{
 		$config = Base::getConfig( (array) $this->settings );
 
-		if( !isset( static::$context ) )
+		if( !isset( self::$context ) )
 		{
 			$context = Base::getContext( $config );
 			$locale = Base::getLocale( $context, $this->request );
 			$context->setI18n( Base::getI18n( array( $locale->getLanguageId() ), $config->get( 'i18n', array() ) ) );
 			$context->setLocale( $locale );
 
-			static::$context = $context;
+			self::$context = $context;
 		}
 
 		// Use plugin specific configuration
-		static::$context->setConfig( $config );
+		self::$context->setConfig( $config );
 
-		$langid = static::$context->getLocale()->getLanguageId();
+		$langid = self::$context->getLocale()->getLanguageId();
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
-		static::$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+		self::$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
 
-		return static::$context;
+		return self::$context;
 	}
 
 

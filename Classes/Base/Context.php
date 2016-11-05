@@ -260,29 +260,29 @@ class Context
 	 */
 	public static function get( \Aimeos\MW\Config\Iface $config )
 	{
-		if( static::$context === null )
+		if( self::$context === null )
 		{
 			// TYPO3 specifc context with password hasher
 			$context = new \Aimeos\MShop\Context\Item\Typo3();
 			$context->setConfig( $config );
 
-			static::addDataBaseManager( $context );
-			static::addFilesystemManager( $context );
-			static::addMessageQueueManager( $context );
-			static::addLogger( $context );
-			static::addCache( $context );
-			static::addMailer( $context);
-			static::addSession( $context );
-			static::addHasher( $context);
-			static::addUser( $context);
-			static::addGroups( $context);
+			self::addDataBaseManager( $context );
+			self::addFilesystemManager( $context );
+			self::addMessageQueueManager( $context );
+			self::addLogger( $context );
+			self::addCache( $context );
+			self::addMailer( $context);
+			self::addSession( $context );
+			self::addHasher( $context);
+			self::addUser( $context);
+			self::addGroups( $context);
 
-			static::$context = $context;
+			self::$context = $context;
 		}
 
 		// Use local TS configuration from plugins
-		static::$context->setConfig( $config );
+		self::$context->setConfig( $config );
 
-		return static::$context;
+		return self::$context;
 	}
 }
