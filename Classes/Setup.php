@@ -70,11 +70,11 @@ class Setup
 		$includePaths[] = get_include_path();
 
 		if( set_include_path( implode( PATH_SEPARATOR, $includePaths ) ) === false ) {
-			throw new \Exception( 'Unable to extend include path' );
+			throw new \RuntimeException( 'Unable to extend include path' );
 		}
 
 		if( spl_autoload_register( 'Aimeos\\Aimeos\\Setup::autoload' ) === false ) {
-			throw new \Exception( 'Unable to register Aimeos\\Aimeos\\Setup::autoload' );
+			throw new \RuntimeException( 'Unable to register Aimeos\\Aimeos\\Setup::autoload' );
 		}
 
 

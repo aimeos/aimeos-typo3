@@ -79,7 +79,7 @@ class CheckoutController extends AbstractController
 
 			return $client->getBody();
 		}
-		catch( \Exception $e )
+		catch( \RuntimeException $e )
 		{
 			@header( 'HTTP/1.1 500 Internal server error', true, 500 );
 			return 'Error: ' . $e->getMessage();

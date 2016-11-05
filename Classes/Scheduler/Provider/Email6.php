@@ -39,7 +39,7 @@ class Email6 extends Email
 	{
 		try {
 			return $this->getFields( $taskInfo, $task, $parentObject );
-		} catch( \Exception $e ) {
+		} catch( \RuntimeException $e ) {
 			$parentObject->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
 		}
 
@@ -74,7 +74,7 @@ class Email6 extends Email
 	{
 		try {
 			return $this->validateFields( $submittedData, $parentObject );
-		} catch( \Exception $e ) {
+		} catch( \RuntimeException $e ) {
 			$parentObject->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
 		}
 

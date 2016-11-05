@@ -57,7 +57,7 @@ class Catalog
 
 			$config['items'] = array_merge( $config['items'], $this->getCategoryList( $item, $item->getName() ) );
 		}
-		catch( \Exception $e )
+		catch( \RuntimeException $e )
 		{
 			error_log( $e->getMessage() . PHP_EOL . $e->getTraceAsString() );
 		}
