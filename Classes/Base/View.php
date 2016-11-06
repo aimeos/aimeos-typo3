@@ -201,13 +201,10 @@ class View
 		}
 
 		$target = $GLOBALS["TSFE"]->id;
-		$files = ( is_array( $_FILES ) ? $_FILES : array() );
-		$cookie = ( is_array( $_COOKIE ) ? $_COOKIE : array() );
-		$server = ( is_array( $_SERVER ) ? $_SERVER : array() );
 		$get = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET();
 		$post = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
 
-		$helper = new \Aimeos\MW\View\Helper\Request\Typo3( $view, $target, $files, $get, $post, $cookie, $server );
+		$helper = new \Aimeos\MW\View\Helper\Request\Typo3( $view, $target, $_FILES, $get, $post, $_COOKIE, $_SERVER );
 		$view->addHelper( 'request', $helper );
 
 		return $view;
