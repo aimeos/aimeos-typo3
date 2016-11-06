@@ -218,7 +218,7 @@ class Base
 		$parser->parse( $tsString );
 
 		if( !empty( $parser->errors ) ) {
-			throw new \Exception( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
+			throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
 		}
 
 		$tsConfig = self::convertTypoScriptArrayToPlainArray( $parser->setup );

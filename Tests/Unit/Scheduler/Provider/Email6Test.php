@@ -60,7 +60,7 @@ class Email6Test
 			->setMethods( array( 'getFields' ) )->getMock();
 
 		$mock->expects( $this->once() )->method( 'getFields' )
-			->will( $this->throwException( new \Exception()  ) );
+			->will( $this->throwException( new \RuntimeException()  ) );
 
 		$result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
 
