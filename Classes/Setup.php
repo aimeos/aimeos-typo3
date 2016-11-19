@@ -25,33 +25,6 @@ if( file_exists( $localautoloader ) === true ) {
 class Setup
 {
 	/**
-	 * Autoloader for setup tasks.
-	 *
-	 * @param string $classname Name of the class to load
-	 * @return boolean True if class was found, false if not
-	 */
-	public static function autoload( $classname )
-	{
-		if( strncmp( $classname, 'Aimeos\\MW\\Setup\\Task\\', 21 ) === 0 )
-		{
-		    $fileName = substr( $classname, 21 ) . '.php';
-			$paths = explode( PATH_SEPARATOR, get_include_path() );
-
-			foreach( $paths as $path )
-			{
-				$file = $path . '/' . $fileName;
-
-				if( file_exists( $file ) === true && ( include_once $file ) !== false ) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-
-	/**
 	 * Executes the setup tasks for updating the database.
 	 *
 	 * The setup tasks print their information directly to the standard output.
@@ -66,20 +39,7 @@ class Setup
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$taskPaths = $aimeos->getSetupPaths( 'default' );
 
-		$includePaths = $taskPaths;
-		$includePaths[] = get_include_path();
-
-		if( set_include_path( implode( PATH_SEPARATOR, $includePaths ) ) === false ) {
-			throw new \RuntimeException( 'Unable to extend include path' );
-		}
-
-		if( spl_autoload_register( 'Aimeos\\Aimeos\\Setup::autoload' ) === false ) {
-			throw new \RuntimeException( 'Unable to register Aimeos\\Aimeos\\Setup::autoload' );
-		}
-
-
 		$ctx = self::getContext();
-
 		$dbm = $ctx->getDatabaseManager();
 		$config = $ctx->getConfig();
 
