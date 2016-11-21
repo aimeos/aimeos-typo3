@@ -102,7 +102,7 @@ Aimeos = {
 	 */
 	loadImages: function() {
 
-		var elements = $(".catalog-list-items .lazy-image, .catalog-list-promo .lazy-image");
+		var elements = $(".aimeos .lazy-image");
 
 		for( var i = 0; i < elements.length; i++) {
 			var element = $(elements[i]);
@@ -475,7 +475,7 @@ AimeosCatalog = {
 	 */
 	setupSelectionDependencies: function() {
 
-		$(".catalog-detail-basket-selection, .catalog-list-items .items-selection").on("change", ".select-list", function(event) {
+		$(".catalog-detail-basket-selection .selection, .catalog-list-items .items-selection .selection").on("change", ".select-list", function(event) {
 
 			var elem = $(this);
 			var index = elem.data("index");
@@ -565,7 +565,7 @@ AimeosCatalog = {
 	 */
 	setupSelectionContent: function() {
 
-		$(".catalog-detail-basket-selection, .catalog-list-items .items-selection").on("change", ".select-list", function(event) {
+		$(".catalog-detail-basket-selection .selection, .catalog-list-items .items-selection .selection").on("change", ".select-list", function(event) {
 
 			var map = {}, len = 0;
 			var attrDeps = $(event.delegateTarget).data("attrdeps") || {}; // {"<attrid>":["prodid",...],...}
@@ -656,7 +656,7 @@ AimeosCatalog = {
 	 */
 	setupVariantImages: function() {
 
-		$(".catalog-detail-basket-selection, .catalog-list-items .items-selection").on("change", ".select-list", function(event) {
+		$(".catalog-detail-basket-selection .selection, .catalog-list-items .items-selection .selection").on("change", ".select-list", function(event) {
 
 			var elem = $(this);
 			var type = elem.data("type");
