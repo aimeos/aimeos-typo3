@@ -63,7 +63,7 @@ class Realurl
 					'd' => array(
 						array( 'GETvar' => 'ai[d_prodid]' ),
 						array( 'GETvar' => 'ai[d_name]' ),
-						array( 'GETvar' => 'ai[l_pos]' ),
+						array( 'GETvar' => 'ai[d_pos]' ),
 					),
 					'fs' => array(
 						array( 'GETvar' => 'ai[f_search]' ),
