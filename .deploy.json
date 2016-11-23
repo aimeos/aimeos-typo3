@@ -13,13 +13,13 @@
 		"licenses": ["GPL"]
 	},
 	"version": {
-		"name": "16.11.23-dev",
-		"released": "2016-11-23",
+		"name": "###VERSION###",
+		"released": "###DATE###",
 		"desc": "Automatically generated Aimeos TYPO3 build",
 		"gpgSign": false
 	},
 	"files": [
-		{ "includePattern": "../aimeos_16.11.23-dev.zip" }
+		{ "includePattern": "../aimeos_###VERSION###.zip" }
 	],
 	"publish": false
 }

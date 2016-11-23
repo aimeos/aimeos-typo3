@@ -5,7 +5,7 @@ set -ev
 DATE=`date -u +%Y-%m-%d`
 
 if test `git rev-parse --abbrev-ref HEAD` != 'master'; then
-	VERSION="`git describe --abbrev=0 --tags`-dev"
+	VERSION="`git describe --abbrev=0 --tags --always`-dev"
 else
 	VERSION=`date -u +%y.%m.%d-dev`
 fi
