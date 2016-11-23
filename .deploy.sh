@@ -15,4 +15,4 @@ cat .deploy.json | sed "s/###DATE###/$DATE/" > .deploy.json.new
 cat .deploy.json.new | sed "s/###VERSION###/$VERSION/" > .deploy.json
 
 
-phing -Dversion=$VERSION deploy
+zip -r ../aimeos_$VERSION.zip * -x .tx -x .git* -x composer.* -x .deploy.* -x .travis.yml
