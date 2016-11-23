@@ -19,7 +19,13 @@
 		"gpgSign": false
 	},
 	"files": [
-		{ "includePattern": "../aimeos_###VERSION###.zip", "uploadPattern": "aimeos_###VERSION###.zip" }
+		{
+			"includePattern": "../aimeos_###VERSION###.zip",
+			"uploadPattern": "aimeos_###VERSION###.zip",
+			"matrixParams": {
+				"override": 1
+			}
+		}
 	],
 	"publish": true
 }

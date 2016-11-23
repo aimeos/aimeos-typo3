@@ -2,13 +2,13 @@
 
 set -ev
 
-BRANCH=`git rev-parse --abbrev-ref HEAD`
+BRANCH=`git name-rev --name-only HEAD`
 DATE=`date -u +%Y-%m-%d`
 
-if test $BRANCH != 'master' && test $BRANCH != 'HEAD'; then
+if [[ $BRANCH =~ ^[0-9]{4}\.[0-9]{2}$ ]]; then
 	VERSION="`git describe --abbrev=0 --tags --always`-dev"
 else
-	VERSION=`date -u +%y.%m.%d-dev`
+	VERSION="`date -u +%y.%m.%d`-dev-$BRANCH"
 fi
 
 echo "$BRANCH, $VERSION"
