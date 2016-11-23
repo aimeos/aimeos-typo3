@@ -1,0 +1,20 @@
+sudo: false
+language: php
+
+php:
+- 7.0
+
+before_script:
+- composer self-update
+- composer update
+
+script: bash .deploy.sh
+
+deploy:
+  provider: bintray
+  file: ".bintray.json"
+  user: aimeos
+  key:
+    secure: dyFJlePMVq34v1xhh32Hpp028T9PvHUfiDklIZiCXNtjy9F3lJ66BrI0pFrwDa7xYkj7pqKwqZb5G1i9SnNSkzdGGBDVUlfbb8Y2EIZvqi88UPrsQrqyZv5Ea4Q8LpmLtMZRDS0L8ma02iqJG4/iz5syECntXiApTyev75baaZM=
+  on:
+    all_branches: true
