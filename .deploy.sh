@@ -5,7 +5,7 @@ set -ev
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 DATE=`date -u +%Y-%m-%d`
 
-if test $BRANCH -ne 'master'; then
+if test $BRANCH != 'master' && test $BRANCH != 'HEAD'; then
 	VERSION="`git describe --abbrev=0 --tags --always`-dev"
 else
 	VERSION=`date -u +%y.%m.%d-dev`
