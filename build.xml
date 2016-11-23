@@ -19,7 +19,7 @@
 		    </replaceregexp>
 		  </filterchain>
 		</reflexive>
-		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml -x .deploy.sh -x .bintray.*"
+		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml -x .deploy.*"
 			checkreturn="true" logoutput="true"/>
 		<filehash file="../aimeos_${version}.zip" hashtype="1" />
 		<echo msg="SHA1 hash value: ${filehashvalue}" />
