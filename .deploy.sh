@@ -5,15 +5,14 @@ set -ev
 DATE=`date -u +%Y-%m-%d`
 
 if test `git rev-parse --abbrev-ref HEAD` != 'master'; then
-	TAG=`git describe --abbrev=0 --tags`
-	VERSION="$TAG-dev"
+	VERSION="`git describe --abbrev=0 --tags`-dev"
 else
 	VERSION=`date -u +%y.%m.%d-dev`
 fi
 
 
-cat .bintray.json | sed "s/###DATE###/$DATE/" > .bintray.json.new
-cat .bintray.json.new | sed "s/###VERSION###/$VERSION/" > .bintray.json
+cat .deploy.json | sed "s/###DATE###/$DATE/" > .deploy.json.new
+cat .deploy.json.new | sed "s/###VERSION###/$VERSION/" > .deploy.json
 
 
 phing -Dversion=$VERSION deploy
