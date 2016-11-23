@@ -13,8 +13,8 @@ fi
 
 echo "$BRANCH, $VERSION"
 
-cat .deploy.json | sed "s/###DATE###/$DATE/" > .deploy.json.new
-cat .deploy.json.new | sed "s/###VERSION###/$VERSION/" > .deploy.json
+cat .deploy.json | sed "s/###DATE###/$DATE/g" > .deploy.json.new
+cat .deploy.json.new | sed "s/###VERSION###/$VERSION/g" > .deploy.json
 
 
 zip -r ../aimeos_$VERSION.zip * -x .tx -x *.git* -x composer.* -x .deploy.* -x .travis.yml
