@@ -69,7 +69,12 @@ class Setup
 		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
-		$manager->migrate();
+
+		if( isset( $conf['cleanDb'] ) && (boolean) $conf['cleanDb'] === true ) {
+			$manager->clean();
+		} else {
+			$manager->migrate();
+		}
 
 
 		$conf['useDemoData'] = '';
