@@ -64,7 +64,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product/stock/warehouse', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
 
 		$this->response->expects( $this->exactly( 1 ) )->method( 'setStatus' )
 			->with( $this->equalTo( 200 ) );
@@ -91,7 +91,7 @@ class JsonadmControllerTest
 		->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-		->will( $this->onConsecutiveCalls( 'product/stock/warehouse', 'unittest', null, null, 'unittest', null, null ) );
+		->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
 
 		$this->response->expects( $this->exactly( 1 ) )->method( 'setStatus' )
 		->with( $this->equalTo( 200 ) );
@@ -103,7 +103,7 @@ class JsonadmControllerTest
 		$this->assertArrayHasKey( 'meta', $json );
 		$this->assertArrayHasKey( 'resources', $json['meta'] );
 		$this->assertGreaterThan( 1, count( $json['meta']['resources'] ) );
-		$this->assertArrayHasKey( 'product/stock/warehouse', $json['meta']['resources'] );
+		$this->assertArrayHasKey( 'stock/type', $json['meta']['resources'] );
 	}
 
 
@@ -119,7 +119,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product/stock/warehouse', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -140,7 +140,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product/stock/warehouse', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -161,7 +161,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product/stock/warehouse', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -182,7 +182,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product/stock/warehouse', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
