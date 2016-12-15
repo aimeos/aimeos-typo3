@@ -7,6 +7,8 @@ DATE=`date -u +%Y-%m-%d`
 
 if [[ $BRANCH =~ ^[0-9]{4}\.[0-9]{2}$ ]]; then
 	VERSION="`git describe --abbrev=0 --tags --always`-dev"
+elif [[ $BRANCH =~ ^tags/[0-9]{4}\.[0-9]{2}\.[0-9]+$ ]]; then
+	VERSION="`echo $BRANCH | cut -d'/' -f 2`"
 else
 	VERSION="`date -u +%y.%m.%d`-dev-$BRANCH"
 fi
