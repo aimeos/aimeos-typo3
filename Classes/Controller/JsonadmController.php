@@ -11,6 +11,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use \Aimeos\Aimeos\Base;
+use Zend\Diactoros\Response;
 
 
 /**
@@ -20,12 +21,16 @@ use \Aimeos\Aimeos\Base;
  */
 class JsonadmController extends AbstractController
 {
+	private $prefix;
+
+
 	/**
 	 * Initializes the object before the real action is called.
 	 */
 	protected function initializeAction()
 	{
-		$this->uriBuilder->setArgumentPrefix( 'tx_aimeos_web_aimeostxaimeosadmin' );
+		$this->prefix = 'tx_aimeos_web_aimeostxaimeosadmin';
+		$this->uriBuilder->setArgumentPrefix( $this->prefix );
 	}
 
 
@@ -57,134 +62,85 @@ class JsonadmController extends AbstractController
 	/**
 	 * Deletes the resource object or a list of resource objects
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return string Generated output
 	 */
 	public function deleteAction( $resource )
 	{
-		$content = file_get_contents( 'php://input' );
-		$header = array();
-		$status = 500;
-
-		$client = $this->createClient( $resource );
-		$result = $client->delete( $content, $header, $status );
-
-		$this->setResponse( $status, $header );
-		return $result;
+		$response = $this->createClient( $resource )->delete( $this->getPsrRequest(), new Response() );
+		return $this->setPsrResponse( $response );
 	}
 
 
 	/**
 	 * Returns the requested resource object or list of resource objects
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return string Generated output
 	 */
 	public function getAction( $resource )
 	{
-		$content = file_get_contents( 'php://input' );
-		$header = array();
-		$status = 500;
-
-		$client = $this->createClient( $resource );
-		$result = $client->get( $content, $header, $status );
-
-		$this->setResponse( $status, $header );
-		return $result;
+		$response = $this->createClient( $resource )->get( $this->getPsrRequest(), new Response() );
+		return $this->setPsrResponse( $response );
 	}
 
 
 	/**
 	 * Updates a resource object or a list of resource objects
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return string Generated output
 	 */
 	public function patchAction( $resource )
 	{
-		$content = file_get_contents( 'php://input' );
-		$header = array();
-		$status = 500;
-
-		$client = $this->createClient( $resource );
-		$result = $client->patch( $content, $header, $status );
-
-		$this->setResponse( $status, $header );
-		return $result;
+		$response = $this->createClient( $resource )->patch( $this->getPsrRequest(), new Response() );
+		return $this->setPsrResponse( $response );
 	}
 
 
 	/**
 	 * Creates a new resource object or a list of resource objects
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return string Generated output
 	 */
 	public function postAction( $resource )
 	{
-		$content = file_get_contents( 'php://input' );
-		$header = array();
-		$status = 500;
-
-		$client = $this->createClient( $resource );
-		$result = $client->post( $content, $header, $status );
-
-		$this->setResponse( $status, $header );
-		return $result;
+		$response = $this->createClient( $resource )->post( $this->getPsrRequest(), new Response() );
+		return $this->setPsrResponse( $response );
 	}
 
 
 	/**
 	 * Creates or updates a single resource object
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return string Generated output
 	 */
 	public function putAction( $resource )
 	{
-		$content = file_get_contents( 'php://input' );
-		$header = array();
-		$status = 500;
-
-		$client = $this->createClient( $resource );
-		$result = $client->put( $content, $header, $status );
-
-		$this->setResponse( $status, $header );
-		return $result;
+		$response = $this->createClient( $resource )->put( $this->getPsrRequest(), new Response() );
+		return $this->setPsrResponse( $response );
 	}
 
 
 	/**
 	 * Returns the available HTTP verbs and the resource URLs
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return string Generated output
 	 */
 	public function optionsAction( $resource )
 	{
-		$content = file_get_contents( 'php://input' );
-		$header = array();
-		$status = 500;
-		$lang = null;
-
-		$client = $this->createClient( $resource );
-		$result = $client->options( $content, $header, $status );
-
-		if( ( $json = json_decode( $result, true ) ) !== null )
-		{
-			$json['meta']['prefix'] = 'tx_aimeos_web_aimeostxaimeosadmin';
-			$result = json_encode( $json );
-		}
-
-		$this->setResponse( $status, $header );
-		return $result;
+		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), new Response(), $this->prefix );
+		return $this->setPsrResponse( $response );
 	}
 
 
 	/**
 	 * Returns the resource client
 	 *
-	 * @param string Resource location, e.g. "product/stock/wareshouse"
+	 * @param string Resource location, e.g. "product/property/type"
 	 * @return \Aimeos\Admin\JsonAdm\Iface Jsonadm client
 	 */
 	protected function createClient( $resource )
@@ -197,18 +153,30 @@ class JsonadmController extends AbstractController
 
 
 	/**
-	 * Creates a new response object
+	 * Returns a PSR-7 request object for the current request
 	 *
-	 * @param integer $status HTTP status
-	 * @param array $header List of HTTP headers
-	 * @return \TYPO3\Flow\Http\Response HTTP response object
+	 * @return \Psr\Http\Message\RequestInterface PSR-7 request object
 	 */
-	protected function setResponse( $status, array $header )
+	protected function getPsrRequest()
 	{
-		$this->response->setStatus( $status );
+		return \Zend\Diactoros\ServerRequestFactory::fromGlobals();
+	}
 
-		foreach( $header as $key => $value ) {
+
+	/**
+	 * Set the response data from a PSR-7 response object and returns the message content
+	 *
+	 * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
+	 * @return string Generated output
+	 */
+	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
+	{
+		$this->response->setStatus( $response->getStatusCode() );
+
+		foreach( $response->getHeaders() as $key => $value ) {
 			$this->response->setHeader( $key, $value );
 		}
+
+		return (string) $response->getBody();
 	}
 }
