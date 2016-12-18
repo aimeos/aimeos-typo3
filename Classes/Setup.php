@@ -77,7 +77,7 @@ class Setup
 		}
 
 
-		$conf['useDemoData'] = '';
+		$conf['useDemoData'] = $conf['cleanDb'] = '';
 		$utility->writeConfiguration( $conf, 'aimeos' );
 	}
 
