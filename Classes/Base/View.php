@@ -31,7 +31,9 @@ class View
 	public static function get( \Aimeos\MW\Config\Iface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
 		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
 	{
-		$view = new \Aimeos\MW\View\Standard( $templatePaths );
+		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
+		$engines = array( '.html' => new \Aimeos\MW\View\Engine\Typo3( $obj ) );
+		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
 
 		self::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
 		self::addParam( $view, $request );
