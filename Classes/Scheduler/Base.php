@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2012
- * @copyright Aimeos (aimeos.org), 2014-2016
+ * @copyright Aimeos (aimeos.org), 2014-2017
  * @package TYPO3
  */
 
@@ -11,6 +11,7 @@ namespace Aimeos\Aimeos\Scheduler;
 
 
 use Aimeos\Aimeos;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 /**
@@ -79,16 +80,28 @@ class Base
 
 
 		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'controller/jobs/templates' );
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
-		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
-		$uriBuilder->setArgumentPrefix( 'ai' );
-
-		$view = Aimeos\Base::getView( $config, $uriBuilder, $tmplPaths );
+		$view = Aimeos\Base::getView( $config, self::getUriBuilder(), $tmplPaths );
 		$context->setView( $view );
 
 		$context->setEditor( 'scheduler' );
 
 		return $context;
+	}
+
+
+	public static function getUriBuilder()
+	{
+		$objectManager = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
+
+		$contentObjectRenderer = $objectManager->get( 'TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer' );
+		$configurationManager = $objectManager->get( 'TYPO3\CMS\Extbase\Configuration\ConfigurationManager' );
+		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
+
+		$configurationManager->setContentObject($contentObjectRenderer);
+		$uriBuilder->injectConfigurationManager($configurationManager);
+		$uriBuilder->setArgumentPrefix( 'ai' );
+
+		return $uriBuilder;
 	}
 
 
@@ -123,21 +136,27 @@ class Base
 	 */
 	public static function initFrontend( $pageid )
 	{
-		$type = 0;
-		$name = 'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController';
-
 		if( !is_object( $GLOBALS['TT'] ) )
 		{
-			$GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\TimeTracker();
+			$GLOBALS['TT'] = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TimeTracker\TimeTracker' );
 			$GLOBALS['TT']->start();
 		}
 
-		$GLOBALS['TSFE'] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $name,  $GLOBALS['TYPO3_CONF_VARS'], $pageid, $type );
-		$GLOBALS['TSFE']->connectToDB();
-		$GLOBALS['TSFE']->initFEuser();
-		$GLOBALS['TSFE']->determineId();
-		$GLOBALS['TSFE']->initTemplate();
-		$GLOBALS['TSFE']->getConfigArray();
+		$page = GeneralUtility::makeInstance( 'TYPO3\CMS\Frontend\Page\PageRepository' );
+		$page->init( true );
+
+		$name = 'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController';
+		$tsfe = GeneralUtility::makeInstance( $name,  $GLOBALS['TYPO3_CONF_VARS'], $pageid, 0 );
+		$tsfe->connectToDB();
+		$tsfe->initFEuser();
+		$tsfe->no_cache = true;
+		$tsfe->sys_page = $page;
+		$tsfe->rootLine = $page->getRootLine( $pageid );
+		$tsfe->determineId();
+		$tsfe->initTemplate();
+		$tsfe->getConfigArray();
+
+		$GLOBALS['TSFE'] = $tsfe;
 
 		if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'realurl' ) )
 		{

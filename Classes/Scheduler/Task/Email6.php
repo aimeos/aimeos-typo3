@@ -29,7 +29,6 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	private $fieldReplyEmail = 'aimeos_reply_email';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
 	private $fieldPageDownload = 'aimeos_pageid_download';
-	private $fieldSiteBaseurl = 'aimeos_site_baseurl';
 	private $fieldContentBaseurl = 'aimeos_content_baseurl';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
@@ -43,18 +42,6 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	public function execute()
 	{
 		$conf = Base::parseTS( $this->{$this->fieldTSconfig} );
-
-		if( !isset( $conf['client']['html']['catalog']['detail']['url']['config'] ) ) {
-			$conf['client']['html']['catalog']['detail']['url']['config'] = array(
-				'absoluteUri' => 1,
-			);
-		}
-
-		if( !isset( $conf['client']['html']['account']['download']['url']['config'] ) ) {
-			$conf['client']['html']['account']['download']['url']['config'] = array(
-				'absoluteUri' => 1,
-			);
-		}
 
 		if( $this->{$this->fieldSenderFrom} != '' ) {
 			$conf['client']['html']['email']['from-name'] = $this->{$this->fieldSenderFrom};
@@ -74,10 +61,6 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 
 		if( $this->{$this->fieldPageDownload} != '' ) {
 			$conf['client']['html']['account']['download']['url']['target'] = $this->{$this->fieldPageDownload};
-		}
-
-		if( $this->{$this->fieldSiteBaseurl} != '' ) {
-			$conf['typo3']['baseurl'] = $this->{$this->fieldSiteBaseurl};
 		}
 
 		if( $this->{$this->fieldContentBaseurl} != '' ) {

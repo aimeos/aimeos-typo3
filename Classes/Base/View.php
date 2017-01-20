@@ -308,8 +308,7 @@ class View
 		}
 		else
 		{
-			$baseurl = $config->get( 'typo3/baseurl', '/' );
-			$url = new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $baseurl, $uriBuilder->getArgumentPrefix(), array() );
+			$url = new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $uriBuilder, array() );
 		}
 
 		$view->addHelper( 'url', $url );
