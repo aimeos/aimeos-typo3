@@ -10,6 +10,9 @@ page.includeJSFooter.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-d
 page.includeJSFooter.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
 
 plugin.tx_aimeos {
+	features {
+		requireCHashArgumentForActionArguments = 0
+	}
 	mvc {
 		callDefaultActionIfActionCantBeResolved = 1
 	}
