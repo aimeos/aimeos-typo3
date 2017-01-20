@@ -11,11 +11,11 @@ page.includeJSFooter.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/
 
 plugin.tx_aimeos {
 	features {
-		throwPageNotFoundExceptionIfActionCantBeResolved = 0
 		requireCHashArgumentForActionArguments = 0
 		skipDefaultArguments = 1
 	}
 	mvc {
+		throwPageNotFoundExceptionIfActionCantBeResolved = 0
 		callDefaultActionIfActionCantBeResolved = 1
 	}
 	view {
