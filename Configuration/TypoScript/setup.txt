@@ -94,7 +94,7 @@ aimeosJson {
 	config {
 		no_cache = 1
 		disableAllHeaderCode = 1
-		additionalHeaders = Content-type:application/javascript
+		additionalHeaders.type = Content-type:application/javascript
 		disablePrefixComment = 1
 	}
 	10 = CONTENT
@@ -111,7 +111,7 @@ aimeosPlain {
 	config {
 		no_cache = 1
 		disableAllHeaderCode = 1
-		additionalHeaders = Content-type:text/plain
+		additionalHeaders.type = Content-type:text/plain
 		disablePrefixComment = 1
 	}
 	10 = CONTENT
