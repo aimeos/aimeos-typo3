@@ -57,6 +57,7 @@ class Config
 			$tsconfig = \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] );
 			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
 		}
+		/*throw new \InvalidArgumentException( '$local: "' . json_encode($local) . '"' );*/
 
 		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );
 	}
