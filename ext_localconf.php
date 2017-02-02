@@ -221,6 +221,13 @@ if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['
 }
 
 
+/**
+ * Add eID dispatcher configuration
+ */
+
+$TYPO3_CONF_VARS['FE']['eID_include'][$_EXTKEY] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Classes/EidDispatcher/Base.php';
+
+
 
 /**
  * Execute the setup tasks automatically to create the required tables
