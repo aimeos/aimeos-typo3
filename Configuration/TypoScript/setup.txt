@@ -55,7 +55,7 @@ plugin.tx_aimeos {
 					count.url {
 						config {
 							eID = aimeos
-							extension = catalog-count
+							plugin = catalog-count
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.count.pid}
@@ -82,7 +82,7 @@ plugin.tx_aimeos {
 					suggest.url {
 						config {
 							eID = aimeos
-							extension = catalog-suggest
+							plugin = catalog-suggest
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.suggest.pid}
@@ -90,7 +90,7 @@ plugin.tx_aimeos {
 					stock.url {
 						config {
 							eID = aimeos
-							extension = catalog-stock
+							plugin = catalog-stock
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.stock.pid}
@@ -125,7 +125,7 @@ plugin.tx_aimeos {
 						config {
 							absoluteUri = 1
 							eID = aimeos
-							extension = checkout-update
+							plugin = checkout-update
 							namespace = 0
 							chash = 0
 						}
