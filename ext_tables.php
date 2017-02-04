@@ -46,10 +46,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_locale-s
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'locale-select', 'Aimeos Shop - Locale selector' );
 
 
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-count'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-count', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogCount.xml' );
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-count', 'Aimeos Shop - Catalog count JSON' );
-
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-detail'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-detail', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogDetail.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-detail', 'Aimeos Shop - Catalog detail' );
@@ -62,10 +58,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-list', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogList.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-list', 'Aimeos Shop - Catalog list' );
 
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-suggest'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-suggest', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSuggest.xml' );
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-suggest', 'Aimeos Shop - Catalog suggest JSON' );
-
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-session'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-session', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSession.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-session', 'Aimeos Shop - Catalog user related session' );
@@ -73,10 +65,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-stage'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-stage', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogStage.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-stage', 'Aimeos Shop - Catalog stage area' );
-
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-stock'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-stock', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogStock.xml' );
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-stock', 'Aimeos Shop - Catalog stock JSON' );
 
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_basket-related'] = 'pi_flexform';
@@ -99,10 +87,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_checkout
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_checkout-standard'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_checkout-standard', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CheckoutStandard.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'checkout-standard', 'Aimeos Shop - Checkout standard' );
-
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_checkout-update'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_checkout-update', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CheckoutUpdate.xml' );
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'checkout-update', 'Aimeos Shop - Checkout payment update' );
 
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_account-download'] = 'pi_flexform';
