@@ -201,6 +201,20 @@ if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'
 
 
 /**
+ * Add eID dispatcher configuration
+ */
+
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include'][$_EXTKEY] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( $_EXTKEY ) . 'Classes/EidDispatcher/Base.php';
+
+
+/**
+ * Add data handler hook
+ */
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][$_EXTKEY] = 'Aimeos\\Aimeos\\Hooks\\DataHandler';
+
+
+/**
  * Add cache configuration
  */
 
@@ -219,13 +233,6 @@ if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['
 if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
 	$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = array( 'pages' );
 }
-
-
-/**
- * Add eID dispatcher configuration
- */
-
-$TYPO3_CONF_VARS['FE']['eID_include'][$_EXTKEY] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Classes/EidDispatcher/Base.php';
 
 
 
