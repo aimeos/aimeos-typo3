@@ -240,7 +240,7 @@ class Base
 	 * @param array $typoScriptArray TypoScript configuration array
 	 * @return array Multi-dimensional, associative list of key/value pairs without dots in keys
 	 */
-	protected static function convertTypoScriptArrayToPlainArray(array $typoScriptArray)
+	public static function convertTypoScriptArrayToPlainArray(array $typoScriptArray)
 	{
 		foreach ($typoScriptArray as $key => &$value) {
 			if (substr($key, -1) === '.') {

@@ -11,6 +11,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 
 /**
@@ -23,6 +24,8 @@ abstract class AbstractController
 {
 	private static $context;
 	private $contextBE;
+
+	public $settingsOrg;
 
 
 	/**
@@ -162,4 +165,54 @@ abstract class AbstractController
 	{
 		return null;
 	}
+
+
+	/**
+	 * Returns the sanitized configuration values.
+	 *
+	 * @param array $config Mulit-dimensional, associative list of key/value pairs
+	 * @return array Sanitized Mulit-dimensional, associative list of key/value pairs
+	 */
+	protected static function getConfiguration( array $config )
+	{
+		// ignore deprecated values
+   		unset( $config['client']['html']['catalog']['count']['url']['target'] );
+   		unset( $config['client']['html']['catalog']['stock']['url']['target'] );
+   		unset( $config['client']['html']['catalog']['suggest']['url']['target'] );
+   		unset( $config['client']['html']['checkout']['update']['url']['target'] );
+
+		reset( $config );
+  		return $config;
+	}
+
+
+	/**
+	 * Injects the Configuration Manager and is initializing the framework settings
+	 *
+	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager Instance of the Configuration Manager
+	 */
+	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
+	{
+		// set ConfigurationManager and get settings like the FrontendConfigurationManager
+		$this->configurationManager = $configurationManager;
+		$this->settingsOrg = $this->configurationManager->getConfiguration( ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS );
+
+		$this->settings = $this->settingsOrg;
+
+		// load settings from template setup
+		$setup = $this->configurationManager->getConfiguration( ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT );
+		$extensionName = 'aimeos';
+
+		// get plugin settings and override with sanitized typo3 default settings
+		if( is_array( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] ) )
+		{
+			$configuration = Base::convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] );
+
+			if( is_array( $configuration['settings'] ) )
+	  		{
+  				$this->settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $configuration['settings'], $this->getConfiguration( $this->settingsOrg ), false, false );
+	  		}
+		}
+	}
+
 }

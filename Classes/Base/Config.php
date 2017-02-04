@@ -52,10 +52,12 @@ class Config
 			self::$config = $conf;
 		}
 
-		if( isset( $local['typo3']['tsconfig'] ) )
+		// Check for valid tsconfig
+		if( isset( $local['typo3']['tsconfig'] ) && is_array( $local['typo3']['tsconfig'] ) )
 		{
 			$tsconfig = \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] );
-			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
+			// merge tsconfig to local, ignore empty values
+			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig, false, false );
 		}
 
 		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );
