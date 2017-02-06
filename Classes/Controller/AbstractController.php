@@ -165,7 +165,6 @@ abstract class AbstractController
 	{
 		return null;
 	}
-	}
 
 
 	/**
