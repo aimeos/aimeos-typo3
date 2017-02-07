@@ -49,8 +49,19 @@ plugin.tx_aimeos {
 						chash = 0
 					}
 					suggest.url.config {
-						type = 191351524
-						chash = 0
+						#plugin => null,
+						#extension => null,
+						extension = tx_typoscriptrendering
+						#absoluteUri => false,
+						#namespace => true,
+						namespace = 0
+						#nocache => false,
+						#chash => true,
+						#format => '',
+						#type => 0,
+
+						#type = 191351524
+						#chash = 0
 					}
 					stock.url.config {
 						type = 191351524
