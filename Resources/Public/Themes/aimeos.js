@@ -78,7 +78,7 @@ Aimeos = {
 		var overlay = $(".aimeos-overlay");
 
 		// remove only if in overlay mode
-		if(container.size() + overlay.size() > 0) {
+		if(container.length + overlay.length > 0) {
 
 			container.remove();
 			overlay.remove();
@@ -627,8 +627,8 @@ AimeosCatalog = {
 				}
 			}
 
-			$(".catalog-detail-additional .attributes .subproduct-actual").removeClass("subproduct-actual");
-			$(".catalog-detail-additional .attributes .subproduct-" + prodId).addClass("subproduct-actual");
+			$(".catalog-detail-additional .subproduct-actual").removeClass("subproduct-actual");
+			$(".catalog-detail-additional .subproduct-" + prodId).addClass("subproduct-actual");
 		});
 	},
 
