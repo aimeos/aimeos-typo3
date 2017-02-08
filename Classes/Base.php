@@ -214,14 +214,15 @@ class Base
 	 */
 	public static function parseTS( $tsString )
 	{
-		$parser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\TypoScript\\Parser\\TypoScriptParser' );
+		$parser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser' );
 		$parser->parse( $tsString );
 
 		if( !empty( $parser->errors ) ) {
 			throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
 		}
 
-		$tsConfig = self::convertTypoScriptArrayToPlainArray( $parser->setup );
+		$service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+		$tsConfig = $service->convertTypoScriptArrayToPlainArray( $parser->setup );
 
 		// Allows "plugin.tx_aimeos.settings." prefix everywhere
 		if( isset( $tsConfig['plugin']['tx_aimeos']['settings'] )
@@ -231,33 +232,5 @@ class Base
 		}
 
 		return $tsConfig;
-	}
-
-
-	/**
-	 * Removes dots from config keys (copied from Extbase TypoScriptService class available since TYPO3 6.0)
-	 *
-	 * @param array $typoScriptArray TypoScript configuration array
-	 * @return array Multi-dimensional, associative list of key/value pairs without dots in keys
-	 */
-	protected static function convertTypoScriptArrayToPlainArray(array $typoScriptArray)
-	{
-		foreach ($typoScriptArray as $key => &$value) {
-			if (substr($key, -1) === '.') {
-				$keyWithoutDot = substr($key, 0, -1);
-				$hasNodeWithoutDot = array_key_exists($keyWithoutDot, $typoScriptArray);
-				$typoScriptNodeValue = $hasNodeWithoutDot ? $typoScriptArray[$keyWithoutDot] : NULL;
-				if (is_array($value)) {
-					$typoScriptArray[$keyWithoutDot] = self::convertTypoScriptArrayToPlainArray($value);
-					if (!is_null($typoScriptNodeValue)) {
-						$typoScriptArray[$keyWithoutDot]['_typoScriptNodeValue'] = $typoScriptNodeValue;
-					}
-					unset($typoScriptArray[$key]);
-				} else {
-					$typoScriptArray[$keyWithoutDot] = NULL;
-				}
-			}
-		}
-		return $typoScriptArray;
 	}
 }
