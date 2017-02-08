@@ -7,7 +7,7 @@
  * @package TYPO3
  */
 
-namespace Aimeos\Aimeos\Hooks;
+namespace Aimeos\Aimeos\Custom;
 
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
