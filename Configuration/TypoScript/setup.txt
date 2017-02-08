@@ -66,11 +66,6 @@ plugin.tx_aimeos {
 							target = {$plugin.tx_aimeos.catalog.detail.pid}
 						}
 					}
-					filter.tree {
-						startid = {$plugin.tx_aimeos.catalog.filter.tree.startid}
-						levels-always = {$plugin.tx_aimeos.catalog.filter.tree.levels-always}
-						levels-only = {$plugin.tx_aimeos.catalog.filter.tree.levels-only}
-					}
 					lists {
 						catid-default = {$plugin.tx_aimeos.catalog.lists.catid-default}
 						url {
