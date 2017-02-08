@@ -67,8 +67,10 @@ class DataHandler
 		}
 
 
+		$prefix = 'aimeos_';
+
 		// Only listen to own plugin data
-		if( !empty( $listType ) && substr_compare( $listType, $prefix, 1, strlen( $prefix ) ) === 0 )
+		if( !empty( $listType ) && substr_compare( $listType, $prefix, 0, strlen( $prefix ) ) === 0 )
 		{
 			$flexformData = GeneralUtility::xml2array( $fieldArray['pi_flexform'] );
 
