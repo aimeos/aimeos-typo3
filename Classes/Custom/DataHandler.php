@@ -137,11 +137,6 @@ class DataHandler
 						unset( $flexformData['data']['sDEF']['lDEF'][$field] );
 					}
 				}
-
-				// Remove empty sheet
-				if ( isset( $flexformData['data']['sDEF']['lDEF'] ) && $flexformData['data']['sDEF']['lDEF'] === array() ) {
-					unset( $flexformData['data']['sDEF'] );
-				}
 			}
 		}
 
@@ -162,11 +157,6 @@ class DataHandler
 			// Remove fields with empty values
 			if ( isset( $values['vDEF'] ) && $values['vDEF'] === '' ) {
 				unset( $flexformData['data']['sDEF']['lDEF'][$field] );
-			}
-
-			// Remove empty sheet
-			if ( isset( $flexformData['data']['sDEF']['lDEF'] ) && $flexformData['data']['sDEF']['lDEF'] === array() ) {
-				unset( $flexformData['data']['sDEF'] );
 			}
 		}
 
