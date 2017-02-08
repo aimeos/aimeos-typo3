@@ -35,7 +35,7 @@ abstract class AbstractController
 	 */
 	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
 	{
-		parent::injectConfigurationMananger( $configurationManager);
+		parent::injectConfigurationManager( $configurationManager );
 
 		$type = ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT;
 		$setup = $this->configurationManager->getConfiguration( $type );

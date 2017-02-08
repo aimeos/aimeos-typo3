@@ -68,7 +68,7 @@ class DataHandler
 
 
 		// Only listen to own plugin data
-		if( !empty( $listType ) && compare( $listType, 'aimeos_', 1 ) === 0 )
+		if( !empty( $listType ) && substr_compare( $listType, $prefix, 1, strlen( $prefix ) ) === 0 )
 		{
 			$flexformData = GeneralUtility::xml2array( $fieldArray['pi_flexform'] );
 
@@ -107,7 +107,7 @@ class DataHandler
 			*/
 			);
 
-			$flexformData = $this->removeDeprecated( $flexformData, $deprecatedFields );
+			$flexformData = $this->removeDeprecated( $flexformData, $listType, $deprecatedFields );
 			$flexformData = $this->removeEmpty( $flexformData );
 
 			$flexFormTools = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools' );
@@ -122,7 +122,7 @@ class DataHandler
 	 * @param array $flexformData Associative list of flex form data
 	 * @return array Associative list of cleaned flex form data
 	 */
-	protected function removeDeprecated( array $flexformData )
+	protected function removeDeprecated( array $flexformData, $listType, array $deprecatedFields )
 	{
 		foreach( $deprecatedFields as $plugin => $fields )
 		{
