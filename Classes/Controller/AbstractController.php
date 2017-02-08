@@ -11,6 +11,8 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\ArrayUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 
@@ -24,6 +26,31 @@ abstract class AbstractController
 {
 	private static $context;
 	private $contextBE;
+
+
+	/**
+	 * Injects the configuration manager and initializes the framework settings
+	 *
+	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager Instance of the configuration manager
+	 */
+	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
+	{
+		parent::injectConfigurationMananger( $configurationManager);
+
+		$type = ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT;
+		$setup = $this->configurationManager->getConfiguration( $type );
+
+		// Overwrite settings from constants.txt with those from the flexforms
+		if( is_array( $setup['plugin.']['tx_aimeos.'] ) )
+		{
+			$service = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+			$config = $service->convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_aimeos.'] );
+
+			if( is_array( $config['settings'] ) ) {
+				$this->settings = ArrayUtility::arrayMergeRecursiveOverrule( $config['settings'], $this->settings, false, false );
+			}
+		}
+	}
 
 
 	/**
@@ -163,32 +190,4 @@ abstract class AbstractController
 	{
 		return null;
 	}
-
-
-	/**
-	 * Injects the Configuration Manager and is initializing the framework settings
-	 *
-	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager Instance of the Configuration Manager
-	 */
-	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
-	{
-		parent::injectConfigurationMananger( $configurationManager);
-
-		// load settings from template setup
-		$setup = $this->configurationManager->getConfiguration( ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT );
-		$extensionName = 'aimeos';
-
-		// get plugin settings and override with typo3 default settings
-		if( is_array( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] ) )
-		{
-			$service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
-			$configuration = $service->convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] );
-
-			if( is_array( $configuration['settings'] ) )
-			{
-				$this->settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $configuration['settings'], $this->settings, false, false );
-			}
-		}
-	}
-
 }
