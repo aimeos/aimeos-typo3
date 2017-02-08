@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014-2016
+ * @copyright Aimeos (aimeos.org), 2014-2017
  * @package TYPO3
  */
 
@@ -11,6 +11,9 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\ArrayUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 
 /**
@@ -23,6 +26,31 @@ abstract class AbstractController
 {
 	private static $context;
 	private $contextBE;
+
+
+	/**
+	 * Injects the configuration manager and initializes the framework settings
+	 *
+	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager Instance of the configuration manager
+	 */
+	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
+	{
+		parent::injectConfigurationMananger( $configurationManager);
+
+		$type = ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT;
+		$setup = $this->configurationManager->getConfiguration( $type );
+
+		// Overwrite settings from constants.txt with those from the flexforms
+		if( is_array( $setup['plugin.']['tx_aimeos.'] ) )
+		{
+			$service = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+			$config = $service->convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_aimeos.'] );
+
+			if( is_array( $config['settings'] ) ) {
+				$this->settings = ArrayUtility::arrayMergeRecursiveOverrule( $config['settings'], $this->settings, false, false );
+			}
+		}
+	}
 
 
 	/**

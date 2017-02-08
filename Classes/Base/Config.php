@@ -2,7 +2,7 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2016
+ * @copyright Aimeos (aimeos.org), 2016-2017
  * @package TYPO3
  */
 
@@ -52,7 +52,8 @@ class Config
 			self::$config = $conf;
 		}
 
-		if( isset( $local['typo3']['tsconfig'] ) )
+		// Check for array
+		if( isset( $local['typo3']['tsconfig'] ) && is_array( $local['typo3']['tsconfig'] ) )
 		{
 			$tsconfig = \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] );
 			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
