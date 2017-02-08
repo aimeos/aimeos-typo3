@@ -49,12 +49,14 @@ plugin.tx_aimeos {
 						chash = 0
 					}
 					suggest.url.config {
+						ajax = 1
 						#plugin => null,
+						plugin = catalog-suggest
 						#extension => null,
-						extension = tx_typoscriptrendering
+						extension = aimeos
 						#absoluteUri => false,
 						#namespace => true,
-						namespace = 0
+						#namespace = 0
 						#nocache => false,
 						#chash => true,
 						#format => '',

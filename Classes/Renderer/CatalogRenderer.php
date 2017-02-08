@@ -35,7 +35,8 @@ class CatalogRenderer extends AbstractRenderer
 	 */
 	public function canRender(Request $request)
 	{
-		return $request->hasArgument('renderer') && $request->getArgument('renderer') === 'hello';
+		return $request->hasArgument('extension') && $request->hasArgument('plugin') &&
+			$request->getArgument('extension') === 'aimeos' && compare( $request->getArgument('plugin'), 'catalog-', 1) == 0;
 	}
 
 	/**
