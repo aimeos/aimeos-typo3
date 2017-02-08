@@ -14,7 +14,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>1</minitems>
+						<minitems>0</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
@@ -28,7 +28,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>1</minitems>
+						<minitems>0</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
@@ -42,7 +42,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>1</minitems>
+						<minitems>0</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
@@ -56,7 +56,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>1</minitems>
+						<minitems>0</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
@@ -70,7 +70,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>1</minitems>
+						<minitems>0</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>

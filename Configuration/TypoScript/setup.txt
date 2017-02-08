@@ -1,13 +1,15 @@
-page.includeCSS.aimeos-common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
-page.includeCSS.aimeos = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
+page.includeCSS.aimeos-common = {$plugin.tx_aimeos.theme.css.aimeos-common}
+page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
+page.includeCSS.aimeos-theme-common = {$plugin.tx_aimeos.theme.css.custom-common}
+page.includeCSS.aimeos-theme = {$plugin.tx_aimeos.theme.css.custom}
 
 page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-3.1.1.min.js
 page.includeJSFooterlibs.jquery.external = 1
 page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
-page.includeJSFooter.aimeos = EXT:aimeos/Resources/Public/Themes/aimeos.js
-page.includeJSFooter.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
-page.includeJSFooter.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
+page.includeJSFooter.aimeos = {$plugin.tx_aimeos.theme.js.aimeos}
+page.includeJSFooter.aimeos-detail = {$plugin.tx_aimeos.theme.js.aimeos-detail}
+page.includeJSFooter.aimeos-theme = {$plugin.tx_aimeos.theme.js.aimeos-theme}
 
 plugin.tx_aimeos {
 	features {
@@ -25,56 +27,100 @@ plugin.tx_aimeos {
 		client {
 			html {
 				common {
-					content.baseurl = uploads/tx_aimeos
-					template.baseurl = typo3conf/ext/aimeos/Resources/Public/Themes/elegance
+					content.baseurl = {$plugin.tx_aimeos.common.content.baseurl}
+					template.baseurl = {$plugin.tx_aimeos.theme.baseurl}
 				}
 				account {
-					download.url.config {
-						absoluteUri = 1
-						chash = 0
+					download.url {
+						config {
+							absoluteUri = 1
+							chash = 0
+						}
+						target = {$plugin.tx_aimeos.account.download.pid}
 					}
-					favorite.url.config.chash = 0
-					watch.url.config.chash = 0
+					favorite.url {
+						config.chash = 0
+						target = {$plugin.tx_aimeos.account.favorite.pid}
+					}
+					watch.url {
+						config.chash = 0
+						target = {$plugin.tx_aimeos.account.watch.pid}
+					}
 				}
-				basket.standard.url.config.chash = 0
+				basket.standard.url {
+					config.chash = 0
+					target = {$plugin.tx_aimeos.basket.pid}
+				}
 				catalog {
-					count.url.config {
-						type = 191351524
-						chash = 0
+					count.url {
+						config {
+							type = 191351524
+							chash = 0
+						}
+						target = {$plugin.tx_aimeos.catalog.count.pid}
 					}
-					detail.url.config {
-						chash = 0
+					detail {
+						prodid-default = {$plugin.tx_aimeos.catalog.detail.prodid-default}
+						url {
+							config.chash = 0
+							target = {$plugin.tx_aimeos.catalog.detail.pid}
+						}
 					}
-					lists.url.config {
-						chash = 0
+					lists {
+						catid-default = {$plugin.tx_aimeos.catalog.lists.catid-default}
+						url {
+							config.chash = 0
+							target = {$plugin.tx_aimeos.catalog.lists.pid}
+						}
 					}
-					suggest.url.config {
-						type = 191351524
-						chash = 0
+					suggest.url {
+						config {
+							type = 191351524
+							chash = 0
+						}
+						target = {$plugin.tx_aimeos.catalog.suggest.pid}
 					}
-					stock.url.config {
-						type = 191351524
-						chash = 0
+					stock.url {
+						config {
+							type = 191351524
+							chash = 0
+						}
+						target = {$plugin.tx_aimeos.catalog.stock.pid}
 					}
 				}
 				checkout {
 					standard {
 						summary.option.terms {
-							privacy.url.config.chash = 0
-							url.config.chash = 0
+							privacy.url {
+								config.chash = 0
+								target = {$plugin.tx_aimeos.checkout.terms.privacy.pid}
+							}
+							url {
+								config.chash = 0
+								target = {$plugin.tx_aimeos.checkout.terms.pid}
+							}
 						}
-						url.config.chash = 0
+						url {
+							config.chash = 0
+							target = {$plugin.tx_aimeos.checkout.pid}
+						}
 					}
-					confirm.url.config {
-						absoluteUri = 1
-						namespace = 0
-						chash = 0
+					confirm.url {
+						config {
+							absoluteUri = 1
+							namespace = 0
+							chash = 0
+						}
+						target = {$plugin.tx_aimeos.checkout.confirm.pid}
 					}
-					update.url.config {
-						absoluteUri = 1
-						type = 191351525
-						namespace = 0
-						chash = 0
+					update.url {
+						config {
+							absoluteUri = 1
+							type = 191351525
+							namespace = 0
+							chash = 0
+						}
+						target = {$plugin.tx_aimeos.checkout.update.pid}
 					}
 				}
 				locale.select {
@@ -87,7 +133,7 @@ plugin.tx_aimeos {
 }
 
 
-module.tx_aimeos.settings.client.html.common.content.baseurl = ../uploads/tx_aimeos
+module.tx_aimeos.settings.client.html.common.content.baseurl = {$module.tx_aimeos.common.content.baseurl}
 
 
 aimeosJson = PAGE

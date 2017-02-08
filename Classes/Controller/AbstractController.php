@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014-2016
+ * @copyright Aimeos (aimeos.org), 2014-2017
  * @package TYPO3
  */
 
@@ -11,6 +11,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 
 /**
@@ -162,4 +163,32 @@ abstract class AbstractController
 	{
 		return null;
 	}
+
+
+	/**
+	 * Injects the Configuration Manager and is initializing the framework settings
+	 *
+	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager Instance of the Configuration Manager
+	 */
+	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
+	{
+		parent::injectConfigurationMananger( $configurationManager);
+
+		// load settings from template setup
+		$setup = $this->configurationManager->getConfiguration( ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT );
+		$extensionName = 'aimeos';
+
+		// get plugin settings and override with typo3 default settings
+		if( is_array( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] ) )
+		{
+			$service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+			$configuration = $service->convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] );
+
+			if( is_array( $configuration['settings'] ) )
+			{
+				$this->settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $configuration['settings'], $this->settings, false, false );
+			}
+		}
+	}
+
 }
