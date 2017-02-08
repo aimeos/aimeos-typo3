@@ -49,8 +49,21 @@ plugin.tx_aimeos {
 						chash = 0
 					}
 					suggest.url.config {
-						type = 191351524
-						chash = 0
+						ajax = 1
+						#plugin => null,
+						plugin = catalog-suggest
+						#extension => null,
+						extension = aimeos
+						#absoluteUri => false,
+						#namespace => true,
+						#namespace = 0
+						#nocache => false,
+						#chash => true,
+						#format => '',
+						#type => 0,
+
+						#type = 191351524
+						#chash = 0
 					}
 					stock.url.config {
 						type = 191351524

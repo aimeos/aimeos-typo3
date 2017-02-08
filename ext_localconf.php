@@ -201,6 +201,13 @@ if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'
 
 
 /**
+ * Add content renderers
+ */
+
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['typoscript_rendering']['renderClasses']['aimeos-catalog'] = 'Aimeos\\Aimeos\\Renderer\\CatalogRenderer';
+
+
+/**
  * Add cache configuration
  */
 
