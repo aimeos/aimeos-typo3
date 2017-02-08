@@ -3,9 +3,9 @@ page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-theme-common = {$plugin.tx_aimeos.theme.css.custom-common}
 page.includeCSS.aimeos-theme = {$plugin.tx_aimeos.theme.css.custom}
 
-page.includeJSFooterlibs.jquery = {$plugin.tx_aimeos.lib.js.jquery}
-page.includeJSFooterlibs.jquery.external = {$plugin.tx_aimeos.lib.js.jquery.external}
-page.includeJSFooterlibs.jquery-ui = {$plugin.tx_aimeos.lib.js.jquery-ui}
+page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-3.1.1.min.js
+page.includeJSFooterlibs.jquery.external = 1
+page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
 page.includeJSFooter.aimeos = {$plugin.tx_aimeos.theme.js.aimeos}
 page.includeJSFooter.aimeos-detail = {$plugin.tx_aimeos.theme.js.aimeos-detail}
@@ -21,7 +21,7 @@ plugin.tx_aimeos {
 		callDefaultActionIfActionCantBeResolved = 1
 	}
 	view {
-		pluginNamespace = {$plugin.tx_aimeos.view.pluginNamespace}
+		pluginNamespace = ai
 	}
 	settings {
 		client {

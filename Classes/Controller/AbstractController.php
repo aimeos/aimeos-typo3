@@ -25,8 +25,6 @@ abstract class AbstractController
 	private static $context;
 	private $contextBE;
 
-	public $settingsOrg;
-
 
 	/**
 	 * Creates a new configuration object.
@@ -174,11 +172,7 @@ abstract class AbstractController
 	 */
 	public function injectConfigurationManager( ConfigurationManagerInterface $configurationManager )
 	{
-		// set ConfigurationManager and get settings like the FrontendConfigurationManager
-		$this->configurationManager = $configurationManager;
-		$this->settingsOrg = $this->configurationManager->getConfiguration( ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS );
-
-		$this->settings = $this->settingsOrg;
+		parent::injectConfigurationMananger( $configurationManager);
 
 		// load settings from template setup
 		$setup = $this->configurationManager->getConfiguration( ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT );
@@ -187,11 +181,12 @@ abstract class AbstractController
 		// get plugin settings and override with typo3 default settings
 		if( is_array( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] ) )
 		{
-			$configuration = Base::convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] );
+			$service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+			$configuration = $service->convertTypoScriptArrayToPlainArray( $setup['plugin.']['tx_' . strtolower( $extensionName ) . '.'] );
 
 			if( is_array( $configuration['settings'] ) )
 			{
-				$this->settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $configuration['settings'], $this->settingsOrg, false, false );
+				$this->settings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $configuration['settings'], $this->settings, false, false );
 			}
 		}
 	}
