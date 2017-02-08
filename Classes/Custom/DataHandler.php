@@ -110,7 +110,6 @@ class DataHandler
 			);
 
 			$flexformData = $this->removeDeprecated( $flexformData, $listType, $deprecatedFields );
-			$flexformData = $this->removeEmpty( $flexformData );
 
 			$flexFormTools = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools' );
 			$fieldArray['pi_flexform'] = $flexFormTools->flexArray2Xml( $flexformData, true );
@@ -137,26 +136,6 @@ class DataHandler
 						unset( $flexformData['data']['sDEF']['lDEF'][$field] );
 					}
 				}
-			}
-		}
-
-		return $flexformData;
-	}
-
-
-	/**
-	 * Removes fields with empty values
-	 *
-	 * @param array $flexformData Associative list of flex form data
-	 * @return array Associative list of cleaned flex form data
-	 */
-	protected function removeEmpty( array $flexformData )
-	{
-		foreach( $flexformData['data']['sDEF']['lDEF'] as $field => $values )
-		{
-			// Remove fields with empty values
-			if ( isset( $values['vDEF'] ) && $values['vDEF'] === '' ) {
-				unset( $flexformData['data']['sDEF']['lDEF'][$field] );
 			}
 		}
 
