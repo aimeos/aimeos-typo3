@@ -67,10 +67,8 @@ class DataHandler
 		}
 
 
-		$prefix = 'aimeos_';
-
 		// Only listen to own plugin data
-		if( !empty( $listType ) && substr_compare( $listType, $prefix, 0, strlen( $prefix ) ) === 0 )
+		if( !empty( $listType ) && strncmp( $listType, 'aimeos_', 7 ) === 0 )
 		{
 			$flexformData = GeneralUtility::xml2array( $fieldArray['pi_flexform'] );
 
@@ -109,36 +107,22 @@ class DataHandler
 			*/
 			);
 
-			$flexformData = $this->removeDeprecated( $flexformData, $listType, $deprecatedFields );
+			foreach( $deprecatedFields as $plugin => $fields )
+			{
+				if( $listType === $plugin )
+				{
+					// Search for deprecated fields and delete
+					foreach( $fields as $field )
+					{
+						if ( isset( $flexformData['data']['sDEF']['lDEF'][$field] ) ) {
+							unset( $flexformData['data']['sDEF']['lDEF'][$field] );
+						}
+					}
+				}
+			}
 
 			$flexFormTools = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools' );
 			$fieldArray['pi_flexform'] = $flexFormTools->flexArray2Xml( $flexformData, true );
 		}
-	}
-
-
-	/**
-	 * Removes deprecated plugin configuration
-	 *
-	 * @param array $flexformData Associative list of flex form data
-	 * @return array Associative list of cleaned flex form data
-	 */
-	protected function removeDeprecated( array $flexformData, $listType, array $deprecatedFields )
-	{
-		foreach( $deprecatedFields as $plugin => $fields )
-		{
-			if( $listType === $plugin )
-			{
-				// Search for deprecated fields and delete
-				foreach( $fields as $field )
-				{
-					if ( isset( $flexformData['data']['sDEF']['lDEF'][$field] ) ) {
-						unset( $flexformData['data']['sDEF']['lDEF'][$field] );
-					}
-				}
-			}
-		}
-
-		return $flexformData;
 	}
 }
