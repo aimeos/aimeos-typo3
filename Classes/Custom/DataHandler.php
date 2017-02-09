@@ -67,8 +67,10 @@ class DataHandler
 		}
 
 
+		$prefix = 'aimeos_';
+
 		// Only listen to own plugin data
-		if( !empty( $listType ) && compare( $listType, 'aimeos_', 1 ) === 0 )
+		if( !empty( $listType ) && substr_compare( $listType, $prefix, 0, strlen( $prefix ) ) === 0 )
 		{
 			$flexformData = GeneralUtility::xml2array( $fieldArray['pi_flexform'] );
 
@@ -107,8 +109,7 @@ class DataHandler
 			*/
 			);
 
-			$flexformData = $this->removeDeprecated( $flexformData, $deprecatedFields );
-			$flexformData = $this->removeEmpty( $flexformData );
+			$flexformData = $this->removeDeprecated( $flexformData, $listType, $deprecatedFields );
 
 			$flexFormTools = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools' );
 			$fieldArray['pi_flexform'] = $flexFormTools->flexArray2Xml( $flexformData, true );
@@ -122,7 +123,7 @@ class DataHandler
 	 * @param array $flexformData Associative list of flex form data
 	 * @return array Associative list of cleaned flex form data
 	 */
-	protected function removeDeprecated( array $flexformData )
+	protected function removeDeprecated( array $flexformData, $listType, array $deprecatedFields )
 	{
 		foreach( $deprecatedFields as $plugin => $fields )
 		{
@@ -135,36 +136,6 @@ class DataHandler
 						unset( $flexformData['data']['sDEF']['lDEF'][$field] );
 					}
 				}
-
-				// Remove empty sheet
-				if ( isset( $flexformData['data']['sDEF']['lDEF'] ) && $flexformData['data']['sDEF']['lDEF'] === array() ) {
-					unset( $flexformData['data']['sDEF'] );
-				}
-			}
-		}
-
-		return $flexformData;
-	}
-
-
-	/**
-	 * Removes fields with empty values
-	 *
-	 * @param array $flexformData Associative list of flex form data
-	 * @return array Associative list of cleaned flex form data
-	 */
-	protected function removeEmpty( array $flexformData )
-	{
-		foreach( $flexformData['data']['sDEF']['lDEF'] as $field => $values )
-		{
-			// Remove fields with empty values
-			if ( isset( $values['vDEF'] ) && $values['vDEF'] === '' ) {
-				unset( $flexformData['data']['sDEF']['lDEF'][$field] );
-			}
-
-			// Remove empty sheet
-			if ( isset( $flexformData['data']['sDEF']['lDEF'] ) && $flexformData['data']['sDEF']['lDEF'] === array() ) {
-				unset( $flexformData['data']['sDEF'] );
 			}
 		}
 
