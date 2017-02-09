@@ -54,7 +54,8 @@ plugin.tx_aimeos {
 				catalog {
 					count.url {
 						config {
-							type = 191351524
+							eID = aimeos
+							format = javascript
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.count.pid}
@@ -75,14 +76,16 @@ plugin.tx_aimeos {
 					}
 					suggest.url {
 						config {
-							type = 191351524
+							eID = aimeos
+							format = json
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.suggest.pid}
 					}
 					stock.url {
 						config {
-							type = 191351524
+							eID = aimeos
+							format = javascript
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.stock.pid}
@@ -115,8 +118,9 @@ plugin.tx_aimeos {
 					}
 					update.url {
 						config {
+							eID = aimeos
+							format = plain
 							absoluteUri = 1
-							type = 191351525
 							namespace = 0
 							chash = 0
 						}
