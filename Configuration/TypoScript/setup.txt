@@ -77,7 +77,7 @@ plugin.tx_aimeos {
 					suggest.url {
 						config {
 							eID = aimeos
-							format = json
+							format = javascript
 							chash = 0
 						}
 						target = {$plugin.tx_aimeos.catalog.suggest.pid}
