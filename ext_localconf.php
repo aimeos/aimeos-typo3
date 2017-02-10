@@ -214,6 +214,7 @@ if (TYPO3_MODE === 'FE') {
 	$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['aimeos'] = 'Aimeos\\Aimeos\\Custom\\EidRequestHandler::processRequest';
 }
 
+\Aimeos\Aimeos\Custom\AjaxDispatcherUtility::activateAjaxDispatcher( true, false, 'aimeos1' );
 
 /**
  * Add cache configuration

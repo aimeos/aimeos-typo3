@@ -146,7 +146,7 @@ aimeosJson {
 	config {
 		no_cache = 1
 		disableAllHeaderCode = 1
-		additionalHeaders.type = Content-type:application/javascript
+		additionalHeaders.10.header = Content-type:application/javascript
 		disablePrefixComment = 1
 	}
 	10 = CONTENT
@@ -163,7 +163,7 @@ aimeosPlain {
 	config {
 		no_cache = 1
 		disableAllHeaderCode = 1
-		additionalHeaders.type = Content-type:text/plain
+		additionalHeaders.10.header = Content-type:text/plain
 		disablePrefixComment = 1
 	}
 	10 = CONTENT
@@ -176,4 +176,11 @@ aimeosPlain {
 
 [globalVar = TSFE:type=191351524][globalVar = TSFE:type=191351525]
 tt_content.stdWrap >
+tt_content.list = COA
+tt_content.list.20 = CASE
+tt_content.list.20.key.field = list_type
+tt_content.list.templateName >
+tt_content.list.templateRootPaths >
+tt_content.list.partialRootPaths >
+tt_content.list.layoutRootPaths >
 [end]

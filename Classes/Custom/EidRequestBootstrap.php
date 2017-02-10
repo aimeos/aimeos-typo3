@@ -28,25 +28,33 @@ use TYPO3\CMS\Frontend\Utility\EidUtility;
  */
 class EidRequestBootstrap
 {
-	/**
-	 * @var ServerRequestInterface|NULL
-	 */
-	protected $request = null;
+    /**
+     * The request handed over
+     * @var \Psr\Http\Message\ServerRequestInterface
+     */
+    protected $request;
 
 	/**
-	 * @var ResponseInterface|NULL
+     * The response handed over
+	 * @var Psr\Http\Message\ResponseInterface
 	 */
-	protected $response = null;
+	protected $response;
 
 	/**
-	 * @var array|NULL
+	 * @var array
 	 */
-	protected $params = null;
+	protected $pageId;
 
 	/**
-	 * @var TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController|NULL
+	 * @var array
 	 */
-	protected $typoScriptFrontendController = null;
+	protected $parameters;
+
+    /**
+     * Instance of the TSFE object
+     * @var TypoScriptFrontendController
+     */
+    protected $controller;
 
 	/**
 	 * @var array
@@ -54,9 +62,9 @@ class EidRequestBootstrap
 	protected $pluginConfiguration;
 
 	/**
-	 * @var TYPO3\CMS\Extbase\Core\Bootstrap|NULL
+	 * @var TYPO3\CMS\Extbase\Core\Bootstrap
 	 */
-	protected $bootstrap = null;
+	protected $bootstrap;
 
 	/**
 	 * @var array
@@ -95,8 +103,8 @@ class EidRequestBootstrap
 		$this->response = $response;
 
 		$this->checkRequest();
-		$this->initFrontend();
-		$this->initBootstrap();
+		$this->initializeFrontend();
+		$this->initializeBootstrap();
 	}
 
 	/**
@@ -128,6 +136,67 @@ class EidRequestBootstrap
 		}
 	}
 
+    /**
+     * Returns the request value of incoming data from POST or GET, with priority to POST (that is equalent to 'GP' order)
+     *
+     * @param string $var GET/POST var to return
+     * @return mixed POST var named $var and if not set, the GET var of the same name.
+     */
+    public function _GP( $var )
+    {
+        if (empty($var)) {
+            return;
+        }
+        if (!empty($this->request->getParsedBody()[$var])) {
+            $value = $this->request->getParsedBody()[$var];
+        } elseif (!empty($this->request->getQueryParams()[$var])) {
+            $value = $this->request->getQueryParams()[$var];
+        } else {
+            $value = null;
+        }
+        // This is there for backwards-compatibility, in order to avoid NULL
+        if (isset($value) && !is_array($value)) {
+            $value = (string)$value;
+        }
+        return $value;
+    }
+
+    /**
+     * Initializes output compression when enabled, could be split up and put into Bootstrap
+     * at a later point
+     */
+    protected function initializeOutputCompression()
+    {
+        if ($GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] && extension_loaded('zlib')) {
+            if (MathUtility::canBeInterpretedAsInteger($GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'])) {
+                @ini_set('zlib.output_compression_level', $GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel']);
+            }
+            ob_start([GeneralUtility::makeInstance(CompressionUtility::class), 'compressionOutputHandler']);
+        }
+    }
+
+    /**
+     * Creates an instance of TSFE and sets it as a global variable
+     *
+     * @return void
+     */
+    protected function initializeController()
+    {
+        $this->controller = GeneralUtility::makeInstance(
+            TypoScriptFrontendController::class,
+            $GLOBALS['TYPO3_CONF_VARS'],
+            $this->pageId,
+            0,
+            true
+        );
+        // setting the global variable for the controller
+        // We have to define this as reference here, because there is code around
+        // which exchanges the TSFE object in the global variable. The reference ensures
+        // that the $controller member always works on the same object as the global variable.
+        // This is a dirty workaround and bypasses the protected access modifier of the controller member.
+        $GLOBALS['TSFE'] = &$this->controller;
+    }
+
 	/**
 	 * Checks the request parameters
 	 *
@@ -136,24 +205,18 @@ class EidRequestBootstrap
 	 */
 	protected function checkRequest()
 	{
+		$this->pageId = $this->_GP('tID') ? $this->_GP('tID') : 1;
+
 		// get parameters
-		$this->params = [];
+		$this->parameters = [];
 
-		$this->params['controller'] = isset( $this->request->getParsedBody()['controller'] ) ? $this->request->getParsedBody()['controller'] :
-			( isset( $this->request->getQueryParams()['controller'] ) ? $this->request->getQueryParams()['controller'] : '' );
-
-		$this->params['action'] = isset( $this->request->getParsedBody()['action'] ) ? $this->request->getParsedBody()['action'] :
-			( isset( $this->request->getQueryParams()['action'] ) ? $this->request->getQueryParams()['action'] : '' );
-
-		$this->params['plugin'] = isset( $this->request->getParsedBody()['plugin'] ) ? $this->request->getParsedBody()['plugin'] :
-			( isset( $this->request->getQueryParams()['plugin'] ) ? $this->request->getQueryParams()['plugin'] : '' );
-
-		$this->params['format'] = isset( $this->request->getParsedBody()['format'] ) ? $this->request->getParsedBody()['format'] :
-			( isset( $this->request->getQueryParams()['format'] ) ? $this->request->getQueryParams()['format'] : '' );
-
+		$this->parameters['controller'] = $this->_GP('controller');
+		$this->parameters['action'] = $this->_GP('action');
+		$this->parameters['plugin'] = $this->_GP('plugin');
+		$this->parameters['format'] = $this->_GP('format');
 
 		// check required parameters
-		if ( empty( $this->params ) || empty( $this->params['controller'] ) || empty( $this->params['action'] ) ) {
+		if ( empty( $this->parameters['controller'] ) || empty( $this->parameters['action'] ) ) {
 			$this->setError( 'Missing required parameter' );
 		}
 	}
@@ -164,7 +227,7 @@ class EidRequestBootstrap
 	 * @return void
 	 * @throws \InvalidArgumentException
 	 */
-	protected function initBootstrap()
+	protected function initializeBootstrap()
 	{
 		if ( $this->isError ) {
 			return;
@@ -175,11 +238,11 @@ class EidRequestBootstrap
 
 		// set configuration to call the plugin
 		$this->bootstrapConfiguration = array(
-			'pluginName' => !empty( $this->params['plugin'] ) ? $this->params['plugin'] : lcfirst( $this->params['controller'] ) . '-' . $this->params['action'],
+			'pluginName' => !empty( $this->parameters['plugin'] ) ? $this->parameters['plugin'] : lcfirst( $this->parameters['controller'] ) . '-' . $this->parameters['action'],
 			'vendorName' => 'Aimeos',
 			'extensionName' => 'Aimeos',
-			'controller' => $this->params['controller'],
-			'action' => $this->params['action'],
+			'controller' => $this->parameters['controller'],
+			'action' => $this->parameters['action'],
 			'mvc' => array(
 				'requestHandlers' => array( 'TYPO3\CMS\Extbase\Mvc\Web\FrontendRequestHandler' => 'TYPO3\CMS\Extbase\Mvc\Web\FrontendRequestHandler' ),
 			),
@@ -193,41 +256,63 @@ class EidRequestBootstrap
 	 *
 	 * @return void
 	 */
-	protected function initFrontend()
+	protected function initializeFrontend()
 	{
 		if ( $this->isError ) {
 			return;
 		}
 
-		// init User
 		$feUserObj = EidUtility::initFeUser();
 
-		// set PID
-		$pageId = GeneralUtility::_GP('id') ?: 1;
+		// copied from TYPO3\CMS\Frontend\Http\RequestHandler
+        $this->initializeController();
 
-		// create and init frontend
-		$this->typoScriptFrontendController = GeneralUtility::makeInstance(
-			TypoScriptFrontendController::class,
-			$GLOBALS['TYPO3_CONF_VARS'],
-			$pageId,
-			0,
-			true
-		);
+        if ($GLOBALS['TYPO3_CONF_VARS']['FE']['pageUnavailable_force']
+            && !GeneralUtility::cmpIP(
+                GeneralUtility::getIndpEnv('REMOTE_ADDR'),
+                $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'])
+        ) {
+            $this->controller->pageUnavailableAndExit('This page is temporarily unavailable.');
+        }
 
-		$GLOBALS['TSFE'] = $this->typoScriptFrontendController;
+        $this->controller->connectToDB();
+        $this->controller->sendRedirect();
 
-		$this->typoScriptFrontendController->connectToDB();
-		$this->typoScriptFrontendController->fe_user = $feUserObj;
-		$this->typoScriptFrontendController->id = $pageId;
-		$this->typoScriptFrontendController->determineId();
-		$this->typoScriptFrontendController->initTemplate();
-		$this->typoScriptFrontendController->getConfigArray();
+        // Output compression
+        $this->initializeOutputCompression();
 
-		EidUtility::initTCA();
+        // Initializing the Frontend User
+        //$this->controller->initFEuser();
+        $this->controller->fe_user = $feUserObj;
 
-		// get plugins TypoScript
+		//EidUtility::initTCA();
+
+		/*throw new \RuntimeException( $this->pageId );*/
+        $this->controller->clear_preview();
+        $this->controller->id = $this->pageId;
+        $this->controller->determineId();
+		/*throw new \RuntimeException( $this->controller->id );*/
+
+        // Starts the template
+        $this->controller->initTemplate();
+
+        // Get from cache
+        $this->controller->getFromCache();
+
+        // Get config if not already gotten
+        // After this, we should have a valid config-array ready
+        $this->controller->getConfigArray();
+
+        // Setting language and locale
+        $this->controller->settingLanguage();
+        $this->controller->settingLocale();
+
+		//$this->controller->getCompressedTCarray(); //Comment this line when used for TYPO3 7.6.0 on wards
+		//$this->controller->includeTCA(); //Comment this line when used for TYPO3 7.6.0 on wards
+
+		// Get plugins TypoScript
 		$typoScriptService = GeneralUtility::makeInstance( TypoScriptService::class );
-		$this->pluginConfiguration = $typoScriptService->convertTypoScriptArrayToPlainArray( $this->typoScriptFrontendController->tmpl->setup['plugin.']['tx_aimeos.'] );
+		$this->pluginConfiguration = $typoScriptService->convertTypoScriptArrayToPlainArray( $this->controller->tmpl->setup['plugin.']['tx_aimeos.'] );
 	}
 
 	/**
@@ -243,7 +328,7 @@ class EidRequestBootstrap
 		}
 
 		// set content format
-		$this->setContentFormat( $this->params['format'] );
+		$this->setContentFormat( $this->parameters['format'] );
 
 		// run plugin and set content
 		/*throw new \RuntimeException( $this->bootstrap->run('', $this->bootstrapConfiguration) );*/
