@@ -146,17 +146,15 @@ class Base
 		$page->init( true );
 
 		$name = 'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController';
-		$tsfe = GeneralUtility::makeInstance( $name,  $GLOBALS['TYPO3_CONF_VARS'], $pageid, 0 );
-		$tsfe->connectToDB();
-		$tsfe->initFEuser();
-		$tsfe->no_cache = true;
-		$tsfe->sys_page = $page;
-		$tsfe->rootLine = $page->getRootLine( $pageid );
-		$tsfe->determineId();
-		$tsfe->initTemplate();
-		$tsfe->getConfigArray();
-
-		$GLOBALS['TSFE'] = $tsfe;
+		$GLOBALS['TSFE'] = GeneralUtility::makeInstance( $name,  $GLOBALS['TYPO3_CONF_VARS'], $pageid, 0 );
+		$GLOBALS['TSFE']->connectToDB();
+		$GLOBALS['TSFE']->initFEuser();
+		$GLOBALS['TSFE']->no_cache = true;
+		$GLOBALS['TSFE']->sys_page = $page;
+		$GLOBALS['TSFE']->rootLine = $page->getRootLine( $pageid );
+		$GLOBALS['TSFE']->determineId();
+		$GLOBALS['TSFE']->initTemplate();
+		$GLOBALS['TSFE']->getConfigArray();
 
 		if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'realurl' ) )
 		{
