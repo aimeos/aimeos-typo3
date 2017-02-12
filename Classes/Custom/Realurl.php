@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014-2016
+ * @copyright Aimeos (aimeos.org), 2014-2017
  * @package TYPO3
  */
 
@@ -30,8 +30,34 @@ class Realurl
 		$params['config']['init']['emptySegmentValue'] = '';
 
 		return array_merge_recursive( $params['config'], array(
+			/* start: missing at bootstrap_package 7, can be removed if reincluded there */
+			'preVars' => array(
+				'0' => array(
+					'GETvar' => 'no_cache',
+					'valueMap' => array(
+						'nc' => '1',
+					),
+					'noMatch' => 'bypass'
+				),
+				'1' => array(
+					'GETvar' => 'L',
+					'valueMap' => array(
+						'de' => '1',
+						'da' => '2',
+					),
+					'noMatch' => 'bypass',
+				)
+			),
+			/* end */
 			'postVarSets' => array(
 				'_DEFAULT' => array(
+					/* start: missing at bootstrap_package 7, can be removed if reincluded there */
+					'page' => array(
+						0 => array(
+							'GETvar' => 'page',
+						)
+					),
+					/* end */
 					'aimeos' => array(
 						array(
 							'GETvar' => 'ai[controller]',
