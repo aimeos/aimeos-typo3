@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014-2016
+ * @copyright Aimeos (aimeos.org), 2014-2017
  * @package TYPO3
  */
 
@@ -18,6 +18,16 @@ namespace Aimeos\Aimeos\Custom;
  */
 class Realurl
 {
+	/** @var \TYPO3\CMS\Core\Database\DatabaseConnection */
+	protected $databaseConnection;
+
+	/**
+	 * Initializes the class.
+	 */
+	public function __construct() {
+		$this->databaseConnection = $GLOBALS['TYPO3_DB'];
+	}
+
 	/**
 	 * Generates additional RealURL configuration and merges it with provided configuration
 	 *
@@ -29,7 +39,20 @@ class Realurl
 	{
 		$params['config']['init']['emptySegmentValue'] = '';
 
+		$this->addSites( $params['config'] );
+		$this->addLanguages( $params['config'] );
+		$this->addCurrencies( $params['config'] );
+
 		return array_merge_recursive( $params['config'], array(
+			'preVars' => array(
+				array(
+					'GETvar' => 'no_cache',
+					'valueMap' => array(
+						'nc' => '1',
+					),
+					'noMatch' => 'bypass'
+				),
+			),
 			'postVarSets' => array(
 				'_DEFAULT' => array(
 					'aimeos' => array(
@@ -115,5 +138,78 @@ class Realurl
 				),
 			),
 		) );
+	}
+
+	/**
+	 * Adds sites to configuration
+	 *
+	 * @param array $configuration
+	 * @return void
+	 */
+	protected function addSites(array &$configuration) {
+		$sites = $this->databaseConnection->exec_SELECTgetRows('t1.id AS id,t1.code AS code', 'mshop_locale_site t1', 't1.status=1');
+
+		if (count($sites) > 1) {
+			$configuration['preVars']['ai_site'] = array(
+				'GETvar' => 'S',
+				'valueMap' => array(
+				),
+				'noMatch' => 'bypass',
+			);
+			foreach ($sites as $site) {
+				$configuration['preVars']['ai_site']['valueMap'][strtolower($site['code'])] = $site['id'];
+			}
+		}
+	}
+
+	/**
+	 * Adds languages to configuration
+	 *
+	 * @param array $configuration
+	 * @return void
+	 */
+	protected function addLanguages(array &$configuration) {
+		$languages = $this->databaseConnection->exec_SELECTgetRows('t1.langid AS id', 'mshop_locale t1', 't1.status=1', '', 't1.pos');
+
+		if (count($languages) > 1) {
+			$configuration['preVars']['ai_language'] = array(
+				'GETvar' => 'ai[loc_language]',
+				'valueMap' => array(
+				),
+				'noMatch' => 'bypass',
+			);
+			foreach ($languages as $language) {
+				$configuration['preVars']['ai_language']['valueMap'][strtolower($language['id'])] = $language['id'];
+			}
+		}
+	}
+
+	/**
+	 * Adds currencies to configuration
+	 *
+	 * @param array $configuration
+	 * @return void
+	 */
+	protected function addCurrencies(array &$configuration) {
+		$currencies = $this->databaseConnection->exec_SELECTgetRows('t1.currencyid AS id', 'mshop_locale t1', 't1.status=1', '', 't1.pos');
+
+		if (count($currencies) > 1) {
+			/*$configuration['preVars']['ai_currency'] = array(
+				'GETvar' => 'ai[loc_currency]',
+				'valueMap' => array(
+				),
+				'noMatch' => 'bypass',
+			);*/
+			$configuration['postVarSets']['_DEFAULT']['aimeos']['ai_currency'] = array(
+				'GETvar' => 'ai[loc_currency]',
+				'valueMap' => array(
+				),
+				'noMatch' => 'bypass',
+			);
+			foreach ($currencies as $currency) {
+				/*$configuration['preVars']['ai_currency']['valueMap'][strtolower($currency['id'])] = $currency['id'];*/
+				$configuration['postVarSets']['_DEFAULT']['aimeos']['ai_currency']['valueMap'][strtolower($currency['id'])] = $currency['id'];
+			}
+		}
 	}
 }
