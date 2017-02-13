@@ -32,15 +32,6 @@ class Realurl
 		$this->addNoCache( $params['config'] );
 
 		return array_merge_recursive( $params['config'], array(
-			'preVars' => array(
-				array(
-					'GETvar' => 'no_cache',
-					'valueMap' => array(
-						'nc' => '1',
-					),
-					'noMatch' => 'bypass'
-				),
-			),
 			'postVarSets' => array(
 				'_DEFAULT' => array(
 					'aimeos' => array(
