@@ -35,7 +35,7 @@ class Locale
 
 
 			$sitecode = $config->get( 'mshop/locale/site', 'default' );
-			$name = $config->get( 'typo3/param/name/site', 'loc_site' );
+			$name = $config->get( 'typo3/param/name/site', 'site' );
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$sitecode = $request->getArgument( $name );
@@ -45,7 +45,7 @@ class Locale
 
 
 			$langid = $config->get( 'mshop/locale/language', '' );
-			$name = $config->get( 'typo3/param/name/language', 'loc_language' );
+			$name = $config->get( 'typo3/param/name/language', 'locale' );
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$langid = $request->getArgument( $name );
@@ -55,7 +55,7 @@ class Locale
 
 
 			$currency = $config->get( 'mshop/locale/currency', '' );
-			$name = $config->get( 'typo3/param/name/currency', 'loc_currency' );
+			$name = $config->get( 'typo3/param/name/currency', 'currency' );
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$currency = $request->getArgument( $name );
