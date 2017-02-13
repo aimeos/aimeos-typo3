@@ -289,17 +289,17 @@ class View
 
 		if( $request )
 		{
-			$name = $config->get( 'typo3/param/name/site', 'loc_site' );
+			$name = $config->get( 'typo3/param/name/site', 'site' );
 			if( $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
 			}
 
-			$name = $config->get( 'typo3/param/name/language', 'loc_locale' );
+			$name = $config->get( 'typo3/param/name/language', 'locale' );
 			if( $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
 			}
 
-			$name = $config->get( 'typo3/param/name/currency', 'loc_currency' );
+			$name = $config->get( 'typo3/param/name/currency', 'currency' );
 			if( $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
 			}
