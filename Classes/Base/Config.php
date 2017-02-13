@@ -52,8 +52,7 @@ class Config
 			self::$config = $conf;
 		}
 
-		// Check for array
-		if( isset( $local['typo3']['tsconfig'] ) && is_array( $local['typo3']['tsconfig'] ) )
+		if( isset( $local['typo3']['tsconfig'] ) )
 		{
 			$tsconfig = \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] );
 			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
