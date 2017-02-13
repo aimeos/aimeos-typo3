@@ -141,10 +141,10 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-		'Aimeos.' . $_EXTKEY,
-		'account-history',
-		array( 'Account' => 'history' ),
-		array( 'Account' => 'history' )
+	'Aimeos.' . $_EXTKEY,
+	'account-history',
+	array( 'Account' => 'history' ),
+	array( 'Account' => 'history' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -200,22 +200,32 @@ if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'
 
 
 /**
- * Add data handler hook
+ * Add data handler hook, not used now
  */
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][$_EXTKEY] = 'Aimeos\\Aimeos\\Custom\\DataHandler';
+/*$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][$_EXTKEY] = 'Aimeos\\Aimeos\\Custom\\DataHandler';*/
 
+
+/**
+ * Register eID provider for the frontend
+ */
+
+if (TYPO3_MODE === 'FE') {
+	$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['aimeos'] = 'Aimeos\\Aimeos\\Custom\\EidRequestHandler::processRequest';
+}
+
+\Aimeos\Aimeos\Custom\AjaxDispatcherUtility::activateAjaxDispatcher( true, false, 'aimeos1' );
 
 /**
  * Add cache configuration
  */
 
 if( !is_array( $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos'] ) ) {
-    $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos'] = array();
+	$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos'] = array();
 }
 
 if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] ) ) {
-    $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] = 'TYPO3\\CMS\\Core\\Cache\\Frontend\\StringFrontend';
+	$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] = 'TYPO3\\CMS\\Core\\Cache\\Frontend\\StringFrontend';
 }
 
 if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['options'] ) ) {

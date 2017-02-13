@@ -17,6 +17,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Data handler for cleanup deprecatad settings
  *
+ * Enable in ext_localconf.php before use and delete this comment
+ *
  * @package TYPO3
  */
 class DataHandler
