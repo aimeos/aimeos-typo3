@@ -8,13 +8,13 @@ return array(
 				// Language related settings
 				'language' => array(
 					// Name of the parameter that contains the language ID value
-					'param-name' => 'loc_language',
+					'param-name' => 'locale',
 				),
 
 				// Currency related settings
 				'currency' => array(
 					// Name of the parameter that contains the currency ID value
-					'param-name' => 'loc_currency',
+					'param-name' => 'currency',
 				),
 			),
 		),
