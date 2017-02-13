@@ -11,6 +11,9 @@
 namespace Aimeos\Aimeos\Custom;
 
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+
+
 /**
  * Aimeos RealURL configuraiton.
  *
@@ -29,7 +32,7 @@ class Realurl
 	{
 		$params['config']['init']['emptySegmentValue'] = '';
 
-		$this->addNoCache( $params['config'] );
+		$this->addNoCache( $params );
 
 		return array_merge_recursive( $params['config'], array(
 			'postVarSets' => array(
@@ -126,11 +129,12 @@ class Realurl
 	 * @return void
 	 */
 	protected function addNoCache(array &$configuration) {
-		if ( array_search( 'no_cache', $configuration ) !== false ) {
+		$nocache = ArrayUtility::filterByValueRecursive( 'no_cache', $configuration );
+		if ( isset( $nocache ) && !empty( $nocache ) ) {
 			return;
 		}
 
-		$configuration['preVars'][] = array(
+		$configuration['config']['preVars'][] = array(
 			'GETvar' => 'no_cache',
 			'valueMap' => array(
 				'nc' => '1',
