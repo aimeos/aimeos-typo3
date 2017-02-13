@@ -29,6 +29,8 @@ class Realurl
 	{
 		$params['config']['init']['emptySegmentValue'] = '';
 
+		$this->addNoCache( $params['config'] );
+
 		return array_merge_recursive( $params['config'], array(
 			'preVars' => array(
 				array(
@@ -124,5 +126,25 @@ class Realurl
 				),
 			),
 		) );
+	}
+
+	/**
+	 * Adds no_cache to configuration if not already defined
+	 *
+	 * @param array $configuration
+	 * @return void
+	 */
+	protected function addNoCache(array &$configuration) {
+		if ( array_search( 'no_cache', $configuration ) !== false ) {
+			return;
+		}
+
+		$configuration['preVars'][] = array(
+			'GETvar' => 'no_cache',
+			'valueMap' => array(
+				'nc' => '1',
+			),
+			'noMatch' => 'bypass',
+		);
 	}
 }
