@@ -14,7 +14,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>0</minitems>
+						<minitems>1</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
@@ -84,7 +84,7 @@
 						<allowed>pages</allowed>
 						<size>1</size>
 						<maxitems>1</maxitems>
-						<minitems>0</minitems>
+						<minitems>1</minitems>
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>

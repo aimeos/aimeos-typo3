@@ -9,66 +9,6 @@
 			<trans-unit id="ext-wizard-description" xml:space="preserve">
 				<source>Fast, flexible and usability optimized web shop components for TYPO3</source>
 			</trans-unit>
-			<trans-unit id="account-download.target" xml:space="preserve">
-				<source>Account download page:Global setting of the account download page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="account-favorite.target" xml:space="preserve">
-				<source>Favorite products page:Global setting of the favorite products page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="account-watch.target" xml:space="preserve">
-				<source>Watched products page:Global setting of the account download page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
-				<source>Display categories beginning from the following node</source>
-			</trans-unit>
-			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
-				<source>Always display these category levels</source>
-			</trans-unit>
-			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
-				<source>Only display up to these category levels</source>
-			</trans-unit>
-			<trans-unit id="catalog-list.target" xml:space="preserve">
-				<source>Catalog list page:Global setting of the catalog list page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-suggest.target" xml:space="preserve">
-				<source>Suggest page:Global setting of the page id with &quot;catalog suggest&quot; plugin for search filter, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
-				<source>Default category:Global setting of the default category if no parameter is available, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-detail.target" xml:space="preserve">
-				<source>Catalog detail page:Global setting of the catalog detail page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
-				<source>Default product:Global setting of the default product ID if no parameter is available, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
-				<source>Session page:Global setting of the page id with &quot;catalog session&quot; plugin, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-count.target" xml:space="preserve">
-				<source>Count page:Global setting of the page id with product counts for catalog filter, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="catalog-stock.target" xml:space="preserve">
-				<source>Stock page:Global setting of the page id with stock level data, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="basket-standard.target" xml:space="preserve">
-				<source>Basket page:Global setting of the basket page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="checkout-standard.target" xml:space="preserve">
-				<source>Checkout page:Global setting of the checkout page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
-				<source>Terms page:Global setting of the terms and conditions page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
-				<source>Privacy page:Global setting of the privacy policy page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="checkout-confirm.target" xml:space="preserve">
-				<source>Confirmation page:Global setting of the checkout confirmation page id, will be overridden by plugin settings</source>
-			</trans-unit>
-			<trans-unit id="checkout-update.target" xml:space="preserve">
-				<source>Payment update page:Global setting of the page id with &quot;checkout payment update&quot; plugin, will be overridden by plugin settings</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>

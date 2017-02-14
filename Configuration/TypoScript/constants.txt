@@ -1,74 +1,6 @@
-############################
-### CUSTOM SUBCATEGORIES ###
-############################
-
-# Predefined categories
-# basic		Constants of superior importance for the template. This is typically dimensions, image files and enabling of various features. The most basic constants, which you would almost always want to configure.
-# menu		Menu setup. This includes font files, sizes, background images. Depending on the menu type.
-# content	All constants related to the display of page content elements.
-# page		General configuration like meta tags, link targets.
-# advanced	Advanced functions, which are seldom used.
-#
-# customcategory=ai100basic=Aimeos web shop: basic
-# customcategory=ai110menu=Aimeos web shop: menu
-# customcategory=ai120content=Aimeos web shop: content
-# customcategory=ai130page=Aimeos web shop: page
-# customcategory=ai140advanced=Aimeos web shop: advanced
-# customcategory=ai150theme=Aimeos web shop: theme
-
-# Predefined subcategories
-# enable	Used for options that enable or disable primary functions of a template.
-# dims		Dimensions of all kinds; pixels, widths, heights of images, frames, cells and so on.
-# file		Files like background images, fonts and so on. Other options related to the file may also enter.
-# typo		Typography and related constants.
-# color		Color setup. Many colors will be found with related options in other categories though.
-# links		Links: Targets typically.
-# language	Language specific options.
-#
-# customsubcategory=ais100test=test
-
-######################
-### AIMEOS PACKAGE ###
-######################
 plugin.tx_aimeos {
-	# cat=ai100basic/enable/100; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-list.catid-default
-	catalog.lists.catid-default =
-	# cat=ai100basic/enable/110; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-detail.prodid-default
-	catalog.detail.prodid-default =
-
 	# cat=ai100basic/links/100; type=string; label=Content baseurl:Path to the content directory or content base URL to a server
 	common.content.baseurl = uploads/tx_aimeos
-
-	# cat=ai130page/links/100; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-list.target
-	catalog.lists.pid =
-	# cat=ai130page/links/110; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-detail.target
-	catalog.detail.pid =
-	# cat=ai130page/links/120; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-stock.target
-	catalog.stock.pid =
-	# cat=ai130page/links/130; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-count.target
-	catalog.count.pid =
-	# cat=ai130page/links/140; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-session-pinned.target
-	catalog.pinned.pid =
-	# cat=ai130page/links/150; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:catalog-suggest.target
-	catalog.suggest.pid =
-	# cat=ai130page/links/160; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:basket-standard.target
-	basket.pid =
-	# cat=ai130page/links/170; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:checkout-standard.target
-	checkout.pid =
-	# cat=ai130page/links/171; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:checkout-standard-summary-option-terms.target
-	checkout.terms.pid =
-	# cat=ai130page/links/172; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:checkout-standard-summary-option-terms-privacy.target
-	checkout.terms.privacy.pid =
-	# cat=ai130page/links/180; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:checkout-confirm.target
-	checkout.confirm.pid =
-	# cat=ai130page/links/190; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:checkout-update.target
-	checkout.update.pid =
-	# cat=ai130page/links/200; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:account-favorite.target
-	account.favorite.pid =
-	# cat=ai130page/links/210; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:account-watch.target
-	account.watch.pid =
-	# cat=ai130page/links/220; type=string; label=LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:account-download.target
-	account.download.pid =
 
 	# cat=ai140advanced/file/100; type=string; label=Aimeos common: Path to common base theme CSS shared between website and e-mails
 	theme.css.aimeos-common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
@@ -80,14 +12,15 @@ plugin.tx_aimeos {
 	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
 
 	# cat=ai100basic/file/100; type=string; label=Custom common: Path to custom common CSS shared between website and e-mails to overwrite default styles
-	theme.css.custom-common = 
+	theme.css.custom-common =
 	# cat=ai100basic/file/101; type=string; label=Custom: Path to custom CSS to overwrite default styles
-	theme.css.custom = 
+	theme.css.custom =
 	# cat=ai100basic/file/110; type=string; label=Template baseurl:Path to the template directory or template base URL to a server
 	theme.baseurl = EXT:aimeos/Resources/Public/Themes/elegance
 	# cat=ai100basic/file/120; type=string; label=Aimeos theme: Aimeos theme related java script code
 	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
 }
+
 module.tx_aimeos {
 	# cat=ai100basic/links/110; type=string; label=Content base url (BE):Path to the content directory or content base URL to a server
 	common.content.baseurl = ../uploads/tx_aimeos
