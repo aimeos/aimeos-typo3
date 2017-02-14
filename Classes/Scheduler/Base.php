@@ -95,10 +95,23 @@ class Base
 
 		$contentObjectRenderer = $objectManager->get( 'TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer' );
 		$configurationManager = $objectManager->get( 'TYPO3\CMS\Extbase\Configuration\ConfigurationManager' );
+		$configurationManager->setContentObject( $contentObjectRenderer );
+
 		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
 
-		$configurationManager->setContentObject($contentObjectRenderer);
-		$uriBuilder->injectConfigurationManager($configurationManager);
+		if( method_exists( $uriBuilder, 'injectConfigurationManager' ) === false )
+		{
+			$class = 'TYPO3\\CMS\\Extbase\\Reflection\\PropertyReflection';
+			$prop = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class, $uriBuilder, 'configurationManager' );
+
+			$prop->setAccessible( true );
+			$prop->setValue( $uriBuilder, $configurationManager );
+		}
+		else
+		{
+			$uriBuilder->injectConfigurationManager( $configurationManager );
+		}
+
 		$uriBuilder->setArgumentPrefix( 'ai' );
 
 		return $uriBuilder;
