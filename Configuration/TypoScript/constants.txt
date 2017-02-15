@@ -1,27 +1,42 @@
-plugin.tx_aimeos {
-	# cat=ai100basic/links/100; type=string; label=Content baseurl:Path to the content directory or content base URL to a server
-	common.content.baseurl = uploads/tx_aimeos
+# customcategory=ai140theme=Aimeos web shop: theme
+# customcategory=ai150advanced=Aimeos web shop: advanced
 
-	# cat=ai140advanced/file/100; type=string; label=Aimeos common: Path to common base theme CSS shared between website and e-mails
-	theme.css.aimeos-common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
-	# cat=ai140advanced/file/101; type=string; label=Aimeos: Path to base theme CSS
+plugin.tx_aimeos {
+
+	# cat=ai140theme/file/100; type=string; label=Custom CSS:Path to your custom CSS for Aimeos
+	theme.css.aimeos-custom =
+
+	# cat=ai140theme/file/110; type=string; label=Custom JS:Path to your custom Javascript for Aimeos
+	theme.js.aimeos-custom =
+
+
+	# cat=ai140theme/file/200; type=string; label=Template base URL:Path to the template directory
+	theme.baseurl = EXT:aimeos/Resources/Public/Themes/elegance
+
+
+	# cat=ai140theme/file/300; type=string; label=Aimeos CSS:Path to the Aimeos theme CSS
 	theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
-	# cat=ai140advanced/file/110; type=string; label=Aimeos: Aimeos related java script code
+
+	# cat=ai140theme/file/310; type=string; label=Aimeos shared CSS:Path to the Aimeos theme CSS shared between website and e-mails
+	theme.css.common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
+
+
+	# cat=ai140theme/file/400; type=string; label=Aimeos theme JS:Path to the theme specific Aimeos Javascript code
+	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
+
+
+	# cat=ai150advanced/file/100; type=string; label=Aimeos JS:Aimeos frontend Javascript code
 	theme.js.aimeos = EXT:aimeos/Resources/Public/Themes/aimeos.js
-	# cat=ai140advanced/file/120; type=string; label=Aimeos detail: Aimeos detail related java script code
+
+	# cat=ai150advanced/file/110; type=string; label=Aimeos detail JS:Aimeos frontend Javascript code for the detail page
 	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
 
-	# cat=ai100basic/file/100; type=string; label=Custom common: Path to custom common CSS shared between website and e-mails to overwrite default styles
-	theme.css.custom-common =
-	# cat=ai100basic/file/101; type=string; label=Custom: Path to custom CSS to overwrite default styles
-	theme.css.custom =
-	# cat=ai100basic/file/110; type=string; label=Template baseurl:Path to the template directory or template base URL to a server
-	theme.baseurl = EXT:aimeos/Resources/Public/Themes/elegance
-	# cat=ai100basic/file/120; type=string; label=Aimeos theme: Aimeos theme related java script code
-	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
+
+	# cat=ai150advanced/links/100; type=string; label=Content base URL:Path to the content directory or content base URL of your server
+	common.content.baseurl = uploads/tx_aimeos
 }
 
 module.tx_aimeos {
-	# cat=ai100basic/links/110; type=string; label=Content base url (BE):Path to the content directory or content base URL to a server
+	# cat=ai150advanced/links/110; type=string; label=Content base URL (BE):Path to the content directory or content base URL of your server
 	common.content.baseurl = ../uploads/tx_aimeos
 }
