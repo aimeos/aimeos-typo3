@@ -3,8 +3,10 @@ page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-theme-common = {$plugin.tx_aimeos.theme.css.custom-common}
 page.includeCSS.aimeos-theme = {$plugin.tx_aimeos.theme.css.custom}
 
+[userFunc = \Aimeos\Aimeos\Custom\ExtensionCondition::match(bootstrap_package, notInstalled)]
 page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-3.1.1.min.js
 page.includeJSFooterlibs.jquery.external = 1
+[global]
 page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
 page.includeJSFooter.aimeos = {$plugin.tx_aimeos.theme.js.aimeos}
