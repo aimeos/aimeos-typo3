@@ -3,7 +3,7 @@ page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-theme-common = {$plugin.tx_aimeos.theme.css.custom-common}
 page.includeCSS.aimeos-theme = {$plugin.tx_aimeos.theme.css.custom}
 
-page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-3.1.1.min.js
+page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-2.2.4.min.js
 page.includeJSFooterlibs.jquery.external = 1
 page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
 
