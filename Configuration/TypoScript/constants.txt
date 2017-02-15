@@ -1,3 +1,9 @@
+# customcategory=ai100basic=Aimeos web shop: basic
+# customcategory=ai110menu=Aimeos web shop: menu
+# customcategory=ai120content=Aimeos web shop: content
+# customcategory=ai130page=Aimeos web shop: page
+# customcategory=ai140advanced=Aimeos web shop: advanced
+# customcategory=ai150theme=Aimeos web shop: theme
 plugin.tx_aimeos {
 	# cat=ai100basic/links/100; type=string; label=Content baseurl:Path to the content directory or content base URL to a server
 	common.content.baseurl = uploads/tx_aimeos
