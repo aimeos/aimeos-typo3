@@ -30,54 +30,22 @@ plugin.tx_aimeos {
 					content.baseurl = {$plugin.tx_aimeos.common.content.baseurl}
 					template.baseurl = {$plugin.tx_aimeos.theme.baseurl}
 				}
-				account {
-					download.url.config {
-						absoluteUri = 1
-						chash = 0
-					}
-					favorite.url.config.chash = 0
-					watch.url.config.chash = 0
-				}
-				basket.standard.url.config.chash = 0
+				account.download.url.config.absoluteUri = 1
 				catalog {
-					count.url.config {
-						type = 191351524
-						chash = 0
-					}
-					detail.url.config.chash = 0
-					lists.url.config.chash = 0
-					suggest.url.config {
-						type = 191351524
-						chash = 0
-					}
-					stock.url.config {
-						type = 191351524
-						chash = 0
-					}
+					count.url.config.type = 191351524
+					suggest.url.config.type = 191351524
+					stock.url.config.type = 191351524
 				}
 				checkout {
-					standard {
-						summary.option.terms {
-							privacy.url.config.chash = 0
-							url.config.chash = 0
-						}
-						url.config.chash = 0
-					}
 					confirm.url.config {
 						absoluteUri = 1
 						namespace = 0
-						chash = 0
 					}
 					update.url.config {
-						absoluteUri = 1
 						type = 191351525
+						absoluteUri = 1
 						namespace = 0
-						chash = 0
 					}
-				}
-				locale.select {
-					currency.url.config.chash = 0
-					language.url.config.chash = 0
 				}
 			}
 		}
