@@ -93,7 +93,6 @@ aimeosJson {
 	typeNum = 191351524
 	headerData >
 	config {
-		no_cache = 1
 		disableAllHeaderCode = 1
 		additionalHeaders.10.header = Content-type:application/javascript
 		disablePrefixComment = 1
@@ -111,7 +110,6 @@ aimeosPlain {
 	typeNum = 191351525
 	headerData >
 	config {
-		no_cache = 1
 		disableAllHeaderCode = 1
 		additionalHeaders.10.header = Content-type:text/plain
 		disablePrefixComment = 1
