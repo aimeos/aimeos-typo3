@@ -19,6 +19,23 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.lists.url.target>
+			<settings.client.html.catalog.lists.catid-default>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.catid-default</label>
+					<config>
+						<type>select</type>
+						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0"></numIndex>
+								<numIndex index="1"></numIndex>
+							</numIndex>
+						</items>
+						<size>10</size>
+						<maxitems>100</maxitems>
+					</config>
+				</TCEforms>
+			</settings.client.html.catalog.lists.catid-default>
 			<settings.typo3.tsconfig>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
