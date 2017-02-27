@@ -53,6 +53,7 @@ plugin.tx_aimeos {
 }
 
 
+module.tx_aimeos.settings.typo3.admin.default = {$module.tx_aimeos.typo3.admin.default}
 module.tx_aimeos.settings.client.html.common.content.baseurl = {$module.tx_aimeos.common.content.baseurl}
 
 

@@ -39,4 +39,7 @@ plugin.tx_aimeos {
 module.tx_aimeos {
 	# cat=ai150advanced/links/110; type=string; label=Content base URL (BE):Path to the content directory or content base URL of your server
 	common.content.baseurl = ../uploads/tx_aimeos
+
+	# cat=ai150advanced/admin/100; type=string; label=Admin interface:Admin interface shown by default (empty or "expert")
+	typo3.admin.default =
 }
