@@ -25,6 +25,7 @@ if ( TYPO3_MODE === 'BE' )
 		'tx_aimeos_admin',
 		'', // position
 		array(
+			'Admin' => 'index',
 			'Jqadm' => 'search,copy,create,delete,get,save,file',
 			'Extadm' => 'index,do,file',
 			'Jsonadm' => 'index',
