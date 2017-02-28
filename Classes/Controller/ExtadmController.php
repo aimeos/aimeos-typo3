@@ -195,7 +195,7 @@ class ExtadmController extends AbstractController
 		$manager = $localeManager->getSubManager( 'site' );
 
 		$site = 'default';
-		if( $request->hasArgument( 'site' ) ) {
+		if( $request->hasArgument( 'site' ) && $request->getArgument( 'site' ) != '' ) {
 			$site = $request->getArgument( 'site' );
 		}
 
