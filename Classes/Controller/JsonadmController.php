@@ -43,7 +43,7 @@ class JsonadmController extends AbstractController
 	{
 		$resource = null;
 
-		if( $this->request->hasArgument( 'resource' ) ) {
+		if( $this->request->hasArgument( 'resource' ) && $this->request->getArgument( 'resource' ) != '' ) {
 			$resource = $this->request->getArgument( 'resource' );
 		}
 

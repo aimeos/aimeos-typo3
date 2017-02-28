@@ -150,7 +150,7 @@ class JqadmController extends AbstractController
 	{
 		$resource = 'dashboard';
 
-		if( $this->request->hasArgument( 'resource' ) ) {
+		if( $this->request->hasArgument( 'resource' ) && $this->request->getArgument( 'resource' ) != '' ) {
 			$resource = $this->request->getArgument( 'resource' );
 		}
 
