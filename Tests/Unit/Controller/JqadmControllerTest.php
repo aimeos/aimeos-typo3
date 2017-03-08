@@ -93,7 +93,7 @@ class JqadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
+			->will( $this->onConsecutiveCalls( 'product', 'de', 'unittest' ) );
 
 		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
@@ -110,7 +110,7 @@ class JqadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
+			->will( $this->onConsecutiveCalls( 'product', 'de', 'unittest' ) );
 
 		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
@@ -127,7 +127,7 @@ class JqadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
+			->will( $this->onConsecutiveCalls( 'product', 'de', 'unittest' ) );
 
 		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
@@ -144,7 +144,7 @@ class JqadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
+			->will( $this->onConsecutiveCalls( 'product', 'de', 'unittest' ) );
 
 		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
@@ -161,7 +161,7 @@ class JqadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
+			->will( $this->onConsecutiveCalls( 'product', 'de', 'unittest' ) );
 
 		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 
@@ -178,7 +178,7 @@ class JqadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'product', 'unittest', 'de' ) );
+			->will( $this->onConsecutiveCalls( 'product', 'de', 'unittest' ) );
 
 		$this->view->expects( $this->exactly( 2 ) )->method( 'assign' );
 

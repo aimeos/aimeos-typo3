@@ -150,8 +150,10 @@ class JqadmController extends AbstractController
 	{
 		$resource = 'dashboard';
 
-		if( $this->request->hasArgument( 'resource' ) && $this->request->getArgument( 'resource' ) != '' ) {
-			$resource = $this->request->getArgument( 'resource' );
+		if( $this->request->hasArgument( 'resource' )
+			&& ( $value = $this->request->getArgument( 'resource' ) ) != ''
+		) {
+			$resource = $value;
 		}
 
 		$templatePaths = Base::getAimeos()->getCustomPaths( 'admin/jqadm/templates' );

@@ -17,7 +17,7 @@ class JsonadmControllerTest
 		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\JsonadmController', array( 'dummy' ) );
 
 		$this->request = $this->getMockBuilder( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' )
-			->setMethods( array( 'hasArgument', 'getArgument', 'getMethod', 'getBaseUri' ) )
+			->setMethods( array( 'hasArgument', 'getArgument', 'getMethod' ) )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -52,19 +52,16 @@ class JsonadmControllerTest
 	/**
 	 * @test
 	 */
-	public function indexAction()
+	public function getAction()
 	{
 		$this->request->expects( $this->exactly( 1 ) )->method( 'getMethod' )
 			->will( $this->returnValue( 'GET' ) );
-
-		$this->request->expects( $this->exactly( 1 ) )->method( 'getBaseUri' )
-			->will( $this->returnValue( 'http://localhost/' ) );
 
 		$this->request->expects( $this->atLeastOnce() )->method( 'hasArgument' )
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', null, 'unittest', null, null, 'unittest', null ) );
 
 		$this->response->expects( $this->exactly( 1 ) )->method( 'setStatus' )
 			->with( $this->equalTo( 200 ) );
@@ -82,19 +79,16 @@ class JsonadmControllerTest
 	public function optionsAction()
 	{
 		$this->request->expects( $this->exactly( 1 ) )->method( 'getMethod' )
-		->will( $this->returnValue( 'OPTIONS' ) );
-
-		$this->request->expects( $this->atLeastOnce() )->method( 'getBaseUri' )
-		->will( $this->returnValue( 'http://localhost/' ) );
+			->will( $this->returnValue( 'OPTIONS' ) );
 
 		$this->request->expects( $this->atLeastOnce() )->method( 'hasArgument' )
-		->will( $this->returnValue( true ) );
+			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-		->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( null, null, 'unittest', null, null, 'unittest', null ) );
 
 		$this->response->expects( $this->exactly( 1 ) )->method( 'setStatus' )
-		->with( $this->equalTo( 200 ) );
+			->with( $this->equalTo( 200 ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -119,7 +113,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', null, 'unittest', null, null, 'unittest', null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -140,7 +134,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', null, 'unittest', null, null, 'unittest', null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -161,7 +155,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', null, 'unittest', null, null, 'unittest', null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );
@@ -182,7 +176,7 @@ class JsonadmControllerTest
 			->will( $this->returnValue( true ) );
 
 		$this->request->expects( $this->any() )->method( 'getArgument' )
-			->will( $this->onConsecutiveCalls( 'stock/type', 'unittest', null, null, 'unittest', null, null ) );
+			->will( $this->onConsecutiveCalls( 'stock/type', null, 'unittest', null, null, 'unittest', null ) );
 
 		$result = $this->object->indexAction();
 		$json = json_decode( $result, true );

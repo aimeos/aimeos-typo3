@@ -84,12 +84,16 @@ abstract class AbstractController
 				$lang = $GLOBALS['BE_USER']->uc['lang'];
 			}
 
-			if( $this->request->hasArgument( 'lang' ) && $this->request->getArgument( 'lang' ) != '' ) {
-				$lang = $this->request->getArgument( 'lang' );
+			if( $this->request->hasArgument( 'lang' )
+				&& ( $value = $this->request->getArgument( 'lang' ) ) != ''
+			) {
+				$lang = $value;
 			}
 
-			if( $this->request->hasArgument( 'site' ) && $this->request->getArgument( 'site' ) != '' ) {
-				$site = $this->request->getArgument( 'site' );
+			if( $this->request->hasArgument( 'site' )
+				&& ( $value = $this->request->getArgument( 'site' ) ) != ''
+			) {
+				$site = $value;
 			}
 
 			$config = Base::getConfig( (array) $this->settings );
