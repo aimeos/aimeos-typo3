@@ -42,7 +42,7 @@ abstract class AbstractController
 	 *
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContext()
+	protected function getContext( $withView = true )
 	{
 		$config = Base::getConfig( (array) $this->settings );
 
@@ -59,9 +59,12 @@ abstract class AbstractController
 		// Use plugin specific configuration
 		self::$context->setConfig( $config );
 
-		$langid = self::$context->getLocale()->getLanguageId();
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
-		self::$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+		if( $withView === true )
+		{
+			$langid = self::$context->getLocale()->getLanguageId();
+			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
+			self::$context->setView( Base::getView( $config, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+		}
 
 		return self::$context;
 	}

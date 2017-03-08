@@ -24,6 +24,7 @@
 		"aimeos/ai-admin-extadm": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
+		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
 		"zendframework/zend-diactoros": "~1.3"
 	},
