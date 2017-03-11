@@ -73,7 +73,7 @@
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
-				<source>Aimeos Shop e-mail scheduler</source>
+				<source>Aimeos Shop advanced scheduler</source>
 			</trans-unit>
 		</body>
 	</file>
