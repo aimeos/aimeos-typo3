@@ -89,6 +89,6 @@ class Typo6 extends AbstractProvider
 	 */
 	protected function getJobFilter()
 	{
-		return '/^((?!email).)*$/';
+		return '/^((?!(email|export)).)*$/';
 	}
 }
