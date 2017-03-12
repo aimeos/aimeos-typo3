@@ -95,12 +95,6 @@
 					<config>
 						<type>select</type>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
-						<items type="array">
-							<numIndex index="0" type="array">
-								<numIndex index="0"></numIndex>
-								<numIndex index="1"></numIndex>
-							</numIndex>
-						</items>
 						<size>10</size>
 						<maxitems>100</maxitems>
 					</config>

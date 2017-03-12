@@ -30,26 +30,28 @@ class Catalog
 	 */
 	public function getCategories( array $config, $tceForms = null, $sitecode = 'default' )
 	{
-		if( isset( $config['flexParentDatabaseRow']['pid'] ) ) { // TYPO3 7+
-			$pid = $config['flexParentDatabaseRow']['pid'];
-		} elseif( isset( $config['row']['pid'] ) ) { // TYPO3 6.2
-			$pid = $config['row']['pid'];
-		}
-
-		$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $pid, 'tx_aimeos' );
-
-		if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
-			$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];
-		}
-
 		try
 		{
+			if( isset( $config['flexParentDatabaseRow']['pid'] ) ) { // TYPO3 7+
+				$pid = $config['flexParentDatabaseRow']['pid'];
+			} elseif( isset( $config['row']['pid'] ) ) { // TYPO3 6.2
+				$pid = $config['row']['pid'];
+			} else {
+				throw new \Exception( 'No PID found in "flexParentDatabaseRow" or "row" array key: ' . print_r( $config, true ) );
+			}
+
+			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getModTSconfig( $pid, 'tx_aimeos' );
+
+			if( isset( $pageTSConfig['properties']['mshop.']['locale.']['site'] ) ) {
+				$sitecode = $pageTSConfig['properties']['mshop.']['locale.']['site'];
+			}
+
+
 			$context = Base::getContext( Base::getConfig() );
 			$context->setEditor( 'flexform' );
 
 			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );
-
 
 			$manager = \Aimeos\MShop\Catalog\Manager\Factory::createManager( $context );
 			$item = $manager->getTree( null, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
