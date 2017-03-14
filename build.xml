@@ -10,12 +10,14 @@
 
 	<target name="deploy" description="Creates new package">
 		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
-		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
+		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
+		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
 		<reflexive>
 		  <fileset dir="." includes="ext_emconf.php" />
 		  <filterchain>
 		    <replaceregexp>
 		      <regexp pattern="'version' => '[^']*'" replace="'version' => '${version}'"/>
+		      <regexp pattern="'state' => '[^']*'" replace="'state' => '${state}'"/>
 		    </replaceregexp>
 		  </filterchain>
 		</reflexive>
