@@ -45,20 +45,13 @@ class Realurl
 					'f' => array(
 						array( 'GETvar' => 'ai[f_catid]' ),
 						array( 'GETvar' => 'ai[f_name]' ),
-						array(
-							'GETvar' => 'ai[f_sort]',
-							'valueMap' => array(
-								'code' => 'code',
-								'-code' => '-code',
-								'name' => 'name',
-								'-name' => '-name',
-								'price' => 'price',
-								'-price' => '-price',
-								'relevance' => 'relevance',
-							),
-							'noMatch' => 'bypass',
-						),
+					),
+					's' => array(
+						array( 'GETvar' => 'ai[f_sort]' ),
+					),
+					'l' => array(
 						array( 'GETvar' => 'ai[l_page]' ),
+						array( 'GETvar' => 'ai[l_size]' ),
 					),
 					'd' => array(
 						array( 'GETvar' => 'ai[d_prodid]' ),
@@ -91,7 +84,6 @@ class Realurl
 						array( 'GETvar' => 'ai[b_action]' ),
 						array( 'GETvar' => 'ai[b_position]' ),
 						array( 'GETvar' => 'ai[b_quantity]' ),
-						array( 'GETvar' => 'ai[b_coupon]' ),
 					),
 					'co' => array(
 						array( 'GETvar' => 'ai[c_step]' ),
