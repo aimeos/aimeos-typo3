@@ -3,36 +3,36 @@
 <project name="Aimeos TYPO3 extension" default="update">
 
 	<target name="update" description="Updates the Aimeos core">
-		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
+		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true"/>
 		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
-		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
 	</target>
 
 	<target name="deploy" description="Creates new package">
-		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
 		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
-		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
+		<input propertyName="state" message="Stablility state " promptChar=":" validargs="alpha,beta,stable,experimental,test,obsolete,excludeFromUpdates"/>
 		<reflexive>
-		  <fileset dir="." includes="ext_emconf.php" />
-		  <filterchain>
-		    <replaceregexp>
-		      <regexp pattern="'version' => '[^']*'" replace="'version' => '${version}'"/>
-		      <regexp pattern="'state' => '[^']*'" replace="'state' => '${state}'"/>
-		    </replaceregexp>
-		  </filterchain>
+			<fileset dir="." includes="ext_emconf.php"/>
+			<filterchain>
+				<replaceregexp>
+					<regexp pattern="'version' => '[^']*'" replace="'version' => '${version}'"/>
+					<regexp pattern="'state' => '[^']*'" replace="'state' => '${state}'"/>
+				</replaceregexp>
+			</filterchain>
 		</reflexive>
 		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml -x .deploy.*"
 			checkreturn="true" logoutput="true"/>
-		<filehash file="../aimeos_${version}.zip" hashtype="1" />
-		<echo msg="SHA1 hash value: ${filehashvalue}" />
+		<filehash file="../aimeos_${version}.zip" hashtype="1"/>
+		<echo msg="SHA1 hash value: ${filehashvalue}"/>
 	</target>
 
 	<target name="release" description="Creates new release">
 		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
-		<exec command="git branch ${version}" checkreturn="true" logoutput="true" />
-		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true" />
-		<exec command="git push origin ${version}" checkreturn="true" logoutput="true" />
-		<exec command="git push --tags" checkreturn="true" logoutput="true" />
+		<exec command="git branch ${version}" checkreturn="true" logoutput="true"/>
+		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true"/>
+		<exec command="git push origin ${version}" checkreturn="true" logoutput="true"/>
+		<exec command="git push --tags" checkreturn="true" logoutput="true"/>
 	</target>
 
 </project>
