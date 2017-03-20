@@ -10,13 +10,13 @@
 	</target>
 
 	<target name="deploy" description="Creates new package">
-		<fail message="Version or state not set. Please make release first!">
+		<fail message="Version or state not set. Please call release first!">
 			<condition>
 				<not>
-					<or>
+					<and>
 						<isset property="version"/>
 						<isset property="state"/>
-					</or>
+					</and>
 				</not>
 			</condition>
 		</fail>
