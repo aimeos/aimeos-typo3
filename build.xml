@@ -9,38 +9,27 @@
 		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
 	</target>
 
-	<target name="deleteVersion" description="Delete version">
-		<property name="lastVersion" value="${version}" override="true"/>
-		<property name="lastState" value="${state}" override="true"/>
-		<property name="version" value="" override="true"/>
-		<property name="state" value="" override="true"/>
+	<target name="deploy" description="Creates new package">
+		<fail message="Version or state not set. Please make release first!">
+			<condition>
+				<not>
+					<or>
+						<isset property="version"/>
+						<isset property="state"/>
+					</or>
+				</not>
+			</condition>
+		</fail>
+		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
+		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml -x .deploy.*"
+			checkreturn="true" logoutput="true"/>
+		<filehash file="../aimeos_${version}.zip" hashtype="1"/>
+		<echo msg="SHA1 hash value: ${filehashvalue}"/>
 	</target>
 
-	<target name="queryVersion" description="Query new version and save to properties file">
-		<if>
-			<and>
-				<ispropertyfalse name="version"/>
-				<ispropertytrue name="lastVersion"/>
-			</and>
-			<then>
-				<input propertyName="version" defaultValue="${version}" message="Release version (was ${lastVersion})" promptChar=":"/>
-			</then>
-			<else>
-				<input propertyName="version" defaultValue="${version}" message="Release version" promptChar=":"/>
-			</else>
-		</if>
-		<if>
-			<and>
-				<ispropertyfalse name="state"/>
-				<ispropertytrue name="lastState"/>
-			</and>
-			<then>
-				<input propertyName="state" defaultValue="${state}" message="Stablility state (was ${lastState}) " promptChar=":" validargs="alpha,beta,stable,experimental,test,obsolete,excludeFromUpdates"/>
-			</then>
-			<else>
-				<input propertyName="state" defaultValue="${state}" message="Stablility state " promptChar=":" validargs="alpha,beta,stable,experimental,test,obsolete,excludeFromUpdates"/>
-			</else>
-		</if>
+	<target name="release" description="Creates new release">
+		<input propertyName="version" defaultValue="${version}" message="Release version" promptChar=":"/>
+		<input propertyName="state" defaultValue="${state}" message="Stablility state " promptChar=":" validargs="alpha,beta,stable,experimental,test,obsolete,excludeFromUpdates"/>
 		<echoproperties destfile="build.properties"/>
 		<reflexive>
 			<fileset dir="." includes="ext_emconf.php"/>
@@ -51,18 +40,8 @@
 				</replaceregexp>
 			</filterchain>
 		</reflexive>
-	</target>
-
-	<target name="deploy" description="Creates new package" depends="queryVersion">
-		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
-		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml -x .deploy.*"
-			checkreturn="true" logoutput="true"/>
-		<filehash file="../aimeos_${version}.zip" hashtype="1"/>
-		<echo msg="SHA1 hash value: ${filehashvalue}"/>
-	</target>
-
-	<target name="release" description="Creates new release" depends="deleteVersion,queryVersion">
 		<exec command="git branch ${version}" checkreturn="true" logoutput="true"/>
+		<exec command="git commit -m 'Updated version and state' ext_emconf.php" checkreturn="true" logoutput="true"/>
 		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true"/>
 		<exec command="git push origin ${version}" checkreturn="true" logoutput="true"/>
 		<exec command="git push --tags" checkreturn="true" logoutput="true"/>
