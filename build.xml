@@ -25,6 +25,10 @@
 			checkreturn="true" logoutput="true"/>
 		<filehash file="../aimeos_${version}.zip" hashtype="1"/>
 		<echo msg="SHA1 hash value: ${filehashvalue}"/>
+		<echo msg="${filehashvalue}" file="../aimeos_${version}.zip.sha1"/>
+		<filehash file="../aimeos_${version}.zip" algorithm="sha512"/>
+		<echo msg="SHA512 hash value: ${filehashvalue}"/>
+		<echo msg="${filehashvalue}" file="../aimeos_${version}.zip.sha512"/>
 	</target>
 
 	<target name="release" description="Creates new release">
