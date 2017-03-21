@@ -75,6 +75,7 @@ class ExtadmController extends AbstractController
 		$this->view->assign( 'itemSchemas', $controller->getJsonItemSchemas() );
 		$this->view->assign( 'searchSchemas', $controller->getJsonSearchSchemas() );
 		$this->view->assign( 'activeTab', ( $this->request->hasArgument( 'tab' ) ? (int) $this->request->getArgument( 'tab' ) : 0 ) );
+		$this->view->assign( 'extensions', implode( ',', Base::getAimeos()->getExtensions() ) );
 		$this->view->assign( 'version', Base::getVersion() );
 		$this->view->assign( 'urlTemplate', $urlTemplate );
 		$this->view->assign( 'jqadmurl', $jqadmUrl );

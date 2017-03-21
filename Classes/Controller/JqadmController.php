@@ -170,7 +170,9 @@ class JqadmController extends AbstractController
 	 */
 	protected function setHtml( $content )
 	{
-		$content = str_replace( ['{type}', '{version}'], ['TYPO3', Base::getVersion()], $content );
+		$version = Base::getVersion();
+		$extnames = implode( ',', Base::getAimeos()->getExtensions() );
+		$content = str_replace( ['{type}', '{version}', '{extensions}'], ['TYPO3', $version, $extnames], $content );
 
 		$this->view->assign( 'formparam', 'tx_aimeos_web_aimeostxaimeosadmin' );
 		$this->view->assign( 'content', $content );
