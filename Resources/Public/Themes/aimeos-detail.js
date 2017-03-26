@@ -163,58 +163,6 @@ AimeosCatalogDetail = {
 
 
 	/**
-	 * Adds a product to the favorite list without page reload
-	 */
-	setupFavoriteAction: function() {
-
-		$(".catalog-detail-actions .actions-button-favorite").on("click", function(ev) {
-
-		    if($(this).data("login")) {
-		        return true;
-		    }
-
-		    Aimeos.createOverlay();
-
-		    $.get($(this).attr("href"), function(data) {
-
-		        var doc = document.createElement("html");
-		        doc.innerHTML = data;
-
-		        Aimeos.createContainer($(".account-favorite", doc));
-		    });
-
-		    return false;
-		});
-	},
-
-
-	/**
-	 * Adds a product to the watch list without page reload
-	 */
-	setupWatchAction: function() {
-
-		$(".catalog-detail-actions .actions-button-watch").on("click", function(ev) {
-
-		    if($(this).data("login")) {
-		        return true;
-		    }
-
-		    Aimeos.createOverlay();
-
-		    $.get($(this).attr("href"), function(data) {
-
-		        var doc = document.createElement("html");
-		        doc.innerHTML = data;
-
-		        Aimeos.createContainer($(".account-watch", doc));
-		    });
-
-		    return false;
-		});
-	},
-
-
-	/**
 	 * Initializes the catalog detail actions
 	 */
 	init: function() {
@@ -226,9 +174,6 @@ AimeosCatalogDetail = {
 		this.setupThumbnailSlider();
 		this.setupImageLightbox();
 		this.setupImageSwap();
-
-		this.setupFavoriteAction();
-		this.setupWatchAction();
 	}
 };
 

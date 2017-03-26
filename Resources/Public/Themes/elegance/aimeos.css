@@ -1247,54 +1247,54 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 }
 
 /* Product detail, social section */
-.catalog-detail-social {
+.catalog-detail .catalog-social {
 	float: right;
 	margin: 1em 0;
 }
 
-.catalog-detail-social .social-button {
+.catalog-detail .catalog-social .social-button {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 150%;
 	padding: 0 0.33em;
 }
 
-.catalog-detail-social .social-button-facebook:before {
+.catalog-detail .catalog-social .social-button-facebook:before {
 	content: "\f082";
 }
 
-.catalog-detail-social .social-button-gplus:before {
+.catalog-detail .catalog-social .social-button-gplus:before {
 	content: "\f0d5";
 }
 
-.catalog-detail-social .social-button-twitter:before {
+.catalog-detail .catalog-social .social-button-twitter:before {
 	content: "\f099";
 }
 
-.catalog-detail-social .social-button-pinterest:before {
+.catalog-detail .catalog-social .social-button-pinterest:before {
 	content: "\f0d2";
 }
 
 /* Product detail, action buttions */
-.catalog-detail-actions {
+.catalog-detail .catalog-actions {
 	float: left;
 	margin: 1em 0;
 }
 
-.catalog-detail-actions .actions-button {
+.catalog-detail .catalog-actions .actions-button {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 150%;
 	padding: 0 0.5em;
 }
 
-.catalog-detail-actions .actions-button-favorite:before {
+.catalog-detail .catalog-actions .actions-button-favorite:before {
 	content: "\f004";
 }
 
-.catalog-detail-actions .actions-button-pin:before {
+.catalog-detail .catalog-actions .actions-button-pin:before {
 	content: "\f08d";
 }
 
-.catalog-detail-actions .actions-button-watch:before {
+.catalog-detail .catalog-actions .actions-button-watch:before {
 	content: "\f06e";
 }
 

@@ -697,6 +697,60 @@ AimeosCatalog = {
 
 
 	/**
+	 * Adds a product to the favorite list without page reload
+	 */
+	setupFavoriteAction: function() {
+
+		$(".catalog-actions .actions-button-favorite").on("click", function(ev) {
+
+		    Aimeos.createOverlay();
+
+		    $.get($(this).attr("href"), function(data) {
+
+		        var doc = document.createElement("html");
+		        doc.innerHTML = data;
+		        var content = $(".account-favorite", doc);
+
+		        if( content.length > 0 ) {
+			        Aimeos.createContainer(content);
+		        } else {
+		        	$("html").replaceWith(doc);
+		        }
+		    });
+
+		    return false;
+		});
+	},
+
+
+	/**
+	 * Adds a product to the watch list without page reload
+	 */
+	setupWatchAction: function() {
+
+		$(".catalog-actions .actions-button-watch").on("click", function(ev) {
+
+		    Aimeos.createOverlay();
+
+		    $.get($(this).attr("href"), function(data) {
+
+		        var doc = document.createElement("html");
+		        doc.innerHTML = data;
+		        var content = $(".account-watch", doc);
+
+		        if( content.length > 0 ) {
+			        Aimeos.createContainer(content);
+		        } else {
+		        	$("html").replaceWith(doc);
+		        }
+		    });
+
+		    return false;
+		});
+	},
+
+
+	/**
 	 * Initializes the common catalog actions
 	 */
 	init: function() {
@@ -706,6 +760,8 @@ AimeosCatalog = {
 		this.setupVariantImages();
 		this.setupVariantCheck();
 		this.setupBasketAdd();
+		this.setupWatchAction();
+		this.setupFavoriteAction();
 	}
 };
 
