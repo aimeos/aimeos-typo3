@@ -112,6 +112,7 @@ class Base
 			$uriBuilder->injectConfigurationManager( $configurationManager );
 		}
 
+		$uriBuilder->initializeObject();
 		$uriBuilder->setArgumentPrefix( 'ai' );
 
 		return $uriBuilder;
