@@ -20,8 +20,21 @@ $TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Cust
 if ( TYPO3_MODE === 'BE' )
 {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+	        'Aimeos.' . $_EXTKEY,
+	        'Aimeos',
+	        '',
+	        '',
+	        [],
+	        [
+	            'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
+	            'access' => 'user,group',
+	            'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/admin.xlf',
+	        ]
+    	);
+
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		'Aimeos.' . $_EXTKEY,
-		'web',
+		'Aimeos',
 		'tx_aimeos_admin',
 		'', // position
 		array(
