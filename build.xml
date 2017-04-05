@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Aimeos TYPO3 extension" default="update">
+	<property file="build.properties"/>
 
 	<target name="update" description="Updates the Aimeos core">
-		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
+		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true"/>
 		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
-		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
 	</target>
 
 	<target name="deploy" description="Creates new package">
-		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
-		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
-		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
-		<reflexive>
-		  <fileset dir="." includes="ext_emconf.php" />
-		  <filterchain>
-		    <replaceregexp>
-		      <regexp pattern="'version' => '[^']*'" replace="'version' => '${version}'"/>
-		      <regexp pattern="'state' => '[^']*'" replace="'state' => '${state}'"/>
-		    </replaceregexp>
-		  </filterchain>
-		</reflexive>
+		<fail message="Version or state not set. Please call release first!">
+			<condition>
+				<not>
+					<and>
+						<isset property="version"/>
+						<isset property="state"/>
+					</and>
+				</not>
+			</condition>
+		</fail>
+		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true"/>
 		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml -x .deploy.*"
 			checkreturn="true" logoutput="true"/>
-		<filehash file="../aimeos_${version}.zip" hashtype="1" />
-		<echo msg="SHA1 hash value: ${filehashvalue}" />
+		<filehash file="../aimeos_${version}.zip" hashtype="1"/>
+		<echo msg="SHA1 hash value: ${filehashvalue}"/>
+		<echo msg="${filehashvalue}" file="../aimeos_${version}.zip.sha1"/>
+		<filehash file="../aimeos_${version}.zip" algorithm="sha512"/>
+		<echo msg="SHA512 hash value: ${filehashvalue}"/>
+		<echo msg="${filehashvalue}" file="../aimeos_${version}.zip.sha512"/>
 	</target>
 
 	<target name="release" description="Creates new release">
-		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
-		<exec command="git branch ${version}" checkreturn="true" logoutput="true" />
-		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true" />
-		<exec command="git push origin ${version}" checkreturn="true" logoutput="true" />
-		<exec command="git push --tags" checkreturn="true" logoutput="true" />
+		<input propertyName="version" defaultValue="${version}" message="Release version" promptChar=":"/>
+		<input propertyName="state" defaultValue="${state}" message="Stablility state " promptChar=":" validargs="alpha,beta,stable,experimental,test,obsolete,excludeFromUpdates"/>
+		<echoproperties destfile="build.properties"/>
+		<reflexive>
+			<fileset dir="." includes="ext_emconf.php"/>
+			<filterchain>
+				<replaceregexp>
+					<regexp pattern="'version' => '[^']*'" replace="'version' => '${version}'"/>
+					<regexp pattern="'state' => '[^']*'" replace="'state' => '${state}'"/>
+				</replaceregexp>
+			</filterchain>
+		</reflexive>
+		<exec command="git branch ${version}" checkreturn="true" logoutput="true"/>
+		<exec command="git commit -m 'Updated version and state' ext_emconf.php" checkreturn="true" logoutput="true"/>
+		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true"/>
+		<exec command="git push origin ${version}" checkreturn="true" logoutput="true"/>
+		<exec command="git push --tags" checkreturn="true" logoutput="true"/>
 	</target>
 
 </project>
