@@ -38,7 +38,7 @@ class I18n
 			{
 				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
 
-				if( function_exists( 'apc_store' ) === true && (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
+				if( function_exists( 'apcu_store' ) === true && (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
 					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
