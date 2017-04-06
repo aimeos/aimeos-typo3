@@ -1,3 +1,4 @@
 Resources/Private/Extensions
 Resources/Libraries
 composer.lock
+.Build
