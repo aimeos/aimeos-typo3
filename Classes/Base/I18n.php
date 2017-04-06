@@ -34,6 +34,8 @@ class I18n
 
 		foreach( $languageIds as $langid )
 		{
+			if( $langid == '' ) { continue; }
+
 			if( !isset( self::$i18n[$langid] ) )
 			{
 				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
