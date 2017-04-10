@@ -19,19 +19,6 @@ $TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Cust
 
 if ( TYPO3_MODE === 'BE' )
 {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'Aimeos.' . $_EXTKEY,
-        'Aimeos',
-        '',
-        '',
-        [],
-        [
-            'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
-            'access' => 'user,group',
-            'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/admin.xlf',
-        ]
-    );
-    
     $_moduleConfiguration = array(
         'access' => 'user,group',
         'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
@@ -39,14 +26,16 @@ if ( TYPO3_MODE === 'BE' )
     );
     if ( ! (bool)\Aimeos\Aimeos\Base::getExtConfig('showPageTree', true)) {
         $_moduleConfiguration['navigationComponentId'] = null;
+        $_moduleConfiguration['inheritNavigationComponentFromMainModule'] = false;
     }
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		'Aimeos.' . $_EXTKEY,
-		'Aimeos',
+		'web',
 		'tx_aimeos_admin',
 		'', // position
 		array(
+			'Admin' => 'index',
 			'Jqadm' => 'search,copy,create,delete,get,save,file',
 			'Extadm' => 'index,do,file',
 			'Jsonadm' => 'index',
