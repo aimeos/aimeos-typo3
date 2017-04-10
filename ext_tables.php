@@ -19,7 +19,17 @@ $TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Cust
 
 if ( TYPO3_MODE === 'BE' )
 {
-	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+    $_moduleConfiguration = array(
+        'access' => 'user,group',
+        'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
+        'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/admin.xlf',
+    );
+    if ( ! (bool)\Aimeos\Aimeos\Base::getExtConfig('showPageTree', true)) {
+        $_moduleConfiguration['navigationComponentId'] = null;
+        $_moduleConfiguration['inheritNavigationComponentFromMainModule'] = false;
+    }
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		'Aimeos.' . $_EXTKEY,
 		'web',
 		'tx_aimeos_admin',
@@ -30,11 +40,7 @@ if ( TYPO3_MODE === 'BE' )
 			'Extadm' => 'index,do,file',
 			'Jsonadm' => 'index',
 		),
-		array(
-			'access' => 'user,group',
-			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
-			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/admin.xlf',
-		)
+		$_moduleConfiguration
 	);
 }
 
