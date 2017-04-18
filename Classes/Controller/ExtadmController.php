@@ -64,7 +64,7 @@ class ExtadmController extends AbstractController
 		// rawurldecode() is necessary for ExtJS templates to replace "{site}" properly
 		$urlTemplate = rawurldecode( BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Extadm', 'action' => 'index', 'site' => '{site}', 'tab' => '{tab}' ) ) ) );
 		$serviceUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Extadm', 'action' => 'do' ) ) );
-		$jqadmUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Jqadm', 'action' => 'search', 'site' => $site, 'resource' => 'product' ) ) );
+		$jqadmUrl = BackendUtility::getModuleUrl( $this->request->getPluginName(), array( 'tx_aimeos_web_aimeostxaimeosadmin' => array( 'controller' => 'Jqadm', 'action' => 'search', 'site' => $site, 'lang' => $lang, 'resource' => 'dashboard' ) ) );
 
 		$this->view->assign( 'cssFiles', $cssFiles );
 		$this->view->assign( 'lang', $langid );
