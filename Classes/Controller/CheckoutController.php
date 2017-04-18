@@ -50,7 +50,7 @@ class CheckoutController extends AbstractController
 		$client->setView( $view );
 		$client->process();
 
-		$this->response->addAdditionalHeaderData( $client->getHeader() );
+		$this->response->addAdditionalHeaderData( (string) $client->getHeader() );
 
 		return $client->getBody();
 	}
@@ -75,7 +75,7 @@ class CheckoutController extends AbstractController
 			$client->setView( $view );
 			$client->process();
 
-			$this->response->addAdditionalHeaderData( $client->getHeader() );
+			$this->response->addAdditionalHeaderData( (string) $client->getHeader() );
 
 			return $client->getBody();
 		}
