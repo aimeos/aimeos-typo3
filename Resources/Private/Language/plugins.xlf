@@ -21,6 +21,9 @@
 			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
 			</trans-unit>
+			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
+				<source>Displayed attribute types for faceted search</source>
+			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
 			</trans-unit>

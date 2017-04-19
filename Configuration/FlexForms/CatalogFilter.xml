@@ -84,6 +84,17 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.filter.tree.levels-only>
+			<settings.client.html.catalog.filter.attribute.types>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.attribute-types</label>
+					<config>
+						<type>select</type>
+						<itemsProcFunc>Aimeos\Aimeos\Flexform\Attribute->getTypes</itemsProcFunc>
+						<size>10</size>
+						<maxitems>100</maxitems>
+					</config>
+				</TCEforms>
+			</settings.client.html.catalog.filter.attribute.types>
 			<settings.typo3.tsconfig>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
