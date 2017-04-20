@@ -13,4 +13,4 @@ useAPC = 0
 # cat=cache/apc; type=string; label=APC prefix:The prefix to distinguish configuration values from different instances
 apcPrefix = t3:
 # cat=backend; type=boolean; label=Show Typo3 page tree in backend
-showPageTree = 1
+showPageTree = 0
