@@ -12,6 +12,7 @@ namespace Aimeos\Aimeos\Scheduler;
 
 use Aimeos\Aimeos;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 
 /**
@@ -170,11 +171,9 @@ class Base
 		$GLOBALS['TSFE']->initTemplate();
 		$GLOBALS['TSFE']->getConfigArray();
 
-		if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'realurl' ) )
-		{
-			$rootline = \TYPO3\CMS\Backend\Utility\BackendUtility::BEgetRootLine( $pageid );
-			$host = \TYPO3\CMS\Backend\Utility\BackendUtility::firstDomainRecord( $rootline );
-			$SERVER['HTTP_HOST'] = $host;
+		$rootline = BackendUtility::BEgetRootLine( $pageid );
+		if( ( $_SERVER['HTTP_HOST'] = BackendUtility::firstDomainRecord( $rootline ) ) == null ) {
+			throw new \RuntimeException( 'No domain record in root page' );
 		}
 	}
 }
