@@ -25,14 +25,8 @@ plugin.tx_aimeos {
 	}
 	settings {
 		admin.jsonadm.url {
-			config {
-				type = 191351523
-				absoluteUri = 1
-			}
-			options.config {
-				type = 191351523
-				absoluteUri = 1
-			}
+			config.absoluteUri = 1
+			options.config.absoluteUri = 1
 		}
 		client {
 			html {
@@ -59,14 +53,8 @@ plugin.tx_aimeos {
 				}
 			}
 			jsonapi.url {
-				config {
-					type = 191351523
-					absoluteUri = 1
-				}
-				options.config {
-					type = 191351523
-					absoluteUri = 1
-				}
+				config.absoluteUri = 1
+				options.config.absoluteUri = 1
 			}
 		}
 	}
@@ -77,29 +65,14 @@ module.tx_aimeos.settings.typo3.admin.default = {$module.tx_aimeos.typo3.admin.d
 module.tx_aimeos.settings.client.html.common.content.baseurl = {$module.tx_aimeos.common.content.baseurl}
 
 
-aimeosApi = PAGE
-aimeosApi {
-	typeNum = 191351523
-	headerData >
-	config {
-		disableAllHeaderCode = 1
-		disableCharsetHeader = 1
-	}
-	10 = CONTENT
-	10 {
-		table = tt_content
-		select.orderBy = sorting
-		select.languageField = sys_language_uid
-	}
-}
-
-aimeosJson = PAGE
-aimeosJson {
+aimeosJs = PAGE
+aimeosJs {
 	typeNum = 191351524
 	headerData >
 	config {
-		disableAllHeaderCode = 1
 		additionalHeaders.10.header = Content-type:application/javascript
+		disableAllHeaderCode = 1
+		disableCharsetHeader = 1
 		disablePrefixComment = 1
 	}
 	10 = CONTENT
@@ -115,8 +88,9 @@ aimeosPlain {
 	typeNum = 191351525
 	headerData >
 	config {
-		disableAllHeaderCode = 1
 		additionalHeaders.10.header = Content-type:text/plain
+		disableAllHeaderCode = 1
+		disableCharsetHeader = 1
 		disablePrefixComment = 1
 	}
 	10 = CONTENT
@@ -127,7 +101,7 @@ aimeosPlain {
 	}
 }
 
-[globalVar = TSFE:type=191351523][globalVar = TSFE:type=191351524][globalVar = TSFE:type=191351525]
+[globalVar = TSFE:type=191351524][globalVar = TSFE:type=191351525]
 tt_content.stdWrap >
 tt_content.list = COA
 tt_content.list.20 = CASE
