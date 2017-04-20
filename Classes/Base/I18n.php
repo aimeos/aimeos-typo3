@@ -40,7 +40,7 @@ class I18n
 			{
 				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
 
-				if( function_exists( 'apcu_store' ) === true && (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
+				if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
 					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
@@ -74,11 +74,11 @@ class I18n
 		{
 			if( isset( $entry['domain'] ) && isset( $entry['string'] ) && isset( $entry['trans'] ) )
 			{
-				$string = str_replace( '\\n', "\n", $entry['string'] );
+				$string = str_replace( ['\\n', '\\'], ["\n", ''], $entry['string'] );
 				$trans = array();
 
-				foreach( (array) $entry['trans'] as $tx ) {
-					$trans[] = str_replace( '\\n', "\n", $tx );
+				foreach( (array) $entry['trans'] as $str ) {
+					$trans[] = str_replace( ['\\n', '\\'], ["\n", ''], $str );
 				}
 
 				$translations[$entry['domain']][$string] = $trans;

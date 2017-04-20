@@ -45,7 +45,7 @@ class Config
 
 			$conf = new \Aimeos\MW\Config\PHPArray( array(), $paths );
 
-			if( function_exists( 'apcu_store' ) === true && (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
+			if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
 				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
