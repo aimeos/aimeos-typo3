@@ -98,12 +98,6 @@ class Realurl
 						array( 'GETvar' => 'ai[related]' ),
 						array( 'GETvar' => 'ai[relatedid]' ),
 					),
-					'json' => array(
-						'type' => 'single',
-						'keyValues' => array(
-							'type' => 191351523
-						),
-					),
 					'js' => array(
 						'type' => 'single',
 						'keyValues' => array(
