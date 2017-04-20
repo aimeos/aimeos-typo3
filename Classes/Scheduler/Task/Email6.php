@@ -47,6 +47,10 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			$conf['client']['html']['catalog']['detail']['url']['config']['absoluteUri'] = 1;
 		}
 
+		if( !isset( $conf['client']['html']['account']['download']['url']['config']['absoluteUri'] ) ) {
+			$conf['client']['html']['account']['download']['url']['config']['absoluteUri'] = 1;
+		}
+
 		if( $this->{$this->fieldSenderFrom} != '' ) {
 			$conf['client']['html']['email']['from-name'] = $this->{$this->fieldSenderFrom};
 		}
