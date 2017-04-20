@@ -172,7 +172,9 @@ class JsonapiController extends AbstractController
 		$this->response->setStatus( $response->getStatusCode() );
 
 		foreach( $response->getHeaders() as $key => $value ) {
-			$this->response->setHeader( $key, $value );
+			foreach( (array) $value as $val ) {
+				$this->response->setHeader( $key, $val );
+			}
 		}
 
 		return (string) $response->getBody();

@@ -1,0 +1,19 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<ROOT>
+		<type>array</type>
+		<el>
+			<settings.typo3.tsconfig>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
+					<config>
+						<type>text</type>
+						<rows>10</rows>
+					</config>
+				</TCEforms>
+			</settings.typo3.tsconfig>
+		</el>
+	</ROOT>
+</T3DataStructure>

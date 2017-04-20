@@ -48,6 +48,11 @@ if ( TYPO3_MODE === 'BE' )
 $pluginName = str_replace( '_', '', $_EXTKEY );
 
 
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_jsonapi'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_jsonapi', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Jsonapi.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'jsonapi', 'Aimeos Shop - JSON REST API' );
+
+
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_locale-select'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_locale-select', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/LocaleSelect.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'locale-select', 'Aimeos Shop - Locale selector' );

@@ -168,6 +168,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 	array( 'Account' => 'watch' )
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'jsonapi',
+	array( 'Jsonapi' => 'index' ),
+	array( 'Jsonapi' => 'index' )
+);
+
 
 /**
  * Aimeos scheduler tasks

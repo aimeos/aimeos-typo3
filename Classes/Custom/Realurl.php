@@ -92,7 +92,19 @@ class Realurl
 						array( 'GETvar' => 'code' ),
 						array( 'GETvar' => 'orderid' ),
 					),
+					'r' => array(
+						array( 'GETvar' => 'ai[resource]' ),
+						array( 'GETvar' => 'ai[id]' ),
+						array( 'GETvar' => 'ai[related]' ),
+						array( 'GETvar' => 'ai[relatedid]' ),
+					),
 					'json' => array(
+						'type' => 'single',
+						'keyValues' => array(
+							'type' => 191351523
+						),
+					),
+					'js' => array(
 						'type' => 'single',
 						'keyValues' => array(
 							'type' => 191351524
