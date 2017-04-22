@@ -9,6 +9,8 @@
 
 namespace Aimeos\Aimeos\Base;
 
+use GeneralUtility;
+
 
 /**
  * Aimeos context class
@@ -42,7 +44,7 @@ class Context
 				break;
 
 			case 'Typo3':
-				$manager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
+				$manager = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
 				$cache = new \Aimeos\MAdmin\Cache\Proxy\Typo3( $context, $manager->getCache( 'aimeos' ) );
 				break;
 
@@ -148,7 +150,7 @@ class Context
 		}
 
 		return $context->setMail( new \Aimeos\MW\Mail\Typo3( function() {
-			return \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
+			return GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
 		} ) );
 	}
 
@@ -218,6 +220,10 @@ class Context
 		{
 			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
 		}
+		else
+		{
+			$context->setEditor( GeneralUtility::getIndpEnv( 'REMOTE_ADDR' ) );
+		}
 
 		return $context;
 	}
@@ -239,7 +245,7 @@ class Context
 
 		if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
 		{
-			$ids = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] );
+			$ids = GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] );
 			$context->setGroupIds( $ids );
 		}
 		elseif( TYPO3_MODE === 'BE' )
