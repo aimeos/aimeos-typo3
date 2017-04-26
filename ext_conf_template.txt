@@ -1,7 +1,7 @@
 # cat=basic/site; type=string; label=Site code:Create or update the site with this code
 siteCode = default
 # cat=basic/cleanup; type=boolean; label=Cleanup old columns and indexes:Removes the table columns and indexes that are not used any more when installing a new version
-cleanDb = 0
+cleanDb = 1
 # cat=basic/demo; type=options[Remove=0,No action=,Overwrite=1]; label=Updates demo data:Adds a new set of demo data, keeps the current set untouched or removes the existing demo data during execution of the update script. This setting will be reset to "No action" after the setup tasks have been executed.
 useDemoData = 1
 # cat=basic/realurl; type=boolean; label=Use auto-configuration for RealUrl:If the internal RealUrl auto-configuration for Aimeos plugins should be used
