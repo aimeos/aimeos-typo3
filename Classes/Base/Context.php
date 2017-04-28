@@ -9,7 +9,7 @@
 
 namespace Aimeos\Aimeos\Base;
 
-use GeneralUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 /**

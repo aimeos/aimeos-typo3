@@ -10,7 +10,7 @@
 namespace Aimeos\Aimeos\Controller;
 
 
-use \Aimeos\Aimeos\Base;
+use Aimeos\Aimeos\Base;
 
 
 /**

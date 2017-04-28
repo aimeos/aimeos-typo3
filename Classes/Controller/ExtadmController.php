@@ -12,7 +12,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
-use \TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 
 /**
