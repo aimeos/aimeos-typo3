@@ -71,7 +71,7 @@ class Setup
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
 
-		if( isset( $conf['cleanDb'] ) && (boolean) $conf['cleanDb'] === true ) {
+		if( !isset( $conf['cleanDb'] ) || $conf['cleanDb'] == 1 ) {
 			$manager->clean();
 		}
 
