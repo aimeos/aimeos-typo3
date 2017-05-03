@@ -2,6 +2,8 @@ page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-common = {$plugin.tx_aimeos.theme.css.common}
 page.includeCSS.aimeos-custom = {$plugin.tx_aimeos.theme.css.custom}
 
+page.includeJSFooterlibs.polyfill = https://cdn.polyfill.io/v2/polyfill.min.js
+page.includeJSFooterlibs.polyfill.external = 1
 page.includeJSFooterlibs.jquery = https://code.jquery.com/jquery-2.2.4.min.js
 page.includeJSFooterlibs.jquery.external = 1
 page.includeJSFooterlibs.jquery-ui = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
