@@ -66,7 +66,8 @@ class JsonapiController extends AbstractController
 	 */
 	public function deleteAction( $resource, $related )
 	{
-		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), new Response() );
+		$prefix = $this->uriBuilder->getArgumentPrefix();
+		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), new Response(), $prefix );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -80,7 +81,8 @@ class JsonapiController extends AbstractController
 	 */
 	public function getAction( $resource, $related )
 	{
-		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), new Response() );
+		$prefix = $this->uriBuilder->getArgumentPrefix();
+		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), new Response(), $prefix );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -94,7 +96,8 @@ class JsonapiController extends AbstractController
 	 */
 	public function patchAction( $resource, $related )
 	{
-		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), new Response() );
+		$prefix = $this->uriBuilder->getArgumentPrefix();
+		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), new Response(), $prefix );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -108,7 +111,8 @@ class JsonapiController extends AbstractController
 	 */
 	public function postAction( $resource, $related )
 	{
-		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), new Response() );
+		$prefix = $this->uriBuilder->getArgumentPrefix();
+		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), new Response(), $prefix );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -122,7 +126,8 @@ class JsonapiController extends AbstractController
 	 */
 	public function putAction( $resource, $related )
 	{
-		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), new Response() );
+		$prefix = $this->uriBuilder->getArgumentPrefix();
+		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), new Response(), $prefix );
 		return $this->setPsrResponse( $response );
 	}
 
