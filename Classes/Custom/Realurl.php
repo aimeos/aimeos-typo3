@@ -3,12 +3,15 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2013
- * @copyright Aimeos (aimeos.org), 2014-2016
+ * @copyright Aimeos (aimeos.org), 2014-2017
  * @package TYPO3
  */
 
 
 namespace Aimeos\Aimeos\Custom;
+
+
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 
 
 /**
@@ -28,6 +31,8 @@ class Realurl
 	public function addAutoConfig( $params, &$pObj )
 	{
 		$params['config']['init']['emptySegmentValue'] = '';
+
+		$this->addNoCache( $params );
 
 		return array_merge_recursive( $params['config'], array(
 			'postVarSets' => array(
@@ -113,5 +118,26 @@ class Realurl
 				),
 			),
 		) );
+	}
+
+	/**
+	 * Adds no_cache to configuration if not already defined
+	 *
+	 * @param array $configuration
+	 * @return void
+	 */
+	protected function addNoCache(array &$configuration) {
+		$nocache = ArrayUtility::filterByValueRecursive( 'no_cache', $configuration );
+		if ( isset( $nocache ) && !empty( $nocache ) ) {
+			return;
+		}
+
+		$configuration['config']['preVars'][] = array(
+			'GETvar' => 'no_cache',
+			'valueMap' => array(
+				'nc' => '1',
+			),
+			'noMatch' => 'bypass',
+		);
 	}
 }
