@@ -6,6 +6,8 @@ cleanDb = 1
 useDemoData = 1
 # cat=basic/realurl; type=boolean; label=Use auto-configuration for RealUrl:If the internal RealUrl auto-configuration for Aimeos plugins should be used
 useRealUrlAutoConfig = 1
+# cat=basic/realurl; type=boolean; label=Add "no_cache" parameter to RealUrl:If the internal RealUrl auto-configuration for Aimeos plugins should add the "no_cache" parameter
+realUrlAddNoCache = 0
 # cat=cache/name; type=string; label=Cache name:Name of the used cache implementation ("Typo3" for native caching, "None" for no caching)
 cacheName = Typo3
 # cat=cache/apc; type=boolean; label=Use APC cache:If Aimeos configuration values should be cached in the APC user cache
