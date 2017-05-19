@@ -1,6 +1,7 @@
 # Extend fe_users by fields required by Aimeos TYPO3 extension like sr_feuser_register does
 
 CREATE TABLE fe_users (
+    siteid int(11) DEFAULT NULL,
     static_info_country char(3) DEFAULT '' NOT NULL,
     zone varchar(45) DEFAULT '' NOT NULL,
     language char(2) DEFAULT '' NOT NULL,
