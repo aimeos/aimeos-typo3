@@ -23,6 +23,42 @@ class Context
 
 
 	/**
+	 * Returns the current context
+	 *
+	 * @param \Aimeos\MW\Config\Iface Configuration object
+	 * @return \Aimeos\MShop\Context\Item\Iface Context object
+	 */
+	public static function get( \Aimeos\MW\Config\Iface $config )
+	{
+		if( self::$context === null )
+		{
+			// TYPO3 specifc context with password hasher
+			$context = new \Aimeos\MShop\Context\Item\Typo3();
+			$context->setConfig( $config );
+
+			self::addDataBaseManager( $context );
+			self::addFilesystemManager( $context );
+			self::addMessageQueueManager( $context );
+			self::addLogger( $context );
+			self::addCache( $context );
+			self::addMailer( $context);
+			self::addProcess( $context );
+			self::addSession( $context );
+			self::addHasher( $context);
+			self::addUser( $context);
+			self::addGroups( $context);
+
+			self::$context = $context;
+		}
+
+		// Use local TS configuration from plugins
+		self::$context->setConfig( $config );
+
+		return self::$context;
+	}
+
+
+	/**
 	 * Adds the cache object to the context
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
@@ -174,6 +210,27 @@ class Context
 
 
 	/**
+	 * Adds the process object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected static function addProcess( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] )
+			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] ) )
+		) {
+			return $fcn( $context );
+		}
+
+		// forking separate processes doesn't work in TYPO3 (scheduler)
+		// because the child process will close the inherited TYPO3 database connection.
+		// The TYPO3 scheduler will fail because there's no automatic reconnect.
+		return $context->setProcess( new \Aimeos\MW\Process\None() );
+	}
+
+
+	/**
 	 * Adds the session object to the context
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
@@ -255,40 +312,5 @@ class Context
 		}
 
 		return $context;
-	}
-
-
-	/**
-	 * Returns the current context
-	 *
-	 * @param \Aimeos\MW\Config\Iface Configuration object
-	 * @return \Aimeos\MShop\Context\Item\Iface Context object
-	 */
-	public static function get( \Aimeos\MW\Config\Iface $config )
-	{
-		if( self::$context === null )
-		{
-			// TYPO3 specifc context with password hasher
-			$context = new \Aimeos\MShop\Context\Item\Typo3();
-			$context->setConfig( $config );
-
-			self::addDataBaseManager( $context );
-			self::addFilesystemManager( $context );
-			self::addMessageQueueManager( $context );
-			self::addLogger( $context );
-			self::addCache( $context );
-			self::addMailer( $context);
-			self::addSession( $context );
-			self::addHasher( $context);
-			self::addUser( $context);
-			self::addGroups( $context);
-
-			self::$context = $context;
-		}
-
-		// Use local TS configuration from plugins
-		self::$context->setConfig( $config );
-
-		return self::$context;
 	}
 }
