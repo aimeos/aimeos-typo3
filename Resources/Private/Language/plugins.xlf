@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:18:19Z" product-name="aimeos">
 		<header/>
 		<body>
+			<trans-unit id="jsonapi-options.target" xml:space="preserve">
+				<source>Page with JSON REST API plugin</source>
+			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
 			</trans-unit>
