@@ -12,6 +12,7 @@ return array(
 		'stmt' => array(
 			"SET NAMES 'utf8'",
 			"SET SESSION sql_mode='ANSI'",
+			"SET SESSIOn sort_buffer_size=1048572",
 		),
 	),
 	'fs' => array(
