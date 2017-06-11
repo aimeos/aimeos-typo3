@@ -47,7 +47,7 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.count.url.target>
-			<settings.client.jsonapi.url.options.target>
+			<settings.client.jsonapi.url.target>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:jsonapi-options.target</label>
 					<config>
@@ -60,7 +60,7 @@
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
-			</settings.client.jsonapi.url.options.target>
+			</settings.client.jsonapi.url.target>
 			<settings.client.html.catalog.filter.tree.startid>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.tree-startid</label>
