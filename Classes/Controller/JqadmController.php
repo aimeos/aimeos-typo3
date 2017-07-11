@@ -101,7 +101,12 @@ class JqadmController extends AbstractController
 	public function deleteAction()
 	{
 		$cntl = $this->createClient();
-		return $this->setHtml( $cntl->delete() . $cntl->search() );
+
+		if( ( $html = $cntl->delete() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->getHtml( $html );
 	}
 
 
@@ -125,7 +130,12 @@ class JqadmController extends AbstractController
 	public function saveAction()
 	{
 		$cntl = $this->createClient();
-		return $this->setHtml( ( $cntl->save() ? : $cntl->search() ) );
+
+		if( ( $html = $cntl->save() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->getHtml( $html );
 	}
 
 
@@ -188,5 +198,25 @@ class JqadmController extends AbstractController
 	protected function resolveView()
 	{
 		return \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::resolveView();
+	}
+
+
+	/**
+	 * Set the response data from a PSR-7 response object and returns the message content
+	 *
+	 * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
+	 * @return string Generated output
+	 */
+	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
+	{
+		$this->response->setStatus( $response->getStatusCode() );
+
+		foreach( $response->getHeaders() as $key => $value ) {
+			foreach( (array) $value as $val ) {
+				$this->response->setHeader( $key, $val );
+			}
+		}
+
+		return (string) $response->getBody();
 	}
 }
