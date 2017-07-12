@@ -74,11 +74,11 @@ class I18n
 		{
 			if( isset( $entry['domain'] ) && isset( $entry['string'] ) && isset( $entry['trans'] ) )
 			{
-				$string = str_replace( '\\n', "\n", $entry['string'] );
+				$string = str_replace( array('\\n', '\\'), array("\n", ''), $entry['string'] );
 				$trans = array();
 
-				foreach( (array) $entry['trans'] as $tx ) {
-					$trans[] = str_replace( '\\n', "\n", $tx );
+				foreach( (array) $entry['trans'] as $str ) {
+					$trans[] = str_replace( array('\\n', '\\'), array("\n", ''), $str );
 				}
 
 				$translations[$entry['domain']][$string] = $trans;
