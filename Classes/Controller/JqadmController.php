@@ -106,7 +106,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->getHtml( $html );
+		return $this->setHtml( $html );
 	}
 
 
@@ -135,7 +135,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->getHtml( $html );
+		return $this->setHtml( $html );
 	}
 
 
