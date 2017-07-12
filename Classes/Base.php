@@ -228,7 +228,8 @@ class Base
 		if( isset( $tsConfig['plugin']['tx_aimeos']['settings'] )
 			&& is_array( $tsConfig['plugin']['tx_aimeos']['settings'] )
 		) {
-			return $tsConfig['plugin']['tx_aimeos']['settings'];
+			$tsConfig = array_replace_recursive( $tsConfig['plugin']['tx_aimeos']['settings'], $tsConfig );
+			unset( $tsConfig['plugin']['tx_aimeos'] );
 		}
 
 		return $tsConfig;
