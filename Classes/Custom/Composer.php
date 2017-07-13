@@ -51,10 +51,13 @@ class Composer
 				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/AdvancedSearch/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/AdvancedSearch' );
 			}
 
-			if( file_exists( $t3path . '/Resources/Private/Extensions' ) === false
-				&& ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null
-			) {
+			if( ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null )
+			{
 				$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
+
+				if( file_exists( $t3path . '/Resources/Private/Extensions' ) === true ) {
+					unlink( $t3path . '/Resources/Private/Extensions' );
+				}
 
 				$path = dirname( $installer->getInstallPath( $package ) );
 				symlink( getcwd() . '/' . $path, $t3path . '/Resources/Private/Extensions' );
