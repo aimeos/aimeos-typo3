@@ -11,6 +11,9 @@
 		"forum": "https://aimeos.org/help",
 		"wiki": "https://aimeos.org/docs"
 	},
+        "repositories": [
+                { "type": "composer", "url": "https://composer.typo3.org/" }
+        ],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
@@ -27,7 +30,8 @@
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
 		"zendframework/zend-diactoros": "~1.3",
-		"sjbr/static-info-tables": "~6.0"
+		"sjbr/static-info-tables": "~6.0",
+		"typo3/cms": "~7.6||~8.7"
 	},
 	"replace": {
 		"aimeos": "self.version"

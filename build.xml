@@ -2,13 +2,14 @@
 
 <project name="Aimeos TYPO3 extension" default="update">
 
-	<target name="update" description="Updates the Aimeos core">
-		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
-		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
-		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+	<target name="clean" description="Cleans up build artefacts">
+		<delete dir="typo3conf" includeemptydirs="true" />
+		<delete dir="typo3_src" includeemptydirs="true" />
+		<delete file="index.php" />
+		<delete file="typo3" />
 	</target>
 
-	<target name="deploy" description="Creates new package">
+	<target name="deploy" description="Creates new package" depends="clean">
 		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
 		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
@@ -33,6 +34,12 @@
 		<exec command="git tag -a ${version} -m 'Release ${version}'" checkreturn="true" logoutput="true" />
 		<exec command="git push origin ${version}" checkreturn="true" logoutput="true" />
 		<exec command="git push --tags" checkreturn="true" logoutput="true" />
+	</target>
+
+	<target name="update" description="Updates the Aimeos core">
+		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
+		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
+		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 	</target>
 
 </project>
