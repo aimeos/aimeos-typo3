@@ -29,9 +29,7 @@
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
-		"zendframework/zend-diactoros": "~1.3",
-		"sjbr/static-info-tables": "~6.0",
-		"typo3/cms": "~7.6||~8.7"
+		"zendframework/zend-diactoros": "~1.3"
 	},
 	"replace": {
 		"aimeos": "self.version"
