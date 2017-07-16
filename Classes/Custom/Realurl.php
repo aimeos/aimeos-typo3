@@ -90,7 +90,6 @@ class Realurl
 					),
 					'cc' => array(
 						array( 'GETvar' => 'code' ),
-						array( 'GETvar' => 'orderid' ),
 					),
 					'r' => array(
 						array( 'GETvar' => 'ai[resource]' ),
