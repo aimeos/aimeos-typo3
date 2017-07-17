@@ -86,21 +86,17 @@
 				<source>Account download page ID</source>
 				<target>Hesap indirme sayfa ID'si</target>
 			</trans-unit>
-			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
-				<source>Web site URL</source>
-				<target>Web site URL'si</target>
-			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
-				<source>Base URL to the product images</source>
-				<target>Ürün resimlerine temel URL</target>
+				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>Ürün resimlerinin taban URL'si (Ör. https://localhost/uploads/tx_aimeos/)</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
 				<target>Typo3 kökünden tema dizininin CSS dosyalarına mutlak yol veya bağıl yol</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
-				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Aimeos Alışveriş e-mail zamanlayıcı</target>
+				<source>Aimeos Shop advanced scheduler</source>
+				<target>Aimeos Alışveriş gelişmiş işdüzenleyici</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -86,21 +86,15 @@
 				<source>Account download page ID</source>
 				<target>帳戶下載頁面ID</target>
 			</trans-unit>
-			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
-				<source>Web site URL</source>
-				<target>網站URL</target>
-			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
-				<source>Base URL to the product images</source>
-				<target>產品圖片的URL路徑</target>
+				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
 				<target>主題資料夾 的 絕對路徑 或 相對於TYPO3 root to the CSS 檔案</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
-				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Aimeos商店e-mail排程</target>
+				<source>Aimeos Shop advanced scheduler</source>
 			</trans-unit>
 		</body>
 	</file>
