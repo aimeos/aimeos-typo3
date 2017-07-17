@@ -86,21 +86,15 @@
 				<source>Account download page ID</source>
 				<target>Downloadpagina voor account</target>
 			</trans-unit>
-			<trans-unit id="email.label.site-baseurl" xml:space="preserve">
-				<source>Web site URL</source>
-				<target>Web site URL</target>
-			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
-				<source>Base URL to the product images</source>
-				<target>Basis-URL van de productafbeeldingen</target>
+				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
 				<target>Absoluut pad of relatief pad vanaf de TYPO3 root tot de CSS bestanden of thema map</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
-				<source>Aimeos Shop e-mail scheduler</source>
-				<target>Aimeos webwinkel e-mail taakplanner</target>
+				<source>Aimeos Shop advanced scheduler</source>
 			</trans-unit>
 		</body>
 	</file>
