@@ -828,6 +828,7 @@ html.no-js .catalog-filter-attribute:hover .attribute-lists {
 	white-space: normal;
 	position: relative;
 	overflow: hidden;
+	font-size: 90%;
 	margin: 1em 1%;
 	width: 240px;
 }
