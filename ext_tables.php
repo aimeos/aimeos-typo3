@@ -14,11 +14,13 @@ if( file_exists( $localautoloader ) === true ) {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile( $_EXTKEY, 'Configuration/TypoScript/', 'Aimeos Shop configuration' );
 
-$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Custom\\Wizicon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( $_EXTKEY ) . 'Classes/Custom/Wizicon.php';
-
 
 if ( TYPO3_MODE === 'BE' )
 {
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook'][] = 'Aimeos\\Aimeos\\Custom\\WizardItem';
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Custom\\Wizicon'] =
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( $_EXTKEY ) . 'Classes/Custom/Wizicon.php';
+
     $_moduleConfiguration = array(
         'access' => 'user,group',
         'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
