@@ -1,0 +1,19 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:12:15Z" original="messages" product-name="aimeos" source-language="en" target-language="cs">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" xml:space="preserve">
+				<source>Aimeos Shop</source>
+				<target>Obchod Aimeos</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tablabel" xml:space="preserve">
+				<source>Aimeos Shop Plugin</source>
+				<target>Přídavek Aimeos obchodu</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
+				<source>Administration Aimeos Shop</source>
+				<target>Administrace obchodu Aimeos</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

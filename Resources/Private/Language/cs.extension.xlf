@@ -1,0 +1,15 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:16:04Z" original="messages" product-name="aimeos" source-language="en" target-language="cs">
+		<header/>
+		<body>
+			<trans-unit id="ext-wizard-title" xml:space="preserve">
+				<source>Aimeos web shop</source>
+				<target>Webový obchod Aimeos</target>
+			</trans-unit>
+			<trans-unit id="ext-wizard-description" xml:space="preserve">
+				<source>Fast, flexible and usability optimized web shop components for TYPO3</source>
+				<target>Rychlé, přizpůsobitelné komponenty webového obchodu optimalizované pro snadné používání se systémem TYPO3</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
