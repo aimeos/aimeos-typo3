@@ -1,0 +1,95 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="cs">
+		<header/>
+		<body>
+			<trans-unit id="account-download.target" xml:space="preserve">
+				<source>Account download page</source>
+				<target>Stránka s dokumenty ke stažení pro zákazníka</target>
+			</trans-unit>
+			<trans-unit id="account-favorite.target" xml:space="preserve">
+				<source>Favorite products page</source>
+				<target>Stránka nejoblíbenějších produktů</target>
+			</trans-unit>
+			<trans-unit id="account-watch.target" xml:space="preserve">
+				<source>Watched products page</source>
+				<target>Stránka s nedávno navštívenými produkty</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
+				<source>Display categories beginning from the following node</source>
+				<target>Zobrazovat kategorie počínaje vybranou stránkou</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
+				<source>Always display these category levels</source>
+				<target>Vždy zobrazovat tyto úrovně kategorií</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
+				<source>Only display up to these category levels</source>
+				<target>Zobrazovat pouze po zvolené úrovně kategorií</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.target" xml:space="preserve">
+				<source>Catalog list page</source>
+				<target>Stránka s výpisem katalogu</target>
+			</trans-unit>
+			<trans-unit id="catalog-suggest.target" xml:space="preserve">
+				<source>Page with suggestions for search filter</source>
+				<target>Stránka pro uložení nápověd ve vyhledávacím filtru</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
+				<source>Default category if no parameter is available</source>
+				<target>Výchozí kategorie, pokud není k dispozici žádný parametr</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.target" xml:space="preserve">
+				<source>Catalog detail page</source>
+				<target>Stránka pro detail katalogu</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
+				<source>Default product ID if no parameter is available</source>
+				<target>Výchozí ID produktu, pokud není k dispozici žádný parametr</target>
+			</trans-unit>
+			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
+				<source>Page with catalog session plugin</source>
+				<target>Stránka obsahující doplněk &quot;catalog session&quot;</target>
+			</trans-unit>
+			<trans-unit id="catalog-count.target" xml:space="preserve">
+				<source>Page with product counts for catalog filter</source>
+				<target>Stránka pro uložení součtů ve filtru katalogu</target>
+			</trans-unit>
+			<trans-unit id="catalog-stock.target" xml:space="preserve">
+				<source>Page with stock level data</source>
+				<target>Stránka pro data o počtech skladových položek</target>
+			</trans-unit>
+			<trans-unit id="basket-standard.target" xml:space="preserve">
+				<source>Basket page</source>
+				<target>Stránka pro košík</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard.target" xml:space="preserve">
+				<source>Checkout page</source>
+				<target>Stránka pro vytvoření objednávky</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
+				<source>Terms and conditions page</source>
+				<target>Stránka s obchodními podmínkami</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
+				<source>Privacy policy page</source>
+				<target>Stránka o ochraně soukromí</target>
+			</trans-unit>
+			<trans-unit id="checkout-confirm.target" xml:space="preserve">
+				<source>Confirmation page</source>
+				<target>Stránka pro potvrzení objednávky</target>
+			</trans-unit>
+			<trans-unit id="checkout-update.target" xml:space="preserve">
+				<source>Page with &quot;checkout payment update&quot; plugin</source>
+				<target>Stránka s rozšířením &quot;checkout payment update&quot;</target>
+			</trans-unit>
+			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Konfigurace TypoScriptu</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>Konfigurace TypoScriptu obsahuje formální chyby</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
