@@ -111,6 +111,23 @@ class JqadmController extends AbstractController
 
 
 	/**
+	 * Exports the resource object
+	 *
+	 * @return string Generated output
+	 */
+	public function exportAction()
+	{
+		$cntl = $this->createClient();
+
+		if( ( $html = $cntl->export() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->setHtml( $html );
+	}
+
+
+	/**
 	 * Returns the HTML code for the requested resource object
 	 *
 	 * @return string Generated output
@@ -119,6 +136,23 @@ class JqadmController extends AbstractController
 	{
 		$cntl = $this->createClient();
 		return $this->setHtml( $cntl->get() );
+	}
+
+
+	/**
+	 * Imports the resource object
+	 *
+	 * @return string Generated output
+	 */
+	public function importAction()
+	{
+		$cntl = $this->createClient();
+
+		if( ( $html = $cntl->import() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->setHtml( $html );
 	}
 
 
