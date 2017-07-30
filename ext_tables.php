@@ -38,7 +38,7 @@ if ( TYPO3_MODE === 'BE' )
 		'', // position
 		array(
 			'Admin' => 'index',
-			'Jqadm' => 'search,copy,create,delete,get,save,file',
+			'Jqadm' => 'search,copy,create,delete,export,get,import,save,file',
 			'Extadm' => 'index,do,file',
 			'Jsonadm' => 'index',
 		),

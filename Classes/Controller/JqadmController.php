@@ -77,7 +77,12 @@ class JqadmController extends AbstractController
 	public function copyAction()
 	{
 		$cntl = $this->createClient();
-		return $this->setHtml( $cntl->copy() );
+
+		if( ( $html = $cntl->copy() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->setHtml( $html );
 	}
 
 
@@ -89,7 +94,12 @@ class JqadmController extends AbstractController
 	public function createAction()
 	{
 		$cntl = $this->createClient();
-		return $this->setHtml( $cntl->create() );
+
+		if( ( $html = $cntl->create() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->setHtml( $html );
 	}
 
 
@@ -135,7 +145,12 @@ class JqadmController extends AbstractController
 	public function getAction()
 	{
 		$cntl = $this->createClient();
-		return $this->setHtml( $cntl->get() );
+
+		if( ( $html = $cntl->get() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->setHtml( $html );
 	}
 
 
@@ -181,7 +196,12 @@ class JqadmController extends AbstractController
 	public function searchAction()
 	{
 		$cntl = $this->createClient();
-		return $this->setHtml( $cntl->search() );
+
+		if( ( $html = $cntl->search() ) == '' ) {
+			return $this->setPsrResponse( $cntl->getView()->response() );
+		}
+
+		return $this->setHtml( $html );
 	}
 
 

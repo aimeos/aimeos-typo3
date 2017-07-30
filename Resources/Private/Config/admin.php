@@ -25,7 +25,17 @@ return array(
 					'BE' => true,
 				),
 			),
+			'export' => array(
+				'config' => array(
+					'BE' => true,
+				),
+			),
 			'get' => array(
+				'config' => array(
+					'BE' => true,
+				),
+			),
+			'import' => array(
 				'config' => array(
 					'BE' => true,
 				),
