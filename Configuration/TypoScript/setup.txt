@@ -54,10 +54,7 @@ plugin.tx_aimeos {
 					}
 				}
 			}
-			jsonapi.url {
-				config.absoluteUri = 1
-				options.config.absoluteUri = 1
-			}
+			jsonapi.url.config.absoluteUri = 1
 		}
 	}
 }
