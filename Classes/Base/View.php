@@ -20,7 +20,7 @@ class View
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MW\Config\Iface $config Config object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
@@ -28,12 +28,16 @@ class View
 	 * @param boolean $frontend True if the view is for the frontend, false for the backend
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public static function get( \Aimeos\MW\Config\Iface $config, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
-		array $templatePaths, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
+	public static function get( \Aimeos\MShop\Context\Item\Iface $context,
+		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
 	{
 		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
 		$engines = array( '.html' => new \Aimeos\MW\View\Engine\Typo3( $obj ) );
 		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
+
+		$config = $context->getConfig();
+		$session = $context->getSession();
 
 		self::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
 		self::addParam( $view, $request );
@@ -41,6 +45,7 @@ class View
 		self::addNumber( $view, $config );
 		self::addFormparam( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		self::addUrl( $view, $config, $uriBuilder, $request );
+		self::addSession( $view, $session );
 		self::addRequest( $view, $request );
 		self::addResponse( $view );
 		self::addAccess( $view );
@@ -229,6 +234,22 @@ class View
 
 		$helper = new \Aimeos\MW\View\Helper\Response\Typo3( $view );
 		$view->addHelper( 'response', $helper );
+
+		return $view;
+	}
+
+
+	/**
+	 * Adds the "session" helper to the view object
+	 *
+	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\MW\Session\Iface $session Session object
+	 * @return \Aimeos\MW\View\Iface Modified view object
+	 */
+	protected static function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Session\Iface $session )
+	{
+		$helper = new \Aimeos\MW\View\Helper\Session\Standard( $view, $session );
+		$view->addHelper( 'session', $helper );
 
 		return $view;
 	}

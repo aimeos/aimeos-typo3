@@ -81,7 +81,7 @@ class Base
 
 
 		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'controller/jobs/templates' );
-		$view = Aimeos\Base::getView( $config, self::getUriBuilder(), $tmplPaths );
+		$view = Aimeos\Base::getView( $context, self::getUriBuilder(), $tmplPaths );
 		$context->setView( $view );
 
 		$context->setEditor( 'scheduler' );
