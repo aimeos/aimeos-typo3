@@ -21,6 +21,11 @@ return array(
 		'basedir' => PATH_site . 'typo3temp',
 		'tempdir' => PATH_site . 'typo3temp',
 	),
+	'fs-import' => array(
+		'adapter' => 'Standard',
+		'basedir' => PATH_site . 'uploads/tx_aimeos/.secure/import',
+		'tempdir' => PATH_site . 'typo3temp',
+	),
 	'fs-secure' => array(
 		'adapter' => 'Standard',
 		'basedir' => PATH_site . 'uploads/tx_aimeos/.secure',
