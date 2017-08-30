@@ -55,12 +55,11 @@ class Composer
 			{
 				$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
 
-				if( file_exists( $t3path . '/Resources/Private/Extensions' ) === true ) {
-					unlink( $t3path . '/Resources/Private/Extensions' );
+				if( file_exists( $t3path . '/Resources/Private/Extensions' ) === false )
+				{
+					$path = dirname( $installer->getInstallPath( $package ) );
+					symlink( '../../../../../../' . $path, $t3path . '/Resources/Private/Extensions' );
 				}
-
-				$path = dirname( $installer->getInstallPath( $package ) );
-				symlink( getcwd() . '/' . $path, $t3path . '/Resources/Private/Extensions' );
 			}
 		}
 	}
