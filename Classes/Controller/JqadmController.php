@@ -224,7 +224,7 @@ class JqadmController extends AbstractController
 		$templatePaths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
 		$context = $this->getContextBackend( $templatePaths );
 
-		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource )->setAimeos( $aimeos );
+		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $aimeos, $resource );
 	}
 
 
