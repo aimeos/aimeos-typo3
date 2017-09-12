@@ -246,6 +246,8 @@ class Context
 
 		if( isset( $GLOBALS['TSFE']->fe_user ) ) {
 			$session = new \Aimeos\MW\Session\Typo3( $GLOBALS['TSFE']->fe_user );
+		} elseif( isset( $GLOBALS['BE_USER'] ) ) {
+			$session = new \Aimeos\MW\Session\Typo3( $GLOBALS['BE_USER'] );
 		} else {
 			$session = new \Aimeos\MW\Session\None();
 		}
