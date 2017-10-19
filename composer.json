@@ -24,7 +24,6 @@
 		"aimeos/aimeos-core": "dev-master",
 		"aimeos/ai-gettext": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
-		"aimeos/ai-admin-extadm": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
@@ -50,9 +49,6 @@
 	},
 	"scripts": {
 		"post-update-cmd": [
-			"cp -r Resources/Private/Extensions/ai-admin-extadm/admin/extjs/lib/ext.ux/AdvancedSearch/resources/* Resources/Public/Admin/extjs/lib/ext.ux/AdvancedSearch/",
-			"cp -r Resources/Private/Extensions/ai-admin-extadm/admin/extjs/lib/ext.ux/Portal/resources/* Resources/Public/Admin/extjs/lib/ext.ux/Portal/",
-			"cp -r Resources/Private/Extensions/ai-admin-extadm/admin/extjs/resources/* Resources/Public/Admin/extjs/resources/",
 			"cp -r Resources/Private/Extensions/ai-client-html/client/html/themes/* Resources/Public/Themes/"
 		]
 	}

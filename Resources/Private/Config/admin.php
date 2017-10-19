@@ -1,13 +1,6 @@
 <?php
 
 return array(
-	'extjs' => array(
-		'url' => array(
-			'config' => array(
-				'BE' => true,
-			),
-		),
-	),
 	'jqadm' => array(
 		'url' => array(
 			'copy' => array(
