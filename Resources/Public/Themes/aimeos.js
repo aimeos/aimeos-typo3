@@ -743,7 +743,7 @@ AimeosCatalog = {
 					$(".articleitem", parent).removeClass("price-actual");
 					newPrice.addClass("price-actual");
 
-					if( parent.data("reqstock") && newStock.hasClass("stock-out") ) {
+					if( parent.data("reqstock") && $(".stockitem", newStock).hasClass("stock-out") ) {
 						$(".addbasket .btn-action", parent).addClass("btn-disabled").attr("disabled", "disabled");
 					} else {
 						$(".addbasket .btn-action", parent).removeClass("btn-disabled").removeAttr("disabled");
@@ -762,7 +762,7 @@ AimeosCatalog = {
 	 */
 	setupVariantCheck: function() {
 
-		$(".catalog-detail-basket, .catalog-list-items").on("click", ".addbasket .btn-action", {}, function(event) {
+		$(".catalog-detail-basket-selection, .catalog-list-items .items-selection").on("click", ".addbasket .btn-action", {}, function(event) {
 
 			var result = true;
 
