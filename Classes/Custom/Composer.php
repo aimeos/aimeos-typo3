@@ -41,16 +41,6 @@ class Composer
 				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 			}
 
-			if( ( $package = $repository->findPackage( 'aimeos/ai-admin-extadm', '*' ) ) !== null )
-			{
-				$event->getIO()->write( 'Installing Aimeos public files from ExtJS admin' );
-
-				$path = $installer->getInstallPath( $package );
-				self::copyRecursive( $path . '/admin/extjs/resources', $t3path . '/Resources/Public/Admin/extjs/resources' );
-				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/Portal/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/Portal' );
-				self::copyRecursive( $path . '/admin/extjs/lib/ext.ux/AdvancedSearch/resources', $t3path . '/Resources/Public/Admin/extjs/lib/ext.ux/AdvancedSearch' );
-			}
-
 			if( ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null )
 			{
 				$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
