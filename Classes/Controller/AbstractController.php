@@ -40,9 +40,11 @@ abstract class AbstractController
 	/**
 	 * Returns the context item for the frontend
 	 *
+	 * @param array $templatePaths List of paths to the view templates
+	 * @param boolean $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContext( $withView = true )
+	protected function getContext( array $templatePaths = array(), $withView = true )
 	{
 		$config = Base::getConfig( (array) $this->settings );
 
@@ -62,8 +64,8 @@ abstract class AbstractController
 		if( $withView === true )
 		{
 			$langid = self::$context->getLocale()->getLanguageId();
-			$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html/templates' );
-			self::$context->setView( Base::getView( self::$context, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
+			$view = Base::getView( self::$context, $this->uriBuilder, $templatePaths, $this->request, $langid );
+			self::$context->setView( $view );
 		}
 
 		return self::$context;
@@ -74,6 +76,7 @@ abstract class AbstractController
 	 * Returns the context item for backend operations
 	 *
 	 * @param array $templatePaths List of paths to the view templates
+	 * @param boolean $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
 	protected function getContextBackend( array $templatePaths = array(), $withView = true )

@@ -21,16 +21,12 @@ use Zend\Diactoros\Response;
  */
 class JsonadmController extends AbstractController
 {
-	private $prefix;
-
-
 	/**
 	 * Initializes the object before the real action is called.
 	 */
 	protected function initializeAction()
 	{
-		$this->prefix = 'tx_aimeos_web_aimeostxaimeosadmin';
-		$this->uriBuilder->setArgumentPrefix( $this->prefix );
+		$this->uriBuilder->setArgumentPrefix( 'tx_aimeos_web_aimeostxaimeosadmin' );
 	}
 
 
@@ -134,7 +130,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function optionsAction( $resource )
 	{
-		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), new Response(), $this->prefix );
+		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 

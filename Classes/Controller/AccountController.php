@@ -26,7 +26,8 @@ class AccountController extends AbstractController
 	 */
 	public function downloadAction()
 	{
-		$context = $this->getContext();
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$context = $this->getContext( $paths );
 		$view = $context->getView();
 
 		$client = \Aimeos\Client\Html\Account\Download\Factory::createClient( $context, array() );
@@ -49,8 +50,8 @@ class AccountController extends AbstractController
 	 */
 	public function historyAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Account\History\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Account\History\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -61,8 +62,8 @@ class AccountController extends AbstractController
 	 */
 	public function favoriteAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Account\Favorite\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Account\Favorite\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -73,8 +74,8 @@ class AccountController extends AbstractController
 	 */
 	public function profileAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Account\Profile\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Account\Profile\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -85,8 +86,8 @@ class AccountController extends AbstractController
 	 */
 	public function watchAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Account\Watch\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Account\Watch\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}

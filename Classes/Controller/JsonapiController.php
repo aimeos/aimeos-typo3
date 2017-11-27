@@ -21,9 +21,6 @@ use Zend\Diactoros\Response;
  */
 class JsonapiController extends AbstractController
 {
-	private $prefix;
-
-
 	/**
 	 * Dispatches the REST API requests
 	 *
@@ -66,8 +63,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function deleteAction( $resource, $related )
 	{
-		$prefix = $this->uriBuilder->getArgumentPrefix();
-		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), new Response(), $prefix );
+		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -81,8 +77,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function getAction( $resource, $related )
 	{
-		$prefix = $this->uriBuilder->getArgumentPrefix();
-		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), new Response(), $prefix );
+		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -96,8 +91,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function patchAction( $resource, $related )
 	{
-		$prefix = $this->uriBuilder->getArgumentPrefix();
-		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), new Response(), $prefix );
+		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -111,8 +105,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function postAction( $resource, $related )
 	{
-		$prefix = $this->uriBuilder->getArgumentPrefix();
-		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), new Response(), $prefix );
+		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -126,8 +119,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function putAction( $resource, $related )
 	{
-		$prefix = $this->uriBuilder->getArgumentPrefix();
-		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), new Response(), $prefix );
+		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -140,8 +132,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function optionsAction( $resource )
 	{
-		$prefix = $this->uriBuilder->getArgumentPrefix();
-		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), new Response(), $prefix );
+		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), new Response() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -155,13 +146,12 @@ class JsonapiController extends AbstractController
 	 */
 	protected function createClient( $resource, $related = null )
 	{
-		$context = $this->getContext( false );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/jsonapi/templates' );
+
+		$context = $this->getContext( $paths );
 		$langid = $context->getLocale()->getLanguageId();
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/jsonapi/templates' );
 
-		$context->setView( Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $langid ) );
-
-		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $templatePaths, $resource . '/' . $related );
+		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $paths, $resource . '/' . $related );
 	}
 
 

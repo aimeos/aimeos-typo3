@@ -26,8 +26,8 @@ class CatalogController extends AbstractController
 	 */
 	public function filterAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Filter\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Filter\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -38,8 +38,8 @@ class CatalogController extends AbstractController
 	 */
 	public function countAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Count\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Count\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -50,8 +50,8 @@ class CatalogController extends AbstractController
 	 */
 	public function stageAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Stage\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Stage\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -62,8 +62,8 @@ class CatalogController extends AbstractController
 	 */
 	public function stockAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Stock\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Stock\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -78,8 +78,8 @@ class CatalogController extends AbstractController
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -90,8 +90,8 @@ class CatalogController extends AbstractController
 	 */
 	public function suggestAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Suggest\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Suggest\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -106,8 +106,8 @@ class CatalogController extends AbstractController
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}
@@ -118,8 +118,8 @@ class CatalogController extends AbstractController
 	 */
 	public function sessionAction()
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext(), $templatePaths );
+		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
+		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext( $paths ), $paths );
 
 		return $this->getClientOutput( $client );
 	}

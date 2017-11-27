@@ -22,12 +22,6 @@ class AdminController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		if( isset( $this->settings['typo3']['admin']['default'] )
-			&& $this->settings['typo3']['admin']['default'] === 'expert'
-		) {
-			$this->forward( 'index', 'Extadm' );
-		}
-
 		$this->forward( 'search', 'Jqadm' );
 	}
 }

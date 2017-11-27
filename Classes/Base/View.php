@@ -34,7 +34,9 @@ class View
 	{
 		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
 		$engines = array( '.html' => new \Aimeos\MW\View\Engine\Typo3( $obj ) );
+
 		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
+		$view->prefix = $uriBuilder->getArgumentPrefix();
 
 		$config = $context->getConfig();
 		$session = $context->getSession();
