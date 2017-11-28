@@ -82,7 +82,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -99,7 +99,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -116,7 +116,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -133,7 +133,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -150,7 +150,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -167,7 +167,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -184,7 +184,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -201,7 +201,7 @@ class JqadmController extends AbstractController
 			return $this->setPsrResponse( $cntl->getView()->response() );
 		}
 
-		return $this->setHtml( $html );
+		$this->view->assign( 'content', $html );
 	}
 
 
@@ -221,26 +221,18 @@ class JqadmController extends AbstractController
 		}
 
 		$aimeos = Base::getAimeos();
-		$templatePaths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
-		$context = $this->getContextBackend( $templatePaths );
+		$paths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
+		$context = $this->getContextBackend( $paths, false );
+
+		$view = Base::getView( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
+
+		$view->aimeosType = 'TYPO3';
+		$view->aimeosVersion = Base::getVersion();
+		$view->aimeosExtensions = implode( ',', Base::getAimeos()->getExtensions() );
+
+		$context->setView( $view );
 
 		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $aimeos, $resource );
-	}
-
-
-	/**
-	 * Adds the generated HTML code to the view
-	 *
-	 * @param string $content Content from admin client
-	 */
-	protected function setHtml( $content )
-	{
-		$version = Base::getVersion();
-		$extnames = implode( ',', Base::getAimeos()->getExtensions() );
-		$content = str_replace( ['{type}', '{version}', '{extensions}'], ['TYPO3', $version, $extnames], $content );
-
-		$this->view->assign( 'formparam', 'tx_aimeos_web_aimeostxaimeosadmin' );
-		$this->view->assign( 'content', $content );
 	}
 
 
