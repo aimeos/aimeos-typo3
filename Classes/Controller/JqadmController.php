@@ -228,7 +228,7 @@ class JqadmController extends AbstractController
 
 		$view->aimeosType = 'TYPO3';
 		$view->aimeosVersion = Base::getVersion();
-		$view->aimeosExtensions = implode( ',', Base::getAimeos()->getExtensions() );
+		$view->aimeosExtensions = implode( ',', $aimeos->getExtensions() );
 
 		$context->setView( $view );
 
