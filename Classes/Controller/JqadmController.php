@@ -28,10 +28,8 @@ class JqadmController extends AbstractController
 	 */
 	protected function initializeAction()
 	{
+		parent::initializeAction();
 		$this->uriBuilder->setArgumentPrefix( 'tx_aimeos_web_aimeostxaimeosadmin' );
-
-		// initialize bootstrapping
-		self::$aimeos = Base::getAimeos();
 	}
 
 
