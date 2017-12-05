@@ -20,12 +20,18 @@ use Aimeos\Aimeos\Base;
  */
 class JqadmController extends AbstractController
 {
+	private static $aimeos;
+
+
 	/**
 	 * Initializes the object before the real action is called.
 	 */
 	protected function initializeAction()
 	{
 		$this->uriBuilder->setArgumentPrefix( 'tx_aimeos_web_aimeostxaimeosadmin' );
+
+		// initialize bootstrapping
+		self::$aimeos = Base::getAimeos();
 	}
 
 
@@ -221,8 +227,7 @@ class JqadmController extends AbstractController
 		}
 
 		$aimeos = Base::getAimeos();
-		$paths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
-		$context = $this->getContextBackend( $paths );
+		$context = $this->getContextBackend( 'admin/jqadm/templates' );
 
 		$view = $context->getView();
 

@@ -26,9 +26,7 @@ class CheckoutController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Checkout\Standard\Factory::createClient( $this->getContext( $paths ), $paths );
-
+		$client = \Aimeos\Client\Html\Checkout\Standard\Factory::createClient( $this->getContext(), [] );
 		return $this->getClientOutput( $client );
 	}
 
@@ -38,10 +36,8 @@ class CheckoutController extends AbstractController
 	 */
 	public function confirmAction()
 	{
-		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$context = $this->getContext( $paths );
-
-		$client = \Aimeos\Client\Html\Checkout\Confirm\Factory::createClient( $context, $paths );
+		$context = $this->getContext();
+		$client = \Aimeos\Client\Html\Checkout\Confirm\Factory::createClient( $context, [] );
 
 		$view = $context->getView();
 		$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
@@ -64,10 +60,8 @@ class CheckoutController extends AbstractController
 	{
 		try
 		{
-			$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
-			$context = $this->getContext( $paths );
-
-			$client = \Aimeos\Client\Html\Checkout\Update\Factory::createClient( $context, $paths );
+			$context = $this->getContext();
+			$client = \Aimeos\Client\Html\Checkout\Update\Factory::createClient( $context, [] );
 
 			$view = $context->getView();
 			$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );

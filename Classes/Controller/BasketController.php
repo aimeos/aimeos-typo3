@@ -26,9 +26,7 @@ class BasketController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Basket\Standard\Factory::createClient( $this->getContext( $paths ), $paths );
-
+		$client = \Aimeos\Client\Html\Basket\Standard\Factory::createClient( $this->getContext(), [] );
 		return $this->getClientOutput( $client );
 	}
 
@@ -38,9 +36,7 @@ class BasketController extends AbstractController
 	 */
 	public function smallAction()
 	{
-		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Basket\Mini\Factory::createClient( $this->getContext( $paths ), $paths );
-
+		$client = \Aimeos\Client\Html\Basket\Mini\Factory::createClient( $this->getContext(), [] );
 		return $this->getClientOutput( $client );
 	}
 
@@ -50,9 +46,7 @@ class BasketController extends AbstractController
 	 */
 	public function relatedAction()
 	{
-		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
-		$client = \Aimeos\Client\Html\Basket\Related\Factory::createClient( $this->getContext( $paths), $paths );
-
+		$client = \Aimeos\Client\Html\Basket\Related\Factory::createClient( $this->getContext(), [] );
 		return $this->getClientOutput( $client );
 	}
 }

@@ -147,8 +147,7 @@ class JsonapiController extends AbstractController
 	protected function createClient( $resource, $related = null )
 	{
 		$paths = Base::getAimeos()->getCustomPaths( 'client/jsonapi/templates' );
-
-		$context = $this->getContext( $paths );
+		$context = $this->getContext( 'client/jsonapi/templates' );
 		$langid = $context->getLocale()->getLanguageId();
 
 		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $paths, $resource . '/' . $related );

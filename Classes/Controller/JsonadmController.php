@@ -21,12 +21,18 @@ use Zend\Diactoros\Response;
  */
 class JsonadmController extends AbstractController
 {
+	private static $aimeos;
+
+
 	/**
 	 * Initializes the object before the real action is called.
 	 */
 	protected function initializeAction()
 	{
 		$this->uriBuilder->setArgumentPrefix( 'tx_aimeos_web_aimeostxaimeosadmin' );
+
+		// initialize bootstrapping
+		self::$aimeos = Base::getAimeos();
 	}
 
 
@@ -143,9 +149,7 @@ class JsonadmController extends AbstractController
 	 */
 	protected function createClient( $resource )
 	{
-		$templatePaths = Base::getAimeos()->getCustomPaths( 'admin/jsonadm/templates' );
-		$context = $this->getContextBackend( $templatePaths );
-
+		$context = $this->getContextBackend( 'admin/jsonadm/templates' );
 		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
 	}
 

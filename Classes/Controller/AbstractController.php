@@ -21,6 +21,7 @@ use Aimeos\Aimeos\Base;
 abstract class AbstractController
 	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+	private static $aimeos;
 	private static $context;
 	private $contextBE;
 
@@ -40,11 +41,11 @@ abstract class AbstractController
 	/**
 	 * Returns the context item for the frontend
 	 *
-	 * @param array $templatePaths List of paths to the view templates
+	 * @param string $templatePath Path for retrieving the template paths used in the view
 	 * @param boolean $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContext( array $templatePaths = array(), $withView = true )
+	protected function getContext( $templatePath = 'client/html/templates', $withView = true )
 	{
 		$config = Base::getConfig( (array) $this->settings );
 
@@ -64,7 +65,9 @@ abstract class AbstractController
 		if( $withView === true )
 		{
 			$langid = self::$context->getLocale()->getLanguageId();
-			$view = Base::getView( self::$context, $this->uriBuilder, $templatePaths, $this->request, $langid );
+			$paths = self::$aimeos->getCustomPaths( $templatePath );
+			$view = Base::getView( self::$context, $this->uriBuilder, $paths, $this->request, $langid );
+
 			self::$context->setView( $view );
 		}
 
@@ -79,7 +82,7 @@ abstract class AbstractController
 	 * @param boolean $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContextBackend( array $templatePaths = array(), $withView = true )
+	protected function getContextBackend( $templatePath = 'admin/jqadm/templates', $withView = true )
 	{
 		if( !isset( $this->contextBE ) )
 		{
@@ -113,7 +116,8 @@ abstract class AbstractController
 
 			if( $withView )
 			{
-				$view = Base::getView( $context, $this->uriBuilder, $templatePaths, $this->request, $lang, false );
+				$paths = self::$aimeos->getCustomPaths( $templatePath );
+				$view = Base::getView( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
 				$context->setView( $view );
 			}
 
@@ -160,6 +164,9 @@ abstract class AbstractController
 	protected function initializeAction()
 	{
 		$this->uriBuilder->setArgumentPrefix( 'ai' );
+
+		// initialize bootstrapping
+		self::$aimeos = Base::getAimeos();
 	}
 
 
