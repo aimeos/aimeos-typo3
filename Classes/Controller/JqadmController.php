@@ -222,9 +222,9 @@ class JqadmController extends AbstractController
 
 		$aimeos = Base::getAimeos();
 		$paths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
-		$context = $this->getContextBackend( $paths, false );
+		$context = $this->getContextBackend( $paths );
 
-		$view = Base::getView( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
+		$view = $context->getView();
 
 		$view->aimeosType = 'TYPO3';
 		$view->aimeosVersion = Base::getVersion();
