@@ -21,9 +21,6 @@ use Zend\Diactoros\Response;
  */
 class JsonadmController extends AbstractController
 {
-	private static $aimeos;
-
-
 	/**
 	 * Initializes the object before the real action is called.
 	 */
@@ -148,7 +145,7 @@ class JsonadmController extends AbstractController
 	protected function createClient( $resource )
 	{
 		$context = $this->getContextBackend( 'admin/jsonadm/templates' );
-		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, [], $resource );
+		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, Base::getAimeos(), $resource );
 	}
 
 
