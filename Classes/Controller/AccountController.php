@@ -30,7 +30,7 @@ class AccountController extends AbstractController
 		$context = $this->getContext();
 		$view = $context->getView();
 
-		$client = \Aimeos\Client\Html\Account\Download\Factory::createClient( $context, [] );
+		$client = \Aimeos\Client\Html\Account\Download\Factory::createClient( $context );
 		$client->setView( $view );
 		$client->process();
 
@@ -50,7 +50,7 @@ class AccountController extends AbstractController
 	 */
 	public function historyAction()
 	{
-		$client = \Aimeos\Client\Html\Account\History\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Account\History\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -60,7 +60,7 @@ class AccountController extends AbstractController
 	 */
 	public function favoriteAction()
 	{
-		$client = \Aimeos\Client\Html\Account\Favorite\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Account\Favorite\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -70,7 +70,7 @@ class AccountController extends AbstractController
 	 */
 	public function profileAction()
 	{
-		$client = \Aimeos\Client\Html\Account\Profile\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Account\Profile\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -80,7 +80,7 @@ class AccountController extends AbstractController
 	 */
 	public function watchAction()
 	{
-		$client = \Aimeos\Client\Html\Account\Watch\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Account\Watch\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 }

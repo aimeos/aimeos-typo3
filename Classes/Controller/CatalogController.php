@@ -26,7 +26,7 @@ class CatalogController extends AbstractController
 	 */
 	public function filterAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Filter\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Filter\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -36,7 +36,7 @@ class CatalogController extends AbstractController
 	 */
 	public function countAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Count\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Count\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -46,7 +46,7 @@ class CatalogController extends AbstractController
 	 */
 	public function stageAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Stage\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Stage\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -56,7 +56,7 @@ class CatalogController extends AbstractController
 	 */
 	public function stockAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Stock\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Stock\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -70,7 +70,7 @@ class CatalogController extends AbstractController
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
-		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -80,7 +80,7 @@ class CatalogController extends AbstractController
 	 */
 	public function suggestAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Suggest\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Suggest\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -94,7 +94,7 @@ class CatalogController extends AbstractController
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
-		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -104,7 +104,7 @@ class CatalogController extends AbstractController
 	 */
 	public function sessionAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext(), [] );
+		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 }
