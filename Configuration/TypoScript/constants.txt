@@ -17,9 +17,6 @@ plugin.tx_aimeos {
 	# cat=ai140theme/file/300; type=string; label=Aimeos CSS:Path to the Aimeos theme CSS
 	theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
 
-	# cat=ai140theme/file/310; type=string; label=Aimeos shared CSS:Path to the Aimeos theme CSS shared between website and e-mails
-	theme.css.common = EXT:aimeos/Resources/Public/Themes/elegance/common.css
-
 
 	# cat=ai140theme/file/400; type=string; label=Aimeos theme JS:Path to the theme specific Aimeos Javascript code
 	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js

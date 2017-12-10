@@ -1,4 +1,3 @@
-page.includeCSS.aimeos-common = {$plugin.tx_aimeos.theme.css.common}
 page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-custom = {$plugin.tx_aimeos.theme.css.custom}
 
