@@ -35,7 +35,7 @@ class Base
 	 */
 	public static function getAimeos()
 	{
-		$className = 'Aimeos\Aimeos\Base\Aimeos';
+		$name = 'Aimeos\Aimeos\Base\Aimeos';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] ) ) {
 			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] instanceof \Closure ) {
@@ -55,7 +55,7 @@ class Base
 	 */
 	public static function getConfig( array $local = array() )
 	{
-		$className = 'Aimeos\Aimeos\Base\Config';
+		$name = 'Aimeos\Aimeos\Base\Config';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) ) {
 			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] instanceof \Closure ) {
@@ -75,7 +75,7 @@ class Base
 	 */
 	public static function getContext( \Aimeos\MW\Config\Iface $config )
 	{
-		$className = 'Aimeos\Aimeos\Base\Context';
+		$name = 'Aimeos\Aimeos\Base\Context';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] ) ) {
 			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] instanceof \Closure ) {
@@ -122,7 +122,7 @@ class Base
 	 */
 	public static function getI18n( array $languageIds, array $local = array() )
 	{
-		$className = 'Aimeos\Aimeos\Base\I18n';
+		$name = 'Aimeos\Aimeos\Base\I18n';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) ) {
 			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] instanceof \Closure ) {
@@ -149,13 +149,13 @@ class Base
 			}
 		}
 
-		$className = 'Aimeos\Aimeos\Base\Locale';
+		$name = 'Aimeos\Aimeos\Base\Locale';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'] ) ) {
-			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
+			$name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
 		}
 
-		return $className::get( $context, $request );
+		return $name::get( $context, $request );
 	}
 
 
@@ -174,13 +174,13 @@ class Base
 			}
 		}
 
-		$className = 'Aimeos\Aimeos\Base\Locale';
+		$name = 'Aimeos\Aimeos\Base\Locale';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'] ) ) {
-			$className = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
+			$name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
 		}
 
-		return $className::getBackend( $context, $sitecode );
+		return $name::getBackend( $context, $sitecode );
 	}
 
 
@@ -216,7 +216,7 @@ class Base
 		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $langid = null )
 	{
-		$className = 'Aimeos\Aimeos\Base\View';
+		$name = 'Aimeos\Aimeos\Base\View';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] ) ) {
 			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] instanceof \Closure ) {
