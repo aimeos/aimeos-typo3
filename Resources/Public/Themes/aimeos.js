@@ -1341,8 +1341,11 @@ AimeosCheckoutStandard = {
 
 		var form = $(".checkout-standard form").first();
 		var node = $(".checkout-standard-process", form);
+		var anchor = $("a.btn-action", node);
 
-		if(node.length > 0 && node.has(".mandatory").length === 0 && node.has(".optional").length === 0 && form.attr("action") !== '' ) {
+		if(anchor.length > 0) {
+			window.location = anchor.attr("href");
+		} else if(node.length > 0 && node.has(".mandatory").length === 0 && node.has(".optional").length === 0 && form.attr("action") !== '' ) {
 			form.submit();
 		}
 	},
