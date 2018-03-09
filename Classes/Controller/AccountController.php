@@ -76,6 +76,16 @@ class AccountController extends AbstractController
 
 
 	/**
+	 * Renders the account subscriptions.
+	 */
+	public function subscriptionAction()
+	{
+		$client = \Aimeos\Client\Html\Account\Subscription\Factory::createClient( $this->getContext() );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the account watch list.
 	 */
 	public function watchAction()

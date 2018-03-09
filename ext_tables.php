@@ -135,6 +135,10 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_account-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_account-profile', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/AccountProfile.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'account-profile', 'Aimeos Shop - Account profile' );
 
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_account-subscription'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_account-subscription', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/AccountSubscription.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'account-subscription', 'Aimeos Shop - Account subscriptions' );
+
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_account-watch'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_account-watch', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/AccountWatch.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'account-watch', 'Aimeos Shop - Account watch list' );

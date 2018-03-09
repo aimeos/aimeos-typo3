@@ -141,10 +141,10 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-		'Aimeos.' . $_EXTKEY,
-		'account-history',
-		array( 'Account' => 'history' ),
-		array( 'Account' => 'history' )
+	'Aimeos.' . $_EXTKEY,
+	'account-history',
+	array( 'Account' => 'history' ),
+	array( 'Account' => 'history' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -159,6 +159,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 	'account-profile',
 	array( 'Account' => 'profile' ),
 	array( 'Account' => 'profile' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'account-subscription',
+	array( 'Account' => 'subscription' ),
+	array( 'Account' => 'subscription' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
