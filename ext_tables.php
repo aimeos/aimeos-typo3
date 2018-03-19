@@ -60,6 +60,10 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_locale-s
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'locale-select', 'Aimeos Shop - Locale selector' );
 
 
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-attribute'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-attribute', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogAttribute.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-attribute', 'Aimeos Shop - Catalog attributes' );
+
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-count'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-count', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogCount.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-count', 'Aimeos Shop - Catalog count JSON' );
@@ -76,9 +80,9 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-list', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogList.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-list', 'Aimeos Shop - Catalog list' );
 
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-suggest'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-suggest', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSuggest.xml' );
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-suggest', 'Aimeos Shop - Catalog suggest JSON' );
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-search'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-search', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSearch.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-search', 'Aimeos Shop - Catalog search' );
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-session'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-session', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSession.xml' );
@@ -91,6 +95,14 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-stock'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-stock', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogStock.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-stock', 'Aimeos Shop - Catalog stock JSON' );
+
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-suggest'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-suggest', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogSuggest.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-suggest', 'Aimeos Shop - Catalog suggest JSON' );
+
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_catalog-tree'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( $pluginName . '_catalog-tree', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/CatalogTree.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.' . $_EXTKEY, 'catalog-tree', 'Aimeos Shop - Catalog tree' );
 
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginName . '_basket-related'] = 'pi_flexform';

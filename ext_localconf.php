@@ -34,16 +34,9 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.' . $_EXTKEY,
-	'catalog-filter',
-	array( 'Catalog' => 'filter' ),
-	array( 'Catalog' => 'filter' )
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
-	'catalog-stage',
-	array( 'Catalog' => 'stage' ),
-	array( 'Catalog' => 'stage' )
+	'catalog-attribute',
+	array( 'Catalog' => 'attribute' ),
+	array( 'Catalog' => 'attribute' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -55,9 +48,16 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.' . $_EXTKEY,
-	'catalog-stock',
-	array( 'Catalog' => 'stock' ),
-	array( 'Catalog' => 'stock' )
+	'catalog-detail',
+	array( 'Catalog' => 'detail' ),
+	array( 'Catalog' => 'detail' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'catalog-filter',
+	array( 'Catalog' => 'filter' ),
+	array( 'Catalog' => 'filter' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -69,16 +69,9 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.' . $_EXTKEY,
-	'catalog-suggest',
-	array( 'Catalog' => 'suggest' ),
-	array( 'Catalog' => 'suggest' )
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
-	'catalog-detail',
-	array( 'Catalog' => 'detail' ),
-	array( 'Catalog' => 'detail' )
+	'catalog-search',
+	array( 'Catalog' => 'search' ),
+	array( 'Catalog' => 'search' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -86,6 +79,34 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 	'catalog-session',
 	array( 'Catalog' => 'session' ),
 	array( 'Catalog' => 'session' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'catalog-stage',
+	array( 'Catalog' => 'stage' ),
+	array( 'Catalog' => 'stage' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'catalog-stock',
+	array( 'Catalog' => 'stock' ),
+	array( 'Catalog' => 'stock' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'catalog-suggest',
+	array( 'Catalog' => 'suggest' ),
+	array( 'Catalog' => 'suggest' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.' . $_EXTKEY,
+	'catalog-tree',
+	array( 'Catalog' => 'tree' ),
+	array( 'Catalog' => 'tree' )
 );
 
 

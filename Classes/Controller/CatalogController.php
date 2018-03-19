@@ -22,6 +22,30 @@ use Aimeos\Aimeos\Base;
 class CatalogController extends AbstractController
 {
 	/**
+	 * Renders the catalog attribute section.
+	 */
+	public function attributeAction()
+	{
+		$client = \Aimeos\Client\Html\Catalog\Attribute\Factory::createClient( $this->getContext() );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
+	 * Renders the catalog detail section.
+	 */
+	public function detailAction()
+	{
+		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
+			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
+		}
+
+		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext() );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the catalog filter section.
 	 */
 	public function filterAction()
@@ -37,6 +61,40 @@ class CatalogController extends AbstractController
 	public function countAction()
 	{
 		$client = \Aimeos\Client\Html\Catalog\Count\Factory::createClient( $this->getContext() );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
+	 * Renders the catalog list section.
+	 */
+	public function listAction()
+	{
+		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
+			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
+		}
+
+		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext() );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
+	 * Renders the catalog search section.
+	 */
+	public function searchAction()
+	{
+		$client = \Aimeos\Client\Html\Catalog\Search\Factory::createClient( $this->getContext() );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
+	 * Renders the user session related catalog section.
+	 */
+	public function sessionAction()
+	{
+		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 
@@ -62,20 +120,6 @@ class CatalogController extends AbstractController
 
 
 	/**
-	 * Renders the catalog list section.
-	 */
-	public function listAction()
-	{
-		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
-			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
-		}
-
-		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext() );
-		return $this->getClientOutput( $client );
-	}
-
-
-	/**
 	 * Renders a list of product names in JSON format.
 	 */
 	public function suggestAction()
@@ -86,25 +130,11 @@ class CatalogController extends AbstractController
 
 
 	/**
-	 * Renders the catalog detail section.
+	 * Renders the catalog tree section.
 	 */
-	public function detailAction()
+	public function treeAction()
 	{
-		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
-			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
-		}
-
-		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext() );
-		return $this->getClientOutput( $client );
-	}
-
-
-	/**
-	 * Renders the user session related catalog section.
-	 */
-	public function sessionAction()
-	{
-		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html\Catalog\Tree\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
 }
