@@ -259,7 +259,6 @@ class JqadmController extends AbstractController
 	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
 	{
 		$this->response->setStatus( $response->getStatusCode() );
-		$this->response->setHeader( 'Cache-Control', 'no-store' );
 
 		foreach( $response->getHeaders() as $key => $value ) {
 			foreach( (array) $value as $val ) {
