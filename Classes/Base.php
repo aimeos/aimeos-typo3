@@ -38,7 +38,7 @@ class Base
 		$name = 'Aimeos\Aimeos\Base\Aimeos';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] ) instanceof \Closure ) {
 				return $name();
 			}
 		}
@@ -58,7 +58,7 @@ class Base
 		$name = 'Aimeos\Aimeos\Base\Config';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) instanceof \Closure ) {
 				return $name( self::getAimeos()->getConfigPaths(), $local );
 			}
 		}
@@ -78,7 +78,7 @@ class Base
 		$name = 'Aimeos\Aimeos\Base\Context';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] ) instanceof \Closure ) {
 				return $name( $config );
 			}
 		}
@@ -125,7 +125,7 @@ class Base
 		$name = 'Aimeos\Aimeos\Base\I18n';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) instanceof \Closure ) {
 				return $name( self::getAimeos()->getI18nPaths(), $languageIds, $local );
 			}
 		}
@@ -144,7 +144,7 @@ class Base
 	public static function getLocale( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) instanceof \Closure ) {
 				return $name( $context, $request );
 			}
 		}
@@ -169,7 +169,7 @@ class Base
 	public static function getLocaleBackend( \Aimeos\MShop\Context\Item\Iface $context, $sitecode )
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) instanceof \Closure ) {
 				return $name( $context, $sitecode );
 			}
 		}
@@ -219,7 +219,7 @@ class Base
 		$name = 'Aimeos\Aimeos\Base\View';
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] ) ) {
-			if( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] instanceof \Closure ) {
+			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] ) instanceof \Closure ) {
 				return $name( $context, $uriBuilder, $templatePaths, $request, $langid );
 			}
 		}
