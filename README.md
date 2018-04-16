@@ -30,7 +30,7 @@ detail views, for searching products as well as baskets and the checkout process
 
 This document is for the latest Aimeos TYPO3 **2017.10 release and later**.
 
-- Beta release: 2018.01 (TYPO3 7/8 LTS)
+- Stable release: 2018.04 (TYPO3 7/8 LTS)
 - LTS release: 2017.10 (TYPO3 6/7/8 LTS)
 
 ### TYPO3 extension repository
@@ -58,7 +58,7 @@ In order to tell composer what it should install, you have to create a basic `co
     ],
     "require": {
         "typo3/cms": "~8.7",
-        "aimeos/aimeos-typo3": "~2017.10"
+        "aimeos/aimeos-typo3": "~2018.04"
     },
     "extra": {
         "typo3/cms": {
