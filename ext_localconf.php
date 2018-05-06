@@ -5,10 +5,8 @@ if ( ! defined( 'TYPO3_MODE' ) ) {
 }
 
 
-$localautoloader = __DIR__ . '/Resources/Libraries/autoload.php';
-
-if( file_exists( $localautoloader ) === true ) {
-	require_once $localautoloader;
+if( file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
+	require_once __DIR__ . '/Resources/Libraries/autoload.php';
 }
 
 
@@ -25,7 +23,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
  */
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'locale-select',
 	array( 'Locale' => 'select' ),
 	array( 'Locale' => 'select' )
@@ -33,77 +31,77 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-attribute',
 	array( 'Catalog' => 'attribute' ),
 	array( 'Catalog' => 'attribute' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-count',
 	array( 'Catalog' => 'count' ),
 	array( 'Catalog' => 'count' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-detail',
 	array( 'Catalog' => 'detail' ),
 	array( 'Catalog' => 'detail' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-filter',
 	array( 'Catalog' => 'filter' ),
 	array( 'Catalog' => 'filter' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-list',
 	array( 'Catalog' => 'list' ),
 	array( 'Catalog' => 'list' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-search',
 	array( 'Catalog' => 'search' ),
 	array( 'Catalog' => 'search' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-session',
 	array( 'Catalog' => 'session' ),
 	array( 'Catalog' => 'session' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-stage',
 	array( 'Catalog' => 'stage' ),
 	array( 'Catalog' => 'stage' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-stock',
 	array( 'Catalog' => 'stock' ),
 	array( 'Catalog' => 'stock' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-suggest',
 	array( 'Catalog' => 'suggest' ),
 	array( 'Catalog' => 'suggest' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'catalog-tree',
 	array( 'Catalog' => 'tree' ),
 	array( 'Catalog' => 'tree' )
@@ -111,21 +109,21 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'basket-related',
 	array( 'Basket' => 'related' ),
 	array( 'Basket' => 'related' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'basket-small',
 	array( 'Basket' => 'small' ),
 	array( 'Basket' => 'small' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'basket-standard',
 	array( 'Basket' => 'index' ),
 	array( 'Basket' => 'index' )
@@ -133,21 +131,21 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'checkout-standard',
 	array( 'Checkout' => 'index' ),
 	array( 'Checkout' => 'index' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'checkout-confirm',
 	array( 'Checkout' => 'confirm' ),
 	array( 'Checkout' => 'confirm' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'checkout-update',
 	array( 'Checkout' => 'update' ),
 	array( 'Checkout' => 'update' )
@@ -155,49 +153,49 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'account-download',
 	array( 'Account' => 'download' ),
 	array( 'Account' => 'download' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'account-history',
 	array( 'Account' => 'history' ),
 	array( 'Account' => 'history' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'account-favorite',
 	array( 'Account' => 'favorite' ),
 	array( 'Account' => 'favorite' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'account-profile',
 	array( 'Account' => 'profile' ),
 	array( 'Account' => 'profile' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'account-subscription',
 	array( 'Account' => 'subscription' ),
 	array( 'Account' => 'subscription' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'account-watch',
 	array( 'Account' => 'watch' ),
 	array( 'Account' => 'watch' )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.' . $_EXTKEY,
+	'Aimeos.aimeos',
 	'jsonapi',
 	array( 'Jsonapi' => 'index' ),
 	array( 'Jsonapi' => 'index' )
@@ -238,36 +236,21 @@ if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'
  * Add cache configuration
  */
 
-if( !is_array( $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos'] ) ) {
-    $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos'] = array();
+if( !is_array( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] ) ) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] = array();
 }
 
-if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] ) ) {
-    $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] = 'TYPO3\\CMS\\Core\\Cache\\Frontend\\StringFrontend';
+if( !isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] ) ) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] = 'TYPO3\\CMS\\Core\\Cache\\Frontend\\StringFrontend';
 }
 
-if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['options'] ) ) {
-	$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['options'] = array( 'defaultLifetime' => 0 );
+if( !isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] ) ) {
+	$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] = array( 'defaultLifetime' => 0 );
 }
 
-if( !isset($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
-	$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = array( 'pages' );
+if( !isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
+	$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = array( 'pages' );
 }
 
-
-
-/**
- * Execute the setup tasks automatically to create the required tables
- */
-
-if (TYPO3_MODE === 'BE') {
-	$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
-	$signalSlotDispatcher->connect(
-		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-		'hasInstalledExtensions',
-		'Aimeos\\Aimeos\\Setup',
-		'executeOnSignal'
-	);
-}
 
 ?>
