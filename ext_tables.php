@@ -14,12 +14,12 @@ if( TYPO3_MODE === 'BE' )
 {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook'][] = 'Aimeos\\Aimeos\\Custom\\WizardItem';
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Custom\\Wizicon'] =
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( $_EXTKEY ) . 'Classes/Custom/Wizicon.php';
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' ) . 'Classes/Custom/Wizicon.php';
 
 	$_aimeosConfiguration = array(
 		'access' => 'user,group',
-		'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/Extension.svg',
-		'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/admin.xlf',
+		'icon' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg',
+		'labels' => 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf',
 	);
 
 	if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'showPageTree', false ) == false )
@@ -29,7 +29,7 @@ if( TYPO3_MODE === 'BE' )
 	}
 
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-		'Aimeos.' . $_EXTKEY,
+		'Aimeos.aimeos',
 		'web',
 		'tx_aimeos_admin',
 		'', // position

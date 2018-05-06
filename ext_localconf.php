@@ -14,8 +14,8 @@ if( file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
  * Include Aimeos extension directory
  */
 
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['confDirs']['0_'.$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Private/Config/';
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Private/Extensions/';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs']['0_aimeos'] = 'EXT:aimeos/Resources/Private/Config/';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:aimeos/Resources/Private/Extensions/';
 
 
 /**
@@ -207,15 +207,15 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['extDirs']['0_'.$_EXTKEY] = 'EX
  */
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Typo6'] = array(
-	'extension'        => $_EXTKEY,
-	'title'            => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/scheduler.xlf:default.name',
-	'description'      => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/scheduler.xlf:default.description',
+	'extension'        => 'aimeos',
+	'title'            => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.name',
+	'description'      => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.description',
 	'additionalFields' => 'Aimeos\\Aimeos\\Scheduler\\Provider\\Typo6',
 );
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Email6'] = array(
-	'extension'        => $_EXTKEY,
-	'title'            => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/scheduler.xlf:email.name',
-	'description'      => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/scheduler.xlf:email.description',
+	'extension'        => 'aimeos',
+	'title'            => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.name',
+	'description'      => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.description',
 	'additionalFields' => 'Aimeos\\Aimeos\\Scheduler\\Provider\\Email6',
 );
 
