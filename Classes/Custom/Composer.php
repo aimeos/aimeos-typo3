@@ -45,11 +45,8 @@ class Composer
 			{
 				$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
 
-				if( file_exists( $t3path . '/Resources/Private/Extensions' ) === false )
-				{
-					$path = dirname( $installer->getInstallPath( $package ) );
-					symlink( '../../../../../../' . $path, $t3path . '/Resources/Private/Extensions' );
-				}
+				$path = dirname( $installer->getInstallPath( $package ) );
+				self::createLink( '../../../../../../' . $path, $t3path . '/Resources/Private/Extensions' );
 			}
 		}
 	}
@@ -103,6 +100,25 @@ class Composer
 		{
 			$msg = 'Unable to create directory "%1$s" with permission "%2$s"';
 			throw new \RuntimeException( sprintf( $msg, $dir, $perm ) );
+		}
+	}
+
+
+	/**
+	 * Creates a link if it doesn't exist
+	 *
+	 * @param string $source Relative source path
+	 * @param string $target Absolute target path
+	 */
+	protected static function createLink( $source, $target )
+	{
+		if( file_exists( $target ) === false && symlink( $source, $target ) === false )
+		{
+			$source = realpath( __DIR__ . $source );
+
+			if( symlink( $source, $target ) === false ) {
+				throw new \RuntimeException( sprintf( 'Failed to create symlink for "%1$s" to "%2$s"', $source, $target ) );
+			}
 		}
 	}
 
