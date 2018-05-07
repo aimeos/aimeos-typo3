@@ -42,7 +42,6 @@ if( TYPO3_MODE === 'BE' )
 		$_aimeosConfiguration
 	);
 
-
 	/**
 	 * Execute the setup tasks automatically to create the required tables
 	 */
@@ -51,7 +50,13 @@ if( TYPO3_MODE === 'BE' )
 		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
 		'hasInstalledExtensions',
 		'Aimeos\\Aimeos\\Setup',
-		'executeOnSignal'
+		'signal'
+	);
+	$signalSlotDispatcher->connect(
+		'TYPO3\\CMS\\Install\\Service\\SqlExpectedSchemaService',
+		'tablesDefinitionIsBeingBuilt',
+		'Aimeos\\Aimeos\\Setup',
+		'schema'
 	);
 }
 

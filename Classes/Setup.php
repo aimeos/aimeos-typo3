@@ -30,6 +30,8 @@ class Setup
 	 * The setup tasks print their information directly to the standard output.
 	 * To avoid this, it's necessary to use the output buffering handler
 	 * (ob_start(), ob_get_contents() and ob_end_clean()).
+	 *
+	 * @param string|null $extname Installed extension name
 	 */
 	public static function execute()
 	{
@@ -86,7 +88,64 @@ class Setup
 	 *
 	 * @param string|null $extname Installed extension name
 	 */
-	public function executeOnSignal( $extname = null )
+	public function schema( array $sql )
+	{
+		$ctx = self::getContext();
+		$dbm = $ctx->getDatabaseManager();
+		$conn = $dbm->acquire();
+
+		try
+		{
+			$tables = [];
+
+			foreach( ['fe_users_', 'madmin_', 'mshop_'] as $prefix )
+			{
+				$result = $conn->create( 'SHOW TABLES like \'' . $prefix . '%\'' )->execute();
+
+				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== false ) {
+					$tables[] = $row[0];
+				}
+			}
+
+			foreach( $tables as $table )
+			{
+				$result = $conn->create( 'SHOW CREATE TABLE ' . $table )->execute();
+
+				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== false )
+				{
+					$str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
+
+					$matches = [];
+					preg_match( '/VARCHAR\(([0-9]+)\) NOT NULL/', $row[1], $matches );
+
+					foreach( $matches as $match ) {
+						$str = str_replace( '', '', $str );
+					}
+
+					$str = str_replace( '"', '`', $str );
+					$sql[] = $str . ";\n";
+error_log( print_r( $matches, true ) );
+				}
+			}
+
+			$dbm->release( $conn );
+		}
+		catch( \Exception $e )
+		{
+			$dbm->release( $conn );
+		}
+
+
+		return ['sqlString' => $sql ];
+	}
+
+
+	/**
+	 * Update schema if extension is installed
+	 *
+	 * @param string|null $extname Installed extension name
+	 */
+	public static function signal( $extname = null )
 	{
 		if( $extname === 'aimeos' ) {
 			self::execute();
