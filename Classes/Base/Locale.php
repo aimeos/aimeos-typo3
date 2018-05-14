@@ -83,14 +83,18 @@ class Locale
 	{
 		$localeManager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
 
-		try {
+		try
+		{
 			$localeItem = $localeManager->bootstrap( $sitecode, '', '', false );
-		} catch( \Aimeos\MShop\Locale\Exception $e ) {
-			$localeItem = $localeManager->createItem();
+			$localeItem->setLanguageId( null );
+			$localeItem->setCurrencyId( null );
 		}
-
-		$localeItem->setLanguageId( null );
-		$localeItem->setCurrencyId( null );
+		catch( \Aimeos\MShop\Locale\Exception $e )
+		{
+			$item = \Aimeos\MShop\Factory::createManager( $context, 'locale/site' )->findItem( $sitecode );
+			$localeItem = $localeManager->createItem();
+			$localeItem->setSiteId( $item->getId() );
+		}
 
 		return $localeItem;
 	}
