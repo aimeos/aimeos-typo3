@@ -1,0 +1,81 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="da">
+		<header/>
+		<body>
+			<trans-unit id="default.description" xml:space="preserve">
+				<source>Executes the selected Aimeos Shop jobs</source>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode" xml:space="preserve">
+				<source>One or more sites is invalid or already disabled</source>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
+				<source>Please choose at least one site</source>
+			</trans-unit>
+			<trans-unit id="default.error.controller.missing" xml:space="preserve">
+				<source>Please choose at least one job</source>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>TypoScript konfiguration ikke gyldig</target>
+			</trans-unit>
+			<trans-unit id="default.label.controller" xml:space="preserve">
+				<source>Jobs</source>
+			</trans-unit>
+			<trans-unit id="default.label.sitecode" xml:space="preserve">
+				<source>Sites</source>
+			</trans-unit>
+			<trans-unit id="default.label.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>TypoScript konfiguration</target>
+			</trans-unit>
+			<trans-unit id="default.name" xml:space="preserve">
+				<source>Aimeos Shop scheduler</source>
+			</trans-unit>
+			<trans-unit id="email.description" xml:space="preserve">
+				<source>Specialized task for sending the e-mails</source>
+			</trans-unit>
+			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
+				<source>The sender e-mail address is invalid or none was entered</source>
+			</trans-unit>
+			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
+				<source>The reply e-mail address is invalid</source>
+			</trans-unit>
+			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
+				<source>The page ID of the product detail page is invalid</source>
+			</trans-unit>
+			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
+				<source>The page ID of the account download page is invalid</source>
+			</trans-unit>
+			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
+				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+			</trans-unit>
+			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
+				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
+			</trans-unit>
+			<trans-unit id="email.label.from-name" xml:space="preserve">
+				<source>Sender name</source>
+			</trans-unit>
+			<trans-unit id="email.label.from-email" xml:space="preserve">
+				<source>Sender e-mail</source>
+			</trans-unit>
+			<trans-unit id="email.label.reply-email" xml:space="preserve">
+				<source>Reply e-mail</source>
+			</trans-unit>
+			<trans-unit id="email.label.page-detail" xml:space="preserve">
+				<source>Product detail page ID</source>
+			</trans-unit>
+			<trans-unit id="email.label.page-download" xml:space="preserve">
+				<source>Account download page ID</source>
+			</trans-unit>
+			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
+				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+			</trans-unit>
+			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
+				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+			</trans-unit>
+			<trans-unit id="email.name" xml:space="preserve">
+				<source>Aimeos Shop advanced scheduler</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

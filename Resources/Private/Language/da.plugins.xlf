@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="ru">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="da">
 		<header/>
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
@@ -10,92 +10,87 @@
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
-				<target>Страница избранных товаров</target>
+				<target>Favorit produkter side</target>
 			</trans-unit>
 			<trans-unit id="account-watch.target" xml:space="preserve">
 				<source>Watched products page</source>
-				<target>Страница отслеживаемых товаров</target>
+				<target>Sidste sete produkter side</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
 				<source>Display categories beginning from the following node</source>
-				<target>Вывод категорий, начиная с указанного узла</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
 				<source>Always display these category levels</source>
-				<target>Всегда отображать категории этого уровня</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
-				<target>Отображать категории лишь до указанных уровней</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
-				<target>Страница списка каталога</target>
+				<target>Produkt listevisning side</target>
 			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
-				<target>Страница с предложениями по фильтрам поиска</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category if no parameter is available</source>
-				<target>Категория по умолчанию при отсутствии каких-либо параметров</target>
+				<target>Default kategori hvis intet parameter er valgt</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
-				<target>Страница с подробным описанием товара</target>
+				<target>Produkt singlevisning side</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
 				<source>Default product ID if no parameter is available</source>
+				<target>Default produkt ID hvis intet parameter er valgt</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
-				<target>Страница с дополнением сессии каталога</target>
 			</trans-unit>
 			<trans-unit id="catalog-count.target" xml:space="preserve">
 				<source>Page with product counts for catalog filter</source>
-				<target>Страница подсчёта товаров для фильтра каталога</target>
 			</trans-unit>
 			<trans-unit id="catalog-stock.target" xml:space="preserve">
 				<source>Page with stock level data</source>
-				<target>Страница с данными по складским запасам</target>
+				<target>Side for lagerstatus</target>
 			</trans-unit>
 			<trans-unit id="basket-standard.target" xml:space="preserve">
 				<source>Basket page</source>
-				<target>Страница с корзиной</target>
+				<target>Indkøbskurv</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard.target" xml:space="preserve">
 				<source>Checkout page</source>
-				<target>Страница оформления</target>
+				<target>Checkout</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
 				<source>Terms and conditions page</source>
-				<target>Страница с условиями и соглашениями</target>
+				<target>Handelsbetingelser</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
 				<source>Privacy policy page</source>
-				<target>Страница с условиями безопасности</target>
+				<target>Databeskyttelse</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
-				<target>Страница подтверждения</target>
+				<target>Bekræft</target>
 			</trans-unit>
 			<trans-unit id="checkout-update.target" xml:space="preserve">
 				<source>Page with &quot;checkout payment update&quot; plugin</source>
-				<target>Страница с дополнением &quot;обновление оплаты заказа&quot;</target>
+				<target>Side med &quot;opdater betalingsmetode&quot;</target>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
-				<target>Настройка TypoScript</target>
+				<target>TypoScript konfiguration</target>
 			</trans-unit>
 			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
 				<source>The TypoScript configuration is invalid</source>
-				<target>Ошибка в настройках TypoScript</target>
+				<target>TypoScript konfiguration ikke gyldig</target>
 			</trans-unit>
 		</body>
 	</file>

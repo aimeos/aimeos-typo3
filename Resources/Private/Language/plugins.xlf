@@ -63,6 +63,9 @@
 			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
 				<source>Privacy policy page</source>
 			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
+				<source>Cancellation policy page</source>
+			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
 			</trans-unit>
