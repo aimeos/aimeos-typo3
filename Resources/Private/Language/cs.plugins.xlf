@@ -2,6 +2,9 @@
 	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="cs">
 		<header/>
 		<body>
+			<trans-unit id="jsonapi-options.target" xml:space="preserve">
+				<source>Page with JSON REST API plugin</source>
+			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
 				<target>Stránka s dokumenty ke stažení pro zákazníka</target>
@@ -25,6 +28,9 @@
 			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
 				<target>Zobrazovat pouze po zvolené úrovně kategorií</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
+				<source>Displayed attribute types for faceted search</source>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -73,6 +79,9 @@
 			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
 				<source>Privacy policy page</source>
 				<target>Stránka o ochraně soukromí</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
+				<source>Cancellation policy page</source>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
