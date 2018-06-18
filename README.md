@@ -51,8 +51,6 @@ In order to tell composer what it should install, you have to create a basic `co
 {
     "name": "vendor/mysite",
     "description" : "My new TYPO3 web site",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "repositories": [
         { "type": "composer", "url": "https://composer.typo3.org/" }
     ],
