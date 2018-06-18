@@ -11,9 +11,6 @@
 		"forum": "https://aimeos.org/help",
 		"wiki": "https://aimeos.org/docs"
 	},
-	"repositories": [
-		{ "type": "composer", "url": "https://composer.typo3.org/" }
-	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
