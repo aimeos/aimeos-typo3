@@ -30,7 +30,8 @@
 		"zendframework/zend-diactoros": "~1.3"
 	},
 	"replace": {
-		"aimeos": "self.version"
+		"aimeos": "self.version",
+		"typo3-ter/aimeos": "self.version"
 	},
 	"autoload": {
 		"classmap": ["Classes"],
