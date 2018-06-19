@@ -11,9 +11,6 @@
 		"forum": "https://aimeos.org/help",
 		"wiki": "https://aimeos.org/docs"
 	},
-	"repositories": [
-		{ "type": "composer", "url": "https://composer.typo3.org/" }
-	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
@@ -30,7 +27,8 @@
 		"zendframework/zend-diactoros": "~1.3"
 	},
 	"replace": {
-		"aimeos": "self.version"
+		"aimeos": "self.version",
+		"typo3-ter/aimeos": "self.version"
 	},
 	"autoload": {
 		"classmap": ["Classes"],
@@ -44,6 +42,9 @@
 	"extra": {
 		"installer-paths": {
 			"Resources/Private/Extensions/{$name}/": ["type:aimeos-extension"]
+		},
+		"typo3/cms": {
+			"extension-key": "aimeos"
 		}
 	},
 	"scripts": {
