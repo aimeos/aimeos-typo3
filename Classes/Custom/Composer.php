@@ -114,7 +114,7 @@ class Composer
 	{
 		if( file_exists( $target ) === false && symlink( $source, $target ) === false )
 		{
-			$source = realpath( __DIR__ . $source );
+			$source = realpath( __DIR__ . '/' . $source );
 
 			if( symlink( $source, $target ) === false ) {
 				throw new \RuntimeException( sprintf( 'Failed to create symlink for "%1$s" to "%2$s"', $source, $target ) );
