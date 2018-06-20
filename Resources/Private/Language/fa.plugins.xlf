@@ -43,6 +43,30 @@
 				<source>Default category if no parameter is available</source>
 				<target>دسته ی پیشفرض  اگر هیچ پارامتری وارد نشده باشد</target>
 			</trans-unit>
+			<trans-unit id="catalog-list.sort" xml:space="preserve">
+				<source>Default sorting of the product list</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
+				<source>Relevance (position)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
+				<source>Name (A-Z)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
+				<source>Name (Z-A)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
+				<source>Price (lowest first)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
+				<source>Price (highest first)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
+				<source>Creation time (oldest first)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
+				<source>Creation time (newest first)</source>
+			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
 				<target>صفحه ی جزئیات فروشگاه</target>
