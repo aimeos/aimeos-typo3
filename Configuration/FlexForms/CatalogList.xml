@@ -114,6 +114,48 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.lists.catid-default>
+			<settings.client.html.catalog.lists.sort>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort</label>
+					<config>
+						<type>select</type>
+						<multiple>0</multiple>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-relevance</numIndex>
+								<numIndex index="1">relevance</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-name</numIndex>
+								<numIndex index="1">name</numIndex>
+							</numIndex>
+							<numIndex index="2" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-namedesc</numIndex>
+								<numIndex index="1">-name</numIndex>
+							</numIndex>
+							<numIndex index="3" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-price</numIndex>
+								<numIndex index="1">price</numIndex>
+							</numIndex>
+							<numIndex index="4" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-pricedesc</numIndex>
+								<numIndex index="1">-price</numIndex>
+							</numIndex>
+							<numIndex index="5" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-ctime</numIndex>
+								<numIndex index="1">ctime</numIndex>
+							</numIndex>
+							<numIndex index="6" type="array">
+								<numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-ctimedesc</numIndex>
+								<numIndex index="1">-ctime</numIndex>
+							</numIndex>
+						</items>
+						<size>10</size>
+						<maxitems>1</maxitems>
+						<minitems>0</minitems>
+					</config>
+				</TCEforms>
+			</settings.client.html.catalog.lists.sort>
 			<settings.typo3.tsconfig>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
