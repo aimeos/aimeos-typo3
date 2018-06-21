@@ -26,32 +26,30 @@ class Composer
 	public static function install( \Composer\Script\Event $event )
 	{
 		$repository = $event->getComposer()->getRepositoryManager()->getLocalRepository();
-		$t3package = $repository->findPackage( 'aimeos/aimeos-typo3', '*' );
 
-		if ($t3package === null) {
-			$t3package = $repository->findPackage( 'typo3-ter/aimeos-typo3', '*' );
+		if( ( $t3package = $repository->findPackage( 'aimeos/aimeos-typo3', '*' ) ) === null
+			&& ( $t3package = $repository->findPackage( 'typo3-ter/aimeos-typo3', '*' ) ) === null
+		) {
+			throw new \RuntimeException( 'No installed package "aimeos/aimeos-typo3" or "typo3-ter/aimeos-typo3" found' );
 		}
 
-		if( $t3package !== null )
+		$installer = $event->getComposer()->getInstallationManager();
+		$t3path = $installer->getInstallPath( $t3package );
+
+		if( ( $package = $repository->findPackage( 'aimeos/ai-client-html', '*' ) ) !== null )
 		{
-			$installer = $event->getComposer()->getInstallationManager();
-			$t3path = $installer->getInstallPath( $t3package );
+			$event->getIO()->write( 'Installing Aimeos public files from HTML client' );
 
-			if( ( $package = $repository->findPackage( 'aimeos/ai-client-html', '*' ) ) !== null )
-			{
-				$event->getIO()->write( 'Installing Aimeos public files from HTML client' );
+			$path = $installer->getInstallPath( $package );
+			self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
+		}
 
-				$path = $installer->getInstallPath( $package );
-				self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
-			}
+		if( ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null )
+		{
+			$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
 
-			if( ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null )
-			{
-				$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
-
-				$path = dirname( $installer->getInstallPath( $package ) );
-				self::createLink( '../../../../../../' . $path, $t3path . '/Resources/Private/Extensions' );
-			}
+			$path = dirname( $installer->getInstallPath( $package ) );
+			self::createLink( '../../../../../../' . $path, $t3path . '/Resources/Private/Extensions' );
 		}
 	}
 
