@@ -31,17 +31,6 @@ abstract class Email extends AbstractProvider
 
 
 	/**
-	 * Returns the string that must be part of the controller names
-	 *
-	 * @return string|null Controller name part
-	 */
-	protected function getJobFilter()
-	{
-		return '/email|export/';
-	}
-
-
-	/**
 	 * Fields generation.
 	 * This method is used to define new fields for adding or editing a task
 	 * In this case, it adds a page ID field

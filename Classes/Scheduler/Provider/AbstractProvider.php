@@ -54,7 +54,7 @@ abstract class AbstractProvider
 		$taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
 
 		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController );
-		$fieldCode .= $this->getControllerOptions( $taskInfo[$this->fieldController], $this->getJobFilter() );
+		$fieldCode .= $this->getControllerOptions( $taskInfo[$this->fieldController] );
 		$fieldCode .= '</select>';
 
 		$additionalFields[$this->fieldController] = array(
@@ -188,17 +188,6 @@ abstract class AbstractProvider
 
 
 	/**
-	 * Returns the string that must be part of the controller names
-	 *
-	 * @return string|null Controller name part
-	 */
-	protected function getJobFilter()
-	{
-		return null;
-	}
-
-
-	/**
 	 * Returns the HTML code for the select control.
 	 * The method adds every site and its children recursively.
 	 *
@@ -230,10 +219,9 @@ abstract class AbstractProvider
 	 * Returns the HTML code for the controller control.
 	 *
 	 * @param array $selected List of site codes that were previously selected by the user
-	 * @param string|null $filter String that must be part of the controller name
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function getControllerOptions( array $selected, $filter = null )
+	protected function getControllerOptions( array $selected )
 	{
 		$html = '';
 		$aimeos = Base::getAimeos();
@@ -253,10 +241,6 @@ abstract class AbstractProvider
 
 		foreach( $controllers as $name => $controller )
 		{
-			if( $filter !== null &&  preg_match( $filter, $name ) !== 1 ) {
-				continue;
-			}
-
 			$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
 			$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
 			$cntl = htmlspecialchars( $controller->getName(), ENT_QUOTES, 'UTF-8' );
