@@ -116,14 +116,21 @@ class Composer
 	 */
 	protected static function createLink( $source, $target )
 	{
-		if( file_exists( $target ) === false && symlink( $source, $target ) === false )
-		{
-			$source = realpath( __DIR__ . '/' . $source );
+		if (file_exists($target) === false) {
+			try {
+				if (symlink($source, $target) === true) {
+					return;
+				}
+			} catch (\ErrorException $e) {
+			}
 
-			if( symlink( $source, $target ) === false ) {
-				throw new \RuntimeException( sprintf( 'Failed to create symlink for "%1$s" to "%2$s"', $source, $target ) );
+			$source = realpath(__DIR__ . '/' . $source);
+			if (symlink($source, $target) === true) {
+				return;
 			}
 		}
+
+		throw new \RuntimeException(sprintf('Failed to create symlink for "%1$s" to "%2$s"', $source, $target));
 	}
 
 
