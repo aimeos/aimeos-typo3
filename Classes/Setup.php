@@ -54,7 +54,7 @@ class Setup
 			if( strncmp( $rname, 'db', 2 ) !== 0 ) {
 				unset( $dbconfig[$rname] );
 			} else {
-				$config->set( "resource/$rname/limit", 2 );
+				$config->set( "resource/$rname/limit", 3 );
 			}
 		}
 
