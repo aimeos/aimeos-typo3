@@ -24,7 +24,7 @@
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
-		"zendframework/zend-diactoros": "~1.3"
+		"zendframework/zend-diactoros": "~1.7.0"
 	},
 	"replace": {
 		"aimeos": "self.version",
