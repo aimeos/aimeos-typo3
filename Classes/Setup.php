@@ -124,7 +124,6 @@ class Setup
 
 					$str = str_replace( '"', '`', $str );
 					$sql[] = $str . ";\n";
-error_log( print_r( $matches, true ) );
 				}
 			}
 
