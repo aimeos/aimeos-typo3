@@ -140,6 +140,15 @@ class Setup
 
 
 	/**
+	 * For existing installations
+	 */
+	public static function executeOnSignal( $extname = null )
+	{
+		self::signal( $extname );
+	}
+
+
+	/**
 	 * Update schema if extension is installed
 	 *
 	 * @param string|null $extname Installed extension name
