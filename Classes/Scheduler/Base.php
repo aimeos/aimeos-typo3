@@ -171,9 +171,15 @@ class Base
 		$GLOBALS['TSFE']->initTemplate();
 		$GLOBALS['TSFE']->getConfigArray();
 
-		$rootline = BackendUtility::BEgetRootLine( $pageid );
-		if( ( $_SERVER['HTTP_HOST'] = BackendUtility::firstDomainRecord( $rootline ) ) == null ) {
-			throw new \RuntimeException( 'No domain record in root page' );
+		$rootline = BackendUtility::BEgetRootLine($pageid);
+		if ( BackendUtility::firstDomainRecord($rootline) != null ) {
+			$_SERVER['HTTP_HOST'] = BackendUtility::firstDomainRecord($rootline);
+		} elseif ( isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['scheduler_domain']) ) {
+			$_SERVER['HTTP_HOST'] = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['scheduler_domain'];
+		} elseif ( !empty( getenv('SCHEDULER_DOMAIN' ) ) ) {
+			$_SERVER['HTTP_HOST'] = getenv('SCHEDULER_DOMAIN');
+		} else {
+			throw new \RuntimeException('No config or domain record in root page found');
 		}
 	}
 }
