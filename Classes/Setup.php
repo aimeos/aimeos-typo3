@@ -114,15 +114,8 @@ class Setup
 				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== false )
 				{
 					$str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
-
-					$matches = [];
-					preg_match( '/VARCHAR\(([0-9]+)\) NOT NULL/', $row[1], $matches );
-
-					foreach( $matches as $match ) {
-						$str = str_replace( '', '', $str );
-					}
-
 					$str = str_replace( '"', '`', $str );
+
 					$sql[] = $str . ";\n";
 				}
 			}
