@@ -9,10 +9,14 @@
 		<delete file="typo3" />
 	</target>
 
-	<target name="deploy" description="Creates new package" depends="clean">
+	<target name="composer" description="Updates composer dependencies">
 		<exec command="composer remove --no-update --working-dir ${project.basedir} typo3/cms-core typo3-ter/static-info-tables" checkreturn="true" logoutput="true" />
-		<exec command="composer update --no-dev --no-autoloader --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer update --no-dev --no-autoloader --working-dir ${project.basedir}" checkreturn="true" logoutput="true" passthru="true" />
 		<exec command="composer dump-autoload --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="git checkout composer.json" checkreturn="true" logoutput="true" />
+	</target>
+
+	<target name="deploy" description="Creates new package" depends="clean,composer">
 		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
 		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
 		<reflexive>
@@ -26,7 +30,6 @@
 		</reflexive>
 		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml"
 			checkreturn="true" logoutput="true"/>
-		<exec command="git checkout composer.json" checkreturn="true" logoutput="true" />
 		<filehash file="../aimeos_${version}.zip" hashtype="1" />
 		<echo msg="SHA1 hash value: ${filehashvalue}" />
 	</target>
@@ -39,10 +42,9 @@
 		<exec command="git push --tags" checkreturn="true" logoutput="true" />
 	</target>
 
-	<target name="update" description="Updates the Aimeos core">
+	<target name="update" description="Updates the Aimeos core" depends="composer">
 		<exec command="git pull https://github.com/aimeos/aimeos-typo3.git" checkreturn="true" logoutput="true" />
-		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true"/>
-		<exec command="composer update --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true" passthru="true" />
 	</target>
 
 </project>
