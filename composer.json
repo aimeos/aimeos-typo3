@@ -15,7 +15,7 @@
 	"prefer-stable": true,
 	"require": {
 		"php": ">=5.4.0",
-		"doctrine/dbal": "~2.4",
+		"doctrine/dbal": "~2.5",
 		"composer/installers": "1.0.24",
 		"aimeos/aimeos-core": "dev-master",
 		"aimeos/ai-gettext": "dev-master",
