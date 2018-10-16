@@ -10,7 +10,9 @@
 	</target>
 
 	<target name="deploy" description="Creates new package" depends="clean">
-		<exec command="composer install --no-dev --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer remove --no-update --working-dir ${project.basedir} typo3/cms-core typo3-ter/static-info-tables" checkreturn="true" logoutput="true" />
+		<exec command="composer update --no-dev --no-autoloader --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
+		<exec command="composer dump-autoload --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
 		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
 		<reflexive>
@@ -22,8 +24,9 @@
 		    </replaceregexp>
 		  </filterchain>
 		</reflexive>
-		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x .Build -x composer.* -x .travis.yml"
+		<exec command="zip -r ../aimeos_${version}.zip * -x .tx -x \*.git\* -x composer.* -x .travis.yml"
 			checkreturn="true" logoutput="true"/>
+		<exec command="git checkout composer.json" checkreturn="true" logoutput="true" />
 		<filehash file="../aimeos_${version}.zip" hashtype="1" />
 		<echo msg="SHA1 hash value: ${filehashvalue}" />
 	</target>
