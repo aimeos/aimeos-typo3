@@ -8,6 +8,9 @@
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
 			</trans-unit>
+			<trans-unit id="account-download-error.target" xml:space="preserve">
+				<source>Error page if download is prohibited</source>
+			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
 				<target>صفحه محصولات مورد علاقه</target>

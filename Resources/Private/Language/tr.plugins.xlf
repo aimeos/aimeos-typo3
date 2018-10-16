@@ -10,6 +10,9 @@
 				<source>Account download page</source>
 				<target>Hesap indirme sayfası</target>
 			</trans-unit>
+			<trans-unit id="account-download-error.target" xml:space="preserve">
+				<source>Error page if download is prohibited</source>
+			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
 				<target>Favori ürünler sayfası</target>
@@ -48,27 +51,35 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
+				<target>Ürün listesi için varsayılan sıralama</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
+				<target>İlgi (pozisyon)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
+				<target>İsim (A-Z)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
+				<target>İsim (Z-A)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
+				<target>Fiyat (önce en düşük)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
+				<target>Fiyat (önce en yüksek)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
+				<target>Oluşturma tarihi (önce en eski)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
+				<target>Oluşturma tarihi (önce en yeni)</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>

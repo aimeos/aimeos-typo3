@@ -88,6 +88,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>產品圖像基本路徑 (如 https://localhost/uploads/tx_aimeos/)</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
@@ -95,6 +96,7 @@
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop advanced scheduler</source>
+				<target>Aimeos商店進階排程</target>
 			</trans-unit>
 		</body>
 	</file>

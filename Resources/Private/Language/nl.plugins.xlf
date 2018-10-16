@@ -9,6 +9,9 @@
 				<source>Account download page</source>
 				<target>Downloadpagina voor account</target>
 			</trans-unit>
+			<trans-unit id="account-download-error.target" xml:space="preserve">
+				<source>Error page if download is prohibited</source>
+			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
 				<target>Favoriete producten pagina</target>

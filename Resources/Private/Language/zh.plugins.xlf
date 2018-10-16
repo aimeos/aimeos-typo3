@@ -9,6 +9,9 @@
 				<source>Account download page</source>
 				<target>帳號下載頁面</target>
 			</trans-unit>
+			<trans-unit id="account-download-error.target" xml:space="preserve">
+				<source>Error page if download is prohibited</source>
+			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
 				<target>我的最愛商品頁面</target>
@@ -46,21 +49,26 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
+				<target>產品清單默認排序</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
+				<target>名稱（A-Z）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
+				<target>名稱（Z-A）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
+				<target>價格（低到高）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
+				<target>價格（高到低）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
@@ -106,6 +114,7 @@
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
+				<target>取消訂單規定頁面</target>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
