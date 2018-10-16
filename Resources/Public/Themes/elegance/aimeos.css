@@ -2528,9 +2528,9 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 
 
 /* Checkout summary option terms */
-.checkout-standard-summary-option-account,
-.checkout-standard-summary-option-terms {
-	margin: 1em;
+.checkout-standard-summary-option {
+	padding-top: 0.5em;
+	padding-bottom: 1em;
 }
 
 .checkout-standard-summary-option h3 {
@@ -2556,6 +2556,7 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 .checkout-standard-summary-option input[type="checkbox"] {
 	margin-left: 0.5em;
 }
+
 
 /* Checkout order */
 .checkout-standard-order {
