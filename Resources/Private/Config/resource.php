@@ -10,6 +10,10 @@ return array(
 		'username' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] : $GLOBALS['TYPO3_CONF_VARS']['DB']['username'] ),
 		'password' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] : $GLOBALS['TYPO3_CONF_VARS']['DB']['password'] ),
 		'stmt' => array("SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'"),
+		'defaultTableOptions' => array(
+			'charset' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['charset'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['charset'] : 'utf8mb4' ),
+			'collate' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['collate'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['collate'] : 'utf8mb4_bin' ),
+		),
 		'limit' => 2,
 	),
 	'fs' => array(
