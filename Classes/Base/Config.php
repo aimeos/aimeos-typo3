@@ -52,10 +52,8 @@ class Config
 			self::$config = $conf;
 		}
 
-		if( isset( $local['typo3']['tsconfig'] ) )
-		{
-			$tsconfig = \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] );
-			$local = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule( $local, $tsconfig );
+		if( isset( $local['typo3']['tsconfig'] ) ) {
+			$local = array_replace_recursive( $local, \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] ) );
 		}
 
 		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );

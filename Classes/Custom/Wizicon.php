@@ -31,7 +31,7 @@ class Wizicon
 	public function proc( $wizardItems )
 	{
 		$path = ExtensionManagementUtility::extPath( 'aimeos' );
-		$relpath = ExtensionManagementUtility::extRelPath( 'aimeos' );
+		$relpath = ExtensionManagementUtility::siteRelPath( 'aimeos' );
 		$langfile = $path . 'Resources/Private/Language/extension.xlf';
 
 		$languageFactory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Localization\LocalizationFactory' );

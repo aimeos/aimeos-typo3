@@ -131,11 +131,11 @@ abstract class AbstractController
 	/**
 	 * Returns the locale object for the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object (no type hint to prevent reflection)
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 * @deprecated Use \Aimeos\Aimeos\Base::getLocale() directly
 	 */
-	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function getLocale( $context )
 	{
 		return Base::getLocale( $context, $this->request );
 	}
@@ -144,10 +144,10 @@ abstract class AbstractController
 	/**
 	 * Returns the output of the client and adds the header.
 	 *
-	 * @param Client_Html_Interface $client Html client object
+	 * @param \Aimeos\Client\Html\Iface $client Html client object (no type hint to prevent reflection)
 	 * @return string HTML code for inserting into the HTML body
 	 */
-	protected function getClientOutput( \Aimeos\Client\Html\Iface $client )
+	protected function getClientOutput( $client )
 	{
 		$client->setView( $this->getContext()->getView() );
 		$client->process();

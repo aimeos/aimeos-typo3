@@ -61,25 +61,43 @@ class Setup
 
 		$class = 'TYPO3\CMS\Extbase\Object\ObjectManager';
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
-		$utility = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' );
 
-		$conf = $utility->convertValuedToNestedConfiguration( $utility->getCurrentConfiguration( 'aimeos' ) );
-		$value = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
+		if( !class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
+		{
+			$object = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' ); // TYPO3 9
+
+			$conf = $object->convertValuedToNestedConfiguration( $object->getCurrentConfiguration( 'aimeos' ) );
+			$demo = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
+			$clean = ( isset( $conf['cleanDb'] ) ? $conf['cleanDb'] : '' );
+		}
+		else
+		{
+			$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ); // TYPO3 7+8
+			$demo = $object->get( 'aimeos', 'useDemoData' );
+			$clean = $object->get( 'aimeos', 'cleanDb' );
+		}
 
 
-		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $value ) ) );
+		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $demo ) ) );
 		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
 
-		if( !isset( $conf['cleanDb'] ) || $conf['cleanDb'] == 1 ) {
+		if( $clean == 1 ) {
 			$manager->clean();
 		}
 
 
-		$conf['useDemoData'] = '';
-		$utility->writeConfiguration( $conf, 'aimeos' );
+		if( !class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
+		{
+			$conf['useDemoData'] = '';
+			$utility->writeConfiguration( $conf, 'aimeos' );
+		}
+		else
+		{
+			$object->set( 'aimeos', 'useDemoData', '' );
+		}
 	}
 
 
