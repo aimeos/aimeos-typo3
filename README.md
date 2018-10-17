@@ -28,10 +28,9 @@ detail views, for searching products as well as baskets and the checkout process
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **17.10 release and later**.
+This document is for the latest Aimeos TYPO3 **18.10 release and later**.
 
-- Stable release: 18.4 (TYPO3 7/8 LTS)
-- LTS release: 17.10 (TYPO3 6/7/8 LTS)
+- LTS release: 18.10 (TYPO3 7/8/9 LTS)
 
 ### TYPO3 extension repository
 
@@ -53,12 +52,12 @@ In order to tell composer what it should install, you have to create a basic `co
     "description" : "My new TYPO3 web site",
     "require": {
         "typo3/cms": "~8.7",
-        "aimeos/aimeos-typo3": "~18.4"
+        "aimeos/aimeos-typo3": "~18.10"
     },
     "extra": {
         "typo3/cms": {
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "web-dir": "htdocs"
+            "web-dir": "public"
         }
     },
     "scripts": {
@@ -71,7 +70,7 @@ In order to tell composer what it should install, you have to create a basic `co
     }
 }
 ```
-It will install TYPO3 and the latest Aimeos TYPO3 extension in the `./htdocs/` directory. Afterwards, the Aimeos composer script will be executed which copies some required files and adds a link to the Aimeos extensions placed in the `./ext/` directory. To start installation, execute composer on the command line in the directory where your `composer.json` is stored:
+It will install TYPO3 and the latest Aimeos TYPO3 extension in the `./public/` directory. Afterwards, the Aimeos composer script will be executed which copies some required files and adds a link to the Aimeos extensions placed in the `./ext/` directory. To start installation, execute composer on the command line in the directory where your `composer.json` is stored:
 ```
 composer update
 ```
@@ -83,7 +82,6 @@ composer update
 * Log into the TYPO3 back end
 * Click on ''Admin Tools::Extension Manager'' in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry (looks like a lego brick)
-* If a pop-up opens (only TYPO3 4.x) choose ''Make updates'' and "Close window" after the installation is done
 
 **Caution:** Install the **RealURL extension before the Aimeos extension** to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards!
 
@@ -97,7 +95,7 @@ Afterwards, you have to execute the update script of the extension to create the
 
 ## Page setup
 
-The page setup for an Aimeos web shop is easy if you import the [standard page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_2.1.6.t3d) into your TYPO3 installation.
+The page setup for an Aimeos web shop is easy if you import the [standard page tree for TYPO3 8.7/9.5](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_18.10.t3d) into your TYPO3 installation.
 
 ### Go to the import view
 
