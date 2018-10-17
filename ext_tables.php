@@ -12,9 +12,25 @@ if( file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
 
 if( TYPO3_MODE === 'BE' )
 {
+	/**
+	 * Register Aimeos icon
+	 */
+
+	$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+	$iconRegistry->registerIcon(
+		'aimeos-shop',
+		\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+		['source' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg']
+	);
+
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook'][] = 'Aimeos\\Aimeos\\Custom\\WizardItem';
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Custom\\Wizicon'] =
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' ) . 'Classes/Custom/Wizicon.php';
+
+
+	/**
+	 * Register backend module
+	 */
 
 	$_aimeosConfiguration = array(
 		'access' => 'user,group',
@@ -41,6 +57,7 @@ if( TYPO3_MODE === 'BE' )
 		),
 		$_aimeosConfiguration
 	);
+
 
 	/**
 	 * Execute the setup tasks automatically to create the required tables
