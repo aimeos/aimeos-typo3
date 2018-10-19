@@ -222,6 +222,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\
 
 /**
  * Add RealURL configuration
+ * @deprecated Unused in TYPO9, removed for TYPO 10
  */
 
 if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] ) ) !== false
