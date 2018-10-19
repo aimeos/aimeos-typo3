@@ -10,6 +10,8 @@
 
 namespace Aimeos\Aimeos;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 $localautoloader = dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 
@@ -98,11 +100,11 @@ class Base
 	{
 		if( self::$extConfig === null )
 		{
-			if( ( $conf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] ) ) === false ) {
-				$conf = array();
+			if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) ) {
+				self::$extConfig = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' )->get( 'aimeos' );
+			} else { // @deprecated Since TYPO3 9.x
+				self::$extConfig = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] );
 			}
-
-			self::$extConfig = $conf;
 		}
 
 		if( isset( self::$extConfig[$name] ) ) {
@@ -237,14 +239,14 @@ class Base
 	 */
 	public static function parseTS( $tsString )
 	{
-		$parser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser' );
+		$parser = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser' );
 		$parser->parse( $tsString );
 
 		if( !empty( $parser->errors ) ) {
 			throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
 		}
 
-		$service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+		$service = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
 		$tsConfig = $service->convertTypoScriptArrayToPlainArray( $parser->setup );
 
 		// Allows "plugin.tx_aimeos.settings." prefix everywhere

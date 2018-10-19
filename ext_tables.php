@@ -65,7 +65,7 @@ if( TYPO3_MODE === 'BE' )
 	$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
 	$signalSlotDispatcher->connect(
 		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-		'hasInstalledExtensions',
+		'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10
 		'Aimeos\\Aimeos\\Setup',
 		'signal'
 	);
