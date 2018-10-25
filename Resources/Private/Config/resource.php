@@ -11,8 +11,8 @@ return array(
 		'password' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] : $GLOBALS['TYPO3_CONF_VARS']['DB']['password'] ),
 		'stmt' => array("SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'"),
 		'defaultTableOptions' => array(
-			'charset' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['charset'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['charset'] : 'utf8mb4' ),
-			'collate' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['collate'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['collate'] : 'utf8mb4_bin' ),
+			'charset' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['charset'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['charset'] : 'utf8' ),
+			'collate' => ( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['collate'] ) ? $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['collate'] : 'utf8_bin' ),
 		),
 		'limit' => 2,
 	),
