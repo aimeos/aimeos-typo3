@@ -91,12 +91,12 @@ class Setup
 
 		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
 		{
-			$conf['useDemoData'] = '';
-			$utility->writeConfiguration( $conf, 'aimeos' );
+			$object->set( 'aimeos', 'useDemoData', '' );
 		}
 		else
 		{
-			$object->set( 'aimeos', 'useDemoData', '' );
+			$conf['useDemoData'] = '';
+			$utility->writeConfiguration( $conf, 'aimeos' );
 		}
 	}
 
