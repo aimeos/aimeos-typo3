@@ -62,19 +62,19 @@ class Setup
 		$class = 'TYPO3\CMS\Extbase\Object\ObjectManager';
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
 
-		if( !class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
+		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
 		{
-			$object = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' ); // TYPO3 9
+			$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ); // TYPO3 9
+			$demo = $object->get( 'aimeos', 'useDemoData' );
+			$clean = $object->get( 'aimeos', 'cleanDb' );
+		}
+		else
+		{
+			$object = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' ); // TYPO3 7+8
 
 			$conf = $object->convertValuedToNestedConfiguration( $object->getCurrentConfiguration( 'aimeos' ) );
 			$demo = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
 			$clean = ( isset( $conf['cleanDb'] ) ? $conf['cleanDb'] : '' );
-		}
-		else
-		{
-			$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ); // TYPO3 7+8
-			$demo = $object->get( 'aimeos', 'useDemoData' );
-			$clean = $object->get( 'aimeos', 'cleanDb' );
 		}
 
 
@@ -89,7 +89,7 @@ class Setup
 		}
 
 
-		if( !class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
+		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
 		{
 			$conf['useDemoData'] = '';
 			$utility->writeConfiguration( $conf, 'aimeos' );
