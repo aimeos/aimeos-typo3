@@ -96,7 +96,7 @@ class Setup
 		else
 		{
 			$conf['useDemoData'] = '';
-			$utility->writeConfiguration( $conf, 'aimeos' );
+			$object->writeConfiguration( $conf, 'aimeos' );
 		}
 	}
 
