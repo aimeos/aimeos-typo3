@@ -37,10 +37,6 @@ class Setup
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		if( \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) == false ) {
-			return;
-		}
-
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$siteTpl = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
@@ -169,7 +165,7 @@ class Setup
 	 */
 	public static function signal( $extname = null )
 	{
-		if( $extname === 'aimeos' ) {
+		if( $extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
 			self::execute();
 		}
 	}
