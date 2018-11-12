@@ -37,9 +37,14 @@ class Setup
 	{
 		ini_set( 'max_execution_time', 0 );
 
+		if( \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) == false ) {
+			return;
+		}
+
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
-		$taskPaths = $aimeos->getSetupPaths( 'default' );
+		$siteTpl = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
+		$taskPaths = $aimeos->getSetupPaths( $siteTpl );
 
 		$ctx = self::getContext();
 		$dbm = $ctx->getDatabaseManager();
@@ -66,7 +71,6 @@ class Setup
 		{
 			$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ); // TYPO3 9
 			$demo = $object->get( 'aimeos', 'useDemoData' );
-			$clean = $object->get( 'aimeos', 'cleanDb' );
 		}
 		else
 		{
@@ -74,7 +78,6 @@ class Setup
 
 			$conf = $object->convertValuedToNestedConfiguration( $object->getCurrentConfiguration( 'aimeos' ) );
 			$demo = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
-			$clean = ( isset( $conf['cleanDb'] ) ? $conf['cleanDb'] : '' );
 		}
 
 
@@ -84,7 +87,7 @@ class Setup
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
 
-		if( $clean == 1 ) {
+		if( \Aimeos\Aimeos\Base::getExtConfig( 'cleanDb', 1 ) == 1 ) {
 			$manager->clean();
 		}
 
