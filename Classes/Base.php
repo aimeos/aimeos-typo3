@@ -53,7 +53,7 @@ class Base
 	 * Creates a new configuration object
 	 *
 	 * @param array $local Multi-dimensional associative list with local configuration
-	 * @return MW_Config_Interface Configuration object
+	 * @return \Aimeos\MW\Config\Iface Configuration object
 	 */
 	public static function getConfig( array $local = array() )
 	{
