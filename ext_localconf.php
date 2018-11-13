@@ -234,6 +234,13 @@ if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'
 
 
 /**
+ * Register upgrade wizard for database schema
+ */
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['\Aimeos\Aimeos\Custom\UpdateWizard'] = '\Aimeos\Aimeos\Custom\UpdateWizard';
+
+
+/**
  * Add cache configuration
  */
 
