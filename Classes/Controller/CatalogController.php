@@ -36,10 +36,6 @@ class CatalogController extends AbstractController
 	 */
 	public function detailAction()
 	{
-		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
-			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
-		}
-
 		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
@@ -70,10 +66,6 @@ class CatalogController extends AbstractController
 	 */
 	public function listAction()
 	{
-		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
-			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
-		}
-
 		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext() );
 		return $this->getClientOutput( $client );
 	}
