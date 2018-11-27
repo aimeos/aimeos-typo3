@@ -5,9 +5,12 @@
 Aimeos TYPO3 extension
 ======================
 
-The repository contains the TYPO3 extension integrating the Aimeos e-commerce
-library into TYPO3. The extension provides plugins for e.g. filter, list and
-detail views, for searching products as well as baskets and the checkout process.
+:star: Star us on GitHub — it helps!
+
+[Aimeos](https://aimeos.org/TYPO3) is THE professional, full-featured and
+high performance e-commerce extension for TYPO3!  You can install it in your
+existing TYPO3 web site within 5 minutes and can adapt, extend, overwrite
+and customize anything to your needs. 
 
 [![Aimeos TYPO3 demo](https://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
 
