@@ -679,7 +679,6 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 
 .catalog-filter-attribute .media-item img,
 .catalog-filter-supplier .media-item img {
-	vertical-align: top;
 	height: 1em;
 	width: 1em;
 }
@@ -1468,6 +1467,21 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 .catalog-detail-basket .selection .select-label > span {
 	padding: 0 0.25em;
 	min-width: 1.5em;
+}
+
+.catalog-list-items .selection .radio .select-label > span,
+.catalog-detail-basket .selection .radio .select-label > span {
+	text-align: center;
+	min-width: 2.5em;
+	display: block;
+	padding: 0;
+}
+
+.catalog-list-items .selection .radio .select-label,
+.catalog-detail-basket .selection .radio .select-label {
+	border: solid 1px #ccc;
+	padding: 0.5em;
+	width: auto;
 }
 
 .catalog-list-items .selection .select-option:checked + .select-label,
