@@ -16,5 +16,7 @@ cacheName = Typo3
 useAPC = 0
 # cat=cache/apc; type=string; label=APC prefix:The prefix to distinguish configuration values from different instances
 apcPrefix = t3:
-# cat=backend; type=boolean; label=Show Typo3 page tree in backend
+# cat=backend; type=boolean; label=Show TYPO3 page tree in backend:Pages can have different configuration for the administration interface
 showPageTree = 0
+# cat=backend; type=integer; label=Number of parallel processes:Command line tasks can start several tasks in parallel to speed up task execution
+pcntlMax = 4
