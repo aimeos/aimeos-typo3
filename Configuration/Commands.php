@@ -2,6 +2,6 @@
 
 return [
     'aimeos:jobs' => [
-        'class' => \Aimeos\Aimeos\Commands\JobsCommand::class
+        'class' => \Aimeos\Aimeos\Command\JobsCommand::class
 	],
 ];
