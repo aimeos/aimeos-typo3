@@ -307,7 +307,7 @@ class Context
 			$ids = GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] );
 			$context->setGroupIds( $ids );
 		}
-		elseif( TYPO3_MODE === 'BE' )
+		elseif( TYPO3_MODE === 'BE' && $GLOBALS['BE_USER']->userGroups )
 		{
 			$ids = array_keys( $GLOBALS['BE_USER']->userGroups );
 			$context->setGroupIds( $ids );
