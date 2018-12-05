@@ -16,6 +16,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
+/**
+ * Executes the job controllers
+ *
+ * @package TYPO3
+ */
 class JobsCommand extends Command
 {
 	protected static $defaultName = 'aimeos:jobs';
@@ -28,8 +33,6 @@ class JobsCommand extends Command
 	{
 		$names = '';
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-        $config = \Aimeos\Aimeos\Base::getConfig();
-		$context = \Aimeos\Aimeos\Base::getContext( $config );
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 		$controllers = \Aimeos\Controller\Jobs\Factory::getControllers( $this->getBareContext(), $aimeos, $cntlPaths );
 
