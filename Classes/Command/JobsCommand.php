@@ -30,7 +30,7 @@ class JobsCommand extends Command
         $config = \Aimeos\Aimeos\Base::getConfig();
 		$context = \Aimeos\Aimeos\Base::getContext( $config );
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
-		$controllers = \Aimeos\Controller\Jobs\Factory::getControllers( $context, $aimeos, $cntlPaths );
+		$controllers = \Aimeos\Controller\Jobs\Factory::getControllers( $this->getBareContext(), $aimeos, $cntlPaths );
 
 		foreach( $controllers as $key => $controller ) {
 			$names .= str_pad( $key, 30 ) . $controller->getName() . PHP_EOL;
@@ -81,6 +81,29 @@ class JobsCommand extends Command
 		}
 
 		$process->wait();
+	}
+
+
+	/**
+	 * Returns a bare context object
+	 *
+	 * @return \Aimeos\MShop\Context\Item\Standard Context object containing only the most necessary dependencies
+	 */
+	protected function getBareContext()
+	{
+		$ctx = new \Aimeos\MShop\Context\Item\Standard();
+
+		$conf = new \Aimeos\MW\Config\PHPArray( array(), array() );
+		$ctx->setConfig( $conf );
+
+		$locale = \Aimeos\MShop\Factory::createManager( $ctx, 'locale' )->createItem();
+		$locale->setLanguageId( 'en' );
+		$ctx->setLocale( $locale );
+
+		$i18n = new \Aimeos\MW\Translation\None( 'en' );
+		$ctx->setI18n( array( 'en' => $i18n ) );
+
+		return $ctx;
 	}
 
 
