@@ -106,7 +106,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setDatabaseManager( new \Aimeos\MW\DB\Manager\PDO( $context->getConfig() ) );
+		return $context->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $context->getConfig() ) );
 	}
 
 
