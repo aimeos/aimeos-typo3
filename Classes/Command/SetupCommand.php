@@ -104,7 +104,7 @@ class SetupCommand extends Command
 			if( strncmp( $rname, 'db', 2 ) !== 0 ) {
 				unset( $dbconfig[$rname] );
 			} else {
-				$config->set( "resource/$rname/limit", 3 );
+				$conf->set( "resource/$rname/limit", 3 );
 			}
 		}
 
