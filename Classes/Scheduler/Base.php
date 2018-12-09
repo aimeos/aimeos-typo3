@@ -33,6 +33,10 @@ class Base
 	{
 		$aimeos = Aimeos\Base::getAimeos();
 		$context = self::getContext( $conf );
+		$process = $context->getProcess();
+
+		// Reset before child processes are spawned to avoid lost DB connections afterwards
+		GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
 		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
 
 		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
@@ -43,8 +47,13 @@ class Base
 
 			$context->setLocale( $localeItem );
 
-			foreach( $jobs as $jobname ) {
-				\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $jobname )->run();
+			foreach( $jobs as $jobname )
+			{
+				$fcn = function( $context, $aimeos, $jobname ) {
+					\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $jobname )->run();
+				};
+
+				$process->start( $fcn, [$context, $aimeos, $jobname], true );
 			}
 		}
 	}
