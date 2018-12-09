@@ -223,10 +223,13 @@ class Context
 			return $fcn( $context );
 		}
 
-		// forking separate processes doesn't work in TYPO3 (scheduler)
-		// because the child process will close the inherited TYPO3 database connection.
-		// The TYPO3 scheduler will fail because there's no automatic reconnect.
-		return $context->setProcess( new \Aimeos\MW\Process\None() );
+		if( php_sapi_name() === 'cli' ) {
+			$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
+		} else {
+			$process = new \Aimeos\MW\Process\None();
+		}
+
+		return $context->setProcess( $process );
 	}
 
 

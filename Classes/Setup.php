@@ -195,7 +195,7 @@ class Setup
 		$cache = new \Aimeos\MW\Cache\None();
 		$ctx->setCache( $cache );
 
-		if( strncmp( php_sapi_name(), 'cli', 3 ) === 0 ) {
+		if( php_sapi_name() === 'cli' ) {
 			$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 		} else {
 			$process = new \Aimeos\MW\Process\None();
