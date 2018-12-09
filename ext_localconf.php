@@ -234,6 +234,28 @@ if( ( $aimeosExtConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'
 
 
 /**
+ * Avoid cHash for URLs with Aimeos parameters
+ */
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_merge(
+	$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'],
+	[
+		'ai[action]', 'ai[controller]',
+		'ai[f_catid]', 'ai[f_name]', 'ai[f_search]', 'ai[f_sort]', 'ai[f_attrid]', 'ai[f_optid]', 'ai[f_oneid]',
+		'ai[l_page]', 'ai[l_size]', 'ai[l_type]',
+		'ai[d_prodid]', 'ai[d_name]', 'ai[d_pos]',
+		'ai[b_action]', 'ai[b_attrvarid]', 'ai[b_attrconfid]', 'ai[b_attrcustid]', 'ai[b_coupon]', 'ai[b_position]', 'ai[b_prod]', 'ai[b_prodid]', 'ai[b_quantity]', 'ai[b_stocktype]',
+		'ai[c_step]',
+		'ai[sub_action]', 'ai[sub_id]',
+		'ai[his_action]', 'ai[his_id]',
+		'ai[fav_action]', 'ai[fav_id]', 'ai[fav_page]',
+		'ai[pin_action]', 'ai[pin_id]',
+		'ai[wat_action]', 'ai[wat_id]', 'ai[wat_page]',
+		'ai[site]', 'ai[locale]', 'ai[currency]',
+	]
+);
+
+
+/**
  * Register upgrade wizard for database schema
  */
 
