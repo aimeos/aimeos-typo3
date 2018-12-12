@@ -56,9 +56,12 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
+				<target>شناسه صفحه دانلود حساب صحیح نمیباشد</target>
 			</trans-unit>
 			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
 				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+				<target>لینک وبسایت صحیح نیست.از یک آدرس حاوی پروتوکل وآدرس  دامین مانند مثال استفاده کنید
+&quot;https://aimeos.org/&quot;</target>
 			</trans-unit>
 			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
 				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
@@ -82,15 +85,19 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
+				<target>شناسه صفحه دانلود حساب</target>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>لینک پایه عکس های محصولات (به عنوان مثال https://localhost/uploads/tx_aimeos/ )</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+				<target>مسیر قطعی یا مسیر وابسته از ریشه TYPO3 به فایل های CSS از پوشه تم</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop advanced scheduler</source>
+				<target>زمان بند پیشرفته فروشگاه ایمیوس</target>
 			</trans-unit>
 		</body>
 	</file>
