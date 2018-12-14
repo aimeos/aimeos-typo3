@@ -223,7 +223,10 @@ class Context
 			return $fcn( $context );
 		}
 
-		if( php_sapi_name() === 'cli' ) {
+		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9+ only)
+		$pool = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' );
+
+		if( php_sapi_name() === 'cli' && method_exists( $pool, 'resetConnections' ) === true ) {
 			$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 		} else {
 			$process = new \Aimeos\MW\Process\None();
