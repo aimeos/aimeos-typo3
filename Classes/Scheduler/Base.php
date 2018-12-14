@@ -35,8 +35,13 @@ class Base
 		$context = self::getContext( $conf );
 		$process = $context->getProcess();
 
-		// Reset before child processes are spawned to avoid lost DB connections afterwards
-		GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
+		$pool = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' );
+
+		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9+ only)
+		if( method_exists( $pool, 'resetConnections' ) === true ) {
+			$pool->resetConnections();
+		}
+
 		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
 
 		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
@@ -180,13 +185,13 @@ class Base
 		$GLOBALS['TSFE']->initTemplate();
 		$GLOBALS['TSFE']->getConfigArray();
 
-		$rootline = BackendUtility::BEgetRootLine($pageid);
-		if ( BackendUtility::firstDomainRecord($rootline) != null ) {
-			$_SERVER['HTTP_HOST'] = BackendUtility::firstDomainRecord($rootline);
-		} elseif ( !empty( getenv('SCHEDULER_HTTP_HOST' ) ) ) {
-			$_SERVER['HTTP_HOST'] = getenv('SCHEDULER_HTTP_HOST');
-		} else {
-			throw new \RuntimeException('No config or domain record in root page found');
+		$rootline = BackendUtility::BEgetRootLine( $pageid );
+		$host = BackendUtility::firstDomainRecord( $rootline );
+
+		if( $host == null && ( $host = getenv( 'SCHEDULER_HTTP_HOST' ) ) == null ) {
+			throw new \RuntimeException( 'No domain record in root page or SCHEDULER_HTTP_HOST env variable found' );
 		}
+
+		$_SERVER['HTTP_HOST'] = $host;
 	}
 }
