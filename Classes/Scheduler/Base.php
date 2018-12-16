@@ -193,5 +193,6 @@ class Base
 		}
 
 		$_SERVER['HTTP_HOST'] = $host;
+		GeneralUtility::flushInternalRuntimeCaches();
 	}
 }
