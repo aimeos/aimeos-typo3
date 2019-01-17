@@ -9,8 +9,8 @@
 ########################################################################
 
 $EM_CONF['aimeos'] = array(
-	'title' => 'Aimeos web shop',
-	'description' => 'Aimeos is a fast, flexible and usability optimized shop system and e-commerce solution available in multiple languages (also available as TYPO3 distribution). Several plugins e.g. for facetted search, product listing, detail view, basket, checkout process and other parts of a shop are available. Furthermore, Aimeos offers powerful interfaces to integrate CRM and ERP systems as well as payment and delivery service providers',
+	'title' => 'Aimeos shop and e-commerce framework',
+	'description' => 'Professional, full-featured and ultra-fast TYPO3 e-commerce extension for online shops, complex B2B applications and #gigacommerce. Turns TYPO3 into the best platform for content commerce and your e-commerce requirements (also available as TYPO3 distribution)',
 	'category' => 'plugin',
 	'version' => '19.1.0-dev',
 	'module' => '',
