@@ -30,10 +30,10 @@ plugin.tx_aimeos {
 
 
 	# cat=ai150advanced/links/100; type=string; label=Content base URL:Path to the content directory or content base URL of your server
-	common.content.baseurl = /uploads/tx_aimeos
+	resource.fs.baseurl = /uploads/tx_aimeos
 }
 
 module.tx_aimeos {
 	# cat=ai150advanced/links/110; type=string; label=Content base URL (BE):Path to the content directory or content base URL of your server
-	common.content.baseurl = ../uploads/tx_aimeos
+	resource.fs.baseurl = ../uploads/tx_aimeos
 }

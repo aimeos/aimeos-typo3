@@ -115,7 +115,7 @@ class View
 			return $fcn( $view, $config );
 		}
 
-		$conf = new \Aimeos\MW\Config\Decorator\Protect( clone $config, array( 'admin', 'client' ) );
+		$conf = new \Aimeos\MW\Config\Decorator\Protect( clone $config, ['admin', 'client', 'resource/fs/baseurl'] );
 		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $conf );
 		$view->addHelper( 'config', $helper );
 
