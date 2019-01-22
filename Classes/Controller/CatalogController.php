@@ -26,7 +26,7 @@ class CatalogController extends AbstractController
 	 */
 	public function attributeAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Attribute\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/attribute' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -36,7 +36,7 @@ class CatalogController extends AbstractController
 	 */
 	public function detailAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Detail\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/detail' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -46,7 +46,7 @@ class CatalogController extends AbstractController
 	 */
 	public function filterAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Filter\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/filter' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -56,7 +56,7 @@ class CatalogController extends AbstractController
 	 */
 	public function countAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Count\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/count' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -66,7 +66,7 @@ class CatalogController extends AbstractController
 	 */
 	public function listAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Lists\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/lists' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -76,7 +76,7 @@ class CatalogController extends AbstractController
 	 */
 	public function searchAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Search\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/search' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -86,7 +86,7 @@ class CatalogController extends AbstractController
 	 */
 	public function sessionAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Session\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/session' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -96,7 +96,7 @@ class CatalogController extends AbstractController
 	 */
 	public function stageAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Stage\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/stage' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -106,7 +106,7 @@ class CatalogController extends AbstractController
 	 */
 	public function stockAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Stock\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/stock' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -116,7 +116,7 @@ class CatalogController extends AbstractController
 	 */
 	public function suggestAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Suggest\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/suggest' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -126,7 +126,7 @@ class CatalogController extends AbstractController
 	 */
 	public function treeAction()
 	{
-		$client = \Aimeos\Client\Html\Catalog\Tree\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/tree' );
 		return $this->getClientOutput( $client );
 	}
 }

@@ -34,7 +34,7 @@ class JobsCommand extends Command
 		$names = '';
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
-		$controllers = \Aimeos\Controller\Jobs\Factory::getControllers( $this->getBareContext(), $aimeos, $cntlPaths );
+		$controllers = \Aimeos\Controller\Jobs::get( $this->getBareContext(), $aimeos, $cntlPaths );
 
 		foreach( $controllers as $key => $controller ) {
 			$names .= str_pad( $key, 30 ) . $controller->getName() . PHP_EOL;
@@ -62,7 +62,7 @@ class JobsCommand extends Command
 		$process = $context->getProcess();
 
 		$jobs = explode( ' ', $input->getArgument( 'jobs' ) );
-		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
+		$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 
 		foreach( $this->getSiteItems( $context, $input ) as $siteItem )
 		{
@@ -77,7 +77,7 @@ class JobsCommand extends Command
 			foreach( $jobs as $jobname )
 			{
 				$fcn = function( $context, $aimeos, $jobname ) {
-					\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $jobname )->run();
+					\Aimeos\Controller\Jobs::create( $context, $aimeos, $jobname )->run();
 				};
 
 				$process->start( $fcn, [$context, $aimeos, $jobname], true );
@@ -100,7 +100,7 @@ class JobsCommand extends Command
 		$conf = new \Aimeos\MW\Config\PHPArray( array(), array() );
 		$ctx->setConfig( $conf );
 
-		$locale = \Aimeos\MShop\Factory::createManager( $ctx, 'locale' )->createItem();
+		$locale = \Aimeos\MShop::create( $ctx, 'locale' )->createItem();
 		$locale->setLanguageId( 'en' );
 		$ctx->setLocale( $locale );
 
@@ -120,7 +120,7 @@ class JobsCommand extends Command
 	 */
 	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input )
 	{
-		$manager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context )->getSubManager( 'site' );
+		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
 		$search = $manager->createSearch();
 
 		if( ( $codes = (string) $input->getArgument( 'site' ) ) !== '' ) {

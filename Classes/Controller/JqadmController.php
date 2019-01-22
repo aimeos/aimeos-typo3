@@ -235,7 +235,7 @@ class JqadmController extends AbstractController
 
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $aimeos, $resource );
+		return \Aimeos\Admin\JQAdm::create( $context, $aimeos, $resource );
 	}
 
 

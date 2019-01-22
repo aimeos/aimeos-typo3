@@ -49,10 +49,10 @@ class Attribute
 			$context = Base::getContext( Base::getConfig() );
 			$context->setEditor( 'flexform' );
 
-			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
+			$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );
 
-			$manager = \Aimeos\MShop\Factory::createManager( $context, 'attribute/type' );
+			$manager = \Aimeos\MShop::create( $context, 'attribute/type' );
 			$items = $manager->searchItems( $manager->createSearch( true ) );
 
 			foreach( $items as $item ) {

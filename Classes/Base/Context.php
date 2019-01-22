@@ -167,7 +167,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setLogger( \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context ) );
+		return $context->setLogger( \Aimeos\MAdmin::create( $context, 'log' ) );
 	}
 
 
