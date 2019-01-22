@@ -145,7 +145,7 @@ class JsonadmController extends AbstractController
 	protected function createClient( $resource )
 	{
 		$context = $this->getContextBackend( 'admin/jsonadm/templates' );
-		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, Base::getAimeos(), $resource );
+		return \Aimeos\Admin\JsonAdm::create( $context, Base::getAimeos(), $resource );
 	}
 
 

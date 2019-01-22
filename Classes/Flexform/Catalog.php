@@ -50,10 +50,10 @@ class Catalog
 			$context = Base::getContext( Base::getConfig() );
 			$context->setEditor( 'flexform' );
 
-			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
+			$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );
 
-			$manager = \Aimeos\MShop\Catalog\Manager\Factory::createManager( $context );
+			$manager = \Aimeos\MShop::create( $context, 'catalog' );
 			$item = $manager->getTree( null, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
 
 

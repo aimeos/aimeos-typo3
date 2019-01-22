@@ -42,7 +42,7 @@ class Base
 			$pool->resetConnections();
 		}
 
-		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
+		$manager = \Aimeos\MShop::create( $context, 'locale' );
 
 		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
 		{
@@ -55,7 +55,7 @@ class Base
 			foreach( $jobs as $jobname )
 			{
 				$fcn = function( $context, $aimeos, $jobname ) {
-					\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $jobname )->run();
+					\Aimeos\Controller\Jobs::create( $context, $aimeos, $jobname )->run();
 				};
 
 				$process->start( $fcn, [$context, $aimeos, $jobname], true );
@@ -76,7 +76,7 @@ class Base
 		$context = Aimeos\Base::getContext( $config );
 
 
-		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
+		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
 		$search = $langManager->createSearch( true );
 
 		$expr = array();
@@ -147,7 +147,7 @@ class Base
 			$sites = explode( ' ', $sites );
 		}
 
-		$manager = \Aimeos\MShop\Factory::createManager( $context, 'locale/site' );
+		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
 		$search = $manager->createSearch();
 
 		if( !empty( $sites ) ) {

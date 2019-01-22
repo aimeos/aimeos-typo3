@@ -26,7 +26,7 @@ class LocaleController extends AbstractController
 	 */
 	public function selectAction()
 	{
-		$client = \Aimeos\Client\Html\Locale\Select\Factory::createClient( $this->getContext() );
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'locale/select' );
 		return $this->getClientOutput( $client );
 	}
 }

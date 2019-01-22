@@ -157,7 +157,7 @@ abstract class AbstractProvider
 		$submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] );
 
 		foreach( $submittedData[$this->fieldController] as $name ) {
-			\Aimeos\Controller\Jobs\Factory::createController( $context, $aimeos, $name );
+			\Aimeos\Controller\Jobs::create( $context, $aimeos, $name );
 		}
 
 		return true;
@@ -171,7 +171,7 @@ abstract class AbstractProvider
 	 */
 	protected function getAvailableSites()
 	{
-		$manager = \Aimeos\MShop\Factory::createManager( Scheduler\Base::getContext(), 'locale/site' );
+		$manager = \Aimeos\MShop::create( Scheduler\Base::getContext(), 'locale/site' );
 
 		$search = $manager->createSearch();
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
@@ -233,11 +233,11 @@ abstract class AbstractProvider
 			$langid = $GLOBALS['BE_USER']->uc['lang'];
 		}
 
-		$localeItem = \Aimeos\MShop\Factory::createManager( $context, 'locale' )->createItem();
+		$localeItem = \Aimeos\MShop::create( $context, 'locale' )->createItem();
 		$localeItem->setLanguageId( $langid );
 		$context->setLocale( $localeItem );
 
-		$controllers = \Aimeos\Controller\Jobs\Factory::getControllers( $context, $aimeos, $cntlPaths );
+		$controllers = \Aimeos\Controller\Jobs::get( $context, $aimeos, $cntlPaths );
 
 		foreach( $controllers as $name => $controller )
 		{
