@@ -32,7 +32,7 @@ class View
 		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
 	{
-		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
+		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
 		$engines = array( '.html' => new \Aimeos\MW\View\Engine\Typo3( $obj ) );
 
 		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );

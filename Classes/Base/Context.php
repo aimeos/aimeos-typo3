@@ -80,7 +80,7 @@ class Context
 				break;
 
 			case 'Typo3':
-				$manager = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Cache\\CacheManager' );
+				$manager = GeneralUtility::makeInstance( \TYPO3\CMS\Core\Cache\CacheManager::class );
 				$cache = new \Aimeos\MAdmin\Cache\Proxy\Typo3( $context, $manager->getCache( 'aimeos' ) );
 				break;
 
@@ -142,14 +142,13 @@ class Context
 			return $fcn( $context );
 		}
 
-		if( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded( 'saltedpasswords' )
-			&& \TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled( 'FE' )
-		) {
+		if( class_exists( '\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' ) ) { // TYPO3 9+
+			$object = \TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::getDefaultHashInstance( 'FE' );
+		} elseif( class_exists( '\TYPO3\CMS\Saltedpasswords\Salt\SaltFactory' ) ) { // TYPO3 7/8
 			$object = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance();
-			$context->setHasherTypo3( $object );
 		}
 
-		return $context;
+		return $context->setHasherTypo3( $object );
 	}
 
 
@@ -186,7 +185,7 @@ class Context
 		}
 
 		return $context->setMail( new \Aimeos\MW\Mail\Typo3( function() {
-			return GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Mail\MailMessage' );
+			return GeneralUtility::makeInstance( \TYPO3\CMS\Core\Mail\MailMessage::class );
 		} ) );
 	}
 
