@@ -80,7 +80,7 @@ class JqadmController extends AbstractController
 	 */
 	public function copyAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->copy() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -97,7 +97,7 @@ class JqadmController extends AbstractController
 	 */
 	public function createAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->create() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -114,7 +114,7 @@ class JqadmController extends AbstractController
 	 */
 	public function deleteAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->delete() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -131,7 +131,7 @@ class JqadmController extends AbstractController
 	 */
 	public function exportAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->export() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -148,7 +148,7 @@ class JqadmController extends AbstractController
 	 */
 	public function getAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->get() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -165,7 +165,7 @@ class JqadmController extends AbstractController
 	 */
 	public function importAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->import() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -182,7 +182,7 @@ class JqadmController extends AbstractController
 	 */
 	public function saveAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->save() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -199,7 +199,7 @@ class JqadmController extends AbstractController
 	 */
 	public function searchAction()
 	{
-		$cntl = $this->createClient();
+		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->search() ) == '' ) {
 			return $this->setPsrResponse( $cntl->getView()->response() );
@@ -214,7 +214,7 @@ class JqadmController extends AbstractController
 	 *
 	 * @return \Aimeos\Admin\JQAdm\Iface JQAdm client
 	 */
-	protected function createClient()
+	protected function createAdmin()
 	{
 		$resource = 'dashboard';
 
