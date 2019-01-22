@@ -60,7 +60,7 @@ class Setup
 		}
 
 
-		$class = 'TYPO3\CMS\Extbase\Object\ObjectManager';
+		$class = \TYPO3\CMS\Extbase\Object\ObjectManager::class;
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
 
 		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
@@ -178,29 +178,35 @@ class Setup
 	 */
 	protected static function getContext()
 	{
-		$ctx = new \Aimeos\MShop\Context\Item\Standard();
+		$ctx = new \Aimeos\MShop\Context\Item\Typo3();
 
 		$conf = \Aimeos\Aimeos\Base::getConfig();
 		$ctx->setConfig( $conf );
 
-		$dbm = new \Aimeos\MW\DB\Manager\DBAL( $conf );
-		$ctx->setDatabaseManager( $dbm );
+		$ctx->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $conf ) );
+		$ctx->setLogger( new \Aimeos\MW\Logger\Errorlog( \Aimeos\MW\Logger\Base::INFO ) );
+		$ctx->setSession( new \Aimeos\MW\Session\None() );
+		$ctx->setCache( new \Aimeos\MW\Cache\None() );
 
-		$logger = new \Aimeos\MW\Logger\Errorlog( \Aimeos\MW\Logger\Base::INFO );
-		$ctx->setLogger( $logger );
 
-		$session = new \Aimeos\MW\Session\None();
-		$ctx->setSession( $session );
+		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9+ only)
+		$pool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' );
 
-		$cache = new \Aimeos\MW\Cache\None();
-		$ctx->setCache( $cache );
-
-		if( php_sapi_name() === 'cli' ) {
+		if( php_sapi_name() === 'cli' && method_exists( $pool, 'resetConnections' ) === true ) {
 			$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 		} else {
 			$process = new \Aimeos\MW\Process\None();
 		}
 		$ctx->setProcess( $process );
+
+
+		if( class_exists( '\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' ) ) { // TYPO3 9+
+			$hasher = \TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::getDefaultHashInstance( 'FE' );
+		} elseif( class_exists( '\TYPO3\CMS\Saltedpasswords\Salt\SaltFactory' ) ) { // TYPO3 7/8
+			$hasher = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance();
+		}
+		$ctx->setHasherTypo3( $hasher );
+
 
 		return $ctx;
 	}
