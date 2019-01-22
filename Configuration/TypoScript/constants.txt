@@ -1,5 +1,5 @@
-# customcategory=ai140theme=Aimeos web shop: theme
-# customcategory=ai150advanced=Aimeos web shop: advanced
+# customcategory=ai140theme=Aimeos shop: theme
+# customcategory=ai150advanced=Aimeos shop: advanced
 
 plugin.tx_aimeos {
 
