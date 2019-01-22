@@ -25,9 +25,9 @@ Aimeos can efficiently handle 100 000+ products in a standard MySQL database wit
 times around one second using the TYPO3 infrastructure including RealURL. For optimal
 performance you need to install APC, the PHP byte code cache or APCu for PHP 5.5 and later.
 
-- `Full documentation <http://aimeos.org/docs>`_
-- `Releases <http://typo3.org/extensions/repository/view/aimeos>`_
-- `Distribution <http://typo3.org/extensions/repository/view/aimeos_dist>`_
+- `Full documentation <https://aimeos.org/docs/TYPO3>`_
+- `Releases <https://extensions.typo3.org/extension/aimeos/>`_
+- `Distribution <https://extensions.typo3.org/extension/aimeos_dist/>`_
 - `Source code <https://github.com/aimeos/aimeos-typo3/>`_
 - `Issue tracker <https://github.com/aimeos/aimeos-typo3/issues>`_
 
