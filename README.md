@@ -83,7 +83,7 @@ composer update
 
 ### Database setup
 
-Starting with Aimeos 18.10 and TYPO3 9.5, it's possible to define the charset and collation for newly created MySQL tables. In case you want to use a NoSQL data store like ElasticSearch for Aimeos products, you need to use a binary collation `ùtf8mb4_bin` in your `typo3conf/LocalConfiguration.php` file **before** the tables are created:
+Starting with Aimeos 18.10 and TYPO3 9.5, it's possible to define the charset and collation for newly created MySQL tables. In case you want to use a NoSQL data store like ElasticSearch for Aimeos products, you need to use a binary collation `utf8mb4_bin` in your `typo3conf/LocalConfiguration.php` file **before** the tables are created:
 
 ```
 'DB' => [
@@ -92,6 +92,22 @@ Starting with Aimeos 18.10 and TYPO3 9.5, it's possible to define the charset an
             'tableoptions' => [
                 'charset' => 'utf8mb4',
                 'collate' => 'utf8mb4_bin',
+            ],
+            // ...
+        ],
+    ],
+],
+```
+
+**Caution:** If you use MySQL < 5.7, you have to use `utf8` and `utf8_bin` instead because those MySQL versions can't handle the long indexes created by `utf8mb4` (up to four bytes per character) and you will get errors like `1071 Specified key was too long; max key length is 767 bytes`:
+
+```
+'DB' => [
+    'Connections' => [
+        'Default' => [
+            'tableoptions' => [
+                'charset' => 'utf8',
+                'collate' => 'utf8_bin',
             ],
             // ...
         ],
