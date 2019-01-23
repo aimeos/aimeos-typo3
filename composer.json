@@ -1,7 +1,7 @@
 {
 	"name": "aimeos/aimeos-typo3",
-	"description": "Aimeos TYPO3 extension for web shops, portals and market places",
-	"keywords": ["e-commerce", "shop", "portal", "market place"],
+	"description": "Professional, full-featured and high performance TYPO3 e-commerce extension for online shops and complex B2B projects",
+	"keywords": ["aimeos", "TYPO3", "e-commerce", "ecommerce", "B2B", "shop", "portal", "market place"],
 	"homepage": "https://www.aimeos.org",
 	"type": "typo3-cms-extension",
 	"license": "LGPL-3.0-or-later",
