@@ -10,7 +10,7 @@ Aimeos TYPO3 extension
 [Aimeos](https://aimeos.org/TYPO3) is THE professional, full-featured and
 high performance e-commerce extension for TYPO3!  You can install it in your
 existing TYPO3 web site within 5 minutes and can adapt, extend, overwrite
-and customize anything to your needs. 
+and customize anything to your needs.
 
 [![Aimeos TYPO3 demo](https://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
 
@@ -33,6 +33,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **18.10 release and later**.
 
+- Beta release: 19.1 (TYPO3 7/8/9 LTS)
 - LTS release: 18.10 (TYPO3 7/8/9 LTS)
 
 ### TYPO3 extension repository
