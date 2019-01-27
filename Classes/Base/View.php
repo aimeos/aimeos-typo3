@@ -44,7 +44,7 @@ class View
 		self::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
 		self::addParam( $view, $request );
 		self::addConfig( $view, $config );
-		self::addNumber( $view, $config );
+		self::addNumber( $view, $config, $locale );
 		self::addFormparam( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		self::addUrl( $view, $config, $uriBuilder, $request );
 		self::addSession( $view, $session );
@@ -152,19 +152,17 @@ class View
 	 * @param \Aimeos\MW\Config\Iface $config Configuration object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addNumber( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config )
+	protected static function addNumber( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config, $locale )
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] ) )
 		) {
-			return $fcn( $view, $config );
+			return $fcn( $view, $config, $locale );
 		}
 
-		$sepDec = $config->get( 'client/html/common/format/separatorDecimal', '.' );
-		$sep1000 = $config->get( 'client/html/common/format/separator1000', ' ' );
-		$decimals = $config->get( 'client/html/common/format/decimals', 2 );
+		$pattern = $config->get( 'client/html/common/format/pattern' );
 
-		$helper = new \Aimeos\MW\View\Helper\Number\Standard( $view, $sepDec, $sep1000, $decimals );
+		$helper = new \Aimeos\MW\View\Helper\Number\Locale( $view, $locale, $pattern );
 		$view->addHelper( 'number', $helper );
 
 		return $view;
@@ -331,7 +329,7 @@ class View
 		}
 		else
 		{
-			$url = new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $uriBuilder, array() );
+			$url = new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $uriBuilder, $fixed );
 		}
 
 		$view->addHelper( 'url', $url );
