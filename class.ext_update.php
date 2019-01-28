@@ -102,7 +102,7 @@ class ext_update
 		$connectionPool = $objectManager->get( ConnectionPool::class );
 		// A join with tables from different databases will throw an exception.
 		// Hence, it is extreme likely that aimeos will be installed on the same
-		// database.
+		// database where the fe_user is located.
 		$connection = $connectionPool
 			->getQueryBuilderForTable( 'fe_user' )
 			->getConnection();
@@ -124,11 +124,6 @@ class ext_update
 			isset( $params['tableoptions']['collate'] ) &&
 			$params['tableoptions']['collate'] === 'utf8_bin'
 		) {
-			// @todo running the setup script a second time quits with an error
-			// The script tries to  run a
-			// ALTER TABLE "mshop_customer" CONVERT TO CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin'
-			// which fails with s 5.6 MySql version.
-			// @see \Aimeos\MW\Setup\Task\TablesUpdateCharsetCollation::checkTables
 			return true;
 		}
 
