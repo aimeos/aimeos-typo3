@@ -89,21 +89,21 @@ class ext_update
 	 */
 	protected function checkEnvironment(): bool
 	{
-		if (version_compare(TYPO3_version, '9.5', '<')) {
+		if ( version_compare( TYPO3_version, '9.5', '<' ) ) {
 			// Wrong TYPO3 version.
 			return true;
 		}
 
 		/** @var ObjectManager $objectManager */
-		$objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+		$objectManager = GeneralUtility::makeInstance( ObjectManager::class );
 
 		/** @var ConnectionPool $connectionPool */
-		$connectionPool = $objectManager->get(ConnectionPool::class);
+		$connectionPool = $objectManager->get( ConnectionPool::class );
 		// A join with tables from different databases will throw an exception.
 		// Hence, it is extreme likely that aimeos will be installed on the same
 		// database.
 		$connection = $connectionPool
-			->getQueryBuilderForTable('fe_user')
+			->getQueryBuilderForTable( 'fe_user' )
 			->getConnection();
 
 		// Test the server type
@@ -116,17 +116,24 @@ class ext_update
 		}
 
 		// Test the parameters
+        // When the parameters are not set, the sql will fail.
 		$params = $connection->getParams();
-		if ($params['tableoptions']['charset'] === 'utf8' ||
+		if ( isset( $params['tableoptions']['charset'] ) &&
+		    $params['tableoptions']['charset'] === 'utf8' &&
+            isset( $params['tableoptions']['collate'] ) &&
 			$params['tableoptions']['collate'] === 'utf8_bin'
 		) {
+		    // @todo running the setup script a second time quits with an error
+            //        The script tries to  run a
+            //        ALTER TABLE "mshop_customer" CONVERT TO CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin'
+            //        which fails with s 5.6 MySql version.
 			return true;
 		}
 
 		// Retrieve the name of the connection (which is not part of the
 		// connection class)
 		foreach ( $connectionPool->getConnectionNames() as $name ) {
-			if ($connectionPool->getConnectionByName($name) === $connection) {
+			if ( $connectionPool->getConnectionByName( $name ) === $connection ) {
 				break;
 			}
 		}
