@@ -76,7 +76,7 @@ class Context
 		{
 			case 'None':
 				$context->getConfig()->set( 'client/html/basket/cache/enable', false );
-				$cache = \Aimeos\MW\Cache\Factory::createManager( 'None', array(), null );
+				$cache = \Aimeos\MW\Cache\Factory::create( 'None', array(), null );
 				break;
 
 			case 'Typo3':

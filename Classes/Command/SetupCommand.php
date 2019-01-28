@@ -51,7 +51,7 @@ class SetupCommand extends Command
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-        $config = \Aimeos\Aimeos\Base::getConfig();
+		$config = \Aimeos\Aimeos\Base::getConfig();
 		$ctx = \Aimeos\Aimeos\Base::getContext( $config );
 		$ctx->setEditor( 'aimeos:setup' );
 
