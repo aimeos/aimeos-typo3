@@ -117,18 +117,18 @@ class ext_update
 		}
 
 		// Test the parameters
-        // When the parameters are not set, the sql will fail.
+		// When the parameters are not set, the sql will fail.
 		$params = $connection->getParams();
 		if ( isset( $params['tableoptions']['charset'] ) &&
-		    $params['tableoptions']['charset'] === 'utf8' &&
-            isset( $params['tableoptions']['collate'] ) &&
+			$params['tableoptions']['charset'] === 'utf8' &&
+			isset( $params['tableoptions']['collate'] ) &&
 			$params['tableoptions']['collate'] === 'utf8_bin'
 		) {
-		    // @todo running the setup script a second time quits with an error
-            // The script tries to  run a
-            // ALTER TABLE "mshop_customer" CONVERT TO CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin'
-            // which fails with s 5.6 MySql version.
-            // @see \Aimeos\MW\Setup\Task\TablesUpdateCharsetCollation::checkTables
+			// @todo running the setup script a second time quits with an error
+			// The script tries to  run a
+			// ALTER TABLE "mshop_customer" CONVERT TO CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin'
+			// which fails with s 5.6 MySql version.
+			// @see \Aimeos\MW\Setup\Task\TablesUpdateCharsetCollation::checkTables
 			return true;
 		}
 
