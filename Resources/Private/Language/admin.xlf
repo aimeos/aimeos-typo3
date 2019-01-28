@@ -16,7 +16,10 @@
 				<source>Wrong configuration detected</source>
 			</trans-unit>
 			<trans-unit id="t3_9x_config_error_text" xml:space="preserve">
-				<source>The database connection '%s' has a wrong configuration! Please fix!  :-)</source>
+				<source>The database connection '%s' has a wrong configuration. To use the Aimeos Shop, you will need to adjust it.</source>
+			</trans-unit>
+			<trans-unit id="t3_9x_config_error_remedy" xml:space="preserve">
+				<source>Please follow the steps described here:</source>
 			</trans-unit>
 		</body>
 	</file>
