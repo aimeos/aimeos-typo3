@@ -89,7 +89,8 @@ class ext_update
 	 */
 	protected function checkEnvironment(): bool
 	{
-		if ( version_compare( TYPO3_version, '9.5', '<' ) ) {
+		if ( version_compare( TYPO3_version, '9.5', '<' ) )
+		{
 			// Wrong TYPO3 version.
 			return true;
 		}
@@ -108,7 +109,7 @@ class ext_update
 
 		// Test the server type
 		// @todo test MariaDB
-		//	   According to the releases, the next version here would be 10.0
+		// According to the releases, the next version here would be 10.0
 		if ( strpos( $connection->getServerVersion(), 'MySQL' ) === 0 &&
 			version_compare( $connection->getWrappedConnection()->getServerVersion(), '5.7', '>=' )
 		) {
@@ -124,9 +125,10 @@ class ext_update
 			$params['tableoptions']['collate'] === 'utf8_bin'
 		) {
 		    // @todo running the setup script a second time quits with an error
-            //        The script tries to  run a
-            //        ALTER TABLE "mshop_customer" CONVERT TO CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin'
-            //        which fails with s 5.6 MySql version.
+            // The script tries to  run a
+            // ALTER TABLE "mshop_customer" CONVERT TO CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_bin'
+            // which fails with s 5.6 MySql version.
+            // @see \Aimeos\MW\Setup\Task\TablesUpdateCharsetCollation::checkTables
 			return true;
 		}
 
