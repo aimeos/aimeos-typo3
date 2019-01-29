@@ -89,7 +89,7 @@ class ext_update
 	 */
 	protected function checkEnvironment(): bool
 	{
-		if ( version_compare( TYPO3_version, '9.5', '<' ) )
+		if ( version_compare( TYPO3_version, '9.0', '<' ) )
 		{
 			// Wrong TYPO3 version.
 			return true;
