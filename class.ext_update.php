@@ -82,14 +82,13 @@ class ext_update
 	/**
 	 * Check the environment.
 	 *
-	 * TYPO3 9.5 and MySql 5.6 and below may make problems. This was introduced
-	 * with #80398.
+	 * TYPO3 9.5 and MySql 5.6 or MariaDB 10.1 might make problems.
 	 *
 	 * @return bool
 	 */
 	protected function checkEnvironment(): bool
 	{
-		if ( version_compare( TYPO3_version, '9.0', '<' ) )
+		if( version_compare( TYPO3_version, '9.0', '<' ) )
 		{
 			// Wrong TYPO3 version.
 			return true;
@@ -108,12 +107,25 @@ class ext_update
 			->getConnection();
 
 		// Test the server type
-		// @todo test MariaDB
-		// According to the releases, the next version here would be 10.0
-		if ( strpos( $connection->getServerVersion(), 'MySQL' ) === 0 &&
-			version_compare( $connection->getWrappedConnection()->getServerVersion(), '5.7', '>=' )
-		) {
-			return true;
+		if( strpos( $connection->getServerVersion(), 'MySQL' ) === 0 )
+		{
+			// When dealing with a MariaDB, we can not rely on doctrine to tell the truth.
+			// It might get identified as a 'MySql 5.5.5' for some reason.
+			$result = $connection->prepare('SELECT version()');
+			$result->execute();
+			// Something like '10.1.29-MariaDB' or '5.6.33-0ubuntu0...'
+			$version = $result->fetchAll()[0]['version()'];
+			
+			if( strpos( $version, 'MariaDB' ) !== false &&
+				version_compare( $version, '10.2', '>=' )
+			) {
+				return true;
+			}
+			
+			if( version_compare( $version, '5.7', '>=' ) )
+			{
+				return true;
+			}
 		}
 
 		// Test the parameters
