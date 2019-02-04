@@ -189,10 +189,11 @@ class Setup
 		$ctx->setCache( new \Aimeos\MW\Cache\None() );
 
 
-		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9+ only)
-		$pool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' );
-
-		if( php_sapi_name() === 'cli' && method_exists( $pool, 'resetConnections' ) === true ) {
+		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
+		if ( php_sapi_name() === 'cli'
+			&& version_compare( TYPO3_version, '9.4', '>=' )
+			&& method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) )
+		{
 			$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 		} else {
 			$process = new \Aimeos\MW\Process\None();
