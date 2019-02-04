@@ -29,7 +29,7 @@ if( file_exists( $localautoloader ) === true ) {
 class ext_update
 {
 	/**
-	 * Array with possible flash messages.
+	 * The rendered feedback message in case of a compatibility problem
 	 *
 	 * @var string
 	 */
