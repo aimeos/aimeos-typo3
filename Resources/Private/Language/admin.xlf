@@ -19,7 +19,7 @@
 				<source>The database connection '%s' has a wrong configuration. To use the Aimeos Shop, you will need to adjust it.</source>
 			</trans-unit>
 			<trans-unit id="t3_9x_config_error_remedy" xml:space="preserve">
-				<source><![CDATA[<p>Please follow the steps described here:<p><a target="_blank" href="https://github.com/aimeos/aimeos-typo3#database-setup">https://github.com/aimeos/aimeos-typo3#database-setup</a></p></p>]]></source>
+				<source><![CDATA[<p>Please follow the steps described here:</p><p><a target="_blank" href="https://github.com/aimeos/aimeos-typo3#database-setup">https://github.com/aimeos/aimeos-typo3#database-setup</a></p>]]></source>
 			</trans-unit>
 		</body>
 	</file>
