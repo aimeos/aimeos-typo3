@@ -116,14 +116,10 @@ class ext_update
 			// Something like '10.1.29-MariaDB' or '5.6.33-0ubuntu0...'
 			$version = $result->fetchAll()[0]['version()'];
 
-			if( strpos( $version, 'MariaDB' ) !== false &&
-				version_compare( $version, '10.2', '>=' )
+			if( ( strpos( $version, 'MariaDB' ) !== false
+				&& version_compare( $version, '10.2', '>=' ) )
+				|| version_compare( $version, '5.7', '>=' )
 			) {
-				return true;
-			}
-
-			if( version_compare( $version, '5.7', '>=' ) )
-			{
 				return true;
 			}
 		}
