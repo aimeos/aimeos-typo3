@@ -223,8 +223,8 @@ class Context
 		}
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-		if ( php_sapi_name() === 'cli' &&
-			version_compare( TYPO3_version, '9.4', '>=' ) )
+		if( php_sapi_name() === 'cli'
+			&& version_compare( TYPO3_version, '9.4', '>=' ) )
 		{
 			$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 		} else {
