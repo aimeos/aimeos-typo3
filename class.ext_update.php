@@ -86,7 +86,7 @@ class ext_update
 	 *
 	 * @return bool
 	 */
-	protected function checkEnvironment(): bool
+	protected function checkEnvironment()
 	{
 		if( version_compare( TYPO3_version, '9.0', '<' ) )
 		{
@@ -115,13 +115,13 @@ class ext_update
 			$result->execute();
 			// Something like '10.1.29-MariaDB' or '5.6.33-0ubuntu0...'
 			$version = $result->fetchAll()[0]['version()'];
-			
+
 			if( strpos( $version, 'MariaDB' ) !== false &&
 				version_compare( $version, '10.2', '>=' )
 			) {
 				return true;
 			}
-			
+
 			if( version_compare( $version, '5.7', '>=' ) )
 			{
 				return true;
