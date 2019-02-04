@@ -155,12 +155,8 @@ class ext_update
 
 		$this->message = $objectManager->get( FlashMessageRendererResolver::class )
 			->resolve()
-			->render( $flashMessages );
-
-		$url = 'https://github.com/aimeos/aimeos-typo3#database-setup';
-
-		$this->message .= '<p>' . LocalizationUtility::translate( 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:t3_9x_config_error_remedy' ) . '</p>';
-		$this->message .= '<p><a href="' . $url . '">' . $url . '</a></p>';
+			->render( $flashMessages ) .
+			LocalizationUtility::translate( 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:t3_9x_config_error_remedy' );
 
 		return false;
 	}
