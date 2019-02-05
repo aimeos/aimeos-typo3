@@ -127,7 +127,7 @@ class ext_update
 		// Retrieve the name of the connection (which is not part of the
 		// connection class)
 		foreach ( $connectionPool->getConnectionNames() as $name ) {
-			if ( $connectionPool->getConnectionByName( $name ) === $connection ) {
+			if( $connectionPool->getConnectionByName( $name ) === $connection ) {
 				break;
 			}
 		}
