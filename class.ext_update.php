@@ -47,8 +47,7 @@ class ext_update
 		ob_start();
 		$exectimeStart = microtime( true );
 
-		$result = $this->checkEnvironment();
-		if ( $result ) {
+		if( ( $result = $this->checkEnvironment() ) !== null ) {
 			return $result;
 		}
 
