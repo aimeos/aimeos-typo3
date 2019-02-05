@@ -8,7 +8,6 @@
  */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Messaging\FlashMessageRendererResolver;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -97,8 +96,8 @@ class ext_update
 		/** @var ObjectManager $objectManager */
 		$objectManager = GeneralUtility::makeInstance( ObjectManager::class );
 
-		/** @var ConnectionPool $connectionPool */
-		$connectionPool = $objectManager->get( ConnectionPool::class );
+		/** @var \TYPO3\CMS\Core\Database\ConnectionPool $connectionPool */
+		$connectionPool = $objectManager->get( TYPO3\CMS\Core\Database\ConnectionPool::class );
 		// A join with tables from different databases will throw an exception.
 		// Hence, it is extreme likely that aimeos will be installed on the same
 		// database where the fe_user is located.
