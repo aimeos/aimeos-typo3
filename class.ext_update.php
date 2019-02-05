@@ -119,7 +119,7 @@ class ext_update
 		// Test the parameters
 		// When the parameters are not set, the sql will fail.
 		$params = $connection->getParams();
-		if ( isset( $params['tableoptions']['collate'] ) && $params['tableoptions']['collate'] === 'utf8_bin' )
+		if( isset( $params['tableoptions']['charset'] ) && $params['tableoptions']['charset'] === 'utf8' )
 		{
 			return;
 		}
