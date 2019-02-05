@@ -28,13 +28,6 @@ if( file_exists( $localautoloader ) === true ) {
 class ext_update
 {
 	/**
-	 * The rendered feedback message in case of a compatibility problem
-	 *
-	 * @var string
-	 */
-	protected $message = '';
-
-	/**
 	 * Returns the status if an update is necessary.
 	 *
 	 * @return boolean True if the update entry is available, false if not
@@ -43,7 +36,6 @@ class ext_update
 	{
 		return true;
 	}
-
 
 	/**
 	 * Main update method called by the extension manager.
@@ -55,8 +47,9 @@ class ext_update
 		ob_start();
 		$exectimeStart = microtime( true );
 
-		if ( $this->checkEnvironment() === false ) {
-			return $this->message;
+		$result = $this->checkEnvironment();
+		if ( $result ) {
+			return $result;
 		}
 
 		try
@@ -83,14 +76,15 @@ class ext_update
 	 *
 	 * TYPO3 9.5 and MySql 5.6 or MariaDB 10.1 might make problems.
 	 *
-	 * @return bool
+	 * @return null|string
+	 *   A possible return message, stating what went wrong, if anything at all.
 	 */
 	protected function checkEnvironment()
 	{
 		if( version_compare( TYPO3_version, '9.0', '<' ) )
 		{
 			// Wrong TYPO3 version.
-			return true;
+			return;
 		}
 
 		/** @var ObjectManager $objectManager */
@@ -119,7 +113,7 @@ class ext_update
 				&& version_compare( $version, '10.2', '>=' ) )
 				|| version_compare( $version, '5.7', '>=' )
 			) {
-				return true;
+				return;
 			}
 		}
 
@@ -131,7 +125,7 @@ class ext_update
 			isset( $params['tableoptions']['collate'] ) &&
 			$params['tableoptions']['collate'] === 'utf8_bin'
 		) {
-			return true;
+			return;
 		}
 
 		// Retrieve the name of the connection (which is not part of the
@@ -152,11 +146,10 @@ class ext_update
 			)
 		];
 
-		$this->message = $objectManager->get( FlashMessageRendererResolver::class )
+		return $objectManager->get( FlashMessageRendererResolver::class )
 			->resolve()
 			->render( $flashMessages ) .
 			LocalizationUtility::translate( 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:t3_9x_config_error_remedy' );
 
-		return false;
 	}
 }
