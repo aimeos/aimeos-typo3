@@ -10,6 +10,9 @@
 namespace Aimeos\Aimeos;
 
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
+
 $localautoloader = dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 
 if( file_exists( $localautoloader ) === true ) {
@@ -188,7 +191,6 @@ class Setup
 		$ctx->setSession( new \Aimeos\MW\Session\None() );
 		$ctx->setCache( new \Aimeos\MW\Cache\None() );
 
-
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
 		if ( php_sapi_name() === 'cli'
 			&& version_compare( TYPO3_version, '9.4', '>=' )
@@ -201,13 +203,15 @@ class Setup
 		$ctx->setProcess( $process );
 
 
-		if( class_exists( '\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' ) ) { // TYPO3 9+
-			$hasher = \TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::getDefaultHashInstance( 'FE' );
-		} elseif( class_exists( '\TYPO3\CMS\Saltedpasswords\Salt\SaltFactory' ) ) { // TYPO3 7/8
-			$hasher = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance();
+		if( class_exists( '\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' ) ) // TYPO3 9+
+		{
+			$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
+			$ctx->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
 		}
-		$ctx->setHasherTypo3( $hasher );
-
+		elseif( class_exists( '\TYPO3\CMS\Saltedpasswords\Salt\SaltFactory' ) ) // TYPO3 7/8
+		{
+			$ctx->setHasherTypo3( \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance() );
+		}
 
 		return $ctx;
 	}
