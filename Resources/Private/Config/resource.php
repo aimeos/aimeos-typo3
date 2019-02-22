@@ -18,6 +18,7 @@ return array(
 	),
 	'fs' => array(
 		'adapter' => 'Standard',
+		'baseurl' => '/uploads/tx_aimeos',
 		'basedir' => PATH_site . 'uploads/tx_aimeos',
 		'tempdir' => PATH_site . 'typo3temp',
 	),
