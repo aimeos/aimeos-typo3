@@ -25,14 +25,12 @@ plugin.tx_aimeos {
 		pluginNamespace = ai
 	}
 	settings {
-		resource.fs.baseurl = {$plugin.tx_aimeos.resource.fs.baseurl}
 		admin.jsonadm.url {
 			config.absoluteUri = 1
 			options.config.absoluteUri = 1
 		}
 		client {
 			html {
-				common.template.baseurl = {$plugin.tx_aimeos.theme.baseurl}
 				account.download.url.config.absoluteUri = 1
 				catalog {
 					count.url.config.type = 191351524
@@ -58,7 +56,6 @@ plugin.tx_aimeos {
 
 
 module.tx_aimeos.settings.typo3.admin.default = {$module.tx_aimeos.typo3.admin.default}
-module.tx_aimeos.settings.resource.fs.baseurl = {$module.tx_aimeos.resource.fs.baseurl}
 
 
 aimeosJs = PAGE

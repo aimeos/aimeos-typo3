@@ -27,13 +27,4 @@ plugin.tx_aimeos {
 
 	# cat=ai150advanced/file/110; type=string; label=Aimeos detail JS:Aimeos frontend Javascript code for the detail page
 	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
-
-
-	# cat=ai150advanced/links/100; type=string; label=Content base URL:Path to the content directory or content base URL of your server
-	resource.fs.baseurl = /uploads/tx_aimeos
-}
-
-module.tx_aimeos {
-	# cat=ai150advanced/links/110; type=string; label=Content base URL (BE):Path to the content directory or content base URL of your server
-	resource.fs.baseurl = ../uploads/tx_aimeos
 }

@@ -26,7 +26,6 @@ abstract class Email extends AbstractProvider
 	private $fieldReplyEmail = 'aimeos_reply_email';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
 	private $fieldPageDownload = 'aimeos_pageid_download';
-	private $fieldContentBaseurl = 'aimeos_content_baseurl';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
 
@@ -142,24 +141,6 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldContentBaseurl] ) && $parentObject->CMD === 'edit' ) {
-			$taskInfo[$this->fieldContentBaseurl] = $task->{$this->fieldContentBaseurl};
-		}
-
-		$taskInfo[$this->fieldContentBaseurl] = htmlspecialchars( $taskInfo[$this->fieldContentBaseurl], ENT_QUOTES, 'UTF-8' );
-
-		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-		$fieldCode = sprintf( $fieldStr, $this->fieldContentBaseurl, $taskInfo[$this->fieldContentBaseurl] );
-
-		$additionalFields[$this->fieldContentBaseurl] = array(
-			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.content-baseurl',
-			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->fieldContentBaseurl
-		);
-
-
-		// In case of editing a task, set to the internal value if data wasn't already submitted
 		if( empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->CMD === 'edit' ) {
 			$taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl};
 		}
@@ -207,7 +188,6 @@ abstract class Email extends AbstractProvider
 		$task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail];
 		$task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail];
 		$task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload];
-		$task->{$this->fieldContentBaseurl} = $submittedData[$this->fieldContentBaseurl];
 		$task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl];
 	}
 
