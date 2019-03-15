@@ -36,11 +36,8 @@ class Base
 		$process = $context->getProcess();
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-		if( version_compare( TYPO3_version, '9.4', '>=' )
-			&& method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) )
-		{
-			 GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )
-				->resetConnections();
+		if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {
+			 GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
 		}
 
 		$manager = \Aimeos\MShop::create( $context, 'locale' );
