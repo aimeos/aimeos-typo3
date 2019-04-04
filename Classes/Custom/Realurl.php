@@ -43,8 +43,8 @@ class Realurl
 						),
 					),
 					'f' => array(
-						array( 'GETvar' => 'ai[f_catid]' ),
 						array( 'GETvar' => 'ai[f_name]' ),
+						array( 'GETvar' => 'ai[f_catid]' ),
 					),
 					's' => array(
 						array( 'GETvar' => 'ai[f_sort]' ),
@@ -54,7 +54,6 @@ class Realurl
 						array( 'GETvar' => 'ai[l_size]' ),
 					),
 					'd' => array(
-						array( 'GETvar' => 'ai[d_prodid]' ),
 						array( 'GETvar' => 'ai[d_name]' ),
 						array( 'GETvar' => 'ai[d_pos]' ),
 					),
