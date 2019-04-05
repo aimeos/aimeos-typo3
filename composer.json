@@ -27,9 +27,6 @@
 		"zendframework/zend-diactoros": "~1.3",
 		"sjbr/static-info-tables": "^6.5"
 	},
-	"require-dev": {
-		"typo3/cms-core": "^7.6 || ^8.7 || ^9.5"
-	},
 	"replace": {
 		"aimeos/aimeos-typo3": "self.version",
 		"typo3-ter/aimeos": "self.version"
