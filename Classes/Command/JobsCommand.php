@@ -34,7 +34,7 @@ class JobsCommand extends Command
 		$names = '';
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
-		$controllers = \Aimeos\Controller\Jobs::get( $this->getBareContext(), $aimeos, $cntlPaths );
+		$controllers = \Aimeos\Controller\Jobs::get( $this->getContext(), $aimeos, $cntlPaths );
 
 		foreach( $controllers as $key => $controller ) {
 			$names .= str_pad( $key, 30 ) . $controller->getName() . PHP_EOL;
@@ -89,25 +89,27 @@ class JobsCommand extends Command
 
 
 	/**
-	 * Returns a bare context object
+	 * Returns a context object
 	 *
 	 * @return \Aimeos\MShop\Context\Item\Standard Context object containing only the most necessary dependencies
 	 */
-	protected function getBareContext()
+	protected function getContext()
 	{
-		$ctx = new \Aimeos\MShop\Context\Item\Standard();
+		$lang = 'en';
+        $config = \Aimeos\Aimeos\Base::getConfig();
+		$context = \Aimeos\Aimeos\Base::getContext( $config );
 
-		$conf = new \Aimeos\MW\Config\PHPArray( array(), array() );
-		$ctx->setConfig( $conf );
+		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+			$lang = $GLOBALS['BE_USER']->uc['lang'];
+		}
 
-		$locale = \Aimeos\MShop::create( $ctx, 'locale' )->createItem();
-		$locale->setLanguageId( 'en' );
-		$ctx->setLocale( $locale );
+		$locale = \Aimeos\Aimeos\Base::getLocaleBackend( $context, 'default' );
+		$context->setLocale( $locale );
 
-		$i18n = new \Aimeos\MW\Translation\None( 'en' );
-		$ctx->setI18n( array( 'en' => $i18n ) );
+		$i18n = \Aimeos\Aimeos\Base::getI18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
+		$context->setI18n( $i18n );
 
-		return $ctx;
+		return $context;
 	}
 
 
