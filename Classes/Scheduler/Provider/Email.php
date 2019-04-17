@@ -219,10 +219,6 @@ abstract class Email extends AbstractProvider
 			throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid' ) );
 		}
 
-		if( preg_match( '#^[a-z]+://[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*(:[0-9]+)?(/.*)?$#', $submittedData[$this->fieldContentBaseurl] ) !== 1 ) {
-			throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.content-baseurl.invalid' ) );
-		}
-
 		parent::validateFields( $submittedData, $parentObject );
 
 		return true;
