@@ -73,7 +73,7 @@ class Context
 		}
 
 		$cacheName = \Aimeos\Aimeos\Base::getExtConfig( 'cacheName', 'Typo3' );
-		if ( $GLOBALS['TSFE'] && $GLOBALS['TSFE']->headerNoCache() ) {
+		if ( isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
     			$cacheName = 'None';
 		}
 
