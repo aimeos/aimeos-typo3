@@ -72,7 +72,12 @@ class Context
 			return $fcn( $context );
 		}
 
-		switch( \Aimeos\Aimeos\Base::getExtConfig( 'cacheName', 'Typo3' ) )
+		$cacheName = \Aimeos\Aimeos\Base::getExtConfig( 'cacheName', 'Typo3' );
+		if ( isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
+    			$cacheName = 'None';
+		}
+
+		switch( $cacheName )
 		{
 			case 'None':
 				$context->getConfig()->set( 'client/html/basket/cache/enable', false );
