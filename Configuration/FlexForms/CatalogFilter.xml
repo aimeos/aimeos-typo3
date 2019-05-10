@@ -80,24 +80,24 @@
 					</config>
 				</TCEforms>
 			</settings.client.html.catalog.filter.tree.startid>
-			<settings.client.html.catalog.filter.tree.levels-always>
+			<settings.controller.frontend.catalog.levels-always>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.tree-levels-always</label>
 					<config>
 						<type>input</type>
-						<eval>trim</eval>
+						<eval>trim,int</eval>
 					</config>
 				</TCEforms>
-			</settings.client.html.catalog.filter.tree.levels-always>
-			<settings.client.html.catalog.filter.tree.levels-only>
+			</settings.controller.frontend.catalog.levels-always>
+			<settings.controller.frontend.catalog.levels-only>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.tree-levels-only</label>
 					<config>
 						<type>input</type>
-						<eval>trim</eval>
+						<eval>trim,int</eval>
 					</config>
 				</TCEforms>
-			</settings.client.html.catalog.filter.tree.levels-only>
+			</settings.controller.frontend.catalog.levels-only>
 			<settings.client.html.catalog.filter.attribute.types>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.attribute-types</label>
