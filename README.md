@@ -136,7 +136,7 @@ Afterwards, you have to execute the update script of the extension to create the
 
 ## Page setup
 
-The page setup for an Aimeos web shop is easy if you import the [standard page tree for TYPO3 8.7/9.5](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_18.10.t3d) into your TYPO3 installation.
+The page setup for an Aimeos web shop is easy if you import the [standard page tree for TYPO3 8.7/9.5](https://aimeos.org/docs/TYPO3/Install_Aimeos/Setup_pages#Download) into your TYPO3 installation.
 
 ### Go to the import view
 
