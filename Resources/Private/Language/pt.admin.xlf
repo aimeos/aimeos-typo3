@@ -8,7 +8,7 @@
 			</trans-unit>
 			<trans-unit id="mlang_labels_tablabel" xml:space="preserve">
 				<source>Aimeos Shop Plugin</source>
-				<target>Loja Aimeos Plugin</target>
+				<target>Plugin da Loja Aimeos</target>
 			</trans-unit>
 			<trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
 				<source>Administration Aimeos Shop</source>
