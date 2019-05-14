@@ -4,12 +4,15 @@
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
 				<source>Page with JSON REST API plugin</source>
+				<target>Page avec le plugin JSON REST API</target>
 			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
+				<target>Page de téléchargement du compte</target>
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
+				<target>Page d'erreur si le téléchargement est interdit</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
@@ -33,6 +36,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
+				<target>Types d'attributs affichés pour la recherche par facettes</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -48,27 +52,35 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
+				<target>Tri par défaut de la liste de produits</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
+				<target>Pertinence (position)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
+				<target>Nom (AZ)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
+				<target>Nom (Z-A)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
+				<target>Prix (les plus bas en premier)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
+				<target>Prix (les plus élevés en premiers)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
+				<target>Heure de création (la plus ancienne en premier)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
+				<target>Heure de création (le plus récent en premier)</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -76,6 +88,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
 				<source>Default product ID if no parameter is available</source>
+				<target>ID de produit par défaut si aucun paramètre n'est disponible</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
@@ -107,6 +120,7 @@
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
+				<target>Page de la politique d'annulation</target>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>

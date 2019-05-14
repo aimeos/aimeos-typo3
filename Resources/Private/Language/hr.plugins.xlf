@@ -12,6 +12,7 @@
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
+				<target>Stranica pogreške ako je preuzimanje zabranjeno</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
