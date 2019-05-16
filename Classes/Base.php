@@ -259,4 +259,18 @@ class Base
 
 		return $tsConfig;
 	}
+
+
+	/**
+	 * Clears user information on logout
+	 *
+	 * @return void
+	 */
+	public static function logout()
+	{
+		$config = self::getConfig();
+		$context = self::getContext( $config );	
+		$controller = \Aimeos\Controller\Frontend\Factory::createController($context, 'basket');
+		$controller->clear();
+	}
 }
