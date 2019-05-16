@@ -18,3 +18,13 @@ useAPC = 0
 apcPrefix = t3:
 # cat=backend; type=boolean; label=Show Typo3 page tree in backend
 showPageTree = 0
+# cat=privacy; type=boolean; label=Remove basket articles on logout
+clearArticles = 0
+# cat=privacy; type=boolean; label=Remove coupons on logout
+clearCoupons = 1
+# cat=privacy; type=boolean; label=Remove addresses on logout
+clearAddresses = 1
+# cat=privacy; type=boolean; label=Remove payment information on logout
+clearPayment = 1
+# cat=privacy; type=boolean; label=Remove shipping information on logout
+clearDelivery = 1

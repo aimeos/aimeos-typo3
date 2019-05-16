@@ -51,4 +51,25 @@ class Aimeos
 
 		return self::$aimeos;
 	}
+
+	/**
+	 * Clears user information on logout
+	 *
+	 * @return void
+	 */
+	public static function logout()
+	{
+		$localConfig = array(
+			'clearArticles' => \Aimeos\Aimeos\Base::getExtConfig( 'clearArticles', 0 ) == true,
+			'clearCoupons' => \Aimeos\Aimeos\Base::getExtConfig( 'clearCoupons', 0 ) == true,
+			'clearAddresses' => \Aimeos\Aimeos\Base::getExtConfig( 'clearAddresses', 0 ) == true,
+			'clearPayment' => \Aimeos\Aimeos\Base::getExtConfig( 'clearPayment', 0 ) == true,
+			'clearDelivery' => \Aimeos\Aimeos\Base::getExtConfig( 'clearDelivery', 0 ) == true,
+		);
+
+		$config = \Aimeos\Aimeos\Base::getConfig( $localConfig );
+		$context = \Aimeos\Aimeos\Base::getContext( $config );	
+		$controller = \Aimeos\Controller\Frontend\Factory::createController($context, 'basket');
+		$controller->clear( true );
+	}
 }
