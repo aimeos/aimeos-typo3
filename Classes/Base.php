@@ -268,9 +268,7 @@ class Base
 	 */
 	public static function logout()
 	{
-		$config = self::getConfig();
-		$context = self::getContext( $config );	
-		$controller = \Aimeos\Controller\Frontend\Factory::createController($context, 'basket');
-		$controller->clear();
+		$context = self::getContext( self::getConfig() );
+		\Aimeos\Controller\Frontend\Factory::createController( $context, 'basket' )->clear();
 	}
 }
