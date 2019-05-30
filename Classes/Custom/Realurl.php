@@ -56,6 +56,7 @@ class Realurl
 					'd' => array(
 						array( 'GETvar' => 'ai[d_name]' ),
 						array( 'GETvar' => 'ai[d_pos]' ),
+						array( 'GETvar' => 'ai[d_prodid]' ),
 					),
 					'fs' => array(
 						array( 'GETvar' => 'ai[f_search]' ),
@@ -66,14 +67,17 @@ class Realurl
 					'pin' => array(
 						array( 'GETvar' => 'ai[pin_action]' ),
 						array( 'GETvar' => 'ai[pin_id]' ),
+						array( 'GETvar' => 'ai[d_name]' ),
 					),
 					'fav' => array(
 						array( 'GETvar' => 'ai[fav_action]' ),
 						array( 'GETvar' => 'ai[fav_id]' ),
+						array( 'GETvar' => 'ai[d_name]' ),
 					),
 					'watch' => array(
 						array( 'GETvar' => 'ai[wat_action]' ),
 						array( 'GETvar' => 'ai[wat_id]' ),
+						array( 'GETvar' => 'ai[d_name]' ),
 					),
 					'history' => array(
 						array( 'GETvar' => 'ai[his_action]' ),
