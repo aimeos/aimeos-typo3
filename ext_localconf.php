@@ -67,6 +67,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.aimeos',
+	'catalog-product',
+	array( 'Catalog' => 'product' ),
+	array( 'Catalog' => 'product' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.aimeos',
 	'catalog-search',
 	array( 'Catalog' => 'search' ),
 	array( 'Catalog' => 'search' )

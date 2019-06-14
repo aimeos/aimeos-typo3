@@ -72,6 +72,30 @@ class CatalogController extends AbstractController
 
 
 	/**
+	 * Renders the catalog product section.
+	 */
+	public function productAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/product' );
+
+		if (
+			isset($this->settings['client']['html']['catalog']['product']['product-codes'])
+			&& is_string($this->settings['client']['html']['catalog']['product']['product-codes'])
+		) {
+			$productCodes = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(
+				',',
+				$this->settings['client']['html']['catalog']['product']['product-codes'],
+				true
+			);
+			$this->settings['client']['html']['catalog']['product']['product-codes'] = $productCodes;
+		} else {
+			$this->settings['client']['html']['catalog']['product']['product-codes'] = [];
+		}
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the catalog search section.
 	 */
 	public function searchAction()
