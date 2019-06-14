@@ -121,6 +121,25 @@ class CatalogControllerTest
 	/**
 	 * @test
 	 */
+	public function productAction()
+	{
+		$name = '\\Aimeos\\Client\\Html\\Catalog\\Product\\Standard';
+		$client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
+
+		$client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
+		$client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
+
+		\Aimeos\Client\Html\Catalog\Product\Factory::injectClient( $name, $client );
+		$output = $this->object->productAction();
+		\Aimeos\Client\Html\Catalog\Product\Factory::injectClient( $name, null );
+
+		$this->assertEquals( 'body', $output );
+	}
+
+
+	/**
+	 * @test
+	 */
 	public function suggestAction()
 	{
 		$name = '\\Aimeos\\Client\\Html\\Catalog\\Suggest\\Standard';
