@@ -262,12 +262,20 @@ class Base
 
 
 	/**
-	 * Clears user information on logout
+	 * Clears basket information on logout
 	 *
 	 * @return void
 	 */
 	public static function logout()
 	{
-		\Aimeos\Controller\Frontend::create( self::getContext( self::getConfig() ), 'basket' )->clear();
+		$session = self::getContext( self::getConfig() )->getSession();
+
+		foreach( $session->get( 'aimeos/basket/cache', [] ) as $key => $value ) {
+			$session->set( $key, null );
+		}
+
+		foreach( $session->get( 'aimeos/basket/list', [] ) as $key => $value ) {
+			$session->set( $key, null );
+		}
 	}
 }
