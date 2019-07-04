@@ -268,7 +268,14 @@ class Base
 	 */
 	public static function logout()
 	{
-		$context = self::getContext( self::getConfig() );
-		\Aimeos\Controller\Frontend\Factory::createController( $context, 'basket' )->clear();
+		$session = self::getContext( self::getConfig() )->getSession();
+
+		foreach( $session->get( 'aimeos/basket/cache', [] ) as $key => $value ) {
+			$session->set( $key, null );
+		}
+
+		foreach( $session->get( 'aimeos/basket/list', [] ) as $key => $value ) {
+			$session->set( $key, null );
+		}
 	}
 }
