@@ -36,7 +36,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **18.10 release and later**.
 
-- Stable release: 19.4 (TYPO3 7/8/9 LTS)
+- Stable release: 19.7 (TYPO3 7/8/9 LTS)
 - LTS release: 18.10 (TYPO3 7/8/9 LTS)
 
 ### TYPO3 extension repository
@@ -58,8 +58,8 @@ In order to tell composer what it should install, you have to create a basic `co
     "name": "vendor/mysite",
     "description" : "My new TYPO3 web site",
     "require": {
-        "typo3/cms": "~8.7",
-        "aimeos/aimeos-typo3": "~19.4"
+        "typo3/cms": "~9.5",
+        "aimeos/aimeos-typo3": "~19.7"
     },
     "extra": {
         "typo3/cms": {
