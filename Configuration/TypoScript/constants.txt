@@ -1,5 +1,6 @@
 # customcategory=ai140theme=Aimeos shop: theme
 # customcategory=ai150advanced=Aimeos shop: advanced
+# customsubcategory=time=Frontend simulated time
 
 plugin.tx_aimeos {
 
@@ -27,4 +28,10 @@ plugin.tx_aimeos {
 
 	# cat=ai150advanced/file/110; type=string; label=Aimeos detail JS:Aimeos frontend Javascript code for the detail page
 	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
+
+	# cat=ai150advanced/time/100; type=string; label=Simulate timestamp
+	settings.aitime.timestamp =
+
+	# cat=ai150advanced/time/110; type=int; label=Frontend user group id
+	settings.aitime.feusergroup =
 }
