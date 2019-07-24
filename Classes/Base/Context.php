@@ -342,7 +342,8 @@ class Context
 	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context )
 	{
 		// Handle the admin panel, according to the version number.
-		if ( version_compare( TYPO3_version, '9.2.0', '<' ) ) {
+		if ( version_compare( TYPO3_version, '9.2.0', '<' ) )
+		{
 			// The old admin panel saves it's stuff inside the user settings of
 			// the current admin user. These settings will get used, even if the
 			// actual panel gets deactivated.
@@ -362,7 +363,8 @@ class Context
 			$time = GeneralUtility::makeInstance( \TYPO3\CMS\Adminpanel\Service\ConfigurationService::class )
 				->getConfigurationOption('preview', 'simulateDate');
 
-			if ( !empty( $time ) ) {
+			if ( !empty( $time ) )
+			{
 				$context->setDateTime(
 					date( 'Y-m-d H:i:s', strtotime( $time ) )
 				);
