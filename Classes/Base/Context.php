@@ -47,6 +47,7 @@ class Context
 			self::addHasher( $context);
 			self::addUser( $context);
 			self::addGroups( $context);
+			self::addDateTime( $context);
 
 			self::$context = $context;
 		}
@@ -74,7 +75,7 @@ class Context
 
 		$cacheName = \Aimeos\Aimeos\Base::getExtConfig( 'cacheName', 'Typo3' );
 		if ( isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
-    			$cacheName = 'None';
+ 			$cacheName = 'None';
 		}
 
 		switch( $cacheName )
@@ -326,6 +327,47 @@ class Context
 		{
 			$ids = array_keys( $GLOBALS['BE_USER']->userGroups );
 			$context->setGroupIds( $ids );
+		}
+
+		return $context;
+	}
+
+
+	/**
+	 * Adds the frontend date time to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		// Handle the admin panel, according to the version number.
+		if ( version_compare( TYPO3_version, '9.2.0', '<' ) ) {
+			// The old admin panel saves it's stuff inside the user settings of
+			// the current admin user. These settings will get used, even if the
+			// actual panel gets deactivated.
+			if ( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
+				&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] ) )
+			{
+				$context->setDateTime(
+					date( 'Y-m-d H:i:s', (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
+				);
+				// Early return.
+				return $context;
+			}
+		}
+		elseif ( isset( $GLOBALS['BE_USER']->adminPanel ) )
+		{
+			// Read the actual configuration and then use it.
+			$time = GeneralUtility::makeInstance( \TYPO3\CMS\Adminpanel\Service\ConfigurationService::class )
+				->getConfigurationOption('preview', 'simulateDate');
+
+			if ( !empty( $time ) ) {
+				$context->setDateTime(
+					date( 'Y-m-d H:i:s', strtotime( $time ) )
+				);
+			}
+
 		}
 
 		return $context;
