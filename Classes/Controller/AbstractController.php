@@ -62,8 +62,6 @@ abstract class AbstractController
 		// Use plugin specific configuration
 		self::$context->setConfig( $config );
 
-		$this->assignFrontendTime();
-
 		if( $withView === true )
 		{
 			$langid = self::$context->getLocale()->getLanguageId();
@@ -74,56 +72,6 @@ abstract class AbstractController
 		}
 
 		return self::$context;
-	}
-
-
-	/**
-	 * Assigning the frontend time to the context, if necessary.
-	 */
-	protected function assignFrontendTime()
-	{
-		// Handle the admin panel, according to the version number.
-		if ( version_compare( TYPO3_version, '9.3.99', '<=' ) ) {
-			// The old admin panel saves it's stuff inside the user settings of
-			// the current admin user. These settings will get used, even if the
-			// actual panel is deactivated in the site template.
-			if ( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
-				&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] ) )
-			{
-				self::$context->setDateTime(
-					date( 'Y-m-d H:i:s', (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
-				);
-				// Early return. The admin settings overwrite the TS settings.
-				return;
-			}
-		}
-		elseif ( isset( $GLOBALS['BE_USER']->adminPanel ) )
-		{
-			// Read the actual configuration and then use it.
-			$time = $this->objectManager->get( \TYPO3\CMS\Adminpanel\Service\ConfigurationService::class )
-				->getConfigurationOption( 'preview', 'simulateDate' );
-			if ( !empty( $time ) ) {
-				self::$context->setDateTime(
-					date( 'Y-m-d H:i:s', strtotime($time) )
-				);
-				// Early return.
-				return;
-			}
-		}
-
-		// Check the current user groups.
-		if ( isset( $GLOBALS['TSFE']->fe_user->user['usergroup'] ) )
-		{
-			$groupIds = explode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] );
-			$feUserGroup = $this->settings['aitime']['feusergroup'];
-			if ( in_array( $feUserGroup, $groupIds, true ) )
-			{
-				// Simulate the new time . . .
-				self::$context->setDateTime(
-					date( 'Y-m-d H:i:s', (int) $this->settings['aitime']['timestamp'] )
-				);
-			}
-		}
 	}
 
 

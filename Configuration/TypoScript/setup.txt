@@ -51,10 +51,6 @@ plugin.tx_aimeos {
 			}
 			jsonapi.url.config.absoluteUri = 1
 		}
-		aitime {
-			timestamp = {$plugin.tx_aimeos.settings.aitime.timestamp}
-			feusergroup = {$plugin.tx_aimeos.settings.aitime.feusergroup}
-		}
 	}
 }
 
