@@ -346,9 +346,12 @@ class Context
 			&& isset($GLOBALS['TSFE'])
 		) {
 			// The old admin panel saves it's stuff inside the user settings of
-			// the current admin user. These settings will get used, even if the
-			// actual panel gets deactivated.
-			if ( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
+			// the current admin user. These settings will get used by the core,
+			// even if the actual panel is deactivated.
+			// To have a similar behavior, we also need to look at these settings.
+			if ( isset($GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] )
+				&& isset($GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
+				&& $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
 				&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] ) )
 			{
 				return $context->setDateTime(
