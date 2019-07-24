@@ -342,19 +342,18 @@ class Context
 	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context )
 	{
 		// Handle the admin panel, according to the version number.
-		if ( version_compare( TYPO3_version, '9.2.0', '<' ) )
-		{
+		if ( version_compare( TYPO3_version, '9.2.0', '<' )
+            && isset($GLOBALS['TSFE'])
+        ) {
 			// The old admin panel saves it's stuff inside the user settings of
 			// the current admin user. These settings will get used, even if the
 			// actual panel gets deactivated.
 			if ( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
 				&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] ) )
 			{
-				$context->setDateTime(
+				return $context->setDateTime(
 					date( 'Y-m-d H:i:s', (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
 				);
-				// Early return.
-				return $context;
 			}
 		}
 		elseif ( isset( $GLOBALS['BE_USER']->adminPanel ) )
