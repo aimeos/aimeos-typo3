@@ -343,8 +343,8 @@ class Context
 	{
 		// Handle the admin panel, according to the version number.
 		if ( version_compare( TYPO3_version, '9.2.0', '<' )
-            && isset($GLOBALS['TSFE'])
-        ) {
+			&& isset($GLOBALS['TSFE'])
+		) {
 			// The old admin panel saves it's stuff inside the user settings of
 			// the current admin user. These settings will get used, even if the
 			// actual panel gets deactivated.
