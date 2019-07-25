@@ -368,12 +368,12 @@ class Context
 			// The new admin panel only acts, when it's active (assigned to the
 			// FrontendBackendUserAuthentication).
 			// We can use the API to get these settings.
-			$time = (int) strtotime(
+			$time = strtotime(
 				GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' )
 					->getConfigurationOption( 'preview', 'simulateDate' )
 			);
 
-			if ( $time !== 0 )
+			if ( !empty( $time ) )
 			{
 				$context->setDateTime(
 					date( 'Y-m-d H:i:s', $time )
