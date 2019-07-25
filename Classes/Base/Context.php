@@ -341,43 +341,30 @@ class Context
 	 */
 	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context )
 	{
-		if ( TYPO3_MODE !== 'FE' )
-		{
-			// Early return, when people are not in the frontend.
+		if( TYPO3_MODE !== 'FE' ) {
 			return $context;
 		}
 
-		if ( isset( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] )
-			&& isset( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
-			&& $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
-			&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
+		// The old admin panel (< 9.3) saves it's stuff inside the user settings of the current admin user.
+		// These settings will get used by the core, even if the actual panel is deactivated
+
+		if( isset( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
+			&& !empty( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
 		) {
-			// The old admin panel saves it's stuff inside the user settings of
-			// the current admin user. These settings will get used by the core,
-			// even if the actual panel is deactivated.
-			// To have a similar behaviour, we also need to look at these settings
-			// directly.
-			return $context->setDateTime(
-				date( 'Y-m-d H:i:s', (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
-			);
+			$tstamp = (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'];
+			return $context->setDateTime( date( 'Y-m-d H:i:s', $tstamp ) );
 		}
 
-		if ( isset( $GLOBALS['BE_USER']->adminPanel )
+		// The new admin panel (9.3+) only acts, when it's active (assigned to the FrontendBackendUserAuthentication)
+
+		if( isset( $GLOBALS['BE_USER']->adminPanel )
 			&& class_exists( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' )
 		) {
-			// The new admin panel only acts, when it's active (assigned to the
-			// FrontendBackendUserAuthentication).
-			// We can use the API to get these settings.
-			$time = strtotime(
-				GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' )
-					->getConfigurationOption( 'preview', 'simulateDate' )
-			);
+			$service = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' );
+			$tstamp = strtotime( $service->getConfigurationOption( 'preview', 'simulateDate' ) );
 
-			if ( !empty( $time ) )
-			{
-				$context->setDateTime(
-					date( 'Y-m-d H:i:s', $time )
-				);
+			if( !empty( $time ) ) {
+				$context->setDateTime( date( 'Y-m-d H:i:s', $tstamp ) );
 			}
 		}
 
