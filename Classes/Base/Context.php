@@ -2,7 +2,7 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2016
+ * @copyright Aimeos (aimeos.org), 2019
  * @package TYPO3
  */
 
@@ -341,37 +341,44 @@ class Context
 	 */
 	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context )
 	{
-		// Handle the admin panel, according to the version number.
-		if ( version_compare( TYPO3_version, '9.2.0', '<' )
-			&& isset($GLOBALS['TSFE'])
+		if ( TYPO3_MODE !== 'FE' )
+		{
+			// Early return, when people are not in the frontend.
+			return $context;
+		}
+
+		if ( isset( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] )
+			&& isset( $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
+			&& $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
+			&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
 		) {
 			// The old admin panel saves it's stuff inside the user settings of
 			// the current admin user. These settings will get used by the core,
 			// even if the actual panel is deactivated.
-			// To have a similar behavior, we also need to look at these settings.
-			if ( isset($GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] )
-				&& isset($GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
-				&& $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['display_top'] === '1'
-				&& !empty( (int)$GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] ) )
-			{
-				return $context->setDateTime(
-					date( 'Y-m-d H:i:s', (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
-				);
-			}
+			// To have a similar behaviour, we also need to look at these settings
+			// directly.
+			return $context->setDateTime(
+				date( 'Y-m-d H:i:s', (int) $GLOBALS['BE_USER']->uc['TSFE_adminConfig']['preview_simulateDate'] )
+			);
 		}
-		elseif ( isset( $GLOBALS['BE_USER']->adminPanel ) )
-		{
-			// Read the actual configuration and then use it.
-			$time = GeneralUtility::makeInstance( \TYPO3\CMS\Adminpanel\Service\ConfigurationService::class )
-				->getConfigurationOption('preview', 'simulateDate');
 
-			if ( !empty( $time ) )
+		if ( isset( $GLOBALS['BE_USER']->adminPanel )
+			&& class_exists( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' )
+		) {
+			// The new admin panel only acts, when it's active (assigned to the
+			// FrontendBackendUserAuthentication).
+			// We can use the API to get these settings.
+			$time = (int) strtotime(
+				GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' )
+					->getConfigurationOption( 'preview', 'simulateDate' )
+			);
+
+			if ( $time !== 0 )
 			{
 				$context->setDateTime(
-					date( 'Y-m-d H:i:s', strtotime( $time ) )
+					date( 'Y-m-d H:i:s', $time )
 				);
 			}
-
 		}
 
 		return $context;
