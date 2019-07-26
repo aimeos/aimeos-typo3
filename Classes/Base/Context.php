@@ -363,7 +363,7 @@ class Context
 			$service = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' );
 			$tstamp = strtotime( $service->getConfigurationOption( 'preview', 'simulateDate' ) );
 
-			if( !empty( $time ) ) {
+			if( !empty( $tstamp ) ) {
 				$context->setDateTime( date( 'Y-m-d H:i:s', $tstamp ) );
 			}
 		}
