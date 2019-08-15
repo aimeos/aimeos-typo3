@@ -232,11 +232,11 @@ class Context
 			return $fcn( $context );
 		}
 
-		$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
+		$max = \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 );
+		$process = new \Aimeos\MW\Process\Pcntl( $max );
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-		if( $process->isAvailable() === false
-			|| version_compare( TYPO3_version, '9.4' ) < 0
+		if( $max < 1 || $process->isAvailable() === false || version_compare( TYPO3_version, '9.4' ) < 0
 			|| method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) === false
 		) {
 			$process = new \Aimeos\MW\Process\None();
