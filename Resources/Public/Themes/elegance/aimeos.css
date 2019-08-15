@@ -2058,12 +2058,14 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 
 .basket-standard-coupon .header,
 .basket-standard-coupon .content {
+	vertical-align: middle;
 	display: inline-block;
 	width: 46%;
 }
 
 .basket-standard-coupon .header h2 {
 	font-size: 1em;
+	margin: 10px 0;
 }
 
 .basket-standard-coupon .attr-list {
@@ -2166,7 +2168,7 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 }
 
 .checkout-standard .form-list .mandatory > label:after {
-	content: "*";
+	content: " *";
 }
 
 .checkout-standard .item-service .description {
@@ -2321,8 +2323,13 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 	display: none;
 }
 
+.checkout-standard .item-service .form-item-value label {
+	display: block;
+}
+
 .checkout-standard .item-service .form-item-value input:checked + label {
 	border-left: 2px solid #D0D0D0;
+	background-color: #F0F0F0;
 }
 
 /* Checkout delivery/payment */
@@ -2501,8 +2508,19 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 	display: block;
 }
 
-.aimeos .common-summary-detail .code {
-    margin: 0.5em;
+.aimeos .common-summary-detail .code,
+.aimeos .common-summary-detail .timeframe {
+		margin: 0.5em;
+}
+
+.aimeos .common-summary-detail .code .name:after,
+.aimeos .common-summary-detail .timeframe .name:after {
+		content: ":";
+}
+
+.aimeos .common-summary-detail .code,
+.aimeos .common-summary-detail .timeframe {
+		margin: 0.5em;
 }
 
 .aimeos .common-summary-detail .attr-list {
@@ -2511,8 +2529,12 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 	vertical-align: top;
 }
 
-.aimeos .common-summary-detail .attr-list-variant li.attr-item {
-	list-style: disc inside none;
+.aimeos .common-summary-detail .attr-list li.attr-item {
+	display: inline;
+}
+
+.aimeos .common-summary-detail .attr-list li.attr-item:not(:last-of-type) .value:after {
+	content: ",";
 }
 
 .aimeos .common-summary-detail .attr-item .name:after {
@@ -2561,9 +2583,9 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 	text-align: center;
 }
 
-.aimeos .common-summary-detail tr.delivery td:first-child:after,
-.aimeos .common-summary-detail tr.payment td:first-child:after {
-	content: " +";
+.aimeos .common-summary-detail tr.delivery td:first-child:before,
+.aimeos .common-summary-detail tr.payment td:first-child:before {
+	content: "+ ";
 }
 
 .aimeos .common-summary-detail tfoot {
@@ -2757,10 +2779,6 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 .account-history-list .history-item {
 	border: solid 1px #D0D0D0;
 	margin: 1em;
-}
-
-.account-history-list .attr-list {
-	padding: 0.25em 0;
 }
 
 .account-history-list .attr-item {
