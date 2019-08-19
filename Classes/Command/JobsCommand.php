@@ -2,7 +2,7 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2018
+ * @copyright Aimeos (aimeos.org), 2018-2019
  * @package TYPO3
  */
 
@@ -10,6 +10,7 @@
 namespace Aimeos\Aimeos\Command;
 
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -31,20 +32,10 @@ class JobsCommand extends Command
 	 */
 	protected function configure()
 	{
-		$names = '';
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
-		$controllers = \Aimeos\Controller\Jobs::get( $this->getContext(), $aimeos, $cntlPaths );
-
-		foreach( $controllers as $key => $controller ) {
-			$names .= str_pad( $key, 30 ) . $controller->getName() . PHP_EOL;
-		}
-
 		$this->setName( self::$defaultName );
 		$this->setDescription( 'Executes the job controllers' );
 		$this->addArgument( 'jobs', InputArgument::REQUIRED, 'One or more job controller names like "admin/job customer/email/watch"' );
 		$this->addArgument( 'site', InputArgument::OPTIONAL, 'Site codes to execute the jobs for like "default unittest" (none for all)' );
-		$this->setHelp( "Available jobs are:\n" . $names );
 	}
 
 
@@ -56,11 +47,10 @@ class JobsCommand extends Command
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-        $config = \Aimeos\Aimeos\Base::getConfig();
-		$context = \Aimeos\Aimeos\Base::getContext( $config );
+		$context = $this->getContext();
 		$process = $context->getProcess();
 
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$jobs = explode( ' ', $input->getArgument( 'jobs' ) );
 		$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 
@@ -69,10 +59,14 @@ class JobsCommand extends Command
 			$localeItem = $localeManager->bootstrap( $siteItem->getCode(), '', '', false );
 			$localeItem->setLanguageId( null );
 			$localeItem->setCurrencyId( null );
-
 			$context->setLocale( $localeItem );
 
 			$output->writeln( sprintf( 'Executing the Aimeos jobs for "<info>%s</info>"', $siteItem->getCode() ) );
+
+			// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
+			if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {
+				GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
+			}
 
 			foreach( $jobs as $jobname )
 			{
@@ -95,21 +89,22 @@ class JobsCommand extends Command
 	 */
 	protected function getContext()
 	{
-		$lang = 'en';
-        $config = \Aimeos\Aimeos\Base::getConfig();
+		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
+
+		$config = \Aimeos\Aimeos\Base::getConfig();
 		$context = \Aimeos\Aimeos\Base::getContext( $config );
 
-		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
-			$lang = $GLOBALS['BE_USER']->uc['lang'];
-		}
+		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
+		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
 
-		$locale = \Aimeos\Aimeos\Base::getLocaleBackend( $context, 'default' );
-		$context->setLocale( $locale );
-
-		$i18n = \Aimeos\Aimeos\Base::getI18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
+		$i18n = \Aimeos\Aimeos\Base::getI18n( $langids, $config->get( 'i18n', [] ) );
 		$context->setI18n( $i18n );
 
-		return $context;
+		$view = \Aimeos\Aimeos\Base::getView( $context, $this->getUriBuilder(), $tmplPaths );
+		$context->setView( $view );
+
+		return $context->setEditor( 'aimeos:jobs' );
 	}
 
 
@@ -130,5 +125,40 @@ class JobsCommand extends Command
 		}
 
 		return $manager->searchItems( $search );
+	}
+
+
+	/**
+	 * Returns the URI builder object
+	 *
+	 * @return TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder URI builder
+	 */
+	protected function getUriBuilder()
+	{
+		$objectManager = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
+
+		$contentObjectRenderer = $objectManager->get( 'TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer' );
+		$configurationManager = $objectManager->get( 'TYPO3\CMS\Extbase\Configuration\ConfigurationManager' );
+		$configurationManager->setContentObject( $contentObjectRenderer );
+
+		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
+
+		if( method_exists( $uriBuilder, 'injectConfigurationManager' ) === false )
+		{
+			$class = 'TYPO3\\CMS\\Extbase\\Reflection\\PropertyReflection';
+			$prop = GeneralUtility::makeInstance( $class, $uriBuilder, 'configurationManager' );
+
+			$prop->setAccessible( true );
+			$prop->setValue( $uriBuilder, $configurationManager );
+		}
+		else
+		{
+			$uriBuilder->injectConfigurationManager( $configurationManager );
+		}
+
+		$uriBuilder->initializeObject();
+		$uriBuilder->setArgumentPrefix( 'ai' );
+
+		return $uriBuilder;
 	}
 }
