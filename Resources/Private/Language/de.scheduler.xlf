@@ -54,6 +54,9 @@
 				<source>The page ID of the product detail page is invalid</source>
 				<target>Die Seiten-ID der Produktdetailseite ist ungültig</target>
 			</trans-unit>
+			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
+				<source>The page ID of the account login page is invalid</source>
+			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
 				<target>Die Seiten-ID der Produktdownloadseite ist ungültig</target>
@@ -81,6 +84,10 @@
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
 				<target>Seiten-ID der Produktdetailseite</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-login" xml:space="preserve">
+				<source>Account login page ID</source>
+				<target>Seiten-ID der Loginseite für die Kundenprofile</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>

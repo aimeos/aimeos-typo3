@@ -54,6 +54,9 @@
 				<source>The page ID of the product detail page is invalid</source>
 				<target>Het pagina ID van de product detail pagina is ongeldig</target>
 			</trans-unit>
+			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
+				<source>The page ID of the account login page is invalid</source>
+			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
 				<target>Het pagina ID van de downloadpagina is ongeldig. </target>
@@ -81,6 +84,9 @@
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
 				<target>Product detail pagina ID</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-login" xml:space="preserve">
+				<source>Account login page ID</source>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>

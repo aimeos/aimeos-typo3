@@ -79,6 +79,9 @@
 				<source>Default product ID if no parameter is available</source>
 				<target>Jeśli  brak parametru to ustawić domyślne ID produktu</target>
 			</trans-unit>
+			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
+				<source>Default SKU if no parameter is available</source>
+			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>Strona z sesją katalogu</target>
