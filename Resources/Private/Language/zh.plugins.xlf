@@ -84,6 +84,9 @@
 				<source>Default product ID if no parameter is available</source>
 				<target>預設商品ID（無可用參數時）</target>
 			</trans-unit>
+			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
+				<source>Default SKU if no parameter is available</source>
+			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>頁面-含有型錄session插件</target>

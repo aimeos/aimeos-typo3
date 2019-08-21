@@ -52,11 +52,14 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
-				<target>Ürün detay sayfasının ID'si geçersiz</target>
+				<target>Ürün detay sayfasının kimlik numarası geçersiz</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
+				<source>The page ID of the account login page is invalid</source>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
-				<target>Hesap indirme sayfasının ID'si geçersiz</target>
+				<target>Hesap indirme sayfasının kimlik numarası geçersiz</target>
 			</trans-unit>
 			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
 				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
@@ -80,11 +83,14 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
-				<target>Ürün detay sayfa ID'si</target>
+				<target>Ürün detay sayfasının kimlik numarası</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-login" xml:space="preserve">
+				<source>Account login page ID</source>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
-				<target>Hesap indirme sayfa ID'si</target>
+				<target>Hesap indirme sayfasının kimlik numarası</target>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>

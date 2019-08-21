@@ -12,15 +12,6 @@
 			<trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
 				<source>Administration Aimeos Shop</source>
 			</trans-unit>
-			<trans-unit id="t3_9x_config_error_header" xml:space="preserve">
-				<source>Wrong configuration detected</source>
-			</trans-unit>
-			<trans-unit id="t3_9x_config_error_text" xml:space="preserve">
-				<source>The database connection '%s' has a wrong configuration. To use the Aimeos Shop, you will need to adjust it.</source>
-			</trans-unit>
-			<trans-unit id="t3_9x_config_error_remedy" xml:space="preserve">
-				<source><![CDATA[<p>Please follow the steps described here:</p><p><a target="_blank" href="https://github.com/aimeos/aimeos-typo3#database-setup">https://github.com/aimeos/aimeos-typo3#database-setup</a></p>]]></source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>

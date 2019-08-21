@@ -90,6 +90,9 @@
 				<source>Default product ID if no parameter is available</source>
 				<target>شناسه پیش فرض محصول اگر هیچ پارامتری در دسترس نیست</target>
 			</trans-unit>
+			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
+				<source>Default SKU if no parameter is available</source>
+			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>صفحه  همراه با افزونه جلسه فروشگاه</target>

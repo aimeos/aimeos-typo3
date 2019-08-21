@@ -90,6 +90,10 @@
 				<source>Default product ID if no parameter is available</source>
 				<target>Standardprodukt-ID, falls keine per Parameter übergeben wurde</target>
 			</trans-unit>
+			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
+				<source>Default SKU if no parameter is available</source>
+				<target>Standard Produktcode, falls keine Parameter übergeben wurden</target>
+			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>Katalogseite mit dem Session-Plugin</target>

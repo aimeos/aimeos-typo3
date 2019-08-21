@@ -79,6 +79,9 @@
 				<source>Default product ID if no parameter is available</source>
 				<target>Výchozí ID produktu, pokud není k dispozici žádný parametr</target>
 			</trans-unit>
+			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
+				<source>Default SKU if no parameter is available</source>
+			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
 				<target>Stránka obsahující doplněk &quot;catalog session&quot;</target>
