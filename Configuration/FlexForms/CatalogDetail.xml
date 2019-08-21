@@ -5,6 +5,15 @@
 	<ROOT>
 		<type>array</type>
 		<el>
+			<settings.client.html.catalog.detail.prodcode-default>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-detail.prodcode-default</label>
+					<config>
+						<type>input</type>
+						<eval>trim</eval>
+					</config>
+				</TCEforms>
+			</settings.client.html.catalog.detail.prodcode-default>
 			<settings.client.html.catalog.detail.prodid-default>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-detail.prodid-default</label>
