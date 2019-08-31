@@ -32,6 +32,16 @@ class BasketController extends AbstractController
 
 
 	/**
+	 * Renders a bulk order form.
+	 */
+	public function bulkAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'basket/bulk' );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders a small basket.
 	 */
 	public function smallAction()
