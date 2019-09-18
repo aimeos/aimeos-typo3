@@ -38,6 +38,9 @@
 		}
 	},
 	"config": {
+		"platform": {
+			"php": "5.6.0"
+		},
 		"vendor-dir": "Resources/Libraries"
 	},
 	"extra": {
