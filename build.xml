@@ -16,11 +16,9 @@
 	</target>
 
 	<target name="composer" description="Updates composer dependencies">
-		<exec command="sudo update-alternatives --config php" checkreturn="true" logoutput="true" passthru="true" />
 		<exec command="composer remove --no-update --working-dir ${project.basedir} typo3/cms-core sjbr/static-info-tables" checkreturn="true" logoutput="true" />
 		<exec command="composer update --no-dev --no-autoloader --working-dir ${project.basedir}" checkreturn="true" logoutput="true" passthru="true" />
 		<exec command="composer dump-autoload --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
-		<exec command="sudo update-alternatives --config php" checkreturn="true" logoutput="true" passthru="true" />
 		<exec command="git checkout composer.json" checkreturn="true" logoutput="true" />
 	</target>
 
