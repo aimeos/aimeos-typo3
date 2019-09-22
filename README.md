@@ -53,7 +53,7 @@ The latest version can be installed via composer too. This is especially useful 
 
 In order to tell install TYPO3, you have to execute
 
-`composer create-project typo3/cms-base-distribution myshop`
+`composer create-project typo3/cms-base-distribution:~9.5 myshop`
 
 This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have to edit the composer.json file and add the ''post-install-cmd'' and ''post-update-cmd'' scripts:
 
