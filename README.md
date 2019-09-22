@@ -47,26 +47,17 @@ For new TYPO3 installations, there's a 1-click [Aimeos distribution](https://typ
 
 ### Composer
 
-The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the [composer](https://getcomposer.org/) package first if it isn't already available:
-```
-php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
-```
+The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first if it isn't already available:
 
-In order to tell composer what it should install, you have to create a basic `composer.json` file in the directory of you VHost. It should look similar to this one:
-```json
-{
-    "name": "vendor/mysite",
-    "description" : "My new TYPO3 web site",
-    "require": {
-        "typo3/cms": "~9.5",
-        "aimeos/aimeos-typo3": "~19.7"
-    },
-    "extra": {
-        "typo3/cms": {
-            "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "web-dir": "public"
-        }
-    },
+`php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer`
+
+In order to tell install TYPO3, you have to execute
+
+`composer create-project typo3/cms-base-distribution myshop`
+
+This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have to edit the composer.json file and add the ''post-install-cmd'' and ''post-update-cmd'' scripts:
+
+```
     "scripts": {
         "post-install-cmd": [
             "Aimeos\\Aimeos\\Custom\\Composer::install"
@@ -75,12 +66,13 @@ In order to tell composer what it should install, you have to create a basic `co
             "Aimeos\\Aimeos\\Custom\\Composer::install"
         ]
     }
-}
 ```
-It will install TYPO3 and the latest Aimeos TYPO3 extension in the `./public/` directory. Afterwards, the Aimeos composer script will be executed which copies some required files and adds a link to the Aimeos extensions placed in the `./ext/` directory. To start installation, execute composer on the command line in the directory where your `composer.json` is stored:
-```
-composer update
-```
+
+Then, install the Aimeos extension for TYPO3 with:
+
+`composer req aimeos/aimeos-typo3:~19.7`
+
+This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos composer script will be executed automatically, which copies some required files and adds a link to the Aimeos extensions placed in the ./ext/ directory.
 
 ## TYPO3 setup
 
