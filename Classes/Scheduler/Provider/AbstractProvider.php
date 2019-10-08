@@ -3,7 +3,7 @@
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
  * @copyright Metaways Infosystems GmbH, 2014
- * @copyright Aimeos (aimeos.org), 2014-2019
+ * @copyright Aimeos (aimeos.org), 2014-2016
  * @package TYPO3
  */
 
@@ -42,7 +42,7 @@ abstract class AbstractProvider
 	 *			['cshKey']		=> The CSH key for the field
 	 *			['cshLabel']	=> The code of the CSH label
 	 */
-	public function getAdditionalFields( array &$taskInfo, $task, $parentObject )
+	protected function getFields( array &$taskInfo, $task, $parentObject )
 	{
 		$additionalFields = array();
 
@@ -113,7 +113,7 @@ abstract class AbstractProvider
 	 * @param array $submittedData Array containing the data submitted by the user
 	 * @param object $task Reference to the current task object
 	 */
-	public function saveAdditionalFields( array $submittedData, $task )
+	protected function saveFields( array $submittedData, $task )
 	{
 		$task->{$this->fieldSite} = $submittedData[$this->fieldSite];
 		$task->{$this->fieldController} = $submittedData[$this->fieldController];
@@ -130,7 +130,7 @@ abstract class AbstractProvider
 	 * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
 	 * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
 	 */
-	public function validateAdditionalFields( array &$submittedData, $parentObject )
+	protected function validateFields( array &$submittedData, $parentObject )
 	{
 		if( count( (array) $submittedData[$this->fieldController] ) < 1 ) {
 			throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing' ) );
