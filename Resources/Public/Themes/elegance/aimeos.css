@@ -1265,8 +1265,8 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 	content: "\f082";
 }
 
-.catalog-detail .catalog-social .social-button-whatsapp:before {
-	content: "\f232";
+.catalog-detail .catalog-social .social-button-gplus:before {
+	content: "\f0d5";
 }
 
 .catalog-detail .catalog-social .social-button-twitter:before {
