@@ -386,7 +386,13 @@ AimeosBasketMini = {
 	 */
 	update: function() {
 
-		$.ajax($(".aimeos.basket-mini[data-jsonurl]").data("jsonurl"), {
+		var jsonurl = $(".aimeos.basket-mini[data-jsonurl]").data("jsonurl");
+
+		if(typeof jsonurl === 'undefined' || jsonurl == '') {
+			return;
+		}
+
+		$.ajax(jsonurl, {
 			"method": "OPTIONS",
 			"dataType": "json"
 		}).then(function(options) {
@@ -1235,25 +1241,34 @@ AimeosCatalogList = {
 	 * Enables infinite scroll if available
 	 */
 	setupInfiniteScroll: function() {
-		if( $('.catalog-list-items').data('infinite-url') != '') {
-			$(window).on( 'scroll', function() {
-				var infiniteUrl = $('.catalog-list-items').data('infinite-url');
-				
-				if( infiniteUrl != '' && $('.catalog-list-items')[0].getBoundingClientRect().bottom - $(window).height() < 50 ) {
-					$('.catalog-list-items').data('infinite-url', '');
-					
+
+		var url = $('.catalog-list-items').data('infinite-url');
+
+		if( typeof url === "string" && url != '' ) {
+
+			$(window).on('scroll', function() {
+
+				var list = $('.catalog-list-items').first();
+				var infiniteUrl = list.data('infinite-url');
+
+				if(infiniteUrl && list.getBoundingClientRect().bottom - $(window).height() < 50) {
+
+					list.data('infinite-url', '');
+
 					$.ajax({
 						url: infiniteUrl
-					}).done( function( response ) {             
-						var nextPage = $( response );
-						nextPage.find('.catalog-list-items ul li').each( function() {
-							$('.catalog-list-items ul').append(this);
-						});
-						var nextUrl = nextPage.find('.catalog-list-items').data( 'infinite-url' );
-						$('.catalog-list-items').data('infinite-url', nextUrl);
-						$(window).trigger('scroll');
 					}).fail( function() {
-						$('.catalog-list-items').data('infinite-url', infiniteUrl);
+						list.data('infinite-url', infiniteUrl);
+					}).done( function( response ) {
+
+						var nextPage = $(response);
+						nextPage.find('.catalog-list-items ul li').each( function() {
+							$('ul', list).append(this);
+						});
+
+						var nextUrl = nextPage.find('.catalog-list-items').data( 'infinite-url' );
+						list.data('infinite-url', nextUrl);
+						$(window).trigger('scroll');
 					});
 				}
 			});
