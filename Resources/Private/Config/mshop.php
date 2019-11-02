@@ -3,7 +3,6 @@
 return array(
 	'index' => array(
 		'manager' => array(
-			'name' => 'MySQL',
 			'attribute' => array(
 				'name' => 'MySQL',
 			),
