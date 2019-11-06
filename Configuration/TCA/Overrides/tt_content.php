@@ -60,6 +60,10 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catal
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-tree', 'Aimeos Shop - Catalog tree' );
 
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_basket-bulk'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_basket-bulk', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketBulk.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'basket-bulk', 'Aimeos Shop - Basket bulk order' );
+
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_basket-related'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_basket-related', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketRelated.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'basket-related', 'Aimeos Shop - Basket related' );
