@@ -85,7 +85,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.tree-levels-always</label>
 					<config>
 						<type>input</type>
-						<eval>trim,int</eval>
+						<eval>trim</eval>
 					</config>
 				</TCEforms>
 			</settings.controller.frontend.catalog.levels-always>
@@ -94,7 +94,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.tree-levels-only</label>
 					<config>
 						<type>input</type>
-						<eval>trim,int</eval>
+						<eval>trim</eval>
 					</config>
 				</TCEforms>
 			</settings.controller.frontend.catalog.levels-only>
