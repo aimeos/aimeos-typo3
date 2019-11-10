@@ -517,7 +517,7 @@ AimeosBasketBulk = {
 			delay : 200,
 			source : function(req, resp) {
 
-				var params;
+				var params = {};
 				var langFilter = {};
 				var langid = AimeosBasketBulk.meta.locale && AimeosBasketBulk.meta.locale['locale.languageid'];
 				langFilter['index.text:name("' + langid + '")'] = req.term;
@@ -1623,7 +1623,9 @@ AimeosCatalogList = {
 	 */
 	setupInfiniteScroll: function() {
 
-		if($('.catalog-list-items').data('infinite-url')) {
+		var url = $('.catalog-list-items').data('infinite-url');
+
+		if( typeof url === "string" && url != '' ) {
 
 			$(window).on('scroll', function() {
 
