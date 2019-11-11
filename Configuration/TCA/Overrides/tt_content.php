@@ -55,6 +55,10 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catal
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_catalog-suggest', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSuggest.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-suggest', 'Aimeos Shop - Catalog suggest JSON' );
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-supplier'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_catalog-supplier', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSupplier.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-supplier', 'Aimeos Shop - Catalog supplier' );
+
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-tree'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_catalog-tree', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogTree.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-tree', 'Aimeos Shop - Catalog tree' );
