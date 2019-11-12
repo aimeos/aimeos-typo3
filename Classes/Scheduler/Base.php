@@ -62,6 +62,8 @@ class Base
 				$process->start( $fcn, [$context, $aimeos, $jobname], true );
 			}
 		}
+
+		$process->wait();
 	}
 
 
