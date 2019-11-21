@@ -517,13 +517,13 @@ AimeosBasketBulk = {
 			delay : 200,
 			source : function(req, resp) {
 
-				var params = {};
-				var langFilter = {};
+				var params;
+				var relFilter = {};
 				var langid = AimeosBasketBulk.meta.locale && AimeosBasketBulk.meta.locale['locale.languageid'];
-				langFilter['index.text:name("' + langid + '")'] = req.term;
+				relFilter['index.text:relevance("' + langid + '","' + req.term + '")'] = 0;
 
 				var filter = {
-					filter: {'||': [{'=~': {'product.code': req.term}}, {'=~': langFilter}]},
+					filter: {'||': [{'=~': {'product.code': req.term}}, {'>': relFilter}]},
 					include: 'attribute,text,price,product'
 				};
 
@@ -1632,7 +1632,7 @@ AimeosCatalogList = {
 				var list = $('.catalog-list-items').first();
 				var infiniteUrl = list.data('infinite-url');
 
-				if(infiniteUrl && list.getBoundingClientRect().bottom - $(window).height() < 50) {
+				if(infiniteUrl && list[0].getBoundingClientRect().bottom - $(window).height() < 50) {
 
 					list.data('infinite-url', '');
 
