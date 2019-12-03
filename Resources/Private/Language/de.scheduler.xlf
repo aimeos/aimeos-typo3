@@ -56,6 +56,7 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
 				<source>The page ID of the account login page is invalid</source>
+				<target>Die Seiten-ID der Loginseite ist ungültig</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
