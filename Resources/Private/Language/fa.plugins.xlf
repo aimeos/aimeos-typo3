@@ -47,8 +47,7 @@
 				<target>ارائه پیشنهاد برای فیلتر کردن جستجوها در صفحه</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
-				<source>Default category if no parameter is available</source>
-				<target>دسته ی پیشفرض  اگر هیچ پارامتری وارد نشده باشد</target>
+				<source>Default category or categories if no parameter is available</source>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>

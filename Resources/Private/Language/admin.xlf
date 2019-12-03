@@ -12,6 +12,12 @@
 			<trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
 				<source>Administration Aimeos Shop</source>
 			</trans-unit>
+			<trans-unit id="t3_9x_config_error_header" xml:space="preserve">
+				<source>Possible database charset problem</source>
+			</trans-unit>
+			<trans-unit id="t3_9x_config_error_text" xml:space="preserve">
+				<source>The charset/collation "utf8mb4" isn't fully supported by MySQL before 5.7.8 and MariaDB before 10.2. Please use "utf8" instead in your ./typo3conf/LocalConfiguration.php file</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
