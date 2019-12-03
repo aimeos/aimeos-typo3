@@ -288,9 +288,9 @@ class Base
 	 *
 	 * @return void
 	 */
-	public static function clearAPCuCache( array $cacheType )
+	public static function clearCache( array $cacheType )
 	{
-		if ( $cacheType['cacheCmd'] === 'all'
+		if( $cacheType['cacheCmd'] === 'all'
 			&& static::getExtConfig( 'useAPC', '0' ) === '1'
 			&& function_exists( 'apcu_clear_cache' )
 		) {
