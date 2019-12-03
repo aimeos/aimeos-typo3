@@ -148,7 +148,7 @@ class Setup
 		}
 
 
-		return ['sqlString' => $sql ];
+		return ['sqlString' => $sql];
 	}
 
 
@@ -192,7 +192,7 @@ class Setup
 		$ctx->setCache( new \Aimeos\MW\Cache\None() );
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-		if ( php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )
+		if( php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )
 			&& method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) )
 		{
 			$ctx->setProcess( new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) ) );

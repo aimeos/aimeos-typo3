@@ -41,13 +41,13 @@ class Context
 			self::addMessageQueueManager( $context );
 			self::addLogger( $context );
 			self::addCache( $context );
-			self::addMailer( $context);
+			self::addMailer( $context );
 			self::addProcess( $context );
 			self::addSession( $context );
-			self::addHasher( $context);
-			self::addUser( $context);
-			self::addGroups( $context);
-			self::addDateTime( $context);
+			self::addHasher( $context );
+			self::addUser( $context );
+			self::addGroups( $context );
+			self::addDateTime( $context );
 
 			self::$context = $context;
 		}
@@ -74,7 +74,7 @@ class Context
 		}
 
 		$cacheName = \Aimeos\Aimeos\Base::getExtConfig( 'cacheName', 'Typo3' );
-		if ( isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
+		if( isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
  			$cacheName = 'None';
 		}
 

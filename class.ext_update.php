@@ -68,7 +68,7 @@ class ext_update
 
 
 		return '<pre>' . $output . '</pre>' . PHP_EOL .
-			sprintf( "Setup process lasted %1\$f sec</br>\n", (microtime( true ) - $exectimeStart) );
+			sprintf( "Setup process lasted %1\$f sec</br>\n", ( microtime( true ) - $exectimeStart ) );
 	}
 
 
@@ -95,7 +95,7 @@ class ext_update
 		}
 
 		// MariaDB might get identified as a 'MySQL 5.5.5' for some reason
-		$result = $connection->prepare('SELECT version()');
+		$result = $connection->prepare( 'SELECT version()' );
 		$result->execute();
 		$rows = $result->fetchAll();
 
@@ -118,7 +118,7 @@ class ext_update
 		}
 
 		// Retrieve the name of the connection (which is not part of the connection class)
-		foreach ( $connectionPool->getConnectionNames() as $name )
+		foreach( $connectionPool->getConnectionNames() as $name )
 		{
 			if( $connectionPool->getConnectionByName( $name ) === $connection ) {
 				break;
