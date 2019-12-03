@@ -301,10 +301,9 @@ if( !isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']
 }
 
 if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] ) ) {
-	$closure = function ( array $cacheType, \TYPO3\CMS\Core\DataHandling\DataHandler $dataHandler ) {
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = function ( array $cacheType, $dataHandler ) {
 		\Aimeos\Aimeos\Base::clearAPCuCache( $cacheType );
 	};
-	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = $closure;
 }
 
 ?>
