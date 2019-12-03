@@ -47,6 +47,25 @@
 					</config>
 				</TCEforms>
 			</settings.client.jsonapi.url.target>
+			<settings.client.html.catalog.filter.tree.startid>
+				<TCEforms>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.tree-startid</label>
+					<config>
+						<type>select</type>
+						<multiple>0</multiple>
+						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0"></numIndex>
+								<numIndex index="1"></numIndex>
+							</numIndex>
+						</items>
+						<size>10</size>
+						<maxitems>1</maxitems>
+						<minitems>0</minitems>
+					</config>
+				</TCEforms>
+			</settings.client.html.catalog.filter.tree.startid>
 			<settings.client.html.catalog.filter.attribute.types>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.attribute-types</label>
