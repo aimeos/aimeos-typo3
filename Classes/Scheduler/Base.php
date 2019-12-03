@@ -143,7 +143,7 @@ class Base
 	 */
 	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites )
 	{
-		if( !is_array( $sites )  ) {
+		if( !is_array( $sites ) ) {
 			$sites = explode( ' ', $sites );
 		}
 
@@ -175,7 +175,7 @@ class Base
 		$page->init( true );
 
 		$name = 'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController';
-		$GLOBALS['TSFE'] = GeneralUtility::makeInstance( $name,  $GLOBALS['TYPO3_CONF_VARS'], $pageid, 0 );
+		$GLOBALS['TSFE'] = GeneralUtility::makeInstance( $name, $GLOBALS['TYPO3_CONF_VARS'], $pageid, 0 );
 		$GLOBALS['TSFE']->connectToDB();
 		$GLOBALS['TSFE']->initFEuser();
 		$GLOBALS['TSFE']->no_cache = true;
