@@ -290,16 +290,9 @@ class Base
 	 */
 	public static function clearAPCuCache( array $cacheType )
 	{
-		if( class_exists( 'TYPO3\\CMS\\Core\\Configuration\\ExtensionConfiguration' ) ) {
-			$aimeosConfiguration = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Configuration\\ExtensionConfiguration' )
-				->get( 'aimeos' );
-		} else {
-			$aimeosConfiguration = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] );
-		}
-
-		if ($cacheType['cacheCmd'] === 'all' &&
-			$aimeosConfiguration['useAPC'] === '1' &&
-			function_exists( 'apcu_clear_cache' )
+		if ( $cacheType['cacheCmd'] === 'all'
+			&& static::getExtConfig( 'useAPC', '0' ) === '1'
+			&& function_exists( 'apcu_clear_cache' )
 		) {
 			apcu_clear_cache();
 		}
