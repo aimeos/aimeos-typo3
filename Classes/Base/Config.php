@@ -23,7 +23,7 @@ class Config
 	/**
 	 * Creates a new configuration object.
 	 *
-     * @param array $paths Paths to the configuration directories
+	 * @param array $paths Paths to the configuration directories
 	 * @param array $local Multi-dimensional associative list with local configuration
 	 * @return \Aimeos\MW\Config\Iface Configuration object
 	 */

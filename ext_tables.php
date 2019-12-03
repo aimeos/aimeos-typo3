@@ -1,6 +1,6 @@
 <?php
 
-if( ! defined( 'TYPO3_MODE' ) ) {
+if( !defined( 'TYPO3_MODE' ) ) {
 	die ( 'Access denied.' );
 }
 
@@ -16,7 +16,7 @@ if( TYPO3_MODE === 'BE' )
 	 * Register Aimeos icon
 	 */
 
-	$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+	$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Imaging\IconRegistry::class );
 	$iconRegistry->registerIcon(
 		'aimeos-shop',
 		\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
@@ -62,7 +62,7 @@ if( TYPO3_MODE === 'BE' )
 	/**
 	 * Execute the setup tasks automatically to create the required tables
 	 */
-	$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+	$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher' );
 	$signalSlotDispatcher->connect(
 		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
 		'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10

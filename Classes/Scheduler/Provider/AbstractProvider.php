@@ -208,7 +208,7 @@ abstract class AbstractProvider
 			$string = '<option value="%1$s" %2$s %3$s>%4$s</option>';
 			$html .= sprintf( $string, $item->getCode(), $active, $disabled, $prefix . $item->getLabel() );
 
-			$html .= $this->getSiteOptions( $item->getChildren(), $selected, $level+1 );
+			$html .= $this->getSiteOptions( $item->getChildren(), $selected, $level + 1 );
 		}
 
 		return $html;

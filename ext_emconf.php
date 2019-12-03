@@ -35,8 +35,8 @@ $EM_CONF['aimeos'] = array(
 			'realurl' => '1.12.8-2.99.99',
 		),
 	),
-	'autoload' => array (
-		'psr-4' => array (
+	'autoload' => array(
+		'psr-4' => array(
 			'Aimeos\\Aimeos\\' => 'Classes',
 		),
 	),
