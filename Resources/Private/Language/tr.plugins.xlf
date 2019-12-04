@@ -47,8 +47,7 @@
 				<target>Arama filtresi için önerileri içeren sayfa</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
-				<source>Default category if no parameter is available</source>
-				<target>Hiçbir parametre mevcut değilse varsayılan kategori</target>
+				<source>Default category or categories if no parameter is available</source>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
@@ -92,6 +91,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>Hiçbir parametre mevcut değilse varsayılan Ürün Kodu</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>

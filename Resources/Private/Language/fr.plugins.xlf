@@ -47,8 +47,7 @@
 				<target>Page avec des suggestions pour filtre de recherche</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
-				<source>Default category if no parameter is available</source>
-				<target>Catégorie par défaut si aucun paramètre disponible</target>
+				<source>Default category or categories if no parameter is available</source>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
@@ -92,6 +91,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>UGS par défaut si aucun paramètre</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
