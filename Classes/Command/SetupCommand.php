@@ -37,7 +37,6 @@ class SetupCommand extends Command
 		$this->addArgument( 'site', InputArgument::OPTIONAL, 'Site for updating database entries', 'default' );
 		$this->addArgument( 'tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default' );
 		$this->addOption( 'option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', array() );
-		$this->addOption( 'action', null, InputOption::VALUE_REQUIRED, 'Action name that should be executed, i.e. "migrate", "rollback", "clean"', 'migrate' );
 		$this->addOption( 'task', null, InputOption::VALUE_REQUIRED, 'Name of the setup task that should be executed', null );
 	}
 
@@ -72,20 +71,7 @@ class SetupCommand extends Command
 			$task = reset( $task );
 		}
 
-		switch( $input->getOption( 'action' ) )
-		{
-			case 'migrate':
-				$manager->migrate( $task );
-				break;
-			case 'rollback':
-				$manager->rollback( $task );
-				break;
-			case 'clean':
-				$manager->clean( $task );
-				break;
-			default:
-				throw new \Exception( sprintf( 'Invalid setup action "%1$s"', $input->getOption( 'action' ) ) );
-		}
+		$manager->migrate( $task );
 	}
 
 

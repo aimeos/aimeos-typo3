@@ -86,10 +86,6 @@ class Setup
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
 
-		if( \Aimeos\Aimeos\Base::getExtConfig( 'cleanDb', 1 ) == 1 ) {
-			$manager->clean();
-		}
-
 
 		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
 		{
