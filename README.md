@@ -34,10 +34,9 @@ and customize anything to your needs.
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **18.10 release and later**.
+This document is for the latest Aimeos TYPO3 **19.10 release and later**.
 
-- Stable release: 19.7 (TYPO3 7/8/9 LTS)
-- LTS release: 18.10 (TYPO3 7/8/9 LTS)
+- LTS release: 19.10 (TYPO3 7/8/9 LTS)
 
 ### TYPO3 extension repository
 
@@ -78,23 +77,13 @@ This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos co
 
 ### Database setup
 
-Starting with Aimeos 18.10 and TYPO3 9.5, it's possible to define the charset and collation for newly created MySQL tables. In case you want to use a NoSQL data store like ElasticSearch for Aimeos products, you need to use a binary collation `utf8mb4_bin` in your `typo3conf/LocalConfiguration.php` file **before** the tables are created:
+If you use MySQL < 5.7.8, you have to use `utf8` and `utf8_unicode_ci` instead because those MySQL versions can't handle the long indexes created by `utf8mb4` (up to four bytes per character) and you will get errors like
 
 ```
-'DB' => [
-    'Connections' => [
-        'Default' => [
-            'tableoptions' => [
-                'charset' => 'utf8mb4',
-                'collate' => 'utf8mb4_bin',
-            ],
-            // ...
-        ],
-    ],
-],
+1071 Specified key was too long; max key length is 767 bytes
 ```
 
-**Caution:** If you use MySQL < 5.7, you have to use `utf8` and `utf8_bin` instead because those MySQL versions can't handle the long indexes created by `utf8mb4` (up to four bytes per character) and you will get errors like `1071 Specified key was too long; max key length is 767 bytes`:
+To avoid that, change your database settings in your `./typo3conf/LocalConfiguration.php` to:
 
 ```
 'DB' => [
@@ -102,7 +91,7 @@ Starting with Aimeos 18.10 and TYPO3 9.5, it's possible to define the charset an
         'Default' => [
             'tableoptions' => [
                 'charset' => 'utf8',
-                'collate' => 'utf8_bin',
+                'collate' => 'utf8_unicode_ci',
             ],
             // ...
         ],
