@@ -105,7 +105,7 @@ To avoid that, change your database settings in your `./typo3conf/LocalConfigura
 * Click on ''Admin Tools::Extension Manager'' in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry (looks like a lego brick)
 
-**Caution:** Install the **RealURL extension before the Aimeos extension** to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards!
+**Caution:** For TYPO3 8.7, install the **RealURL extension before the Aimeos extension** to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards! TYPO3 9.5 and later creates SEO friendly URLs itself by adding rules to the site config (https://aimeos.org/docs/TYPO3/Route_configuration).
 
 ![Install Aimeos TYPO3 extension](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-install.png)
 
