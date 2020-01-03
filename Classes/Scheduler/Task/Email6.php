@@ -35,7 +35,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	/**
 	 * Executes the configured tasks.
 	 *
-	 * @return boolean True if success
+	 * @return bool True if success
 	 * @throws Exception If an error occurs
 	 */
 	public function execute()

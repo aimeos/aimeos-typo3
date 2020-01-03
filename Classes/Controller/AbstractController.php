@@ -27,25 +27,14 @@ abstract class AbstractController
 
 
 	/**
-	 * Creates a new configuration object.
-	 *
-	 * @return \Aimeos\MW\Config\Iface Configuration object
-	 * @deprecated Use \Aimeos\Aimeos\Base::getConfig() directly
-	 */
-	protected function getConfig()
-	{
-		return Base::getConfig( (array) $this->settings );
-	}
-
-
-	/**
 	 * Returns the context item for the frontend
 	 *
 	 * @param string $templatePath Path for retrieving the template paths used in the view
-	 * @param boolean $withView True to add view to context object, false for no view
+	 * @param bool $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContext( $templatePath = 'client/html/templates', $withView = true )
+	protected function getContext( string $templatePath = 'client/html/templates',
+		bool $withView = true ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = Base::getConfig( (array) $this->settings );
 
@@ -78,11 +67,12 @@ abstract class AbstractController
 	/**
 	 * Returns the context item for backend operations
 	 *
-	 * @param array $templatePaths List of paths to the view templates
-	 * @param boolean $withView True to add view to context object, false for no view
+	 * @param string $templatePath Path for retrieving the template paths used in the view
+	 * @param bool $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContextBackend( $templatePath = 'admin/jqadm/templates', $withView = true )
+	protected function getContextBackend( string $templatePath = 'admin/jqadm/templates',
+		bool $withView = true ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		if( !isset( $this->contextBE ) )
 		{
@@ -129,25 +119,12 @@ abstract class AbstractController
 
 
 	/**
-	 * Returns the locale object for the context
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object (no type hint to prevent reflection)
-	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
-	 * @deprecated Use \Aimeos\Aimeos\Base::getLocale() directly
-	 */
-	protected function getLocale( $context )
-	{
-		return Base::getLocale( $context, $this->request );
-	}
-
-
-	/**
 	 * Returns the output of the client and adds the header.
 	 *
 	 * @param \Aimeos\Client\Html\Iface $client Html client object (no type hint to prevent reflection)
 	 * @return string HTML code for inserting into the HTML body
 	 */
-	protected function getClientOutput( $client )
+	protected function getClientOutput( \Aimeos\Client\Html\Iface $client ) : string
 	{
 		$client->setView( $this->getContext()->getView() );
 		$client->process();

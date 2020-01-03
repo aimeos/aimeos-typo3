@@ -36,7 +36,7 @@ class Setup
 	 *
 	 * @param string|null $extname Installed extension name
 	 */
-	public static function execute()
+	public static function execute() : ?string
 	{
 		ini_set( 'max_execution_time', 0 );
 
@@ -104,7 +104,7 @@ class Setup
 	 *
 	 * @param string|null $extname Installed extension name
 	 */
-	public function schema( array $sql )
+	public function schema( array $sql ) : ?string
 	{
 		$ctx = self::getContext();
 		$dbm = $ctx->getDatabaseManager();
@@ -151,7 +151,7 @@ class Setup
 	/**
 	 * For existing installations
 	 */
-	public static function executeOnSignal( $extname = null )
+	public static function executeOnSignal( string $extname = null )
 	{
 		self::signal( $extname );
 	}
@@ -162,7 +162,7 @@ class Setup
 	 *
 	 * @param string|null $extname Installed extension name
 	 */
-	public static function signal( $extname = null )
+	public static function signal( string $extname = null ) : ?string
 	{
 		if( $extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
 			self::execute();
@@ -173,9 +173,9 @@ class Setup
 	/**
 	 * Returns a new context object.
 	 *
-	 * @return MShop_Context_Item_Interface Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	protected static function getContext()
+	protected static function getContext() : \Aimeos\MShop\Context\Item\Iface
 	{
 		$ctx = new \Aimeos\MShop\Context\Item\Typo3();
 

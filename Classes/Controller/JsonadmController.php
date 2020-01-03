@@ -142,7 +142,7 @@ class JsonadmController extends AbstractController
 	 * @param string Resource location, e.g. "product/property/type"
 	 * @return \Aimeos\Admin\JsonAdm\Iface Jsonadm client
 	 */
-	protected function createAdmin( $resource )
+	protected function createAdmin( string $resource ) : \Aimeos\Admin\JsonAdm\Iface
 	{
 		$context = $this->getContextBackend( 'admin/jsonadm/templates' );
 		return \Aimeos\Admin\JsonAdm::create( $context, Base::getAimeos(), $resource );
@@ -154,7 +154,7 @@ class JsonadmController extends AbstractController
 	 *
 	 * @return \Psr\Http\Message\RequestInterface PSR-7 request object
 	 */
-	protected function getPsrRequest()
+	protected function getPsrRequest() : \Psr\Http\Message\RequestInterface
 	{
 		return \Zend\Diactoros\ServerRequestFactory::fromGlobals();
 	}
@@ -166,7 +166,7 @@ class JsonadmController extends AbstractController
 	 * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
 	 * @return string Generated output
 	 */
-	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
+	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response ) : string
 	{
 		$this->response->setStatus( $response->getStatusCode() );
 

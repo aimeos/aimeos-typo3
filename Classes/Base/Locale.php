@@ -27,7 +27,8 @@ class Locale
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public static function get( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+	public static function get( \Aimeos\MShop\Context\Item\Iface $context,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( !isset( self::$locale ) )
 		{
@@ -79,7 +80,7 @@ class Locale
 	 * @param string $site Unique site code
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	public static function getBackend( \Aimeos\MShop\Context\Item\Iface $context, $site )
+	public static function getBackend( \Aimeos\MShop\Context\Item\Iface $context, string $site ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 

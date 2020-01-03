@@ -27,7 +27,7 @@ class Config
 	 * @param array $local Multi-dimensional associative list with local configuration
 	 * @return \Aimeos\MW\Config\Iface Configuration object
 	 */
-	public static function get( array $paths, array $local = array() )
+	public static function get( array $paths, array $local = [] ) : \Aimeos\MW\Config\Iface
 	{
 		if( self::$config === null )
 		{

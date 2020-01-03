@@ -27,7 +27,7 @@ class Base
 	 *
 	 * @param array $conf Multi-dimensional array of configuration options
 	 * @param array $jobs List of job names
-	 * @param string $sites List of site names
+	 * @param array|string $sites List of site names
 	 */
 	public static function execute( array $conf, array $jobs, $sites )
 	{
@@ -68,9 +68,9 @@ class Base
 	 * Returns the current context.
 	 *
 	 * @param array Multi-dimensional associative list of key/value pairs
-	 * @return MShop_Context_Item_Interface Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function getContext( array $conf = array() )
+	public static function getContext( array $conf = [] ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = Aimeos\Base::getConfig( $conf );
 		$context = Aimeos\Base::getContext( $config );
@@ -104,7 +104,7 @@ class Base
 	}
 
 
-	public static function getUriBuilder()
+	public static function getUriBuilder() : \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder
 	{
 		$objectManager = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
 
@@ -138,10 +138,10 @@ class Base
 	 * Returns the enabled site items which may be limited by the input arguments.
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context item object
-	 * @param string $sites Unique site codes
+	 * @param array|string $sites Unique site codes
 	 * @return \Aimeos\MShop\Locale\Item\Site\Iface[] List of site items
 	 */
-	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites )
+	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites ) : array
 	{
 		if( !is_array( $sites ) ) {
 			$sites = explode( ' ', $sites );
@@ -161,9 +161,9 @@ class Base
 	/**
 	 * Initializes the frontend to render frontend links in scheduler tasks
 	 *
-	 * @param integer $pageid Page ID for the frontend configuration
+	 * @param int $pageid Page ID for the frontend configuration
 	 */
-	public static function initFrontend( $pageid )
+	public static function initFrontend( int $pageid )
 	{
 		if( !is_object( $GLOBALS['TT'] ) )
 		{

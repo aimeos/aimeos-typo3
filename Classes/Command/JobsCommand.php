@@ -85,9 +85,9 @@ class JobsCommand extends Command
 	/**
 	 * Returns a context object
 	 *
-	 * @return \Aimeos\MShop\Context\Item\Standard Context object containing only the most necessary dependencies
+	 * @return \Aimeos\MShop\Context\Item\Iface Context object containing only the most necessary dependencies
 	 */
-	protected function getContext()
+	protected function getContext() : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
@@ -115,7 +115,7 @@ class JobsCommand extends Command
 	 * @param InputInterface $input Input object
 	 * @return \Aimeos\MShop\Locale\Item\Site\Interface[] List of site items
 	 */
-	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input )
+	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input ) : array
 	{
 		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
 		$search = $manager->createSearch();
@@ -133,7 +133,7 @@ class JobsCommand extends Command
 	 *
 	 * @return TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder URI builder
 	 */
-	protected function getUriBuilder()
+	protected function getUriBuilder() : \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder
 	{
 		$objectManager = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
 

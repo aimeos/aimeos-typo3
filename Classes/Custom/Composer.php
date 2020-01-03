@@ -61,7 +61,7 @@ class Composer
 	 * @param string $dest Target directory path
 	 * @throws \RuntimeException If an error occured
 	 */
-	protected static function copyRecursive( $src, $dest )
+	protected static function copyRecursive( string $src, string $dest )
 	{
 		self::createDirectory( $dest );
 
@@ -94,7 +94,7 @@ class Composer
 	 * @param string $dir Absolute path of the new directory
 	 * @throws \RuntimeException If directory couldn't be created
 	 */
-	protected static function createDirectory( $dir )
+	protected static function createDirectory( string $dir )
 	{
 		$perm = 0755;
 
@@ -112,7 +112,7 @@ class Composer
 	 * @param string $source Relative source path
 	 * @param string $target Absolute target path
 	 */
-	protected static function createLink( $source, $target )
+	protected static function createLink( string $source, string $target )
 	{
 		if( file_exists( $target ) === false && @symlink( $source, $target ) === false )
 		{
@@ -131,7 +131,7 @@ class Composer
 	 * @param CommandEvent $event Command event object
 	 * @return array Associative list of option keys and values
 	 */
-	protected static function getOptions( CommandEvent $event )
+	protected static function getOptions( CommandEvent $event ) : array
 	{
 		return $event->getComposer()->getPackage()->getExtra();
 	}

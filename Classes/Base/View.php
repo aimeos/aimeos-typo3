@@ -25,12 +25,11 @@ class View
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
-	 * @param boolean $frontend True if the view is for the frontend, false for the backend
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
 	public static function get( \Aimeos\MShop\Context\Item\Iface $context,
 		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $locale = null )
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null ) : \Aimeos\MW\View\Iface
 	{
 		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
 		$engines = array( '.html' => new \Aimeos\MW\View\Engine\Typo3( $obj ) );
@@ -62,7 +61,7 @@ class View
 	 * @param \Aimeos\MW\View\Iface $view View object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addAccess( \Aimeos\MW\View\Iface $view )
+	protected static function addAccess( \Aimeos\MW\View\Iface $view ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] ) )
@@ -107,7 +106,7 @@ class View
 	 * @param \Aimeos\MW\Config\Iface $config Configuration object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addConfig( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config )
+	protected static function addConfig( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] ) )
@@ -130,7 +129,7 @@ class View
 	 * @param array $prefixes List of prefixes for the form name to build multi-dimensional arrays
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addFormparam( \Aimeos\MW\View\Iface $view, array $prefixes )
+	protected static function addFormparam( \Aimeos\MW\View\Iface $view, array $prefixes ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] ) )
@@ -150,9 +149,11 @@ class View
 	 *
 	 * @param \Aimeos\MW\View\Iface $view View object
 	 * @param \Aimeos\MW\Config\Iface $config Configuration object
+	 * @param string $locale (Country specific) language code
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addNumber( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config, $locale )
+	protected static function addNumber( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config,
+		string $locale ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] ) )
@@ -176,7 +177,8 @@ class View
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object or null if not available
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addParam( \Aimeos\MW\View\Iface $view, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+	protected static function addParam( \Aimeos\MW\View\Iface $view,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] ) )
@@ -199,7 +201,8 @@ class View
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addRequest( \Aimeos\MW\View\Iface $view, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+	protected static function addRequest( \Aimeos\MW\View\Iface $view,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] ) )
@@ -224,7 +227,7 @@ class View
 	 * @param \Aimeos\MW\View\Iface $view View object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addResponse( \Aimeos\MW\View\Iface $view )
+	protected static function addResponse( \Aimeos\MW\View\Iface $view ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] ) )
@@ -246,7 +249,7 @@ class View
 	 * @param \Aimeos\MW\Session\Iface $session Session object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Session\Iface $session )
+	protected static function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Session\Iface $session ) : \Aimeos\MW\View\Iface
 	{
 		$helper = new \Aimeos\MW\View\Helper\Session\Standard( $view, $session );
 		$view->addHelper( 'session', $helper );
@@ -263,7 +266,7 @@ class View
 	 * @param array $local Local translations
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addTranslate( \Aimeos\MW\View\Iface $view, $langid, array $local )
+	protected static function addTranslate( \Aimeos\MW\View\Iface $view, string $langid = null, array $local ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] ) )
@@ -298,7 +301,8 @@ class View
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
 	protected static function addUrl( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config,
-		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] ) )

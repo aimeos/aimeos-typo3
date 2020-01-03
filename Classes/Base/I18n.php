@@ -26,9 +26,9 @@ class I18n
 	 * @param array $i18nPaths Paths to the translation directories
 	 * @param array $langIds List of two letter ISO language IDs
 	 * @param array $local List of local translation entries overwriting the standard ones
-	 * @return array List of translation objects implementing MW_Translation_Interface
+	 * @return array List of translation objects implementing \Aimeos\MW\Translation\Iface
 	 */
-	public static function get( array $i18nPaths, array $languageIds, array $local = array() )
+	public static function get( array $i18nPaths, array $languageIds, array $local = [] ) : array
 	{
 		$i18nList = array();
 
@@ -66,7 +66,7 @@ class I18n
 	 * @param array $entries User-defined translation entries via TypoScript
 	 * @return array Associative list of translation domain and original string / list of tranlations
 	 */
-	protected static function parseTranslations( array $entries )
+	protected static function parseTranslations( array $entries ) : array
 	{
 		$translations = array();
 

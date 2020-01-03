@@ -35,7 +35,7 @@ class Base
 	 *
 	 * @return \Aimeos\Bootstrap Aimeos bootstrap object
 	 */
-	public static function getAimeos()
+	public static function getAimeos() : \Aimeos\Bootstrap
 	{
 		$name = 'Aimeos\Aimeos\Base\Aimeos';
 
@@ -55,7 +55,7 @@ class Base
 	 * @param array $local Multi-dimensional associative list with local configuration
 	 * @return \Aimeos\MW\Config\Iface Configuration object
 	 */
-	public static function getConfig( array $local = array() )
+	public static function getConfig( array $local = [] ) : \Aimeos\MW\Config\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\Config';
 
@@ -75,7 +75,7 @@ class Base
 	 * @param \Aimeos\MW\Config\Iface Configuration object
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function getContext( \Aimeos\MW\Config\Iface $config )
+	public static function getContext( \Aimeos\MW\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\Context';
 
@@ -96,7 +96,7 @@ class Base
 	 * @param mixed Value returned if no value in extension configuration was found
 	 * @return mixed Value associated with the configuration setting
 	 */
-	public static function getExtConfig( $name, $default = null )
+	public static function getExtConfig( string $name, $default = null )
 	{
 		if( self::$extConfig === null )
 		{
@@ -122,7 +122,7 @@ class Base
 	 * @param array $local List of local translation entries overwriting the standard ones
 	 * @return array List of translation objects implementing MW_Translation_Interface
 	 */
-	public static function getI18n( array $languageIds, array $local = array() )
+	public static function getI18n( array $languageIds, array $local = [] ) : array
 	{
 		$name = 'Aimeos\Aimeos\Base\I18n';
 
@@ -143,7 +143,8 @@ class Base
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public static function getLocale( \Aimeos\MShop\Context\Item\Iface $context, \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null )
+	public static function getLocale( \Aimeos\MShop\Context\Item\Iface $context,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) ) {
 			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) instanceof \Closure ) {
@@ -168,7 +169,8 @@ class Base
 	 * @param string $sitecode Unique site code
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public static function getLocaleBackend( \Aimeos\MShop\Context\Item\Iface $context, $sitecode )
+	public static function getLocaleBackend( \Aimeos\MShop\Context\Item\Iface $context,
+		string $sitecode ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) ) {
 			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) instanceof \Closure ) {
@@ -191,7 +193,7 @@ class Base
 	 *
 	 * @return string Version string
 	 */
-	public static function getVersion()
+	public static function getVersion() : string
 	{
 		$match = array();
 		$content = @file_get_contents( dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
@@ -216,7 +218,7 @@ class Base
 	 */
 	public static function getView( \Aimeos\MShop\Context\Item\Iface $context,
 		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, $langid = null )
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null ) : \Aimeos\MW\View\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\View';
 
@@ -237,7 +239,7 @@ class Base
 	 * @return array Mulit-dimensional, associative list of key/value pairs
 	 * @throws Exception If parsing the configuration string fails
 	 */
-	public static function parseTS( $tsString )
+	public static function parseTS( string $tsString ) : array
 	{
 		$parser = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser' );
 		$parser->parse( $tsString );

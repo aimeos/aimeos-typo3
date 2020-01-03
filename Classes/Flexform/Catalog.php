@@ -28,7 +28,7 @@ class Catalog
 	 * @param string $sitecode Unique code of the site to retrieve the categories for
 	 * @return array Associative array with existing and new entries
 	 */
-	public function getCategories( array $config, $tceForms = null, $sitecode = 'default' )
+	public function getCategories( array $config, $tceForms = null, string $sitecode = 'default' ) : array
 	{
 		try
 		{
@@ -71,11 +71,11 @@ class Catalog
 	/**
 	 * Returns the list of category label / ID pairs for the given node and all children
 	 *
-	 * @param MShop_Catalog_Item_Interface $item Catalog item to start from
+	 * @param \Aimeos\MShop\Catalog\Item\Iface $item Catalog item to start from
 	 * @param string $breadcrumb Breadcrumb of the parent nodes
 	 * @return array Associative array of category label / ID pairs
 	 */
-	protected function getCategoryList( \Aimeos\MShop\Catalog\Item\Iface $item, $breadcrumb )
+	protected function getCategoryList( \Aimeos\MShop\Catalog\Item\Iface $item, string $breadcrumb ) : array
 	{
 		$result = array();
 		$result[] = array( $breadcrumb, $item->getId() );

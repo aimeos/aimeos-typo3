@@ -25,7 +25,7 @@ class Aimeos
 	 *
 	 * @return \Aimeos\Bootstrap Aimeos bootstrap object
 	 */
-	public static function get()
+	public static function get() : \Aimeos\Bootstrap
 	{
 		if( self::$aimeos === null )
 		{

@@ -169,7 +169,7 @@ abstract class AbstractProvider
 	 *
 	 * @return array Associative list of items and children implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
-	protected function getAvailableSites()
+	protected function getAvailableSites() : array
 	{
 		$manager = \Aimeos\MShop::create( Scheduler\Base::getContext(), 'locale/site' );
 
@@ -193,10 +193,10 @@ abstract class AbstractProvider
 	 *
 	 * @param array $siteItems List of items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 * @param array $selected List of site codes that were previously selected by the user
-	 * @param integer $level Nesting level of the sites (should start with 0)
+	 * @param int $level Nesting level of the sites (should start with 0)
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function getSiteOptions( array $siteItems, array $selected, $level )
+	protected function getSiteOptions( array $siteItems, array $selected, int $level ) : string
 	{
 		$html = '';
 		$prefix = str_repeat( '-', $level ) . ' ';
@@ -221,7 +221,7 @@ abstract class AbstractProvider
 	 * @param array $selected List of site codes that were previously selected by the user
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function getControllerOptions( array $selected )
+	protected function getControllerOptions( array $selected ) : string
 	{
 		$html = '';
 		$aimeos = Base::getAimeos();

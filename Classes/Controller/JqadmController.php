@@ -214,7 +214,7 @@ class JqadmController extends AbstractController
 	 *
 	 * @return \Aimeos\Admin\JQAdm\Iface JQAdm client
 	 */
-	protected function createAdmin()
+	protected function createAdmin() : \Aimeos\Admin\JQAdm\Iface
 	{
 		$resource = 'dashboard';
 
@@ -242,7 +242,7 @@ class JqadmController extends AbstractController
 	/**
 	 * Uses default view.
 	 *
-	 * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface View object
+	 * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface|null View object
 	 */
 	protected function resolveView()
 	{
@@ -256,7 +256,7 @@ class JqadmController extends AbstractController
 	 * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
 	 * @return string Generated output
 	 */
-	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
+	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response ) : string
 	{
 		$this->response->setStatus( $response->getStatusCode() );
 

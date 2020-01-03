@@ -27,7 +27,7 @@ class Attribute
 	 * @param string $sitecode Unique code of the site to retrieve the categories for
 	 * @return array Associative array with existing and new entries
 	 */
-	public function getTypes( array $config, $tceForms = null, $sitecode = 'default' )
+	public function getTypes( array $config, $tceForms = null, string $sitecode = 'default' ) : array
 	{
 		try
 		{
