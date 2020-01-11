@@ -11,7 +11,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
-use Zend\Diactoros\Response;
+use Nyholm\Psr7\Factory\Psr17Factory;
 
 
 /**
@@ -63,7 +63,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function deleteAction( string $resource, string $related )
 	{
-		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), new Response() );
+		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -77,7 +77,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function getAction( string $resource, string $related )
 	{
-		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), new Response() );
+		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -91,7 +91,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function patchAction( string $resource, string $related )
 	{
-		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), new Response() );
+		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -105,7 +105,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function postAction( string $resource, string $related )
 	{
-		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), new Response() );
+		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -119,7 +119,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function putAction( string $resource, string $related )
 	{
-		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), new Response() );
+		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -132,7 +132,7 @@ class JsonapiController extends AbstractController
 	 */
 	public function optionsAction( string $resource )
 	{
-		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), new Response() );
+		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -158,7 +158,16 @@ class JsonapiController extends AbstractController
 	 */
 	protected function getPsrRequest() : \Psr\Http\Message\RequestInterface
 	{
-		return \Zend\Diactoros\ServerRequestFactory::fromGlobals();
+		$psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+
+		$creator = new \Nyholm\Psr7Server\ServerRequestCreator(
+			$psr17Factory, // ServerRequestFactory
+			$psr17Factory, // UriFactory
+			$psr17Factory, // UploadedFileFactory
+			$psr17Factory  // StreamFactory
+		);
+
+		return $creator->fromGlobals();
 	}
 
 
