@@ -66,7 +66,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function deleteAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->delete( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
+		$response = $this->createAdmin( $resource )->delete( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -79,7 +79,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function getAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->get( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
+		$response = $this->createAdmin( $resource )->get( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -92,7 +92,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function patchAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->patch( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
+		$response = $this->createAdmin( $resource )->patch( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -105,7 +105,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function postAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->post( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
+		$response = $this->createAdmin( $resource )->post( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -118,7 +118,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function putAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->put( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
+		$response = $this->createAdmin( $resource )->put( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
@@ -131,7 +131,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function optionsAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->options( $this->getPsrRequest(), (new Psr17Factory)->createResponse() );
+		$response = $this->createAdmin( $resource )->options( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
