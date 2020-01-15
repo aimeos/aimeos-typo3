@@ -22,7 +22,7 @@
 		<exec command="git checkout composer.json" checkreturn="true" logoutput="true" />
 	</target>
 
-	<target name="deploy" description="Creates new package" depends="clean,composer">
+	<target name="deploy" description="Creates new package" depends="composer,clean">
 		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
 		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
 		<reflexive>
