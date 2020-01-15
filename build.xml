@@ -11,8 +11,8 @@
 		<delete dir="typo3conf" includeemptydirs="true" />
 		<delete dir="typo3_src" includeemptydirs="true" />
 		<delete dir="public" includeemptydirs="true" />
+		<delete dir="typo3" includeemptydirs="true" />
 		<delete file="index.php" />
-		<delete file="typo3" />
 	</target>
 
 	<target name="composer" description="Updates composer dependencies">
