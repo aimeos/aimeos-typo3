@@ -131,7 +131,7 @@ class JsonadmController extends AbstractController
 	 */
 	public function optionsAction( $resource )
 	{
-		$response = $this->createAdmin( $resource )->options( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
+		$response = $this->createAdmin( $resource ?? '' )->options( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
