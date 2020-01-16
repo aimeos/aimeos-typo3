@@ -33,10 +33,8 @@ class Setup
 	 * The setup tasks print their information directly to the standard output.
 	 * To avoid this, it's necessary to use the output buffering handler
 	 * (ob_start(), ob_get_contents() and ob_end_clean()).
-	 *
-	 * @param string|null $extname Installed extension name
 	 */
-	public static function execute() : ?string
+	public static function execute()
 	{
 		ini_set( 'max_execution_time', 0 );
 
@@ -100,11 +98,12 @@ class Setup
 
 
 	/**
-	 * Executes the setup tasks if extension is installed.
+	 * Returns the current schema for the install tool
 	 *
-	 * @param string|null $extname Installed extension name
+	 * @param array $sql List of SQL statements
+	 * @return array SQL statements required for the install tool
 	 */
-	public function schema( array $sql ) : ?string
+	public function schema( array $sql ) : array
 	{
 		$ctx = self::getContext();
 		$dbm = $ctx->getDatabaseManager();
@@ -118,7 +117,7 @@ class Setup
 			{
 				$result = $conn->create( 'SHOW TABLES like \'' . $prefix . '%\'' )->execute();
 
-				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== false ) {
+				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== null ) {
 					$tables[] = $row[0];
 				}
 			}
@@ -127,7 +126,7 @@ class Setup
 			{
 				$result = $conn->create( 'SHOW CREATE TABLE ' . $table )->execute();
 
-				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== false )
+				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== null )
 				{
 					$str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
 					$str = str_replace( '"', '`', $str );
@@ -150,6 +149,8 @@ class Setup
 
 	/**
 	 * For existing installations
+	 *
+	 * @param string|null $extname Installed extension name
 	 */
 	public static function executeOnSignal( string $extname = null )
 	{
@@ -162,7 +163,7 @@ class Setup
 	 *
 	 * @param string|null $extname Installed extension name
 	 */
-	public static function signal( string $extname = null ) : ?string
+	public static function signal( string $extname = null )
 	{
 		if( $extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
 			self::execute();
