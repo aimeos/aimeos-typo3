@@ -130,9 +130,9 @@ class JsonapiController extends AbstractController
 	 * @param string Resource location, e.g. "product"
 	 * @return string Generated output
 	 */
-	public function optionsAction( string $resource )
+	public function optionsAction( string $resource = null )
 	{
-		$response = $this->createClient( $resource )->options( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
+		$response = $this->createClient( $resource ?? '' )->options( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
 	}
 
