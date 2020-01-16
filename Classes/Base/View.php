@@ -149,11 +149,11 @@ class View
 	 *
 	 * @param \Aimeos\MW\View\Iface $view View object
 	 * @param \Aimeos\MW\Config\Iface $config Configuration object
-	 * @param string $locale (Country specific) language code
+	 * @param string|null $locale (Country specific) language code
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
 	protected static function addNumber( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config,
-		string $locale ) : \Aimeos\MW\View\Iface
+		string $locale = null ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] ) )
@@ -163,7 +163,7 @@ class View
 
 		$pattern = $config->get( 'client/html/common/format/pattern' );
 
-		$helper = new \Aimeos\MW\View\Helper\Number\Locale( $view, $locale, $pattern );
+		$helper = new \Aimeos\MW\View\Helper\Number\Locale( $view, $locale ?? 'en', $pattern );
 		$view->addHelper( 'number', $helper );
 
 		return $view;
