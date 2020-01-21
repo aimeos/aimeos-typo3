@@ -24,9 +24,9 @@ $EM_CONF['aimeos'] = array(
 	'author_company' => '',
 	'constraints' => array(
 		'depends' => array(
-			'php' => '5.6.0-7.99.99',
-			'typo3' => '7.6.0-9.99.99',
-			'scheduler' => '7.6.0-9.99.99',
+			'php' => '7.1.99-7.99.99',
+			'typo3' => '8.7.0-9.99.99',
+			'scheduler' => '8.7.0-9.99.99',
 			'static_info_tables' => '6.0.0-6.99.99',
 		),
 		'conflicts' => array(
