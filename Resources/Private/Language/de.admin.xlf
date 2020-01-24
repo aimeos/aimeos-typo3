@@ -14,14 +14,6 @@
 				<source>Administration Aimeos Shop</source>
 				<target>Administration Aimeos Shop</target>
 			</trans-unit>
-			<trans-unit id="t3_9x_config_error_header" xml:space="preserve">
-				<source>Possible database charset problem</source>
-				<target>Mögliches Zeichensatzproblem der Datenbank</target>
-			</trans-unit>
-			<trans-unit id="t3_9x_config_error_text" xml:space="preserve">
-				<source>The charset/collation &quot;utf8mb4&quot; isn't fully supported by MySQL before 5.7.8 and MariaDB before 10.2. Please use &quot;utf8&quot; instead in your ./typo3conf/LocalConfiguration.php file</source>
-				<target>Der Zeichensatz &quot;utf8mb4&quot; wird von MySQL vor 5.7.8 und MariaDB for 10.2 nicht vollständig unterstützt. Bitte nutzen Sie stattdessen &quot;uft8&quot; in Ihrer ./typo3conf/LocalConfiguration.php Datei</target>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -38,13 +38,16 @@
 				<source>Displayed attribute types for faceted search</source>
 				<target>Types d'attributs affichés pour la recherche par facettes</target>
 			</trans-unit>
-			<trans-unit id="catalog-list.target" xml:space="preserve">
-				<source>Catalog list page</source>
-				<target>Page Catalogue de la liste</target>
-			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
 				<target>Page avec des suggestions pour filtre de recherche</target>
+			</trans-unit>
+			<trans-unit id="catalog-tree.target" xml:space="preserve">
+				<source>Category page (or catalog list page)</source>
+			</trans-unit>
+			<trans-unit id="catalog-list.target" xml:space="preserve">
+				<source>Catalog list page</source>
+				<target>Page Catalogue de la liste</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
