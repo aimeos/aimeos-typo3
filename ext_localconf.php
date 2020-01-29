@@ -286,11 +286,24 @@ if( !isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][
 
 
 /**
- * Add Typo3 Hooks
+ * Add TYPO3 Hooks
  */
 
 if( !isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] ) ) {
 	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] = \Aimeos\Aimeos\Base::class . '->logout';
 }
+
+if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] ) ) {
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = function( array $cacheType, $dataHandler ) {
+		\Aimeos\Aimeos\Base::clearCache( $cacheType );
+	};
+}
+
+
+/**
+ * Disable TYPO3 canonical tags so Aimeos ones are used
+ */
+
+unset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
 
 ?>
