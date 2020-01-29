@@ -12,6 +12,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 /**
@@ -36,6 +37,7 @@ class CatalogController extends AbstractController
 	 */
 	public function detailAction()
 	{
+		$this->removeMetatags();
 		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/detail' );
 		return $this->getClientOutput( $client );
 	}
@@ -66,6 +68,7 @@ class CatalogController extends AbstractController
 	 */
 	public function listAction()
 	{
+		$this->removeMetatags();
 		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/lists' );
 		return $this->getClientOutput( $client );
 	}
@@ -128,5 +131,26 @@ class CatalogController extends AbstractController
 	{
 		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/tree' );
 		return $this->getClientOutput( $client );
+	}
+
+
+	/**
+	 * Removes the meta tags if available
+	 */
+	protected function removeMetatags()
+	{
+		if( class_exists( '\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' ) )
+		{
+			$registry = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' );
+
+			$registry->getManagerForProperty( 'keywords' )->removeProperty( 'keywords' );
+			$registry->getManagerForProperty( 'description' )->removeProperty( 'description' );
+			$registry->getManagerForProperty( 'og:type' )->removeProperty( 'og:type' );
+			$registry->getManagerForProperty( 'og:title' )->removeProperty( 'og:title' );
+			$registry->getManagerForProperty( 'og:url' )->removeProperty( 'og:url' );
+			$registry->getManagerForProperty( 'og:description' )->removeProperty( 'og:description' );
+			$registry->getManagerForProperty( 'og:image' )->removeProperty( 'og:image' );
+			$registry->getManagerForProperty( 'twitter:card' )->removeProperty( 'twitter:card' );
+		}
 	}
 }

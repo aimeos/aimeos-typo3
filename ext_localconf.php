@@ -293,7 +293,7 @@ if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
 
 
 /**
- * Add Typo3 Hooks
+ * Add TYPO3 Hooks
  */
 
 if( !isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] ) ) {
@@ -305,5 +305,12 @@ if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain
 		\Aimeos\Aimeos\Base::clearCache( $cacheType );
 	};
 }
+
+
+/**
+ * Disable TYPO3 canonical tags so Aimeos ones are used
+ */
+
+unset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
 
 ?>
