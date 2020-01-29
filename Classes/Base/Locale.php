@@ -9,6 +9,8 @@
 
 namespace Aimeos\Aimeos\Base;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 /**
  * Aimeos locale class
@@ -40,18 +42,22 @@ class Locale
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$sitecode = $request->getArgument( $name );
-			} elseif( ( $value = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP( 'S' ) ) !== null ) {
+			} elseif( ( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
 				$sitecode = $value;
 			}
 
 
-			$langid = $config->get( 'mshop/locale/language', '' );
+			$lang = $config->get( 'mshop/locale/language', '' );
 			$name = $config->get( 'typo3/param/name/language', 'locale' );
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
-				$langid = $request->getArgument( $name );
+				$lang = $request->getArgument( $name );
+			} elseif( isset( $GLOBALS['TSFE']->id ) && class_exists( '\TYPO3\CMS\Core\Site\SiteFinder' ) ) { // TYPO3 9+
+				$langid = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' )->getAspect( 'language' )->getId();
+				$site = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Site\SiteFinder' )->getSiteByPageId( $GLOBALS['TSFE']->id );
+				$lang = substr( $site->getLanguageById( $langid )->getLocale(), 0, 5 );
 			} elseif( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
-				$langid = $GLOBALS['TSFE']->config['config']['language'];
+				$lang = $GLOBALS['TSFE']->config['config']['language'];
 			}
 
 
@@ -60,13 +66,13 @@ class Locale
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$currency = $request->getArgument( $name );
-			} elseif( ( $value = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP( 'C' ) ) !== null ) {
+			} elseif( ( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
 				$currency = $value;
 			}
 
 
 			$localeManager = \Aimeos\MShop::create( $context, 'locale' );
-			self::$locale = $localeManager->bootstrap( $sitecode, $langid, $currency );
+			self::$locale = $localeManager->bootstrap( $sitecode, $lang, $currency );
 		}
 
 		return self::$locale;
