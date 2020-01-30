@@ -279,19 +279,17 @@ class Base
 		}
 	}
 
+
 	/**
 	 * Doing a complete ACPu wipe with the red system cache.
 	 *
-	 * @hook clearCachePostProc
-	 *
 	 * @param array $cacheType The caching type.
-	 *
-	 * @return void
+	 * @hook clearCachePostProc
 	 */
 	public static function clearCache( array $cacheType )
 	{
 		if( isset( $cacheType['cacheCmd'] ) && $cacheType['cacheCmd'] === 'all'
-			(bool) static::getExtConfig( 'useAPC', false ) === true
+			&& (bool) static::getExtConfig( 'useAPC', false ) === true
 			&& function_exists( 'apcu_clear_cache' )
 		) {
 			apcu_clear_cache();
