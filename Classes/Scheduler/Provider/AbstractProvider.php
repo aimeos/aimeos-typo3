@@ -191,12 +191,12 @@ abstract class AbstractProvider
 	 * Returns the HTML code for the select control.
 	 * The method adds every site and its children recursively.
 	 *
-	 * @param array $siteItems List of items implementing \Aimeos\MShop\Locale\Item\Site\Iface
+	 * @param \Aimeos\Map $siteItems List of items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 * @param array $selected List of site codes that were previously selected by the user
 	 * @param int $level Nesting level of the sites (should start with 0)
 	 * @return string HTML code with <option> tags for the select box
 	 */
-	protected function getSiteOptions( array $siteItems, array $selected, int $level ) : string
+	protected function getSiteOptions( \Aimeos\Map $siteItems, array $selected, int $level ) : string
 	{
 		$html = '';
 		$prefix = str_repeat( '-', $level ) . ' ';
