@@ -88,7 +88,7 @@ class Base
 		}
 
 		$search->setConditions( $search->combine( '||', $expr ) );
-		$langids = array_keys( $langManager->searchItems( $search ) );
+		$langids = $langManager->searchItems( $search )->keys()->toArray();
 
 		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
 		$context->setI18n( $i18n );

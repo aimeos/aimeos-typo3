@@ -96,7 +96,7 @@ class JobsCommand extends Command
 		$context = \Aimeos\Aimeos\Base::getContext( $config );
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
-		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
+		$langids = $langManager->searchItems( $langManager->createSearch( true ) )->keys()->toArray();
 
 		$i18n = \Aimeos\Aimeos\Base::getI18n( $langids, $config->get( 'i18n', [] ) );
 		$context->setI18n( $i18n );
