@@ -113,9 +113,9 @@ class JobsCommand extends Command
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context item object
 	 * @param InputInterface $input Input object
-	 * @return \Aimeos\MShop\Locale\Item\Site\Interface[] List of site items
+	 * @return \Aimeos\Map List of site items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
-	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input ) : array
+	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input ) : \Aimeos\Map
 	{
 		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
 		$search = $manager->createSearch();

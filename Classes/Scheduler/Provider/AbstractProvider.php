@@ -167,9 +167,9 @@ abstract class AbstractProvider
 	/**
 	 * Returns the list of site trees.
 	 *
-	 * @return array Associative list of items and children implementing \Aimeos\MShop\Locale\Item\Site\Iface
+	 * @return \Aimeos\Map Associative list of items and children implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
-	protected function getAvailableSites() : array
+	protected function getAvailableSites() : \Aimeos\Map
 	{
 		$manager = \Aimeos\MShop::create( Scheduler\Base::getContext(), 'locale/site' );
 

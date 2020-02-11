@@ -139,9 +139,9 @@ class Base
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context item object
 	 * @param array|string $sites Unique site codes
-	 * @return \Aimeos\MShop\Locale\Item\Site\Iface[] List of site items
+	 * @return \Aimeos\Map List of site items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
-	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites ) : array
+	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites ) : \Aimeos\Map
 	{
 		if( !is_array( $sites ) ) {
 			$sites = explode( ' ', $sites );
