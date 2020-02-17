@@ -74,8 +74,7 @@ class SetupCommand extends Command
 		try {
 			$manager->migrate( $task );
 		} catch( \Throwable $t ) {
-			$output->writeln( '<error>' . $t->getMessage() . '<error>' );
-			$output->writeln( $t->getTraceAsString() );
+			echo "\n" . $t->getMessage() . "\n" . $t->getTraceAsString() . "\n";
 		}
 	}
 
