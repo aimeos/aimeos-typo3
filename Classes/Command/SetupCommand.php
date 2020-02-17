@@ -72,19 +72,27 @@ class SetupCommand extends Command
 			$task = reset( $task );
 		}
 
-		switch( $input->getOption( 'action' ) )
+		try
 		{
-			case 'migrate':
-				$manager->migrate( $task );
-				break;
-			case 'rollback':
-				$manager->rollback( $task );
-				break;
-			case 'clean':
-				$manager->clean( $task );
-				break;
-			default:
-				throw new \Exception( sprintf( 'Invalid setup action "%1$s"', $input->getOption( 'action' ) ) );
+			switch( $input->getOption( 'action' ) )
+			{
+				case 'migrate':
+					$manager->migrate( $task );
+					break;
+				case 'rollback':
+					$manager->rollback( $task );
+					break;
+				case 'clean':
+					$manager->clean( $task );
+					break;
+				default:
+					throw new \Exception( sprintf( 'Invalid setup action "%1$s"', $input->getOption( 'action' ) ) );
+			}
+		}
+		catch( \Throwable $t )
+		{
+			$output->writeln( '<info>' . $t->getMessage() . '</info>' );
+			$output->writeln( $t->getTraceAsString() );
 		}
 	}
 
