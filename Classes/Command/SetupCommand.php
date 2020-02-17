@@ -91,8 +91,7 @@ class SetupCommand extends Command
 		}
 		catch( \Throwable $t )
 		{
-			$output->writeln( '<info>' . $t->getMessage() . '</info>' );
-			$output->writeln( $t->getTraceAsString() );
+			echo "\n" . $t->getMessage() . "\n" . $t->getTraceAsString() . "\n";
 		}
 	}
 
