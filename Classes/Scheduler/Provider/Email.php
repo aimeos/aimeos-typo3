@@ -24,8 +24,8 @@ abstract class Email extends AbstractProvider
 	private $fieldSenderFrom = 'aimeos_sender_from';
 	private $fieldSenderEmail = 'aimeos_sender_email';
 	private $fieldReplyEmail = 'aimeos_reply_email';
-	private $fieldPageDetail = 'aimeos_pageid_detail';
 	private $fieldPageLogin = 'aimeos_pageid_login';
+	private $fieldPageDetail = 'aimeos_pageid_detail';
 	private $fieldPageDownload = 'aimeos_pageid_download';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 

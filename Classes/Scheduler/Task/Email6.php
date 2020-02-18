@@ -22,11 +22,12 @@ use Aimeos\Aimeos\Scheduler;
 class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {
 	private $fieldSite = 'aimeos_sitecode';
-	private $fieldController = 'aimeos_controller';
 	private $fieldTSconfig = 'aimeos_config';
+	private $fieldController = 'aimeos_controller';
 	private $fieldSenderFrom = 'aimeos_sender_from';
 	private $fieldSenderEmail = 'aimeos_sender_email';
 	private $fieldReplyEmail = 'aimeos_reply_email';
+	private $fieldPageLogin = 'aimeos_pageid_login';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
 	private $fieldPageDownload = 'aimeos_pageid_download';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
@@ -68,6 +69,10 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 
 		if( $this->{$this->fieldPageDownload} != '' ) {
 			$conf['client']['html']['account']['download']['url']['target'] = $this->{$this->fieldPageDownload};
+		}
+
+		if( $this->{$this->fieldPageLogin} != '' ) {
+			$conf['client']['html']['account']['index']['url']['target'] = $this->{$this->fieldPageLogin};
 		}
 
 		if( $this->{$this->fieldTemplateBaseurl} != '' )
