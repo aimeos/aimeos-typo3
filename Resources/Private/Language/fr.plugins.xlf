@@ -44,6 +44,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>Page de catégorie (ou page de la liste du catalogue)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -51,6 +52,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
+				<target>Catégorie ou catégories par défaut si aucun paramètre</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
