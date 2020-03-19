@@ -100,6 +100,16 @@ To avoid that, change your database settings in your `./typo3conf/LocalConfigura
 ],
 ```
 
+### Security
+
+Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts when browsers send cookies to your site. This is a problem when customers are redirected from external payment provider domain. Then, there's no session available on the confirmation page. To circumvent that problem, you need to set the configuration option `cookieSameSite` to `none` in your `./typo3conf/LocalConfiguration.php`:
+
+```
+    'FE' => [
+        'cookieSameSite' => 'none'
+    ]
+```
+
 ### Extension
 
 * Log into the TYPO3 back end
