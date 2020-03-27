@@ -1,6 +1,10 @@
 <?php
 
-class FileSessionBackend extends SessionBackendInterface
+
+namespace \Aimeos\Aimeos\Custom;
+
+
+class FileSessionBackend extends \TYPO3\CMS\Core\Session\Backend\SessionBackendInterface
 {
 	public function initialize(string $identifier, array $configuration)
 	{
