@@ -15,7 +15,7 @@ namespace Aimeos\Aimeos\Custom;
  *
  * @package TYPO3
  */
-class NativeSessionBackend extends \TYPO3\CMS\Core\Session\Backend\SessionBackendInterface
+class NativeSessionBackend implements \TYPO3\CMS\Core\Session\Backend\SessionBackendInterface
 {
 	public function initialize(string $identifier, array $configuration)
 	{
