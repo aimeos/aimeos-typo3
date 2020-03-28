@@ -37,8 +37,7 @@
 	"autoload": {
 		"classmap": ["Classes", "TYPO3"],
 		"psr-4": {
-			"Aimeos\\Aimeos\\": "Classes",
-			"TYPO3\\": "TYPO3"
+			"Aimeos\\Aimeos\\": "Classes"
 		}
 	},
 	"config": {
