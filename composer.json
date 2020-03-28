@@ -35,7 +35,7 @@
 		"typo3-ter/aimeos": "self.version"
 	},
 	"autoload": {
-		"classmap": ["Classes", "TYPO3"],
+		"classmap": ["Classes"],
 		"psr-4": {
 			"Aimeos\\Aimeos\\": "Classes"
 		}
