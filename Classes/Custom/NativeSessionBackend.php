@@ -1,10 +1,21 @@
 <?php
 
+/**
+ * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
+ * @copyright Aimeos (aimeos.org), 2016
+ * @package TYPO3
+ */
 
-namespace \Aimeos\Aimeos\Custom;
+
+namespace Aimeos\Aimeos\Custom;
 
 
-class FileSessionBackend extends \TYPO3\CMS\Core\Session\Backend\SessionBackendInterface
+/**
+ * Native PHP session backend
+ *
+ * @package TYPO3
+ */
+class NativeSessionBackend extends \TYPO3\CMS\Core\Session\Backend\SessionBackendInterface
 {
 	public function initialize(string $identifier, array $configuration)
 	{
