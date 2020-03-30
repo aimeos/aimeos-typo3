@@ -17,7 +17,7 @@ namespace Aimeos\Aimeos\Custom;
  */
 class NativeSessionBackend implements \TYPO3\CMS\Core\Session\Backend\SessionBackendInterface
 {
-	public function initialize(string $identifier, array $configuration)
+	public function initialize( string $identifier, array $configuration )
 	{
 	}
 
@@ -34,34 +34,34 @@ class NativeSessionBackend implements \TYPO3\CMS\Core\Session\Backend\SessionBac
 	}
 
 
-	public function get(string $sessionId): array
+	public function get( string $sessionId ): array
 	{
-		return (array) (isset( $_SESSION[$sessionId] ) ? $_SESSION[$sessionId] : []);
+		return (array) ( isset( $_SESSION[$sessionId] ) ? $_SESSION[$sessionId] : [] );
 	}
 
 
-	public function remove(string $sessionId): bool
+	public function remove( string $sessionId ): bool
 	{
-		unset($_SESSION[$sessionId]);
+		unset( $_SESSION[$sessionId] );
 		return true;
 	}
 
 
-	public function set(string $sessionId, array $sessionData): array
+	public function set( string $sessionId, array $sessionData ): array
 	{
 		$_SESSION[$sessionId] = $sessionData;
 		return $sessionData;
 	}
 
 
-	public function update(string $sessionId, array $sessionData): array
+	public function update( string $sessionId, array $sessionData ): array
 	{
 		$_SESSION[$sessionId] = $sessionData;
 		return $sessionData;
 	}
 
 
-	public function collectGarbage(int $maximumLifetime, int $maximumAnonymousLifetime = 0)
+	public function collectGarbage( int $maximumLifetime, int $maximumAnonymousLifetime = 0 )
 	{
 	}
 }
