@@ -288,15 +288,15 @@ class Context
 		if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
 		{
 			$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
-			$context->setEditor( $GLOBALS['TSFE']->fe_user->user['username'] );
+			$context->setEditor( (string) $GLOBALS['TSFE']->fe_user->user['username'] );
 		}
 		elseif( TYPO3_MODE === 'BE' && isset( $GLOBALS['BE_USER']->user['username'] ) )
 		{
-			$context->setEditor( $GLOBALS['BE_USER']->user['username'] );
+			$context->setEditor( (string) $GLOBALS['BE_USER']->user['username'] );
 		}
 		else
 		{
-			$context->setEditor( GeneralUtility::getIndpEnv( 'REMOTE_ADDR' ) );
+			$context->setEditor( (string) GeneralUtility::getIndpEnv( 'REMOTE_ADDR' ) );
 		}
 
 		return $context;
