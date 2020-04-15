@@ -16,7 +16,6 @@ $EM_CONF['aimeos'] = array(
 	'module' => '',
 	'state' => 'beta',
 	'uploadfolder' => 1,
-	'createDirs' => '',
 	'modify_tables' => '',
 	'clearcacheonload' => 1,
 	'author' => 'Aimeos',
@@ -24,15 +23,14 @@ $EM_CONF['aimeos'] = array(
 	'author_company' => '',
 	'constraints' => array(
 		'depends' => array(
-			'php' => '7.1.99-7.99.99',
-			'typo3' => '8.7.0-9.99.99',
-			'scheduler' => '8.7.0-9.99.99',
+			'php' => '7.2.0-7.99.99',
+			'typo3' => '9.5.0-10.99.99',
+			'scheduler' => '9.5.0-10.99.99',
 			'static_info_tables' => '6.0.0-6.99.99',
 		),
 		'conflicts' => array(
 		),
 		'suggests' => array(
-			'realurl' => '1.12.8-2.99.99',
 		),
 	),
 	'autoload' => array(

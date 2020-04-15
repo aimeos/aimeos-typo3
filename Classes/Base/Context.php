@@ -148,17 +148,8 @@ class Context
 			return $fcn( $context );
 		}
 
-		if( class_exists( '\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' ) ) // TYPO3 9+
-		{
-			$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
-			$context->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
-		}
-		elseif( class_exists( '\TYPO3\CMS\Saltedpasswords\Salt\SaltFactory' ) ) // TYPO3 7/8
-		{
-			$context->setHasherTypo3( \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance() );
-		}
-
-		return $context;
+		$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
+		return $context->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
 	}
 
 
