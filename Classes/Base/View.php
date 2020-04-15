@@ -33,8 +33,13 @@ class View
 		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
 		$engines = ['.html' => new \Aimeos\MW\View\Engine\Typo3( $obj )];
 
+		$prefix = 'ai';
+		if( $uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
+			$prefix = $uriBuilder->getArgumentPrefix();
+		}
+
 		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
-		$view->prefix = 'ai';
+		$view->prefix = $prefix;
 
 		$config = $context->getConfig();
 		$session = $context->getSession();
@@ -42,7 +47,7 @@ class View
 		self::addTranslate( $view, $locale, $config->get( 'i18n', [] ) );
 		self::addParam( $view, $request );
 		self::addConfig( $view, $config );
-		self::addFormparam( $view, ['ai'] );
+		self::addFormparam( $view, [$prefix] );
 		self::addNumber( $view, $config, $locale );
 		self::addUrl( $view, $config, $uriBuilder, $request );
 		self::addSession( $view, $session );
