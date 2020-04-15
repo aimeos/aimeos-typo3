@@ -195,7 +195,7 @@ class Base
 	 */
 	public static function getVersion() : string
 	{
-		$match = array();
+		$match = [];
 		$content = @file_get_contents( dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
 
 		if( preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
@@ -271,14 +271,10 @@ class Base
 	{
 		$session = self::getContext( self::getConfig() )->getSession();
 
-		foreach( $session->get( 'aimeos/basket/cache', [] ) as $key => $value ) {
-			$session->set( $key, null );
-		}
-
-		foreach( $session->get( 'aimeos/basket/list', [] ) as $key => $value ) {
-			$session->set( $key, null );
-		}
+		$session->remove( array_keys( $session->get( 'aimeos/basket/list', [] ) ) );
+		$session->remove( array_keys( $session->get( 'aimeos/basket/cache', [] ) ) );
 	}
+
 
 	/**
 	 * Doing a complete ACPu wipe with the red system cache.

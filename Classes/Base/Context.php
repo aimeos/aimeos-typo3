@@ -225,9 +225,9 @@ class Context
 
 		$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 
-		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-		if( $process->isAvailable() === false || version_compare( TYPO3_version, '9.4' ) < 0
-			|| method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) === false
+		// Reset before child processes are spawned to avoid lost DB connections afterwards
+		if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) === false
+			|| $process->isAvailable() === false
 		) {
 			$process = new \Aimeos\MW\Process\None();
 		}
