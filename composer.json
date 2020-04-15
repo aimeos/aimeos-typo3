@@ -41,9 +41,6 @@
 		}
 	},
 	"config": {
-		"platform": {
-			"php": "7.1.0"
-		},
 		"vendor-dir": "Resources/Libraries"
 	},
 	"extra": {
