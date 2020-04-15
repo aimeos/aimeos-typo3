@@ -52,12 +52,10 @@ class Locale
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$lang = $request->getArgument( $name );
-			} elseif( isset( $GLOBALS['TSFE']->id ) && class_exists( '\TYPO3\CMS\Core\Site\SiteFinder' ) ) { // TYPO3 9+
+			} elseif( isset( $GLOBALS['TSFE']->id ) ) { // TYPO3 9+
 				$langid = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' )->getAspect( 'language' )->getId();
 				$site = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Site\SiteFinder' )->getSiteByPageId( $GLOBALS['TSFE']->id );
 				$lang = substr( $site->getLanguageById( $langid )->getLocale(), 0, 5 );
-			} elseif( isset( $GLOBALS['TSFE']->config['config']['language'] ) ) {
-				$lang = $GLOBALS['TSFE']->config['config']['language'];
 			}
 
 
