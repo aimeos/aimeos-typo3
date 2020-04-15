@@ -14,7 +14,7 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"php": ">=7.1.0",
+		"php": ">=7.2.0",
 		"doctrine/dbal": "~2.5",
 		"composer/installers": "1.0.24",
 		"typo3/cms-core": "~9.5||~10.0",
