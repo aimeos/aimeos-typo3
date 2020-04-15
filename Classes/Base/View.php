@@ -326,12 +326,14 @@ class View
 			if( $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
 			}
-
-			$url = new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
 		}
-		else
-		{
+
+		if( $uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
+			$url = new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
+		} elseif( $uriBuilder instanceof \TYPO3\CMS\Core\Routing\RouterInterface ) {
 			$url = new \Aimeos\MW\View\Helper\Url\T3Router( $view, $uriBuilder, $fixed );
+		} else {
+			throw new \RuntimeException( 'No router for generating URLs available' );
 		}
 
 		$view->addHelper( 'url', $url );

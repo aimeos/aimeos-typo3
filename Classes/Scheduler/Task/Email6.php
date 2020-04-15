@@ -86,8 +86,8 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			$conf['client']['html']['common']['template']['baseurl'] = $themeDir;
 		}
 
-		Scheduler\Base::initFrontend( $this->{$this->fieldPageDetail} );
-		Scheduler\Base::execute( $conf, (array) $this->{$this->fieldController}, $this->{$this->fieldSite} );
+		$jobs = (array) $this->{$this->fieldController};
+		Scheduler\Base::execute( $conf, $jobs, $this->{$this->fieldSite}, $this->{$this->fieldPageDetail} );
 
 		return true;
 	}

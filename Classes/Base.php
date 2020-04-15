@@ -210,14 +210,13 @@ class Base
 	 * Creates the view object for the HTML client.
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
+	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder|\TYPO3\CMS\Core\Routing\RouterInterface $uriBuilder URL builder
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $langid ISO code of the current language ("de"/"de_CH") or null for no translation
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public static function getView( \Aimeos\MShop\Context\Item\Iface $context,
-		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
+	public static function getView( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null ) : \Aimeos\MW\View\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\View';

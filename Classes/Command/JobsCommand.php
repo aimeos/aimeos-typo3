@@ -141,7 +141,7 @@ class JobsCommand extends Command
 	 */
 	protected function getRouter( ?string $pid ) : \TYPO3\CMS\Core\Routing\RouterInterface
 	{
-		return GeneralUtility::makeInstance( SiteFinder::class );
+		$siteFinder = GeneralUtility::makeInstance( SiteFinder::class );
 		$site = $pid ? $siteFinder->getSiteByPageId( $pid ) : current( $siteFinder->getAllSites() );
 
 		if( $site ) {
