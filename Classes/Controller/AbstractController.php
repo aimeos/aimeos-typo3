@@ -42,7 +42,7 @@ abstract class AbstractController
 		{
 			$context = Base::getContext( $config );
 			$locale = Base::getLocale( $context, $this->request );
-			$context->setI18n( Base::getI18n( array( $locale->getLanguageId() ), $config->get( 'i18n', array() ) ) );
+			$context->setI18n( Base::getI18n( [$locale->getLanguageId()], $config->get( 'i18n', [] ) ) );
 			$context->setLocale( $locale );
 
 			self::$context = $context;
@@ -101,7 +101,7 @@ abstract class AbstractController
 			$locale = Base::getLocaleBackend( $context, $site );
 			$context->setLocale( $locale );
 
-			$i18n = Base::getI18n( array( $lang, 'en' ), $config->get( 'i18n', array() ) );
+			$i18n = Base::getI18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
 			$context->setI18n( $i18n );
 
 			if( $withView )
