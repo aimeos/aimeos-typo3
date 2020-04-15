@@ -21,30 +21,29 @@ class View
 	 * Creates the view object for the HTML client.
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URL builder object
+	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder|\TYPO3\CMS\Core\Routing\RouterInterface $uriBuilder URL builder
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public static function get( \Aimeos\MShop\Context\Item\Iface $context,
-		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder, array $templatePaths,
+	public static function get( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null ) : \Aimeos\MW\View\Iface
 	{
 		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
-		$engines = array( '.html' => new \Aimeos\MW\View\Engine\Typo3( $obj ) );
+		$engines = ['.html' => new \Aimeos\MW\View\Engine\Typo3( $obj )];
 
 		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
-		$view->prefix = $uriBuilder->getArgumentPrefix();
+		$view->prefix = 'ai';
 
 		$config = $context->getConfig();
 		$session = $context->getSession();
 
-		self::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
+		self::addTranslate( $view, $locale, $config->get( 'i18n', [] ) );
 		self::addParam( $view, $request );
 		self::addConfig( $view, $config );
+		self::addFormparam( $view, ['ai'] );
 		self::addNumber( $view, $config, $locale );
-		self::addFormparam( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		self::addUrl( $view, $config, $uriBuilder, $request );
 		self::addSession( $view, $session );
 		self::addRequest( $view, $request );
@@ -73,7 +72,7 @@ class View
 		{
 			if( $GLOBALS['BE_USER']->isAdmin() === false )
 			{
-				$groups = array();
+				$groups = [];
 				foreach( (array) $GLOBALS['BE_USER']->userGroups as $entry ) {
 					$groups[] = $entry['title'];
 				}
@@ -89,7 +88,7 @@ class View
 			if( $GLOBALS['TSFE']->loginUser == 1 ) {
 				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $GLOBALS['TSFE']->fe_user->groupData['title'] );
 			} else {
-				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, array() );
+				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, [] );
 			}
 		}
 
@@ -186,7 +185,7 @@ class View
 			return $fcn( $view, $request );
 		}
 
-		$params = ( $request !== null ? $request->getArguments() : array() );
+		$params = $request ? $request->getArguments() : [];
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
 
@@ -276,7 +275,7 @@ class View
 
 		if( $langid )
 		{
-			$i18n = \Aimeos\Aimeos\Base::getI18n( array( $langid ), $local );
+			$i18n = \Aimeos\Aimeos\Base::getI18n( [$langid], $local );
 			$translation = $i18n[$langid];
 		}
 		else
@@ -296,12 +295,11 @@ class View
 	 *
 	 * @param \Aimeos\MW\View\Iface $view View object
 	 * @param \Aimeos\MW\Config\Iface $config Configuration object
-	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder URI builder object
+	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder|\TYPO3\CMS\Core\Routing\RouterInterface $uriBuilder URI builder
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addUrl( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config,
-		\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder,
+	protected static function addUrl( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config, $uriBuilder,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] )
@@ -310,7 +308,7 @@ class View
 			return $fcn( $view, $config, $uriBuilder, $request );
 		}
 
-		$fixed = array();
+		$fixed = [];
 
 		if( $request )
 		{
@@ -333,7 +331,7 @@ class View
 		}
 		else
 		{
-			$url = new \Aimeos\MW\View\Helper\Url\T3Cli( $view, $uriBuilder, $fixed );
+			$url = new \Aimeos\MW\View\Helper\Url\T3Router( $view, $uriBuilder, $fixed );
 		}
 
 		$view->addHelper( 'url', $url );

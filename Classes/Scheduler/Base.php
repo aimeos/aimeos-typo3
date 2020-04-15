@@ -11,8 +11,8 @@ namespace Aimeos\Aimeos\Scheduler;
 
 
 use Aimeos\Aimeos;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 
 /**
@@ -22,6 +22,9 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
  */
 class Base
 {
+	protected static $router;
+
+
 	/**
 	 * Execute the list of jobs for the given sites
 	 *
@@ -29,10 +32,10 @@ class Base
 	 * @param array $jobs List of job names
 	 * @param array|string $sites List of site names
 	 */
-	public static function execute( array $conf, array $jobs, $sites )
+	public static function execute( array $conf, array $jobs, $sites, ?string $pid = null )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
-		$context = self::getContext( $conf );
+		$context = self::getContext( $conf, $pid );
 		$process = $context->getProcess();
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
@@ -70,7 +73,7 @@ class Base
 	 * @param array Multi-dimensional associative list of key/value pairs
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function getContext( array $conf = [] ) : \Aimeos\MShop\Context\Item\Iface
+	public static function getContext( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = Aimeos\Base::getConfig( $conf );
 		$context = Aimeos\Base::getContext( $config );
@@ -79,7 +82,7 @@ class Base
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
 		$search = $langManager->createSearch( true );
 
-		$expr = array();
+		$expr = [];
 		$expr[] = $search->getConditions();
 		$expr[] = $search->compare( '==', 'locale.language.id', 'en' ); // default language
 
@@ -90,47 +93,17 @@ class Base
 		$search->setConditions( $search->combine( '||', $expr ) );
 		$langids = $langManager->searchItems( $search )->keys()->toArray();
 
-		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : array() ) );
+		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : [] ) );
 		$context->setI18n( $i18n );
 
 
 		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'controller/jobs/templates' );
-		$view = Aimeos\Base::getView( $context, self::getUriBuilder(), $tmplPaths );
+		$view = Aimeos\Base::getView( $context, self::getRouter( $pid ), $tmplPaths );
 		$context->setView( $view );
 
 		$context->setEditor( 'scheduler' );
 
 		return $context;
-	}
-
-
-	public static function getUriBuilder() : \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder
-	{
-		$objectManager = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
-
-		$contentObjectRenderer = $objectManager->get( 'TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer' );
-		$configurationManager = $objectManager->get( 'TYPO3\CMS\Extbase\Configuration\ConfigurationManager' );
-		$configurationManager->setContentObject( $contentObjectRenderer );
-
-		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
-
-		if( method_exists( $uriBuilder, 'injectConfigurationManager' ) === false )
-		{
-			$class = 'TYPO3\\CMS\\Extbase\\Reflection\\PropertyReflection';
-			$prop = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class, $uriBuilder, 'configurationManager' );
-
-			$prop->setAccessible( true );
-			$prop->setValue( $uriBuilder, $configurationManager );
-		}
-		else
-		{
-			$uriBuilder->injectConfigurationManager( $configurationManager );
-		}
-
-		$uriBuilder->initializeObject();
-		$uriBuilder->setArgumentPrefix( 'ai' );
-
-		return $uriBuilder;
 	}
 
 
@@ -159,40 +132,21 @@ class Base
 
 
 	/**
-	 * Initializes the frontend to render frontend links in scheduler tasks
+	 * Returns the page router
 	 *
-	 * @param int $pageid Page ID for the frontend configuration
+	 * @param string|null $pid Page ID
+	 * @return \TYPO3\CMS\Core\Routing\RouterInterface Page router
+	 * @throws \RuntimeException If no site configuraiton is available
 	 */
-	public static function initFrontend( int $pageid )
+	protected static function getRouter( ?string $pid ) : \TYPO3\CMS\Core\Routing\RouterInterface
 	{
-		if( !is_object( $GLOBALS['TT'] ) )
-		{
-			$GLOBALS['TT'] = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TimeTracker\TimeTracker' );
-			$GLOBALS['TT']->start();
+		return GeneralUtility::makeInstance( SiteFinder::class );
+		$site = $pid ? $siteFinder->getSiteByPageId( $pid ) : current( $siteFinder->getAllSites() );
+
+		if( $site ) {
+			return $site->getRouter();
 		}
 
-		$page = GeneralUtility::makeInstance( 'TYPO3\CMS\Frontend\Page\PageRepository' );
-		$page->init( true );
-
-		$name = 'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController';
-		$GLOBALS['TSFE'] = GeneralUtility::makeInstance( $name, $GLOBALS['TYPO3_CONF_VARS'], $pageid, 0 );
-		$GLOBALS['TSFE']->connectToDB();
-		$GLOBALS['TSFE']->initFEuser();
-		$GLOBALS['TSFE']->no_cache = true;
-		$GLOBALS['TSFE']->sys_page = $page;
-		$GLOBALS['TSFE']->rootLine = $page->getRootLine( $pageid );
-		$GLOBALS['TSFE']->determineId();
-		$GLOBALS['TSFE']->initTemplate();
-		$GLOBALS['TSFE']->getConfigArray();
-
-		$rootline = BackendUtility::BEgetRootLine( $pageid );
-		$host = BackendUtility::firstDomainRecord( $rootline );
-
-		if( $host == null && ( $host = getenv( 'SCHEDULER_HTTP_HOST' ) ) == null ) {
-			throw new \RuntimeException( 'No domain record in root page or SCHEDULER_HTTP_HOST env variable found' );
-		}
-
-		$_SERVER['HTTP_HOST'] = $host;
-		GeneralUtility::flushInternalRuntimeCaches();
+		throw new \RuntimeException( 'No site configuration found' );
 	}
 }

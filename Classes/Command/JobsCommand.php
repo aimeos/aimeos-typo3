@@ -10,8 +10,10 @@
 namespace Aimeos\Aimeos\Command;
 
 
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,6 +38,7 @@ class JobsCommand extends Command
 		$this->setDescription( 'Executes the job controllers' );
 		$this->addArgument( 'jobs', InputArgument::REQUIRED, 'One or more job controller names like "admin/job customer/email/watch"' );
 		$this->addArgument( 'site', InputArgument::OPTIONAL, 'Site codes to execute the jobs for like "default unittest" (none for all)' );
+		$this->addOption( 'pid', null, InputOption::VALUE_REQUIRED, 'Page ID of the catalog detail page for jobs generating URLs' );
 	}
 
 
@@ -47,7 +50,7 @@ class JobsCommand extends Command
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
-		$context = $this->getContext();
+		$context = $this->getContext( $input->getOption( 'pid' ) );
 		$process = $context->getProcess();
 
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
@@ -85,9 +88,10 @@ class JobsCommand extends Command
 	/**
 	 * Returns a context object
 	 *
+	 * @param string|null $pid Page ID if available
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object containing only the most necessary dependencies
 	 */
-	protected function getContext() : \Aimeos\MShop\Context\Item\Iface
+	protected function getContext( ?string $pid ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
@@ -101,7 +105,7 @@ class JobsCommand extends Command
 		$i18n = \Aimeos\Aimeos\Base::getI18n( $langids, $config->get( 'i18n', [] ) );
 		$context->setI18n( $i18n );
 
-		$view = \Aimeos\Aimeos\Base::getView( $context, $this->getUriBuilder(), $tmplPaths );
+		$view = \Aimeos\Aimeos\Base::getView( $context, $this->getRouter( $pid ), $tmplPaths );
 		$context->setView( $view );
 
 		return $context->setEditor( 'aimeos:jobs' );
@@ -129,36 +133,21 @@ class JobsCommand extends Command
 
 
 	/**
-	 * Returns the URI builder object
+	 * Returns the page router
 	 *
-	 * @return TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder URI builder
+	 * @param string|null $pid Page ID
+	 * @return \TYPO3\CMS\Core\Routing\RouterInterface Page router
+	 * @throws \RuntimeException If no site configuraiton is available
 	 */
-	protected function getUriBuilder() : \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder
+	protected function getRouter( ?string $pid ) : \TYPO3\CMS\Core\Routing\RouterInterface
 	{
-		$objectManager = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Object\ObjectManager' );
+		return GeneralUtility::makeInstance( SiteFinder::class );
+		$site = $pid ? $siteFinder->getSiteByPageId( $pid ) : current( $siteFinder->getAllSites() );
 
-		$contentObjectRenderer = $objectManager->get( 'TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer' );
-		$configurationManager = $objectManager->get( 'TYPO3\CMS\Extbase\Configuration\ConfigurationManager' );
-		$configurationManager->setContentObject( $contentObjectRenderer );
-
-		$uriBuilder = $objectManager->get( 'TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder' );
-
-		if( method_exists( $uriBuilder, 'injectConfigurationManager' ) === false )
-		{
-			$class = 'TYPO3\\CMS\\Extbase\\Reflection\\PropertyReflection';
-			$prop = GeneralUtility::makeInstance( $class, $uriBuilder, 'configurationManager' );
-
-			$prop->setAccessible( true );
-			$prop->setValue( $uriBuilder, $configurationManager );
-		}
-		else
-		{
-			$uriBuilder->injectConfigurationManager( $configurationManager );
+		if( $site ) {
+			return $site->getRouter();
 		}
 
-		$uriBuilder->initializeObject();
-		$uriBuilder->setArgumentPrefix( 'ai' );
-
-		return $uriBuilder;
+		throw new \RuntimeException( 'No site configuration found' );
 	}
 }
