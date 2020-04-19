@@ -247,7 +247,7 @@ class Base
 			throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
 		}
 
-		$service = GeneralUtility::makeInstance( 'TYPO3\CMS\Extbase\Service\TypoScriptService' );
+		$service = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\TypoScriptService' );
 		$tsConfig = $service->convertTypoScriptArrayToPlainArray( $parser->setup );
 
 		// Allows "plugin.tx_aimeos.settings." prefix everywhere
