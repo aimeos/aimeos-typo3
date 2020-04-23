@@ -14,10 +14,8 @@ use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 
-$localautoloader = __DIR__ . '/Resources/Libraries/autoload.php';
-
-if( file_exists( $localautoloader ) === true ) {
-	require_once $localautoloader;
+if( file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
+	require_once __DIR__ . '/Resources/Libraries/autoload.php';
 }
 
 
