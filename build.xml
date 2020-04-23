@@ -7,16 +7,18 @@
 	</target>
 
 	<target name="clean" description="Cleans up build artefacts">
-		<delete dir="Resources/Libraries" includeemptydirs="true" />
+		<delete dir="Resources/Libraries/doctrine" includeemptydirs="true" />
 		<delete dir="typo3conf" includeemptydirs="true" />
 		<delete dir="typo3_src" includeemptydirs="true" />
 		<delete dir="public" includeemptydirs="true" />
 		<delete dir="typo3" includeemptydirs="true" />
+		<delete file="composer.lock" />
 		<delete file="index.php" />
 	</target>
 
 	<target name="composer" description="Updates composer dependencies">
-		<exec command="composer remove --no-update --working-dir ${project.basedir} typo3/cms-core sjbr/static-info-tables" checkreturn="true" logoutput="true" />
+		<delete dir="Resources/Libraries" includeemptydirs="true" />
+		<exec command="composer remove --no-update --working-dir ${project.basedir} typo3/cms-core typo3/cms-extbase sjbr/static-info-tables" checkreturn="true" logoutput="true" />
 		<exec command="composer update --no-dev --no-autoloader --working-dir ${project.basedir}" checkreturn="true" logoutput="true" passthru="true" />
 		<exec command="composer dump-autoload --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
 		<exec command="git checkout composer.json" checkreturn="true" logoutput="true" />
