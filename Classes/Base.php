@@ -13,10 +13,8 @@ namespace Aimeos\Aimeos;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
-$localautoloader = dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
-
-if( file_exists( $localautoloader ) === true ) {
-	require_once $localautoloader;
+if( file_exists( dirname( __DIR__ ) . '/Resources/Libraries/autoload.php' ) === true ) {
+	require_once dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
 }
 
 
