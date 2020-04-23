@@ -26,6 +26,7 @@ abstract class Email extends AbstractProvider
 	private $fieldReplyEmail = 'aimeos_reply_email';
 	private $fieldPageLogin = 'aimeos_pageid_login';
 	private $fieldPageDetail = 'aimeos_pageid_detail';
+	private $fieldPageCatalog = 'aimeos_pageid_catalog';
 	private $fieldPageDownload = 'aimeos_pageid_download';
 	private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
@@ -102,6 +103,24 @@ abstract class Email extends AbstractProvider
 			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.reply-email',
 			'cshKey'   => 'xMOD_tx_aimeos',
 			'cshLabel' => $this->fieldReplyEmail
+		);
+
+
+		// In case of editing a task, set to the internal value if data wasn't already submitted
+		if( empty( $taskInfo[$this->fieldPageCatalog] ) && $parentObject->CMD === 'edit' ) {
+			$taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog};
+		}
+
+		$taskInfo[$this->fieldPageCatalog] = htmlspecialchars( $taskInfo[$this->fieldPageCatalog], ENT_QUOTES, 'UTF-8' );
+
+		$fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
+		$fieldCode = sprintf( $fieldStr, $this->fieldPageCatalog, $taskInfo[$this->fieldPageCatalog] );
+
+		$additionalFields[$this->fieldPageCatalog] = array(
+			'code'     => $fieldCode,
+			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-catalog',
+			'cshKey'   => 'xMOD_tx_aimeos',
+			'cshLabel' => $this->fieldPageCatalog
 		);
 
 
