@@ -58,10 +58,10 @@ class JsonapiController extends AbstractController
 	 * Deletes the resource object or a list of resource objects
 	 *
 	 * @param string Resource location, e.g. "basket"
-	 * @param string Related resource, e.g. "product"
+	 * @param string|null Related resource, e.g. "product"
 	 * @return string Generated output
 	 */
-	public function deleteAction( string $resource, string $related )
+	public function deleteAction( string $resource, string $related = null )
 	{
 		$response = $this->createClient( $resource, $related )->delete( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
@@ -72,10 +72,10 @@ class JsonapiController extends AbstractController
 	 * Returns the requested resource object or list of resource objects
 	 *
 	 * @param string Resource location, e.g. "basket"
-	 * @param string Related resource, e.g. "product"
+	 * @param string|null Related resource, e.g. "product"
 	 * @return string Generated output
 	 */
-	public function getAction( string $resource, string $related )
+	public function getAction( string $resource, string $related = null )
 	{
 		$response = $this->createClient( $resource, $related )->get( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
@@ -86,10 +86,10 @@ class JsonapiController extends AbstractController
 	 * Updates a resource object or a list of resource objects
 	 *
 	 * @param string Resource location, e.g. "basket"
-	 * @param string Related resource, e.g. "product"
+	 * @param string|null Related resource, e.g. "product"
 	 * @return string Generated output
 	 */
-	public function patchAction( string $resource, string $related )
+	public function patchAction( string $resource, string $related = null )
 	{
 		$response = $this->createClient( $resource, $related )->patch( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
@@ -100,10 +100,10 @@ class JsonapiController extends AbstractController
 	 * Creates a new resource object or a list of resource objects
 	 *
 	 * @param string Resource location, e.g. "basket"
-	 * @param string Related resource, e.g. "product"
+	 * @param string|null Related resource, e.g. "product"
 	 * @return string Generated output
 	 */
-	public function postAction( string $resource, string $related )
+	public function postAction( string $resource, string $related = null )
 	{
 		$response = $this->createClient( $resource, $related )->post( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
@@ -114,10 +114,10 @@ class JsonapiController extends AbstractController
 	 * Creates or updates a single resource object
 	 *
 	 * @param string Resource location, e.g. "basket"
-	 * @param string Related resource, e.g. "product"
+	 * @param string|null Related resource, e.g. "product"
 	 * @return string Generated output
 	 */
-	public function putAction( string $resource, string $related )
+	public function putAction( string $resource, string $related = null )
 	{
 		$response = $this->createClient( $resource, $related )->put( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
 		return $this->setPsrResponse( $response );
