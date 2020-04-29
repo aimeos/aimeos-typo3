@@ -13,10 +13,10 @@ namespace Aimeos\Aimeos;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
-$localautoloader = dirname( __DIR__ ) . '/Resources/Libraries/autoload.php';
+$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 
-if( file_exists( $localautoloader ) === true ) {
-	require_once $localautoloader;
+if( file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
+	require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 }
 
 
