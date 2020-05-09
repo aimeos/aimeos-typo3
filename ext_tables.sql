@@ -15,4 +15,4 @@ CREATE TABLE fe_users (
     longitude decimal(8,6) DEFAULT NULL,
     latitude decimal(8,6) DEFAULT NULL,
     vdate date DEFAULT NULL,
-);
+) ENGINE=InnoDB;
