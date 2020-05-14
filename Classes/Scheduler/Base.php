@@ -47,6 +47,9 @@ class Base
 
 		foreach( self::getSiteItems( $context, $sites ) as $siteItem )
 		{
+			\Aimeos\MShop::cache( true );
+			\Aimeos\MAdmin::cache( true );
+
 			$localeItem = $manager->bootstrap( $siteItem->getCode(), '', '', false );
 			$localeItem->setLanguageId( null );
 			$localeItem->setCurrencyId( null );
