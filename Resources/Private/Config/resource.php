@@ -24,12 +24,12 @@ return [
 	],
 	'fs-admin' => [
 		'adapter' => 'Standard',
-		'basedir' => PATH_site . 'typo3temp',
+		'basedir' => PATH_site . 'typo3temp/.aimeos',
 		'tempdir' => PATH_site . 'typo3temp',
 	],
 	'fs-import' => [
 		'adapter' => 'Standard',
-		'basedir' => PATH_site . 'uploads/tx_aimeos/.secure/import',
+		'basedir' => PATH_site . 'fileadmin/.aimeos',
 		'tempdir' => PATH_site . 'typo3temp',
 	],
 	'fs-secure' => [
