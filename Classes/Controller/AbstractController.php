@@ -51,6 +51,10 @@ abstract class AbstractController
 		// Use plugin specific configuration
 		self::$context->setConfig( $config );
 
+		foreach( self::$context->getLocale()->getSiteItem()->getConfig() as $key => $value ) {
+			$config->set( $key, $value );
+		}
+
 		if( $withView === true )
 		{
 			$langid = self::$context->getLocale()->getLanguageId();
@@ -103,6 +107,10 @@ abstract class AbstractController
 
 			$i18n = Base::getI18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
 			$context->setI18n( $i18n );
+
+			foreach( $locale->getSiteItem()->getConfig() as $key => $value ) {
+				$config->set( $key, $value );
+			}
 
 			if( $withView )
 			{

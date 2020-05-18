@@ -64,6 +64,11 @@ class JobsCommand extends Command
 			$localeItem->setCurrencyId( null );
 			$context->setLocale( $localeItem );
 
+			$config = $context->getConfig();
+			foreach( $localeItem->getSiteItem()->getConfig() as $key => $value ) {
+				$config->set( $key, $value );
+			}
+
 			$output->writeln( sprintf( 'Executing the Aimeos jobs for "<info>%s</info>"', $siteItem->getCode() ) );
 
 			// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
