@@ -64,19 +64,8 @@ class Setup
 		$class = \TYPO3\CMS\Extbase\Object\ObjectManager::class;
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
 
-		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
-		{
-			$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ); // TYPO3 9
-			$demo = $object->get( 'aimeos', 'useDemoData' );
-		}
-		else
-		{
-			$object = $objectManager->get( 'TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility' ); // TYPO3 7+8
-
-			$conf = $object->convertValuedToNestedConfiguration( $object->getCurrentConfiguration( 'aimeos' ) );
-			$demo = ( isset( $conf['useDemoData'] ) ? $conf['useDemoData'] : '' );
-		}
-
+		$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' );
+		$demo = $object->get( 'aimeos', 'useDemoData' );
 
 		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $demo ) ) );
 		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
@@ -84,16 +73,7 @@ class Setup
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
 
-
-		if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) )
-		{
-			$object->set( 'aimeos', 'useDemoData', '' );
-		}
-		else
-		{
-			$conf['useDemoData'] = '';
-			$object->writeConfiguration( $conf, 'aimeos' );
-		}
+		$object->set( 'aimeos', 'useDemoData', '' );
 	}
 
 
@@ -197,16 +177,7 @@ class Setup
 			$ctx->setProcess( new \Aimeos\MW\Process\None() );
 		}
 
-		if( class_exists( '\TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' ) ) // TYPO3 9+
-		{
-			$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
-			$ctx->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
-		}
-		elseif( class_exists( '\TYPO3\CMS\Saltedpasswords\Salt\SaltFactory' ) ) // TYPO3 7/8
-		{
-			$ctx->setHasherTypo3( \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance() );
-		}
-
-		return $ctx;
+		$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
+		return $ctx->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
 	}
 }
