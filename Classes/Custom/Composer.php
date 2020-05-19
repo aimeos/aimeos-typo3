@@ -126,24 +126,12 @@ class Composer
 
 
 	/**
-	 * Returns the available options defined in the composer file.
-	 *
-	 * @param CommandEvent $event Command event object
-	 * @return array Associative list of option keys and values
-	 */
-	protected static function getOptions( CommandEvent $event ) : array
-	{
-		return $event->getComposer()->getPackage()->getExtra();
-	}
-
-
-	/**
 	 * Join community
 	 *
 	 * @param Event $event Event instance
 	 * @throws \RuntimeException If an error occured
 	 */
-	protected static function join( Event $event )
+	protected static function join( \Composer\Script\Event $event )
 	{
 		$fs = \Composer\Factory::createRemoteFilesystem( $event->getIO(), $event->getComposer()->getConfig() );
 		$fs->getContents( 'github.com', 'https://api.github.com/graphql', false, [
