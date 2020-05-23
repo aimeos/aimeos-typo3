@@ -125,6 +125,16 @@ class CatalogController extends AbstractController
 
 
 	/**
+	 * Renders the catalog supplier section.
+	 */
+	public function supplierAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/supplier' );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the catalog tree section.
 	 */
 	public function treeAction()
