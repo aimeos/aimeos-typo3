@@ -44,11 +44,11 @@ class JsonapiController extends AbstractController
 
 		switch( $this->request->getMethod() )
 		{
-			case 'DELETE': return $this->deleteAction( $resource, $related );
-			case 'PATCH': return $this->patchAction( $resource, $related );
-			case 'POST': return $this->postAction( $resource, $related );
-			case 'PUT': return $this->putAction( $resource, $related );
-			case 'GET': return $this->getAction( $resource, $related );
+			case 'DELETE': return $this->deleteAction( (string) $resource, $related );
+			case 'PATCH': return $this->patchAction( (string) $resource, $related );
+			case 'POST': return $this->postAction( (string) $resource, $related );
+			case 'PUT': return $this->putAction( (string) $resource, $related );
+			case 'GET': return $this->getAction( (string) $resource, $related );
 			default: return $this->optionsAction( $resource );
 		}
 	}
