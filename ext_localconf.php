@@ -313,6 +313,8 @@ if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain
  * Disable TYPO3 canonical tags so Aimeos ones are used
  */
 
-unset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
+if( !\Aimeos\Aimeos\Base::getExtConfig( 'typo3Canonical', false ) ) {
+	unset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
+}
 
 ?>
