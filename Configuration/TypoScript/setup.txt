@@ -94,7 +94,7 @@ aimeosPlain {
 	}
 }
 
-[globalVar = TSFE:type=191351524][globalVar = TSFE:type=191351525]
+[getTSFE().type in [191351524, 191351525]]
 tt_content.stdWrap >
 tt_content.list = COA
 tt_content.list.20 = CASE
