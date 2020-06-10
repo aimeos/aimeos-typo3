@@ -149,8 +149,9 @@ class CatalogController extends AbstractController
 	 */
 	protected function removeMetatags()
 	{
-		if( class_exists( '\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' ) )
-		{
+		if( class_exists( '\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' )
+			&& !\Aimeos\Aimeos\Base::getExtConfig( 'typo3Metatags', true )
+		) {
 			$registry = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' );
 
 			$registry->getManagerForProperty( 'keywords' )->removeProperty( 'keywords' );
