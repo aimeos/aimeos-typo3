@@ -80,7 +80,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			$themeDir = $this->{$this->fieldTemplateBaseurl};
 
 			if( $themeDir[0] !== '/' ) {
-				$themeDir = realpath( PATH_site . $themeDir );
+				$themeDir = realpath( \TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/' . $themeDir );
 			}
 
 			$conf['client']['html']['common']['template']['baseurl'] = $themeDir;
