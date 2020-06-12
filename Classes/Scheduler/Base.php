@@ -96,13 +96,10 @@ class Base
 		$search->setConditions( $search->combine( '||', $expr ) );
 		$langids = $langManager->searchItems( $search )->keys()->toArray();
 
-		$i18n = Aimeos\Base::getI18n( $langids, ( isset( $conf['i18n'] ) ? (array) $conf['i18n'] : [] ) );
-		$context->setI18n( $i18n );
-
+		$context->setI18n( Aimeos\Base::getI18n( $langids, (array) ( $conf['i18n'] ?? [] ) ) );
 
 		$tmplPaths = Aimeos\Base::getAimeos()->getCustomPaths( 'controller/jobs/templates' );
-		$view = Aimeos\Base::getView( $context, self::getRouter( $pid ), $tmplPaths );
-		$context->setView( $view );
+		$context->setView( Aimeos\Base::getView( $context, self::getRouter( $pid ), $tmplPaths ) );
 
 		$context->setEditor( 'scheduler' );
 
