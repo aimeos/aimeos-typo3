@@ -44,6 +44,7 @@ class View
 		self::addTranslate( $view, $locale, $config->get( 'i18n', array() ) );
 		self::addParam( $view, $request );
 		self::addConfig( $view, $config );
+		self::addDate( $view, $config, $locale );
 		self::addNumber( $view, $config, $locale );
 		self::addFormparam( $view, array( $uriBuilder->getArgumentPrefix() ) );
 		self::addUrl( $view, $config, $uriBuilder, $request );
@@ -118,6 +119,32 @@ class View
 		$conf = new \Aimeos\MW\Config\Decorator\Protect( clone $config, ['admin', 'client', 'resource/fs/baseurl'] );
 		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $conf );
 		$view->addHelper( 'config', $helper );
+
+		return $view;
+	}
+
+
+	/**
+	 * Adds the "date" helper to the view object
+	 *
+	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\MW\Config\Iface $config Configuration object
+	 * @param string|null $locale (Country specific) language code
+	 * @return \Aimeos\MW\View\Iface Modified view object
+	 */
+	protected static function addDate( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Config\Iface $config,
+		string $locale = null ) : \Aimeos\MW\View\Iface
+	{
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] )
+			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] ) )
+		) {
+			return $fcn( $view, $config, $locale );
+		}
+
+		$pattern = $config->get( 'client/html/common/date/pattern' );
+
+		$helper = new \Aimeos\MW\View\Helper\Date\Standard( $view, $pattern );
+		$view->addHelper( 'date', $helper );
 
 		return $view;
 	}
