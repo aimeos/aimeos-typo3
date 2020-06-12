@@ -141,9 +141,9 @@ class View
 			return $fcn( $view, $config, $locale );
 		}
 
-		$pattern = $config->get( 'client/html/common/date/pattern' );
+		$format = $config->get( 'client/html/common/date/format' );
 
-		$helper = new \Aimeos\MW\View\Helper\Date\Standard( $view, $pattern );
+		$helper = new \Aimeos\MW\View\Helper\Date\Standard( $view, $format );
 		$view->addHelper( 'date', $helper );
 
 		return $view;
