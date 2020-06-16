@@ -52,6 +52,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.attribute-types</label>
 					<config>
 						<type>select</type>
+						<renderType>selectMultipleSideBySide</renderType>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Attribute->getTypes</itemsProcFunc>
 						<size>10</size>
 						<maxitems>100</maxitems>

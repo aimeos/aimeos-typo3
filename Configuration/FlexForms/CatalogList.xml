@@ -122,6 +122,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.catid-default</label>
 					<config>
 						<type>select</type>
+						<renderType>selectMultipleSideBySide</renderType>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
 						<size>10</size>
 						<maxitems>100</maxitems>
@@ -133,6 +134,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort</label>
 					<config>
 						<type>select</type>
+						<renderType>selectSingleBox</renderType>
 						<multiple>0</multiple>
 						<items type="array">
 							<numIndex index="0" type="array">

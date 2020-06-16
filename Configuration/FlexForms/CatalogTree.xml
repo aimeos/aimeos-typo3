@@ -53,6 +53,7 @@
 					<config>
 						<type>select</type>
 						<multiple>0</multiple>
+						<renderType>selectSingleBox</renderType>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
 						<items type="array">
 							<numIndex index="0" type="array">

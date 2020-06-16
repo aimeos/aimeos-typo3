@@ -52,6 +52,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.catid-default</label>
 					<config>
 						<type>select</type>
+						<renderType>selectSingleBox</renderType>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
 						<items type="array">
 							<numIndex index="0" type="array">

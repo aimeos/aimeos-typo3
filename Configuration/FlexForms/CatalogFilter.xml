@@ -81,6 +81,7 @@
 					<config>
 						<type>select</type>
 						<multiple>0</multiple>
+						<renderType>selectSingleBox</renderType>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Catalog->getCategories</itemsProcFunc>
 						<items type="array">
 							<numIndex index="0" type="array">
@@ -117,6 +118,7 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-filter.attribute-types</label>
 					<config>
 						<type>select</type>
+						<renderType>selectMultipleSideBySide</renderType>
 						<itemsProcFunc>Aimeos\Aimeos\Flexform\Attribute->getTypes</itemsProcFunc>
 						<size>10</size>
 						<maxitems>100</maxitems>
