@@ -229,7 +229,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
  * Register icons for Aimeos content elements
  */
 $provider = 'TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider';
-$icons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+$icons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Imaging\IconRegistry::class );
 $icons->registerIcon( 'aimeos_catalog-list', $provider, ['name' => 'list'] );
 $icons->registerIcon( 'aimeos_catalog-detail', $provider, ['name' => 'cube'] );
 $icons->registerIcon( 'aimeos_catalog-filter', $provider, ['name' => 'filter'] );
