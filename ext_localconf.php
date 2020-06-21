@@ -219,6 +219,14 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 
 
 /**
+ * Register Aimeos content elements
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:aimeos/Configuration/PageTS/aimeos.tsconfig">'
+);
+
+
+/**
  * Aimeos scheduler tasks
  */
 

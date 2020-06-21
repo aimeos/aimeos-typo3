@@ -1,0 +1,11 @@
+mod.wizards.newContentElement.wizardItems.aimeos {
+	after = common
+	header = Aimeos
+	elements {
+		aimeos_jsonapi {
+			iconIdentifier = aimeos_jsonapi
+			title = JSON REST API
+			description = Endpoint for the Aimeos HTTP REST API in JSON format
+		}
+	}
+}
