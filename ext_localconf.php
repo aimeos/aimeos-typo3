@@ -257,6 +257,8 @@ $icons->registerIcon( 'aimeos_checkout-confirm', $provider, ['name' => 'check'] 
 $icons->registerIcon( 'aimeos_checkout-update', $provider, ['name' => 'euro'] );
 $icons->registerIcon( 'aimeos_jsonapi', $provider, ['name' => 'code'] );
 
+$icons->registerIcon( 'aimeos-widget-latestorders', $provider, ['name' => 'shopping-cart'] );
+
 
 /**
  * Aimeos scheduler tasks
