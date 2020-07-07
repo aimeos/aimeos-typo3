@@ -25,10 +25,6 @@ if( TYPO3_MODE === 'BE' )
 		['source' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg']
 	);
 
-	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook'][] = 'Aimeos\\Aimeos\\Custom\\WizardItem';
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['Aimeos\\Aimeos\\Custom\\Wizicon'] =
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' ) . 'Classes/Custom/Wizicon.php';
-
 
 	/**
 	 * Register backend module
@@ -67,7 +63,7 @@ if( TYPO3_MODE === 'BE' )
 	$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher' );
 	$signalSlotDispatcher->connect(
 		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-		'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10
+		'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10+ and PSR Events in 11+
 		'Aimeos\\Aimeos\\Setup',
 		'signal'
 	);
