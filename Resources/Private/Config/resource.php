@@ -26,12 +26,12 @@ return [
 	],
 	'fs-admin' => [
 		'adapter' => 'Standard',
-		'basedir' => $publicPath . '/typo3temp/.aimeos',
+		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/admin',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-import' => [
 		'adapter' => 'Standard',
-		'basedir' => $publicPath . '/fileadmin/.aimeos',
+		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/import',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-secure' => [
