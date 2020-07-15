@@ -276,7 +276,9 @@ class Context
 			return $fcn( $context );
 		}
 
-		if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
+		$t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
+
+		if( TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) )
 		{
 			$context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
 			$context->setEditor( (string) $GLOBALS['TSFE']->fe_user->user['username'] );
