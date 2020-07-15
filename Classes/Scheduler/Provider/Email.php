@@ -12,6 +12,7 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
 
 use Aimeos\Aimeos\Base;
 use Aimeos\Aimeos\Scheduler;
+use TYPO3\CMS\Scheduler\Task\Enumeration\Action;
 
 
 /**

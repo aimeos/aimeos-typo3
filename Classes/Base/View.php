@@ -9,6 +9,8 @@
 
 namespace Aimeos\Aimeos\Base;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 /**
  * Create Aimeos views
@@ -30,7 +32,7 @@ class View
 	public static function get( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null ) : \Aimeos\MW\View\Iface
 	{
-		$obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
+		$obj = GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
 		$engines = ['.html' => new \Aimeos\MW\View\Engine\Typo3( $obj )];
 
 		$prefix = 'ai';
@@ -244,8 +246,8 @@ class View
 		}
 
 		$target = $GLOBALS["TSFE"]->id;
-		$get = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET();
-		$post = \TYPO3\CMS\Core\Utility\GeneralUtility::_POST();
+		$get = GeneralUtility::_GET();
+		$post = GeneralUtility::_POST();
 
 		$helper = new \Aimeos\MW\View\Helper\Request\Typo3( $view, $target, $_FILES, $get, $post, $_COOKIE, $_SERVER );
 		$view->addHelper( 'request', $helper );

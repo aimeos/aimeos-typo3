@@ -16,8 +16,7 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
  *
  * @package TYPO3
  */
-class Typo6 extends AbstractProvider
-	implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface
+class Typo6 extends AbstractProvider implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface
 {
 	/**
 	 * Fields generation.

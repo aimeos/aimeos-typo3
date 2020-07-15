@@ -16,8 +16,7 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
  *
  * @package TYPO3
  */
-class Email6 extends Email
-	implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface
+class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface
 {
 	/**
 	 * Fields generation.
