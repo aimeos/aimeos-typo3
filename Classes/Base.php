@@ -98,13 +98,8 @@ class Base
 	 */
 	public static function getExtConfig( string $name, $default = null )
 	{
-		if( self::$extConfig === null )
-		{
-			if( class_exists( '\TYPO3\CMS\Core\Configuration\ExtensionConfiguration' ) ) {
-				self::$extConfig = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' )->get( 'aimeos' );
-			} else { // @deprecated Since TYPO3 9.x
-				self::$extConfig = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['aimeos'] );
-			}
+		if( self::$extConfig === null ) {
+			self::$extConfig = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' )->get( 'aimeos' );
 		}
 
 		if( isset( self::$extConfig[$name] ) ) {
