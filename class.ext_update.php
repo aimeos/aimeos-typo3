@@ -79,10 +79,6 @@ class ext_update
 	 */
 	protected function checkEnvironment()
 	{
-		if( version_compare( TYPO3_version, '9.0', '<' ) ) {
-			return;
-		}
-
 		$objectManager = GeneralUtility::makeInstance( ObjectManager::class );
 		$connectionPool = $objectManager->get( TYPO3\CMS\Core\Database\ConnectionPool::class );
 		$connection = $connectionPool->getQueryBuilderForTable( 'fe_user' )->getConnection();
