@@ -308,7 +308,9 @@ class Context
 			return $fcn( $context );
 		}
 
-		if( TYPO3_MODE === 'FE' && $GLOBALS['TSFE']->loginUser == 1 )
+		$t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
+
+		if( TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) )
 		{
 			$ids = GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] );
 			$context->setGroupIds( $ids );

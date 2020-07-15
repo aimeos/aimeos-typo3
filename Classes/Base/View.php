@@ -91,7 +91,9 @@ class View
 		}
 		else
 		{
-			if( $GLOBALS['TSFE']->loginUser == 1 ) {
+			$t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
+
+			if( $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) ) {
 				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $GLOBALS['TSFE']->fe_user->groupData['title'] );
 			} else {
 				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, [] );
