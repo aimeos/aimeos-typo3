@@ -5,11 +5,11 @@ namespace Aimeos\Aimeos\Tests\Unit\Scheduler\Provider;
 
 
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
+use TYPO3\CMS\Scheduler\Task\Enumeration\Action;
 use Aimeos\Aimeos\Scheduler;
 
 
-class Email6Test
-	extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	private $object;
 
@@ -33,7 +33,6 @@ class Email6Test
 	{
 		$taskInfo = array();
 		$module = new SchedulerModuleController();
-		$module->CMD = 'edit';
 
 		$result = $this->object->getAdditionalFields( $taskInfo, $this->object, $module );
 
@@ -54,7 +53,7 @@ class Email6Test
 	{
 		$taskInfo = array();
 		$module = new SchedulerModuleController();
-		$module->CMD = 'edit';
+		$module->setCurrentAction( new Action( 'EDIT' ) );
 
 		$mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Email6' )
 			->setMethods( array( 'getFields' ) )->getMock();
