@@ -53,7 +53,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldSenderFrom] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldSenderFrom] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom};
 		}
 
@@ -71,7 +71,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldSenderEmail] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldSenderEmail] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail};
 		}
 
@@ -89,7 +89,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldReplyEmail] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldReplyEmail] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail};
 		}
 
@@ -107,7 +107,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldPageCatalog] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldPageCatalog] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog};
 		}
 
@@ -125,7 +125,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldPageDetail] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldPageDetail] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail};
 		}
 
@@ -143,7 +143,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldPageDownload] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldPageDownload] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload};
 		}
 
@@ -161,7 +161,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldPageLogin] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldPageLogin] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin};
 		}
 
@@ -179,7 +179,7 @@ abstract class Email extends AbstractProvider
 
 
 		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->CMD === 'edit' ) {
+		if( empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->getCurrentAction() === Action::EDIT ) {
 			$taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl};
 		}
 
