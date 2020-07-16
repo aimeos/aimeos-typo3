@@ -36,8 +36,8 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **19.10 release and later**.
 
+- Stable release: 20.7 (TYPO3 9/10 LTS)
 - LTS release: 19.10 (TYPO3 7/8/9 LTS)
-- Stable release: 20.4 (TYPO3 9 LTS)
 
 ### TYPO3 extension repository
 
@@ -53,7 +53,7 @@ The latest version can be installed via composer too. This is especially useful 
 
 In order to tell install TYPO3, you have to execute
 
-`composer create-project typo3/cms-base-distribution:~9.5 myshop`
+`composer create-project typo3/cms-base-distribution myshop`
 
 This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have to edit the composer.json file and add the ''post-install-cmd'' and ''post-update-cmd'' scripts:
 
@@ -70,7 +70,7 @@ This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have t
 
 Then, install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~20.4`
+`composer req aimeos/aimeos-typo3:~20.7`
 
 This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos composer script will be executed automatically, which copies some required files and adds a link to the Aimeos extensions placed in the ./ext/ directory.
 
