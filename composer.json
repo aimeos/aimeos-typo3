@@ -28,6 +28,7 @@
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
+		"bithost-gmbh/pdfviewhelpers": "^2.3.4",
 		"sjbr/static-info-tables": "^6.5",
 		"nyholm/psr7-server": "^0.4.1",
 		"nyholm/psr7": "~1.2"
