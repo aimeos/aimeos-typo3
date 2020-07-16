@@ -26,6 +26,7 @@ $EM_CONF['aimeos'] = array(
 			'php' => '7.2.0-7.99.99',
 			'typo3' => '9.5.0-10.99.99',
 			'scheduler' => '9.5.0-10.99.99',
+			'pdfviewhelpers' => '2.3.4-2.99.99',
 			'static_info_tables' => '6.0.0-6.99.99',
 		),
 		'conflicts' => array(
