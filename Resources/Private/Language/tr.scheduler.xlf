@@ -4,7 +4,7 @@
 		<body>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
-				<target>Seçilen Aimeos Alışveriş görevlerini yürütür</target>
+				<target>Seçilen Aimeos Alışveriş Mağazası görevlerini yürütür</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode" xml:space="preserve">
 				<source>One or more sites is invalid or already disabled</source>
@@ -36,7 +36,7 @@
 			</trans-unit>
 			<trans-unit id="default.name" xml:space="preserve">
 				<source>Aimeos Shop scheduler</source>
-				<target>Aimeos Alışveriş işdüzenleyici</target>
+				<target>Aimeos Alışveriş Mağazası planlı iş düzenleyici</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
@@ -104,7 +104,7 @@
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop advanced scheduler</source>
-				<target>Aimeos Alışveriş gelişmiş işdüzenleyici</target>
+				<target>Aimeos Alışveriş Mağazası gelişmiş planlı iş düzenleyici</target>
 			</trans-unit>
 		</body>
 	</file>
