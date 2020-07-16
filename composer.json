@@ -28,6 +28,7 @@
 		"aimeos/ai-admin-jsonadm": "2020.07.*",
 		"aimeos/ai-client-jsonapi": "2020.07.*",
 		"aimeos/ai-client-html": "2020.07.*",
+		"bithost-gmbh/pdfviewhelpers": "^2.3.4",
 		"sjbr/static-info-tables": "^6.5",
 		"nyholm/psr7-server": "^0.4.1",
 		"nyholm/psr7": "~1.2"
