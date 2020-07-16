@@ -14,6 +14,14 @@
 				<source>Administration Aimeos Shop</source>
 				<target>Управление магазином Aimeos</target>
 			</trans-unit>
+			<trans-unit id="t3_9x_config_error_header" xml:space="preserve">
+				<source>Possible database charset problem</source>
+				<target>Возможна проблема с кодировкой базы данных</target>
+			</trans-unit>
+			<trans-unit id="t3_9x_config_error_text" xml:space="preserve">
+				<source>The charset/collation &quot;utf8mb4&quot; isn't fully supported by MySQL before 5.7.8 and MariaDB before 10.2. Please use &quot;utf8&quot; instead in your ./typo3conf/LocalConfiguration.php file</source>
+				<target>Кодировка / сопоставление &quot;utf8mb4&quot; не полностью поддерживается MySQL до 5.7.8 и MariaDB до 10.2. Пожалуйста, используйте «utf8» в  файле ./typo3conf/LocalConfiguration.php</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

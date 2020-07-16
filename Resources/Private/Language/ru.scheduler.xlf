@@ -56,12 +56,15 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
 				<source>The page ID of the account login page is invalid</source>
+				<target>Неверный идентификатор ID страницы входа в аккаунт</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
+				<target>Неверный идентификатор ID страницы загрузки аккаунта</target>
 			</trans-unit>
 			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
 				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+				<target>URL веб-сайта введен не верно. Используйте URL, включая протокол и домен, например «https://aimeos.org/».</target>
 			</trans-unit>
 			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
 				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
@@ -85,12 +88,15 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-login" xml:space="preserve">
 				<source>Account login page ID</source>
+				<target>Аккаунт - идентификатор ID страницы входа в аккаунт</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
+				<target>Аккаунт - идентификатор ID страницы загрузок аккаунта</target>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>Базовый УРЛ для фото товаров ( например - https://localhost/uploads/tx_aimeos/)</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
@@ -98,6 +104,7 @@
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop advanced scheduler</source>
+				<target>Расширенный планировщик Aimeos shop</target>
 			</trans-unit>
 		</body>
 	</file>

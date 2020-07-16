@@ -4,12 +4,15 @@
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
 				<source>Page with JSON REST API plugin</source>
+				<target>Страница с плагином JSON REST API</target>
 			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
+				<target>Страница загрузок аккаунта</target>
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
+				<target>Страница ошибки, если загрузка запрещена</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
@@ -33,6 +36,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
+				<target>Отображаемые типы атрибутов для фасетного поиска</target>
 			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
@@ -40,6 +44,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>Страница категории (или страница списка каталога)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -47,30 +52,39 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
+				<target>Категория или категории по умолчанию, если нет доступных параметров</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
+				<target>Сортировка по умолчанию для списка товаров</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
+				<target>Релевантность (позиция)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
+				<target>Название (А-Я)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
+				<target>Название (Я-А)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
+				<target>Цена (сначала самая низкая)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
+				<target>Цена (сначала самая высокая)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
+				<target>Время создания (сначала самые старые)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
+				<target>Время создания (сначала самые новые)</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -78,9 +92,11 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
 				<source>Default product ID if no parameter is available</source>
+				<target>Идентификатор ID товара по умолчанию, если нет доступных параметров</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>SKU по умолчанию, если нет доступных параметров</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
@@ -112,6 +128,7 @@
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
+				<target>Страница политики возвратов</target>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>

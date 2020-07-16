@@ -28,7 +28,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
 				<source>Always display these category levels</source>
-				<target>Her zaman bu kategori düzeylerini görüntüle</target>
+				<target>Her zaman bu kategori seviyelerini görüntüle</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
@@ -44,6 +44,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>Kategori sayfası (veya katalog liste sayfası)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
