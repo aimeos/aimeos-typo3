@@ -335,7 +335,8 @@ class Context
 	 */
 	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
-		if( TYPO3_MODE === 'FE' && class_exists( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' ) )
+		if( TYPO3_MODE === 'FE' && isset( $GLOBALS['BE_USER']->adminPanel )
+			&& class_exists( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' ) )
 		{
 			$service = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' );
 			$tstamp = strtotime( $service->getConfigurationOption( 'preview', 'simulateDate' ) );
