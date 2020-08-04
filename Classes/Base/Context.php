@@ -250,7 +250,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		$class = TYPO3\CMS\Core\Authentication\CommandLineUserAuthentication::class;
+		$class = \TYPO3\CMS\Core\Authentication\CommandLineUserAuthentication::class;
 
 		if( isset( $GLOBALS['TSFE']->fe_user ) ) {
 			$session = new \Aimeos\MW\Session\Typo3( $GLOBALS['TSFE']->fe_user );
