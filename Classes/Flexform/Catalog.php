@@ -39,8 +39,8 @@ class Catalog
 			$pid = $config['flexParentDatabaseRow']['pid'];
 			$pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig( $pid );
 
-			if( isset( $pageTSConfig['mod.']['tx_aimeos.']['properties']['mshop.']['locale.']['site'] ) ) {
-				$sitecode = $pageTSConfig['mod.']['tx_aimeos.']['properties']['mshop.']['locale.']['site'];
+			if( isset( $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'] ) ) {
+				$sitecode = $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'];
 			}
 
 			$context = Base::getContext( Base::getConfig() );
