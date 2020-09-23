@@ -20,6 +20,7 @@ use Aimeos\Aimeos\Base;
  */
 abstract class AbstractController
 	extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+	implements \TYPO3\CMS\Extbase\Mvc\Controller\ControllerInterface
 {
 	private static $aimeos;
 	private static $context;
