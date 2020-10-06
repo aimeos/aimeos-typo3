@@ -24,7 +24,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
  * Aimeos plugins
  */
 $prefix = $suffix = '';
-if ( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
+if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 	$prefix = 'Aimeos\\Aimeos\\Controller\\';
 	$suffix = 'Controller';
 }
