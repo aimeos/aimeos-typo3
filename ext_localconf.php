@@ -74,6 +74,13 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.aimeos',
+	'catalog-product',
+	array( 'Catalog' => 'product' ),
+	array( 'Catalog' => 'product' )
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.aimeos',
 	'catalog-search',
 	[$prefix . 'Catalog' . $suffix => 'search'],
 	[$prefix . 'Catalog' . $suffix => 'search']

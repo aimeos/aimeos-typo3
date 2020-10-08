@@ -110,6 +110,10 @@
 				<source>Page with stock level data</source>
 				<target>Seite mit Lagerbestandsdaten</target>
 			</trans-unit>
+			<trans-unit id="catalog-product.product-codes" xml:space="preserve">
+				<source>Products</source>
+				<target>Produkte</target>
+			</trans-unit>
 			<trans-unit id="basket-standard.target" xml:space="preserve">
 				<source>Basket page</source>
 				<target>Seite des Warenkorbs</target>
