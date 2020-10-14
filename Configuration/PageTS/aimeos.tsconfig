@@ -2,6 +2,15 @@ mod.wizards.newContentElement.wizardItems.aimeos {
 	after = common
 	header = Aimeos
 	elements {
+		aimeos_catalog-home {
+			iconIdentifier = aimeos_catalog-home
+			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.title
+			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.description
+			tt_content_defValues {
+				CType = list
+				list_type = aimeos_catalog-home
+			}
+		}
 		aimeos_catalog-list {
 			iconIdentifier = aimeos_catalog-list
 			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.title

@@ -33,6 +33,16 @@ class CatalogController extends AbstractController
 
 
 	/**
+	 * Renders the catalog counts.
+	 */
+	public function countAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/count' );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the catalog detail section.
 	 */
 	public function detailAction()
@@ -54,11 +64,12 @@ class CatalogController extends AbstractController
 
 
 	/**
-	 * Renders the catalog counts.
+	 * Renders the catalog home.
 	 */
-	public function countAction()
+	public function homeAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/count' );
+		$this->removeMetatags();
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/home' );
 		return $this->getClientOutput( $client );
 	}
 
