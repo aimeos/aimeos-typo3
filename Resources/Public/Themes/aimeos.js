@@ -107,7 +107,7 @@ Aimeos = {
 		for( var i = 0; i < elements.length; i++) {
 			var element = $(elements[i]);
 
-			if($(window).scrollTop() + $(window).height() + 2 * element.height() >= element.offset().top) {
+			if($(window).scrollTop() + $(window).height() * 1.5 >= element.offset().top) {
 				element.attr("srcset", element.data("srcset"));
 				element.attr("src", element.data("src"));
 				element.removeClass("lazy-image");
@@ -475,6 +475,9 @@ AimeosBasketBulk = {
 	meta: {},
 
 
+	/**
+	 * Autocomplete for products based on entered text
+	 */
 	bulkcomplete: function() {
 
 		$.widget( "custom.bulkcomplete", $.ui.autocomplete, {
@@ -659,6 +662,15 @@ AimeosBasketBulk = {
 	},
 
 
+	/**
+	 * Returns the attributes for the passed domain, type and listtype
+	 *
+	 * @param {Object} map
+	 * @param {Object} rel
+	 * @param {String} domain
+	 * @param {String} listtype
+	 * @param {String} type
+	 */
 	getRef: function(map, rel, domain, listtype, type) {
 
 		if(!rel[domain]) {
@@ -846,7 +858,7 @@ AimeosBasketMini = {
 
 
 	/**
-	 * Saves a modifed watched item without page reload
+	 * Delete a product without page reload
 	 */
 	setupBasketDelete: function() {
 
@@ -868,7 +880,7 @@ AimeosBasketMini = {
 
 
 	/**
-	 * Saves a modifed watched item without page reload
+	 * Displays or hides the small basket
 	 */
 	setupBasketToggle: function() {
 
@@ -1253,7 +1265,7 @@ AimeosCatalog = {
 	/**
 	 * Adds products to the basket without page reload
 	 */
-	setupBasketAdd: function(data) {
+	setupBasketAdd: function() {
 
 		$(".catalog-detail-basket form, .catalog-list-items form").on("submit", function(ev) {
 
@@ -1499,6 +1511,32 @@ AimeosCatalogFilter = {
 
 
 	/**
+	 * Syncs the price input field and slider
+	 */
+	setupPriceSync: function() {
+
+		$(".catalog-filter-price").on("input", ".price-high", function(ev) {
+			$(".price-slider", ev.delegateTarget).val($(ev.currentTarget).val());
+		});
+
+		$(".catalog-filter-price").on("input", ".price-slider", function(ev) {
+			$(".price-high", ev.delegateTarget).val($(ev.currentTarget).val());
+		});
+	},
+
+
+	/**
+	 * Toggles the price filters if hover isn't available
+	 */
+	setupPriceToggle: function() {
+
+		$(".catalog-filter-price").on("click", "h2", function(ev) {
+			$("fieldset", ev.delegateTarget).slideToggle();
+		});
+	},
+
+
+	/**
 	 * Toggles the supplier filters if hover isn't available
 	 */
 	setupSupplierToggle: function() {
@@ -1551,6 +1589,8 @@ AimeosCatalogFilter = {
 	 */
 	init: function() {
 
+		this.setupPriceSync();
+		this.setupPriceToggle();
 		this.setupCategoryToggle();
 		this.setupSupplierToggle();
 		this.setupAttributeToggle();
