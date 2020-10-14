@@ -22,10 +22,10 @@ library. It integrates natively into TYPO3, uses the TYPO3 infrastructure and is
 configurable via TypoScript.
 
 Aimeos can efficiently handle 100 000+ products in a standard MySQL database with response
-times around one second using the TYPO3 infrastructure including RealURL. For optimal
-performance you need to install APC, the PHP byte code cache or APCu for PHP 5.5 and later.
+times around 250ms using the TYPO3 infrastructure. For optimal performance you need to
+install APCu and use PHP 7.1 and later.
 
-- `Full documentation <https://aimeos.org/docs/TYPO3>`_
+- `Full documentation <https://aimeos.org/docs/latest/typo3/>`_
 - `Releases <https://extensions.typo3.org/extension/aimeos/>`_
 - `Distribution <https://extensions.typo3.org/extension/aimeos_dist/>`_
 - `Source code <https://github.com/aimeos/aimeos-typo3/>`_

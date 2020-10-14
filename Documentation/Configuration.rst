@@ -6,7 +6,7 @@
 Configuration Reference
 =======================
 
-Besides the huge list of possible `configuration options <http://aimeos.org/docs/Configuration>`_
+Besides the huge list of possible `configuration options <http://aimeos.org/docs/latest/>`_
 in Aimeos, the TYPO3 extension has a some Typoscript configuration as well.
 
 Target group: **Developers**
@@ -47,25 +47,9 @@ Location of the theme CSS file for the layout.
 page.includeJSFooterlibs.jquery
 """""""""""""""""""""""""""""""
 
-:typoscript:`page.includeJSFooterlibs.jquery` = http://code.jquery.com/jquery-1.11.1.min.js
+:typoscript:`page.includeJSFooterlibs.jquery` = http://code.jquery.com/jquery-3.5.1.min.js
 
 Location of the jQuery Javascript library.
-
-
-page.includeJSFooterlibs.jquery-migrate
-"""""""""""""""""""""""""""""""""""""""
-
-:typoscript:`page.includeJSFooterlibs.jquery-migrate` = http://code.jquery.com/jquery-migrate-1.2.1.min.js
-
-Location of the compatibility layer for the jQuery Javascript library version 1.10 and above.
-
-
-page.includeJSFooterlibs.jquery-ui
-""""""""""""""""""""""""""""""""""
-
-:typoscript:`page.includeJSFooterlibs.jquery-ui` = EXT:aimeos/Resources/Public/Themes/jquery-ui.custom.min.js
-
-Location of the customer jQuery UI library with additional effects and features.
 
 
 page.includeJSFooter.tx_aimeos
