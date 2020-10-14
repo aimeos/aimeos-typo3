@@ -196,6 +196,13 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.aimeos',
+	'account-review',
+	[$prefix . 'Account' . $suffix => 'review'],
+	[$prefix . 'Account' . $suffix => 'review']
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.aimeos',
 	'account-profile',
 	[$prefix . 'Account' . $suffix => 'profile'],
 	[$prefix . 'Account' . $suffix => 'profile']
@@ -247,12 +254,13 @@ $icons->registerIcon( 'aimeos_catalog-stage', $provider, ['name' => 'image'] );
 $icons->registerIcon( 'aimeos_catalog-session', $provider, ['name' => 'thumb-tack'] );
 $icons->registerIcon( 'aimeos_catalog-stock', $provider, ['name' => 'cubes'] );
 $icons->registerIcon( 'aimeos_locale-select', $provider, ['name' => 'globe'] );
-$icons->registerIcon( 'aimeos_account-history', $provider, ['name' => 'history'] );
-$icons->registerIcon( 'aimeos_account-subscription', $provider, ['name' => 'repeat'] );
-$icons->registerIcon( 'aimeos_account-favorite', $provider, ['name' => 'heart'] );
-$icons->registerIcon( 'aimeos_account-watch', $provider, ['name' => 'eye'] );
-$icons->registerIcon( 'aimeos_account-profile', $provider, ['name' => 'user'] );
 $icons->registerIcon( 'aimeos_account-download', $provider, ['name' => 'download'] );
+$icons->registerIcon( 'aimeos_account-history', $provider, ['name' => 'history'] );
+$icons->registerIcon( 'aimeos_account-favorite', $provider, ['name' => 'heart'] );
+$icons->registerIcon( 'aimeos_account-profile', $provider, ['name' => 'user'] );
+$icons->registerIcon( 'aimeos_account-review', $provider, ['name' => 'comments'] );
+$icons->registerIcon( 'aimeos_account-subscription', $provider, ['name' => 'repeat'] );
+$icons->registerIcon( 'aimeos_account-watch', $provider, ['name' => 'eye'] );
 $icons->registerIcon( 'aimeos_basket-standard', $provider, ['name' => 'shopping-cart'] );
 $icons->registerIcon( 'aimeos_basket-small', $provider, ['name' => 'shopping-basket'] );
 $icons->registerIcon( 'aimeos_basket-related', $provider, ['name' => 'link'] );

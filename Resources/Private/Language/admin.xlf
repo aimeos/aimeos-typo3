@@ -109,6 +109,12 @@
 			<trans-unit id="aimeos_account-subscription.description" xml:space="preserve">
 				<source>List of subscriptions created by the user</source>
 			</trans-unit>
+			<trans-unit id="aimeos_account-review.title" xml:space="preserve">
+				<source>Review products</source>
+			</trans-unit>
+			<trans-unit id="aimeos_account-review.description" xml:space="preserve">
+				<source>List of products for review by the customer</source>
+			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.title" xml:space="preserve">
 				<source>Favorite products</source>
 			</trans-unit>

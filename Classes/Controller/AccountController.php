@@ -76,6 +76,16 @@ class AccountController extends AbstractController
 
 
 	/**
+	 * Renders the account review.
+	 */
+	public function reviewAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/review' );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the account subscriptions.
 	 */
 	public function subscriptionAction()

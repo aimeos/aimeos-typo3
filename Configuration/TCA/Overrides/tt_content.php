@@ -114,6 +114,10 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_accou
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_account-profile', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountProfile.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'account-profile', 'Aimeos Shop - Account profile' );
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-review'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_account-review', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountReview.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'account-review', 'Aimeos Shop - Account review' );
+
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-subscription'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_account-subscription', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountSubscription.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'account-subscription', 'Aimeos Shop - Account subscriptions' );

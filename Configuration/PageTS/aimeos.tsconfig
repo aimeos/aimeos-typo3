@@ -146,6 +146,15 @@ mod.wizards.newContentElement.wizardItems.aimeos {
 				list_type = aimeos_account-subscription
 			}
 		}
+		aimeos_account-review {
+			iconIdentifier = aimeos_account-review
+			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.title
+			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.description
+			tt_content_defValues {
+				CType = list
+				list_type = aimeos_account-review
+			}
+		}
 		aimeos_account-favorite {
 			iconIdentifier = aimeos_account-favorite
 			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.title
