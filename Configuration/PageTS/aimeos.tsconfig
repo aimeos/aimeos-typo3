@@ -47,6 +47,15 @@ mod.wizards.newContentElement.wizardItems.aimeos {
 				list_type = aimeos_catalog-attribute
 			}
 		}
+		aimeos_catalog-price {
+			iconIdentifier = aimeos_catalog-price
+			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.title
+			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.description
+			tt_content_defValues {
+				CType = list
+				list_type = aimeos_catalog-price
+			}
+		}
 		aimeos_catalog-search {
 			iconIdentifier = aimeos_catalog-search
 			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.title

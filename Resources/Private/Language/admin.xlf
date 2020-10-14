@@ -37,6 +37,12 @@
 			<trans-unit id="aimeos_catalog-filter.description" xml:space="preserve">
 				<source>Combined search bar for all filters</source>
 			</trans-unit>
+			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
+				<source>Price filter</source>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
+				<source>Price range filter for facetted search</source>
+			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.title" xml:space="preserve">
 				<source>Text search bar</source>
 			</trans-unit>

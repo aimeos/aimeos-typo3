@@ -39,6 +39,10 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catal
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_catalog-list', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogList.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-list', 'Aimeos Shop - Catalog list' );
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-price'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_catalog-price', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogPrice.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-price', 'Aimeos Shop - Catalog price' );
+
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-search'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_catalog-search', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSearch.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'catalog-search', 'Aimeos Shop - Catalog search' );

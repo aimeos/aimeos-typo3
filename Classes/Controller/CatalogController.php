@@ -86,6 +86,16 @@ class CatalogController extends AbstractController
 
 
 	/**
+	 * Renders the catalog price section.
+	 */
+	public function priceAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/price' );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the catalog search section.
 	 */
 	public function searchAction()

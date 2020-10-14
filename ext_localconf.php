@@ -74,6 +74,13 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.aimeos',
+	'catalog-price',
+	[$prefix . 'Catalog' . $suffix => 'price'],
+	[$prefix . 'Catalog' . $suffix => 'price']
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.aimeos',
 	'catalog-search',
 	[$prefix . 'Catalog' . $suffix => 'search'],
 	[$prefix . 'Catalog' . $suffix => 'search']
@@ -246,6 +253,7 @@ $icons->registerIcon( 'aimeos_catalog-list', $provider, ['name' => 'list'] );
 $icons->registerIcon( 'aimeos_catalog-detail', $provider, ['name' => 'cube'] );
 $icons->registerIcon( 'aimeos_catalog-filter', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-attribute', $provider, ['name' => 'filter'] );
+$icons->registerIcon( 'aimeos_catalog-price', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-search', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-supplier', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-suggest', $provider, ['name' => 'ellipsis-h'] );
