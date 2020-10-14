@@ -67,6 +67,13 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Aimeos.aimeos',
+	'catalog-home',
+	[$prefix . 'Catalog' . $suffix => 'home'],
+	[$prefix . 'Catalog' . $suffix => 'home']
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.aimeos',
 	'catalog-list',
 	[$prefix . 'Catalog' . $suffix => 'list'],
 	[$prefix . 'Catalog' . $suffix => 'list']
@@ -249,6 +256,7 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
  */
 $provider = 'TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider';
 $icons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Imaging\IconRegistry::class );
+$icons->registerIcon( 'aimeos_catalog-home', $provider, ['name' => 'globe'] );
 $icons->registerIcon( 'aimeos_catalog-list', $provider, ['name' => 'list'] );
 $icons->registerIcon( 'aimeos_catalog-detail', $provider, ['name' => 'cube'] );
 $icons->registerIcon( 'aimeos_catalog-filter', $provider, ['name' => 'filter'] );
