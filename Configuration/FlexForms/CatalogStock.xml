@@ -10,7 +10,13 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
 					<config>
 						<type>text</type>
-						<rows>10</rows>
+						<renderType>t3editor</renderType>
+						<format>typoscript</format>
+						<rows>15</rows>
+						<cols>50</cols>
+						<wrap>off</wrap>
+						<fixedFont>true</fixedFont>
+						<enableTabulator>true</enableTabulator>
 					</config>
 				</TCEforms>
 			</settings.typo3.tsconfig>
