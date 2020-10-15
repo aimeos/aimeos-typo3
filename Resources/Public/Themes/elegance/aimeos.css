@@ -7,12 +7,12 @@
 
  @font-face {
 	font-family: 'FontAwesome';
-	src: url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot');
-	src: url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
-	url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'),
-	url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'),
-	url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf') format('truetype'),
-	url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+	src: url('https://cdn.jsdelivr.net/npm/font-awesome@4/fonts/fontawesome-webfont.eot');
+	src: url('https://cdn.jsdelivr.net/npm/font-awesome@4/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+	url('https://cdn.jsdelivr.net/npm/font-awesome@4/fonts/fontawesome-webfont.woff2') format('woff2'),
+	url('https://cdn.jsdelivr.net/npm/font-awesome@4/fonts/fontawesome-webfont.woff') format('woff'),
+	url('https://cdn.jsdelivr.net/npm/font-awesome@4/fonts/fontawesome-webfont.ttf') format('truetype'),
+	url('https://cdn.jsdelivr.net/npm/font-awesome@4/fonts/fontawesome-webfont.eot#fontawesomeregular') format('svg');
 }
 
 
@@ -317,9 +317,10 @@
 .aimeos .sort a,
 .aimeos .sort a:link,
 .aimeos .sort a:visited {
+	display: inline-block;
 	text-decoration: none;
 	white-space: nowrap;
-	padding: 0 0.25em;
+	padding: 0.5em;
 	color: #555;
 	color: var(--ai-secondary, #555);
 }
@@ -433,7 +434,7 @@
 
 .aimeos input[type=range] {
 	-webkit-appearance: none;
-	margin: 1rem 0;
+	margin: 0.5em 0;
 	width: 100%;
 	border: none;
 }
@@ -612,27 +613,36 @@ input[type="range"]::-moz-range-progress {
 	display: none;
 }
 
+.catalog-filter-attribute.col,
+.catalog-filter-price.col,
+.catalog-filter-supplier.col,
+.catalog-filter-search.col,
+.catalog-filter-tree.col {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.catalog-filter-tree fieldset > ul {
+	padding-left: 0;
+	margin: 0.5em 1em;
+}
+
 .catalog-filter-tree li a.cat-item:link,
 .catalog-filter-tree li a.cat-item:visited {
 	color: #555;
 	color: var(--ai-secondary, #555);
 }
 
-.catalog-filter-tree li.active a.cat-item {
+.catalog-filter-tree a.cat-item {
 	color: #FFA840;
 	color: var(--ai-primary, #FFA840);
 }
 
-.catalog-filter-tree .catcode-home > a {
-	white-space: nowrap;
-}
-
-.catalog-filter-tree .catcode-home > a:before {
-	font: normal normal normal 14px/1 FontAwesome;
-	font-size: 133%;
-	content: "\f015";
-	color: #A0A0A0;
-	vertical-align: bottom;
+.catalog-filter-tree li.active > a.cat-item {
+	color: #FFA840;
+	color: var(--ai-primary, #FFA840);
+	border-bottom: solid 1px #FFA840;
+	border-bottom-color: var(--ai-primary, #FFA840);
 }
 
 .catalog-filter-tree .media-list {
@@ -669,6 +679,7 @@ input[type="range"]::-moz-range-progress {
 /* Catalog filter search section */
 .catalog-filter-search {
 	display: inline-block;
+	margin-bottom: 1em;
 }
 
 .catalog-filter-search > h2 {
@@ -706,7 +717,7 @@ input[type="range"]::-moz-range-progress {
 .catalog-filter-search .reset {
 	background-color: #FFF;
 	background-color: var(--ai-bg, #FFF);
-	width: 10% !important;
+	width: 15% !important;
 	border: none;
 	margin: 0;
 }
@@ -727,7 +738,7 @@ input[type="range"]::-moz-range-progress {
 }
 
 .catalog-filter-search .btn-primary {
-	width: 20% !important;
+	width: 15% !important;
 	background: none;
 	border: none;
 	color: #555;
@@ -751,19 +762,13 @@ input[type="range"]::-moz-range-progress {
 
 /* Catalog filter, tree section */
 .catalog-filter section {
-	margin: 1em 0;
+	min-width: 12.5rem;
 }
 
 .catalog-filter-tree ul {
 	text-align: left;
 	list-style: none;
 	padding-left: 10%;
-}
-
-.catalog-filter-tree > ul {
-	padding: 0.5em 0;
-	display: none;
-	clear: both;
 }
 
 html.no-js .catalog-filter-tree:hover > ul {
@@ -795,9 +800,8 @@ html.no-js .catalog-filter-tree:hover > ul {
 }
 
 .catalog-filter-tree .category-selected {
-	display: none;
-	text-align: left;
-	clear: both;
+	display: block;
+	margin: auto;
 }
 
 .catalog-filter-tree .category-selected .selected-intro:after {
@@ -820,47 +824,23 @@ html.no-js .catalog-filter-tree:hover > ul {
 
 .catalog-filter-attribute .attribute-lists,
 .catalog-filter-supplier .supplier-lists,
-.catalog-filter-price fieldset {
+.catalog-filter-tree .category-lists,
+.catalog-filter-price .price-lists {
 	text-align: left;
 	display: none;
-	clear: both;
 }
 
 html.no-js .catalog-filter-attribute:hover .attribute-lists,
 html.no-js .catalog-filter-supplier:hover .supplier-lists,
-html.no-js .catalog-filter-price:hover fieldset {
+html.no-js .catalog-filter-tree .category-lists,
+html.no-js .catalog-filter-price .price-lists {
 	display: block;
 }
 
-.catalog-filter-attribute .attribute-selected {
-	clear: both;
-	padding: 0;
-}
-
-.catalog-filter-attribute .attribute-selected .selected-intro:after {
-	content: ":";
-}
-
-.catalog-filter-attribute .attribute-selected .attr-list {
-	display: inline-block;
-}
-
-.catalog-filter-attribute .attribute-selected .attr-item {
-	display: inline-block;
-}
-
-.catalog-filter-attribute .attribute-selected .selected-all,
-.catalog-filter-attribute .attribute-selected .attr-name {
-	border: solid 1px #D0D0D0;
-	border-color: var(--ai-light, #D0D0D0);
-	display: inline-block;
-	margin: 0.5em;
-	padding: 0 0.25em;
-}
-
-.catalog-filter-attribute .attribute-selected .selected-all:after,
-.catalog-filter-attribute .attribute-selected .attr-name:after {
-	content: " ×";
+.catalog-filter-attribute .attribute-selected,
+.catalog-filter-supplier .supplier-selected {
+	display: block;
+	margin: auto;
 }
 
 .catalog-filter-attribute legend {
@@ -888,12 +868,19 @@ html.no-js .catalog-filter-price:hover fieldset {
 	vertical-align: top;
 	font-weight: normal;
 	text-align: left;
+	min-width: 12.5em;
 	width: 100%;
 	color: #555;
 	color: var(--ai-secondary, #555);
 	line-height: 1;
+}
+
+.catalog-filter-attribute .fieldsets {
+	padding: 0.25em 0;
+}
+
+.catalog-filter-attribute fieldset {
 	margin: 0.5em 0;
-	clear: both;
 }
 
 .catalog-filter-attribute fieldset {
@@ -901,19 +888,15 @@ html.no-js .catalog-filter-price:hover fieldset {
 	border-left-color: var(--ai-light, #D0D0D0);
 }
 
-.catalog-filter-attribute .attribute-lists .attr-list,
-.catalog-filter-supplier .supplier-lists .attr-list {
-	padding: 0 0.5em;
-}
-
 .catalog-filter-supplier .attribute-lists .attr-list {
 	overflow: auto;
-	height: 12em;
+	height: 15em;
 }
 
 .catalog-filter-attribute .attribute-lists li.attr-item,
 .catalog-filter-supplier .supplier-lists li.attr-item {
 	display: block;
+	min-width: 12.5em;
 	padding: 0.4em 0;
 	margin: 0;
 }
@@ -949,6 +932,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 	width: 1em;
 	height: 1em;
 	margin-right: 0.25em;
+	vertical-align: middle;
 }
 
 .catalog-filter-attribute .media-list,
@@ -970,10 +954,31 @@ html.no-js .catalog-filter-price:hover fieldset {
 	cursor: pointer;
 }
 
+
+.catalog-filter-attribute .attr-name,
+.catalog-filter-supplier .attr-name,
+.catalog-filter-attribute .attr-name span,
+.catalog-filter-supplier .attr-name span {
+	vertical-align: middle;
+}
+
+.catalog-filter-attribute .attr-count,
+.catalog-filter-supplier .attr-count {
+	margin-bottom: 0.5rem;
+	display: inline-block;
+}
+
+.catalog-filter-price .btn {
+	display: block;
+	margin: auto;
+}
+
 .catalog-filter-price fieldset {
 	text-align: center;
-	padding: 2rem 5%;
-	clear: both;
+}
+
+.catalog-filter-price .price-input {
+	margin: 1em;
 }
 
 .catalog-filter-price .price-low {
@@ -988,10 +993,6 @@ html.no-js .catalog-filter-price:hover fieldset {
 	float: right;
 }
 
-.catalog-filter-price .btn {
-	margin: 0.25rem;
-}
-
 .catalog-filter-attribute > h2,
 .catalog-filter-tree > h2,
 .catalog-filter-price > h2,
@@ -1002,7 +1003,6 @@ html.no-js .catalog-filter-price:hover fieldset {
 	font-size: 100%;
 	cursor: pointer;
 	width: 100%;
-	float: left;
 	display: block;
 	padding: 0.5em;
 	margin: 0;
@@ -1010,12 +1010,6 @@ html.no-js .catalog-filter-price:hover fieldset {
 }
 
 @media screen and (min-width: 480px) {
-	.catalog-filter-attribute > h2,
-	.catalog-filter-tree > h2,
-	.catalog-filter-price > h2,
-	.catalog-filter-supplier > h2 {
-		width: 50%;
-	}
 	.catalog-filter-attribute fieldset {
 		width: 50%;
 	}
@@ -1025,12 +1019,6 @@ html.no-js .catalog-filter-price:hover fieldset {
 }
 
 @media screen and (min-width: 990px) {
-	.catalog-filter-attribute > h2,
-	.catalog-filter-tree > h2,
-	.catalog-filter-price > h2,
-	.catalog-filter-supplier > h2 {
-		width: 25%;
-	}
 	.catalog-filter-attribute fieldset {
 		width: 33.33%;
 	}
@@ -1044,6 +1032,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 .catalog-stage {
 	color: #FFA840;
 	color: var(--ai-primary, #FFA840);
+	margin: 1em 0;
 	clear: both;
 }
 
@@ -1054,12 +1043,13 @@ html.no-js .catalog-filter-price:hover fieldset {
 .catalog-stage-breadcrumb {
 	color: #555;
 	color: var(--ai-secondary, #555);
+	margin: 0.5em;
 }
 
 .catalog-stage-breadcrumb .breadcrumb {
 	background-color: inherit;
 	font-weight: normal;
-	padding: 0.5em;
+	padding: 0;
 	margin: 0;
 }
 
@@ -1067,11 +1057,19 @@ html.no-js .catalog-filter-price:hover fieldset {
 	display: inline;
 	list-style: none;
 	padding-left: 1em;
+	margin: 0;
 }
 
 .catalog-stage-breadcrumb li {
 	display: inline;
 	white-space: nowrap;
+}
+
+.catalog-stage-breadcrumb .title,
+.catalog-stage-breadcrumb a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 0.5em;
 }
 
 .catalog-stage-breadcrumb li:after {
@@ -1087,12 +1085,15 @@ html.no-js .catalog-filter-price:hover fieldset {
 	display: block;
 	font-size: 90%;
 	margin: 0.5em;
+	padding: 0;
 }
 
 .catalog-stage-navigator a,
 .catalog-stage-navigator a:focus,
 .catalog-stage-navigator a:hover {
 	text-decoration: none;
+	display: inline-block;
+	padding: 0.5em;
 }
 
 .catalog-stage-navigator a:before {
@@ -1124,6 +1125,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 .catalog-home .stage-item {
 	background-color: #FFF;
 	background-color: var(--ai-bg-alt, #FFF);
+	display: block;
 	margin: 0;
 }
 
@@ -1266,7 +1268,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 	background-color: var(--ai-secondary, #555);
 	text-align: center;
 	margin: 1.5em 0;
-	height: 0.9px;
+	height: 0.8px;
 }
 
 .aimeos .product .stars {
@@ -1608,6 +1610,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 }
 
 .catalog-list-type .type-item {
+	display: inline-block;
 	padding: 0.5em;
 }
 
@@ -1786,7 +1789,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 .catalog-detail .catalog-social .social-button {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 150%;
-	padding: 0 0.33em;
+	padding: 0.33em;
 	text-decoration: none;
 }
 
@@ -1815,7 +1818,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 .catalog-detail .catalog-actions .actions-button {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 150%;
-	padding: 0 0.5em;
+	padding: 0.33em;
 	text-decoration: none;
 }
 
@@ -1833,8 +1836,7 @@ html.no-js .catalog-filter-price:hover fieldset {
 
 /* Product detail, basket section */
 .catalog-detail-basket {
-	margin: 1% 0;
-	clear: right;
+	margin: 1em 0;
 }
 
 .catalog-detail-basket .price-list {
@@ -3104,8 +3106,9 @@ html.no-js .catalog-filter-price:hover fieldset {
 }
 
 .aimeos .common-summary-detail .basket {
-	margin: 0.5em;
-	margin-top: 0;
+	padding: 0 1em;
+	margin: 0 0.5em;
+	width: 100%;
 }
 
 .aimeos .common-summary-detail table {
