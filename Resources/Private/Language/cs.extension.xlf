@@ -10,6 +10,12 @@
 				<source>Fast, flexible and usability optimized web shop components for TYPO3</source>
 				<target>Rychlé, přizpůsobitelné komponenty webového obchodu optimalizované pro snadné používání se systémem TYPO3</target>
 			</trans-unit>
+			<trans-unit id="widgets.dashboard.latestorder.title" xml:space="preserve">
+				<source>Latest orders</source>
+			</trans-unit>
+			<trans-unit id="widgets.dashboard.latestorder.description" xml:space="preserve">
+				<source>List of latest orders created by customers</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

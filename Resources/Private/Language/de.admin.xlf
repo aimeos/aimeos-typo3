@@ -14,13 +14,246 @@
 				<source>Administration Aimeos Shop</source>
 				<target>Administration Aimeos Shop</target>
 			</trans-unit>
-			<trans-unit id="t3_9x_config_error_header" xml:space="preserve">
-				<source>Possible database charset problem</source>
-				<target>Mögliches Zeichensatzproblem der Datenbank</target>
+
+			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
+				<source>Shop home page</source>
+				<target>Startseite des Shops</target>
 			</trans-unit>
-			<trans-unit id="t3_9x_config_error_text" xml:space="preserve">
-				<source>The charset/collation &quot;utf8mb4&quot; isn't fully supported by MySQL before 5.7.8 and MariaDB before 10.2. Please use &quot;utf8&quot; instead in your ./typo3conf/LocalConfiguration.php file</source>
-				<target>Der Zeichensatz &quot;utf8mb4&quot; wird von MySQL vor 5.7.8 und MariaDB for 10.2 nicht vollständig unterstützt. Bitte nutzen Sie stattdessen &quot;uft8&quot; in Ihrer ./typo3conf/LocalConfiguration.php Datei</target>
+			<trans-unit id="aimeos_catalog-home.description" xml:space="preserve">
+				<source>Home page component displaying category images and promoted products</source>
+				<target>Startseitenkomponente mit Kategoriebildern und beworbenen Produkten</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-list.title" xml:space="preserve">
+				<source>Product list view</source>
+				<target>Produktlistenansicht</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-list.description" xml:space="preserve">
+				<source>Product list filtered by parameters and configuration</source>
+				<target>Produktliste gefiltert nach übergebenen Parametern und gesetzter Konfiguration</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-detail.title" xml:space="preserve">
+				<source>Product detail view</source>
+				<target>Produktdetailseite</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-detail.description" xml:space="preserve">
+				<source>Product details for passed parameters or configuration</source>
+				<target>Produktdetailseite für die übergebenen Parameter oder das konfigurierte Produkt</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-filter.title" xml:space="preserve">
+				<source>Catalog filter</source>
+				<target>Katalogfilter</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-filter.description" xml:space="preserve">
+				<source>Combined search bar for all filters</source>
+				<target>Kombinierte Suche und Filter</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
+				<source>Price filter</source>
+				<target>Preisfilter</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
+				<source>Price range filter for facetted search</source>
+				<target>Preisbereichsfilter für die facettierte Suche</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-search.title" xml:space="preserve">
+				<source>Text search bar</source>
+				<target>Volltextsuchfeld</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-search.description" xml:space="preserve">
+				<source>Full text search in product texts</source>
+				<target>Eingabefeld für die Volltextsuche in Produkttexten</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-tree.title" xml:space="preserve">
+				<source>Category tree</source>
+				<target>Kategoriebaum</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-tree.description" xml:space="preserve">
+				<source>Expandable category tree</source>
+				<target>Ausklappbarer Kategoriebaum</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-attribute.title" xml:space="preserve">
+				<source>Attribute filter</source>
+				<target>Attributfilter</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-attribute.description" xml:space="preserve">
+				<source>Facetted search for product attributes</source>
+				<target>Facettierte Suche nach Produktattributen</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-supplier.title" xml:space="preserve">
+				<source>Supplier filter</source>
+				<target>Lieferantenfilter</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-supplier.description" xml:space="preserve">
+				<source>Facetted search for product suppliers</source>
+				<target>Facettierte Suche nach Produktlieferanten</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-count.title" xml:space="preserve">
+				<source>Product counts</source>
+				<target>Produktanzahl</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-count.description" xml:space="preserve">
+				<source>Number of matching products for facet filters</source>
+				<target>Anzahl der gefundenen Produkte für die facettierte Suche</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-suggest.title" xml:space="preserve">
+				<source>Search suggestions</source>
+				<target>Suchvorschläge</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-suggest.description" xml:space="preserve">
+				<source>Product suggestions for full text search</source>
+				<target>Produktvorschläge für die Volltextsuche</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-stage.title" xml:space="preserve">
+				<source>Stage area</source>
+				<target>Bühnenbereich</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-stage.description" xml:space="preserve">
+				<source>Breadcrumb and product navigation</source>
+				<target>Kategoriebilder, Brotkrumen- und Vor-/Zurück Navigation</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-session.title" xml:space="preserve">
+				<source>Session content</source>
+				<target>Sitzungsinhalte</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-session.description" xml:space="preserve">
+				<source>User related session for pinned and last seen products</source>
+				<target>Nutzerbezogene Sitzungsinhalte für Merkliste und zuletzt angesehene Produkte</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-stock.title" xml:space="preserve">
+				<source>Product stock levels</source>
+				<target>Produktbestände</target>
+			</trans-unit>
+			<trans-unit id="aimeos_catalog-stock.description" xml:space="preserve">
+				<source>Stock level indicators for products</source>
+				<target>Bestandsindikatoren für Produkte</target>
+			</trans-unit>
+			<trans-unit id="aimeos_locale-select.title" xml:space="preserve">
+				<source>Currency switcher</source>
+				<target>Währungsselektor</target>
+			</trans-unit>
+			<trans-unit id="aimeos_locale-select.description" xml:space="preserve">
+				<source>Switcher for multi-currency sites</source>
+				<target>Selektor für Seiten mit verschiedenen Währungen</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
+				<source>Order history</source>
+				<target>Bestellhistorie</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-history.description" xml:space="preserve">
+				<source>List of orders created by the user</source>
+				<target>Liste der Kundenbestellungen</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-subscription.title" xml:space="preserve">
+				<source>User subscriptions</source>
+				<target>Kundenabos</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-subscription.description" xml:space="preserve">
+				<source>List of subscriptions created by the user</source>
+				<target>Liste der Kundenabonnements</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-review.title" xml:space="preserve">
+				<source>Review products</source>
+				<target>Produktbewertung</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-review.description" xml:space="preserve">
+				<source>List of products for review by the customer</source>
+				<target>Liste der zu bewertenden Produkte durch den Kunden</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-favorite.title" xml:space="preserve">
+				<source>Favorite products</source>
+				<target>Favoritenprodukte</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-favorite.description" xml:space="preserve">
+				<source>List of favorite products liked by users</source>
+				<target>Liste der Favoritenprodukte des Nutzers</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-watch.title" xml:space="preserve">
+				<source>Product watch list</source>
+				<target>Produktbeobachtungsliste</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-watch.description" xml:space="preserve">
+				<source>List of watched products by the user</source>
+				<target>Liste der beobachteten Produkte des Nutzers</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-profile.title" xml:space="preserve">
+				<source>User profile</source>
+				<target>Benutzerprofil</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-profile.description" xml:space="preserve">
+				<source>Change profile data by the user</source>
+				<target>Profildatenänderungen durch den Nutzer</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-download.title" xml:space="preserve">
+				<source>Product download</source>
+				<target>Produkte herunterladen</target>
+			</trans-unit>
+			<trans-unit id="aimeos_account-download.description" xml:space="preserve">
+				<source>Digital downloads of bought products</source>
+				<target>Digitale Downloads von gekauften Produkten</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-standard.title" xml:space="preserve">
+				<source>Shopping cart</source>
+				<target>Warenkorb</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-standard.description" xml:space="preserve">
+				<source>Full-featured shopping cart</source>
+				<target>Warenkorb mit allen Funktionen</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-small.title" xml:space="preserve">
+				<source>Small basket</source>
+				<target>Kleiner Warenkorb</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-small.description" xml:space="preserve">
+				<source>Small basket for all content pages</source>
+				<target>Kleiner Warenkorb für alle Contentseiten</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-related.title" xml:space="preserve">
+				<source>Related products</source>
+				<target>Ähnliche Produkte</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-related.description" xml:space="preserve">
+				<source>Products related to the ones in the basket</source>
+				<target>Ähnliche Produkte zu den Produkten im Warenkorb</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-bulk.title" xml:space="preserve">
+				<source>Bulk order</source>
+				<target>Massenbestellung</target>
+			</trans-unit>
+			<trans-unit id="aimeos_basket-bulk.description" xml:space="preserve">
+				<source>Product bulk order form</source>
+				<target>Bestellforumular für viele Produkte</target>
+			</trans-unit>
+			<trans-unit id="aimeos_checkout-standard.title" xml:space="preserve">
+				<source>Checkout process</source>
+				<target>Zur Kasse</target>
+			</trans-unit>
+			<trans-unit id="aimeos_checkout-standard.description" xml:space="preserve">
+				<source>Checkout forms to collect user and order data</source>
+				<target>Nutzerdaten für den Abschluss der Bestellung sammeln</target>
+			</trans-unit>
+			<trans-unit id="aimeos_checkout-confirm.title" xml:space="preserve">
+				<source>Checkout confirmation</source>
+				<target>Bestätigungsseite</target>
+			</trans-unit>
+			<trans-unit id="aimeos_checkout-confirm.description" xml:space="preserve">
+				<source>Thank you and order confirmation</source>
+				<target>Dankesseite und Bestellbestätigung</target>
+			</trans-unit>
+			<trans-unit id="aimeos_checkout-update.title" xml:space="preserve">
+				<source>Order update</source>
+				<target>Bestellungen aktualisieren</target>
+			</trans-unit>
+			<trans-unit id="aimeos_checkout-update.description" xml:space="preserve">
+				<source>Asynchronous payment and delivery updates</source>
+				<target>Asynchrone Zahlungs- und Lieferaktualsierungen</target>
+			</trans-unit>
+			<trans-unit id="aimeos_jsonapi.title" xml:space="preserve">
+				<source>JSON REST API</source>
+				<target>JSON REST API</target>
+			</trans-unit>
+			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
+				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
+				<target>Endpunkt für die Aimeos HTTP REST API im JSON Format</target>
 			</trans-unit>
 		</body>
 	</file>

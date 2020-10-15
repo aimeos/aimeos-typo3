@@ -50,6 +50,10 @@
 				<source>The reply e-mail address is invalid</source>
 				<target>Die E-Mailadresse für Rückantworten ist ungültig</target>
 			</trans-unit>
+			<trans-unit id="email.error.page-catalog.invalid" xml:space="preserve">
+				<source>The page ID of the product catalog page is invalid</source>
+				<target>Die Seiten-ID der Kategorieseite ist ungültig</target>
+			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
 				<target>Die Seiten-ID der Produktdetailseite ist ungültig</target>
@@ -81,6 +85,10 @@
 			<trans-unit id="email.label.reply-email" xml:space="preserve">
 				<source>Reply e-mail</source>
 				<target>E-Mailadresse für Antworten</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-catalog" xml:space="preserve">
+				<source>Product catalog page ID</source>
+				<target>Seiten-ID der Kategorieseite</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
