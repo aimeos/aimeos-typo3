@@ -5,9 +5,9 @@
 	<ROOT>
 		<type>array</type>
 		<el>
-			<settings.client.html.catalog.lists.url.target>
+			<settings.client.html.catalog.tree.url.target>
 				<TCEforms>
-					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.target</label>
+					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-tree.target</label>
 					<config>
 						<type>group</type>
 						<internal_type>db</internal_type>
@@ -18,7 +18,7 @@
 						<show_thumbs>1</show_thumbs>
 					</config>
 				</TCEforms>
-			</settings.client.html.catalog.lists.url.target>
+			</settings.client.html.catalog.tree.url.target>
 			<settings.client.html.catalog.detail.url.target>
 				<TCEforms>
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-detail.target</label>
@@ -122,7 +122,13 @@
 					<label>LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:default.typo3.tsconfig</label>
 					<config>
 						<type>text</type>
-						<rows>10</rows>
+						<renderType>t3editor</renderType>
+						<format>typoscript</format>
+						<rows>15</rows>
+						<cols>50</cols>
+						<wrap>off</wrap>
+						<fixedFont>true</fixedFont>
+						<enableTabulator>true</enableTabulator>
 					</config>
 				</TCEforms>
 			</settings.typo3.tsconfig>
