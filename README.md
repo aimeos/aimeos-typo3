@@ -34,10 +34,10 @@ and customize anything to your needs.
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **19.10 release and later**.
+This document is for the latest Aimeos TYPO3 **20.10 release and later**.
 
-- Stable release: 20.7 (TYPO3 9/10 LTS)
-- LTS release: 19.10 (TYPO3 7/8/9 LTS)
+- LTS release: 20.10 (TYPO3 9/10 LTS)
+- Old LTS release: 19.10 (TYPO3 7/8/9 LTS)
 
 ### TYPO3 extension repository
 
@@ -70,7 +70,7 @@ This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have t
 
 Then, install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~20.7`
+`composer req aimeos/aimeos-typo3:~20.10`
 
 This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos composer script will be executed automatically, which copies some required files and adds a link to the Aimeos extensions placed in the ./ext/ directory.
 
@@ -115,8 +115,6 @@ Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts wh
 * Log into the TYPO3 back end
 * Click on ''Admin Tools::Extension Manager'' in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry (looks like a lego brick)
-
-**Caution:** For TYPO3 8.7, install the **RealURL extension before the Aimeos extension** to get nice looking URLs. Otherwise, RealURL doesn't rewrite the parameters even if you install RealURL afterwards! TYPO3 9.5 and later creates SEO friendly URLs itself by adding rules to the site config (https://aimeos.org/docs/TYPO3/Route_configuration).
 
 ![Install Aimeos TYPO3 extension](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-install.png)
 
@@ -163,6 +161,9 @@ The page setup for an Aimeos web shop is easy if you import the example page tre
 ![Import the uploaded page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-import.png)
 
 Now you have a new page "Shop" in your page tree including all required sub-pages.
+
+TYPO3 9.5 and later can create SEO friendly URLs if you add the rules to the site config:
+[https://aimeos.org/docs/latest/typo3/setup/#seo-urls](https://aimeos.org/docs/latest/typo3/setup/#seo-urls)
 
 ## License
 
