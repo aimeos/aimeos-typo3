@@ -128,7 +128,10 @@ Afterwards, you have to execute the update script of the extension to create the
 
 The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 9/10:
 
-* [Aimeos TYPO3 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_18.10__2.t3d)
+* [20.10.x page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_20.10.t3d)
+* [19.10.x page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_two-columns_18.10__2.t3d)
+
+**Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
 
 ### Go to the import view
 
