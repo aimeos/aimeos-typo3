@@ -60,8 +60,8 @@ if( TYPO3_MODE === 'BE' )
 	$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher' );
 
 	/**
-	* Execute the setup tasks automatically to create the required tables
-	*/
+	 * Execute the setup tasks automatically to create the required tables
+	 */
 	$signalSlotDispatcher->connect(
 		'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
 		'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10+ and PSR Events in 11+
