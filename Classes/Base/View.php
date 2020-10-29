@@ -349,18 +349,29 @@ class View
 		if( $request )
 		{
 			$name = $config->get( 'typo3/param/name/site', 'site' );
-			if( $request->hasArgument( $name ) === true ) {
+
+			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
+			} elseif( ( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
+				$fixed['S'] = $value;
 			}
+
 
 			$name = $config->get( 'typo3/param/name/language', 'locale' );
-			if( $request->hasArgument( $name ) === true ) {
+
+			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
+			} elseif( ( $value = GeneralUtility::_GP( 'L' ) ) !== null ) {
+				$fixed['L'] = $value;
 			}
 
+
 			$name = $config->get( 'typo3/param/name/currency', 'currency' );
-			if( $request->hasArgument( $name ) === true ) {
+
+			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
+			} elseif( ( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
+				$fixed['C'] = $value;
 			}
 		}
 
