@@ -94,7 +94,7 @@ class Base
 		}
 
 		$search->setConditions( $search->combine( '||', $expr ) );
-		$langids = $langManager->searchItems( $search )->keys()->toArray();
+		$langids = $langManager->search( $search )->keys()->toArray();
 
 		$context->setI18n( Aimeos\Base::getI18n( $langids, (array) ( $conf['i18n'] ?? [] ) ) );
 
@@ -127,7 +127,7 @@ class Base
 			$search->setConditions( $search->compare( '==', 'locale.site.code', $sites ) );
 		}
 
-		return $manager->searchItems( $search );
+		return $manager->search( $search );
 	}
 
 

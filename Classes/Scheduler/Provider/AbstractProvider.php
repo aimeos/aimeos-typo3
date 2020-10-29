@@ -178,7 +178,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
 		$search->setSortations( array( $search->sort( '+', 'locale.site.label' ) ) );
 
-		$sites = $manager->searchItems( $search );
+		$sites = $manager->search( $search );
 
 		foreach( $sites as $id => $siteItem ) {
 			$sites[$id] = $manager->getTree( $id, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
