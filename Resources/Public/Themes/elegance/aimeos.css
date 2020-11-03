@@ -32,8 +32,8 @@
 	height: 0.25rem;
 	background-color: #D0D0D0;
 	background-color: var(--ai-light, #D0D0D0);
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
 }
 
 .aimeos progress[value]::-webkit-progress-bar {
@@ -42,11 +42,11 @@
 }
 
 .aimeos progress::-moz-progress-bar {
-	background-color: #FFA840;
+	background-color: #A00000;
 }
 
 .aimeos progress::-webkit-progress-value {
-	background-color: #FFA840;
+	background-color: #A00000;
 }
 .aimeos .btn {
 	width: 12em;
@@ -65,19 +65,19 @@
 .aimeos .btn-primary:active,
 .aimeos .btn-primary:visited,
 .aimeos .btn-primary:not(:disabled):not(.disabled):active {
-	background-color: #FFA840;
-	background-color: var(--ai-primary, #FFA840);
-	border: solid 1px #FFA840;
-	border-color: var(--ai-primary, #FFA840);
+	background-color: #A00000;
+	background-color: var(--ai-primary, #A00000);
+	border: solid 1px #A00000;
+	border-color: var(--ai-primary, #A00000);
 	color: #fff;
 	color: var(--ai-bg, #fff);
 }
 
 .aimeos .btn-primary:hover {
-    background-color: #FFB850;
-	background-color: var(--ai-primary-light, #FFB850);
-	border: solid 1px #FFB850;
-	border-color: var(--ai-primary-light, #FFB850);
+    background-color: #C00000;
+	background-color: var(--ai-primary-light, #C00000);
+	border: solid 1px #C00000;
+	border-color: var(--ai-primary-light, #C00000);
 }
 
 .aimeos .btn:focus,
@@ -182,8 +182,9 @@
 .aimeos a:link:not(.btn):hover,
 .aimeos a:visited:not(.btn),
 .aimeos a:visited:not(.btn):hover {
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
+	text-decoration: none;
 }
 
 .aimeos input {
@@ -197,8 +198,8 @@
 }
 
 .aimeos input:focus {
-	border: 1px solid #FFA840;
-	border-color: var(--ai-primary, #FFA840);
+	border: 1px solid #A00000;
+	border-color: var(--ai-primary, #A00000);
 	outline: none;
 }
 
@@ -551,7 +552,8 @@ input[type="range"]::-moz-range-progress {
 	text-transform: uppercase;
 	position: relative;
 	list-style: none;
-	padding: 0em;
+	padding: 0;
+	margin: 0;
 }
 
 .locale-select li.select-dropdown {
@@ -620,6 +622,7 @@ input[type="range"]::-moz-range-progress {
 .catalog-filter-tree.col {
 	padding-right: 0;
 	padding-left: 0;
+	margin: 1em 0;
 }
 
 .catalog-filter-tree fieldset > ul {
@@ -634,15 +637,15 @@ input[type="range"]::-moz-range-progress {
 }
 
 .catalog-filter-tree a.cat-item {
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
 }
 
 .catalog-filter-tree li.active > a.cat-item {
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
-	border-bottom: solid 1px #FFA840;
-	border-bottom-color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
+	border-bottom: solid 1px #A00000;
+	border-bottom-color: var(--ai-primary, #A00000);
 }
 
 .catalog-filter-tree .media-list {
@@ -703,6 +706,7 @@ input[type="range"]::-moz-range-progress {
 .catalog-filter-search .input-group {
 	border-bottom: 1px solid #555;
 	border-bottom-color: var(--ai-secondary, #555);
+	margin-bottom: 1em;
 }
 
 .catalog-filter-search .value {
@@ -832,8 +836,8 @@ html.no-js .catalog-filter-tree:hover > ul {
 
 html.no-js .catalog-filter-attribute:hover .attribute-lists,
 html.no-js .catalog-filter-supplier:hover .supplier-lists,
-html.no-js .catalog-filter-tree .category-lists,
-html.no-js .catalog-filter-price .price-lists {
+html.no-js .catalog-filter-tree:hover .category-lists,
+html.no-js .catalog-filter-price:hover .price-lists {
 	display: block;
 }
 
@@ -966,6 +970,7 @@ html.no-js .catalog-filter-price .price-lists {
 .catalog-filter-supplier .attr-count {
 	margin-bottom: 0.5rem;
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .catalog-filter-price .btn {
@@ -997,6 +1002,7 @@ html.no-js .catalog-filter-price .price-lists {
 .catalog-filter-tree > h2,
 .catalog-filter-price > h2,
 .catalog-filter-supplier > h2 {
+	border-top: solid 1px transparent;
 	border-bottom: solid 1px #555;
 	border-bottom-color: var(--ai-secondary, #555);
 	text-align: center;
@@ -1030,10 +1036,9 @@ html.no-js .catalog-filter-price .price-lists {
 
 /* Product list, stage section */
 .catalog-stage {
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
-	margin: 1em 0;
-	clear: both;
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
+	margin-bottom: 1em;
 }
 
 .catalog-stage-image img {
@@ -1125,7 +1130,6 @@ html.no-js .catalog-filter-price .price-lists {
 .catalog-home .stage-item {
 	background-color: #FFF;
 	background-color: var(--ai-bg-alt, #FFF);
-	display: block;
 	margin: 0;
 }
 
@@ -2086,7 +2090,7 @@ html.no-js .catalog-filter-price .price-lists {
 	background-color: #555;
 	background-color: var(--ai-secondary, #555);
 	color: #FFF;
-	background-color: var(--ai-bg, #FFF);
+	color: var(--ai-bg, #FFF);
 }
 
 .catalog-list-items .selection .select-option:disabled + .select-label,
@@ -2104,8 +2108,8 @@ html.no-js .catalog-filter-price .price-lists {
 	border: solid 1px #555;
 	border-color: var(--ai-secondary, #555);
 	text-align: center;
+	max-width: 4em;
 	padding: 0;
-	width: 4em;
 }
 
 .catalog-list-items .selection .custom input[type=number],
@@ -2406,7 +2410,7 @@ html.no-js .catalog-filter-price .price-lists {
 .catalog-session-pinned .name {
 	margin: 0;
 	padding: 0;
-	height: 3em;
+	height: 2.5em;
 	font-size: 100%;
 	font-weight: normal;
 	text-align: center;
@@ -2489,7 +2493,7 @@ html.no-js .catalog-filter-price .price-lists {
 .basket-mini > a {
 	display: inline-block;
 	white-space: nowrap;
-	padding: 0.75em 1em;
+	padding: 0.5em 1em;
 	text-decoration: none;
 }
 
@@ -2526,7 +2530,7 @@ html.no-js .catalog-filter-price .price-lists {
 }
 
 .basket-mini-product {
-	display: inline;
+	display: none;
 }
 
 .basket-mini-product .basket-toggle {
@@ -2656,8 +2660,8 @@ html.no-js .catalog-filter-price .price-lists {
 .basket-standard-coupon .btn-primary:hover {
 	background: none;
 	border: none;
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
 	font-weight: bold;
 	font-size: 125%;
 }
@@ -2744,8 +2748,8 @@ html.no-js .catalog-filter-price .price-lists {
 }
 
 .basket-bulk .minibutton {
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
 	padding: 0 0.5em;
 	line-height: 1;
 	width: 2em;
@@ -2772,8 +2776,8 @@ html.no-js .catalog-filter-price .price-lists {
 }
 
 .checkout-standard .steps .active {
-	color: #FFA840;
-	color: var(--ai-primary, #FFA840);
+	color: #A00000;
+	color: var(--ai-primary, #A00000);
 	border-bottom: solid 1px #555;
 	border-bottom-color: var(--ai-secondary, #555);
 }
@@ -3529,7 +3533,7 @@ html.no-js .catalog-filter-price .price-lists {
 }
 
 .account-review .todo-rating input:checked ~ label {
-	color: var(--ai-primary, #FFA840);
+	color: var(--ai-primary, #A00000);
 }
 
 .account-review .todo-comment {
