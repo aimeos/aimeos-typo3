@@ -83,7 +83,7 @@ class Base
 
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
-		$search = $langManager->createSearch( true );
+		$search = $langManager->filter( true );
 
 		$expr = [];
 		$expr[] = $search->getConditions();
@@ -121,7 +121,7 @@ class Base
 		}
 
 		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
-		$search = $manager->createSearch();
+		$search = $manager->filter();
 
 		if( !empty( $sites ) ) {
 			$search->setConditions( $search->compare( '==', 'locale.site.code', $sites ) );

@@ -105,7 +105,7 @@ class JobsCommand extends Command
 		$context = \Aimeos\Aimeos\Base::getContext( $config );
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
-		$langids = $langManager->search( $langManager->createSearch( true ) )->keys()->toArray();
+		$langids = $langManager->search( $langManager->filter( true ) )->keys()->toArray();
 
 		$i18n = \Aimeos\Aimeos\Base::getI18n( $langids, $config->get( 'i18n', [] ) );
 		$context->setI18n( $i18n );
@@ -130,7 +130,7 @@ class JobsCommand extends Command
 	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input ) : \Aimeos\Map
 	{
 		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
-		$search = $manager->createSearch();
+		$search = $manager->filter();
 
 		if( ( $codes = (string) $input->getArgument( 'site' ) ) !== '' ) {
 			$search->setConditions( $search->compare( '==', 'locale.site.code', explode( ' ', $codes ) ) );

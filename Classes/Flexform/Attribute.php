@@ -49,7 +49,7 @@ class Attribute
 			$context->setLocale( $localeManager->bootstrap( $sitecode, '', '', false ) );
 
 			$manager = \Aimeos\MShop::create( $context, 'attribute/type' );
-			$items = $manager->search( $manager->createSearch( true ) );
+			$items = $manager->search( $manager->filter( true ) );
 
 			foreach( $items as $item ) {
 				$config['items'][] = [$item->getName(), $item->getCode()];

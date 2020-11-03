@@ -174,7 +174,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 	{
 		$manager = \Aimeos\MShop::create( Scheduler\Base::getContext(), 'locale/site' );
 
-		$search = $manager->createSearch();
+		$search = $manager->filter();
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
 		$search->setSortations( array( $search->sort( '+', 'locale.site.label' ) ) );
 
