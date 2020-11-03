@@ -28,7 +28,8 @@ and customize anything to your needs.
 - [Page setup](#page-setup)
     - [Upload the page tree file](#upload-the-page-tree-file)
     - [Go to the import view](#go-to-the-import-view)
-    - [Import the uploaded page tree file](#import-the-uploaded-page-tree-file)
+    - [Import the page tree](#import-the-page-tree)
+    - [SEO-friendly URLs](#seo-friendly-urls)
 - [License](#license)
 - [Links](#links)
 
@@ -152,7 +153,7 @@ The page setup for an Aimeos web shop is easy if you import the example page tre
 
 ![Upload the page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-upload.png)
 
-### Import the uploaded page tree file
+### Import the page tree
 
 * In Import / Export view
 * Select the uploaded file from the drop-down menu
@@ -164,6 +165,8 @@ The page setup for an Aimeos web shop is easy if you import the example page tre
 ![Import the uploaded page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-import.png)
 
 Now you have a new page "Shop" in your page tree including all required sub-pages.
+
+### SEO-friendly URLs
 
 TYPO3 9.5 and later can create SEO friendly URLs if you add the rules to the site config:
 [https://aimeos.org/docs/latest/typo3/setup/#seo-urls](https://aimeos.org/docs/latest/typo3/setup/#seo-urls)
