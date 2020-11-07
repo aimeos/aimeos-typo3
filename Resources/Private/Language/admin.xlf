@@ -13,6 +13,10 @@
 				<source>Administration Aimeos Shop</source>
 			</trans-unit>
 
+			<trans-unit id="beusers_site.title" xml:space="preserve">
+				<source>Aimeos shop site the user is assigned to</source>
+			</trans-unit>
+
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
 			</trans-unit>

@@ -16,3 +16,8 @@ CREATE TABLE fe_users (
     latitude decimal(8,6) DEFAULT NULL,
     vdate date DEFAULT NULL,
 ) ENGINE=InnoDB;
+
+
+CREATE TABLE be_users (
+    siteid varchar(255) DEFAULT '',
+) ENGINE=InnoDB;
