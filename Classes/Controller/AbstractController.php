@@ -28,6 +28,27 @@ abstract class AbstractController
 
 
 	/**
+	 * Checks if the backend user is allowed to access the site
+	 *
+	 * @param array $sitePath List of siteid values
+	 * @param mixed $userSiteId Site ID stored in the backend user record
+	 * @return bool True if the user is allowed to access the site
+	 * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientUserPermissionsException If user doesn't have access
+	 */
+	protected function checkSite( array $sitePath, $userSiteId ) : bool
+	{
+		foreach( array_reverse( $sitePath ) as $siteid )
+		{
+			if( (string) $userSiteId === (string) $siteid ) {
+				return true;
+			}
+		}
+
+		throw new \TYPO3\CMS\Core\Resource\Exception\InsufficientUserPermissionsException( 'Access not allowed' );
+	}
+
+
+	/**
 	 * Returns the context item for the frontend
 	 *
 	 * @param string $templatePath Path for retrieving the template paths used in the view
@@ -84,27 +105,29 @@ abstract class AbstractController
 			$lang = 'en';
 			$site = 'default';
 
-			if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
-				$lang = $GLOBALS['BE_USER']->uc['lang'];
-			}
-
-			if( $this->request->hasArgument( 'lang' )
-				&& ( $value = $this->request->getArgument( 'lang' ) ) != ''
-			) {
-				$lang = $value;
-			}
-
-			if( $this->request->hasArgument( 'site' )
-				&& ( $value = $this->request->getArgument( 'site' ) ) != ''
-			) {
-				$site = $value;
-			}
-
 			$config = Base::getConfig( (array) $this->settings );
 			$context = Base::getContext( $config );
 
+			if( $this->request->hasArgument( 'lang' ) && ( $value = $this->request->getArgument( 'lang' ) ) != '' ) {
+				$lang = $value;
+			} elseif( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+				$lang = $GLOBALS['BE_USER']->uc['lang'];
+			}
+
+			if( $this->request->hasArgument( 'site' ) && ( $value = $this->request->getArgument( 'site' ) ) != '' ) {
+				$site = $value;
+			} elseif( isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' ) {
+				$siteManager = \Aimeos\MShop::create( $context, 'locale/site' );
+				$siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
+				$site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
+			}
+
 			$locale = Base::getLocaleBackend( $context, $site );
 			$context->setLocale( $locale );
+
+			if( isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' ) {
+				$this->checkSite( $locale->getSitePath(), $GLOBALS['BE_USER']->user['siteid'] );
+			}
 
 			$i18n = Base::getI18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
 			$context->setI18n( $i18n );

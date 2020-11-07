@@ -22,6 +22,15 @@ class AdminController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		$this->forward( 'search', 'Jqadm' );
+		$site = 'default';
+
+		if( isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' )
+		{
+			$siteManager = \Aimeos\MShop::create( $this->getContextBackend(), 'locale/site' );
+			$siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
+			$site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
+		}
+
+		$this->forward( 'search', 'Jqadm', 'aimeos', ['site' => $site] );
 	}
 }
