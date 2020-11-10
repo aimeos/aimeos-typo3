@@ -5,17 +5,47 @@ if( !defined( 'TYPO3_MODE' ) ) {
 }
 
 
-$beSiteStmt = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Database\ConnectionPool::class )
-	->getQueryBuilderForTable( 'mshop_locale_site' )
-    ->select( 'siteid', 'label', 'level' )
-    ->from( 'mshop_locale_site' )
-    ->orderBy( 'nleft' )
-    ->execute();
+$beUsersSiteFcn = function() {
 
-$beSiteList = ['', ''];
-while( $row = $beSiteStmt->fetch() ) {
-    $beSiteList[] = [str_repeat( '  ', $row['level']) . $row['label'], $row['siteid']];
-}
+	$sql = 'SELECT "siteid", "label", "nleft", "nright" FROM "mshop_locale_site" ORDER BY "nleft"';
+	$dbm = \Aimeos\Aimeos\Base::getContext( \Aimeos\Aimeos\Base::getConfig() )->db();
+
+	$conn = $dbm->acquire( 'db-locale' );
+	$result = $conn->create( $sql )->execute();
+
+	$parents = [];
+	$list = [['', '']];
+
+	$fcn = function( $result, $parents, $right ) use ( &$fcn, &$list ) {
+
+		while( $row = $result->fetch() )
+		{
+			$list[] = [join( ' > ', array_merge( $parents, [$row['label']] ) ), $row['siteid']];
+
+			if( $row['nright'] - $row['nleft'] > 1 ) {
+				$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
+			}
+
+			if( $row['nright'] + 1 == $right ) {
+				return;
+			}
+		}
+	};
+
+	while( $row = $result->fetch() )
+	{
+		$list[] = [$row['label'], $row['siteid']];
+
+		if( $row['nright'] - $row['nleft'] > 1 ) {
+			$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
+		}
+	}
+
+	$dbm->release( $conn, 'db-locale' );
+
+	return $list;
+};
+
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns( 'be_users', [
     'siteid' => [
@@ -23,9 +53,9 @@ while( $row = $beSiteStmt->fetch() ) {
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',
-			'items' => $beSiteList,
+			'items' => $beUsersSiteFcn(),
         ]
     ]
-], true );
+] );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes( 'be_users', 'siteid', '', 'after:password' );
