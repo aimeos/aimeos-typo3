@@ -31,6 +31,6 @@ class AdminController extends AbstractController
 			$site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
 		}
 
-		$this->forward( 'search', 'Jqadm', 'aimeos', ['site' => $site] );
+		$this->forward( 'search', 'Jqadm', null, ['site' => $site] );
 	}
 }
