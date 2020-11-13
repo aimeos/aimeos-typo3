@@ -133,12 +133,6 @@ class Composer
 	 */
 	protected static function join( \Composer\Script\Event $event )
 	{
-		if( !$event->getIO()->hasAuthentication( 'github.com' )
-			&& !$event->getIO()->hasAuthentication( 'github-oauth.github.com' )
-		) {
-			return;
-		}
-
 		try
 		{
 			$options = [
