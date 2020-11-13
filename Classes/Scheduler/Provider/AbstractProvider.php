@@ -234,7 +234,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 			$langid = $GLOBALS['BE_USER']->uc['lang'];
 		}
 
-		$localeItem = \Aimeos\MShop::create( $context, 'locale' )->createItem();
+		$localeItem = \Aimeos\MShop::create( $context, 'locale' )->create();
 		$localeItem->setLanguageId( $langid );
 		$context->setLocale( $localeItem );
 
