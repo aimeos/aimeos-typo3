@@ -31,7 +31,8 @@
 		"bithost-gmbh/pdfviewhelpers": "^2.3.4",
 		"sjbr/static-info-tables": "^6.5",
 		"nyholm/psr7-server": "^0.4.1",
-		"nyholm/psr7": "~1.2"
+		"nyholm/psr7": "~1.2",
+		"symfony/thanks": "^1.2"
 	},
 	"replace": {
 		"aimeos/aimeos-typo3": "self.version",
