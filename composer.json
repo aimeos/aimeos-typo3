@@ -20,7 +20,6 @@
 		"typo3/cms-backend": "~9.5||~10.4",
 		"typo3/cms-extbase": "~9.5||~10.4",
 		"typo3/cms-scheduler": "~9.5||~10.4",
-		"typo3/cms-composer-installers": "~3.0",
 		"aimeos/aimeos-core": "dev-master",
 		"aimeos/ai-gettext": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
