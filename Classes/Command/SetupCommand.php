@@ -74,8 +74,12 @@ class SetupCommand extends Command
 		try {
 			$manager->migrate( $task );
 		} catch( \Throwable $t ) {
-			echo "\n" . $t->getMessage() . "\n" . $t->getTraceAsString() . "\n";
+			$output->writeln( sprintf( "Error <error>%s</error> while initializing or updating the Aimeos database\n<debug>%s</debug>", $t->getMessage(), $t->getTraceAsString() ) );
+
+			return 1;
 		}
+
+		return 0;
 	}
 
 
