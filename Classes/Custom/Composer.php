@@ -135,6 +135,10 @@ class Composer
 	{
 		try
 		{
+			if( !$event->getIO()->hasAuthentication( 'github.com' ) ) {
+					return;
+			}
+
 			$options = [
 				'http' => [
 					'method' => 'POST',
