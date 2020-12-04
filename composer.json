@@ -42,7 +42,14 @@
 			"Aimeos\\Aimeos\\": "Classes"
 		}
 	},
+	"repositories": {
+		"sjbr/static-info-tables": {
+			"type": "vcs",
+			"url": "git://git.typo3.org/TYPO3CMS/Extensions/static_info_tables.git"
+		}
+	},
 	"config": {
+		"secure-http": false,
 		"vendor-dir": "Resources/Libraries"
 	},
 	"extra": {
