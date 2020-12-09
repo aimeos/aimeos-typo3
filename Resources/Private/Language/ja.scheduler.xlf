@@ -1,118 +1,90 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="tr">
+	<file datatype="plaintext" date="2015-04-04T14:20:05Z" original="messages" product-name="aimeos" source-language="en" target-language="ja">
 		<header/>
 		<body>
 			<trans-unit id="default.description" xml:space="preserve">
 				<source>Executes the selected Aimeos Shop jobs</source>
-				<target>Seçilen Aimeos Alışveriş Mağazası görevlerini yürütür</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode" xml:space="preserve">
 				<source>One or more sites is invalid or already disabled</source>
-				<target>Bir veya daha fazla site geçersiz ya da devre dışı bırakılmış</target>
 			</trans-unit>
 			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
 				<source>Please choose at least one site</source>
-				<target>Lütfen en az bir site seçin</target>
 			</trans-unit>
 			<trans-unit id="default.error.controller.missing" xml:space="preserve">
 				<source>Please choose at least one job</source>
-				<target>Lütfen en az bir görev seçin</target>
 			</trans-unit>
 			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
 				<source>The TypoScript configuration is invalid</source>
-				<target>TypoScript yapılandırması geçersiz</target>
 			</trans-unit>
 			<trans-unit id="default.label.controller" xml:space="preserve">
 				<source>Jobs</source>
-				<target>Görevler</target>
 			</trans-unit>
 			<trans-unit id="default.label.sitecode" xml:space="preserve">
 				<source>Sites</source>
-				<target>Siteler</target>
 			</trans-unit>
 			<trans-unit id="default.label.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
-				<target>TypoScript yapılandırması</target>
 			</trans-unit>
 			<trans-unit id="default.name" xml:space="preserve">
 				<source>Aimeos Shop scheduler</source>
-				<target>Aimeos Alışveriş Mağazası planlı iş düzenleyici</target>
 			</trans-unit>
 			<trans-unit id="email.description" xml:space="preserve">
 				<source>Specialized task for sending the e-mails</source>
-				<target>E-maillerin gönderimi için özelleştirilmiş görev</target>
 			</trans-unit>
 			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
 				<source>The sender e-mail address is invalid or none was entered</source>
-				<target>Gönderen e-mail adresi geçersiz veya hiçbiri girilmedi</target>
 			</trans-unit>
 			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
 				<source>The reply e-mail address is invalid</source>
-				<target>Yanıt e-mail adresi geçersiz</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-catalog.invalid" xml:space="preserve">
 				<source>The page ID of the product catalog page is invalid</source>
-				<target>Ürün kategori sayfasının kimlik numarası geçersiz</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
-				<target>Ürün detay sayfasının kimlik numarası geçersiz</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
 				<source>The page ID of the account login page is invalid</source>
-				<target>Hesabınıza giriş yaptığınız sayfanın kimlik numarası geçersiz</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
-				<target>Hesap indirme sayfasının kimlik numarası geçersiz</target>
 			</trans-unit>
 			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
 				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
-				<target>Web site URL'si geçersiz. &quot;https://aimeos.org/&quot; gibi protokol ve domain içeren bir URL kullanın.</target>
 			</trans-unit>
 			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
 				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
-				<target>Ürün resimlerine temel URL geçersiz. &quot;https://aimeos.org/uploads/tx_aimeos&quot; gibi protokol ve domain içeren bir temel URL kullanın</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-name" xml:space="preserve">
 				<source>Sender name</source>
-				<target>Gönderen adı</target>
 			</trans-unit>
 			<trans-unit id="email.label.from-email" xml:space="preserve">
 				<source>Sender e-mail</source>
-				<target>Gönderen e-maili</target>
 			</trans-unit>
 			<trans-unit id="email.label.reply-email" xml:space="preserve">
 				<source>Reply e-mail</source>
-				<target>Yanıt e-maili</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-catalog" xml:space="preserve">
 				<source>Product catalog page ID</source>
-				<target>Ürün kategori sayfasının kimlik numarası</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
-				<target>Ürün detay sayfasının kimlik numarası</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-login" xml:space="preserve">
 				<source>Account login page ID</source>
-				<target>Hesabınıza giriş yaptığınız sayfanın kimlik numarası</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
-				<target>Hesap indirme sayfasının kimlik numarası</target>
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
-				<target>Ürün resimlerinin taban URL'si (Ör. https://localhost/uploads/tx_aimeos/)</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
-				<target>Typo3 kökünden tema dizininin CSS dosyalarına mutlak yol veya bağıl yol</target>
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop advanced scheduler</source>
-				<target>Aimeos Alışveriş Mağazası gelişmiş planlı iş düzenleyici</target>
 			</trans-unit>
 		</body>
 	</file>

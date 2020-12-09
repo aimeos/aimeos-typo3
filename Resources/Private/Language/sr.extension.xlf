@@ -1,22 +1,18 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:16:04Z" original="messages" product-name="aimeos" source-language="en" target-language="tr">
+	<file datatype="plaintext" date="2015-04-04T14:16:04Z" original="messages" product-name="aimeos" source-language="en" target-language="sr">
 		<header/>
 		<body>
 			<trans-unit id="ext-wizard-title" xml:space="preserve">
 				<source>Aimeos web shop</source>
-				<target>Aimeos web alışveriş mağazası</target>
 			</trans-unit>
 			<trans-unit id="ext-wizard-description" xml:space="preserve">
 				<source>Fast, flexible and usability optimized web shop components for TYPO3</source>
-				<target>TYPO3 için hızlı, esnek ve kullanılabilirliği optimize edilmiş web mağazası bileşenleri</target>
 			</trans-unit>
 			<trans-unit id="widgets.dashboard.latestorder.title" xml:space="preserve">
 				<source>Latest orders</source>
-				<target>En yeni siparişler</target>
 			</trans-unit>
 			<trans-unit id="widgets.dashboard.latestorder.description" xml:space="preserve">
 				<source>List of latest orders created by customers</source>
-				<target>Müşteriler tarafından oluşturulan en yeni siparişlerin listesi</target>
 			</trans-unit>
 		</body>
 	</file>
