@@ -7,41 +7,49 @@ if( !defined( 'TYPO3_MODE' ) ) {
 
 $beUsersSiteFcn = function() {
 
-	$sql = 'SELECT "siteid", "label", "nleft", "nright" FROM "mshop_locale_site" ORDER BY "nleft"';
-	$dbm = \Aimeos\Aimeos\Base::getContext( \Aimeos\Aimeos\Base::getConfig() )->db();
+	$table = 'mshop_locale_site';
+	$tableColumns = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
+		->getConnectionForTable($table)
+		->getSchemaManager()
+		->listTableColumns($table);
 
-	$conn = $dbm->acquire( 'db-locale' );
-	$result = $conn->create( $sql )->execute();
-
-	$parents = [];
 	$list = [['', '']];
+	if (empty($tableColumns) !== true) {
+		$sql = 'SELECT "siteid", "label", "nleft", "nright" FROM "' . $table . '" ORDER BY "nleft"';
+		$dbm = \Aimeos\Aimeos\Base::getContext( \Aimeos\Aimeos\Base::getConfig() )->db();
 
-	$fcn = function( $result, $parents, $right ) use ( &$fcn, &$list ) {
+		$conn = $dbm->acquire( 'db-locale' );
+		$result = $conn->create( $sql )->execute();
+
+		$parents = [];
+
+		$fcn = function( $result, $parents, $right ) use ( &$fcn, &$list ) {
+
+			while( $row = $result->fetch() )
+			{
+				$list[] = [join( ' > ', array_merge( $parents, [$row['label']] ) ), $row['siteid']];
+
+				if( $row['nright'] - $row['nleft'] > 1 ) {
+					$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
+				}
+
+				if( $row['nright'] + 1 == $right ) {
+					return;
+				}
+			}
+		};
 
 		while( $row = $result->fetch() )
 		{
-			$list[] = [join( ' > ', array_merge( $parents, [$row['label']] ) ), $row['siteid']];
+			$list[] = [$row['label'], $row['siteid']];
 
 			if( $row['nright'] - $row['nleft'] > 1 ) {
 				$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
 			}
-
-			if( $row['nright'] + 1 == $right ) {
-				return;
-			}
 		}
-	};
 
-	while( $row = $result->fetch() )
-	{
-		$list[] = [$row['label'], $row['siteid']];
-
-		if( $row['nright'] - $row['nleft'] > 1 ) {
-			$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
-		}
+		$dbm->release( $conn, 'db-locale' );
 	}
-
-	$dbm->release( $conn, 'db-locale' );
 
 	return $list;
 };
