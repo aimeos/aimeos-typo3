@@ -1416,7 +1416,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 
 .aimeos .product .text-list h2 {
 	text-transform: uppercase;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 100%;
 	overflow: hidden;
 	height: 2.25em;
