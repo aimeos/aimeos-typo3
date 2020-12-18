@@ -35,7 +35,7 @@ class ConfigViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHel
 		}
 
 		if( !isset( $this->arguments['key'] ) ) {
-			throw new Exception( 'Attribute "key" missing for Aimeos translate view helper' );
+			throw new Exception( 'Attribute "key" missing for Aimeos config view helper' );
 		}
 
 		$key = $this->arguments['key'];

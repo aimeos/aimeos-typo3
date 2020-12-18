@@ -34,7 +34,7 @@ class BlockViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelp
 		}
 
 		if( !isset( $this->arguments['name'] ) ) {
-			throw new Exception( 'Attribute "name" missing for Aimeos translate view helper' );
+			throw new Exception( 'Attribute "name" missing for Aimeos block view helper' );
 		}
 
 		$view->block()->set( $this->arguments['name'], $this->renderChildren() );
