@@ -1416,7 +1416,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 
 .aimeos .product .text-list h2 {
 	text-transform: uppercase;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 100%;
 	overflow: hidden;
 	height: 2.25em;
@@ -2073,7 +2073,6 @@ html.no-js .catalog-filter-price:hover .price-lists {
 	width: calc(100% - 4em);
 	font-weight: normal;
 	margin-bottom: 0;
-	font-size: 95%;
 }
 
 .catalog-list-items .selection .color .select-label,
@@ -2627,6 +2626,12 @@ html.no-js .catalog-filter-price:hover .price-lists {
 
 
 /* Standard basket */
+
+.basket-standard h1 {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
 .basket-standard-main {
 	border: solid 1px #D0D0D0;
 	border-color: var(--ai-light, #D0D0D0);
