@@ -131,4 +131,9 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_accou
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'account-watch', 'Aimeos Shop - Account watch list' );
 
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_supplier-detail'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_supplier-detail', 'FILE:EXT:aimeos/Configuration/FlexForms/SupplierDetail.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'supplier-detail', 'Aimeos Shop - Supplier detail' );
+
+
 ?>
