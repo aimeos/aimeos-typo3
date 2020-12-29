@@ -128,6 +128,15 @@ mod.wizards.newContentElement.wizardItems.aimeos {
 				list_type = aimeos_catalog-stock
 			}
 		}
+		aimeos_supplier-detail {
+			iconIdentifier = aimeos_supplier-detail
+			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.title
+			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.description
+			tt_content_defValues {
+				CType = list
+				list_type = aimeos_supplier-detail
+			}
+		}
 		aimeos_locale-select {
 			iconIdentifier = aimeos_locale-select
 			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.title

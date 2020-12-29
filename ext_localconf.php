@@ -243,6 +243,13 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 	[$prefix . 'Jsonapi' . $suffix => 'index']
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Aimeos.aimeos',
+	'supplier-detail',
+	[$prefix . 'Supplier' . $suffix => 'detail'],
+	[$prefix . 'Supplier' . $suffix => 'detail']
+);
+
 
 /**
  * Register Aimeos content elements
@@ -269,6 +276,7 @@ $icons->registerIcon( 'aimeos_catalog-count', $provider, ['name' => 'bars'] );
 $icons->registerIcon( 'aimeos_catalog-stage', $provider, ['name' => 'image'] );
 $icons->registerIcon( 'aimeos_catalog-session', $provider, ['name' => 'thumb-tack'] );
 $icons->registerIcon( 'aimeos_catalog-stock', $provider, ['name' => 'cubes'] );
+$icons->registerIcon( 'aimeos_supplier-detail', $provider, ['name' => 'industry'] );
 $icons->registerIcon( 'aimeos_locale-select', $provider, ['name' => 'globe'] );
 $icons->registerIcon( 'aimeos_account-download', $provider, ['name' => 'download'] );
 $icons->registerIcon( 'aimeos_account-history', $provider, ['name' => 'history'] );
