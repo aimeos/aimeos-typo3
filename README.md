@@ -38,7 +38,7 @@ and customize anything to your needs.
 This document is for the latest Aimeos TYPO3 **20.10 release and later**.
 
 - LTS release: 20.10 (TYPO3 9/10 LTS)
-- Old LTS release: 19.10 (TYPO3 7/8/9 LTS)
+- Beta release: 2021.01 (TYPO3 9/10 LTS)
 
 ### TYPO3 extension repository
 
