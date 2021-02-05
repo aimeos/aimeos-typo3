@@ -10,7 +10,7 @@
 
 namespace Aimeos\Aimeos;
 
-use TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser;
+use \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
