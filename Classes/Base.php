@@ -10,6 +10,7 @@
 
 namespace Aimeos\Aimeos;
 
+use \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
@@ -236,7 +237,7 @@ class Base
 	public static function parseTS( string $tsString ) : array
 	{
 		$parser = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser' );
-		$parser->parse( $tsString );
+		$parser->parse( TypoScriptParser::checkIncludeLines( $tsString ) );
 
 		if( !empty( $parser->errors ) ) {
 			throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
