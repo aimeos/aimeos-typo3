@@ -170,6 +170,10 @@ class CatalogController extends AbstractController
 	 */
 	protected function removeMetatags()
 	{
+		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
+			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
+		}
+
 		if( class_exists( '\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' )
 			&& !\Aimeos\Aimeos\Base::getExtConfig( 'typo3Metatags', true )
 		) {
