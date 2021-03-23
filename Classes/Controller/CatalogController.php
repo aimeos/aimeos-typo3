@@ -170,7 +170,9 @@ class CatalogController extends AbstractController
 	 */
 	protected function removeMetatags()
 	{
-		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) ) {
+		if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) )
+		{
+			$GLOBALS['TSFE']->config['config']['disableCanonical'] = true;
 			$GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
 		}
 
