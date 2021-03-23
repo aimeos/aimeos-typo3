@@ -8,17 +8,16 @@ if( !defined( 'TYPO3_MODE' ) ) {
 $beUsersSiteFcn = function() {
 
 	$list = [['', '']];
-	$table = 'mshop_locale_site';
+	$dbname = 'db-locale';
 
-	$conn = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Database\ConnectionPool::class )
-		->getConnectionForTable( $table );
-
-	if( !empty( $conn->getSchemaManager()->listTableColumns( $table ) ) )
+	try
 	{
-		$result = $conn->createQueryBuilder()
-			->select( 'siteid', 'label', 'nleft', 'nright' )
-			->from( $table )->orderBy( 'nleft' )
-			->execute();
+		$config = \Aimeos\Aimeos\Base::getConfig();
+		$context = \Aimeos\Aimeos\Base::getContext( $config );
+
+		$db = $context->db();
+		$conn = $db->acquire( $dbname );
+		$result = $conn->create( 'SELECT * FROM "mshop_locale_site" ORDER BY "nleft"' )->execute();
 
 		$parents = [];
 
@@ -37,17 +36,28 @@ $beUsersSiteFcn = function() {
 			}
 		};
 
-		while( $row = $result->fetch() ) {
+		while( $row = $result->fetch() )
+		{
 			$list[] = [$row['label'], $row['siteid']];
 
 			if( $row['nright'] - $row['nleft'] > 1 ) {
 				$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
 			}
 		}
+
+		$db->release( $conn, $dbname );
+	}
+	catch( \Exception $e )
+	{
+		$db->release( $conn, $dbname );
+
+        $log = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Log\LogManager::class );
+		$log->getLogger( __CLASS__ )->warning( 'Unable to retrive Aimeos sites: ' . $e->getMessage() );
 	}
 
 	return $list;
 };
+
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns( 'be_users', [
 	'siteid' => [
