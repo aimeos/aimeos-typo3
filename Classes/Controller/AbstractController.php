@@ -108,7 +108,7 @@ abstract class AbstractController
 			$config = Base::getConfig( (array) $this->settings );
 			$context = Base::getContext( $config );
 
-			if( $this->request->hasArgument( 'lang' ) && ( $value = $this->request->getArgument( 'lang' ) ) != '' ) {
+			if( $this->request->hasArgument( 'locale' ) && ( $value = $this->request->getArgument( 'locale' ) ) != '' ) {
 				$lang = $value;
 			} elseif( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
 				$lang = $GLOBALS['BE_USER']->uc['lang'];
