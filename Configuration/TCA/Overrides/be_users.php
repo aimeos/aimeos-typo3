@@ -49,9 +49,11 @@ $beUsersSiteFcn = function() {
 	}
 	catch( \Exception $e )
 	{
-		$db->release( $conn, $dbname );
+		if( $db ) {
+			$db->release( $conn, $dbname );
+		}
 
-        $log = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Log\LogManager::class );
+		$log = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Log\LogManager::class );
 		$log->getLogger( __CLASS__ )->warning( 'Unable to retrive Aimeos sites: ' . $e->getMessage() );
 	}
 
