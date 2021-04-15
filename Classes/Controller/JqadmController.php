@@ -256,7 +256,7 @@ class JqadmController extends AbstractController
 
 		$view = \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::resolveView();
 
-		$view->assign( 'theme', ( $_COOKIE['theme'] ?? null ) == 'dark' ? 'dark' : 'light' );
+		$view->assign( 'theme', ( $_COOKIE['aimeos_backend_theme'] ?? null ) == 'dark' ? 'dark' : 'light' );
 		$view->assign( 'localeDir', in_array( $lang, ['ar', 'az', 'dv', 'fa', 'he', 'ku', 'ur'] ) ? 'rtl' : 'ltr' );
 		$view->assign( 'locale', $lang );
 
