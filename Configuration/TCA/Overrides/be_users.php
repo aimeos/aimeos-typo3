@@ -63,7 +63,7 @@ $beUsersSiteFcn = function() {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns( 'be_users', [
 	'siteid' => [
-		'label' => 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:be_users_site.title',
+		'label' => 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:beusers_site.title',
 		'config' => [
 			'type' => 'select',
 			'renderType' => 'selectSingle',
