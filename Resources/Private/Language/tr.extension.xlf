@@ -12,9 +12,11 @@
 			</trans-unit>
 			<trans-unit id="widgets.dashboard.latestorder.title" xml:space="preserve">
 				<source>Latest orders</source>
+				<target>En yeni siparişler</target>
 			</trans-unit>
 			<trans-unit id="widgets.dashboard.latestorder.description" xml:space="preserve">
 				<source>List of latest orders created by customers</source>
+				<target>Müşteriler tarafından oluşturulan en yeni siparişlerin listesi</target>
 			</trans-unit>
 		</body>
 	</file>

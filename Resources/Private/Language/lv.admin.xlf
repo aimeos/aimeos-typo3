@@ -13,6 +13,10 @@
 				<source>Administration Aimeos Shop</source>
 			</trans-unit>
 
+			<trans-unit id="beusers_site.title" xml:space="preserve">
+				<source>Aimeos shop site</source>
+			</trans-unit>
+
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
 			</trans-unit>
@@ -192,6 +196,12 @@
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
 				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
+			</trans-unit>
+			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
+				<source>Supplier detail view</source>
+			</trans-unit>
+			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
+				<source>Supplier details for passed parameters or configuration</source>
 			</trans-unit>
 		</body>
 	</file>

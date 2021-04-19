@@ -4,6 +4,7 @@
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
 				<source>Page with JSON REST API plugin</source>
+				<target>Página con el plugin JSON REST API</target>
 			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
@@ -11,6 +12,7 @@
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
+				<target>Página de error si la descarga está prohibida</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
@@ -34,6 +36,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
+				<target>Tipos de atributos mostrados para la búsqueda por facetas</target>
 			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
@@ -41,6 +44,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>Página de categoría (o página de lista de catálogo)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -48,30 +52,39 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
+				<target>Categoría o categorías predeterminadas si no hay ningún parámetro disponible</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
+				<target>Clasificación predeterminada de la lista de productos</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
+				<target>Relevancia (posición)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
+				<target>Nombre (A-Z)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
+				<target>Nombre (Z-A)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
+				<target>Precio (el más bajo primero)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
+				<target>Precio (el más alto primero)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
+				<target>Tiempo de creación (el más antiguo primero)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
+				<target>Tiempo de creación (más reciente primero)</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -83,6 +96,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>SKU predeterminado si no hay ningún parámetro disponible</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
@@ -114,6 +128,7 @@
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
+				<target>Página de política de cancelación</target>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
@@ -122,6 +137,9 @@
 			<trans-unit id="checkout-update.target" xml:space="preserve">
 				<source>Page with &quot;checkout payment update&quot; plugin</source>
 				<target>Página con plugin de &quot;Actualización de Pago en Formalización&quot;</target>
+			</trans-unit>
+			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
+				<source>Default supplier ID if no parameter is available</source>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>

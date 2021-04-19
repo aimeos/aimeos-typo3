@@ -1,150 +1,153 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="hr">
+	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="sl">
 		<header/>
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
 				<source>Page with JSON REST API plugin</source>
-				<target>Stranica sa JSON REST API dodatkom</target>
+				<target>Page with JSON REST API plugin</target>
 			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
-				<target>Stranica preuzimanja računa</target>
+				<target>Account download page</target>
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
-				<target>Stranica pogreške ako je preuzimanje zabranjeno</target>
+				<target>Error page if download is prohibited</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
-				<target>Stranica omiljenih proizvoda</target>
+				<target>Favorite products page</target>
 			</trans-unit>
 			<trans-unit id="account-watch.target" xml:space="preserve">
 				<source>Watched products page</source>
-				<target>Stranica pračenih proizvoda</target>
+				<target>Watched products page</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
 				<source>Display categories beginning from the following node</source>
-				<target>Prikaži kategorije počevši od slijedeće</target>
+				<target>Display categories beginning from the following node</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
 				<source>Always display these category levels</source>
-				<target>Uvijek prikaži ove razine kategorija</target>
+				<target>Always display these category levels</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
-				<target>Prikaži kategorije samo do slijedeće razine</target>
+				<target>Only display up to these category levels</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
-				<target>Prikaži tipove atributa za pretraživanje</target>
+				<target>Displayed attribute types for faceted search</target>
 			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
-				<target>Stranica sa prijedlogom za filter pretraživanja</target>
+				<target>Page with suggestions for search filter</target>
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>Category page (or catalog list page)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
-				<target>Stranica za listu kataloga</target>
+				<target>Catalog list page</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
+				<target>Default category or categories if no parameter is available</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
-				<target>Zadani način sortiranja liste proizvoda</target>
+				<target>Default sorting of the product list</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
-				<target>Važnost (pozicija)</target>
+				<target>Relevance (position)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
-				<target>Naziv (A-Z)</target>
+				<target>Name (A-Z)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
-				<target>Naziv (Z-A)</target>
+				<target>Name (Z-A)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
-				<target>Cijena (prvo manja)</target>
+				<target>Price (lowest first)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
-				<target>Cijena (prvo veća)</target>
+				<target>Price (highest first)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
-				<target>Kreirano (prvo najstarije)</target>
+				<target>Creation time (oldest first)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
-				<target>Kreirano (prvo najnovije)</target>
+				<target>Creation time (newest first)</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
-				<target>Stranica detalja kataloga</target>
+				<target>Catalog detail page</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
 				<source>Default product ID if no parameter is available</source>
-				<target>Zadani ID proizvoda ako nema parametara</target>
+				<target>Default product ID if no parameter is available</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>Default SKU if no parameter is available</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
-				<target>Stranica sa dodatkom za sesiju kataloga</target>
+				<target>Page with catalog session plugin</target>
 			</trans-unit>
 			<trans-unit id="catalog-count.target" xml:space="preserve">
 				<source>Page with product counts for catalog filter</source>
-				<target>Stranica sa količinom proizvoda za filter kataloga</target>
+				<target>Page with product counts for catalog filter</target>
 			</trans-unit>
 			<trans-unit id="catalog-stock.target" xml:space="preserve">
 				<source>Page with stock level data</source>
-				<target>Stranica da podacima o količini na skladištu</target>
+				<target>Page with stock level data</target>
 			</trans-unit>
 			<trans-unit id="basket-standard.target" xml:space="preserve">
 				<source>Basket page</source>
-				<target>Stranica košarice</target>
+				<target>Basket page</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard.target" xml:space="preserve">
 				<source>Checkout page</source>
-				<target>Stranica za narudžbu</target>
+				<target>Checkout page</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
 				<source>Terms and conditions page</source>
-				<target>Stranica uvjeta korištenja</target>
+				<target>Terms and conditions page</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
 				<source>Privacy policy page</source>
-				<target>Stranica privatnosti podataka</target>
+				<target>Privacy policy page</target>
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
-				<target>Stranica uvjeta povrata</target>
+				<target>Cancellation policy page</target>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
-				<target>Stranica za potvrdu</target>
+				<target>Confirmation page</target>
 			</trans-unit>
 			<trans-unit id="checkout-update.target" xml:space="preserve">
 				<source>Page with &quot;checkout payment update&quot; plugin</source>
-				<target>Stranica sa &quot;checkout payment update&quot; dodatak</target>
+				<target>Page with &quot;checkout payment update&quot; plugin</target>
 			</trans-unit>
 			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
 				<source>Default supplier ID if no parameter is available</source>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
-				<target>TypoScript postavke</target>
+				<target>TypoScript configuration</target>
 			</trans-unit>
 			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
 				<source>The TypoScript configuration is invalid</source>
-				<target>TypoScript postavke su neispravne</target>
+				<target>The TypoScript configuration is invalid</target>
 			</trans-unit>
 		</body>
 	</file>

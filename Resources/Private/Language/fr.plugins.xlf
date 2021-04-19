@@ -138,6 +138,9 @@
 				<source>Page with &quot;checkout payment update&quot; plugin</source>
 				<target>Page avec plugin de &quot;Mise à jour du paiement de la commande&quot;</target>
 			</trans-unit>
+			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
+				<source>Default supplier ID if no parameter is available</source>
+			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
 				<target>Configuration TypoScript</target>
