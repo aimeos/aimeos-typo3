@@ -1,7 +1,7 @@
 /*
  * Shared CSS between website and e-mails
  *
- * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
+ * @license LGPLv3, https://opensource.org/licenses/LGPL-3.0
  * @copyright Aimeos (aimeos.org), 2014
  */
 
@@ -99,7 +99,7 @@ li.attr-item {
 }
 
 .basket th.label {
-	text-align: left;
+	text-align: start;
 }
 
 .basket td.quantity {
@@ -108,7 +108,7 @@ li.attr-item {
 }
 
 .basket td.price {
-	text-align: right;
+	text-align: end;
 	white-space: nowrap;
 }
 
