@@ -1148,12 +1148,12 @@ html.no-js .catalog-filter-price:hover .price-lists {
 }
 
 .catalog-stage-navigator a.prev:before {
-	content: '◀';
+	content: '◀   ';
 	white-space: pre;
 }
 
 .catalog-stage-navigator a.next:after {
-	content: '▶';
+	content: '   ▶';
 	white-space: pre;
 }
 
@@ -5012,19 +5012,17 @@ body{
 	font: normal normal normal 14px/1 FontAwesome;
 	content: "\f290";
 	font-size: 150%;
+	display: block;
 	color: #555;
 	color: var(--ai-primary-alt, #555);
-	display: block;
-	margin-inline-end: .2rem;
-	margin-bottom: 0.25rem;
 }
 
 .basket-mini-main {
 	position: absolute;
 	border-radius: 1rem;
-	top: -0.5rem;;
 	background-color: #A00000;
 	background-color: var(--ai-primary, #A00000);
+	top: -0.5rem;
 	right: 0;
 }
 
@@ -5102,8 +5100,8 @@ body{
 }
 
 .basket-mini-product .to-basket a {
-		color: #FFF !important;
-		color: var(--ai-bg, #FFF) !important;
+	color: #FFF !important;
+	color: var(--ai-bg, #FFF) !important;
 }
 
 .mini-basket-close {
@@ -5581,17 +5579,17 @@ body{
 /*------------------------------Megamenu--------------------------------------*/
 
 @media (min-width:992px) {
-		.catalog-filter-tree .megamenu > .submenu > .item-container > .list-container {
-				display: flex !important;
-				flex-wrap: wrap;
-		}
+	.catalog-filter-tree .megamenu > .submenu > .item-container > .list-container {
+		display: flex !important;
+		flex-wrap: wrap;
+	}
 
-		.megamenu > .submenu > .item-container > .list-container > .cat-item {
-				min-width: 33.3%;
-				flex: 1;
-				border-left: .5rem solid transparent;
-				border-right: .5rem solid transparent;
-		}
+	.megamenu > .submenu > .item-container > .list-container > .cat-item {
+		min-width: 33.3%;
+		flex: 1;
+		border-left: .5rem solid transparent;
+		border-right: .5rem solid transparent;
+	}
 
 	.catalog-filter .filter-sections:after{
 		position: relative;
@@ -5723,6 +5721,7 @@ body{
 	z-index: 1;
 }
 .catalog-filter-attribute > h2, .catalog-filter-tree > h2, .catalog-filter-price > h2, .catalog-filter-supplier > h2 {
+	padding: 1.1em 0.5em;
 	font-size: 80%;
 }
 
@@ -5823,4 +5822,10 @@ body{
 	font-size: 80%;
 	margin-bottom: 0;
 	width: 5rem;
+}
+
+
+.supplier-detail .image-single img {
+	max-height: 20rem;
+	max-width: 100%;
 }
