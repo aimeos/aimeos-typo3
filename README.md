@@ -2,13 +2,13 @@
     <img src="https://aimeos.org/fileadmin/template/icons/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
 </a>
 
-Aimeos TYPO3 extension
-======================
+# Aimeos TYPO3 extension
+
 [![Total Downloads](https://poser.pugx.org/aimeos/aimeos-typo3/d/total.svg)](https://packagist.org/packages/aimeos/aimeos-typo3)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aimeos/aimeos-typo3/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aimeos/aimeos-typo3/?branch=master)
 [![License](https://poser.pugx.org/aimeos/aimeos-typo3/license.svg)](https://packagist.org/packages/aimeos/aimeos-typo3)
 
-:star: Star us on GitHub — it helps!
+:star: Star us on GitHub — it motivates us a lot!
 
 [Aimeos](https://aimeos.org/TYPO3) is THE professional, full-featured and
 high performance e-commerce extension for TYPO3!  You can install it in your
@@ -37,8 +37,8 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **20.10 release and later**.
 
+- Stable release: 21.04 (TYPO3 9/10 LTS)
 - LTS release: 20.10 (TYPO3 9/10 LTS)
-- Beta release: 2021.01 (TYPO3 9/10 LTS)
 
 ### TYPO3 extension repository
 
@@ -71,7 +71,7 @@ This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have t
 
 Then, install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~20.10`
+`composer req aimeos/aimeos-typo3:~21.4`
 
 This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos composer script will be executed automatically, which copies some required files and adds a link to the Aimeos extensions placed in the ./ext/ directory.
 
