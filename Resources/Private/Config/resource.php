@@ -16,7 +16,7 @@ return [
 			'charset' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['charset'] ?? 'utf8',
 			'collate' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['tableoptions']['collate'] ?? 'utf8_unicode_ci',
 		],
-		'limit' => 3,
+		'limit' => 5,
 	],
 	'fs' => [
 		'adapter' => 'Standard',
