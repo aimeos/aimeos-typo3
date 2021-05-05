@@ -62,7 +62,7 @@ class Base
 					\Aimeos\Controller\Jobs::create( $context, $aimeos, $jobname )->run();
 				};
 
-				$process->start( $fcn, [$context, $aimeos, $jobname], true );
+				$process->start( $fcn, [$context, $aimeos, $jobname], false );
 			}
 		}
 
