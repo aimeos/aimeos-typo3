@@ -15,7 +15,6 @@ $EM_CONF['aimeos'] = array(
 	'version' => '21.7.0-dev',
 	'module' => '',
 	'state' => 'beta',
-	'uploadfolder' => 1,
 	'modify_tables' => '',
 	'clearcacheonload' => 1,
 	'author' => 'Aimeos',
