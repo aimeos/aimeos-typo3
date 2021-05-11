@@ -48,6 +48,8 @@ For new TYPO3 installations, there's a 1-click [Aimeos distribution](https://typ
 
 ### Composer
 
+**Note:** Currently, only composer 1.x can be used to install Aimeos for TYPO3 due a version conflict in the TYPO3 composer installer plugin!
+
 The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first if it isn't already available:
 
 `php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer`
