@@ -45,7 +45,7 @@
 	"repositories": {
 		"sjbr/static-info-tables": {
 			"type": "vcs",
-			"url": "git://git.typo3.org/TYPO3CMS/Extensions/static_info_tables.git"
+			"url": "https://codeberg.org/sjbr/static-info-tables.git"
 		}
 	},
 	"config": {
