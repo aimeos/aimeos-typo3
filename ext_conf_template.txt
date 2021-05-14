@@ -12,9 +12,9 @@ cacheName = Typo3
 useAPC = 0
 # cat=cache/apc; type=string; label=APC prefix:The prefix to distinguish configuration values from different instances
 apcPrefix = t3:
-# cat=frontend/canonical; type=boolean; label=TYPO3 canonical URLs:Enable TYPO3 9+ canonical URLs (creates duplicate canonical meta tags in list/detail pages)
-typo3Metatags = 1
 # cat=frontend/metatags; type=boolean; label=TYPO3 meta tags:Enable TYPO3 9+ meta tags instead of Aimeos meta tags for category lists and products
+typo3Metatags = 1
+# cat=frontend/canonical; type=boolean; label=TYPO3 canonical URLs:Enable TYPO3 9+ canonical URLs (creates duplicate canonical meta tags in list/detail pages)
 typo3Canonical = 0
 # cat=backend; type=boolean; label=Show TYPO3 page tree in backend:Pages can have different configuration for the administration interface
 showPageTree = 0
