@@ -2521,7 +2521,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .account-favorite .modify:before,
 .catalog-session-pinned .modify:before {
 	font: normal normal normal 14px/1 FontAwesome;
-	content: "\f014";
+	content: "\f2ed";
 	font-size: 150%;
 }
 
@@ -2677,7 +2677,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 
 .basket-mini-product .basket .delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
-	content: "\f014";
+	content: "\f2ed";
 }
 
 .basket-mini-product tr.total {
@@ -2770,7 +2770,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .basket-standard-coupon .minibutton.delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 125%;
-	content: "\f014";
+	content: "\f2ed";
 	display: inline-block;
 }
 
@@ -2845,7 +2845,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .basket-bulk .minibutton.delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	display: inline-block;
-	content: "\f014";
+	content: "\f2ed";
 	font-size: 100%;
 }
 
@@ -3336,7 +3336,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .aimeos .common-summary-detail .action .delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 100%;
-	content: "\f014";
+	content: "\f2ed";
 }
 
 .aimeos .common-summary-detail th.action,
@@ -4943,8 +4943,8 @@ body{
 .navbar {
 	padding: .2rem 1rem !important;
 	border-bottom: 1px solid #555;
-	background-color: #f8f8f8;
-	background-color: var(--ai-bg-alt, #f8f8f8);
+	background-color: #FFF;
+	background-color: var(--ai-bg-alt, #FFF);
 }
 
 .navbar-brand {
@@ -4974,14 +4974,14 @@ body{
 
 /*---------------------------- PROFILE Navbar------------------------------*/
 
-.navbar-nav .login .nav-link,
-.navbar-nav .profile .nav-link {
+.navbar-nav .login > .nav-link,
+.navbar-nav .profile > .nav-link {
 	margin-inline-end: 1rem;
 	padding: 0;
 }
 
-.navbar-nav .login .nav-link::before,
-.navbar-nav .profile .nav-link::before {
+.navbar-nav .login > .nav-link::before,
+.navbar-nav .profile > .nav-link::before {
 	font: normal normal normal 14px/1 FontAwesome;
 	content: "\f007";
 	text-decoration: none;
@@ -4991,6 +4991,10 @@ body{
 	display: block;
 	position: relative;
 	text-align: center;
+}
+
+.navbar-nav .dropdown-menu {
+	color: var(--ai-bg-alt, #FFF);
 }
 
 /*-----------------------------BASKET MINI Navbar-----------------------------*/
