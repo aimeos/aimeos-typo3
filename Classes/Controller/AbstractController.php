@@ -80,7 +80,7 @@ abstract class AbstractController
 		if( $withView === true )
 		{
 			$langid = self::$context->getLocale()->getLanguageId();
-			$paths = self::$aimeos->getCustomPaths( $templatePath );
+			$paths = self::$aimeos->getTemplatePaths( $templatePath );
 			$view = Base::getView( self::$context, $this->uriBuilder, $paths, $this->request, $langid );
 
 			self::$context->setView( $view );
@@ -138,7 +138,7 @@ abstract class AbstractController
 
 			if( $withView )
 			{
-				$paths = self::$aimeos->getCustomPaths( $templatePath );
+				$paths = self::$aimeos->getTemplatePaths( $templatePath );
 				$view = Base::getView( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
 				$context->setView( $view );
 			}

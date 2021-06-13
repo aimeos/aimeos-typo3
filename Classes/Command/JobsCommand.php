@@ -99,7 +99,7 @@ class JobsCommand extends Command
 	protected function getContext( ?string $pid ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
+		$tmplPaths = $aimeos->getTemplatePaths( 'controller/jobs/templates' );
 
 		$config = \Aimeos\Aimeos\Base::getConfig();
 		$context = \Aimeos\Aimeos\Base::getContext( $config );
