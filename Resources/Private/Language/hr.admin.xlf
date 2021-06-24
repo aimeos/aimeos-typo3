@@ -15,6 +15,10 @@
 				<target>Administracija Aimeos Shop</target>
 			</trans-unit>
 
+			<trans-unit id="beusers_site.title" xml:space="preserve">
+				<source>Aimeos shop site</source>
+			</trans-unit>
+
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
 			</trans-unit>
@@ -23,6 +27,7 @@
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.title" xml:space="preserve">
 				<source>Product list view</source>
+				<target>Prikaz popisa proizvoda </target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.description" xml:space="preserve">
 				<source>Product list filtered by parameters and configuration</source>
@@ -41,6 +46,7 @@
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
 				<source>Price filter</source>
+				<target>Filtar cijena</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
 				<source>Price range filter for facetted search</source>
@@ -185,6 +191,7 @@
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.title" xml:space="preserve">
 				<source>Order update</source>
+				<target>Ažuriranje narudžbe </target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.description" xml:space="preserve">
 				<source>Asynchronous payment and delivery updates</source>
@@ -194,6 +201,12 @@
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
 				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
+			</trans-unit>
+			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
+				<source>Supplier detail view</source>
+			</trans-unit>
+			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
+				<source>Supplier details for passed parameters or configuration</source>
 			</trans-unit>
 		</body>
 	</file>
