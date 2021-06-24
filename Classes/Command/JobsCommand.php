@@ -87,6 +87,8 @@ class JobsCommand extends Command
 		}
 
 		$process->wait();
+
+		return 0;
 	}
 
 
