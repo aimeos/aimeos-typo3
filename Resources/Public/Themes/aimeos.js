@@ -1705,7 +1705,7 @@ AimeosCatalogList = {
 				var list = $('.catalog-list-items').first();
 				var infiniteUrl = list.data('infinite-url');
 
-				if(infiniteUrl && list[0].getBoundingClientRect().bottom - $(window).height() < 50) {
+				if(infiniteUrl && list[0].getBoundingClientRect().bottom - $(window).height() * 3) {
 
 					list.data('infinite-url', '');
 
@@ -1716,11 +1716,9 @@ AimeosCatalogList = {
 					}).done( function( response ) {
 
 						var nextPage = $(response);
-						nextPage.find('.catalog-list-items ul li').each( function() {
-							$('ul', list).append(this);
-						});
-
 						var nextUrl = nextPage.find('.catalog-list-items').data( 'infinite-url' );
+
+						$('ul.list-items', list).append(nextPage.find('.catalog-list-items ul.list-items li.product'));
 						list.data('infinite-url', nextUrl);
 						$(window).trigger('scroll');
 					});

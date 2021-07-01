@@ -10,13 +10,27 @@
 	font-style:normal;
 	font-weight:900;
 	font-display:auto;
-	src:url(https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/webfonts//webfonts/fa-solid-900.eot);
-	src:url(https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/webfonts//webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.woff2) format("woff2"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.woff) format("woff"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.ttf) format("truetype"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.svg#fontawesome) format("svg")
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.eot);
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.eot?#iefix) format("embedded-opentype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.woff2) format("woff2"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.woff) format("woff"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.ttf) format("truetype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.svg#fontawesome) format("svg")
 }
+
+@font-face{
+	font-family:'FontAwesomeBrands';
+	font-style:normal;
+	font-weight:400;
+	font-display:auto;
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.eot);
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.eot?#iefix) format("embedded-opentype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.woff) format("woff2"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.woff) format("woff"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.ttf) format("truetype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.svg#fontawesome) format("svg")
+}
+
 
 
 .aimeos {
@@ -1858,8 +1872,8 @@ html.no-js .catalog-filter-price:hover .price-lists {
 	float: left;
 }
 
-.catalog-detail .catalog-social .social-button {
-	font: normal normal normal 14px/1 FontAwesome;
+.catalog-detail .catalog-social .social-button:before {
+	font: normal normal normal 14px/1 FontAwesomeBrands;
 	font-size: 150%;
 	padding: 0.33em;
 	text-decoration: none;
@@ -2241,7 +2255,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .catalog-detail-additional .header:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 120%;
-	content: "\f196";
+	content: "\f067";
 	float: right;
 }
 
@@ -2250,7 +2264,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 }
 
 .catalog-detail-additional .header.toggle-js:after {
-	content: "\f147";
+	content: "\f068";
 }
 
 .catalog-detail-additional .content {
@@ -5465,8 +5479,6 @@ body{
 	.zeynep .submenu {
 		background-color: #FFF;
 		background-color: var(--ai-bg, #FFF);
-		left: 20rem;
-		bottom:0;
 		min-height:100%;
 		overflow:hidden;
 		-webkit-overflow-scrolling:touch;
@@ -5474,7 +5486,9 @@ body{
 		pointer-events:none;
 		position:fixed;
 		top:0;
-		width:100%;
+		bottom:0;
+		left: -20rem;
+		width: 20rem;
 		z-index: 1;
 	}
 
