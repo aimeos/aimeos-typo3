@@ -10,13 +10,27 @@
 	font-style:normal;
 	font-weight:900;
 	font-display:auto;
-	src:url(https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/webfonts//webfonts/fa-solid-900.eot);
-	src:url(https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/webfonts//webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.woff2) format("woff2"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.woff) format("woff"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.ttf) format("truetype"),
-		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/font-awesome-line-awesome/webfonts/fa-solid-900.svg#fontawesome) format("svg")
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.eot);
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.eot?#iefix) format("embedded-opentype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.woff2) format("woff2"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.woff) format("woff"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.ttf) format("truetype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-solid-900.svg#fontawesome) format("svg")
 }
+
+@font-face{
+	font-family:'FontAwesomeBrands';
+	font-style:normal;
+	font-weight:400;
+	font-display:auto;
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.eot);
+	src:url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.eot?#iefix) format("embedded-opentype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.woff) format("woff2"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.woff) format("woff"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.ttf) format("truetype"),
+		url(https://cdn.jsdelivr.net/npm/line-awesome@1/dist/line-awesome/fonts/la-brands-400.svg#fontawesome) format("svg")
+}
+
 
 
 .aimeos {
@@ -1148,12 +1162,12 @@ html.no-js .catalog-filter-price:hover .price-lists {
 }
 
 .catalog-stage-navigator a.prev:before {
-	content: '◀';
+	content: '◀   ';
 	white-space: pre;
 }
 
 .catalog-stage-navigator a.next:after {
-	content: '▶';
+	content: '   ▶';
 	white-space: pre;
 }
 
@@ -1858,8 +1872,8 @@ html.no-js .catalog-filter-price:hover .price-lists {
 	float: left;
 }
 
-.catalog-detail .catalog-social .social-button {
-	font: normal normal normal 14px/1 FontAwesome;
+.catalog-detail .catalog-social .social-button:before {
+	font: normal normal normal 14px/1 FontAwesomeBrands;
 	font-size: 150%;
 	padding: 0.33em;
 	text-decoration: none;
@@ -2241,7 +2255,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .catalog-detail-additional .header:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 120%;
-	content: "\f196";
+	content: "\f067";
 	float: right;
 }
 
@@ -2250,7 +2264,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 }
 
 .catalog-detail-additional .header.toggle-js:after {
-	content: "\f147";
+	content: "\f068";
 }
 
 .catalog-detail-additional .content {
@@ -2521,7 +2535,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .account-favorite .modify:before,
 .catalog-session-pinned .modify:before {
 	font: normal normal normal 14px/1 FontAwesome;
-	content: "\f014";
+	content: "\f2ed";
 	font-size: 150%;
 }
 
@@ -2677,7 +2691,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 
 .basket-mini-product .basket .delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
-	content: "\f014";
+	content: "\f2ed";
 }
 
 .basket-mini-product tr.total {
@@ -2770,7 +2784,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .basket-standard-coupon .minibutton.delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 125%;
-	content: "\f014";
+	content: "\f2ed";
 	display: inline-block;
 }
 
@@ -2845,7 +2859,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .basket-bulk .minibutton.delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	display: inline-block;
-	content: "\f014";
+	content: "\f2ed";
 	font-size: 100%;
 }
 
@@ -3336,7 +3350,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 .aimeos .common-summary-detail .action .delete:after {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 100%;
-	content: "\f014";
+	content: "\f2ed";
 }
 
 .aimeos .common-summary-detail th.action,
@@ -4943,8 +4957,8 @@ body{
 .navbar {
 	padding: .2rem 1rem !important;
 	border-bottom: 1px solid #555;
-	background-color: #f8f8f8;
-	background-color: var(--ai-bg-alt, #f8f8f8);
+	background-color: #FFF;
+	background-color: var(--ai-bg-alt, #FFF);
 }
 
 .navbar-brand {
@@ -4974,14 +4988,14 @@ body{
 
 /*---------------------------- PROFILE Navbar------------------------------*/
 
-.navbar-nav .login .nav-link,
-.navbar-nav .profile .nav-link {
+.navbar-nav .login > .nav-link,
+.navbar-nav .profile > .nav-link {
 	margin-inline-end: 1rem;
 	padding: 0;
 }
 
-.navbar-nav .login .nav-link::before,
-.navbar-nav .profile .nav-link::before {
+.navbar-nav .login > .nav-link::before,
+.navbar-nav .profile > .nav-link::before {
 	font: normal normal normal 14px/1 FontAwesome;
 	content: "\f007";
 	text-decoration: none;
@@ -4991,6 +5005,10 @@ body{
 	display: block;
 	position: relative;
 	text-align: center;
+}
+
+.navbar-nav .dropdown-menu {
+	color: var(--ai-bg-alt, #FFF);
 }
 
 /*-----------------------------BASKET MINI Navbar-----------------------------*/
@@ -5012,19 +5030,17 @@ body{
 	font: normal normal normal 14px/1 FontAwesome;
 	content: "\f290";
 	font-size: 150%;
+	display: block;
 	color: #555;
 	color: var(--ai-primary-alt, #555);
-	display: block;
-	margin-inline-end: .2rem;
-	margin-bottom: 0.25rem;
 }
 
 .basket-mini-main {
 	position: absolute;
 	border-radius: 1rem;
-	top: -0.5rem;;
 	background-color: #A00000;
 	background-color: var(--ai-primary, #A00000);
+	top: -0.5rem;
 	right: 0;
 }
 
@@ -5102,8 +5118,8 @@ body{
 }
 
 .basket-mini-product .to-basket a {
-		color: #FFF !important;
-		color: var(--ai-bg, #FFF) !important;
+	color: #FFF !important;
+	color: var(--ai-bg, #FFF) !important;
 }
 
 .mini-basket-close {
@@ -5463,8 +5479,6 @@ body{
 	.zeynep .submenu {
 		background-color: #FFF;
 		background-color: var(--ai-bg, #FFF);
-		left: 20rem;
-		bottom:0;
 		min-height:100%;
 		overflow:hidden;
 		-webkit-overflow-scrolling:touch;
@@ -5472,7 +5486,9 @@ body{
 		pointer-events:none;
 		position:fixed;
 		top:0;
-		width:100%;
+		bottom:0;
+		left: -20rem;
+		width: 20rem;
 		z-index: 1;
 	}
 
@@ -5581,17 +5597,17 @@ body{
 /*------------------------------Megamenu--------------------------------------*/
 
 @media (min-width:992px) {
-		.catalog-filter-tree .megamenu > .submenu > .item-container > .list-container {
-				display: flex !important;
-				flex-wrap: wrap;
-		}
+	.catalog-filter-tree .megamenu > .submenu > .item-container > .list-container {
+		display: flex !important;
+		flex-wrap: wrap;
+	}
 
-		.megamenu > .submenu > .item-container > .list-container > .cat-item {
-				min-width: 33.3%;
-				flex: 1;
-				border-left: .5rem solid transparent;
-				border-right: .5rem solid transparent;
-		}
+	.megamenu > .submenu > .item-container > .list-container > .cat-item {
+		min-width: 33.3%;
+		flex: 1;
+		border-left: .5rem solid transparent;
+		border-right: .5rem solid transparent;
+	}
 
 	.catalog-filter .filter-sections:after{
 		position: relative;
@@ -5723,6 +5739,7 @@ body{
 	z-index: 1;
 }
 .catalog-filter-attribute > h2, .catalog-filter-tree > h2, .catalog-filter-price > h2, .catalog-filter-supplier > h2 {
+	padding: 1.1em 0.5em;
 	font-size: 80%;
 }
 
@@ -5823,4 +5840,10 @@ body{
 	font-size: 80%;
 	margin-bottom: 0;
 	width: 5rem;
+}
+
+
+.supplier-detail .image-single img {
+	max-height: 20rem;
+	max-width: 100%;
 }
