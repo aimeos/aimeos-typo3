@@ -11,20 +11,16 @@ plugin.tx_aimeos {
 
 
 	# cat=ai140theme/file/200; type=string; label=Template base URL:Path to the template directory
-	theme.baseurl = EXT:aimeos/Resources/Public/Themes/elegance
+	theme.baseurl = EXT:aimeos/Resources/Public/Themes/default
 
 
 	# cat=ai140theme/file/300; type=string; label=Aimeos CSS:Path to the Aimeos theme CSS
-	theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.css
+	theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/default/aimeos.css
 
 
 	# cat=ai140theme/file/400; type=string; label=Aimeos theme JS:Path to the theme specific Aimeos Javascript code
-	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/elegance/aimeos.js
-
-
-	# cat=ai150advanced/file/100; type=string; label=Aimeos JS:Aimeos frontend Javascript code
-	theme.js.aimeos = EXT:aimeos/Resources/Public/Themes/aimeos.js
+	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/default/aimeos.js
 
 	# cat=ai150advanced/file/110; type=string; label=Aimeos detail JS:Aimeos frontend Javascript code for the detail page
-	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/aimeos-detail.js
+	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/default/aimeos-detail.js
 }
