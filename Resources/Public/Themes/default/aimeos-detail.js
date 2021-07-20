@@ -155,43 +155,6 @@ AimeosCatalogDetail = {
 
 
 	/**
-	 * Initializes the slider for the thumbnail gallery (small images)
-	 */
-	setupThumbnailSlider: function() {
-
-		$(".catalog-detail-image .image-thumbs").each(function(idx, thumbs) {
-
-			var slider = $(".thumbs", thumbs);
-			var options = $(thumbs).data("slick") || {};
-
-			options.prevArrow = $(".slick-prev", thumbs);
-			options.nextArrow = $(".slick-next", thumbs);
-
-			slider.slick(options);
-		});
-	},
-
-
-	/**
-	 * Displays the big image and highlight thumbnail after it was selected
-	 */
-	setupImageSwap: function() {
-
-		$(".catalog-detail-image").on("click", ".thumbs .item", {}, function(ev) {
-
-			var scrollPosition = document.documentElement.scrollTop;
-			$(".thumbs .item", ev.delegateTarget).removeClass("selected");
-			$(this).addClass("selected");
-
-			window.location = $(this).attr("href");
-			window.scroll(0, scrollPosition);
-
-			return false;
-		});
-	},
-
-
-	/**
 	 * Opens the lightbox with big images
 	 */
 	setupImageLightbox: function() {
@@ -296,7 +259,7 @@ AimeosCatalogDetail = {
 	 */
 	setupReviews: function() {
 
-		var list = document.getElementsByClassName('content reviews');
+		var list = document.querySelectorAll('.catalog-detail .reviews');
 
 		if(list.length > 0) {
 			if('IntersectionObserver' in window) {
@@ -394,13 +357,10 @@ AimeosCatalogDetail = {
 	 */
 	init: function() {
 
+		this.setupImageLightbox();
 		this.setupServiceSlider();
 		this.setupBlockPriceSlider();
 		this.setupAdditionalContentSlider();
-
-//		this.setupThumbnailSlider();
-		this.setupImageLightbox();
-//		this.setupImageSwap();
 
 		this.setupReviews();
 		this.setupReviewsShow();

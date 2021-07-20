@@ -185,7 +185,7 @@ Aimeos = {
 	setupContainerClose: function() {
 
 		/* Go back to underlying page when back or close button is clicked */
-		$("body").on("click", ".aimeos-container .btn-close", function(ev) {
+		$("body").on("click", ".aimeos-overlay, .aimeos-container .btn-close", function() {
 			return Aimeos.removeOverlay();
 		});
 
