@@ -1,0 +1,54 @@
+{
+	"name": "aimeos/aimeos-typo3",
+	"description": "Professional, full-featured and high performance TYPO3 e-commerce extension for online shops and complex B2B projects",
+	"keywords": ["aimeos", "TYPO3", "e-commerce", "ecommerce", "B2B", "shop", "portal", "market place"],
+	"homepage": "https://www.aimeos.org",
+	"type": "typo3-cms-extension",
+	"license": "LGPL-3.0-or-later",
+	"support": {
+		"source": "https://github.com/aimeos/aimeos-typo3",
+		"issues": "https://github.com/aimeos/aimeos-typo3/issues",
+		"forum": "https://aimeos.org/help",
+		"wiki": "https://aimeos.org/docs"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"php": ">=7.2.0",
+		"aimeos/aimeos-core": "2021.07.*",
+		"aimeos/ai-gettext": "2021.07.*",
+		"aimeos/ai-typo3": "2021.07.*",
+		"aimeos/ai-admin-jqadm": "2021.07.*",
+		"aimeos/ai-admin-jsonadm": "2021.07.*",
+		"aimeos/ai-client-jsonapi": "2021.07.*",
+		"aimeos/ai-client-html": "2021.07.*",
+		"nyholm/psr7-server": "^1.0",
+		"nyholm/psr7": "^1.2"
+	},
+	"replace": {
+		"aimeos/aimeos-typo3": "self.version",
+		"typo3-ter/aimeos": "self.version"
+	},
+	"autoload": {
+		"classmap": ["Classes"],
+		"psr-4": {
+			"Aimeos\\Aimeos\\": "Classes"
+		}
+	},
+	"config": {
+		"vendor-dir": "Resources/Libraries"
+	},
+	"extra": {
+		"installer-paths": {
+			"Resources/Private/Extensions/{$name}/": ["type:aimeos-extension"]
+		},
+		"typo3/cms": {
+			"extension-key": "aimeos"
+		}
+	},
+	"scripts": {
+		"post-update-cmd": [
+			"cp -r Resources/Libraries/aimeos/ai-client-html/client/html/themes/* Resources/Public/Themes/"
+		]
+	}
+}
