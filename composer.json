@@ -41,20 +41,11 @@
 			"Aimeos\\Aimeos\\": "Classes"
 		}
 	},
-	"repositories": {
-		"sjbr/static-info-tables": {
-			"type": "vcs",
-			"url": "https://codeberg.org/sjbr/static-info-tables.git"
-		}
-	},
 	"config": {
 		"secure-http": false,
 		"vendor-dir": "Resources/Libraries"
 	},
 	"extra": {
-		"installer-paths": {
-			"Resources/Private/Extensions/{$name}/": ["type:aimeos-extension"]
-		},
 		"typo3/cms": {
 			"extension-key": "aimeos"
 		}
