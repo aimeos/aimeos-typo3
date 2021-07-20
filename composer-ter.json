@@ -15,6 +15,7 @@
 	"prefer-stable": true,
 	"require": {
 		"php": ">=7.2.0",
+		"composer/installers": "1.0.24",
 		"aimeos/aimeos-core": "2021.07.*",
 		"aimeos/ai-gettext": "2021.07.*",
 		"aimeos/ai-typo3": "2021.07.*",
@@ -48,7 +49,7 @@
 	},
 	"scripts": {
 		"post-update-cmd": [
-			"cp -r Resources/Libraries/aimeos/ai-client-html/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Private/Extensions/ai-client-html/client/html/themes/* Resources/Public/Themes/"
 		]
 	}
 }
