@@ -9,7 +9,7 @@
 		"source": "https://github.com/aimeos/aimeos-typo3",
 		"issues": "https://github.com/aimeos/aimeos-typo3/issues",
 		"forum": "https://aimeos.org/help",
-		"wiki": "https://aimeos.org/docs"
+		"docs": "https://aimeos.org/docs"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
