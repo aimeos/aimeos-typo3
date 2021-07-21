@@ -37,7 +37,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **20.10 release and later**.
 
-- Stable release: 21.04 (TYPO3 9/10 LTS)
+- Stable release: 21.07 (TYPO3 9/10 LTS)
 - LTS release: 20.10 (TYPO3 9/10 LTS)
 
 ### TYPO3 extension repository
@@ -58,7 +58,9 @@ In order to tell install TYPO3, you have to execute
 
 `composer create-project typo3/cms-base-distribution myshop`
 
-This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have to edit the composer.json file and add the ''post-install-cmd'' and ''post-update-cmd'' scripts:
+This will install TYPO3 into the ''./myshop/'' directory.
+
+If you are using Aimeos 20.10, you have to edit the composer.json file and add the ''post-install-cmd'' and ''post-update-cmd'' scripts:
 
 ```
     "scripts": {
@@ -71,9 +73,9 @@ This will install TYPO3 into the ''./myshop/'' directory. Afterwards, you have t
     }
 ```
 
-Then, install the Aimeos extension for TYPO3 with:
+For Aimeos 21.7+ this isn't necessary any more. Then, install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~21.4`
+`composer req aimeos/aimeos-typo3:~21.7`
 
 This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos composer script will be executed automatically, which copies some required files and adds a link to the Aimeos extensions placed in the ./ext/ directory.
 
@@ -131,7 +133,7 @@ Afterwards, you have to execute the update script of the extension to create the
 
 The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 9/10:
 
-* [21.4+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.4.t3d)
+* [21.7+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.7.t3d)
 * [20.10.x page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_20.10.t3d)
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
