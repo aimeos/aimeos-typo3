@@ -2300,6 +2300,13 @@ jQuery(function() {
 			$(this).data('zeynep').close()
 		})
 	});
+	$('.zeynep-overlay1').on('click', function () {
+		$(this).removeClass('open');
+		// close all zeynepjs menus
+		$('.zeynep.opened').each(function () {
+			$(this).data('zeynep').close();
+		})
+	});
 
 	// open first zeynepjs side menu
 	$('.btn-open.first').on('click', function () {
@@ -2308,10 +2315,12 @@ jQuery(function() {
 
 	$(".open-menu").on('click', function () {
 		$('.zeynep.first').data('zeynep').open();
+		$('.zeynep-overlay1').addClass('open');
 	});
 
 	$(".menu-close").on('click', function () {
 		$('.zeynep.first').data('zeynep').close();
+		$('.zeynep-overlay1').removeClass('open');
 	});
 
 	// open second zeynepjs side menu
