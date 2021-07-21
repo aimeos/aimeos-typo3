@@ -94,7 +94,7 @@ body > .content {
 	body {
 		background-size: 100% calc(7rem + 50px);
 	}
-	
+
 /*Bootstrap Package Typo3 begin*/
 	body.layout-default{
 		background-size: 100% calc(7rem + 50px);
@@ -5628,15 +5628,15 @@ footer .footer-left, footer .footer-center, footer .footer-right{
 	background-color: #fff;
 }
 
-.navbar-mainnavigation.navbar-default a:not(.active), 
-.navbar-mainnavigation.navbar-default-transition a:not(.active), 
+.navbar-mainnavigation.navbar-default a:not(.active),
+.navbar-mainnavigation.navbar-default-transition a:not(.active),
 .navbar-mainnavigation.navbar-default-transition.navbar-transition a:not(.active) {
 	color: #FFF !important;
 	color: var(--ai-primary-alt, #FFF) !important;
 }
 
-.navbar-mainnavigation.navbar-default a:not(.active):hover, 
-.navbar-mainnavigation.navbar-default-transition a:not(.active):hover, 
+.navbar-mainnavigation.navbar-default a:not(.active):hover,
+.navbar-mainnavigation.navbar-default-transition a:not(.active):hover,
 .navbar-mainnavigation.navbar-default-transition.navbar-transition a:not(.active):hover {
 	color: #CCC !important;
 	color: var(--ai-primary-light, #CCC) !important;
@@ -6114,7 +6114,7 @@ footer .footer-left, footer .footer-center, footer .footer-right{
 	position:fixed;
 	right:0;
 	top:0;
-	z-index:1030;
+	z-index:1020;
 }
 .zeynep-opened .zeynep-overlay{
 	display:block;
@@ -6128,7 +6128,7 @@ footer .footer-left, footer .footer-center, footer .footer-right{
 	position:fixed;
 	right:0;
 	top:0;
-	z-index:1030;
+	z-index:1020;
 }
 .zeynep-overlay1.open{
 	display:block;
@@ -6767,15 +6767,15 @@ footer .footer-left, footer .footer-center, footer .footer-right{
 		min-width: 0;
 	}
 
-	.catalog-filter-attribute .attribute-lists, 
-	.catalog-filter-supplier .supplier-lists, 
+	.catalog-filter-attribute .attribute-lists,
+	.catalog-filter-supplier .supplier-lists,
 	.catalog-filter-price .price-lists {
 		display: block;
 	}
-	
+
 /*Bootstrap Package Typo3*/
-	.bp-page-content.main-section .catalog-filter-attribute .attribute-lists, 
-	.bp-page-content.main-section  .catalog-filter-supplier .supplier-lists, 
+	.bp-page-content.main-section .catalog-filter-attribute .attribute-lists,
+	.bp-page-content.main-section  .catalog-filter-supplier .supplier-lists,
 	.bp-page-content.main-section  .catalog-filter-price .price-lists {
 		display: none;
 	}
