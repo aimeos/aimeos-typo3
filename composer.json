@@ -42,7 +42,6 @@
 		}
 	},
 	"config": {
-		"secure-http": false,
 		"vendor-dir": "Resources/Libraries"
 	},
 	"extra": {
