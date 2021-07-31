@@ -361,7 +361,7 @@ class View
 
 			if( $request !== null && $request->hasArgument( $name ) === true ) {
 				$fixed[$name] = $request->getArgument( $name );
-			} elseif( isset( $GLOBALS['TSFE']->id ) ) { // TYPO3 9+
+			} else { // TYPO3 9+
 				$fixed['L'] = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' )
 					->getAspect( 'language' )
 					->getId();
