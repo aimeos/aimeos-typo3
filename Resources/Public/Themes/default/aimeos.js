@@ -2337,7 +2337,6 @@ jQuery(function() {
 	var rtl = $('html').attr("dir") == 'rtl';
 
 	$('.product .image-single').slick({
-		asNavFor: '.product .thumbs',
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		rtl: rtl,
