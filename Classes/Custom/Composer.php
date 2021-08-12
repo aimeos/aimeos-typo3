@@ -42,14 +42,6 @@ class Composer
 			self::copyRecursive( $path . '/client/html/themes', $t3path . '/Resources/Public/Themes' );
 		}
 
-		if( ( $package = $repository->findPackage( 'aimeos/ai-typo3', '*' ) ) !== null )
-		{
-			$event->getIO()->write( 'Creating symlink to Aimeos extension directory' );
-
-			$path = dirname( $installer->getInstallPath( $package ) );
-			self::createLink( '../../../../../../' . $path, $t3path . '/Resources/Private/Extensions' );
-		}
-
 		self::join( $event );
 	}
 
