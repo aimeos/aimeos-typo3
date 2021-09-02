@@ -149,7 +149,7 @@ class Context
 		}
 
 		$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
-		return $context->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
+		return $context->setPassword( new \Aimeos\MW\Password\Typo3( $factory->getDefaultHashInstance( 'FE' ) ) );
 	}
 
 
