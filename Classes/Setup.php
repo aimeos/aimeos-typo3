@@ -178,6 +178,6 @@ class Setup
 		}
 
 		$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
-		return $ctx->setHasherTypo3( $factory->getDefaultHashInstance( 'FE' ) );
+		return $ctx->setPassword( new \Aimeos\MW\Password\Typo3( $factory->getDefaultHashInstance( 'FE' ) ) );
 	}
 }
