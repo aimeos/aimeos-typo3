@@ -42,6 +42,7 @@ class Context
 			self::addLogger( $context );
 			self::addCache( $context );
 			self::addMailer( $context );
+			self::addNounce( $context );
 			self::addProcess( $context );
 			self::addSession( $context );
 			self::addHasher( $context );
@@ -206,6 +207,24 @@ class Context
 		}
 
 		return $context->setMessageQueueManager( new \Aimeos\MW\MQueue\Manager\Standard( $context->getConfig() ) );
+	}
+
+
+	/**
+	 * Adds the nonce value for inline JS to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected static function addNonce( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	{
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] )
+			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] ) )
+		) {
+			return $fcn( $context );
+		}
+
+		return $context->setNonce( base64_encode( random_bytes( 16 ) ) );
 	}
 
 
