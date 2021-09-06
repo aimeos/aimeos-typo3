@@ -42,7 +42,7 @@ class Context
 			self::addLogger( $context );
 			self::addCache( $context );
 			self::addMailer( $context );
-			self::addNounce( $context );
+			self::addNonce( $context );
 			self::addProcess( $context );
 			self::addSession( $context );
 			self::addHasher( $context );
