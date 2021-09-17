@@ -88,7 +88,15 @@ class Context
 
 			case 'Typo3':
 				$manager = GeneralUtility::makeInstance( \TYPO3\CMS\Core\Cache\CacheManager::class );
-				$cache = new \Aimeos\MAdmin\Cache\Proxy\Typo3( $context, $manager->getCache( 'aimeos' ) );
+				$pageType = 0;
+				if ($GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface) {
+					$pageType = (int) $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
+				}
+				$cache = new \Aimeos\MAdmin\Cache\Proxy\Typo3(
+					$context,
+					$manager->getCache( 'aimeos' ),
+					$pageType
+				);
 				break;
 
 			default:
