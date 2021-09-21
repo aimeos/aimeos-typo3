@@ -163,7 +163,14 @@ abstract class AbstractController
 
 		$this->response->addAdditionalHeaderData( (string) $client->getHeader() );
 
-		return $client->getBody();
+		$pageType = '';
+		if( $GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface
+			&& empty( $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' ) ) === false )
+		{
+			$pageType = (string) $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
+		}
+
+		return $client->getBody( $pageType );
 	}
 
 
