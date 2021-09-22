@@ -25,6 +25,7 @@ abstract class AbstractController
 	private static $aimeos;
 	private static $context;
 	private $contextBE;
+	private $ceUid;
 
 
 	/**
@@ -161,15 +162,15 @@ abstract class AbstractController
 		$client->setView( $this->getContext()->getView() );
 		$client->process();
 
-		$pageType = '';
+		$uid = $this->ceUid;
 		if( $GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface
-			&& empty( $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' ) ) === false )
-		{
-			$pageType = (string) $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
+			&& empty( $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' ) ) === false
+		) {
+			$uid += '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
 		}
 
-		$this->response->addAdditionalHeaderData( (string) $client->getHeader( $pageType ) );
-		return $client->getBody( $pageType );
+		$this->response->addAdditionalHeaderData( (string) $client->getHeader( $uid ) );
+		return $client->getBody( $uid );
 	}
 
 
@@ -179,6 +180,9 @@ abstract class AbstractController
 	protected function initializeAction()
 	{
 		$this->uriBuilder->setArgumentPrefix( 'ai' );
+
+		$ce = $this->configurationManager->getContentObject();
+		$this->ceUid = $ce->data['uid'];
 
 		// initialize bootstrapping
 		self::$aimeos = Base::getAimeos();
