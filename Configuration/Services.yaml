@@ -1,0 +1,11 @@
+services:
+  Aimeos\Aimeos\Setup:
+    tags:
+      - name: event.listener
+        identifier: 'aimeosSetup'
+        method: setupEvent
+        event: TYPO3\CMS\Core\Package\Event\AfterPackageActivationEvent
+      - name: event.listener
+        identifier: 'aimeosSchema'
+        method: schemaEvent
+        event: TYPO3\CMS\Core\Package\Event\AlterTableDefinitionStatementsEvent

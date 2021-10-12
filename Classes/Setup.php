@@ -11,6 +11,8 @@ namespace Aimeos\Aimeos;
 
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Package\Event\AfterPackageActivationEvent;
+use \TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent;
 
 
 $aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
@@ -146,6 +148,30 @@ class Setup
 	public static function signal( string $extname = null )
 	{
 		if( $extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
+			self::execute();
+		}
+	}
+
+
+	/**
+	 * Alter schema to avoid TYPO3 dropping Aimeos tables
+	 *
+	 * @param AlterTableDefinitionStatementsEvent $event Event object
+	 */
+	public function schemaEvent( AlterTableDefinitionStatementsEvent $event )
+	{
+		$event->addSqlData( self::schema()['sqlString'] );
+	}
+
+
+	/**
+	 * Update schema if extension is installed
+	 *
+	 * @param AfterPackageActivationEvent $event Event object
+	 */
+	public function setupEvent( AfterPackageActivationEvent $event )
+	{
+		if( $event->getPackageKey() === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
 			self::execute();
 		}
 	}
