@@ -42,17 +42,18 @@ if( TYPO3_MODE === 'BE' )
 		$_aimeosConfiguration['inheritNavigationComponentFromMainModule'] = false;
 	}
 
+	$name = defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ? 'Aimeos.' : '';
+
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-		'Aimeos.aimeos',
+		$name . 'aimeos',
 		'web',
 		'tx_aimeos_admin',
 		'', // position
-		array(
-			'Admin' => 'index',
-			'Jqadm' => 'search,copy,create,delete,export,get,import,save,file',
-			'Extadm' => 'index,do,file',
-			'Jsonadm' => 'index',
-		),
+		[
+			'Aimeos\\Aimeos\\Controller\\AdminController' => 'index',
+			'Aimeos\\Aimeos\\Controller\\JqadmController' => 'search,copy,create,delete,export,get,import,save,file',
+			'Aimeos\\Aimeos\\Controller\\JsonadmController' => 'index',
+		],
 		$_aimeosConfiguration
 	);
 
