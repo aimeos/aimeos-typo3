@@ -213,6 +213,33 @@ AimeosCatalogDetail = {
 
 
 	/**
+	 * Single and thumbnail image slider
+	 */
+	setupImageSlider: function() {
+
+		var rtl = $('html').attr("dir") == 'rtl';
+
+		$('.product .image-single').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			rtl: rtl,
+			fade: false,
+			arrows: false,
+		});
+
+		$('.product .thumbs').slick({
+			asNavFor: '.product .image-single',
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			rtl: rtl,
+			dots: false,
+			arrows: false,
+			focusOnSelect: true
+		});
+	},
+
+
+	/**
 	 * Initializes the slide in/out for block prices
 	 */
 	setupBlockPriceSlider: function() {
@@ -357,6 +384,7 @@ AimeosCatalogDetail = {
 	 */
 	init: function() {
 
+		this.setupImageSlider();
 		this.setupImageLightbox();
 		this.setupServiceSlider();
 		this.setupBlockPriceSlider();

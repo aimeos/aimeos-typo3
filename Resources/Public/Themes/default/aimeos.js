@@ -79,8 +79,7 @@ Aimeos = {
 	createOverlay: function() {
 
 		var overlay = $(document.createElement("div"));
-		overlay.addClass("aimeos-overlay");
-		overlay.fadeTo(1000, 0.5);
+		overlay.addClass("aimeos-overlay").addClass("show");
 		$("body").append(overlay);
 	},
 
@@ -833,9 +832,6 @@ AimeosBasketBulk = {
  */
 AimeosBasketMini = {
 
-	WIDTH: '25em',
-
-
 	/**
 	 * Updates the basket mini content using the JSON API
 	 */
@@ -943,42 +939,11 @@ AimeosBasketMini = {
 
 
 	/**
-	 * Displays or hides the small basket
-	 */
-	setupBasketToggle: function() {
-
-		var width = $(".aimeos.basket-mini").innerWidth();
-
-		$(".aimeos.basket-mini").on("click", ".basket-toggle.toggle-open", function(ev) {
-
-			$(".basket", ev.delegateTarget).toggle();
-			$(".basket", ev.delegateTarget).css("width", width);
-
-			$(ev.delegateTarget).animate({"width": width}, {done: function() {
-				$(ev.currentTarget).removeClass("toggle-open").addClass("toggle-close");
-			}});
-		});
-
-		$(".aimeos.basket-mini").on("click", ".basket-toggle.toggle-close", function(ev) {
-
-			$(ev.delegateTarget).animate({"width": AimeosBasketMini.WIDTH}, {done: function() {
-
-				$(".basket", ev.delegateTarget).toggle();
-				$(".basket", ev.delegateTarget).css("width", AimeosBasketMini.WIDTH);
-
-				$(ev.currentTarget).removeClass("toggle-close").addClass("toggle-open");
-			}});
-		});
-	},
-
-
-	/**
 	 * Initializes the basket mini actions
 	 */
 	init: function() {
 
 		this.setupBasketDelete();
-		this.setupBasketToggle();
 	}
 };
 
@@ -1367,16 +1332,17 @@ AimeosCatalog = {
 	 */
 	setupFavoriteAction: function() {
 
-		$(".catalog-actions .actions-button-favorite").on("click", function(ev) {
+		$(".catalog-actions .actions-favorite").on("submit", function(ev) {
 
+			ev.preventDefault();
 			Aimeos.createOverlay();
 
 			$.ajax({
-				url: $(this).attr("href"),
-				dataType: 'html',
-				headers: {
-					"X-Requested-With": "jQuery"
-				}
+				url: $(this).attr("action"),
+				data: new FormData(this),
+				processData: false,
+				contentType: false,
+				method: 'POST'
 			}).done(function(data) {
 
 				var doc = document.createElement("html");
@@ -1392,6 +1358,7 @@ AimeosCatalog = {
 
 			return false;
 		});
+
 	},
 
 
@@ -1400,16 +1367,17 @@ AimeosCatalog = {
 	 */
 	setupWatchAction: function() {
 
-		$(".catalog-actions .actions-button-watch").on("click", function(ev) {
+		$(".catalog-actions .actions-watch").on("click", function(ev) {
 
+			ev.preventDefault();
 			Aimeos.createOverlay();
 
 			$.ajax({
-				url: $(this).attr("href"),
-				dataType: 'html',
-				headers: {
-					"X-Requested-With": "jQuery"
-				}
+				url: $(this).attr("action"),
+				data: new FormData(this),
+				processData: false,
+				contentType: false,
+				method: 'POST'
 			}).done(function(data) {
 
 				var doc = document.createElement("html");
@@ -1696,6 +1664,33 @@ AimeosCatalogFilter = {
 
 
 
+/**
+ * Catalog home actions
+ */
+AimeosCatalogHome = {
+
+	/**
+	 * Home slider
+	 */
+	setupSlider: function() {
+
+		$('.home-gallery').slick({
+			dots: false,
+			adaptiveHeight: true,
+			rtl: $('html').attr("dir") == 'rtl'
+		});
+	},
+
+
+	/**
+	 * Initialize the catalog home actions
+	 */
+	init: function() {
+
+		this.setupSlider();
+	}
+};
+
 
 
 /**
@@ -1807,8 +1802,9 @@ AimeosCatalogList = {
 						var nextPage = $(response);
 						var nextUrl = nextPage.find('.catalog-list-items').data( 'infinite-url' );
 
-						$('ul.list-items', list).append(nextPage.find('.catalog-list-items ul.list-items li.product'));
+						$('.list-items', list).append(nextPage.find('.catalog-list-items .list-items .product'));
 						list.data('infinite-url', nextUrl);
+						Aimeos.loadImages();
 						$(window).trigger('scroll');
 					});
 				}
@@ -2080,6 +2076,56 @@ AimeosCheckoutConfirm = {
 
 
 
+/**
+ * CMS page actions
+ */
+AimeosCmsPage = {
+
+	/**
+	 * CMS page sliders
+	 */
+	setupSlider: function() {
+
+		$('.cms-content .catalog-list .list-items').slick({
+			infinite: true,
+			speed: 300,
+			slidesToShow: 4,
+			slidesToScroll: 4,
+			arrows: true,
+			dots: false,
+			rtl: $('html').attr("dir") == 'rtl',
+			responsive: [{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				}
+			}, {
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				}
+			}, {
+				breakpoint: 576,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				}
+			}]
+		});
+	},
+
+
+	/**
+	 * Initialize the CMS page actions
+	 */
+	init: function() {
+
+		this.setupSlider();
+	}
+};
+
 
 
 /**
@@ -2092,7 +2138,7 @@ AimeosLocaleSelect = {
 	 */
 	setupMenuToggle: function() {
 
-		$(".select-menu .select-dropdown").click(function() {
+		$(".select-menu .select-dropdown").on('click', function() {
 			$("ul", this).toggleClass("active");
 			$(this).toggleClass("active");
 		});
@@ -2108,6 +2154,205 @@ AimeosLocaleSelect = {
 };
 
 
+
+/**
+ * Page actions
+ */
+
+AimeosPage = {
+
+	/**
+	* Link to top
+	*/
+	setupLinkTop: function() {
+
+		var offset = 220;
+		var duration = 500;
+
+		$(window).on("scroll", function() {
+			if ($(this).scrollTop() > offset) {
+				$(".back-to-top").fadeIn(duration);
+			} else {
+				$(".back-to-top").fadeOut(duration);
+			}
+		});
+
+		$(".back-to-top").on("click", function(event) {
+			event.preventDefault(event);
+			$("html, body").animate({scrollTop: 0}, duration);
+			return false;
+		});
+	},
+
+
+	/**
+	 * Menu transition
+	 */
+	setupMenuTransition: function() {
+
+		if ($(window).scrollTop() > 0) {
+			$(".navbar").addClass("navbar-scroll");
+		}
+
+		$(window).on("scroll", function() {
+			var scroll = $(window).scrollTop();
+
+			if (scroll > 0) {
+				$(".navbar").addClass("navbar-scroll");
+			} else {
+				$(".navbar").removeClass("navbar-scroll");
+			}
+		});
+	},
+
+
+	/**
+	 * Mega menu
+	 */
+	setupMenuMenu: function() {
+
+		var $dropdowns = $('.top-item'); // Specifying the element is faster for older browsers
+
+		/**
+		* Touch events
+		*
+		* Support click to open if we're dealing with a touchscreen
+		* Mouseenter (used with .hover()) does not trigger when user enters from outside document window
+		*/
+		$dropdowns.on('mouseover', function(){
+			var $this = $(this);
+			if ($this.prop('hoverTimeout')){
+				$this.prop('hoverTimeout', clearTimeout($this.prop('hoverTimeout')));
+			}
+			$this.prop('hoverIntent', setTimeout(function(){
+				$this.addClass('hover');
+			},));
+		})
+		.on('mouseleave', function(){
+			var $this = $(this);
+			if ($this.prop('hoverIntent')){
+				$this.prop('hoverIntent', clearTimeout($this.prop('hoverIntent')));
+			}
+			$this.prop('hoverTimeout', setTimeout(function(){
+				$this.removeClass('hover');
+			},));
+		});
+
+
+		/**
+		* Functions for Touch Devices (such as Laptops or screens with touch)
+		*/
+		window.matchMedia('(min-width: 991px)').addEventListener('change', event => {
+
+			if (event.matches) {
+
+				/**
+				* Mouse events
+				*
+				* Mimic hoverIntent plugin by waiting for the mouse to 'settle' within the target before triggering
+				*/
+				$dropdowns.each(function(){
+
+					var $this = $(this);
+
+					this.addEventListener('touchstart', function(e){
+
+						if (e.touches.length === 1){
+							// Prevent touch events within dropdown bubbling down to document
+							e.stopPropagation();
+							// Toggle hover
+							if (!$this.hasClass('hover')){
+								// Prevent link on first touch
+								if (e.target === this || e.target.parentNode === this){
+									e.preventDefault();
+								}
+								// Hide other open dropdowns
+								$dropdowns.removeClass('hover');
+								$this.addClass('hover');
+								// Hide dropdown on touch outside
+								document.addEventListener('touchstart', closeDropdown = function(e){
+
+									e.stopPropagation();
+									$this.removeClass('hover');
+									document.removeEventListener('touchstart', closeDropdown);
+
+								});
+							}
+						}
+					}, false);
+				});
+			}
+		});
+	},
+
+
+	/**
+	 * Initializes offscreen menus
+	 */
+	setupOffscreen: function() {
+
+		// loop all zeynepjs menus for initialization
+		$('.zeynep').each(function () {
+			$(this).zeynep({});
+		})
+
+		// handle zeynepjs overlay click
+		$('.aimeos-overlay-offscreen').on('click', function () {
+			$(this).removeClass('show');
+			$('.zeynep.opened').each(function () {
+				$(this).data('zeynep').close();
+			})
+		});
+	},
+
+
+	/**
+	 * Show/hide basket offscreen menu
+	 */
+	setupOffscreenBasket: function() {
+
+		// open basket side menu
+		$('.aimeos.basket-mini > a').on('click', function () {
+			$('.basket-mini .aimeos-overlay-offscreen').addClass('show');
+			$('.basket-mini-offscreen').data('zeynep').open();
+		});
+
+		$('.mini-basket-close').on('click', function () {
+			$('.basket-mini .aimeos-overlay-offscreen').removeClass('show');
+			$('.basket-mini-offscreen').data('zeynep').close();
+		});
+	},
+
+
+	/**
+	 * Show/hide category offscreen menu
+	 */
+	setupOffscreenCategory: function() {
+
+		$(".open-menu").on('click', function () {
+			$('.category-lists').data('zeynep').open();
+			$('.catalog-filter .aimeos-overlay-offscreen').addClass('show');
+		});
+
+		$(".menu-close").on('click', function () {
+			$('.category-lists').data('zeynep').close();
+			$('.catalog-filter .aimeos-overlay-offscreen').removeClass('show');
+		});
+	},
+
+
+	/**
+	 * Initializes the menu actions
+	 */
+	init: function() {
+		this.setupMenuTransition();
+		this.setupLinkTop();
+		this.setupMenuMenu();
+		this.setupOffscreen();
+		this.setupOffscreenBasket();
+		this.setupOffscreenCategory();
+	}
+};
 
 
 
@@ -2126,13 +2371,16 @@ $("html").removeClass("no-js");
 
 
 
-jQuery(document).ready(function($) {
+jQuery(function() {
 
 	Aimeos.init();
 
+	AimeosPage.init();
+	AimeosCmsPage.init();
 	AimeosLocaleSelect.init();
 
 	AimeosCatalog.init();
+	AimeosCatalogHome.init();
 	AimeosCatalogFilter.init();
 	AimeosCatalogList.init();
 	AimeosCatalogSession.init();
@@ -2151,244 +2399,6 @@ jQuery(document).ready(function($) {
 	AimeosAccountHistory.init();
 	AimeosAccountFavorite.init();
 	AimeosAccountWatch.init();
-});
-
-
-
-jQuery(function() {
-
-
-	/**
-	 * Menu transition
-	 */
-	if ($(window).scrollTop() > 0) {
-		$(".navbar").addClass("navbar-scroll");
-	}
-
-	$(window).on("scroll", function() {
-		var scroll = $(window).scrollTop();
-
-		if (scroll > 0) {
-			$(".navbar").addClass("navbar-scroll");
-		} else {
-			$(".navbar").removeClass("navbar-scroll");
-		}
-	})
-
-
-	/**
-	* Link to top
-	*/
-	var offset = 220;
-	var duration = 500;
-	$(window).on("scroll", function() {
-		if ($(this).scrollTop() > offset) {
-			$(".back-to-top").fadeIn(duration);
-		} else {
-			$(".back-to-top").fadeOut(duration);
-		}
-	});
-	$(".back-to-top").on("click", function(event) {
-		event.preventDefault(event);
-		$("html, body").animate({scrollTop: 0}, duration);
-		return false;
-	});
-
-
-	/**
-	 * Sets active classes in Menu
-	 */
-	$('.category-lists').find('.active').each(function() {
-		var $this = $(this);
-		$this.parents(".submenu").addClass('opened');
-		$this.parents('.cat-item').add(this).addClass('active');
-	});
-
-	/**
-	 * Functions MegaMenu
-	 */
-	var $dropdowns = $('.top-item'); // Specifying the element is faster for older browsers
-
-	$('.has-submenu > .top-cat-item').on('click', function(t){
-		t.preventDefault(), t.stopPropagation();
-	});
-
-	/**
-	 * Touch events
-	 *
-	 * @description Support click to open if we're dealing with a touchscreen
-	 */
-	$dropdowns.on('mouseover', function(){ // Mouseenter (used with .hover()) does not trigger when user enters from outside document window
-		var $this = $(this);
-		if ($this.prop('hoverTimeout')){
-			$this.prop('hoverTimeout', clearTimeout($this.prop('hoverTimeout')));
-		}
-		$this.prop('hoverIntent', setTimeout(function(){
-			$this.addClass('hover');
-		},));
-	})
-	.on('mouseleave', function(){
-		var $this = $(this);
-		if ($this.prop('hoverIntent')){
-			$this.prop('hoverIntent', clearTimeout($this.prop('hoverIntent')));
-		}
-		$this.prop('hoverTimeout', setTimeout(function(){
-			$this.removeClass('hover');
-		},));
-	});
-
-
-	/**
-	 * Functions for Touch Devices (such as Laptops or screens with touch)
-	 */
-	window.matchMedia('(min-width: 991px)').addEventListener('change', event => {
-
-		if (event.matches) {
-
-			/**
-			 * Mouse events
-			 *
-			 * @description Mimic hoverIntent plugin by waiting for the mouse to 'settle' within the target before triggering
-			 */
-			$dropdowns.each(function(){
-
-				var $this = $(this);
-
-				this.addEventListener('touchstart', function(e){
-
-					if (e.touches.length === 1){
-						// Prevent touch events within dropdown bubbling down to document
-						e.stopPropagation();
-						// Toggle hover
-						if (!$this.hasClass('hover')){
-							// Prevent link on first touch
-							if (e.target === this || e.target.parentNode === this){
-								e.preventDefault();
-							}
-							// Hide other open dropdowns
-							$dropdowns.removeClass('hover');
-							$this.addClass('hover');
-							// Hide dropdown on touch outside
-							document.addEventListener('touchstart', closeDropdown = function(e){
-
-								e.stopPropagation();
-								$this.removeClass('hover');
-								document.removeEventListener('touchstart', closeDropdown);
-
-							});
-						}
-					}
-				}, false);
-			});
-		}
-	})
-
-
-	/**
-	 * Offscreen
-	 */
-
-	// loop all zeynepjs menus for initialization
-	$('.zeynep').each(function () {
-		$(this).zeynep({});
-	})
-
-	// handle zeynepjs overlay click
-	$('.zeynep-overlay').on('click', function () {
-		// close all zeynepjs menus
-		$('.zeynep.opened').each(function () {
-			$(this).data('zeynep').close()
-		})
-	});
-	$('.zeynep-overlay1').on('click', function () {
-		$(this).removeClass('open');
-		// close all zeynepjs menus
-		$('.zeynep.opened').each(function () {
-			$(this).data('zeynep').close();
-		})
-	});
-
-	// open first zeynepjs side menu
-	$('.btn-open.first').on('click', function () {
-		$('.zeynep.first').data('zeynep').open();
-	});
-
-	$(".open-menu").on('click', function () {
-		$('.zeynep.first').data('zeynep').open();
-		$('.zeynep-overlay1').addClass('open');
-	});
-
-	$(".menu-close").on('click', function () {
-		$('.zeynep.first').data('zeynep').close();
-		$('.zeynep-overlay1').removeClass('open');
-	});
-
-	// open second zeynepjs side menu
-	$('.aimeos.basket-mini > a').on('click', function () {
-		$('.zeynep.second').data('zeynep').open();
-	});
-
-	$('.mini-basket-close').on('click', function () {
-		$('.zeynep.second').data('zeynep').close();
-	});
-
-
-	//SLICK SLIDERS
-	var rtl = $('html').attr("dir") == 'rtl';
-
-	$('.product .image-single').slick({
-		asNavFor: '.product .thumbs',
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		rtl: rtl,
-		fade: false,
-		arrows: false,
-	});
-
-	$('.product .thumbs').slick({
-		asNavFor: '.product .image-single',
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		rtl: rtl,
-		dots: false,
-		arrows: false,
-		focusOnSelect: true
-	});
-
-	$('.home-gallery').slick({
-		rtl: rtl,
-		dots: false,
-		adaptiveHeight: true
-	});
-
-	$('.cms-content .catalog-list .list-items').slick({
-		infinite: true,
-		speed: 300,
-		slidesToShow: 4,
-		slidesToScroll: 4,
-		arrows: true,
-		dots: false,
-		rtl: rtl,
-		responsive: [{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 3,
-			}
-		}, {
-			breakpoint: 768,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 2,
-			}
-		}, {
-			breakpoint: 576,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-			}
-		}]
-	});
 
 	Aimeos.loadImages();
 });
