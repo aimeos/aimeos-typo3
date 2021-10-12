@@ -99,25 +99,6 @@ class Composer
 
 
 	/**
-	 * Creates a link if it doesn't exist
-	 *
-	 * @param string $source Relative source path
-	 * @param string $target Absolute target path
-	 */
-	protected static function createLink( string $source, string $target )
-	{
-		if( file_exists( $target ) === false && @symlink( $source, $target ) === false )
-		{
-			$source = realpath( __DIR__ . '/' . $source );
-
-			if( symlink( $source, $target ) === false ) {
-				throw new \RuntimeException( sprintf( 'Failed to create symlink for "%1$s" to "%2$s"', $source, $target ) );
-			}
-		}
-	}
-
-
-	/**
 	 * Join community
 	 *
 	 * @param Event $event Event instance
