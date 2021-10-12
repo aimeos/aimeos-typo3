@@ -13,7 +13,6 @@ page.includeJSFooter.aimeos-custom = {$plugin.tx_aimeos.theme.js.aimeos-custom}
 
 plugin.tx_aimeos {
 	features {
-		requireCHashArgumentForActionArguments = 0
 		skipDefaultArguments = 1
 	}
 	mvc {

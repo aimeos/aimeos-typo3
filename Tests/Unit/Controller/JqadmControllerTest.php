@@ -18,12 +18,12 @@ class JqadmControllerTest
 
 		$this->object = $this->getAccessibleMock( 'Aimeos\Aimeos\Controller\JqadmController', array( 'dummy' ) );
 
-		$this->request = $this->getMockBuilder( 'TYPO3\CMS\Extbase\Mvc\Web\Request' )
+		$this->request = $this->getMockBuilder( 'TYPO3\CMS\Extbase\Mvc\Request' )
 			->setMethods( array( 'hasArgument', 'getArgument' ) )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$this->response = $this->getMockBuilder( 'TYPO3\CMS\Extbase\Mvc\Web\Response' )
+		$this->response = $this->getMockBuilder( 'TYPO3\CMS\Extbase\Mvc\Response' )
 			->setMethods( array( 'setHeader' ) )
 			->disableOriginalConstructor()
 			->getMock();
