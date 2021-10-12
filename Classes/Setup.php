@@ -85,7 +85,7 @@ class Setup
 	 * @param array $sql List of SQL statements
 	 * @return array SQL statements required for the install tool
 	 */
-	public function schema( array $sql ) : array
+	public static function schema( array $sql ) : array
 	{
 		$ctx = self::getContext();
 		$dbm = $ctx->getDatabaseManager();
@@ -160,7 +160,7 @@ class Setup
 	 */
 	public function schemaEvent( AlterTableDefinitionStatementsEvent $event )
 	{
-		$event->addSqlData( self::schema()['sqlString'] );
+		$event->addSqlData( self::schema( [] )['sqlString'] );
 	}
 
 
