@@ -23,14 +23,19 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 /**
  * Aimeos plugins
  */
-$prefix = $suffix = '';
-if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
+$name = $prefix = $suffix = '';
+
+if( !defined( 'TYPO3_version' ) || version_compare( constant( 'TYPO3_version' ), '10.0.0', '>=' ) ) {
 	$prefix = 'Aimeos\\Aimeos\\Controller\\';
 	$suffix = 'Controller';
 }
 
+if( defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
+	$name = 'Aimeos.';
+}
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'locale-select',
 	[$prefix . 'Locale' . $suffix => 'select'],
 	[$prefix . 'Locale' . $suffix => 'select']
@@ -38,98 +43,98 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-attribute',
 	[$prefix . 'Catalog' . $suffix => 'attribute'],
 	[$prefix . 'Catalog' . $suffix => 'attribute']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-count',
 	[$prefix . 'Catalog' . $suffix => 'count'],
 	[$prefix . 'Catalog' . $suffix => 'count']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-detail',
 	[$prefix . 'Catalog' . $suffix => 'detail'],
 	[$prefix . 'Catalog' . $suffix => 'detail']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-filter',
 	[$prefix . 'Catalog' . $suffix => 'filter'],
 	[$prefix . 'Catalog' . $suffix => 'filter']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-home',
 	[$prefix . 'Catalog' . $suffix => 'home'],
 	[$prefix . 'Catalog' . $suffix => 'home']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-list',
 	[$prefix . 'Catalog' . $suffix => 'list'],
 	[$prefix . 'Catalog' . $suffix => 'list']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-price',
 	[$prefix . 'Catalog' . $suffix => 'price'],
 	[$prefix . 'Catalog' . $suffix => 'price']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-search',
 	[$prefix . 'Catalog' . $suffix => 'search'],
 	[$prefix . 'Catalog' . $suffix => 'search']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-session',
 	[$prefix . 'Catalog' . $suffix => 'session'],
 	[$prefix . 'Catalog' . $suffix => 'session']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-stage',
 	[$prefix . 'Catalog' . $suffix => 'stage'],
 	[$prefix . 'Catalog' . $suffix => 'stage']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-stock',
 	[$prefix . 'Catalog' . $suffix => 'stock'],
 	[$prefix . 'Catalog' . $suffix => 'stock']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-suggest',
 	[$prefix . 'Catalog' . $suffix => 'suggest'],
 	[$prefix . 'Catalog' . $suffix => 'suggest']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-supplier',
 	[$prefix . 'Catalog' . $suffix => 'supplier'],
 	[$prefix . 'Catalog' . $suffix => 'supplier']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'catalog-tree',
 	[$prefix . 'Catalog' . $suffix => 'tree'],
 	[$prefix . 'Catalog' . $suffix => 'tree']
@@ -137,28 +142,28 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'basket-bulk',
 	[$prefix . 'Basket' . $suffix => 'bulk'],
 	[$prefix . 'Basket' . $suffix => 'bulk']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'basket-related',
 	[$prefix . 'Basket' . $suffix => 'related'],
 	[$prefix . 'Basket' . $suffix => 'related']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'basket-small',
 	[$prefix . 'Basket' . $suffix => 'small'],
 	[$prefix . 'Basket' . $suffix => 'small']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'basket-standard',
 	[$prefix . 'Basket' . $suffix => 'index'],
 	[$prefix . 'Basket' . $suffix => 'index']
@@ -166,21 +171,21 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'checkout-standard',
 	[$prefix . 'Checkout' . $suffix => 'index'],
 	[$prefix . 'Checkout' . $suffix => 'index']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'checkout-confirm',
 	[$prefix . 'Checkout' . $suffix => 'confirm'],
 	[$prefix . 'Checkout' . $suffix => 'confirm']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'checkout-update',
 	[$prefix . 'Checkout' . $suffix => 'update'],
 	[$prefix . 'Checkout' . $suffix => 'update']
@@ -188,63 +193,63 @@ if( version_compare( TYPO3_version, '10.0.0', '>=' ) ) {
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-download',
 	[$prefix . 'Account' . $suffix => 'download'],
 	[$prefix . 'Account' . $suffix => 'download']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-history',
 	[$prefix . 'Account' . $suffix => 'history'],
 	[$prefix . 'Account' . $suffix => 'history']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-favorite',
 	[$prefix . 'Account' . $suffix => 'favorite'],
 	[$prefix . 'Account' . $suffix => 'favorite']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-review',
 	[$prefix . 'Account' . $suffix => 'review'],
 	[$prefix . 'Account' . $suffix => 'review']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-profile',
 	[$prefix . 'Account' . $suffix => 'profile'],
 	[$prefix . 'Account' . $suffix => 'profile']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-subscription',
 	[$prefix . 'Account' . $suffix => 'subscription'],
 	[$prefix . 'Account' . $suffix => 'subscription']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'account-watch',
 	[$prefix . 'Account' . $suffix => 'watch'],
 	[$prefix . 'Account' . $suffix => 'watch']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'jsonapi',
 	[$prefix . 'Jsonapi' . $suffix => 'index'],
 	[$prefix . 'Jsonapi' . $suffix => 'index']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Aimeos.aimeos',
+	$name . 'aimeos',
 	'supplier-detail',
 	[$prefix . 'Supplier' . $suffix => 'detail'],
 	[$prefix . 'Supplier' . $suffix => 'detail']
