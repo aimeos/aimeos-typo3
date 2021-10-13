@@ -69,13 +69,17 @@ class Setup
 		$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' );
 		$demo = $object->get( 'aimeos', 'useDemoData' );
 
-		$local = array( 'setup' => array( 'default' => array( 'demo' => (string) $demo ) ) );
+		$local = ['setup' => ['default' => ['demo' => (string) $demo]]];
 		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
 
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
 
-		$object->set( 'aimeos', 'useDemoData', '' );
+		if( defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
+			$object->set( 'aimeos', 'useDemoData', '' );
+		} else {
+			$object->set( 'aimeos', ['useDemoData' => ''] );
+		}
 	}
 
 
@@ -160,7 +164,11 @@ class Setup
 	 */
 	public function schemaEvent( AlterTableDefinitionStatementsEvent $event )
 	{
-		$event->addSqlData( self::schema( [] )['sqlString'] );
+		$list = self::schema( [] );
+
+		foreach( $list['sqlString'] ?? [] as $sql ) {
+			$event->addSqlData( $sql );
+		}
 	}
 
 

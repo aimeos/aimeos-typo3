@@ -78,9 +78,9 @@ class JqadmController extends AbstractController
 			->withBody( $this->streamFactory->createStream( $contents ) );
 
 		if( $type === 'js' ) {
-			$response->withAddedHeader( 'Content-Type', 'application/javascript' );
+			$response = $response->withAddedHeader( 'Content-Type', 'application/javascript' );
 		} elseif( $type === 'css' ) {
-			$response->withAddedHeader( 'Content-Type', 'text/css' );
+			$response = $response->withAddedHeader( 'Content-Type', 'text/css' );
 		}
 
 		return $response;
@@ -306,16 +306,21 @@ class JqadmController extends AbstractController
 	 * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
 	 * @return string Generated output
 	 */
-	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response ) : string
+	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
 	{
-		$this->response->setStatus( $response->getStatusCode() );
+		if( !isset( $this->responseFactory ) ) // TYPO3 10
+		{
+			$this->response->setStatus( $response->getStatusCode() );
 
-		foreach( $response->getHeaders() as $key => $value ) {
-			foreach( (array) $value as $val ) {
-				$this->response->setHeader( $key, $val );
+			foreach( $response->getHeaders() as $key => $value ) {
+				foreach( (array) $value as $val ) {
+					$this->response->setHeader( $key, $val );
+				}
 			}
+
+			return (string) $response->getBody();
 		}
 
-		return (string) $response->getBody();
+		return $response;
 	}
 }

@@ -8,4 +8,16 @@ services:
       - name: event.listener
         identifier: 'aimeosSchema'
         method: schemaEvent
-        event: TYPO3\CMS\Core\Package\Event\AlterTableDefinitionStatementsEvent
+        event: TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent
+
+  Aimeos\Aimeos\Command\JobsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'aimeos:jobs'
+        description: 'Execute Aimeos job controllers'
+
+  Aimeos\Aimeos\Command\SetupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'aimeos:setup'
+        description: 'Creates or updates the database tables'

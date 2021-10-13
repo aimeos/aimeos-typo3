@@ -38,7 +38,17 @@ class CatalogController extends AbstractController
 	public function countAction()
 	{
 		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/count' );
-		return $this->getClientOutput( $client );
+
+		if( !isset( $this->responseFactory ) ) { // TYPO3 10
+			return $this->getClientOutput( $client );
+		}
+
+		$client->setView( $this->getContext()->getView() )->process();
+
+		return $this->responseFactory->createResponse()
+			->withAddedHeader( 'Content-Type', 'application/javascript' )
+			->withAddedHeader( 'Cache-Control', 'public, max-age=300' )
+			->withBody( $this->streamFactory->createStream( (string) $client->getBody() ) );
 	}
 
 
@@ -131,7 +141,17 @@ class CatalogController extends AbstractController
 	public function stockAction()
 	{
 		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/stock' );
-		return $this->getClientOutput( $client );
+
+		if( !isset( $this->responseFactory ) ) { // TYPO3 10
+			return $this->getClientOutput( $client );
+		}
+
+		$client->setView( $this->getContext()->getView() )->process();
+
+		return $this->responseFactory->createResponse()
+			->withAddedHeader( 'Content-Type', 'application/javascript' )
+			->withAddedHeader( 'Cache-Control', 'public, max-age=300' )
+			->withBody( $this->streamFactory->createStream( (string) $client->getBody() ) );
 	}
 
 
@@ -141,7 +161,17 @@ class CatalogController extends AbstractController
 	public function suggestAction()
 	{
 		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/suggest' );
-		return $this->getClientOutput( $client );
+
+		if( !isset( $this->responseFactory ) ) { // TYPO3 10
+			return $this->getClientOutput( $client );
+		}
+
+		$client->setView( $this->getContext()->getView() )->process();
+
+		return $this->responseFactory->createResponse()
+			->withAddedHeader( 'Content-Type', 'application/json' )
+			->withAddedHeader( 'Cache-Control', 'public, max-age=300' )
+			->withBody( $this->streamFactory->createStream( (string) $client->getBody() ) );
 	}
 
 

@@ -175,7 +175,7 @@ class JsonadmController extends AbstractController
 	 * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
 	 * @return string Generated output
 	 */
-	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response ) : string
+	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
 	{
 		if( !isset( $this->responseFactory ) ) // TYPO3 10
 		{

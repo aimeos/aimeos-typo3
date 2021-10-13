@@ -111,7 +111,7 @@ abstract class AbstractController
 
 			if( $this->request->hasArgument( 'locale' ) && ( $value = $this->request->getArgument( 'locale' ) ) != '' ) {
 				$lang = $value;
-			} elseif( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+			} elseif( !in_array( $GLOBALS['BE_USER']->uc['lang'] ?? '', ['', 'default'] ) ) {
 				$lang = $GLOBALS['BE_USER']->uc['lang'];
 			}
 
@@ -157,7 +157,7 @@ abstract class AbstractController
 	 * @param \Aimeos\Client\Html\Iface $client Html client object (no type hint to prevent reflection)
 	 * @return string HTML code for inserting into the HTML body
 	 */
-	protected function getClientOutput( \Aimeos\Client\Html\Iface $client ) : string
+	protected function getClientOutput( \Aimeos\Client\Html\Iface $client )
 	{
 		$uid = $this->ceUid;
 		if( $GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface

@@ -43,8 +43,8 @@ $name = defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version'
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	$name . 'aimeos',
 	'catalog-count',
-	['Aimeos\\Aimeos\\Controller\\CatalogController' => 'attribute'],
-	['Aimeos\\Aimeos\\Controller\\CatalogController' => 'attribute'],
+	['Aimeos\\Aimeos\\Controller\\CatalogController' => 'count'],
+	['Aimeos\\Aimeos\\Controller\\CatalogController' => 'count'],
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -360,6 +360,7 @@ if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
  * Add TYPO3 Hooks
  */
 
+// TYPO3 10, unnecessary in 11
 if( !isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] ) ) {
 	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] = \Aimeos\Aimeos\Base::class . '->logout';
 }
