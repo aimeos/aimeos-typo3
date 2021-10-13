@@ -12,6 +12,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 /**
@@ -40,7 +41,7 @@ class CheckoutController extends AbstractController
 		$client = \Aimeos\Client\Html::create( $context, 'checkout/confirm' );
 
 		$view = $context->getView();
-		$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
+		$param = array_merge( GeneralUtility::_GET(), GeneralUtility::_POST() );
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 		$view->addHelper( 'param', $helper );
 
@@ -55,8 +56,7 @@ class CheckoutController extends AbstractController
 			return $html;
 		}
 
-		$renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class );
-		$renderer->addHeaderData( $header );
+		GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class )->addHeaderData( $header );
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'text/html; charset=utf-8' )
@@ -75,7 +75,7 @@ class CheckoutController extends AbstractController
 			$client = \Aimeos\Client\Html::create( $context, 'checkout/update' );
 
 			$view = $context->getView();
-			$param = array_merge( \TYPO3\CMS\Core\Utility\GeneralUtility::_GET(), \TYPO3\CMS\Core\Utility\GeneralUtility::_POST() );
+			$param = array_merge( GeneralUtility::_GET(), GeneralUtility::_POST() );
 			$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 			$view->addHelper( 'param', $helper );
 
@@ -90,8 +90,7 @@ class CheckoutController extends AbstractController
 				return $html;
 			}
 
-			$renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class );
-			$renderer->addHeaderData( $header );
+			GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class )->addHeaderData( $header );
 
 			return $this->responseFactory->createResponse()
 				->withBody( $this->streamFactory->createStream( $html ) );
@@ -104,7 +103,7 @@ class CheckoutController extends AbstractController
 				return 'Error: ' . $e->getMessage();
 			}
 
-			return $this->responseFactory->createResponse()->withStatusCode( 500 )
+			return $this->responseFactory->createResponse()->withStatus( 500 )
 				->withBody( $this->streamFactory->createStream( 'Error: ' . $e->getMessage() ) );
 		}
 	}

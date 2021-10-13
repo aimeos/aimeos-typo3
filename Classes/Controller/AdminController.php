@@ -9,6 +9,8 @@
 
 namespace Aimeos\Aimeos\Controller;
 
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
+
 
 /**
  * Controller for the admin interface
