@@ -26,22 +26,26 @@ class AccountController extends AbstractController
 	 */
 	public function downloadAction()
 	{
-		$paths = Base::getAimeos()->getCustomPaths( 'client/html' );
 		$context = $this->getContext();
 		$view = $context->getView();
 
 		$client = \Aimeos\Client\Html::create( $context, 'account/download' );
-		$client->setView( $view );
-		$client->process();
+		$client->setView( $view )->process();
 
-		$response = $view->response();
-		$this->response->setStatus( $response->getStatusCode() );
+		if( !isset( $this->responseFactory ) ) // TYPO3 10
+		{
+			$response = $view->response();
 
-		foreach( $response->getHeaders() as $key => $value ) {
-			$this->response->setHeader( $key, implode( ', ', $value ) );
+			$this->response->setStatus( $response->getStatusCode() );
+
+			foreach( $response->getHeaders() as $key => $value ) {
+				$this->response->setHeader( $key, implode( ', ', $value ) );
+			}
+
+			return (string) $response->getBody();
 		}
 
-		return (string) $response->getBody();
+		return $view->response();
 	}
 
 

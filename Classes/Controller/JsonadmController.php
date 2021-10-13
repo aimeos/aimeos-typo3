@@ -177,14 +177,19 @@ class JsonadmController extends AbstractController
 	 */
 	protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response ) : string
 	{
-		$this->response->setStatus( $response->getStatusCode() );
+		if( !isset( $this->responseFactory ) ) // TYPO3 10
+		{
+			$this->response->setStatus( $response->getStatusCode() );
 
-		foreach( $response->getHeaders() as $key => $value ) {
-			foreach( (array) $value as $val ) {
-				$this->response->setHeader( $key, $val );
+			foreach( $response->getHeaders() as $key => $value ) {
+				foreach( (array) $value as $val ) {
+					$this->response->setHeader( $key, $val );
+				}
 			}
+
+			return (string) $response->getBody();
 		}
 
-		return (string) $response->getBody();
+		return $response;
 	}
 }

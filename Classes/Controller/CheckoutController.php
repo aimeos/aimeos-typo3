@@ -44,12 +44,23 @@ class CheckoutController extends AbstractController
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 		$view->addHelper( 'param', $helper );
 
-		$client->setView( $view );
-		$client->process();
+		$client->setView( $view )->process();
 
-		$this->response->addAdditionalHeaderData( (string) $client->getHeader() );
+		$header = (string) $client->getHeader();
+		$html = (string) $client->getBody();
 
-		return $client->getBody();
+		if( !isset( $this->responseFactory ) ) // TYPO3 10
+		{
+			$this->response->addAdditionalHeaderData( $header );
+			return $html;
+		}
+
+		$renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class );
+		$renderer->addHeaderData( $header );
+
+		return $this->responseFactory->createResponse()
+			->withAddedHeader( 'Content-Type', 'text/html; charset=utf-8' )
+			->withBody( $this->streamFactory->createStream( $html ) );
 	}
 
 
@@ -68,17 +79,33 @@ class CheckoutController extends AbstractController
 			$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 			$view->addHelper( 'param', $helper );
 
-			$client->setView( $view );
-			$client->process();
+			$client->setView( $view )->process();
 
-			$this->response->addAdditionalHeaderData( (string) $client->getHeader() );
+			$header = (string) $client->getHeader();
+			$html = (string) $client->getBody();
 
-			return $client->getBody();
+			if( !isset( $this->responseFactory ) ) // TYPO3 10
+			{
+				$this->response->addAdditionalHeaderData( $header );
+				return $html;
+			}
+
+			$renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class );
+			$renderer->addHeaderData( $header );
+
+			return $this->responseFactory->createResponse()
+				->withBody( $this->streamFactory->createStream( $html ) );
 		}
 		catch( \Exception $e )
 		{
-			@header( 'HTTP/1.1 500 Internal server error', true, 500 );
-			return 'Error: ' . $e->getMessage();
+			if( !isset( $this->responseFactory ) ) // TYPO3 10
+			{
+				@header( 'HTTP/1.1 500 Internal server error', true, 500 );
+				return 'Error: ' . $e->getMessage();
+			}
+
+			return $this->responseFactory->createResponse()->withStatusCode( 500 )
+				->withBody( $this->streamFactory->createStream( 'Error: ' . $e->getMessage() ) );
 		}
 	}
 }

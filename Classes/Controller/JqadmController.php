@@ -63,13 +63,27 @@ class JqadmController extends AbstractController
 			$contents .= $content;
 		}
 
-		if( $type === 'js' ) {
-			$this->response->setHeader( 'Content-Type', 'application/javascript' );
-		} elseif( $type === 'css' ) {
-			$this->response->setHeader( 'Content-Type', 'text/css' );
+		if( !isset( $this->responseFactory ) ) // TYPO3 10
+		{
+			if( $type === 'js' ) {
+				$this->response->setHeader( 'Content-Type', 'application/javascript' );
+			} elseif( $type === 'css' ) {
+				$this->response->setHeader( 'Content-Type', 'text/css' );
+			}
+
+			return $contents;
 		}
 
-		return $contents;
+		$response = $this->responseFactory->createResponse()
+			->withBody( $this->streamFactory->createStream( $contents ) );
+
+		if( $type === 'js' ) {
+			$response->withAddedHeader( 'Content-Type', 'application/javascript' );
+		} elseif( $type === 'css' ) {
+			$response->withAddedHeader( 'Content-Type', 'text/css' );
+		}
+
+		return $response;
 	}
 
 
@@ -87,6 +101,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -104,6 +119,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -121,6 +137,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -138,6 +155,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -155,6 +173,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -172,6 +191,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -189,6 +209,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -206,6 +227,7 @@ class JqadmController extends AbstractController
 		}
 
 		$this->view->assign( 'content', $html );
+		return $this->render();
 	}
 
 
@@ -236,6 +258,20 @@ class JqadmController extends AbstractController
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JQAdm::create( $context, $aimeos, $resource );
+	}
+
+
+	/**
+	 * Returns a PSR-7 response for TYPO3 11+
+	 */
+	protected function render()
+	{
+		if( isset( $this->responseFactory ) ) // TYPO3 11
+		{
+			return $this->responseFactory->createResponse()
+				->withAddedHeader( 'Content-Type', 'text/html; charset=utf-8' )
+				->withBody( $this->streamFactory->createStream( $this->view->render() ) );
+		}
 	}
 
 

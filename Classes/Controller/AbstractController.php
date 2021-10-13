@@ -159,9 +159,6 @@ abstract class AbstractController
 	 */
 	protected function getClientOutput( \Aimeos\Client\Html\Iface $client ) : string
 	{
-		$client->setView( $this->getContext()->getView() );
-		$client->process();
-
 		$uid = $this->ceUid;
 		if( $GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface
 			&& empty( $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' ) ) === false
@@ -169,8 +166,22 @@ abstract class AbstractController
 			$uid += '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
 		}
 
-		$this->response->addAdditionalHeaderData( (string) $client->getHeader( $uid ) );
-		return $client->getBody( $uid );
+		$client->setView( $this->getContext()->getView() )->process();
+		$header = (string) $client->getHeader( $uid );
+		$html = (string) $client->getBody( $uid );
+
+		if( !isset( $this->responseFactory ) ) // TYPO3 10
+		{
+			$this->response->addAdditionalHeaderData( $header );
+			return $html;
+		}
+
+		$renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class );
+		$renderer->addHeaderData( $header );
+
+		return $this->responseFactory->createResponse()
+			->withAddedHeader( 'Content-Type', 'text/html; charset=utf-8' )
+			->withBody( $this->streamFactory->createStream( $html ) );
 	}
 
 

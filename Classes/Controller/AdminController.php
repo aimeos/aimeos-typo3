@@ -31,6 +31,10 @@ class AdminController extends AbstractController
 			$site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
 		}
 
-		$this->forward( 'search', 'Jqadm', null, ['site' => $site] );
+		if( !class_exists( '\TYPO3\CMS\Extbase\Http\ForwardResponse' ) ) {
+			return $this->forward( 'search', 'Jqadm', null, ['site' => $site] );
+		}
+
+		return ( new ForwardResponse( 'search' ) )->withControllerName( 'Jqadm' )->withArguments( ['site' => $site] );
 	}
 }
