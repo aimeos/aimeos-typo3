@@ -648,6 +648,7 @@ body .main-section {
 	display: block;
 	cursor: pointer;
 	text-align: end;
+	margin-left: auto;
 }
 
 

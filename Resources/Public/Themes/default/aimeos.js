@@ -47,7 +47,6 @@ Aimeos = {
 		var container = $(document.createElement("div"));
 		var btnclose = $(document.createElement("a"));
 
-		btnclose.text("X");
 		btnclose.addClass("minibutton");
 		btnclose.addClass("btn-close");
 
