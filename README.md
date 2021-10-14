@@ -35,20 +35,13 @@ and customize anything to your needs.
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **20.10 release and later**.
+This document is for the latest Aimeos TYPO3 **21.10 release and later**.
 
-- Stable release: 21.07 (TYPO3 9/10 LTS)
-- LTS release: 20.10 (TYPO3 9/10 LTS)
-
-### TYPO3 extension repository
-
-If you want to install Aimeos into your existing TYPO3 installation, the [Aimeos extension from the TER](https://typo3.org/extensions/repository/view/aimeos) is recommended. You can download and install it directly from the Extension Manager of your TYPO3 instance.
-
-For new TYPO3 installations, there's a 1-click [Aimeos distribution](https://typo3.org/extensions/repository/view/aimeos_dist) available too. Choose the Aimeos distribution from the list of available distributions in the Extension Manager and you will get a completely set up shop system including demo data for a quick start.
+- LTS release: 21.10 (TYPO3 10/11 LTS)
 
 ### Composer
 
-**Note:** Since 2021.07, composer 2.1+ is required! Before, only composer 1.x can be used to install Aimeos!
+**Note:** composer 2.1+ is required!
 
 The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first if it isn't already available:
 
@@ -58,28 +51,31 @@ In order to tell install TYPO3, you have to execute
 
 `composer create-project typo3/cms-base-distribution myshop`
 
-This will install TYPO3 into the ''./myshop/'' directory.
+This will install TYPO3 into the `./myshop/` directory.
 
-If you are using Aimeos 20.10, you have to edit the composer.json file and add the ''post-install-cmd'' and ''post-update-cmd'' scripts:
+Then, change to the `./mshop/` directory and install the Aimeos extension for TYPO3 with:
 
-```
-    "scripts": {
-        "post-install-cmd": [
-            "Aimeos\\Aimeos\\Custom\\Composer::install"
-        ],
-        "post-update-cmd": [
-            "Aimeos\\Aimeos\\Custom\\Composer::install"
-        ]
-    }
-```
+`composer req aimeos/aimeos-typo3:~21.10`
 
-For Aimeos 21.7+ this isn't necessary any more. Then, install the Aimeos extension for TYPO3 with:
+This will install stable TYPO3 version and the latest Aimeos TYPO3 extension. If you want a more or less working installation out of the box for new installations, you should install the Bootstrap package too:
 
-`composer req aimeos/aimeos-typo3:~21.7`
+`composer req bk2k/bootstrap-package`
 
-This will install TYPO3 9.5 and the latest Aimeos TYPO3 extension. The Aimeos composer script will be executed automatically, which copies some required files and adds a link to the Aimeos extensions placed in the ./ext/ directory.
+### TER extension
+
+If you want to install Aimeos into your existing TYPO3 installation, the [Aimeos extension from the TER](https://typo3.org/extensions/repository/view/aimeos) is recommended. You can download and install it directly from the Extension Manager of your TYPO3 instance.
+
+For new TYPO3 installations, there's a 1-click [Aimeos distribution](https://typo3.org/extensions/repository/view/aimeos_dist) available too. Choose the Aimeos distribution from the list of available distributions in the Extension Manager and you will get a completely set up shop system including demo data for a quick start.
 
 ## TYPO3 setup
+
+Setup TYPO3 as normal by creating a `FIRST_INSTALL` file in the `./public` directory:
+
+```bash
+touch public/FIRST_INSTALL
+```
+
+Open the URL of your installation in the browser and follow the steps in the TYPO3 setup scripts.
 
 ### Database setup
 
@@ -115,7 +111,29 @@ Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts wh
     ]
 ```
 
-### Extension
+### Composer
+
+#### TYPO3 11
+
+When using TYPO3 11, you have to run these commands from your installation directory:
+
+```bash
+php ./vendor/bin/typo3 extension:setup
+php ./vendor/bin/typo3 aimeos:setup --option=setup/default/demo:1
+```
+
+If you don't want to add the Aimeos demo data, you should remove `--option=setup/default/demo:1` from the Aimeos setup command.
+
+#### TYPO3 10
+
+For TYPO3 10, these commands are required:
+
+```bash
+php ./vendor/bin/typo3 extension:activate scheduler
+php ./vendor/bin/typo3 extension:activate aimeos
+```
+
+### TER Extension
 
 * Log into the TYPO3 back end
 * Click on ''Admin Tools::Extension Manager'' in the left navigation
@@ -123,18 +141,19 @@ Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts wh
 
 ![Install Aimeos TYPO3 extension](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-install.png)
 
-### Database
-
 Afterwards, you have to execute the update script of the extension to create the required database structure:
 
 ![Execute update script](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-update-7.x.png)
 
+## Site setup
+
+TYPO3 10+ requires a site configuration which you have to add in "Site Management" > "Sites" available in the left navigation.
+
 ## Page setup
 
-The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 9/10:
+The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 10/11:
 
-* [21.7+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.7.t3d)
-* [20.10.x page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_20.10.t3d)
+* [21.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d) only
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
 
