@@ -51,7 +51,7 @@ class Setup
 
 		$config->set( 'setup/site', $sitecode );
 
-		$dbconfig = $config->get( 'resource', array() );
+		$dbconfig = $config->get( 'resource', [] );
 
 		foreach( $dbconfig as $rname => $dbconf )
 		{
