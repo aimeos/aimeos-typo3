@@ -230,7 +230,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
 		$langid = 'en';
-		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && !in_array( $GLOBALS['BE_USER']->uc['lang'], ['', 'default'] ) ) {
 			$langid = $GLOBALS['BE_USER']->uc['lang'];
 		}
 
