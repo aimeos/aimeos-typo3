@@ -84,14 +84,14 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
 			self::execute();
 
-			$this->output->writeln( '<pre>' . ob_get_clean() . '</pre>' );
+			$this->output->writeln( ob_get_clean() );
 			$this->output->writeln( sprintf( 'Setup process lasted %1$f sec', ( microtime( true ) - $exectimeStart ) ) );
 		}
-		catch( Exception $e )
+		catch( \Throwable $t )
 		{
-			$this->output->writeln( '<pre>' . ob_get_clean() . '</pre>' );
-			$this->output->writeln( $e->getMessage() );
-			$this->output->writeln( $e->getTraceAsString() );
+			$this->output->writeln( ob_get_clean() );
+			$this->output->writeln( $t->getMessage() );
+			$this->output->writeln( $t->getTraceAsString() );
 
 			return false;
 		}
@@ -101,10 +101,21 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
 
 	/**
-	* Setter injection for output into upgrade wizards
-	*
-	* @param OutputInterface $output
-	*/
+	 * Returns the classes the upgrade wizard depends on
+	 *
+	 * @return string[]
+	 */
+	public function getPrerequisites() : array
+	{
+		return [];
+	}
+
+
+	/**
+	 * Setter injection for output into upgrade wizards
+	 *
+	 * @param OutputInterface $output
+	 */
 	public function setOutput( OutputInterface $output ) : void
 	{
 		$this->output = $output;
