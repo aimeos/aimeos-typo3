@@ -10,9 +10,13 @@
 namespace Aimeos\Aimeos;
 
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \Symfony\Component\Console\Output\OutputInterface;
 use \TYPO3\CMS\Core\Package\Event\AfterPackageActivationEvent;
 use \TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent;
+use \TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
+use \TYPO3\CMS\Install\Updates\RepeatableInterface;
+use \TYPO3\CMS\Install\Updates\ChattyInterface;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 $aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
@@ -27,14 +31,99 @@ if( file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true
  *
  * @package TYPO3
  */
-class Setup
+class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterface
 {
+	private $output;
+
+
+	/**
+	 * Return the identifier for this wizard
+	 * This should be the same string as used in the ext_localconf class registration
+	 *
+	 * @return string
+	 */
+	public function getIdentifier() : string
+	{
+	  return 'aimeos';
+	}
+
+
+	/**
+	 * Return the speaking name of this wizard
+	 *
+	 * @return string
+	 */
+	public function getTitle() : string
+	{
+	  return 'Aimeos database migration';
+	}
+
+
+	/**
+	 * Return the description for this wizard
+	 *
+	 * @return string
+	 */
+	public function getDescription() : string
+	{
+	  return 'Updates the Aimeos database tables and migrates data if necessary';
+	}
+
+
+	/**
+	 * Execute the update
+	 *
+	 * @return bool
+	 */
+	public function executeUpdate() : bool
+	{
+		try
+		{
+			ob_start();
+			$exectimeStart = microtime( true );
+
+			self::execute();
+
+			$this->output->writeln( '<pre>' . ob_get_clean() . '</pre>' );
+			$this->output->writeln( sprintf( 'Setup process lasted %1$f sec', ( microtime( true ) - $exectimeStart ) ) );
+		}
+		catch( Exception $e )
+		{
+			$this->output->writeln( '<pre>' . ob_get_clean() . '</pre>' );
+			$this->output->writeln( $e->getMessage() );
+			$this->output->writeln( $e->getTraceAsString() );
+
+			return false;
+		}
+
+		return true;
+	}
+
+
+	/**
+	* Setter injection for output into upgrade wizards
+	*
+	* @param OutputInterface $output
+	*/
+	public function setOutput( OutputInterface $output ) : void
+	{
+		$this->output = $output;
+	}
+
+
+	/**
+	 * Checks if  update is necessary
+	 *
+	 * @return bool Whether an update is required (TRUE) or not (FALSE)
+	 */
+	public function updateNecessary() : bool
+	{
+		return true;
+	}
+
+
 	/**
 	 * Executes the setup tasks for updating the database.
-	 *
-	 * The setup tasks print their information directly to the standard output.
-	 * To avoid this, it's necessary to use the output buffering handler
-	 * (ob_start(), ob_get_contents() and ob_end_clean()).
 	 */
 	public static function execute()
 	{
@@ -74,6 +163,7 @@ class Setup
 
 		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
 		$manager->migrate();
+
 
 		if( defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
 			$object->set( 'aimeos', 'useDemoData', '' );

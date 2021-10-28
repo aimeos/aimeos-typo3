@@ -373,6 +373,13 @@ if( !isset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain
 
 
 /**
+ * Add update wizard
+ */
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['aimeos'] = \Aimeos\Aimeos\Setup::class;
+
+
+/**
  * Disable TYPO3 canonical tags so Aimeos ones are used
  */
 
