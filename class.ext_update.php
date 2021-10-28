@@ -23,6 +23,7 @@ if( file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
  * Update class for Aimeos TYPO3 extension.
  *
  * @package TYPO3_Aimeos
+ * @deprecated TYPO3 12
  */
 class ext_update
 {
