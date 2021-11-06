@@ -244,7 +244,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 		{
 			$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
 			$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
-			$cntl = htmlspecialchars( $controller->getName(), ENT_QUOTES, 'UTF-8' );
+			$cntl = htmlspecialchars( sprintf( '%1$s: %2$s', $name, $controller->getName() ), ENT_QUOTES, 'UTF-8' );
 			$name = htmlspecialchars( $name, ENT_QUOTES, 'UTF-8' );
 
 			$html .= sprintf( '<option value="%1$s" title="%2$s" %3$s>%4$s</option>', $name, $title, $active, $cntl );
