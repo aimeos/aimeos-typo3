@@ -166,9 +166,9 @@ abstract class AbstractController
 			$uid += '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
 		}
 
-		$client->setView( $this->getContext()->getView() )->process();
-		$header = (string) $client->getHeader( $uid );
-		$html = (string) $client->getBody( $uid );
+		$client->setView( $this->getContext()->getView() )->init();
+		$header = (string) $client->header( $uid );
+		$html = (string) $client->body( $uid );
 
 		if( !isset( $this->responseFactory ) ) // TYPO3 10
 		{

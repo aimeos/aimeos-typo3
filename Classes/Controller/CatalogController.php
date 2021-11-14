@@ -43,12 +43,12 @@ class CatalogController extends AbstractController
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->getContext()->getView() )->process();
+		$client->setView( $this->getContext()->getView() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/javascript' )
 			->withAddedHeader( 'Cache-Control', 'public, max-age=300' )
-			->withBody( $this->streamFactory->createStream( (string) $client->getBody() ) );
+			->withBody( $this->streamFactory->createStream( (string) $client->body() ) );
 	}
 
 
@@ -146,12 +146,12 @@ class CatalogController extends AbstractController
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->getContext()->getView() )->process();
+		$client->setView( $this->getContext()->getView() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/javascript' )
 			->withAddedHeader( 'Cache-Control', 'public, max-age=300' )
-			->withBody( $this->streamFactory->createStream( (string) $client->getBody() ) );
+			->withBody( $this->streamFactory->createStream( (string) $client->body() ) );
 	}
 
 
@@ -166,12 +166,12 @@ class CatalogController extends AbstractController
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->getContext()->getView() )->process();
+		$client->setView( $this->getContext()->getView() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/json' )
 			->withAddedHeader( 'Cache-Control', 'public, max-age=300' )
-			->withBody( $this->streamFactory->createStream( (string) $client->getBody() ) );
+			->withBody( $this->streamFactory->createStream( (string) $client->body() ) );
 	}
 
 

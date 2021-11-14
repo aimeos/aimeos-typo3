@@ -45,10 +45,10 @@ class CheckoutController extends AbstractController
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 		$view->addHelper( 'param', $helper );
 
-		$client->setView( $view )->process();
+		$client->setView( $view )->init();
 
-		$header = (string) $client->getHeader();
-		$html = (string) $client->getBody();
+		$header = (string) $client->header();
+		$html = (string) $client->body();
 
 		if( !isset( $this->responseFactory ) ) // TYPO3 10
 		{
@@ -79,10 +79,10 @@ class CheckoutController extends AbstractController
 			$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 			$view->addHelper( 'param', $helper );
 
-			$client->setView( $view )->process();
+			$client->setView( $view )->init();
 
-			$header = (string) $client->getHeader();
-			$html = (string) $client->getBody();
+			$header = (string) $client->header();
+			$html = (string) $client->body();
 
 			if( !isset( $this->responseFactory ) ) // TYPO3 10
 			{

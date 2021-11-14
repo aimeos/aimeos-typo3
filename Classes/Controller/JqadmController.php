@@ -97,7 +97,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->copy() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -115,7 +115,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->create() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -133,7 +133,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->delete() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -151,7 +151,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->export() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -169,7 +169,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->get() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -187,7 +187,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->import() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -205,7 +205,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->save() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );
@@ -223,7 +223,7 @@ class JqadmController extends AbstractController
 		$cntl = $this->createAdmin();
 
 		if( ( $html = $cntl->search() ) == '' ) {
-			return $this->setPsrResponse( $cntl->getView()->response() );
+			return $this->setPsrResponse( $cntl->response() );
 		}
 
 		$this->view->assign( 'content', $html );

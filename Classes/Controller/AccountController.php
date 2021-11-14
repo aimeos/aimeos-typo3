@@ -30,7 +30,7 @@ class AccountController extends AbstractController
 		$view = $context->getView();
 
 		$client = \Aimeos\Client\Html::create( $context, 'account/download' );
-		$client->setView( $view )->process();
+		$client->setView( $view )->init();
 
 		if( !isset( $this->responseFactory ) ) // TYPO3 10
 		{
