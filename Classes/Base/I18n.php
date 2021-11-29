@@ -34,7 +34,7 @@ class I18n
 
 		foreach( $languageIds as $langid )
 		{
-			if( $langid == '' ) { continue; }
+			if( in_array( $langid, ['', 'default'] ) ) { continue; }
 
 			if( !isset( self::$i18n[$langid] ) )
 			{
