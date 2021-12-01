@@ -298,7 +298,7 @@ body .main-section {
 
 .aimeos .form-item label {
 	letter-spacing: 1.5px;
-	margin: 0.5rem;
+	margin: 0.5rem 0;
 }
 
 .aimeos .form-item-value {
@@ -3886,7 +3886,7 @@ html.no-js .catalog-filter-price:hover .price-lists {
 }
 
 .account-profile-address .row {
-	padding: 1rem;
+	padding: 0 1rem;
 }
 
 .account-profile-address .panel {
