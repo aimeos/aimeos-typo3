@@ -35,7 +35,7 @@ class Base
 	public static function execute( array $conf, array $jobs, $sites, ?string $pid = null )
 	{
 		$aimeos = Aimeos\Base::getAimeos();
-		$context = self::getContext( $conf, $pid );
+		$context = self::context( $conf, $pid );
 		$process = $context->getProcess();
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
@@ -76,10 +76,10 @@ class Base
 	 * @param array Multi-dimensional associative list of key/value pairs
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function getContext( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\Context\Item\Iface
+	public static function context( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = Aimeos\Base::getConfig( $conf );
-		$context = Aimeos\Base::getContext( $config );
+		$context = Aimeos\Base::context( $config );
 
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );

@@ -27,7 +27,7 @@ class CheckoutController extends AbstractController
 	 */
 	public function indexAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'checkout/standard' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'checkout/standard' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -37,7 +37,7 @@ class CheckoutController extends AbstractController
 	 */
 	public function confirmAction()
 	{
-		$context = $this->getContext();
+		$context = $this->context();
 		$client = \Aimeos\Client\Html::create( $context, 'checkout/confirm' );
 
 		$view = $context->getView();
@@ -71,7 +71,7 @@ class CheckoutController extends AbstractController
 	{
 		try
 		{
-			$context = $this->getContext();
+			$context = $this->context();
 			$client = \Aimeos\Client\Html::create( $context, 'checkout/update' );
 
 			$view = $context->getView();

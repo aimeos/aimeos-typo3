@@ -27,7 +27,7 @@ class CatalogController extends AbstractController
 	 */
 	public function attributeAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/attribute' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/attribute' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -37,13 +37,13 @@ class CatalogController extends AbstractController
 	 */
 	public function countAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/count' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/count' );
 
 		if( !isset( $this->responseFactory ) ) { // TYPO3 10
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->getContext()->getView() )->init();
+		$client->setView( $this->context()->getView() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/javascript' )
@@ -58,7 +58,7 @@ class CatalogController extends AbstractController
 	public function detailAction()
 	{
 		$this->removeMetatags();
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/detail' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/detail' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -68,7 +68,7 @@ class CatalogController extends AbstractController
 	 */
 	public function filterAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/filter' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/filter' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -79,7 +79,7 @@ class CatalogController extends AbstractController
 	public function homeAction()
 	{
 		$this->removeMetatags();
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/home' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/home' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -90,7 +90,7 @@ class CatalogController extends AbstractController
 	public function listAction()
 	{
 		$this->removeMetatags();
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/lists' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/lists' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -100,7 +100,7 @@ class CatalogController extends AbstractController
 	 */
 	public function priceAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/price' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/price' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -110,7 +110,7 @@ class CatalogController extends AbstractController
 	 */
 	public function searchAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/search' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/search' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -120,7 +120,7 @@ class CatalogController extends AbstractController
 	 */
 	public function sessionAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/session' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/session' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -130,7 +130,7 @@ class CatalogController extends AbstractController
 	 */
 	public function stageAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/stage' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/stage' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -140,13 +140,13 @@ class CatalogController extends AbstractController
 	 */
 	public function stockAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/stock' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/stock' );
 
 		if( !isset( $this->responseFactory ) ) { // TYPO3 10
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->getContext()->getView() )->init();
+		$client->setView( $this->context()->getView() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/javascript' )
@@ -160,13 +160,13 @@ class CatalogController extends AbstractController
 	 */
 	public function suggestAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/suggest' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/suggest' );
 
 		if( !isset( $this->responseFactory ) ) { // TYPO3 10
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->getContext()->getView() )->init();
+		$client->setView( $this->context()->getView() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/json' )
@@ -180,7 +180,7 @@ class CatalogController extends AbstractController
 	 */
 	public function supplierAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/supplier' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/supplier' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -190,7 +190,7 @@ class CatalogController extends AbstractController
 	 */
 	public function treeAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'catalog/tree' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/tree' );
 		return $this->getClientOutput( $client );
 	}
 

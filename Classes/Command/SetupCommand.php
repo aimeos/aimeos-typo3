@@ -51,7 +51,7 @@ class SetupCommand extends Command
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$config = \Aimeos\Aimeos\Base::getConfig();
-		$ctx = \Aimeos\Aimeos\Base::getContext( $config );
+		$ctx = \Aimeos\Aimeos\Base::context( $config );
 		$ctx->setEditor( 'aimeos:setup' );
 
 		$config = $ctx->getConfig();

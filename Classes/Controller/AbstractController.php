@@ -56,14 +56,14 @@ abstract class AbstractController
 	 * @param bool $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContext( string $templatePath = 'client/html/templates',
+	protected function context( string $templatePath = 'client/html/templates',
 		bool $withView = true ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = Base::getConfig( (array) $this->settings );
 
 		if( !isset( self::$context ) )
 		{
-			$context = Base::getContext( $config );
+			$context = Base::context( $config );
 			$locale = Base::getLocale( $context, $this->request );
 			$context->setI18n( Base::getI18n( [$locale->getLanguageId()], $config->get( 'i18n', [] ) ) );
 			$context->setLocale( $locale );
@@ -98,7 +98,7 @@ abstract class AbstractController
 	 * @param bool $withView True to add view to context object, false for no view
 	 * @return \Aimeos\MShop\Context\Item\Iface Context item
 	 */
-	protected function getContextBackend( string $templatePath = 'admin/jqadm/templates',
+	protected function contextBackend( string $templatePath = 'admin/jqadm/templates',
 		bool $withView = true ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		if( !isset( $this->contextBE ) )
@@ -107,7 +107,7 @@ abstract class AbstractController
 			$site = 'default';
 
 			$config = Base::getConfig( (array) $this->settings );
-			$context = Base::getContext( $config );
+			$context = Base::context( $config );
 
 			if( $this->request->hasArgument( 'locale' ) && ( $value = $this->request->getArgument( 'locale' ) ) != '' ) {
 				$lang = $value;
@@ -166,7 +166,7 @@ abstract class AbstractController
 			$uid += '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
 		}
 
-		$client->setView( $this->getContext()->getView() )->init();
+		$client->setView( $this->context()->getView() )->init();
 		$header = (string) $client->header( $uid );
 		$html = (string) $client->body( $uid );
 

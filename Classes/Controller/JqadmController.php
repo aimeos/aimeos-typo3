@@ -247,7 +247,7 @@ class JqadmController extends AbstractController
 		}
 
 		$aimeos = Base::getAimeos();
-		$context = $this->getContextBackend( 'admin/jqadm/templates' );
+		$context = $this->contextBackend( 'admin/jqadm/templates' );
 
 		$view = $context->getView();
 

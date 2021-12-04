@@ -144,7 +144,7 @@ class JsonadmController extends AbstractController
 	 */
 	protected function createAdmin( string $resource ) : \Aimeos\Admin\JsonAdm\Iface
 	{
-		$context = $this->getContextBackend( 'admin/jsonadm/templates' );
+		$context = $this->contextBackend( 'admin/jsonadm/templates' );
 		return \Aimeos\Admin\JsonAdm::create( $context, Base::getAimeos(), $resource );
 	}
 

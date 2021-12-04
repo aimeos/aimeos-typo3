@@ -50,7 +50,7 @@ class JobsCommand extends Command
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
-		$context = $this->getContext( $input->getOption( 'pid' ) );
+		$context = $this->context( $input->getOption( 'pid' ) );
 		$process = $context->getProcess();
 
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
@@ -98,13 +98,13 @@ class JobsCommand extends Command
 	 * @param string|null $pid Page ID if available
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object containing only the most necessary dependencies
 	 */
-	protected function getContext( ?string $pid ) : \Aimeos\MShop\Context\Item\Iface
+	protected function context( ?string $pid ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$tmplPaths = $aimeos->getTemplatePaths( 'controller/jobs/templates' );
 
 		$config = \Aimeos\Aimeos\Base::getConfig();
-		$context = \Aimeos\Aimeos\Base::getContext( $config );
+		$context = \Aimeos\Aimeos\Base::context( $config );
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
 		$langids = $langManager->search( $langManager->filter( true ) )->keys()->toArray();

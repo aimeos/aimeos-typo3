@@ -144,7 +144,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 		Base::parseTS( $submittedData[$this->fieldTSconfig] );
 
 
-		$context = Scheduler\Base::getContext();
+		$context = Scheduler\Base::context();
 		$submittedData[$this->fieldSite] = array_unique( (array) $submittedData[$this->fieldSite] );
 		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
@@ -172,7 +172,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 	 */
 	protected function getAvailableSites() : \Aimeos\Map
 	{
-		$manager = \Aimeos\MShop::create( Scheduler\Base::getContext(), 'locale/site' );
+		$manager = \Aimeos\MShop::create( Scheduler\Base::context(), 'locale/site' );
 
 		$search = $manager->filter();
 		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
@@ -226,7 +226,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 	{
 		$html = '';
 		$aimeos = Base::getAimeos();
-		$context = Scheduler\Base::getContext();
+		$context = Scheduler\Base::context();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
 		$langid = 'en';

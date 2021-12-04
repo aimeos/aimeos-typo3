@@ -76,7 +76,7 @@ class Base
 	 * @param \Aimeos\MW\Config\Iface Configuration object
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function getContext( \Aimeos\MW\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
+	public static function context( \Aimeos\MW\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\Context';
 
@@ -265,7 +265,7 @@ class Base
 	 */
 	public static function logout()
 	{
-		$session = self::getContext( self::getConfig() )->getSession();
+		$session = self::context( self::getConfig() )->getSession();
 
 		$session->remove( array_keys( $session->get( 'aimeos/basket/list', [] ) ) );
 		$session->remove( array_keys( $session->get( 'aimeos/basket/cache', [] ) ) );

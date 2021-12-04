@@ -46,7 +46,7 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
 	protected function getOrderItems() : array
 	{
 		$config = \Aimeos\Aimeos\Base::getConfig();
-		$context = \Aimeos\Aimeos\Base::getContext( $config );
+		$context = \Aimeos\Aimeos\Base::context( $config );
 
 		$manager = \Aimeos\MShop::create( $context, 'order' );
 		$filter = $manager->filter()->sort( '-order.id' )->slice( 0, 20 );

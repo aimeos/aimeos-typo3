@@ -28,7 +28,7 @@ class SupplierController extends AbstractController
 	public function detailAction()
 	{
 		$this->removeMetatags();
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'supplier/detail' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'supplier/detail' );
 		return $this->getClientOutput( $client );
 	}
 

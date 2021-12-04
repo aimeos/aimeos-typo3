@@ -28,7 +28,7 @@ class AdminController extends AbstractController
 
 		if( isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' )
 		{
-			$siteManager = \Aimeos\MShop::create( $this->getContextBackend(), 'locale/site' );
+			$siteManager = \Aimeos\MShop::create( $this->contextBackend(), 'locale/site' );
 			$siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
 			$site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
 		}

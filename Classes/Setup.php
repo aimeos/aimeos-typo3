@@ -133,7 +133,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		$ctx = self::getContext();
+		$ctx = self::context();
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$siteTpl = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
@@ -185,7 +185,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	 */
 	public static function schema( array $sql ) : array
 	{
-		$ctx = self::getContext();
+		$ctx = self::context();
 		$dbm = $ctx->getDatabaseManager();
 		$conn = $dbm->acquire();
 
@@ -284,7 +284,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	 *
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	protected static function getContext() : \Aimeos\MShop\Context\Item\Iface
+	protected static function context() : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 

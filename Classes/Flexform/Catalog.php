@@ -43,7 +43,7 @@ class Catalog
 				$sitecode = $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'];
 			}
 
-			$context = Base::getContext( Base::getConfig() );
+			$context = Base::context( Base::getConfig() );
 			$context->setEditor( 'flexform' );
 
 			$localeManager = \Aimeos\MShop::create( $context, 'locale' );

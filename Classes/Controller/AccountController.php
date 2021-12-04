@@ -26,7 +26,7 @@ class AccountController extends AbstractController
 	 */
 	public function downloadAction()
 	{
-		$context = $this->getContext();
+		$context = $this->context();
 		$view = $context->getView();
 
 		$client = \Aimeos\Client\Html::create( $context, 'account/download' );
@@ -54,7 +54,7 @@ class AccountController extends AbstractController
 	 */
 	public function historyAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/history' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/history' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -64,7 +64,7 @@ class AccountController extends AbstractController
 	 */
 	public function favoriteAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/favorite' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/favorite' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -74,7 +74,7 @@ class AccountController extends AbstractController
 	 */
 	public function profileAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/profile' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/profile' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -84,7 +84,7 @@ class AccountController extends AbstractController
 	 */
 	public function reviewAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/review' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/review' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -94,7 +94,7 @@ class AccountController extends AbstractController
 	 */
 	public function subscriptionAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/subscription' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/subscription' );
 		return $this->getClientOutput( $client );
 	}
 
@@ -104,7 +104,7 @@ class AccountController extends AbstractController
 	 */
 	public function watchAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->getContext(), 'account/watch' );
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/watch' );
 		return $this->getClientOutput( $client );
 	}
 }
