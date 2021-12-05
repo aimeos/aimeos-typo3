@@ -12,7 +12,7 @@ class CatalogControllerTest
 
 	public function setUp()
 	{
-		\Aimeos\Aimeos\Base::getAimeos(); // initialize autoloader
+		\Aimeos\Aimeos\Base::aimeos(); // initialize autoloader
 
 		$this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\CatalogController', array( 'dummy' ) );
 

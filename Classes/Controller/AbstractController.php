@@ -140,7 +140,7 @@ abstract class AbstractController
 			if( $withView )
 			{
 				$paths = self::$aimeos->getTemplatePaths( $templatePath );
-				$view = Base::view( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
+				$view = Base::view( $context, $this->uriBuilder, $paths, $this->request, $lang );
 				$context->setView( $view );
 			}
 
