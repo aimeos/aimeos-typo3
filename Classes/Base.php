@@ -36,7 +36,7 @@ class Base
 	 *
 	 * @return \Aimeos\Bootstrap Aimeos bootstrap object
 	 */
-	public static function getAimeos() : \Aimeos\Bootstrap
+	public static function aimeos() : \Aimeos\Bootstrap
 	{
 		$name = 'Aimeos\Aimeos\Base\Aimeos';
 
@@ -62,11 +62,11 @@ class Base
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) ) {
 			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) instanceof \Closure ) {
-				return $name( self::getAimeos()->getConfigPaths(), $local );
+				return $name( self::aimeos()->getConfigPaths(), $local );
 			}
 		}
 
-		return $name::get( self::getAimeos()->getConfigPaths(), $local );
+		return $name::get( self::aimeos()->getConfigPaths(), $local );
 	}
 
 
@@ -124,11 +124,11 @@ class Base
 
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) ) {
 			if( ( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) instanceof \Closure ) {
-				return $name( self::getAimeos()->getI18nPaths(), $languageIds, $local );
+				return $name( self::aimeos()->getI18nPaths(), $languageIds, $local );
 			}
 		}
 
-		return $name::get( self::getAimeos()->getI18nPaths(), $languageIds, $local );
+		return $name::get( self::aimeos()->getI18nPaths(), $languageIds, $local );
 	}
 
 

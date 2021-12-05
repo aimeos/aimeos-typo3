@@ -153,7 +153,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 		}
 
 
-		$aimeos = Base::getAimeos();
+		$aimeos = Base::aimeos();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 		$submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] );
 
@@ -225,7 +225,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 	protected function getControllerOptions( array $selected ) : string
 	{
 		$html = '';
-		$aimeos = Base::getAimeos();
+		$aimeos = Base::aimeos();
 		$context = Scheduler\Base::context();
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 

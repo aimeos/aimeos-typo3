@@ -196,7 +196,7 @@ abstract class AbstractController
 		$this->ceUid = $ce->data['uid'];
 
 		// initialize bootstrapping
-		self::$aimeos = Base::getAimeos();
+		self::$aimeos = Base::aimeos();
 	}
 
 

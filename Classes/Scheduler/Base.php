@@ -34,7 +34,7 @@ class Base
 	 */
 	public static function execute( array $conf, array $jobs, $sites, ?string $pid = null )
 	{
-		$aimeos = Aimeos\Base::getAimeos();
+		$aimeos = Aimeos\Base::aimeos();
 		$context = self::context( $conf, $pid );
 		$process = $context->getProcess();
 
@@ -98,7 +98,7 @@ class Base
 
 		$context->setI18n( Aimeos\Base::getI18n( $langids, (array) ( $conf['i18n'] ?? [] ) ) );
 
-		$tmplPaths = Aimeos\Base::getAimeos()->getTemplatePaths( 'controller/jobs/templates' );
+		$tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths( 'controller/jobs/templates' );
 		$context->setView( Aimeos\Base::getView( $context, self::getRouter( $pid ), $tmplPaths ) );
 
 		$context->setEditor( 'scheduler' );

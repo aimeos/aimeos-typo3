@@ -44,7 +44,7 @@ class JqadmController extends AbstractController
 		$files = array();
 		$type = $this->request->getArgument( 'type' );
 
-		foreach( Base::getAimeos()->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
+		foreach( Base::aimeos()->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
 		{
 			foreach( $paths as $path )
 			{
@@ -246,7 +246,7 @@ class JqadmController extends AbstractController
 			$resource = $value;
 		}
 
-		$aimeos = Base::getAimeos();
+		$aimeos = Base::aimeos();
 		$context = $this->contextBackend( 'admin/jqadm/templates' );
 
 		$view = $context->getView();

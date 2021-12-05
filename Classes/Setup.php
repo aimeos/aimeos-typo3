@@ -134,7 +134,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		ini_set( 'max_execution_time', 0 );
 
 		$ctx = self::context();
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$aimeos = \Aimeos\Aimeos\Base::aimeos();
 		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
 		$siteTpl = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
 		$taskPaths = $aimeos->getSetupPaths( $siteTpl );

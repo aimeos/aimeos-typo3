@@ -53,7 +53,7 @@ class JobsCommand extends Command
 		$context = $this->context( $input->getOption( 'pid' ) );
 		$process = $context->getProcess();
 
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$aimeos = \Aimeos\Aimeos\Base::aimeos();
 		$jobs = explode( ' ', $input->getArgument( 'jobs' ) );
 		$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 
@@ -100,7 +100,7 @@ class JobsCommand extends Command
 	 */
 	protected function context( ?string $pid ) : \Aimeos\MShop\Context\Item\Iface
 	{
-		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
+		$aimeos = \Aimeos\Aimeos\Base::aimeos();
 		$tmplPaths = $aimeos->getTemplatePaths( 'controller/jobs/templates' );
 
 		$config = \Aimeos\Aimeos\Base::config();
