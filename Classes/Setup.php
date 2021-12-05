@@ -144,12 +144,10 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		$template = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
 
 		$boostrap = \Aimeos\Aimeos\Base::aimeos();
-		$config = \Aimeos\Aimeos\Base::config( ['setup' => ['default' => ['demo' => (string) $demo]]] );
-		$ctx = self::context()->setEditor( 'setup' );
+		$ctx = self::context( ['setup' => ['default' => ['demo' => (string) $demo]]] )->setEditor( 'setup' );
 
 		\Aimeos\Setup::use( $boostrap )
-			->verbose( $input->getOption( 'q' ) ? '' : $input->getOption( 'v' ) )
-			->context( $this->addConfig( $ctx->setEditor( 'aimeos:setup' ) ) )
+			->context( $ctx->setEditor( 'aimeos:setup' ) )
 			->up( $site, $template );
 
 		if( defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
@@ -168,8 +166,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	 */
 	public static function schema( array $sql ) : array
 	{
-		$ctx = self::context();
-		$dbm = $ctx->getDatabaseManager();
+		$dbm = self::context()->db();
 		$conn = $dbm->acquire();
 
 		try
@@ -265,9 +262,10 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	/**
 	 * Returns a new context object.
 	 *
+	 * @param array $config Nested array of configuration settings
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	protected static function context() : \Aimeos\MShop\Context\Item\Iface
+	protected static function context( array $config ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 
@@ -276,7 +274,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		}
 
 		$ctx = new \Aimeos\MShop\Context\Item\Standard();
-		$conf = \Aimeos\Aimeos\Base::config();
+		$conf = \Aimeos\Aimeos\Base::config( $config );
 
 		$ctx->setConfig( $conf );
 		$ctx->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $conf ) );

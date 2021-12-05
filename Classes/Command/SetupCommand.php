@@ -34,8 +34,8 @@ class SetupCommand extends Command
 		$this->addArgument( 'site', InputArgument::OPTIONAL, 'Site for updating database entries', 'default' );
 		$this->addArgument( 'tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default' );
 		$this->addOption( 'option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', [] );
-		$this->addOption( 'q', null, InputOption::OPTIONAL, 'Quiet mode without any output', [] );
-		$this->addOption( 'v', 'vv', InputOption::OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', [] );
+		$this->addOption( 'v', null, InputOption::VALUE_OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', 'vv' );
+		$this->addOption( 'q', null, InputOption::VALUE_NONE, 'Quiet mode without any output', '' );
 	}
 
 
@@ -60,8 +60,8 @@ class SetupCommand extends Command
 		$output->writeln( sprintf( 'Initializing or updating the Aimeos database tables for site <info>%1$s</info>', $site ) );
 
 		\Aimeos\Setup::use( $boostrap )
+			->context( $this->addConfig( $ctx->setEditor( 'aimeos:setup' ), $input->getOption( 'option' ) ) )
 			->verbose( $input->getOption( 'q' ) ? '' : $input->getOption( 'v' ) )
-			->context( $this->addConfig( $ctx->setEditor( 'aimeos:setup' ) ) )
 			->up( $site, $template );
 
 		return 0;
@@ -71,14 +71,15 @@ class SetupCommand extends Command
 	/**
 	 * Adds the configuration options from the input object to the given context
 	 *
+	 * @param array|string $options Input object
 	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
 	 * @return array Associative list of key/value pairs of configuration options
 	 */
-	protected function addConfig( \Aimeos\MShop\Context\Item\Iface $ctx ) : \Aimeos\MShop\Context\Item\Iface
+	protected function addConfig( \Aimeos\MShop\Context\Item\Iface $ctx, $options ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = $ctx->config();
 
-		foreach( (array) $input->getOption( 'option' ) as $option )
+		foreach( (array) $options as $option )
 		{
 			list( $name, $value ) = explode( ':', $option );
 			$config->set( $name, $value );
