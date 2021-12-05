@@ -99,7 +99,7 @@ class Base
 		$context->setI18n( Aimeos\Base::getI18n( $langids, (array) ( $conf['i18n'] ?? [] ) ) );
 
 		$tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths( 'controller/jobs/templates' );
-		$context->setView( Aimeos\Base::getView( $context, self::getRouter( $pid ), $tmplPaths ) );
+		$context->setView( Aimeos\Base::view( $context, self::getRouter( $pid ), $tmplPaths ) );
 
 		$context->setEditor( 'scheduler' );
 

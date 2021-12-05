@@ -82,7 +82,7 @@ abstract class AbstractController
 		{
 			$langid = self::$context->getLocale()->getLanguageId();
 			$paths = self::$aimeos->getTemplatePaths( $templatePath );
-			$view = Base::getView( self::$context, $this->uriBuilder, $paths, $this->request, $langid );
+			$view = Base::view( self::$context, $this->uriBuilder, $paths, $this->request, $langid );
 
 			self::$context->setView( $view );
 		}
@@ -140,7 +140,7 @@ abstract class AbstractController
 			if( $withView )
 			{
 				$paths = self::$aimeos->getTemplatePaths( $templatePath );
-				$view = Base::getView( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
+				$view = Base::view( $context, $this->uriBuilder, $paths, $this->request, $lang, false );
 				$context->setView( $view );
 			}
 
@@ -166,7 +166,7 @@ abstract class AbstractController
 			$uid += '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
 		}
 
-		$client->setView( $this->context()->getView() )->init();
+		$client->setView( $this->context()->view() )->init();
 		$header = (string) $client->header( $uid );
 		$html = (string) $client->body( $uid );
 

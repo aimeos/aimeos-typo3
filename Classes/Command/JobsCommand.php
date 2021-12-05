@@ -112,7 +112,7 @@ class JobsCommand extends Command
 		$i18n = \Aimeos\Aimeos\Base::getI18n( $langids, $config->get( 'i18n', [] ) );
 		$context->setI18n( $i18n );
 
-		$view = \Aimeos\Aimeos\Base::getView( $context, $this->getRouter( $pid ), $tmplPaths );
+		$view = \Aimeos\Aimeos\Base::view( $context, $this->getRouter( $pid ), $tmplPaths );
 		$context->setView( $view );
 
 		$context->setSession( new \Aimeos\MW\Session\None() );

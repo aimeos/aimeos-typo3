@@ -40,7 +40,7 @@ class CheckoutController extends AbstractController
 		$context = $this->context();
 		$client = \Aimeos\Client\Html::create( $context, 'checkout/confirm' );
 
-		$view = $context->getView();
+		$view = $context->view();
 		$param = array_merge( GeneralUtility::_GET(), GeneralUtility::_POST() );
 		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 		$view->addHelper( 'param', $helper );
@@ -74,7 +74,7 @@ class CheckoutController extends AbstractController
 			$context = $this->context();
 			$client = \Aimeos\Client\Html::create( $context, 'checkout/update' );
 
-			$view = $context->getView();
+			$view = $context->view();
 			$param = array_merge( GeneralUtility::_GET(), GeneralUtility::_POST() );
 			$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $param );
 			$view->addHelper( 'param', $helper );

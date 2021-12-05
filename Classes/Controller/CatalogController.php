@@ -43,7 +43,7 @@ class CatalogController extends AbstractController
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->context()->getView() )->init();
+		$client->setView( $this->context()->view() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/javascript' )
@@ -146,7 +146,7 @@ class CatalogController extends AbstractController
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->context()->getView() )->init();
+		$client->setView( $this->context()->view() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/javascript' )
@@ -166,7 +166,7 @@ class CatalogController extends AbstractController
 			return $this->getClientOutput( $client );
 		}
 
-		$client->setView( $this->context()->getView() )->init();
+		$client->setView( $this->context()->view() )->init();
 
 		return $this->responseFactory->createResponse()
 			->withAddedHeader( 'Content-Type', 'application/json' )

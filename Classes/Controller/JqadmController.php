@@ -249,7 +249,7 @@ class JqadmController extends AbstractController
 		$aimeos = Base::aimeos();
 		$context = $this->contextBackend( 'admin/jqadm/templates' );
 
-		$view = $context->getView();
+		$view = $context->view();
 
 		$view->aimeosType = 'TYPO3';
 		$view->aimeosVersion = Base::getVersion();

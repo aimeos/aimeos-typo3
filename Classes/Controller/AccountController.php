@@ -27,7 +27,7 @@ class AccountController extends AbstractController
 	public function downloadAction()
 	{
 		$context = $this->context();
-		$view = $context->getView();
+		$view = $context->view();
 
 		$client = \Aimeos\Client\Html::create( $context, 'account/download' );
 		$client->setView( $view )->init();
