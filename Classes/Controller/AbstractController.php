@@ -64,7 +64,7 @@ abstract class AbstractController
 		if( !isset( self::$context ) )
 		{
 			$context = Base::context( $config );
-			$locale = Base::getLocale( $context, $this->request );
+			$locale = Base::locale( $context, $this->request );
 			$context->setI18n( Base::i18n( [$locale->getLanguageId()], $config->get( 'i18n', [] ) ) );
 			$context->setLocale( $locale );
 
@@ -74,13 +74,13 @@ abstract class AbstractController
 		// Use plugin specific configuration
 		self::$context->setConfig( $config );
 
-		foreach( self::$context->getLocale()->getSiteItem()->config() as $key => $value ) {
+		foreach( self::$context->locale()->getSiteItem()->config() as $key => $value ) {
 			$config->set( $key, $value );
 		}
 
 		if( $withView === true )
 		{
-			$langid = self::$context->getLocale()->getLanguageId();
+			$langid = self::$context->locale()->getLanguageId();
 			$paths = self::$aimeos->getTemplatePaths( $templatePath );
 			$view = Base::view( self::$context, $this->uriBuilder, $paths, $this->request, $langid );
 
