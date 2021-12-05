@@ -311,7 +311,7 @@ class View
 
 		if( $langid )
 		{
-			$i18n = \Aimeos\Aimeos\Base::getI18n( [$langid], $local );
+			$i18n = \Aimeos\Aimeos\Base::i18n( [$langid], $local );
 			$translation = $i18n[$langid];
 		}
 		else

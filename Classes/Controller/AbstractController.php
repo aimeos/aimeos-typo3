@@ -65,7 +65,7 @@ abstract class AbstractController
 		{
 			$context = Base::context( $config );
 			$locale = Base::getLocale( $context, $this->request );
-			$context->setI18n( Base::getI18n( [$locale->getLanguageId()], $config->get( 'i18n', [] ) ) );
+			$context->setI18n( Base::i18n( [$locale->getLanguageId()], $config->get( 'i18n', [] ) ) );
 			$context->setLocale( $locale );
 
 			self::$context = $context;
@@ -130,7 +130,7 @@ abstract class AbstractController
 				$this->checkSite( $locale->getSitePath(), $GLOBALS['BE_USER']->user['siteid'] );
 			}
 
-			$i18n = Base::getI18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
+			$i18n = Base::i18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
 			$context->setI18n( $i18n );
 
 			foreach( $locale->getSiteItem()->config() as $key => $value ) {

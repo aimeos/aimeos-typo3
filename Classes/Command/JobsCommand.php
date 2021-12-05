@@ -109,7 +109,7 @@ class JobsCommand extends Command
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
 		$langids = $langManager->search( $langManager->filter( true ) )->keys()->toArray();
 
-		$i18n = \Aimeos\Aimeos\Base::getI18n( $langids, $config->get( 'i18n', [] ) );
+		$i18n = \Aimeos\Aimeos\Base::i18n( $langids, $config->get( 'i18n', [] ) );
 		$context->setI18n( $i18n );
 
 		$view = \Aimeos\Aimeos\Base::view( $context, $this->getRouter( $pid ), $tmplPaths );

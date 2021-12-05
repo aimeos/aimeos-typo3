@@ -118,7 +118,7 @@ class Base
 	 * @param array $local List of local translation entries overwriting the standard ones
 	 * @return array List of translation objects implementing MW_Translation_Interface
 	 */
-	public static function getI18n( array $languageIds, array $local = [] ) : array
+	public static function i18n( array $languageIds, array $local = [] ) : array
 	{
 		$name = 'Aimeos\Aimeos\Base\I18n';
 

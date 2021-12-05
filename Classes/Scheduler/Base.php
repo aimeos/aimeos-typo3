@@ -96,7 +96,7 @@ class Base
 		$search->setConditions( $search->combine( '||', $expr ) );
 		$langids = $langManager->search( $search )->keys()->toArray();
 
-		$context->setI18n( Aimeos\Base::getI18n( $langids, (array) ( $conf['i18n'] ?? [] ) ) );
+		$context->setI18n( Aimeos\Base::i18n( $langids, (array) ( $conf['i18n'] ?? [] ) ) );
 
 		$tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths( 'controller/jobs/templates' );
 		$context->setView( Aimeos\Base::view( $context, self::getRouter( $pid ), $tmplPaths ) );
