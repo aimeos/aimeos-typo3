@@ -36,7 +36,7 @@ class Base
 	{
 		$aimeos = Aimeos\Base::aimeos();
 		$context = self::context( $conf, $pid );
-		$process = $context->getProcess();
+		$process = $context->process();
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
 		if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {

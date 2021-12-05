@@ -51,7 +51,7 @@ class JobsCommand extends Command
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
 		$context = $this->context( $input->getOption( 'pid' ) );
-		$process = $context->getProcess();
+		$process = $context->process();
 
 		$aimeos = \Aimeos\Aimeos\Base::aimeos();
 		$jobs = explode( ' ', $input->getArgument( 'jobs' ) );
