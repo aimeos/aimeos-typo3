@@ -44,7 +44,7 @@ class View
 		$view->prefix = $prefix;
 
 		$config = $context->config();
-		$session = $context->getSession();
+		$session = $context->session();
 
 		self::addTranslate( $view, $locale, $config->get( 'i18n', [] ) );
 		self::addParam( $view, $request );

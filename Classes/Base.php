@@ -265,7 +265,7 @@ class Base
 	 */
 	public static function logout()
 	{
-		$session = self::context( self::config() )->getSession();
+		$session = self::context( self::config() )->session();
 
 		$session->remove( array_keys( $session->get( 'aimeos/basket/list', [] ) ) );
 		$session->remove( array_keys( $session->get( 'aimeos/basket/cache', [] ) ) );
