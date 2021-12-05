@@ -24,20 +24,18 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class SetupCommand extends Command
 {
-	protected static $defaultName = 'aimeos:setup';
-
-
 	/**
 	 * Configures the command name and description.
 	 */
 	protected function configure()
 	{
-		$this->setName( self::$defaultName );
+		$this->setName( 'aimeos:setup' );
 		$this->setDescription( 'Initialize or update the Aimeos database tables' );
 		$this->addArgument( 'site', InputArgument::OPTIONAL, 'Site for updating database entries', 'default' );
 		$this->addArgument( 'tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default' );
-		$this->addOption( 'option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', array() );
-		$this->addOption( 'task', null, InputOption::VALUE_REQUIRED, 'Name of the setup task that should be executed', null );
+		$this->addOption( 'option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', [] );
+		$this->addOption( 'q', null, InputOption::OPTIONAL, 'Quiet mode without any output', [] );
+		$this->addOption( 'v', 'vv', InputOption::OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', [] );
 	}
 
 
@@ -49,77 +47,41 @@ class SetupCommand extends Command
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
-		$aimeos = \Aimeos\Aimeos\Base::aimeos();
-		$config = \Aimeos\Aimeos\Base::config();
-		$ctx = \Aimeos\Aimeos\Base::context( $config );
-		$ctx->setEditor( 'aimeos:setup' );
+		\Aimeos\MShop::cache( false );
+		\Aimeos\MAdmin::cache( false );
 
-		$config = $ctx->config();
 		$site = $input->getArgument( 'site' );
-		$tplsite = $input->getArgument( 'tplsite' );
+		$template = $input->getArgument( 'tplsite' );
 
-		$config->set( 'setup/site', $site );
-		$dbconfig = $this->getDbConfig( $config );
-		$this->setOptions( $config, $input );
-
-		$taskPaths = $aimeos->getSetupPaths( $tplsite );
-		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $ctx->getDatabaseManager(), $dbconfig, $taskPaths, $ctx );
+		$config = \Aimeos\Aimeos\Base::config();
+		$boostrap = \Aimeos\Aimeos\Base::aimeos();
+		$ctx = \Aimeos\Aimeos\Base::context( $config )->setEditor( 'aimeos:setup' );
 
 		$output->writeln( sprintf( 'Initializing or updating the Aimeos database tables for site <info>%1$s</info>', $site ) );
 
-		if( ( $task = $input->getOption( 'task' ) ) && is_array( $task ) ) {
-			$task = reset( $task );
-		}
-
-		try {
-			$manager->migrate( $task );
-		} catch( \Throwable $t ) {
-			$output->writeln( sprintf( "Error <error>%s</error> while initializing or updating the Aimeos database\n<debug>%s</debug>", $t->getMessage(), $t->getTraceAsString() ) );
-
-			return 1;
-		}
+		\Aimeos\Setup::use( $boostrap )
+			->verbose( $input->getOption( 'q' ) ? '' : $input->getOption( 'v' ) )
+			->context( $this->addConfig( $ctx->setEditor( 'aimeos:setup' ) ) )
+			->up( $site, $template );
 
 		return 0;
 	}
 
 
 	/**
-	 * Returns the database configuration from the config object.
+	 * Adds the configuration options from the input object to the given context
 	 *
-	 * @param \Aimeos\MW\Config\Iface $conf Config object
-	 * @return array Multi-dimensional associative list of database configuration parameters
+	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
+	 * @return array Associative list of key/value pairs of configuration options
 	 */
-	protected function getDbConfig( \Aimeos\MW\Config\Iface $conf ) : array
+	protected function addConfig( \Aimeos\MShop\Context\Item\Iface $ctx ) : \Aimeos\MShop\Context\Item\Iface
 	{
-		$dbconfig = $conf->get( 'resource', array() );
+		$config = $ctx->config();
 
-		foreach( $dbconfig as $rname => $dbconf )
-		{
-			if( strncmp( $rname, 'db', 2 ) !== 0 ) {
-				unset( $dbconfig[$rname] );
-			} else {
-				$conf->set( "resource/$rname/limit", 5 );
-			}
-		}
-
-		return $dbconfig;
-	}
-
-
-	/**
-	 * Extracts the configuration options from the input object and updates the configuration values in the config object.
-	 *
-	 * @param \Aimeos\MW\Config\Iface $conf Configuration object
-	 * @param InputInterface $input Input object
-	 * @param array Associative list of database configurations
-	 * @throws \RuntimeException If the format of the options is invalid
-	 */
-	protected function setOptions( \Aimeos\MW\Config\Iface $conf, InputInterface $input )
-	{
 		foreach( (array) $input->getOption( 'option' ) as $option )
 		{
 			list( $name, $value ) = explode( ':', $option );
-			$conf->set( str_replace( '\\', '/', $name ), $value );
+			$config->set( $name, $value );
 		}
 	}
 }

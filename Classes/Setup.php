@@ -133,46 +133,29 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	{
 		ini_set( 'max_execution_time', 0 );
 
-		$ctx = self::context();
-		$aimeos = \Aimeos\Aimeos\Base::aimeos();
-		$sitecode = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
-		$siteTpl = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
-		$taskPaths = $aimeos->getSetupPaths( $siteTpl );
+		$objectManager = GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
+		$extconf = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' );
+		$demo = $extconf->get( 'aimeos', 'useDemoData' );
 
-		$dbm = $ctx->getDatabaseManager();
-		$config = $ctx->config();
+		\Aimeos\MShop::cache( false );
+		\Aimeos\MAdmin::cache( false );
 
-		$config->set( 'setup/site', $sitecode );
+		$site = \Aimeos\Aimeos\Base::getExtConfig( 'siteCode', 'default' );
+		$template = \Aimeos\Aimeos\Base::getExtConfig( 'siteTpl', 'default' );
 
-		$dbconfig = $config->get( 'resource', [] );
+		$boostrap = \Aimeos\Aimeos\Base::aimeos();
+		$config = \Aimeos\Aimeos\Base::config( ['setup' => ['default' => ['demo' => (string) $demo]]] );
+		$ctx = self::context()->setEditor( 'setup' );
 
-		foreach( $dbconfig as $rname => $dbconf )
-		{
-			if( strncmp( $rname, 'db', 2 ) !== 0 ) {
-				unset( $dbconfig[$rname] );
-			} else {
-				$config->set( "resource/$rname/limit", 5 );
-			}
-		}
-
-
-		$class = \TYPO3\CMS\Extbase\Object\ObjectManager::class;
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( $class );
-
-		$object = $objectManager->get( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' );
-		$demo = $object->get( 'aimeos', 'useDemoData' );
-
-		$local = ['setup' => ['default' => ['demo' => (string) $demo]]];
-		$ctx->setConfig( new \Aimeos\MW\Config\Decorator\Memory( $config, $local ) );
-
-		$manager = new \Aimeos\MW\Setup\Manager\Multiple( $dbm, $dbconfig, $taskPaths, $ctx );
-		$manager->migrate();
-
+		\Aimeos\Setup::use( $boostrap )
+			->verbose( $input->getOption( 'q' ) ? '' : $input->getOption( 'v' ) )
+			->context( $this->addConfig( $ctx->setEditor( 'aimeos:setup' ) ) )
+			->up( $site, $template );
 
 		if( defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
-			$object->set( 'aimeos', 'useDemoData', '' );
+			$extconf->set( 'aimeos', 'useDemoData', '' );
 		} else {
-			$object->set( 'aimeos', ['useDemoData' => ''] );
+			$extconf->set( 'aimeos', ['useDemoData' => ''] );
 		}
 	}
 
@@ -292,11 +275,10 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 			require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 		}
 
-		$ctx = new \Aimeos\MShop\Context\Item\Typo3();
-
+		$ctx = new \Aimeos\MShop\Context\Item\Standard();
 		$conf = \Aimeos\Aimeos\Base::config();
-		$ctx->setConfig( $conf );
 
+		$ctx->setConfig( $conf );
 		$ctx->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $conf ) );
 		$ctx->setLogger( new \Aimeos\MW\Logger\Errorlog( \Aimeos\MW\Logger\Base::INFO ) );
 		$ctx->setSession( new \Aimeos\MW\Session\None() );
