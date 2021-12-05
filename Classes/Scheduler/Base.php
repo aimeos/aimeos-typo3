@@ -78,7 +78,7 @@ class Base
 	 */
 	public static function context( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\Context\Item\Iface
 	{
-		$config = Aimeos\Base::getConfig( $conf );
+		$config = Aimeos\Base::config( $conf );
 		$context = Aimeos\Base::context( $config );
 
 

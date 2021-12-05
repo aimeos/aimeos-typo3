@@ -140,7 +140,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		$taskPaths = $aimeos->getSetupPaths( $siteTpl );
 
 		$dbm = $ctx->getDatabaseManager();
-		$config = $ctx->getConfig();
+		$config = $ctx->config();
 
 		$config->set( 'setup/site', $sitecode );
 
@@ -294,7 +294,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
 		$ctx = new \Aimeos\MShop\Context\Item\Typo3();
 
-		$conf = \Aimeos\Aimeos\Base::getConfig();
+		$conf = \Aimeos\Aimeos\Base::config();
 		$ctx->setConfig( $conf );
 
 		$ctx->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $conf ) );

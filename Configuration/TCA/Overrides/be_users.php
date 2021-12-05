@@ -12,7 +12,7 @@ $beUsersSiteFcn = function() {
 
 	try
 	{
-		$config = \Aimeos\Aimeos\Base::getConfig();
+		$config = \Aimeos\Aimeos\Base::config();
 		$context = \Aimeos\Aimeos\Base::context( $config );
 
 		$db = $context->db();

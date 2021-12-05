@@ -82,7 +82,7 @@ class Context
 		switch( $cacheName )
 		{
 			case 'None':
-				$context->getConfig()->set( 'client/html/basket/cache/enable', false );
+				$context->config()->set( 'client/html/basket/cache/enable', false );
 				$cache = \Aimeos\MW\Cache\Factory::create( 'None', [], null );
 				break;
 
@@ -113,7 +113,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $context->getConfig() ) );
+		return $context->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $context->config() ) );
 	}
 
 
@@ -131,7 +131,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setFilesystemManager( new \Aimeos\MW\Filesystem\Manager\Standard( $context->getConfig() ) );
+		return $context->setFilesystemManager( new \Aimeos\MW\Filesystem\Manager\Standard( $context->config() ) );
 	}
 
 
@@ -206,7 +206,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setMessageQueueManager( new \Aimeos\MW\MQueue\Manager\Standard( $context->getConfig() ) );
+		return $context->setMessageQueueManager( new \Aimeos\MW\MQueue\Manager\Standard( $context->config() ) );
 	}
 
 

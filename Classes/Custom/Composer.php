@@ -125,7 +125,7 @@ class Composer
 					] )
 				]
 			];
-			$config = $event->getComposer()->getConfig();
+			$config = $event->getComposer()->config();
 
 			if( method_exists( '\Composer\Factory', 'createHttpDownloader' ) )
 			{

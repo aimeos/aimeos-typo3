@@ -64,8 +64,8 @@ class JobsCommand extends Command
 			$localeItem->setCurrencyId( null );
 			$context->setLocale( $localeItem );
 
-			$config = $context->getConfig();
-			foreach( $localeItem->getSiteItem()->getConfig() as $key => $value ) {
+			$config = $context->config();
+			foreach( $localeItem->getSiteItem()->config() as $key => $value ) {
 				$config->set( $key, $value );
 			}
 
@@ -103,7 +103,7 @@ class JobsCommand extends Command
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
 		$tmplPaths = $aimeos->getTemplatePaths( 'controller/jobs/templates' );
 
-		$config = \Aimeos\Aimeos\Base::getConfig();
+		$config = \Aimeos\Aimeos\Base::config();
 		$context = \Aimeos\Aimeos\Base::context( $config );
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );

@@ -56,7 +56,7 @@ class Base
 	 * @param array $local Multi-dimensional associative list with local configuration
 	 * @return \Aimeos\MW\Config\Iface Configuration object
 	 */
-	public static function getConfig( array $local = [] ) : \Aimeos\MW\Config\Iface
+	public static function config( array $local = [] ) : \Aimeos\MW\Config\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\Config';
 
@@ -265,7 +265,7 @@ class Base
 	 */
 	public static function logout()
 	{
-		$session = self::context( self::getConfig() )->getSession();
+		$session = self::context( self::config() )->getSession();
 
 		$session->remove( array_keys( $session->get( 'aimeos/basket/list', [] ) ) );
 		$session->remove( array_keys( $session->get( 'aimeos/basket/cache', [] ) ) );

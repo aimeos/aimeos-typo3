@@ -50,11 +50,11 @@ class SetupCommand extends Command
 	protected function execute( InputInterface $input, OutputInterface $output )
 	{
 		$aimeos = \Aimeos\Aimeos\Base::getAimeos();
-		$config = \Aimeos\Aimeos\Base::getConfig();
+		$config = \Aimeos\Aimeos\Base::config();
 		$ctx = \Aimeos\Aimeos\Base::context( $config );
 		$ctx->setEditor( 'aimeos:setup' );
 
-		$config = $ctx->getConfig();
+		$config = $ctx->config();
 		$site = $input->getArgument( 'site' );
 		$tplsite = $input->getArgument( 'tplsite' );
 

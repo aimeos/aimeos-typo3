@@ -43,7 +43,7 @@ class View
 		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
 		$view->prefix = $prefix;
 
-		$config = $context->getConfig();
+		$config = $context->config();
 		$session = $context->getSession();
 
 		self::addTranslate( $view, $locale, $config->get( 'i18n', [] ) );
