@@ -265,7 +265,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	 * @param array $config Nested array of configuration settings
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	protected static function context( array $config ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function context( array $config = [] ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 
@@ -284,8 +284,8 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
 		if( php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )
-			&& method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) )
-		{
+			&& method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' )
+		) {
 			$ctx->setProcess( new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) ) );
 		} else {
 			$ctx->setProcess( new \Aimeos\MW\Process\None() );
