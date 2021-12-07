@@ -245,7 +245,7 @@ class View
 			return $fcn( $view, $request );
 		}
 
-		$target = $GLOBALS["TSFE"]->id;
+		$target = isset( $GLOBALS["TSFE"]->id ) ? $GLOBALS["TSFE"]->id : null;
 		$get = GeneralUtility::_GET();
 		$post = GeneralUtility::_POST();
 
