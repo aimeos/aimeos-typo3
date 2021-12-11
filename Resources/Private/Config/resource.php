@@ -3,16 +3,15 @@
 $publicPath = \TYPO3\CMS\Core\Core\Environment::getPublicPath();
 
 $defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
-$fallbackConnection = $GLOBALS['TYPO3_CONF_VARS']['DB'];
 return [
 	'db' => [
 		'adapter' => 'mysql',
-		'host' => $defaultConnection['host'] ?? $fallbackConnection['host'] ?? null,
-		'port' => $defaultConnection['port'] ?? $fallbackConnection['port'] ?? null,
-		'socket' => $defaultConnection['socket'] ?? $fallbackConnection['socket'] ?? null,
-		'database' => $defaultConnection['dbname'] ?? $fallbackConnection['database'] ?? null,
-		'username' => $defaultConnection['user'] ?? $fallbackConnection['username'] ?? null,
-		'password' => $defaultConnection['password'] ?? $fallbackConnection['password'] ?? null,
+		'host' => $defaultConnection['host'] ?? null,
+		'port' => $defaultConnection['port'] ?? null,
+		'socket' => $defaultConnection['socket'] ?? null,
+		'database' => $defaultConnection['dbname'] ?? null,
+		'username' => $defaultConnection['user'] ?? null,
+		'password' => $defaultConnection['password'] ?? null,
 		'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED"],
 		'defaultTableOptions' => [
 			'charset' => $defaultConnection['tableoptions']['charset'] ?? 'utf8',
