@@ -193,9 +193,7 @@ abstract class AbstractController
 		$this->uriBuilder->setArgumentPrefix( 'ai' );
 
 		$ce = $this->configurationManager->getContentObject();
-		if( isset( $ce->data['uid'] ) ) {
-			$this->ceUid = $ce->data['uid'];
-		}
+		$this->ceUid = $ce->data['uid'] ?? null;
 
 		// initialize bootstrapping
 		self::$aimeos = Base::aimeos();

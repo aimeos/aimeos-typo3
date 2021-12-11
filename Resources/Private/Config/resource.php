@@ -2,39 +2,21 @@
 
 $publicPath = \TYPO3\CMS\Core\Core\Environment::getPublicPath();
 
-$dbConfig = [
-	'host' => null,
-	'port' => null,
-	'socket' => null,
-	'database' => null,
-	'dbname' => null,
-	'username' => null,
-	'user' => null,
-	'password' => null,
-	'charset' => 'utf8',
-	'collate' => 'utf8_unicode_ci'
-];
-foreach ($dbConfig as $key => &$value ) {
-	if( isset( $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'][$key] ) ) {
-		$value = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'][$key];
-	} elseif( isset( $GLOBALS['TYPO3_CONF_VARS']['DB'][$key] ) ) {
-		$value = $GLOBALS['TYPO3_CONF_VARS']['DB'][$key];
-	}
-}
-
+$defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
+$fallbackConnection = $GLOBALS['TYPO3_CONF_VARS']['DB'];
 return [
 	'db' => [
 		'adapter' => 'mysql',
-		'host' => $dbConfig['host'],
-		'port' => $dbConfig['port'],
-		'socket' => $dbConfig['socket'],
-		'database' => $dbConfig['dbname'] ?? $dbConfig['database'],
-		'username' => $dbConfig['user'] ?? $dbConfig['username'],
-		'password' => $dbConfig['password'],
+		'host' => $defaultConnection['host'] ?? $fallbackConnection['host'] ?? null,
+		'port' => $defaultConnection['port'] ?? $fallbackConnection['port'] ?? null,
+		'socket' => $defaultConnection['socket'] ?? $fallbackConnection['socket'] ?? null,
+		'database' => $defaultConnection['dbname'] ?? $fallbackConnection['database'] ?? null,
+		'username' => $defaultConnection['user'] ?? $fallbackConnection['username'] ?? null,
+		'password' => $defaultConnection['password'] ?? $fallbackConnection['password'] ?? null,
 		'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED"],
 		'defaultTableOptions' => [
-			'charset' => $dbConfig['charset'],
-			'collate' => $dbConfig['collate'],
+			'charset' => $defaultConnection['tableoptions']['charset'] ?? 'utf8',
+			'collate' => $defaultConnection['tableoptions']['collate'] ?? 'utf8_unicode_ci',
 		],
 		'limit' => 3,
 	],
