@@ -35,7 +35,7 @@ class SetupCommand extends Command
 		$this->addArgument( 'tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default' );
 		$this->addOption( 'option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', [] );
 		$this->addOption( 'v', null, InputOption::VALUE_OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', 'vv' );
-		$this->addOption( 'q', null, InputOption::VALUE_NONE, 'Quiet mode without any output', '' );
+		$this->addOption( 'q', null, InputOption::VALUE_NONE, 'Quiet mode without any output' );
 	}
 
 
@@ -84,5 +84,7 @@ class SetupCommand extends Command
 			list( $name, $value ) = explode( ':', $option );
 			$config->set( $name, $value );
 		}
+
+		return $ctx;
 	}
 }

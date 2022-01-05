@@ -74,7 +74,7 @@ abstract class AbstractController
 		// Use plugin specific configuration
 		self::$context->setConfig( $config );
 
-		foreach( self::$context->locale()->getSiteItem()->config() as $key => $value ) {
+		foreach( self::$context->locale()->getSiteItem()->getConfig() as $key => $value ) {
 			$config->set( $key, $value );
 		}
 
@@ -133,7 +133,7 @@ abstract class AbstractController
 			$i18n = Base::i18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
 			$context->setI18n( $i18n );
 
-			foreach( $locale->getSiteItem()->config() as $key => $value ) {
+			foreach( $locale->getSiteItem()->getConfig() as $key => $value ) {
 				$config->set( $key, $value );
 			}
 

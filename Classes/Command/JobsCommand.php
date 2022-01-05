@@ -65,7 +65,7 @@ class JobsCommand extends Command
 			$context->setLocale( $localeItem );
 
 			$config = $context->config();
-			foreach( $localeItem->getSiteItem()->config() as $key => $value ) {
+			foreach( $localeItem->getSiteItem()->getConfig() as $key => $value ) {
 				$config->set( $key, $value );
 			}
 

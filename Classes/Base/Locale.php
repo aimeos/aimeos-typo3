@@ -72,7 +72,7 @@ class Locale
 			$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 			self::$locale = $localeManager->bootstrap( $sitecode, $lang, $currency );
 
-			$config->apply( self::$locale->getSiteItem()->config() );
+			$config->apply( self::$locale->getSiteItem()->getConfig() );
 		}
 
 		return self::$locale;
@@ -93,7 +93,7 @@ class Locale
 		try
 		{
 			$localeItem = $localeManager->bootstrap( $site, '', '', false, null, true );
-			$context->config()->apply( $localeItem->getSiteItem()->config() );
+			$context->config()->apply( $localeItem->getSiteItem()->getConfig() );
 		}
 		catch( \Aimeos\MShop\Exception $e )
 		{
