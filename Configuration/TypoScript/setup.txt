@@ -1,14 +1,4 @@
-page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-custom = {$plugin.tx_aimeos.theme.css.aimeos-custom}
-
-page.includeJSFooterlibs.polyfill = https://cdn.polyfill.io/v2/polyfill.min.js
-page.includeJSFooterlibs.polyfill.external = 1
-page.includeJSFooterlibs.jquery = https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
-page.includeJSFooterlibs.jquery.external = 1
-
-page.includeJSFooter.aimeos = {$plugin.tx_aimeos.theme.js.aimeos}
-page.includeJSFooter.aimeos-detail = {$plugin.tx_aimeos.theme.js.aimeos-detail}
-page.includeJSFooter.aimeos-theme = {$plugin.tx_aimeos.theme.js.aimeos-theme}
 page.includeJSFooter.aimeos-custom = {$plugin.tx_aimeos.theme.js.aimeos-custom}
 
 plugin.tx_aimeos {
