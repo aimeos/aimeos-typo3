@@ -42,6 +42,11 @@ return [
 		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/admin',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
+	'fs-export' => [
+		'adapter' => 'Standard',
+		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/export',
+		'tempdir' => $publicPath . '/typo3temp',
+	],
 	'fs-import' => [
 		'adapter' => 'Standard',
 		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/import',
