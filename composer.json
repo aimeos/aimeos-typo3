@@ -31,7 +31,6 @@
 		"nyholm/psr7": "^1.2"
 	},
 	"replace": {
-		"aimeos/aimeos-typo3": "self.version",
 		"typo3-ter/aimeos": "self.version"
 	},
 	"autoload": {
