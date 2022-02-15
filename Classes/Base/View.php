@@ -281,10 +281,10 @@ class View
 	 * Adds the "session" helper to the view object
 	 *
 	 * @param \Aimeos\MW\View\Iface $view View object
-	 * @param \Aimeos\MW\Session\Iface $session Session object
+	 * @param \Aimeos\Base\Session\Iface $session Session object
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected static function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Session\Iface $session ) : \Aimeos\MW\View\Iface
+	protected static function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\Base\Session\Iface $session ) : \Aimeos\MW\View\Iface
 	{
 		$helper = new \Aimeos\MW\View\Helper\Session\Standard( $view, $session );
 		$view->addHelper( 'session', $helper );
