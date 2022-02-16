@@ -115,7 +115,7 @@ class JobsCommand extends Command
 		$view = \Aimeos\Aimeos\Base::view( $context, $this->getRouter( $pid ), $tmplPaths );
 		$context->setView( $view );
 
-		$context->setSession( new \Aimeos\MW\Session\None() );
+		$context->setSession( new \Aimeos\Base\Session\None() );
 		$context->setCache( new \Aimeos\MW\Cache\None() );
 
 		return $context->setEditor( 'aimeos:jobs' );
