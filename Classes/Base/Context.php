@@ -186,7 +186,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setMail( new \Aimeos\MW\Mail\Typo3( function() {
+		return $context->setMail( new \Aimeos\Base\Mail\Typo3( function() {
 			return GeneralUtility::makeInstance( \TYPO3\CMS\Core\Mail\MailMessage::class );
 		} ) );
 	}
@@ -242,13 +242,13 @@ class Context
 			return $fcn( $context );
 		}
 
-		$process = new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
+		$process = new \Aimeos\Base\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards
 		if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) === false
 			|| $process->isAvailable() === false
 		) {
-			$process = new \Aimeos\MW\Process\None();
+			$process = new \Aimeos\Base\Process\None();
 		}
 
 		return $context->setProcess( $process );
