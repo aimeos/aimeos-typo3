@@ -316,7 +316,7 @@ class View
 		}
 		else
 		{
-			$translation = new \Aimeos\MW\Translation\None( 'en' );
+			$translation = new \Aimeos\Base\Translation\None( 'en' );
 		}
 
 		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );

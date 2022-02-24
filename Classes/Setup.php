@@ -286,9 +286,9 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		if( php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )
 			&& method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' )
 		) {
-			$ctx->setProcess( new \Aimeos\MW\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) ) );
+			$ctx->setProcess( new \Aimeos\Base\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) ) );
 		} else {
-			$ctx->setProcess( new \Aimeos\MW\Process\None() );
+			$ctx->setProcess( new \Aimeos\Base\Process\None() );
 		}
 
 		$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );

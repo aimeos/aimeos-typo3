@@ -26,7 +26,7 @@ class I18n
 	 * @param array $i18nPaths Paths to the translation directories
 	 * @param array $langIds List of two letter ISO language IDs
 	 * @param array $local List of local translation entries overwriting the standard ones
-	 * @return array List of translation objects implementing \Aimeos\MW\Translation\Iface
+	 * @return array List of translation objects implementing \Aimeos\Base\Translation\Iface
 	 */
 	public static function get( array $i18nPaths, array $languageIds, array $local = [] ) : array
 	{
@@ -38,10 +38,10 @@ class I18n
 
 			if( !isset( self::$i18n[$langid] ) )
 			{
-				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
+				$i18n = new \Aimeos\Base\Translation\Gettext( $i18nPaths, $langid );
 
 				if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
-					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
+					$i18n = new \Aimeos\Base\Translation\Decorator\APC( $i18n, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 				}
 
 				self::$i18n[$langid] = $i18n;
@@ -52,7 +52,7 @@ class I18n
 			if( isset( $local[$langid] ) )
 			{
 				$translations = self::parseTranslations( (array) $local[$langid] );
-				$i18nList[$langid] = new \Aimeos\MW\Translation\Decorator\Memory( $i18nList[$langid], $translations );
+				$i18nList[$langid] = new \Aimeos\Base\Translation\Decorator\Memory( $i18nList[$langid], $translations );
 			}
 		}
 
