@@ -278,7 +278,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
 		$ctx->setConfig( $conf );
 		$ctx->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $conf ) );
-		$ctx->setLogger( new \Aimeos\MW\Logger\Errorlog( \Aimeos\MW\Logger\Iface::INFO ) );
+		$ctx->setLogger( new \Aimeos\Base\Logger\Errorlog( \Aimeos\Base\Logger\Iface::INFO ) );
 		$ctx->setSession( new \Aimeos\Base\Session\None() );
 		$ctx->setCache( new \Aimeos\MW\Cache\None() );
 
@@ -292,6 +292,6 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		}
 
 		$factory = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory' );
-		return $ctx->setPassword( new \Aimeos\MW\Password\Typo3( $factory->getDefaultHashInstance( 'FE' ) ) );
+		return $ctx->setPassword( new \Aimeos\Base\Password\Typo3( $factory->getDefaultHashInstance( 'FE' ) ) );
 	}
 }
