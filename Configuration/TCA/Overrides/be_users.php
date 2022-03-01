@@ -8,6 +8,7 @@ if( !defined( 'TYPO3_MODE' ) ) {
 $beUsersSiteFcn = function() {
 
 	$list = [['', '']];
+	$db = $conn = null;
 	$dbname = 'db-locale';
 
 	try
