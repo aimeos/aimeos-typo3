@@ -54,9 +54,9 @@ class Base
 	 * Creates a new configuration object
 	 *
 	 * @param array $local Multi-dimensional associative list with local configuration
-	 * @return \Aimeos\MW\Config\Iface Configuration object
+	 * @return \Aimeos\Base\Config\Iface Configuration object
 	 */
-	public static function config( array $local = [] ) : \Aimeos\MW\Config\Iface
+	public static function config( array $local = [] ) : \Aimeos\Base\Config\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\Config';
 
@@ -73,10 +73,10 @@ class Base
 	/**
 	 * Returns the current context
 	 *
-	 * @param \Aimeos\MW\Config\Iface Configuration object
+	 * @param \Aimeos\Base\Config\Iface Configuration object
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function context( \Aimeos\MW\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
+	public static function context( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\Context';
 

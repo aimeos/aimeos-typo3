@@ -25,9 +25,9 @@ class Config
 	 *
 	 * @param array $paths Paths to the configuration directories
 	 * @param array $local Multi-dimensional associative list with local configuration
-	 * @return \Aimeos\MW\Config\Iface Configuration object
+	 * @return \Aimeos\Base\Config\Iface Configuration object
 	 */
-	public static function get( array $paths, array $local = [] ) : \Aimeos\MW\Config\Iface
+	public static function get( array $paths, array $local = [] ) : \Aimeos\Base\Config\Iface
 	{
 		if( self::$config === null )
 		{
@@ -43,10 +43,10 @@ class Config
 				}
 			}
 
-			$conf = new \Aimeos\MW\Config\PHPArray( array(), $paths );
+			$conf = new \Aimeos\Base\Config\PHPArray( array(), $paths );
 
 			if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
-				$conf = new \Aimeos\MW\Config\Decorator\APC( $conf, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
+				$conf = new \Aimeos\Base\Config\Decorator\APC( $conf, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
 			}
 
 			self::$config = $conf;
@@ -56,6 +56,6 @@ class Config
 			$local = array_replace_recursive( $local, \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] ) );
 		}
 
-		return new \Aimeos\MW\Config\Decorator\Memory( self::$config, $local );
+		return new \Aimeos\Base\Config\Decorator\Memory( self::$config, $local );
 	}
 }

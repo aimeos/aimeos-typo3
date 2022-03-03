@@ -25,10 +25,10 @@ class Context
 	/**
 	 * Returns the current context
 	 *
-	 * @param \Aimeos\MW\Config\Iface Configuration object
+	 * @param \Aimeos\Base\Config\Iface Configuration object
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public static function get( \Aimeos\MW\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
+	public static function get( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		if( self::$context === null )
 		{
