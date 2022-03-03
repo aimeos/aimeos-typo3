@@ -21,7 +21,6 @@
 		"typo3/cms-extbase": "~10.4||~11.5",
 		"typo3/cms-scheduler": "~10.4||~11.5",
 		"aimeos/aimeos-core": "dev-master",
-		"aimeos/ai-gettext": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
