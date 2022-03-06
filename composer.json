@@ -48,7 +48,7 @@
 	},
 	"scripts": {
 		"post-update-cmd": [
-			"cp -r Resources/Libraries/aimeos/ai-client-html/client/html/themes/* Resources/Public/Themes/"
+			"cp -r Resources/Libraries/aimeos/ai-client-html/themes/client/html/* Resources/Public/Themes/"
 		]
 	}
 }
