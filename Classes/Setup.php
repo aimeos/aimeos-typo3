@@ -177,7 +177,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 			{
 				$result = $conn->create( 'SHOW TABLES like \'' . $prefix . '%\'' )->execute();
 
-				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== null ) {
+				while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null ) {
 					$tables[] = $row[0];
 				}
 			}
@@ -186,7 +186,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 			{
 				$result = $conn->create( 'SHOW CREATE TABLE ' . $table )->execute();
 
-				while( ( $row = $result->fetch( \Aimeos\MW\DB\Result\Base::FETCH_NUM ) ) !== null )
+				while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null )
 				{
 					$str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
 					$str = str_replace( '"', '`', $str );
@@ -277,7 +277,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		$conf = \Aimeos\Aimeos\Base::config( $config );
 
 		$ctx->setConfig( $conf );
-		$ctx->setDatabaseManager( new \Aimeos\MW\DB\Manager\DBAL( $conf ) );
+		$ctx->setDatabaseManager( new \Aimeos\Base\DB\Manager\DBAL( $conf ) );
 		$ctx->setLogger( new \Aimeos\Base\Logger\Errorlog( \Aimeos\Base\Logger\Iface::INFO ) );
 		$ctx->setSession( new \Aimeos\Base\Session\None() );
 		$ctx->setCache( new \Aimeos\MW\Cache\None() );
