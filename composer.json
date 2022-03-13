@@ -24,6 +24,7 @@
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
+		"aimeos/ai-controller-jobs": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
 		"nyholm/psr7-server": "^1.0",

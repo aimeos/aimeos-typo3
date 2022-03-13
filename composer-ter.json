@@ -19,6 +19,7 @@
 		"aimeos/ai-typo3": "2021.10.*",
 		"aimeos/ai-admin-jqadm": "2021.10.*",
 		"aimeos/ai-admin-jsonadm": "2021.10.*",
+		"aimeos/ai-controller-jobs": "2021.10.*",
 		"aimeos/ai-client-jsonapi": "2021.10.*",
 		"aimeos/ai-client-html": "2021.10.*",
 		"nyholm/psr7-server": "^1.0",
