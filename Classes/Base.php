@@ -210,10 +210,10 @@ class Base
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $langid ISO code of the current language ("de"/"de_CH") or null for no translation
-	 * @return \Aimeos\MW\View\Iface View object
+	 * @return \Aimeos\Base\View\Iface View object
 	 */
 	public static function view( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null ) : \Aimeos\MW\View\Iface
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null ) : \Aimeos\Base\View\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\View';
 

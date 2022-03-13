@@ -27,20 +27,20 @@ class View
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
-	 * @return \Aimeos\MW\View\Iface View object
+	 * @return \Aimeos\Base\View\Iface View object
 	 */
 	public static function get( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null ) : \Aimeos\MW\View\Iface
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null ) : \Aimeos\Base\View\Iface
 	{
 		$obj = GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );
-		$engines = ['.html' => new \Aimeos\MW\View\Engine\Typo3( $obj )];
+		$engines = ['.html' => new \Aimeos\Base\View\Engine\Typo3( $obj )];
 
 		$prefix = 'ai';
 		if( $uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
 			$prefix = $uriBuilder->getArgumentPrefix();
 		}
 
-		$view = new \Aimeos\MW\View\Standard( $templatePaths, $engines );
+		$view = new \Aimeos\Base\View\Standard( $templatePaths, $engines );
 		$view->prefix = $prefix;
 
 		$config = $context->config();
@@ -65,10 +65,10 @@ class View
 	/**
 	 * Adds the "access" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @param \Aimeos\Base\View\Iface $view View object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addAccess( \Aimeos\MW\View\Iface $view ) : \Aimeos\MW\View\Iface
+	protected static function addAccess( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] ) )
@@ -84,11 +84,11 @@ class View
 				foreach( (array) $GLOBALS['BE_USER']->userGroups as $entry ) {
 					$groups[] = $entry['title'];
 				}
-				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $groups );
+				$helper = new \Aimeos\Base\View\Helper\Access\Standard( $view, $groups );
 			}
 			else
 			{
-				$helper = new \Aimeos\MW\View\Helper\Access\All( $view );
+				$helper = new \Aimeos\Base\View\Helper\Access\All( $view );
 			}
 		}
 		else
@@ -96,9 +96,9 @@ class View
 			$t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
 
 			if( $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) ) {
-				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $GLOBALS['TSFE']->fe_user->groupData['title'] );
+				$helper = new \Aimeos\Base\View\Helper\Access\Standard( $view, $GLOBALS['TSFE']->fe_user->groupData['title'] );
 			} else {
-				$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, [] );
+				$helper = new \Aimeos\Base\View\Helper\Access\Standard( $view, [] );
 			}
 		}
 
@@ -111,11 +111,11 @@ class View
 	/**
 	 * Adds the "config" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \Aimeos\Base\Config\Iface $config Configuration object
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addConfig( \Aimeos\MW\View\Iface $view, \Aimeos\Base\Config\Iface $config ) : \Aimeos\MW\View\Iface
+	protected static function addConfig( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] ) )
@@ -124,7 +124,7 @@ class View
 		}
 
 		$conf = new \Aimeos\Base\Config\Decorator\Protect( clone $config, ['admin', 'client', 'common', 'resource/fs/baseurl'] );
-		$helper = new \Aimeos\MW\View\Helper\Config\Standard( $view, $conf );
+		$helper = new \Aimeos\Base\View\Helper\Config\Standard( $view, $conf );
 		$view->addHelper( 'config', $helper );
 
 		return $view;
@@ -134,13 +134,13 @@ class View
 	/**
 	 * Adds the "date" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \Aimeos\Base\Config\Iface $config Configuration object
 	 * @param string|null $locale (Country specific) language code
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addDate( \Aimeos\MW\View\Iface $view, \Aimeos\Base\Config\Iface $config,
-		string $locale = null ) : \Aimeos\MW\View\Iface
+	protected static function addDate( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config,
+		string $locale = null ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] ) )
@@ -150,7 +150,7 @@ class View
 
 		$format = $config->get( 'client/html/common/date/format' );
 
-		$helper = new \Aimeos\MW\View\Helper\Date\Standard( $view, $format );
+		$helper = new \Aimeos\Base\View\Helper\Date\Standard( $view, $format );
 		$view->addHelper( 'date', $helper );
 
 		return $view;
@@ -160,11 +160,11 @@ class View
 	/**
 	 * Adds the "formparam" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param array $prefixes List of prefixes for the form name to build multi-dimensional arrays
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addFormparam( \Aimeos\MW\View\Iface $view, array $prefixes ) : \Aimeos\MW\View\Iface
+	protected static function addFormparam( \Aimeos\Base\View\Iface $view, array $prefixes ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] ) )
@@ -172,7 +172,7 @@ class View
 			return $fcn( $view, $prefixes );
 		}
 
-		$helper = new \Aimeos\MW\View\Helper\Formparam\Standard( $view, $prefixes );
+		$helper = new \Aimeos\Base\View\Helper\Formparam\Standard( $view, $prefixes );
 		$view->addHelper( 'formparam', $helper );
 
 		return $view;
@@ -182,13 +182,13 @@ class View
 	/**
 	 * Adds the "number" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \Aimeos\Base\Config\Iface $config Configuration object
 	 * @param string|null $locale (Country specific) language code
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addNumber( \Aimeos\MW\View\Iface $view, \Aimeos\Base\Config\Iface $config,
-		string $locale = null ) : \Aimeos\MW\View\Iface
+	protected static function addNumber( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config,
+		string $locale = null ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] ) )
@@ -198,7 +198,7 @@ class View
 
 		$format = $config->get( 'client/html/common/number/format' );
 
-		$helper = new \Aimeos\MW\View\Helper\Number\Locale( $view, $locale ?? 'en', $format );
+		$helper = new \Aimeos\Base\View\Helper\Number\Locale( $view, $locale ?? 'en', $format );
 		$view->addHelper( 'number', $helper );
 
 		return $view;
@@ -208,12 +208,12 @@ class View
 	/**
 	 * Adds the "param" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object or null if not available
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addParam( \Aimeos\MW\View\Iface $view,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
+	protected static function addParam( \Aimeos\Base\View\Iface $view,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] ) )
@@ -222,7 +222,7 @@ class View
 		}
 
 		$params = $request ? $request->getArguments() : [];
-		$helper = new \Aimeos\MW\View\Helper\Param\Standard( $view, $params );
+		$helper = new \Aimeos\Base\View\Helper\Param\Standard( $view, $params );
 		$view->addHelper( 'param', $helper );
 
 		return $view;
@@ -232,12 +232,12 @@ class View
 	/**
 	 * Adds the "request" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addRequest( \Aimeos\MW\View\Iface $view,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
+	protected static function addRequest( \Aimeos\Base\View\Iface $view,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] ) )
@@ -249,7 +249,7 @@ class View
 		$get = GeneralUtility::_GET();
 		$post = GeneralUtility::_POST();
 
-		$helper = new \Aimeos\MW\View\Helper\Request\Typo3( $view, $target, $_FILES, $get, $post, $_COOKIE, $_SERVER );
+		$helper = new \Aimeos\Base\View\Helper\Request\Typo3( $view, $target, $_FILES, $get, $post, $_COOKIE, $_SERVER );
 		$view->addHelper( 'request', $helper );
 
 		return $view;
@@ -259,10 +259,10 @@ class View
 	/**
 	 * Adds the "response" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @param \Aimeos\Base\View\Iface $view View object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addResponse( \Aimeos\MW\View\Iface $view ) : \Aimeos\MW\View\Iface
+	protected static function addResponse( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] ) )
@@ -270,7 +270,7 @@ class View
 			return $fcn( $view );
 		}
 
-		$helper = new \Aimeos\MW\View\Helper\Response\Typo3( $view );
+		$helper = new \Aimeos\Base\View\Helper\Response\Typo3( $view );
 		$view->addHelper( 'response', $helper );
 
 		return $view;
@@ -280,13 +280,13 @@ class View
 	/**
 	 * Adds the "session" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \Aimeos\Base\Session\Iface $session Session object
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\Base\Session\Iface $session ) : \Aimeos\MW\View\Iface
+	protected static function addSession( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Session\Iface $session ) : \Aimeos\Base\View\Iface
 	{
-		$helper = new \Aimeos\MW\View\Helper\Session\Standard( $view, $session );
+		$helper = new \Aimeos\Base\View\Helper\Session\Standard( $view, $session );
 		$view->addHelper( 'session', $helper );
 
 		return $view;
@@ -296,12 +296,12 @@ class View
 	/**
 	 * Adds the "translate" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param string|null $langid ISO language code, e.g. "de" or "de_CH"
 	 * @param array $local Local translations
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addTranslate( \Aimeos\MW\View\Iface $view, string $langid = null, array $local ) : \Aimeos\MW\View\Iface
+	protected static function addTranslate( \Aimeos\Base\View\Iface $view, string $langid = null, array $local ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] ) )
@@ -319,7 +319,7 @@ class View
 			$translation = new \Aimeos\Base\Translation\None( 'en' );
 		}
 
-		$helper = new \Aimeos\MW\View\Helper\Translate\Standard( $view, $translation );
+		$helper = new \Aimeos\Base\View\Helper\Translate\Standard( $view, $translation );
 		$view->addHelper( 'translate', $helper );
 
 		return $view;
@@ -329,14 +329,14 @@ class View
 	/**
 	 * Adds the "url" helper to the view object
 	 *
-	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\Base\View\Iface $view View object
 	 * @param \Aimeos\Base\Config\Iface $config Configuration object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder|\TYPO3\CMS\Core\Routing\RouterInterface $uriBuilder URI builder
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
-	 * @return \Aimeos\MW\View\Iface Modified view object
+	 * @return \Aimeos\Base\View\Iface Modified view object
 	 */
-	protected static function addUrl( \Aimeos\MW\View\Iface $view, \Aimeos\Base\Config\Iface $config, $uriBuilder,
-		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MW\View\Iface
+	protected static function addUrl( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config, $uriBuilder,
+		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\Base\View\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] ) )
@@ -376,9 +376,9 @@ class View
 		}
 
 		if( $uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
-			$url = new \Aimeos\MW\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
+			$url = new \Aimeos\Base\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
 		} elseif( $uriBuilder instanceof \TYPO3\CMS\Core\Routing\RouterInterface ) {
-			$url = new \Aimeos\MW\View\Helper\Url\T3Router( $view, $uriBuilder, $fixed );
+			$url = new \Aimeos\Base\View\Helper\Url\T3Router( $view, $uriBuilder, $fixed );
 		} else {
 			throw new \RuntimeException( 'No router for generating URLs available' );
 		}

@@ -27,7 +27,7 @@ class ConfigViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHel
 
 	public function render()
 	{
-		$iface = '\Aimeos\MW\View\Iface';
+		$iface = '\Aimeos\Base\View\Iface';
 		$view = $this->templateVariableContainer->get( '_aimeos_view' );
 
 		if( !is_object( $view ) || !( $view instanceof $iface ) ) {
