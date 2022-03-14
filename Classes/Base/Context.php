@@ -206,7 +206,7 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setMessageQueueManager( new \Aimeos\MW\MQueue\Manager\Standard( $context->config() ) );
+		return $context->setMessageQueueManager( new \Aimeos\Base\MQueue\Manager\Standard( $context->config() ) );
 	}
 
 
