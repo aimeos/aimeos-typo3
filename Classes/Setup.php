@@ -280,7 +280,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		$ctx->setDatabaseManager( new \Aimeos\Base\DB\Manager\DBAL( $conf ) );
 		$ctx->setLogger( new \Aimeos\Base\Logger\Errorlog( \Aimeos\Base\Logger\Iface::INFO ) );
 		$ctx->setSession( new \Aimeos\Base\Session\None() );
-		$ctx->setCache( new \Aimeos\MW\Cache\None() );
+		$ctx->setCache( new \Aimeos\Base\Cache\None() );
 
 		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
 		if( php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )

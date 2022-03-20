@@ -83,7 +83,7 @@ class Context
 		{
 			case 'None':
 				$context->config()->set( 'client/html/basket/cache/enable', false );
-				$cache = \Aimeos\MW\Cache\Factory::create( 'None', [], null );
+				$cache = \Aimeos\Base\Cache\Factory::create( 'None', [], null );
 				break;
 
 			case 'Typo3':
