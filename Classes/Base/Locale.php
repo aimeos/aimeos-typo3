@@ -25,11 +25,11 @@ class Locale
 	/**
 	 * Returns the locale object for frontend
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public static function get( \Aimeos\MShop\Context\Item\Iface $context,
+	public static function get( \Aimeos\MShop\ContextIface $context,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( !isset( self::$locale ) )
@@ -82,11 +82,11 @@ class Locale
 	/**
 	 * Returns the locale item for the backend
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
 	 * @param string $site Unique site code
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	public static function getBackend( \Aimeos\MShop\Context\Item\Iface $context, string $site ) : \Aimeos\MShop\Locale\Item\Iface
+	public static function getBackend( \Aimeos\MShop\ContextIface $context, string $site ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 

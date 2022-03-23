@@ -26,9 +26,9 @@ class Context
 	 * Returns the current context
 	 *
 	 * @param \Aimeos\Base\Config\Iface Configuration object
-	 * @return \Aimeos\MShop\Context\Item\Iface Context object
+	 * @return \Aimeos\MShop\ContextIface Context object
 	 */
-	public static function get( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
+	public static function get( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\ContextIface
 	{
 		if( self::$context === null )
 		{
@@ -63,10 +63,10 @@ class Context
 	/**
 	 * Adds the cache object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object including config
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addCache( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addCache( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_cache'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_cache'] ) )
@@ -102,10 +102,10 @@ class Context
 	/**
 	 * Adds the database manager object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addDatabaseManager( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addDatabaseManager( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_dbm'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_dbm'] ) )
@@ -120,10 +120,10 @@ class Context
 	/**
 	 * Adds the filesystem manager object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addFilesystemManager( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addFilesystemManager( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_fsm'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_fsm'] ) )
@@ -138,10 +138,10 @@ class Context
 	/**
 	 * Adds the password hasher object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addHasher( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addHasher( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_hasher'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_hasher'] ) )
@@ -157,10 +157,10 @@ class Context
 	/**
 	 * Adds the logger object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addLogger( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addLogger( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] ) )
@@ -175,10 +175,10 @@ class Context
 	/**
 	 * Adds the mailer object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addMailer( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addMailer( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mailer'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mailer'] ) )
@@ -195,10 +195,10 @@ class Context
 	/**
 	 * Adds the message queue manager object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addMessageQueueManager( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addMessageQueueManager( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mqueue'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mqueue'] ) )
@@ -213,10 +213,10 @@ class Context
 	/**
 	 * Adds the nonce value for inline JS to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addNonce( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addNonce( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] ) )
@@ -231,10 +231,10 @@ class Context
 	/**
 	 * Adds the process object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addProcess( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addProcess( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] ) )
@@ -258,10 +258,10 @@ class Context
 	/**
 	 * Adds the session object to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addSession( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addSession( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_session'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_session'] ) )
@@ -286,10 +286,10 @@ class Context
 	/**
 	 * Adds the user ID and editor name to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addUser( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addUser( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user'] ) )
@@ -320,10 +320,10 @@ class Context
 	/**
 	 * Adds the group IDs to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addGroups( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addGroups( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups'] )
 			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups'] ) )
@@ -351,10 +351,10 @@ class Context
 	/**
 	 * Adds the frontend date time to the context
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object including config
+	 * @return \Aimeos\MShop\ContextIface Modified context object
 	 */
-	protected static function addDateTime( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function addDateTime( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
 	{
 		if( TYPO3_MODE === 'FE' && isset( $GLOBALS['BE_USER']->adminPanel )
 			&& class_exists( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' ) )

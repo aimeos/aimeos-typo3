@@ -54,10 +54,10 @@ abstract class AbstractController
 	 *
 	 * @param string $templatePath Path for retrieving the template paths used in the view
 	 * @param bool $withView True to add view to context object, false for no view
-	 * @return \Aimeos\MShop\Context\Item\Iface Context item
+	 * @return \Aimeos\MShop\ContextIface Context item
 	 */
 	protected function context( string $templatePath = 'client/html/templates',
-		bool $withView = true ) : \Aimeos\MShop\Context\Item\Iface
+		bool $withView = true ) : \Aimeos\MShop\ContextIface
 	{
 		$config = Base::config( (array) $this->settings );
 
@@ -96,10 +96,10 @@ abstract class AbstractController
 	 *
 	 * @param string $templatePath Path for retrieving the template paths used in the view
 	 * @param bool $withView True to add view to context object, false for no view
-	 * @return \Aimeos\MShop\Context\Item\Iface Context item
+	 * @return \Aimeos\MShop\ContextIface Context item
 	 */
 	protected function contextBackend( string $templatePath = 'admin/jqadm/templates',
-		bool $withView = true ) : \Aimeos\MShop\Context\Item\Iface
+		bool $withView = true ) : \Aimeos\MShop\ContextIface
 	{
 		if( !isset( $this->contextBE ) )
 		{

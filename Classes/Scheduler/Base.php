@@ -74,9 +74,9 @@ class Base
 	 * Returns the current context.
 	 *
 	 * @param array Multi-dimensional associative list of key/value pairs
-	 * @return \Aimeos\MShop\Context\Item\Iface Context object
+	 * @return \Aimeos\MShop\ContextIface Context object
 	 */
-	public static function context( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\Context\Item\Iface
+	public static function context( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\ContextIface
 	{
 		$config = Aimeos\Base::config( $conf );
 		$context = Aimeos\Base::context( $config );
@@ -110,11 +110,11 @@ class Base
 	/**
 	 * Returns the enabled site items which may be limited by the input arguments.
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context item object
+	 * @param \Aimeos\MShop\ContextIface $context Context item object
 	 * @param array|string $sites Unique site codes
 	 * @return \Aimeos\Map List of site items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
-	public static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, $sites ) : \Aimeos\Map
+	public static function getSiteItems( \Aimeos\MShop\ContextIface $context, $sites ) : \Aimeos\Map
 	{
 		if( !is_array( $sites ) ) {
 			$sites = explode( ' ', $sites );

@@ -74,9 +74,9 @@ class Base
 	 * Returns the current context
 	 *
 	 * @param \Aimeos\Base\Config\Iface Configuration object
-	 * @return \Aimeos\MShop\Context\Item\Iface Context object
+	 * @return \Aimeos\MShop\ContextIface Context object
 	 */
-	public static function context( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\Context\Item\Iface
+	public static function context( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\ContextIface
 	{
 		$name = 'Aimeos\Aimeos\Base\Context';
 
@@ -135,11 +135,11 @@ class Base
 	/**
 	 * Creates a new locale object
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public static function locale( \Aimeos\MShop\Context\Item\Iface $context,
+	public static function locale( \Aimeos\MShop\ContextIface $context,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) ) {
@@ -161,11 +161,11 @@ class Base
 	/**
 	 * Creates a new locale object
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
 	 * @param string $sitecode Unique site code
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public static function getLocaleBackend( \Aimeos\MShop\Context\Item\Iface $context,
+	public static function getLocaleBackend( \Aimeos\MShop\ContextIface $context,
 		string $sitecode ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) ) {
@@ -205,14 +205,14 @@ class Base
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder|\TYPO3\CMS\Core\Routing\RouterInterface $uriBuilder URL builder
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $langid ISO code of the current language ("de"/"de_CH") or null for no translation
 	 * @return \Aimeos\Base\View\Iface View object
 	 */
-	public static function view( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
+	public static function view( \Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null ) : \Aimeos\Base\View\Iface
 	{
 		$name = 'Aimeos\Aimeos\Base\View';

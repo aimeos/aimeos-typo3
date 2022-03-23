@@ -72,10 +72,10 @@ class SetupCommand extends Command
 	 * Adds the configuration options from the input object to the given context
 	 *
 	 * @param array|string $options Input object
-	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
+	 * @param \Aimeos\MShop\ContextIface $ctx Context object
 	 * @return array Associative list of key/value pairs of configuration options
 	 */
-	protected function addConfig( \Aimeos\MShop\Context\Item\Iface $ctx, $options ) : \Aimeos\MShop\Context\Item\Iface
+	protected function addConfig( \Aimeos\MShop\ContextIface $ctx, $options ) : \Aimeos\MShop\ContextIface
 	{
 		$config = $ctx->config();
 

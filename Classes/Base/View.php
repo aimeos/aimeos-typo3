@@ -22,14 +22,14 @@ class View
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param \Aimeos\MShop\ContextIface $context Context object
 	 * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder|\TYPO3\CMS\Core\Routing\RouterInterface $uriBuilder URL builder
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
 	 * @param string|null $locale Code of the current language or null for no translation
 	 * @return \Aimeos\Base\View\Iface View object
 	 */
-	public static function get( \Aimeos\MShop\Context\Item\Iface $context, $uriBuilder, array $templatePaths,
+	public static function get( \Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
 		\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null ) : \Aimeos\Base\View\Iface
 	{
 		$obj = GeneralUtility::makeInstance( \TYPO3\CMS\Extbase\Object\ObjectManager::class );

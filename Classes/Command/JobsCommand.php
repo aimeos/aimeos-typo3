@@ -96,9 +96,9 @@ class JobsCommand extends Command
 	 * Returns a context object
 	 *
 	 * @param string|null $pid Page ID if available
-	 * @return \Aimeos\MShop\Context\Item\Iface Context object containing only the most necessary dependencies
+	 * @return \Aimeos\MShop\ContextIface Context object containing only the most necessary dependencies
 	 */
-	protected function context( ?string $pid ) : \Aimeos\MShop\Context\Item\Iface
+	protected function context( ?string $pid ) : \Aimeos\MShop\ContextIface
 	{
 		$aimeos = \Aimeos\Aimeos\Base::aimeos();
 		$tmplPaths = $aimeos->getTemplatePaths( 'controller/jobs/templates' );
@@ -125,11 +125,11 @@ class JobsCommand extends Command
 	/**
 	 * Returns the enabled site items which may be limited by the input arguments.
 	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context item object
+	 * @param \Aimeos\MShop\ContextIface $context Context item object
 	 * @param InputInterface $input Input object
 	 * @return \Aimeos\Map List of site items implementing \Aimeos\MShop\Locale\Item\Site\Iface
 	 */
-	protected function getSiteItems( \Aimeos\MShop\Context\Item\Iface $context, InputInterface $input ) : \Aimeos\Map
+	protected function getSiteItems( \Aimeos\MShop\ContextIface $context, InputInterface $input ) : \Aimeos\Map
 	{
 		$manager = \Aimeos\MShop::create( $context, 'locale/site' );
 		$search = $manager->filter();

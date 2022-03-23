@@ -263,9 +263,9 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	 * Returns a new context object.
 	 *
 	 * @param array $config Nested array of configuration settings
-	 * @return \Aimeos\MShop\Context\Item\Iface Context object
+	 * @return \Aimeos\MShop\ContextIface Context object
 	 */
-	protected static function context( array $config = [] ) : \Aimeos\MShop\Context\Item\Iface
+	protected static function context( array $config = [] ) : \Aimeos\MShop\ContextIface
 	{
 		$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 
@@ -273,7 +273,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 			require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 		}
 
-		$ctx = new \Aimeos\MShop\Context\Item\Standard();
+		$ctx = new \Aimeos\MShop\Context();
 		$conf = \Aimeos\Aimeos\Base::config( $config );
 
 		$ctx->setConfig( $conf );
