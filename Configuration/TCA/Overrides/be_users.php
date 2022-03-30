@@ -8,18 +8,13 @@ if( !defined( 'TYPO3_MODE' ) ) {
 $beUsersSiteFcn = function() {
 
 	$list = [['', '']];
-	$db = $conn = null;
-	$dbname = 'db-locale';
 
 	try
 	{
 		$config = \Aimeos\Aimeos\Base::config();
 		$context = \Aimeos\Aimeos\Base::context( $config );
 
-		$db = $context->db();
-		$conn = $db->acquire( $dbname );
-		$result = $conn->create( 'SELECT * FROM "mshop_locale_site" ORDER BY "nleft"' )->execute();
-
+		$result = $context->db( 'db-locale' )->create( 'SELECT * FROM "mshop_locale_site" ORDER BY "nleft"' )->execute();
 		$parents = [];
 
 		$fcn = function( $result, $parents, $right ) use ( &$fcn, &$list ) {
@@ -45,15 +40,9 @@ $beUsersSiteFcn = function() {
 				$fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
 			}
 		}
-
-		$db->release( $conn, $dbname );
 	}
 	catch( \Exception $e )
 	{
-		if( $db && $conn ) {
-			$db->release( $conn, $dbname );
-		}
-
 		$log = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Log\LogManager::class );
 		$log->getLogger( __CLASS__ )->warning( 'Unable to retrieve Aimeos sites: ' . $e->getMessage() );
 	}

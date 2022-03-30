@@ -166,42 +166,30 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 	 */
 	public static function schema( array $sql ) : array
 	{
-		$dbm = self::context()->db();
-		$conn = $dbm->acquire();
+		$tables = [];
+		$conn = self::context()->db();
 
-		try
+		foreach( ['fe_users_', 'madmin_', 'mshop_'] as $prefix )
 		{
-			$tables = [];
+			$result = $conn->create( 'SHOW TABLES like \'' . $prefix . '%\'' )->execute();
 
-			foreach( ['fe_users_', 'madmin_', 'mshop_'] as $prefix )
-			{
-				$result = $conn->create( 'SHOW TABLES like \'' . $prefix . '%\'' )->execute();
-
-				while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null ) {
-					$tables[] = $row[0];
-				}
+			while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null ) {
+				$tables[] = $row[0];
 			}
-
-			foreach( $tables as $table )
-			{
-				$result = $conn->create( 'SHOW CREATE TABLE ' . $table )->execute();
-
-				while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null )
-				{
-					$str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
-					$str = str_replace( '"', '`', $str );
-
-					$sql[] = $str . ";\n";
-				}
-			}
-
-			$dbm->release( $conn );
-		}
-		catch( \Exception $e )
-		{
-			$dbm->release( $conn );
 		}
 
+		foreach( $tables as $table )
+		{
+			$result = $conn->create( 'SHOW CREATE TABLE ' . $table )->execute();
+
+			while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null )
+			{
+				$str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
+				$str = str_replace( '"', '`', $str );
+
+				$sql[] = $str . ";\n";
+			}
+		}
 
 		return ['sqlString' => $sql];
 	}
@@ -277,7 +265,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		$conf = \Aimeos\Aimeos\Base::config( $config );
 
 		$ctx->setConfig( $conf );
-		$ctx->setDatabaseManager( new \Aimeos\Base\DB\Manager\DBAL( $conf ) );
+		$ctx->setDatabaseManager( \Aimeos\Base\DB\Factory::create( $conf, DBAL ) );
 		$ctx->setLogger( new \Aimeos\Base\Logger\Errorlog( \Aimeos\Base\Logger\Iface::INFO ) );
 		$ctx->setSession( new \Aimeos\Base\Session\None() );
 		$ctx->setCache( new \Aimeos\Base\Cache\None() );
