@@ -113,7 +113,8 @@ class Context
 			return $fcn( $context );
 		}
 
-		return $context->setDatabaseManager( new \Aimeos\Base\DB\Manager\DBAL( $context->config() ) );
+		$dbm = \Aimeos\Base\DB\Factory::create( $context->config(), 'DBAL' );
+		return $context->setDatabaseManager( $dbm );
 	}
 
 
