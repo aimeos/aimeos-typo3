@@ -133,17 +133,14 @@ Aimeos = {
 				element.setAttribute("srcset", element.getAttribute("data-srcset"));
 				element.setAttribute("src", element.getAttribute("data-src"));
 			} else if(element.classList.contains('background')) {
-				var url = '';
-				var srcset = element.getAttribute("data-background");
+				const srcset = element.getAttribute("data-background");
+				let url = '';
 
 				srcset && srcset.split(',').every(function(str) {
-					var parts = str.trim().split(' ');
-
-					if(parseInt((parts[1] || '').replace('w', '')) < window.innerWidth) {
-						return true;
-					}
+					const parts = str.trim().split(' ');
 					url = parts[0];
-					return false;
+
+					return parseInt((parts[1] || '').replace('w', '')) > window.innerWidth ? false : true;
 				});
 
 				element.style.backgroundImage = "url('" + url + "')";
