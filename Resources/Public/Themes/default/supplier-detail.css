@@ -1,0 +1,15 @@
+.supplier-detail {
+	padding-top: 4rem;
+	margin-bottom: 2rem;
+	background-color: var(--ai-bg-alt);
+}
+
+.supplier-detail-basic {
+	padding: 0 2rem;
+}
+
+.supplier-detail .image-single img {
+	max-height: 20rem;
+	padding: 0 2rem;
+	width: 100%;
+}

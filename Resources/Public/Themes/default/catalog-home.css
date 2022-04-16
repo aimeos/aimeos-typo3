@@ -1,0 +1,64 @@
+/* Catalog home */
+
+.aimeos.catalog-home {
+	margin-top: calc(-1rem - 80px);
+}
+
+.catalog-home .stage-item {
+	background-color: var(--ai-bg);
+	color: var(--ai-bg);
+	margin: 0;
+}
+
+.catalog-home .stage-image {
+	padding: 0;
+}
+
+.catalog-home .stage-text {
+	position: absolute;
+	font-size: 200%;
+	margin: 0 5%;
+	top: 33%;
+	text-align: start;
+	color: var(--ai-bg);
+}
+
+.catalog-home .stage-text .btn {
+	background-color: transparent;
+	border-color: var(--ai-bg);
+	color: var(--ai-bg);
+	border-width: 2px;
+	font-weight: normal;
+	margin-top: 1rem;
+	font-size: 50%;
+	width: 12rem;
+}
+
+@media (min-width:576px) {
+	.catalog-home .stage-text {
+		max-width: 66%;
+	}
+}
+
+@media (min-width:768px) {
+	.catalog-home .stage-text {
+		max-width: 50%;
+		font-size: 225%;
+	}
+}
+
+@media (min-width:992px) {
+	.aimeos.catalog-home {
+		margin-top: calc(-7rem - 50px);
+	}
+	.catalog-home .stage-text {
+		max-width: 40%;
+	}
+}
+
+@media (min-width:1200px) {
+	.catalog-home .stage-text {
+		max-width: 35%;
+		font-size: 250%;
+	}
+}

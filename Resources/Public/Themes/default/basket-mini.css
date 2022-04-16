@@ -1,0 +1,158 @@
+/* Mini basket */
+
+.basket-mini .row {
+	--bs-gutter-x: 0;
+	--bs-gutter-y: 0;
+}
+
+.basket-mini .menu {
+	position: relative;
+	white-space: nowrap;
+	text-decoration: none;
+	display: block;
+	cursor: pointer;
+	padding: .5rem;
+	line-height: 1;
+}
+
+.basket-mini .menu:before {
+	font: normal normal normal 14px/1 bootstrap-icons;
+	content: "\f180";
+	font-size: 150%;
+	color: var(--ai-bg);
+}
+
+.basket-mini-main .quantity {
+	background-color: var(--ai-warning);
+	color: var(--ai-bg);
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 75%;
+	border-radius: var(--ai-radius-round);
+	padding: 0.15rem 0.3rem;
+}
+
+.basket-mini-main .value {
+	display: none;
+}
+
+/* Offscreen menu */
+
+.basket-mini .zeynep  {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: -20rem;
+	left: unset;
+	width: 20rem;
+	z-index: 1032;
+	pointer-events: none;
+	background-color: var(--ai-bg);
+	-webkit-overflow-scrolling: touch;
+	transition: transform .25s;
+	overflow: hidden auto;
+}
+
+[dir="rtl"] .basket-mini .zeynep {
+	left: -20rem;
+	right: unset;
+}
+
+.basket-mini .zeynep.opened {
+	transform: translateX(-20rem);
+	pointer-events: auto;
+}
+
+[dir="rtl"] .basket-mini .zeynep.opened {
+	transform: translateX(20rem);
+	pointer-events: auto;
+}
+
+.basket-mini .zeynep .header {
+	display: flex;
+	color: var(--ai-bg);
+	background-color: var(--ai-secondary);
+}
+
+.basket-mini .zeynep .header .close,
+.basket-mini .zeynep .header .name {
+	line-height: var(--bs-body-line-height);
+	text-align: center;
+	font-size: 125%;
+	cursor: pointer;
+	padding: .5rem;
+}
+
+.basket-mini .zeynep .header .name {
+	cursor: auto;
+}
+
+.basket-mini .close::before {
+	font: normal normal normal 14px/1 bootstrap-icons;
+	content: "\f659";
+}
+
+/* Basket content */
+
+.basket-mini-product {
+	text-align: center;
+}
+
+.basket-mini-product .name {
+	text-align: start;
+}
+
+.basket-mini-product .price {
+	white-space: nowrap;
+	text-align: end;
+}
+
+.basket-mini-product .basket {
+	margin: 1rem;
+}
+
+.basket-mini-product .basket-header,
+.basket-mini-product .total {
+	font-weight: bold;
+}
+
+.basket-mini-product .basket-header,
+.basket-mini-product .product {
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.basket-mini-product .basket .row {
+	padding: 0.5rem;
+}
+
+.basket-mini-product .delete {
+	padding: 0.5rem;
+}
+
+.basket-mini-product .total {
+	background-color: var(--ai-tertiary);
+	background-color: var(--ai-bg-light, var(--ai-tertiary));
+}
+
+.basket-mini-product .delete:after {
+	font: normal normal normal 14px/1 bootstrap-icons;
+	content: "\f5de";
+}
+
+.basket-mini-product .delivery .name:before {
+	content: "+ ";
+}
+
+.basket-mini-product .total .name:before {
+	content: "= ";
+}
+
+.basket-mini-product .to-basket {
+	margin: 2rem 0;
+}
+
+.basket-mini-product .btn-primary {
+	display: block;
+	margin: auto;
+}

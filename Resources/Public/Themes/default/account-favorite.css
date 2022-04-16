@@ -1,0 +1,54 @@
+.account-favorite {
+	margin: 1rem 0;
+	padding: 0;
+}
+
+.account-favorite .header {
+	text-transform: uppercase;
+	text-align: start;
+	font-weight: normal;
+	padding: 0.5rem 1rem;
+	color: var(--ai-secondary);
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.account-favorite .favorite-items {
+	display: flex;
+	justify-content: center;
+}
+
+.account-favorite .favorite-item {
+	position: relative;
+	text-align: end;
+	width: 180px;
+	margin: 1%;
+}
+
+.account-favorite .media-item {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: calc((var(--ai-product-image-height)) / 4 * 3);
+	width: calc((var(--ai-product-image-width)) / 4 * 3);
+}
+
+.account-favorite .name {
+	margin-top: 0.75rem;
+}
+
+.account-favorite .price-list .rebatepercent {
+	display: none;
+}
+
+.account-favorite form.delete {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.account-favorite .minibutton.delete {
+	color: var(--ai-secondary);
+	background-color: var(--ai-bg);
+	padding: .5rem 0.75rem;
+	z-index: 5;
+}

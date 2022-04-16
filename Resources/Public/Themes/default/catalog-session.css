@@ -1,0 +1,193 @@
+/* Catalog Session */
+
+aside:nth-child(1) {
+	margin-top: 1rem;
+}
+
+.catalog-session {
+	clear: both;
+	padding: 0;
+	text-align: center;
+	margin: 1rem 0;
+}
+
+.catalog-session .header {
+	cursor: pointer;
+	font-size: 120%;
+	padding: .5rem .75rem;
+	margin: 0;
+}
+
+.catalog-session .minibutton.delete {
+	position: absolute;
+	right: calc(100% - 160px);
+	top: 1%;
+	z-index: 5;
+	line-height: 1;
+}
+
+.catalog-session-pinned,
+.catalog-session-seen {
+	margin-bottom: 1rem;
+	border: 1px solid var(--ai-tertiary-alt);
+}
+
+.catalog-session-seen .seen-items,
+.catalog-session-pinned .pinned-items {
+	padding: 0;
+	margin: 0;
+	padding-bottom: 0;
+}
+
+.catalog-session-seen .seen-item,
+.catalog-session-pinned .pinned-item {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	text-align: end;
+	width: 160px;
+	margin: 1%;
+	padding: 0;
+}
+
+.catalog-session-seen .media-item,
+.catalog-session-pinned .media-item {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 213px;
+	width: 160px;
+}
+
+.catalog-session-seen .count:before,
+.catalog-session-pinned .count:before {
+	content: " (";
+}
+
+.catalog-session-seen .count:after,
+.catalog-session-pinned .count:after {
+	content: ") ";
+}
+
+.catalog-session-seen .name,
+.catalog-session-pinned .name {
+	margin-top: 0.75rem;
+}
+
+.catalog-session-seen .seen-items .price-item .rebatepercent,
+.catalog-session-pinned .pinned-items .price-item .rebatepercent {
+	position: absolute;
+	transform: translateX(100%);
+	right: 100%;
+}
+
+aside .catalog-session {
+	margin: 0;
+	margin-bottom: 1rem;
+	padding-top: 0;
+}
+
+aside .catalog-session-pinned > h2,
+aside .catalog-session-seen > h2 {
+	font-size: 120%;
+	margin-bottom: 0rem;
+	text-align: start;
+	padding: .5rem .75rem;
+	letter-spacing: 1.5px;
+	cursor: pointer;
+}
+
+aside .catalog-session-seen .seen-items,
+aside .catalog-session-pinned .pinned-items {
+	display: block;
+	padding: 0.75rem;
+}
+
+aside .catalog-session-seen .seen-items .price-item .rebatepercent,
+aside .catalog-session-pinned .seen-items .price-item .rebatepercent {
+	position: absolute;
+	transform: translateX(100%);
+	right: 160px;
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+	aside .catalog-session {
+		display: flex;
+	}
+
+	aside .catalog-session-pinned,
+	aside .catalog-session-seen {
+		width: 50%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+
+	aside .catalog-session-seen .name,
+	aside .catalog-session-pinned .name {
+		margin-top: 0rem;
+	}
+
+	.catalog-session-seen .rebatepercent,
+	.catalog-session-pinned .rebatepercent {
+		transform: translateX(100%);
+		right: 100%;
+	}
+
+	aside .catalog-session .minibutton.delete {
+		right: calc(100% - 60px);
+	}
+
+	aside .catalog-session-seen,
+	aside .catalog-session-pinned {
+		width: 100%;
+	}
+
+	aside .catalog-session-seen .name,
+	aside .catalog-session-pinned .name {
+		margin: 0 0 .25rem;
+		text-align: start;
+	}
+
+	aside .catalog-session-pinned .price-item.default .value,
+	aside .catalog-session-seen .price-item.default .value {
+		vertical-align: middle;
+	}
+
+	aside .catalog-session-seen .seen-item,
+	aside .catalog-session-pinned .pinned-item {
+		width: 100%;
+	}
+
+	aside .catalog-session-seen .media-item,
+	aside .catalog-session-pinned .media-item {
+		float: left;
+		width: 60px;
+		height: 80px;
+		margin-bottom: .5rem;
+		margin-inline-end: 1rem;
+		background-position: top left;
+	}
+
+	[dir="rtl"] aside .catalog-session-seen .media-item,
+	[dir="rtl"] aside .catalog-session-pinned .media-item {
+		float: right;
+	}
+
+	aside .catalog-session-seen .seen-item .price-list,
+	aside .catalog-session-pinned .pinned-item .price-list {
+		display: flex;
+		font-weight: normal;
+		text-align: start;
+		padding: 0;
+		margin: 0;
+	}
+
+	aside .catalog-session-seen .seen-items .price-item .rebatepercent,
+	aside .catalog-session-pinned .pinned-items .price-item .rebatepercent {
+		position: relative;
+		transform: translateX(0);
+		right: 0;
+	}
+
+}

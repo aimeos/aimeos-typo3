@@ -6,7 +6,7 @@
  */
 
  a {
-	color: #B0A060;
+	color: #282828;
 }
 
 .logo img {
@@ -25,8 +25,7 @@ li.attr-item {
 /* Account creation */
 
 .account-login .btn-primary tr {
-	background: #ba9a5a;
-	color: #ffffff;
+	background: #282828;
 }
 
 
@@ -41,7 +40,7 @@ li.attr-item {
 }
 
 .common-summary .item h3 {
-	border-bottom: solid 1px #B0A060;
+	border-bottom: 1px solid #282828;
 	padding: 0.5em;
 	margin: 10px;
 }
@@ -52,7 +51,6 @@ li.attr-item {
 	font-size: 1em;
 	margin: 0.5em 0;
 	padding: 0;
-	color: #555;
 }
 
 .common-summary .item li {
@@ -63,7 +61,6 @@ li.attr-item {
 .common-summary .item .name {
 	padding: 0.25em 0;
 	display: block;
-	color: #555;
 }
 
 .common-summary .item .value {
@@ -89,13 +86,12 @@ li.attr-item {
 
 .basket .header {
 	font-weight: bold;
-	background-color: #F0F0F0;
-	border-bottom: 1px solid #D0D0D0;
-	color: #555;
+	background-color: #F6F6F6;
+	border-bottom: 1px solid #CCC;
 }
 
 .basket .body {
-	border-bottom: 1px solid #D0D0D0;
+	border-bottom: 1px solid #CCC;
 }
 
 .basket th.label {
@@ -128,7 +124,6 @@ li.attr-item {
 
 .basket .product .attr-list {
 	vertical-align: top;
-	color: #555;
 	margin: 0.5em;
 	padding: 0;
 }
@@ -147,12 +142,10 @@ li.attr-item {
 
 .basket .subtotal {
 	font-weight: bold;
-	color: #555;
 }
 
 .basket .total {
-	border-top: 1px solid #D0D0D0;
-	background-color: #F0F0F0;
+	border-top: 1px solid #CCC;
+	background-color: #F6F6F6;
 	font-weight: bold;
-	color: #555;
 }

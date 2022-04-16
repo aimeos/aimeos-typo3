@@ -1,0 +1,89 @@
+/* Locale selector */
+.locale-select {
+	display: inline-block;
+}
+
+.locale-select .header {
+	display: none;
+}
+
+.locale-select ul.select-menu {
+	text-transform: uppercase;
+	position: relative;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.locale-select li.select-dropdown {
+	border: 1px solid transparent;
+	display: inline-block;
+	padding: 0;
+}
+
+.locale-select li.select-dropdown > a:before {
+	content: "» ";
+}
+
+.locale-select ul.select-menu a {
+	text-decoration: none;
+	white-space: nowrap;
+	display: block;
+	padding: 0.25rem;
+	line-height: 1;
+}
+
+.locale-select ul.select-menu a:hover,
+.locale-select ul.select-menu a:link,
+.locale-select ul.select-menu a:visited {
+	color: var(--ai-bg);
+	text-decoration: none;
+}
+
+.locale-select ul.select-menu .select-current > a:hover
+.locale-select ul.select-menu .select-current > a:link:hover,
+.locale-select ul.select-menu .select-current > a:visited:hover {
+	color: var(--ai-bg);
+}
+
+.locale-select ul.select-menu a:hover {
+	text-decoration: underline;
+}
+
+.locale-select ul.select-menu li.select-dropdown:hover > ul,
+.locale-select ul.select-menu ul.active {
+	border: 1px solid var(--ai-bg);
+	visibility: visible;
+	opacity: 1;
+}
+
+.locale-select ul.select-menu ul {
+	list-style: none outside none;
+	position: absolute;
+	visibility: hidden;
+	z-index: 99999;
+	opacity: 0;
+	padding: 0.5rem 0;
+	z-index: 1000;
+	border-radius: var(--ai-radius);
+	border: 1px solid var(--ai-tertiary);
+	background-color: var(--ai-primary);
+}
+
+.locale-select ul.select-menu ul li {
+	padding: .25rem 0.5rem;
+}
+
+.locale-select li.select-dropdown ul.select-dropdown li:hover {
+	background-color: var(--ai-secondary);
+}
+
+.locale-select li.select-dropdown ul.select-dropdown li:hover a {
+	color: var(--ai-bg);
+}
+
+.locale-select-language,
+.locale-select-currency {
+	display: inline-block;
+	min-width: 2rem;
+}

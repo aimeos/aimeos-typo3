@@ -1,0 +1,82 @@
+/* Standard basket */
+
+.basket-standard {
+	margin: 2rem 0;
+}
+.basket-standard-main {
+	border: 1px solid var(--ai-tertiary);
+	padding: 1rem;
+	margin: 0;
+}
+
+.basket-standard-main quantity a,
+.basket-standard-main action a {
+	text-decoration: none;
+}
+
+.basket-standard-coupon {
+	padding: 1rem !important;
+	text-align: center;
+	margin: 0;
+}
+
+.basket-standard-coupon .header,
+.basket-standard-coupon .content {
+	vertical-align: middle;
+	display: inline-block;
+	width: 49%;
+}
+
+.basket-standard-coupon .header h2 {
+	font-size: 1rem;
+	margin: 10px 0;
+}
+
+.basket-standard-coupon .attr-list {
+	display: inline-block;
+	font-weight: bold;
+	list-style: none;
+	margin: 0.5rem;
+}
+
+.basket-standard-coupon .attr-item .coupon-code,
+.basket-standard-coupon .attr-item .change {
+	font-weight: bold;
+	font-size: 133%;
+	padding: 0.5rem;
+}
+
+.basket-standard-coupon .btn-primary,
+.basket-standard-coupon .btn-primary:hover {
+	background: none;
+	border: none;
+	color: var(--ai-primary);
+	font-weight: bold;
+	font-size: 125%;
+}
+
+.basket-standard-coupon .input-group {
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.basket-standard-coupon .coupon-new .btn {
+	width: 5rem;
+}
+
+.basket-standard-coupon .coupon-new .coupon-code {
+	width: calc(100% - 5rem);
+	border: none;
+}
+
+.basket-standard-coupon .minibutton.delete:after {
+	display: inline-block;
+	font-size: 125%;
+}
+
+@media (max-width: 480px) {
+	.basket-standard-coupon .header,
+	.basket-standard-coupon .content {
+		display: block;
+		width: 100%;
+	}
+}

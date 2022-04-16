@@ -1,0 +1,26 @@
+.checkout-confirm {
+	margin: 0 auto;
+}
+
+.checkout-confirm-basic {
+	padding: 2rem 0;
+	margin-top: 1.5rem;
+}
+
+.checkout-confirm-basic .attr-list {
+	padding: 0.5rem 1rem;
+	margin: 0.5rem;
+}
+
+.checkout-confirm-basic .attr-list .name,
+.checkout-confirm-basic .attr-list .value {
+	display: inline-block;
+	width: 25%;
+}
+
+.checkout-confirm-basic h2 {
+	border-bottom: 1px solid var(--ai-secondary);
+	padding: 0.5rem 1rem;
+	margin: 0.5rem;
+	margin-top: 0;
+}

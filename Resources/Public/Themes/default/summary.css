@@ -1,0 +1,236 @@
+.aimeos .common-summary .error,
+.aimeos .common-summary-detail .error {
+	border-bottom: 1px solid var(--ai-danger);
+}
+
+.aimeos .common-summary .item li {
+	vertical-align: top;
+	padding: 0;
+}
+
+.aimeos .common-summary .content {
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+}
+
+.aimeos .common-summary .item .name {
+	display: inline-block;
+	vertical-align: top;
+	color: var(--ai-secondary);
+	width: 198px;
+}
+
+.aimeos .common-summary .item .name:after {
+	content: ":";
+}
+
+.aimeos .common-summary .item .value {
+	display: inline-block;
+	vertical-align: top;
+	width: 198px;
+}
+
+.aimeos .common-summary .item h4,
+.aimeos .common-summary .item .item-icons {
+	vertical-align: middle;
+	display: inline-block;
+	margin: 0 1rem;
+}
+
+.aimeos .common-summary .item .item-icons img {
+	max-height: 4rem;
+}
+
+.aimeos .common-summary .item .attr-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 0.5rem;
+}
+
+.aimeos .common-summary .header,
+.aimeos .common-summary-detail .header {
+	border-bottom: 1px solid var(--ai-secondary);
+	padding: 0.5rem 1rem;
+	margin-top: 0;
+	width: 100%;
+}
+
+.aimeos .common-summary-address h2,
+.aimeos .common-summary-service h2,
+.aimeos .common-summary-coupon h2 {
+	display: none;
+}
+
+.aimeos .common-summary-service .item h4 {
+	margin: 1rem 0;
+	padding: 0;
+	color: var(--ai-secondary);
+	font-size: 1rem;
+}
+
+.aimeos .common-summary-detail .header {
+	border-bottom: none;
+}
+
+.aimeos .common-summary-detail .basket {
+	width: 100%;
+}
+
+.aimeos .common-summary-detail table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.aimeos .common-summary-detail .headline {
+	border-bottom: 1px solid var(--ai-secondary);
+	background-color: var(--ai-bg-alt);
+	font-weight: bold;
+	padding: 0.25rem 0;
+}
+
+.aimeos .common-summary-detail .status {
+	display: none;
+}
+
+.aimeos .common-summary-detail .supplier h3 {
+	margin-top: 0.5rem;
+}
+
+.aimeos .common-summary-detail .subtotal {
+	color: var(--ai-secondary);
+}
+
+.aimeos .common-summary-detail .total {
+	background-color: var(--ai-bg-alt);
+	padding: .25rem 0;
+}
+
+.aimeos .common-summary-detail .image img.detail {
+	max-width: 6rem;
+	max-height: 8rem;
+	overflow: hidden;
+	margin-inline-end: 5%;
+}
+
+.aimeos .common-summary-detail .details .product-name {
+	margin: 0 0.25rem 0.25rem;
+	display: block;
+	letter-spacing: 1.5px;
+}
+
+.aimeos .common-summary-detail .code,
+.aimeos .common-summary-detail .timeframe {
+	margin: 0.5rem;
+}
+
+.aimeos .common-summary-detail .code .name:after,
+.aimeos .common-summary-detail .timeframe .name:after {
+	content: ":";
+}
+
+.aimeos .common-summary-detail .code,
+.aimeos .common-summary-detail .timeframe {
+	margin: 0 0.25rem;
+}
+
+.aimeos .common-summary-detail .attr-list {
+	margin: 0 0.25rem;
+	vertical-align: top;
+}
+
+.aimeos .common-summary-detail .attr-list li.attr-item {
+	display: inline;
+}
+
+.aimeos .common-summary-detail .attr-list li.attr-item:not(:last-of-type) .value:after {
+	content: ",";
+}
+
+.aimeos .common-summary-detail .attr-item .name:after {
+	content: ":";
+}
+
+.aimeos .common-summary-detail .quantity,
+.aimeos .common-summary-detail .subtotal,
+.aimeos .common-summary-detail .delivery,
+.aimeos .common-summary-detail .payment,
+.aimeos .common-summary-detail .total,
+.aimeos .common-summary-detail .rebate,
+.aimeos .common-summary-detail .tax,
+.aimeos .common-summary-detail .unitprice,
+.aimeos .common-summary-detail .price,
+.aimeos .common-summary-detail .unitprice,
+.aimeos .common-summary-detail .price {
+	text-align: end;
+	white-space: nowrap;
+}
+
+.aimeos .common-summary-detail .tax {
+	padding: 0.25rem 0;
+}
+
+.aimeos .common-summary-detail .quantity,
+.aimeos .common-summary-detail .quantity {
+	white-space: nowrap;
+	text-align: center;
+}
+
+.aimeos .common-summary-detail .quantity input {
+	display: inline-block;
+	text-align: center;
+	width: 3rem;
+}
+
+.aimeos .common-summary-detail .action .delete:after {
+	font: normal normal normal 14px/1 bootstrap-icons;
+	font-size: 100%;
+	content: "\f5de";
+}
+
+.aimeos .common-summary-detail .action,
+.aimeos .common-summary-detail .action {
+	text-align: center;
+}
+
+.aimeos .common-summary-detail .delivery td:first-child:before,
+.aimeos .common-summary-detail .payment td:first-child:before {
+	content: "+ ";
+}
+
+.aimeos .common-summary-detail .subtotal {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.aimeos .common-summary-detail .delivery {
+	margin-bottom: 1rem;
+}
+
+.aimeos .common-summary-detail .price-total {
+	font-weight: bold;
+}
+
+.aimeos .common-summary-detail .product {
+	padding: 0.5rem 0;
+	border-bottom: 1px solid;
+}
+
+.aimeos .common-summary-additional .coupon,
+.aimeos .common-summary-additional .comment {
+	vertical-align: top;
+	height: 8rem;
+}
+
+.aimeos .common-summary-additional .customerref-value {
+	width: 100%;
+}
+
+.aimeos .common-summary-additional textarea {
+	border: 1px solid var(--ai-tertiary);
+	border-color: var(--ai-tertiary-alt, var(--ai-tertiary));
+	background-color: var(--ai-bg);
+	color: var(--ai-secondary);
+	width: 100%;
+	height: 4rem;
+}

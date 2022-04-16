@@ -1,0 +1,62 @@
+.account-history {
+	margin: 0 auto;
+}
+
+.account-history .header {
+	text-transform: uppercase;
+	text-align: start;
+	font-weight: normal;
+	padding: 0.5rem 1rem;
+	color: var(--ai-secondary);
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.account-history .history-item {
+	border: 1px solid var(--ai-tertiary);
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.account-history .order-basic {
+	font-weight: bold;
+}
+
+.account-history .name:after {
+	content: ": ";
+}
+
+.account-history .action {
+	margin-top: 0.5rem;
+}
+
+.account-history .action .btn {
+	border: 1px solid var(--ai-secondary);
+	display: block;
+	width: 100%;
+	max-width: 6rem;
+	margin: auto;
+}
+
+.account-history-detail {
+	padding-top: 1rem;
+	display: none;
+}
+
+.account-history-detail a:hover {
+	text-decoration: underline;
+}
+
+.account-history-detail h2 {
+	margin: 0.5rem 0;
+}
+
+.account-history-detail h3 {
+	display: inline-block;
+	font-size: 1rem;
+	margin: 0;
+}
+
+.account-history-detail li.attr-item .name,
+.account-history-detail li.attr-item .value {
+	min-width: 0;
+}

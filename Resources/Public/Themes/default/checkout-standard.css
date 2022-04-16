@@ -1,0 +1,349 @@
+/* Checkout */
+
+.checkout-standard {
+	margin: 0 auto;
+}
+
+.checkout-standard .steps {
+	font-weight: bold;
+	text-align: center;
+	counter-reset: step;
+	padding: 0 0 3rem 0;
+}
+
+.checkout-standard .steps a {
+	text-decoration: none;
+}
+
+.checkout-standard .steps .active {
+	color: var(--ai-primary);
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.checkout-standard .steps .current {
+	color: var(--ai-bg);
+	background-color: var(--ai-secondary);
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.checkout-standard .steps .order,
+.checkout-standard .steps .process {
+	display: none;
+}
+
+.checkout-standard .step {
+	display: inline-block;
+	vertical-align: top;
+	overflow: hidden;
+	width: 19%;
+	color: var(--ai-tertiary);
+	border-bottom: 1px solid var(--ai-secondary);
+	vertical-align: baseline;
+}
+
+.checkout-standard .step:before {
+	content: counter(step) ". ";
+	counter-increment: step;
+}
+
+.checkout-standard .form-list {
+	margin: 1rem;
+}
+
+.checkout-standard .form-list .mandatory {
+	font-weight: bold;
+}
+
+.checkout-standard .form-list .mandatory > label:after {
+	content: " *";
+}
+
+.checkout-standard .form-list .error {
+	color: var(--ai-danger);
+}
+
+.checkout-standard .form-list .error input,
+.checkout-standard .form-list .error select {
+	border-bottom: 1px solid var(--ai-danger);
+}
+
+.checkout-standard .button-group {
+	display: none;
+}
+
+.checkout-standard section:last-child .button-group {
+	display: block;
+}
+
+
+/* Checkout address */
+
+.checkout-standard-address h2 {
+	padding: 1%;
+	letter-spacing: 1.5px;
+}
+
+.checkout-standard-address .item-address {
+	padding: 1%;
+}
+
+.checkout-standard-address .item-address .header {
+	border: 1px solid var(--ai-bg-light);
+	padding: 1rem;
+	position: relative;
+}
+
+.checkout-standard-address .minibutton.delete {
+	position: absolute;
+	padding: 1rem;
+	right: 0;
+	top: 0;
+}
+
+.checkout-standard-address .item-address .header input {
+	display: inline-block;
+	vertical-align: middle;
+	border: none;
+	margin: 0;
+	margin-inline-end: 1rem;
+}
+
+.checkout-standard-address .item-address .values {
+	display: inline-block;
+	margin: 0;
+	letter-spacing: 1.5px;
+}
+
+.checkout-standard .form-list .mandatory,
+.checkout-standard .form-list .optional,
+.checkout-standard .form-list .hidden,
+.checkout-standard .form-list .error,
+.checkout-standard .attr-list .mandatory,
+.checkout-standard .attr-list .optional,
+.checkout-standard .attr-list .hidden,
+.checkout-standard .attr-list .error {
+	clear: both;
+}
+
+.checkout-standard-address .form-list .form-item {
+	display: none;
+}
+
+.checkout-standard-address .form-list .mandatory,
+.checkout-standard-address .form-list .optional {
+	display: flex;
+}
+
+.checkout-standard-address .form-list .hidden {
+	display: none;
+}
+
+.checkout-standard-address .form-list .mandatory label:after {
+	content: "*";
+}
+
+.checkout-standard-address .form-item label {
+	margin: 0.875rem 0;
+}
+
+.checkout-standard-address .form-item .form-control {
+	margin: 0.5rem 0;
+}
+
+
+/* Common for delivery/payment */
+
+.checkout-standard .item-service .description {
+	display: inline-block;
+	vertical-align: top;
+	min-width: 240px;
+	max-width: 480px;
+	padding: 0.5rem 0;
+	width: 100%;
+}
+
+.checkout-standard .item-service .description h2 {
+	font-size: 110%;
+}
+
+.checkout-standard .item-service .description .short {
+	font-weight: bold;
+	padding: 0.5rem 0;
+}
+
+.checkout-standard .item-service .description .long {
+	padding: 0.5rem 0;
+}
+
+.checkout-standard .item-service .description h2,
+.checkout-standard .item-service .description p {
+	margin: 0 1rem;
+}
+
+.checkout-standard .item-service .description h2,
+.checkout-standard .item-service .icons {
+	display: inline-block;
+}
+
+.checkout-standard .item-service .icons img {
+	max-height: 4rem;
+	margin: 0 1rem;
+}
+
+.checkout-standard .item-service .option {
+	margin: 1rem;
+}
+
+.checkout-standard .item-service .price-value {
+	float: right;
+	margin: 1rem;
+	font-size: 100%;
+}
+
+[dir="rtl"] .checkout-standard .item-service .price-value {
+	float: left;
+}
+
+.checkout-standard .item-service .icon {
+	display: inline-block;
+}
+
+.checkout-standard .item-service .form-item-value input {
+	display: none;
+}
+
+.checkout-standard .item-service .form-item-value label {
+	border-left: 2px solid transparent;
+	font-weight: normal;
+	padding: 0.5rem;
+	display: block;
+}
+
+.checkout-standard .item-service .form-item-value input:checked + label {
+	border-left-color: var(--ai-tertiary);
+	background-color: var(--ai-bg-light);
+}
+
+
+/* Checkout delivery/payment */
+
+.checkout-standard-delivery .note,
+.checkout-standard-payment .note {
+	padding: 0 0 1rem 0;
+}
+
+.checkout-standard-delivery h2,
+.checkout-standard-payment h2 {
+	font-size: 1rem;
+}
+
+.checkout-standard-delivery .item,
+.checkout-standard-payment .item {
+	border: 1px solid var(--ai-tertiary);
+	margin: 1rem 0.5rem;
+	text-align: start;
+}
+
+.checkout-standard-delivery .item-service .price-value,
+.checkout-standard-payment .item-service .price-value {
+	margin: 1.25rem;
+}
+
+/* Checkout summary */
+
+.checkout-standard-summary h3 {
+	display: inline-block;
+	font-size: 1rem;
+	margin: 0;
+}
+
+.checkout-standard-summary a:hover {
+	text-decoration: underline;
+}
+
+.checkout-standard-summary .note {
+	padding: 0 0 1rem 0;
+}
+
+.checkout-standard-summary .modify {
+	float: right;
+}
+
+[dir="rtl"] .checkout-standard-summary .modify {
+	float: left;
+}
+
+
+/* Checkout summary option terms */
+
+.checkout-standard-summary-option {
+	padding-top: 0.5rem;
+	padding-bottom: 1rem;
+}
+
+.checkout-standard-summary-option h3 {
+	margin: 0;
+	padding: 0.5rem;
+	display: block;
+}
+
+.checkout-standard-summary-option p {
+	display: inline;
+	margin-inline-start: 1rem;
+}
+
+.checkout-standard-summary-option .single {
+	padding: 0.5rem 0;
+}
+
+.checkout-standard-summary-option label,
+.checkout-standard-summary-option input {
+	display: inline;
+}
+
+.checkout-standard-summary-option input[type="checkbox"] {
+	margin-inline-start: 0.5rem;
+}
+
+.aimeos .checkout-standard-summary-option-terms a:link:not(.btn),
+.aimeos .checkout-standard-summary-option-terms a:visited:not(.btn) {
+	color: var(--ai-primary);
+	text-decoration: underline;
+}
+
+.aimeos .checkout-standard-summary-option-terms a:link:not(.btn):hover,
+.aimeos .checkout-standard-summary-option-terms a:visited:not(.btn):hover {
+	color: var(--ai-secondary);
+	text-decoration: underline;
+}
+
+
+/* Checkout order */
+
+.checkout-standard-order {
+	padding: 0;
+	padding-inline-start: 1rem;
+}
+
+.checkout-standard-order .form-list .mandatory {
+	font-weight: bold;
+	display: list-item;
+}
+
+.checkout-standard-process {
+	text-align: center;
+}
+
+.checkout-standard-process p {
+	margin: 1rem 0;
+}
+
+.checkout-standard-process .form-list {
+	text-align: start;
+	max-width: 30rem;
+	margin: auto;
+}
+
+.checkout-standard-process .button-group {
+	display: block;
+}

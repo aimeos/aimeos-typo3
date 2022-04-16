@@ -1,0 +1,70 @@
+/* Basket bulk order */
+
+.basket-bulk {
+	margin: 2rem 0;
+}
+
+.basket-bulk .headline,
+.basket-bulk .bulk-content .details {
+	border-bottom: 1px solid var(--ai-secondary);
+	align-items: center;
+}
+
+.basket-bulk .headline {
+	background-color: var(--ai-bg-light);
+	font-weight: bold;
+}
+
+.basket-bulk .form-control {
+	border: none;
+}
+
+.basket-bulk .quantity,
+.basket-bulk .quantity input {
+	text-align: center;
+}
+
+.basket-bulk .price {
+	text-align: end;
+}
+
+.basket-bulk .product,
+.basket-bulk .price {
+	padding: 0 .75rem;
+}
+
+.basket-bulk .buttons {
+	text-align: center;
+}
+
+.basket-bulk .minibutton {
+	color: var(--ai-primary);
+	line-height: 1;
+	width: 2.5rem;
+	padding: 0.75rem;
+}
+
+
+/* JS autocomplete */
+
+.autocomplete {
+	z-index: 1050;
+	overflow: auto;
+	box-sizing: border-box;
+	border: 1px solid var(--ai-secondary);
+	background-color: var(--ai-bg);
+}
+
+.autocomplete > div {
+	padding: 0.25rem;
+}
+
+.autocomplete .group {
+	background-color: var(--ai-bg-light);
+}
+
+.autocomplete > div:hover:not(.group),
+.autocomplete > div.selected {
+	cursor: pointer;
+	background-color: var(--ai-tertiary);
+}

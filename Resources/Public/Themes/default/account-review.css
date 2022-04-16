@@ -1,0 +1,49 @@
+.account-review h1.header {
+	border-bottom: 1px solid var(--ai-secondary);
+	text-transform: uppercase;
+	text-align: start;
+	font-weight: normal;
+	padding: 0.5rem 1rem;
+	color: var(--ai-secondary);
+}
+
+.account-review h2 {
+	margin: 8px 15px;
+}
+
+.account-review .review-item {
+	padding: 1rem;
+}
+
+.account-review h3 {
+	padding: 0 1rem;
+}
+
+.account-review .col-md-6 {
+	padding-top: 1rem;
+}
+
+.account-review .review-image {
+	max-width: 100%;
+	max-height: 10rem;
+}
+
+.account-review .review-rating input {
+	vertical-align: middle;
+}
+
+.account-review .review-rating input:checked ~ label {
+	color: var(--ai-primary);
+}
+
+.account-review .review-comment {
+	width: 100%;
+	height: 8.5rem;
+	padding: 0.5rem;
+	border: 1px solid var(--ai-tertiary);
+}
+
+.account-review .btn {
+	display: block;
+	margin: 1rem auto;
+}

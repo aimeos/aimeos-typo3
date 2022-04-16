@@ -1,0 +1,76 @@
+.account-watch {
+	margin: 1rem;
+	padding: 0;
+}
+
+.account-watch .header {
+	text-transform: uppercase;
+	text-align: start;
+	font-weight: normal;
+	padding: 0.5rem 1rem;
+	color: var(--ai-secondary);
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.account-watch form.delete {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+}
+
+.account-watch .minibutton.delete {
+	background-color: var(--ai-bg);
+	padding: .5rem 0.75rem;
+	z-index: 5;
+}
+
+.account-watch .watch-items {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.account-watch .watch-item {
+	position: relative;
+	display: flex;
+	min-width: 180px;
+	max-width: 360px;
+	width: 100%;
+	margin: 1%;
+}
+
+.account-watch .watch-basic {
+	margin: 1%;
+	position: relative;
+	display: inline-block;
+	max-width: 50%;
+  }
+
+.account-watch .media-item {
+	height: calc((var(--ai-product-image-height)) / 4 * 3);
+	width: calc((var(--ai-product-image-width)) / 4 * 3);
+}
+
+.aimeos .product.watch-item .price-item .rebatepercent {
+	position: absolute;
+}
+
+.account-watch .name {
+	margin-top: 0.75rem;
+}
+
+.account-watch .watch-details {
+	display: inline-block;
+	text-align: center;
+	max-width: 180px;
+	min-width: 120px;
+	margin: 1%;
+}
+
+.account-watch .btn,
+.account-watch .form-list label,
+.account-watch .form-list input,
+.account-watch .form-list select {
+	width: 100%;
+}

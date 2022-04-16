@@ -1,0 +1,72 @@
+/* Navbar background */
+
+.aimeos .catalog-stage-image {
+	margin-top: -6rem;
+	height: 6rem;
+}
+
+@media screen and (min-width: 992px) {
+	.aimeos .catalog-stage-image {
+		margin-top: -10rem;
+		height: 10rem;
+	}
+}
+
+/* Stage image */
+
+.catalog-stage {
+	position: relative;
+	width: 100%;
+	color: var(--ai-primary);
+}
+
+.catalog-stage-image {
+	position: relative;
+	display: block;
+	margin: 0;
+	overflow: hidden;
+}
+
+.catalog-stage-image img {
+	width: 100%;
+}
+
+.catalog-stage-breadcrumb {
+	color: var(--ai-secondary);
+	font-size: 90%;
+	padding: 0.5rem;
+}
+
+.catalog-stage-breadcrumb .breadcrumb {
+	background-color: inherit;
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+}
+
+.catalog-stage-breadcrumb ol {
+	display: inline;
+	list-style: none;
+	padding-inline-start: 1rem;
+	margin: 0;
+}
+
+.catalog-stage-breadcrumb li {
+	display: inline;
+	white-space: nowrap;
+}
+
+.catalog-stage-breadcrumb .title,
+.catalog-stage-breadcrumb a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 0.5rem;
+}
+
+.catalog-stage-breadcrumb li:after {
+	content: ' / ';
+}
+
+.catalog-stage-breadcrumb li:last-child:after {
+	content: '';
+}
