@@ -37,6 +37,12 @@ return [
 		'basedir' => $publicPath . '/typo3conf/ext/aimeos/Resources/Public/Images/Mimeicons',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
+	'fs-theme' => [
+		'adapter' => 'Standard',
+		'baseurl' => '/typo3conf/ext/aimeos/Resources/Public/Themes',
+		'basedir' => $publicPath . '/typo3conf/ext/aimeos/Resources/Public/Themes',
+		'tempdir' => $publicPath . '/typo3temp',
+	],
 	'fs-admin' => [
 		'adapter' => 'Standard',
 		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/admin',
