@@ -16,14 +16,12 @@ body .breadcrumb-section {
 	}
 }
 
-.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search{
+.aimeos.catalog-filter .catalog-filter-search{
+	top: 0;
 	right: 0;
 	z-index: 1000;
 	position: relative;
 	align-self: center;
-	top: 0;
-	background-color: #282828;
-	background-color: var(--ai-primary, #282828);
 	margin-bottom: 1rem;
 }
 
@@ -46,7 +44,17 @@ body .breadcrumb-section {
 }
 
 .navbar-toggler-icon::after, .navbar-toggler-icon, .navbar-toggler-icon::before {
-	background-color: #fff;
+	color: #fff;
+}
+
+body .navbar-default {
+	--bs-bg-opacity: 1;
+	background-color: #282828 !important;
+	background-color: var(--ai-primary, #282828) !important;
+}
+
+.navbar-default.navbar.scroll {
+	padding: 0;
 }
 
 .navbar-mainnavigation.navbar-default a:not(.active),
@@ -64,7 +72,7 @@ body .breadcrumb-section {
 }
 
 .navbar-mainnavigation {
-		background-color: #282828 !important;
+	background-color: #282828 !important;
 	background-color: var(--ai-primary, #282828) !important;
 }
 
@@ -81,8 +89,14 @@ body .breadcrumb-section {
 	padding-bottom: 0;
 }
 
+.aimeos .to-basket .btn-primary,
+.aimeos .to-basket .btn-primary:visited {
+	color: var(--ai-bg, #FFFFFF) !important;
+}
+
 @media (min-width:992px) {
-	.navbar-default {
+	body .navbar-default {
+		--bs-bg-opacity: 0;
 		background-color: transparent !important;
 	}
 
@@ -98,7 +112,6 @@ body .breadcrumb-section {
 	}
 
 	.navbar.navbar-mainnavigation{
-		padding: 3.5rem 1rem;
 		box-shadow: none;
 	}
 
@@ -123,34 +136,11 @@ body .breadcrumb-section {
 		clear: both;
 	}
 
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-price,
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-supplier,
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-attribute{
-		float: left;
-
-	}
-
 	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-attribute:after{
 		display: block;
 		content: "";
 		clear: both;
 	}
-}
-
-.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .input-group{
-	position: relative;
-	display: inline-block;
-	text-align: right;
-}
-
-
-.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .input-group > .form-control {
-	font-size: 85%;
-	z-index: 1024;
-	top: 50%;
-	position: absolute;
-	right: .5rem;
-	transform: translateY(-50%);
 }
 
 .bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .reset{
@@ -176,6 +166,15 @@ body .breadcrumb-section {
 		z-index: 1025;
 		position: absolute;
 		left: 0;
+	}
+
+	.aimeos.catalog-home {
+		margin-top: 0 !important;
+	}
+
+	.catalog-home .stage-image {
+		height: 600px;
+		object-fit: cover;
 	}
 }
 
