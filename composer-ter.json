@@ -23,7 +23,9 @@
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
 		"nyholm/psr7-server": "^1.0",
-		"nyholm/psr7": "^1.2"
+		"nyholm/psr7": "^1.2",
+		"psr/cache": "^1.0||^2.0",
+		"psr/log": "^1.0||^2.0"
 	},
 	"replace": {
 		"aimeos/aimeos-typo3": "self.version",
