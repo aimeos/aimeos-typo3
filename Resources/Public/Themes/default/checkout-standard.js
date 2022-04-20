@@ -70,9 +70,9 @@ AimeosCheckoutStandard = {
 	setupMandatoryCheck: function() {
 
 		$(".checkout-standard .form-item").on("blur", "input,select", function(ev) {
-			var value = $(this).val();
-			var regex = new RegExp(node.data('regex'));
 			var node = $(ev.currentTarget).parents(".form-item");
+			var regex = new RegExp(node.data('regex'));
+			var value = $(this).val();
 
 			if((value !== '' && value.match(regex)) || (value === '' && !node.hasClass("mandatory"))) {
 				node.removeClass("error").addClass("success");

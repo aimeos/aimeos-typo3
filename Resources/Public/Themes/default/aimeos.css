@@ -81,7 +81,7 @@ img {
 }
 
 .section {
-	overflow: unset;
+	overflow: unset !important;
 }
 
 .content > .container:not(.cms-page),
@@ -631,6 +631,10 @@ body > .content, body .main-section {
 
 .navbar-collapse {
 	justify-content: flex-end;
+}
+
+.navbar-mainnavigation {
+	position: fixed !important;
 }
 
 .navbar-nav {

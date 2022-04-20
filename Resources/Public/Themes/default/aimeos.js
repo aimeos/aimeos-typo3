@@ -188,10 +188,11 @@ AimeosBasket = {
 		const doc = $("<html/>").html(data);
 		const basket = $(".aimeos.basket-standard", doc);
 
-		$('head link.basket-standard', doc).each((idx, el) => {
+		$('link.basket-standard', doc).each((idx, el) => {
 			basket.append(el);
 		});
-		$('head script.basket-standard', doc).each((idx, el) => {
+
+		$('script.basket-standard', doc).each((idx, el) => {
 			basket.append($('<script/>').attr('src', el.getAttribute('src')));
 		});
 
@@ -582,20 +583,22 @@ AimeosPage = {
 	onLinkTop() {
 		const backToTop = document.querySelector(".back-to-top");
 
-		backToTop.addEventListener("click", () => {
-			document.documentElement.scrollTo({top: 0, behavior: "smooth"});
-		});
-
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				if(entry.isIntersecting) {
-					backToTop.classList.add("show");
-				} else {
-					backToTop.classList.remove("show");
-				}
+		if( backToTop) {
+			backToTop.addEventListener("click", () => {
+				document.documentElement.scrollTo({top: 0, behavior: "smooth"});
 			});
-		});
-		observer.observe(document.querySelector("footer"));
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if(entry.isIntersecting) {
+						backToTop.classList.add("show");
+					} else {
+						backToTop.classList.remove("show");
+					}
+				});
+			});
+			observer.observe(document.querySelector("footer"));
+		}
 	},
 
 

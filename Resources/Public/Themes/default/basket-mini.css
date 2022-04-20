@@ -13,9 +13,10 @@
 	cursor: pointer;
 	padding: .5rem;
 	line-height: 1;
+	text-align: end;
 }
 
-.basket-mini .menu:before {
+.basket-mini .menu:after {
 	font: normal normal normal 14px/1 bootstrap-icons;
 	content: "\f180";
 	font-size: 150%;
