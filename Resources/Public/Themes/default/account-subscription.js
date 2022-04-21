@@ -8,7 +8,7 @@ AimeosAccountSubscription = {
 	 */
 	onToggleDetail() {
 
-		$(".account-subscription").on("click", ".subscription-item .action .btn", ev => {
+		$(".account-subscription").on("click", ".subscription-item .actions .btn", ev => {
 
 			const target = $(ev.currentTarget).closest(".subscription-item");
 			const details = $(".account-subscription-detail", target);

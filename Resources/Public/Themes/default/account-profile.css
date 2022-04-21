@@ -7,49 +7,6 @@
 	border-bottom: 1px solid var(--ai-secondary);
 }
 
-.account-profile .account-salutation {
-	padding: 4rem 0 1.5rem;
-	margin-bottom: 3rem;
-	border-bottom: 1px solid var(--ai-secondary-dark);
-	display: flex;
-	align-items: center;
-}
-
-.account-profile .account-salutation .header.profile {
-	font-size: 180%;
-	margin: 0 2rem 0 1rem;
-	font-weight: 600;
-}
-
-.account-profile .profile-salutation {
-	margin: 0;
-}
-
-.account-profile .profile-salutation .logout {
-	margin-left: 1rem;
-}
-
-.account-profile .profile-salutation::before {
-	content: "\f4e1";
-	font: normal normal normal 14px/1 bootstrap-icons;
-	text-decoration: none;
-	font-size: 165%;
-	color: var(--ai-primary-dark);
-	display: inline-block;
-	position: relative;
-	text-align: center;
-	border: 1px solid var(--ai-primary-dark);
-	height: 32px;
-	width: 32px;
-	border-radius: 50%;
-	vertical-align: middle;
-	margin-right: .5rem;
-}
-
-.account-profile .account-salutation .btn {
-	margin: 0 1rem 0 auto;
-}
-
 .account-profile-address h2 {
 	margin: 8px 15px;
 }
