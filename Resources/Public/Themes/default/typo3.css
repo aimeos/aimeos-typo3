@@ -1,233 +1,33 @@
-body.layout-default{
-	background-size: 100% calc(1rem + 34px);
+.dropdown-item {
+	color: #FFFFFF !important;
 }
 
-.body-bg-top {
-	padding: 0;
+.navbar {
+	min-height: auto;
 }
 
-body .breadcrumb-section {
+.navbar-nav .nav-item > .nav-link > span {
+	display: block;
+}
+
+.navbar-nav .dropdown-menu,
+.navbar-nav .nav-link,
+.navbar-nav .active > .nav-link  {
+	color: rgba(0, 0, 0, 0.55) !important;
+}
+
+body > .content, body .main-section {
+	margin-top: 0;
+}
+
+.main-section > section.catalog-filter:first-of-type {
+	background-color: var(--ai-primary);
+}
+
+.aimeos .catalog-stage-image {
 	display: none;
 }
 
-@media screen and (min-width: 992px) {
-	body.layout-default{
-		background-size: 100% calc(7rem + 50px);
-	}
-}
-
-.aimeos.catalog-filter .catalog-filter-search{
-	top: 0;
-	right: 0;
-	z-index: 1000;
-	position: relative;
-	align-self: center;
-	margin-bottom: 1rem;
-}
-
-.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .btn-primary {
-	padding: .5rem 1rem;
-}
-
-.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .btn-search:after {
-	font-size: 120%;
-}
-
-@media (min-width:992px) {
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search{
-		right: 0;
-		z-index: 1000;
-		position: absolute;
-		background-color: transparent;
-		margin-bottom: 0;
-	}
-}
-
-.navbar-toggler-icon::after, .navbar-toggler-icon, .navbar-toggler-icon::before {
-	color: #fff;
-}
-
-body .navbar-default {
-	--bs-bg-opacity: 1;
-	background-color: #282828 !important;
-	background-color: var(--ai-primary, #282828) !important;
-}
-
-.navbar-default.navbar.scroll {
-	padding: 0;
-}
-
-.navbar-mainnavigation.navbar-default a:not(.active),
-.navbar-mainnavigation.navbar-default-transition a:not(.active),
-.navbar-mainnavigation.navbar-default-transition.navbar-transition a:not(.active) {
-	color: #FFF !important;
-	color: var(--ai-primary-alt, #FFF) !important;
-}
-
-.navbar-mainnavigation.navbar-default a:not(.active):hover,
-.navbar-mainnavigation.navbar-default-transition a:not(.active):hover,
-.navbar-mainnavigation.navbar-default-transition.navbar-transition a:not(.active):hover {
-	color: #CCC !important;
-	color: var(--ai-primary-light, #CCC) !important;
-}
-
-.navbar-mainnavigation {
-	background-color: #282828 !important;
-	background-color: var(--ai-primary, #282828) !important;
-}
-
-.navbar-mainnavigation .navbar-brand{
-	height: auto;
-}
-
-.navbar-mainnavigation .navbar-brand img{
-	transform: translate(0, 0%);
-}
-
-.navbar-mainnavigation .navbar-brand-image{
-	padding-top: 0;
-	padding-bottom: 0;
-}
-
-.aimeos .to-basket .btn-primary,
-.aimeos .to-basket .btn-primary:visited {
-	color: var(--ai-bg, #FFFFFF) !important;
-}
-
-@media (min-width:992px) {
-	body .navbar-default {
-		--bs-bg-opacity: 0;
-		background-color: transparent !important;
-	}
-
-	.navbar-mainnavigation .navbar-brand {
-		height: auto;
-		padding-top: 0;
-		padding-bottom: 0;
-		transform: translate(0, 0%);
-	}
-
-	.navbar-mainnavigation .navbar-brand img{
-		transform: translate(0, 0%);
-	}
-
-	.navbar.navbar-mainnavigation{
-		box-shadow: none;
-	}
-
-	.navbar-default.navbar-scroll {
-		padding: .5rem 1rem;
-		background-color: #282828 !important;
-		background-color: var(--ai-primary, #282828) !important;
-		transition: all 0.5s;
-	}
-
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-tree{
-		background-color: #282828 !important;
-		background-color: var(--ai-primary, #282828) !important;
-		margin-bottom: 3rem;
-		position: relative;
-		z-index: 2;
-	}
-
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search:after{
-		display: block;
-		content: "";
-		clear: both;
-	}
-
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-attribute:after{
-		display: block;
-		content: "";
-		clear: both;
-	}
-}
-
-.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .reset{
+.aimeos .catalog-filter-tree .category-selected {
 	display: none;
-}
-
-@media (min-width:992px) {
-	.bp-page-content.main-section .aimeos.catalog-filter .catalog-filter-search .input-group{
-		position: relative;
-		display: inline-block;
-		flex-wrap: wrap;
-		align-items: stretch;
-		width: 100%;
-		align-self: end;
-		margin-left: auto;
-	}
-}
-
-@media (max-width:991px) {
-	.bp-page-content.main-section .open-menu {
-		padding: 0.725rem;
-		text-align: start;
-		z-index: 1025;
-		position: absolute;
-		left: 0;
-	}
-
-	.aimeos.catalog-home {
-		margin-top: 0 !important;
-	}
-
-	.catalog-home .stage-image {
-		height: 600px;
-		object-fit: cover;
-	}
-}
-
-.bp-page-content.main-section .catalog-filter-attribute.col,
-.bp-page-content.main-section .catalog-filter-price.col,
-.bp-page-content.main-section .catalog-filter-supplier.col {
-	max-width: unset;
-	margin-bottom: 1rem;
-}
-
-.bp-page-content.main-section .catalog-filter-attribute.col:after,
-.bp-page-content.main-section .catalog-filter-price.col:after,
-.bp-page-content.main-section .catalog-filter-supplier.col:after {
-	content: "";
-	border: 1px solid;
-	border-color: #CCCCCC;
-	border-color: var(--ai-primary-light, #CCCCCC);
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-}
-
-
-@media (min-width:992px) {
-	.bp-page-content.main-section .catalog-filter-attribute.col,
-	.bp-page-content.main-section .catalog-filter-price.col,
-	.bp-page-content.main-section .catalog-filter-supplier.col {
-		max-width: 33.3333333333%;
-	}
-
-	.bp-page-content.main-section .catalog-filter-attribute.col:after,
-	.bp-page-content.main-section .catalog-filter-price.col:after,
-	.bp-page-content.main-section .catalog-filter-supplier.col:after {
-		content: "";
-		border: 1px solid;
-		border-color: #CCCCCC;
-		border-color: var(--ai-primary-light, #CCCCCC);
-		position: absolute;
-		left: .5rem;
-		top: 0;
-		width: calc(100% - 1rem);
-		height: 100%;
-		z-index: -1;
-	}
-}
-
-@media screen and (min-width: 992px) {
-	.bp-page-content.main-section .catalog-filter-attribute .attribute-lists,
-	.bp-page-content.main-section .catalog-filter-supplier .supplier-lists,
-	.bp-page-content.main-section .catalog-filter-price .price-lists {
-		display: none;
-	}
 }
