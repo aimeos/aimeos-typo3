@@ -74,6 +74,15 @@ mod.wizards.newContentElement.wizardItems.aimeos {
 				list_type = aimeos_catalog-supplier
 			}
 		}
+		aimeos_catalog-tree {
+			iconIdentifier = aimeos_catalog-tree
+			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.title
+			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.description
+			tt_content_defValues {
+				CType = list
+				list_type = aimeos_catalog-tree
+			}
+		}
 		aimeos_catalog-stage {
 			iconIdentifier = aimeos_catalog-stage
 			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.title

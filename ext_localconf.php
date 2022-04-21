@@ -267,6 +267,7 @@ $icons->registerIcon( 'aimeos_catalog-attribute', $provider, ['name' => 'filter'
 $icons->registerIcon( 'aimeos_catalog-price', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-search', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-supplier', $provider, ['name' => 'filter'] );
+$icons->registerIcon( 'aimeos_catalog-tree', $provider, ['name' => 'filter'] );
 $icons->registerIcon( 'aimeos_catalog-suggest', $provider, ['name' => 'ellipsis-h'] );
 $icons->registerIcon( 'aimeos_catalog-count', $provider, ['name' => 'bars'] );
 $icons->registerIcon( 'aimeos_catalog-stage', $provider, ['name' => 'image'] );
