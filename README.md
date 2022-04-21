@@ -37,6 +37,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **21.10 release and later**.
 
+- Stable release: 22.4 (TYPO3 10/11 LTS)
 - LTS release: 21.10 (TYPO3 10/11 LTS)
 
 ### Composer
@@ -55,7 +56,7 @@ This will install TYPO3 into the `./myshop/` directory.
 
 Then, change to the `./mshop/` directory and install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~21.10`
+`composer req aimeos/aimeos-typo3:~22.4`
 
 This will install stable TYPO3 version and the latest Aimeos TYPO3 extension. If you want a more or less working installation out of the box for new installations, you should install the Bootstrap package too:
 
@@ -153,7 +154,8 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 10/11:
 
-* [21.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d) only
+* [22.4 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_22.4.t3d) and later
+* [21.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d)
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
 
