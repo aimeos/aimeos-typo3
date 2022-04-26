@@ -35,6 +35,11 @@ body .navbar {
 	color: var(--ai-bg) !important;
 }
 
+.navbar-collapse.show,
+.navbar-collapse.collapsing {
+	background-color: var(--ai-primary) !important;
+}
+
 body > .content, body .main-section {
 	margin-top: 4rem;
 }
