@@ -8,19 +8,4 @@ plugin.tx_aimeos {
 
 	# cat=ai140theme/file/110; type=string; label=Custom JS:Path to your custom Javascript for Aimeos
 	theme.js.aimeos-custom =
-
-
-	# cat=ai140theme/file/200; type=string; label=Template base URL:Path to the template directory
-	theme.baseurl = EXT:aimeos/Resources/Public/Themes/default
-
-
-	# cat=ai140theme/file/300; type=string; label=Aimeos CSS:Path to the Aimeos theme CSS
-	theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/default/aimeos.css
-
-
-	# cat=ai140theme/file/400; type=string; label=Aimeos theme JS:Path to the theme specific Aimeos Javascript code
-	theme.js.aimeos-theme = EXT:aimeos/Resources/Public/Themes/default/aimeos.js
-
-	# cat=ai150advanced/file/110; type=string; label=Aimeos detail JS:Aimeos frontend Javascript code for the detail page
-	theme.js.aimeos-detail = EXT:aimeos/Resources/Public/Themes/default/aimeos-detail.js
 }
