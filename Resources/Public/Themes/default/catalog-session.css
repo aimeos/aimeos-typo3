@@ -39,8 +39,8 @@ aside:nth-child(1) {
 	padding-bottom: 0;
 }
 
-.catalog-session-seen .seen-item,
-.catalog-session-pinned .pinned-item {
+.catalog-session-seen .seen-item.product,
+.catalog-session-pinned .pinned-item.product {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;

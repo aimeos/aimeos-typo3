@@ -1,8 +1,9 @@
 /* Standard basket */
 
 .basket-standard {
-	margin: 2rem 0;
+	padding: 2rem 0;
 }
+
 .basket-standard-main {
 	border: 1px solid var(--ai-tertiary);
 	padding: 1rem;

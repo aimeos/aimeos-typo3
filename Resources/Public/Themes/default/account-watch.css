@@ -31,8 +31,9 @@
 	justify-content: space-around;
 }
 
-.account-watch .watch-item {
+.account-watch .product.watch-item {
 	position: relative;
+	flex-direction: row;
 	display: flex;
 	min-width: 180px;
 	max-width: 360px;
@@ -46,11 +47,6 @@
 	display: inline-block;
 	max-width: 50%;
   }
-
-.account-watch .media-item {
-	height: calc((var(--ai-product-image-height)) / 4 * 3);
-	width: calc((var(--ai-product-image-width)) / 4 * 3);
-}
 
 .aimeos .product.watch-item .price-item .rebatepercent {
 	position: absolute;
