@@ -154,7 +154,7 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 10/11:
 
-* [22.4 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_22.4.t3d) and later
+* [22.4+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2022.04-2.t3d) and later
 * [21.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d)
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
