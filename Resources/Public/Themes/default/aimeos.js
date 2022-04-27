@@ -464,10 +464,10 @@ AimeosBasket = {
 				const content = $(".aimeos.account-favorite", doc);
 
 				if(content.length > 0) {
-					$('head link.account-favorite', doc).each((idx, el) => {
+					$('link.account-favorite', doc).each((idx, el) => {
 						document.head.append(el);
 					});
-					$('head script.account-favorite', doc).each((idx, el) => {
+					$('script.account-favorite', doc).each((idx, el) => {
 						$(document.head).append($('<script/>').attr('src', el.getAttribute('src')));
 					});
 					Aimeos.createContainer(content);
@@ -501,10 +501,10 @@ AimeosBasket = {
 				const content = $(".aimeos.account-watch", doc);
 
 				if(content.length > 0) {
-					$('head link.account-watch', doc).each((idx, el) => {
+					$('link.account-watch', doc).each((idx, el) => {
 						document.head.append(el);
 					});
-					$('head script.account-watch', doc).each((idx, el) => {
+					$('script.account-watch', doc).each((idx, el) => {
 						$(document.head).append($('<script/>').attr('src', el.getAttribute('src')));
 					});
 					Aimeos.createContainer(content);
@@ -605,7 +605,7 @@ AimeosPage = {
 	/**
 	 * Menu transition
 	 */
-	onMenuScroll: function() {
+	onMenuScroll() {
 
 		const height = parseFloat($(".navbar").outerHeight());
 		const relHeight = parseFloat(getComputedStyle(document.documentElement).fontSize) * 4; // 4rem in px

@@ -207,7 +207,7 @@ AimeosCatalogFilter = {
 
 
 	/**
-	 * Hides the attribute filter if no products are available for
+	 * Shows the attribute filter if products are available for
 	 */
 	onShowAttributes() {
 

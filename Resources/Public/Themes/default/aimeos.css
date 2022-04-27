@@ -58,8 +58,6 @@
 	--ai-radius: 0;
 	--ai-radius-round: 50%;
 	--ai-product-image-ratio: 3/4;
-	--ai-product-image-width: 240px;
-	--ai-product-image-height: 320px;
 }
 
 body {
@@ -762,41 +760,35 @@ body > .content, body .main-section {
 
 .navbar-nav .dropdown-item:focus, .dropdown-item:hover {
 	background-color: var(--ai-secondary);
-  }
+ }
+
 
 /* Product */
 
-.aimeos .product .swiffy-slider {
-	--swiffy-slider-item-ratio: var(--ai-product-image-ratio);
-}
-
-/* Product list, suggested, bought Items hover transition */
-
-.catalog-detail-suggest .media-list .media-item,
-.catalog-detail-bought .media-list .media-item,
-.catalog-detail-bundle .media-list .media-item {
-	position: absolute;
-}
-
-.catalog-detail-suggest .media-list div:first-of-type,
-.catalog-detail-bought .media-list div:first-of-type,
-.catalog-detail-bundle .media-list div:first-of-type,
-.catalog-list .media-list div:first-of-type {
-	z-index: 1;
-	opacity: 1;
-	transition: opacity .3s linear;
-}
-
-.catalog-detail-suggest .media-list:hover div:first-of-type,
-.catalog-detail-bought .media-list:hover div:first-of-type,
-.catalog-detail-bundle .media-list:hover div:first-of-type,
-.catalog-list .media-list.multiple:hover div:first-of-type {
-	opacity: 0;
-	transition: opacity .3s linear;
-}
-
-.aimeos .product {
+.aimeos:not(.catalog-detail) .product {
+	display: flex;
+	flex-direction: column;
 	color: var(--ai-primary);
+	vertical-align: top;
+	position: relative;
+	text-align: end;
+	margin: 2rem 1%;
+}
+
+.aimeos:not(.catalog-detail) .product {
+	width: 48%;
+}
+
+@media (min-width: 576px) {
+	.aimeos:not(.catalog-detail) .product {
+		width: 31.333%;
+	}
+}
+
+@media (min-width: 1200px) {
+	.aimeos:not(.catalog-detail) .product {
+		width: 23%;
+	}
 }
 
 .aimeos .product .badges {
@@ -822,6 +814,43 @@ body > .content, body .main-section {
 	display: inline-block;
 	padding: .1rem .5rem;
 	font-weight: bold;
+}
+
+/* product media */
+
+.aimeos .product .swiffy-slider {
+	--swiffy-slider-item-ratio: var(--ai-product-image-ratio);
+}
+
+.aimeos:not(.catalog-detail) .product .media-list div:first-of-type {
+	z-index: 1;
+	opacity: 1;
+	transition: opacity .3s linear;
+}
+
+.aimeos:not(.catalog-detail) .product .media-list.multiple:hover div:first-of-type {
+	transition: opacity .3s linear;
+	opacity: 0;
+}
+
+.aimeos:not(.catalog-detail) .product > div.list-column:first-of-type .media-list {
+	padding-top: calc( 100% / (var(--ai-product-image-ratio)));
+	display: block;
+	content: "";
+}
+
+.aimeos:not(.catalog-detail) .product > div.list-column:first-of-type .media-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.aimeos:not(.catalog-detail) .product > div.list-column:first-of-type .media-item > img {
+	max-height: 100%;
+	width: 100%;
 }
 
 /* ratings + supplier */
@@ -871,20 +900,11 @@ body > .content, body .main-section {
 	display: inline-block;
 	background-color: var(--ai-danger);
 	color: var(--ai-bg);
-	padding: 0.2rem;
+	padding: 0.2rem 2%;
 	z-index: 2;
 	right: 0;
 	top: 0;
 	line-height: 1;
-}
-
-.aimeos .list .product .price-item .rebatepercent {
-	right: 100%;
-	transform: translateX(100%);
-}
-
-.aimeos .product .catalog-detail-basket .price-item .rebatepercent {
-	position: relative;
 }
 
 [dir="rtl"] .aimeos .product .price-item .rebatepercent {
@@ -900,6 +920,14 @@ body > .content, body .main-section {
 
 /* text list */
 
+.aimeos .product a {
+	text-decoration: none;
+}
+
+.aimeos .product a:focus {
+	outline: none;
+}
+
 .aimeos .product .text-list {
 	display: block;
 	color: var(--ai-secondary);
@@ -908,30 +936,22 @@ body > .content, body .main-section {
 }
 
 .aimeos .product .text-list .name,
-.aimeos .product .text-list .text-item,
-.catalog-session-seen .name,
-.catalog-session-pinned .name,
-.catalog-detail-bought .name,
-.catalog-detail-bundle .name,
-.catalog-detail-suggest .name,
-.account-favorite .name,
-.account-watch .name {
-	overflow: hidden;
+.aimeos .product .text-list .text-item {
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	overflow: hidden;
 	line-height: 1;
 }
 
 .aimeos .product .text-list .text-item {
-	margin: 0.5rem 0 0.5rem 0;
-	text-align: end;
+	margin: 0.5rem 0;
 }
 
 .aimeos .product .text-list .name {
-	text-align: end;
 	font-size: 110%;
-	margin: 0 0 0.5rem;
 	padding: 0;
+	margin: 0;
+	margin-bottom: 0.5rem;
 }
 
 .aimeos .product .price-list {

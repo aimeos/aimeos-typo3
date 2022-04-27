@@ -24,14 +24,6 @@
 	margin: 1%;
 }
 
-.account-favorite .media-item {
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	height: calc((var(--ai-product-image-height)) / 4 * 3);
-	width: calc((var(--ai-product-image-width)) / 4 * 3);
-}
-
 .account-favorite .name {
 	margin-top: 0.75rem;
 }

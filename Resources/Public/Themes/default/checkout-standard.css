@@ -1,14 +1,15 @@
 /* Checkout */
 
 .checkout-standard {
-	margin: 0 auto;
+	padding: 2rem 0;
 }
 
 .checkout-standard .steps {
 	font-weight: bold;
 	text-align: center;
 	counter-reset: step;
-	padding: 0 0 3rem 0;
+	padding: 0;
+	padding-bottom: 2rem;
 }
 
 .checkout-standard .steps a {

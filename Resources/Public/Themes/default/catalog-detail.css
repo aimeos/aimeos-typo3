@@ -51,6 +51,10 @@
 
 /* Product details */
 
+.catalog-detail .product {
+	position: relative;
+}
+
 .catalog-detail .header {
 	border-bottom: 1px solid var(--ai-secondary);
 	text-transform: uppercase;
@@ -861,6 +865,7 @@
 	height: 213px;
 	width: 160px;
 	display: block;
+	overflow: hidden;
 }
 
 .catalog-detail-bought .media-item,
