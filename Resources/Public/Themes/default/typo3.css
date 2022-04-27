@@ -40,12 +40,20 @@ body .navbar {
 	background-color: var(--ai-primary) !important;
 }
 
+body .body-bg-top {
+	padding-top: 0;
+}
+
 body > .content, body .main-section {
 	margin-top: 4rem;
 }
 
 .backendlayout-2_columns_25_75 .maincontent-wrap {
 	order: 2 !important;
+}
+
+.breadcrumb-section {
+	display: none;
 }
 
 .section-column {
@@ -77,6 +85,10 @@ body > .content, body .main-section {
 
 .aimeos .catalog-filter-tree .category-selected {
 	display: none;
+}
+
+.aimeos.catalog-stage {
+	z-index: -1;
 }
 
 .aimeos.catalog-home {
