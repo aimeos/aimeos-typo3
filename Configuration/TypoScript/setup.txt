@@ -91,4 +91,5 @@ tt_content.list.templateName >
 tt_content.list.templateRootPaths >
 tt_content.list.partialRootPaths >
 tt_content.list.layoutRootPaths >
+lib.contentElement.templateRootPaths.5 = EXT:aimeos/Resources/Private/Templates/Fluid
 [end]
