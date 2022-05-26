@@ -123,7 +123,7 @@ class View
 			return $fcn( $view, $config );
 		}
 
-		$prefixes = ['version', 'admin', 'client', 'common', 'resource/fs/baseurl', 'resource/fs-media/baseurl', 'resource/fs-theme/baseurl'];
+		$prefixes = ['version', 'admin', 'client', 'common', 'controller/jobs', 'resource/fs/baseurl', 'resource/fs-media/baseurl', 'resource/fs-theme/baseurl'];
 		$conf = new \Aimeos\Base\Config\Decorator\Protect( clone $config, $prefixes );
 		$helper = new \Aimeos\Base\View\Helper\Config\Standard( $view, $conf );
 		$view->addHelper( 'config', $helper );
