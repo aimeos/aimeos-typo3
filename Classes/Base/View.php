@@ -123,7 +123,7 @@ class View
 			return $fcn( $view, $config );
 		}
 
-		$conf = new \Aimeos\Base\Config\Decorator\Protect( clone $config, ['resources/*/baseurl'], ['resource'] );
+		$conf = new \Aimeos\Base\Config\Decorator\Protect( clone $config, ['resource/*/baseurl'], ['resource'] );
 		$helper = new \Aimeos\Base\View\Helper\Config\Standard( $view, $conf );
 		$view->addHelper( 'config', $helper );
 
