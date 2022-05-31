@@ -52,15 +52,15 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 		}
 
 		if( $this->{$this->fieldSenderFrom} != '' ) {
-			$conf['client']['html']['email']['from-name'] = $this->{$this->fieldSenderFrom};
+			$conf['resource']['email']['from-name'] = $this->{$this->fieldSenderFrom};
 		}
 
 		if( $this->{$this->fieldSenderEmail} != '' ) {
-			$conf['client']['html']['email']['from-email'] = $this->{$this->fieldSenderEmail};
+			$conf['resource']['email']['from-email'] = $this->{$this->fieldSenderEmail};
 		}
 
 		if( $this->{$this->fieldReplyEmail} != '' ) {
-			$conf['client']['html']['email']['reply-email'] = $this->{$this->fieldReplyEmail};
+			$conf['resource']['email']['reply-email'] = $this->{$this->fieldReplyEmail};
 		}
 
 		if( $this->{$this->fieldPageDetail} != '' ) {
