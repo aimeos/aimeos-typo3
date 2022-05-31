@@ -41,7 +41,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 	 */
 	public function execute()
 	{
-		$conf = Base::parseTS( $this->{$this->fieldTSconfig} );
+		$conf = [];
 
 		if( !isset( $conf['client']['html']['catalog']['detail']['url']['config']['absoluteUri'] ) ) {
 			$conf['client']['html']['catalog']['detail']['url']['config']['absoluteUri'] = 1;
@@ -86,8 +86,10 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 			$conf['resource']['fs-theme']['basedir'] = $themeDir;
 		}
 
+		$tsconf = Base::parseTS( $this->{$this->fieldTSconfig} );
 		$jobs = (array) $this->{$this->fieldController};
-		Scheduler\Base::execute( $conf, $jobs, $this->{$this->fieldSite}, $this->{$this->fieldPageDetail} );
+
+		Scheduler\Base::execute( $tsconf, $conf, $jobs, $this->{$this->fieldSite}, $this->{$this->fieldPageDetail} );
 
 		return true;
 	}

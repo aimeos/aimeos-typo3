@@ -28,20 +28,20 @@ class Base
 	/**
 	 * Execute the list of jobs for the given sites
 	 *
-	 * @param array $conf Multi-dimensional array of configuration options
+	 * @param array $tsconf Multi-dimensional array of configuration options (replaced)
+	 * @param array $conf Multi-dimensional array of configuration options (merged)
 	 * @param array $jobs List of job names
 	 * @param array|string $sites List of site names
 	 */
-	public static function execute( array $conf, array $jobs, $sites, ?string $pid = null )
+	public static function execute( array $tsconf, array $conf, array $jobs, $sites, ?string $pid = null )
 	{
 		$aimeos = Aimeos\Base::aimeos();
-		$context = self::context( $conf, $pid );
+		$context = self::context( $tsconf, $pid );
+		$context->config()->apply( $conf );
 		$process = $context->process();
 
-		// Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-		if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {
-			 GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
-		}
+		// Reset before child processes are spawned to avoid lost DB connections afterwards
+		GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
 
 		$manager = \Aimeos\MShop::create( $context, 'locale' );
 
@@ -73,12 +73,12 @@ class Base
 	/**
 	 * Returns the current context.
 	 *
-	 * @param array Multi-dimensional associative list of key/value pairs
+	 * @param array $tsconf Multi-dimensional associative list of key/value pairs
 	 * @return \Aimeos\MShop\ContextIface Context object
 	 */
-	public static function context( array $conf = [], ?string $pid = null ) : \Aimeos\MShop\ContextIface
+	public static function context( array $tsconf = [], ?string $pid = null ) : \Aimeos\MShop\ContextIface
 	{
-		$config = Aimeos\Base::config( $conf );
+		$config = Aimeos\Base::config( $tsconf );
 		$context = Aimeos\Base::context( $config );
 
 
