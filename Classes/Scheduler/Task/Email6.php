@@ -83,7 +83,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 				$themeDir = realpath( \TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/' . $themeDir );
 			}
 
-			$conf['client']['html']['common']['template']['baseurl'] = $themeDir;
+			$conf['resource']['fs-theme']['basedir'] = $themeDir;
 		}
 
 		$jobs = (array) $this->{$this->fieldController};
