@@ -38,7 +38,10 @@
 		}
 	},
 	"config": {
-		"vendor-dir": "Resources/Libraries"
+		"vendor-dir": "Resources/Libraries",
+		"platform": {
+			"php": "7.4.28"
+		}
 	},
 	"extra": {
 		"installer-paths": {
