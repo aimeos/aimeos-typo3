@@ -15,10 +15,6 @@
 	font-weight: bold;
 }
 
-.basket-bulk .form-control {
-	border: none;
-}
-
 .basket-bulk .quantity,
 .basket-bulk .quantity input {
 	text-align: center;

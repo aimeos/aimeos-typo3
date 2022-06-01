@@ -77,12 +77,13 @@ AimeosBasketBulk = {
 	 * Adds a new line to the bulk order form
 	 */
 	add() {
-		const line = $(".aimeos.basket-bulk .details.prototype").clone();
 		const len = $(".aimeos.basket-bulk .bulk-content .details").length;
+		const proto = $(".aimeos.basket-bulk .details.prototype");
+		const line = proto.clone();
 
 		AimeosBasketBulk.autocomplete($(".search", line));
 		$('[disabled="disabled"]', line).removeAttr("disabled");
-		$(".aimeos.basket-bulk .bulk-content").append(line.removeClass("prototype"));
+		line.removeClass("prototype").insertBefore(proto);
 
 		$('[name]', line).each((idx, el) => {
 			$(el).attr("name", $(el).attr("name").replace('_idx_', len));

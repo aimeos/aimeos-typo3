@@ -119,7 +119,7 @@
 
 /* Regular products */
 
-.catalog-list-items {
+.aimeos:not(.cms-page) .catalog-list-items:not(.swiffy-slider) {
 	display: flex;
 	flex-wrap: wrap;
 	animation: FadeIn .3s;
@@ -134,6 +134,7 @@
 }
 
 .catalog-list-items.list .product {
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	text-align: start;

@@ -41,12 +41,12 @@ AimeosCatalogLists = {
 	 */
 	onAddBasket() {
 
-		$(document).on("click", ".catalog-list-items:not(.list) .product .btn-action", ev => {
+		$(document).on("click", ".catalog-list-items .product .btn-action", ev => {
 			const target = $(ev.currentTarget).closest(".product");
 
 			Aimeos.createOverlay();
 
-			if($(".basket .items-selection .selection li, .basket .items-attribute .selection li", target).length) {
+			if($(".catalog-list-items:not(.list) .basket .items-selection .selection li, .catalog-list-items:not(.list) .basket .items-attribute .selection li", target).length) {
 				const node = target.clone();
 
 				$("[id]", node).each((idx, el) => {

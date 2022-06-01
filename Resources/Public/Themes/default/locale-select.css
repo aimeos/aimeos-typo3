@@ -48,6 +48,7 @@
 
 .locale-select ul.select-menu a:hover {
 	text-decoration: underline;
+	color: var(--ai-bg);
 }
 
 .locale-select ul.select-menu li.select-dropdown:hover > ul,

@@ -29,13 +29,13 @@ AimeosBasketMini = {
 			let csrf = '';
 			let count = 0;
 			const body = $(".aimeos .basket-mini-product .basket-body");
-			const prototype = $(".aimeos .basket-mini-product .product.prototype");
+			const prototype = $(".aimeos .basket-mini-product .product-item.prototype");
 
 			if(basket.meta && basket.meta.csrf) {
 				csrf = basket.meta.csrf.name + '=' + basket.meta.csrf.value;
 			}
 
-			$(".aimeos .basket-mini-product .product").not(".prototype").remove();
+			$(".aimeos .basket-mini-product .product-item").not(".prototype").remove();
 
 			for(let i=0; i<basket.included.length; i++) {
 				let entry = basket.included[i];
@@ -73,7 +73,7 @@ AimeosBasketMini = {
 
 		$(".aimeos .basket-mini-product").on("click", ".delete", ev => {
 
-			fetch($(ev.currentTarget).closest(".product").data("url"), {
+			fetch($(ev.currentTarget).closest(".product-item").data("url"), {
 				method: "DELETE",
 				headers: {'Content-Type': 'application/json'}
 			}).then(response => {
