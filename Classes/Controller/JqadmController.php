@@ -88,6 +88,24 @@ class JqadmController extends AbstractController
 
 
 	/**
+	 * Returns the HTML code for batch operations on resource objects
+	 *
+	 * @return string Generated output
+	 */
+	public function batchAction()
+	{
+		$cntl = $this->createAdmin();
+
+		if( ( $html = $cntl->batch() ) == '' ) {
+			return $this->setPsrResponse( $cntl->response() );
+		}
+
+		$this->view->assign( 'content', $html );
+		return $this->render();
+	}
+
+
+	/**
 	 * Returns the HTML code for a copy of a resource object
 	 *
 	 * @return string Generated output
