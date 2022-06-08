@@ -3,6 +3,13 @@
 return array(
 	'jqadm' => array(
 		'url' => array(
+			'batch' => array(
+				'controller' => 'Jqadm',
+				'action' => 'batch',
+				'config' => array(
+					'BE' => true,
+				),
+			),
 			'copy' => array(
 				'controller' => 'Jqadm',
 				'action' => 'copy',
