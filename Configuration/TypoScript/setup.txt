@@ -1,4 +1,6 @@
+page.includeCSS.aimeos = {$plugin.tx_aimeos.theme.css.aimeos}
 page.includeCSS.aimeos-custom = {$plugin.tx_aimeos.theme.css.aimeos-custom}
+page.includeJSFooter.aimeos = {$plugin.tx_aimeos.theme.js.aimeos}
 page.includeJSFooter.aimeos-custom = {$plugin.tx_aimeos.theme.js.aimeos-custom}
 
 plugin.tx_aimeos {
