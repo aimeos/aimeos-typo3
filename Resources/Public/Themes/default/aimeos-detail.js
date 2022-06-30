@@ -172,7 +172,7 @@ AimeosCatalogDetail = {
 				return false;
 			}
 
-			$(".image-single .item", gallery).each(function(idx, item) {
+			$(".image-single .media-item:not(.slick-cloned) .item", gallery).each(function(idx, item) {
 				var entries = $(item).data("sources");
 				var imgurl;
 
