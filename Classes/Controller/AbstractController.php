@@ -163,7 +163,7 @@ abstract class AbstractController
 		if( $GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface
 			&& empty( $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' ) ) === false
 		) {
-			$uid += '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
+			$uid .= '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
 		}
 
 		$client->setView( $this->context()->view() )->init();
