@@ -37,7 +37,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **21.10 release and later**.
 
-- Stable release: 22.4 (TYPO3 10/11 LTS)
+- Stable release: 22.7 (TYPO3 10/11 LTS)
 - LTS release: 21.10 (TYPO3 10/11 LTS)
 
 ### Composer
@@ -56,7 +56,7 @@ This will install TYPO3 into the `./myshop/` directory.
 
 Then, change to the `./mshop/` directory and install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~22.4`
+`composer req aimeos/aimeos-typo3:~22.7`
 
 This will install stable TYPO3 version and the latest Aimeos TYPO3 extension. If you want a more or less working installation out of the box for new installations, you should install the Bootstrap package too:
 
