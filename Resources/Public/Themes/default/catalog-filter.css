@@ -621,9 +621,16 @@ aside .catalog-filter section {
 		padding: 1rem;
 	}
 
-	.catalog-filter-tree .level-1 > .withchild > .cat-link::before {
+	[dir="ltr"] .catalog-filter-tree .level-1 > .withchild > .cat-link::before {
 		font: normal normal normal 14px/1 bootstrap-icons;
 		content: "\f285";
+		font-size: 80%;
+		margin-inline-end: -1rem;
+	}
+
+	[dir="rtl"] .catalog-filter-tree .level-1 > .withchild > .cat-link::after {
+		font: normal normal normal 14px/1 bootstrap-icons;
+		content: "\f284";
 		font-size: 80%;
 		margin-inline-end: -1rem;
 	}
@@ -700,7 +707,7 @@ aside .catalog-filter section {
 		cursor: pointer;
 		display: block;
 		padding: 0.5rem;
-		color: var(--ai-bg);
+		color: var(--ai-bg) !important;
 	}
 
 	.catalog-filter-tree .menu::before {

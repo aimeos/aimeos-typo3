@@ -47,7 +47,7 @@
 }
 
 .locale-select ul.select-menu a:hover {
-	text-decoration: underline;
+	color: var(--ai-tertiary) !important;
 }
 
 .locale-select ul.select-menu li.select-dropdown:hover > ul,
@@ -84,6 +84,6 @@
 
 .locale-select-language,
 .locale-select-currency {
-	display: inline-block;
+	display: block;
 	min-width: 2rem;
 }

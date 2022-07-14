@@ -11,6 +11,8 @@
 }
 
 .catalog-home .stage-image {
+	min-height: 600px;
+	object-fit: cover;
 	padding: 0;
 }
 

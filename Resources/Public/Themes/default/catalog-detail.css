@@ -280,6 +280,25 @@
 	font-size: 80%;
 }
 
+/* product group section */
+
+.catalog-detail-basket-selection .selection .select-media,
+.catalog-detail-basket-selection .selection .select-name,
+.catalog-detail-basket-selection .selection .select-attr,
+.catalog-detail-basket-selection .selection .select-stock,
+.catalog-detail-basket-selection .selection .select-quantity {
+	overflow: hidden;
+}
+
+.catalog-detail-basket-selection .selection .select-stock {
+	text-align: center;
+}
+
+.catalog-detail-basket-selection .selection .select-quantity input[type=number] {
+	max-width: 4rem;
+	width: 100%;
+}
+
 /* add to basket */
 
 .catalog-detail-basket .addbasket {
@@ -335,6 +354,7 @@
 .catalog-detail-basket .select-item {
 	margin-top: 1rem;
 	list-style: none;
+	padding: 0;
 }
 
 .catalog-detail-basket .catalog-detail-basket-selection .selection div:first-of-type {

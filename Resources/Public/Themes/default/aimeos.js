@@ -245,7 +245,7 @@ AimeosBasket = {
 	isValidVariant(node) {
 		let result = true;
 
-		$(".selection .select-item", node).each((idx, el) => {
+		$(".selection[data-attrdeps] .select-item", node).each((idx, el) => {
 			if($(".select-list", el).val() === '' && $(".select-option:checked", el).length <= 0) {
 				result = false;
 			}
@@ -410,7 +410,7 @@ AimeosBasket = {
 		$(document).on("click", ".product .addbasket .btn-action", ev => {
 			let result = true;
 
-			$(".selection .select-item", $(ev.currentTarget).closest(".items-selection")).each((idx, el) => {
+			$(".selection[data-attrdeps] .select-item", $(ev.currentTarget).closest(".items-selection")).each((idx, el) => {
 
 				if($(".select-list", el).val() !== '' || $(".select-option:checked", el).length > 0) {
 					$(el).removeClass("error");
