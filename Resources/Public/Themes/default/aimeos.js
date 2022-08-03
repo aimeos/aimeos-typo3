@@ -255,7 +255,7 @@ AimeosAccountHistory = {
 	 */
 	setupOrderShow: function() {
 
-		$(".account-history .history-item").on("click", '.action .btn', function(ev) {
+		$(".account-history .history-item").on("click", '.action .btn-toggle', function(ev) {
 
 			var details = $(".account-history-order", ev.delegateTarget);
 
@@ -1131,6 +1131,8 @@ AimeosCatalog = {
 
 					var options = $(".select-option", this);
 
+					options.prop("checked", false);
+					options.prop("selected", false);
 					options.removeAttr("disabled");
 					options.data("disabled", 0);
 					options.data("by", {});
