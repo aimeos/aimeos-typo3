@@ -41,7 +41,7 @@ body .navbar {
 }
 
 body .body-bg-top {
-	padding-top: 0;
+	padding-top: 64px;
 }
 
 body > .content, body .main-section {
