@@ -57,9 +57,16 @@ class CatalogController extends AbstractController
 	 */
 	public function detailAction()
 	{
-		$this->removeMetatags();
-		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/detail' );
-		return $this->getClientOutput( $client );
+		try
+		{
+			$this->removeMetatags();
+			$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/detail' );
+			return $this->getClientOutput( $client );
+		}
+		catch( \Exception $e )
+		{
+			$this->exception( $e );
+		}
 	}
 
 
@@ -190,8 +197,37 @@ class CatalogController extends AbstractController
 	 */
 	public function treeAction()
 	{
-		$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/tree' );
-		return $this->getClientOutput( $client );
+		try
+		{
+			$client = \Aimeos\Client\Html::create( $this->context(), 'catalog/tree' );
+			return $this->getClientOutput( $client );
+		}
+		catch( \Exception $e )
+		{
+			$this->exception( $e );
+		}
+	}
+
+
+	/**
+	 * Handles exceptions
+	 *
+	 * @param \Exception $e Caught exception
+	 * @throws \Exception Thrown exception
+	 */
+	protected function exception( \Exception $e )
+	{
+		if( $e->getCode() > 400 )
+		{
+			$name = \TYPO3\CMS\Frontend\Controller\ErrorController::class;
+
+			$response = GeneralUtility::makeInstance( $name )->pageNotFoundAction(
+				$this->request, $e->getMessage(), ['code' => $e->getCode]
+			);
+			throw new \TYPO3\CMS\Core\Http\ImmediateResponseException( $response );
+		}
+
+		throw $e;
 	}
 
 
