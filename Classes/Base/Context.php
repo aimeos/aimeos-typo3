@@ -46,6 +46,7 @@ class Context
 			self::addProcess( $context );
 			self::addSession( $context );
 			self::addHasher( $context );
+			self::addToken( $context );
 			self::addUser( $context );
 			self::addGroups( $context );
 			self::addDateTime( $context );
@@ -281,6 +282,24 @@ class Context
 		}
 
 		return $context->setSession( $session );
+	}
+
+
+	/**
+	 * Adds the session token to the context
+	 *
+	 * @param \Aimeos\MShop\ContextIface $context Context object
+	 * @return \Aimeos\MShop\ContextIface Modified context object
+	 */
+	protected static function addToken( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
+	{
+		if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_token'] )
+			&& is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_token'] ) )
+		) {
+			return $fcn( $context );
+		}
+
+		return $context->setToken( $GLOBALS['TSFE']->fe_user->id );
 	}
 
 
