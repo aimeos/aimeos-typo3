@@ -185,6 +185,13 @@ $name = defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version'
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	$name . 'aimeos',
+	'account-basket',
+	['Aimeos\\Aimeos\\Controller\\AccountController' => 'basket'],
+	['Aimeos\\Aimeos\\Controller\\AccountController' => 'basket']
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	$name . 'aimeos',
 	'account-download',
 	['Aimeos\\Aimeos\\Controller\\AccountController' => 'download'],
 	['Aimeos\\Aimeos\\Controller\\AccountController' => 'download']
@@ -276,6 +283,7 @@ $icons->registerIcon( 'aimeos_catalog-stock', $provider, ['name' => 'cubes'] );
 $icons->registerIcon( 'aimeos_supplier-detail', $provider, ['name' => 'industry'] );
 $icons->registerIcon( 'aimeos_locale-select', $provider, ['name' => 'globe'] );
 $icons->registerIcon( 'aimeos_account-download', $provider, ['name' => 'download'] );
+$icons->registerIcon( 'aimeos_account-basket', $provider, ['name' => 'basket'] );
 $icons->registerIcon( 'aimeos_account-history', $provider, ['name' => 'history'] );
 $icons->registerIcon( 'aimeos_account-favorite', $provider, ['name' => 'heart'] );
 $icons->registerIcon( 'aimeos_account-profile', $provider, ['name' => 'user'] );

@@ -102,6 +102,10 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_check
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'checkout-update', 'Aimeos Shop - Checkout payment update' );
 
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-basket'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_account-basket', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountBasket.xml' );
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'account-basket', 'Aimeos Shop - Account basket' );
+
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-download'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue( 'aimeos_account-download', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountDownload.xml' );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin( 'Aimeos.aimeos', 'account-download', 'Aimeos Shop - Account download' );

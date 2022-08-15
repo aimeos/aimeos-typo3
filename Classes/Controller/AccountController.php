@@ -22,6 +22,16 @@ use Aimeos\Aimeos\Base;
 class AccountController extends AbstractController
 {
 	/**
+	 * Renders the saved account baskets.
+	 */
+	public function basketAction()
+	{
+		$client = \Aimeos\Client\Html::create( $this->context(), 'account/basket' );
+		return $this->getClientOutput( $client );
+	}
+
+
+	/**
 	 * Renders the account download
 	 */
 	public function downloadAction()

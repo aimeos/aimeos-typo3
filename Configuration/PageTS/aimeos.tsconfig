@@ -155,6 +155,15 @@ mod.wizards.newContentElement.wizardItems.aimeos {
 				list_type = aimeos_locale-select
 			}
 		}
+		aimeos_account-basket {
+			iconIdentifier = aimeos_account-basket
+			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.title
+			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.description
+			tt_content_defValues {
+				CType = list
+				list_type = aimeos_account-basket
+			}
+		}
 		aimeos_account-history {
 			iconIdentifier = aimeos_account-history
 			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.title
