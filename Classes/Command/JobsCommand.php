@@ -57,7 +57,7 @@ class JobsCommand extends Command
         $jobs = explode( ' ', $input->getArgument( 'jobs' ) );
         $localeManager = \Aimeos\MShop::create( $context, 'locale' );
 
-        foreach( $this->getSiteItems( $context, $input ) as $siteItem )
+        foreach ( $this->getSiteItems( $context, $input ) as $siteItem )
         {
             $localeItem = $localeManager->bootstrap( $siteItem->getCode(), '', '', false );
             $localeItem->setLanguageId( null );
@@ -65,18 +65,18 @@ class JobsCommand extends Command
             $context->setLocale( $localeItem );
 
             $config = $context->config();
-            foreach( $localeItem->getSiteItem()->getConfig() as $key => $value ) {
+            foreach ( $localeItem->getSiteItem()->getConfig() as $key => $value ) {
                 $config->set( $key, $value );
             }
 
             $output->writeln( sprintf( 'Executing the Aimeos jobs for "<info>%s</info>"', $siteItem->getCode() ) );
 
             // Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-            if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {
+            if (method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {
                 GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
             }
 
-            foreach( $jobs as $jobname )
+            foreach ( $jobs as $jobname )
             {
                 $fcn = function( $context, $aimeos, $jobname ) {
                     \Aimeos\Controller\Jobs::create( $context, $aimeos, $jobname )->run();
@@ -134,7 +134,7 @@ class JobsCommand extends Command
         $manager = \Aimeos\MShop::create( $context, 'locale/site' );
         $search = $manager->filter();
 
-        if( ( $codes = (string) $input->getArgument( 'site' ) ) !== '' ) {
+        if (( $codes = (string) $input->getArgument( 'site' ) ) !== '' ) {
             $search->setConditions( $search->compare( '==', 'locale.site.code', explode( ' ', $codes ) ) );
         }
 
@@ -154,7 +154,7 @@ class JobsCommand extends Command
         $siteFinder = GeneralUtility::makeInstance( SiteFinder::class );
         $site = $pid ? $siteFinder->getSiteByPageId( $pid ) : current( $siteFinder->getAllSites() );
 
-        if( $site ) {
+        if ($site ) {
             return $site->getRouter();
         }
 

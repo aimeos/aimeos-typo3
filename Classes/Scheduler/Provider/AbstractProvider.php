@@ -48,7 +48,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $additionalFields = array();
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldController] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldController] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldController] = $task->{$this->fieldController};
         }
 
@@ -67,7 +67,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldSite] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldSite] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldSite] = $task->{$this->fieldSite};
         }
 
@@ -86,7 +86,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldTSconfig] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldTSconfig] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig};
         }
 
@@ -133,11 +133,11 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
      */
     protected function validateFields( array &$submittedData, $parentObject )
     {
-        if( count( (array) $submittedData[$this->fieldController] ) < 1 ) {
+        if (count( (array) $submittedData[$this->fieldController] ) < 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing' ) );
         }
 
-        if( count( (array) $submittedData[$this->fieldSite] ) < 1 ) {
+        if (count( (array) $submittedData[$this->fieldSite] ) < 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode.missing' ) );
         }
 
@@ -148,7 +148,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $submittedData[$this->fieldSite] = array_unique( (array) $submittedData[$this->fieldSite] );
         $siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
-        if( count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
+        if (count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
             throw new \RuntimeException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode' ) );
         }
 
@@ -157,7 +157,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
         $submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] );
 
-        foreach( $submittedData[$this->fieldController] as $name ) {
+        foreach ( $submittedData[$this->fieldController] as $name ) {
             \Aimeos\Controller\Jobs::create( $context, $aimeos, $name );
         }
 
@@ -180,7 +180,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         $sites = $manager->search( $search );
 
-        foreach( $sites as $id => $siteItem ) {
+        foreach ( $sites as $id => $siteItem ) {
             $sites[$id] = $manager->getTree( $id, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
         }
 
@@ -202,7 +202,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $html = '';
         $prefix = str_repeat( '-', $level ) . ' ';
 
-        foreach( $siteItems as $item )
+        foreach ( $siteItems as $item )
         {
             $active = ( in_array( $item->getCode(), $selected ) ? 'selected="selected"' : '' );
             $disabled = ( $item->getStatus() > 0 ? '' : 'disabled="disabled"' );
@@ -230,7 +230,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
 
         $langid = 'en';
-        if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && !in_array( $GLOBALS['BE_USER']->uc['lang'], ['', 'default'] ) ) {
+        if (isset( $GLOBALS['BE_USER']->uc['lang'] ) && !in_array( $GLOBALS['BE_USER']->uc['lang'], ['', 'default'] ) ) {
             $langid = $GLOBALS['BE_USER']->uc['lang'];
         }
 
@@ -240,7 +240,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         $controllers = \Aimeos\Controller\Jobs::get( $context, $aimeos, $cntlPaths );
 
-        foreach( $controllers as $name => $controller )
+        foreach ( $controllers as $name => $controller )
         {
             $active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
             $title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );

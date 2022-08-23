@@ -27,20 +27,20 @@ class Aimeos
      */
     public static function get() : \Aimeos\Bootstrap
     {
-        if( self::$aimeos === null )
+        if (self::$aimeos === null )
         {
             $extDirs = array();
 
             // Extension directories
-            if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
+            if (is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ) )
             {
                 ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] );
 
-                foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
+                foreach ( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir )
                 {
                     $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir );
 
-                    if( !empty( $absPath ) ) {
+                    if (!empty( $absPath ) ) {
                         $extDirs[] = $absPath;
                     }
                 }

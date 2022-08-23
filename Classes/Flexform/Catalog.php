@@ -32,14 +32,14 @@ class Catalog
     {
         try
         {
-            if( !isset( $config['flexParentDatabaseRow']['pid'] ) ) {
+            if (!isset( $config['flexParentDatabaseRow']['pid'] ) ) {
                 throw new \Exception( 'No PID found in "flexParentDatabaseRow" array key: ' . print_r( $config, true ) );
             }
 
             $pid = $config['flexParentDatabaseRow']['pid'];
             $pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig( $pid );
 
-            if( isset( $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'] ) ) {
+            if (isset( $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'] ) ) {
                 $sitecode = $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'];
             }
 
@@ -76,7 +76,7 @@ class Catalog
         $result = array();
         $result[] = array( $breadcrumb, $item->getId() );
 
-        foreach( $item->getChildren() as $child ) {
+        foreach ( $item->getChildren() as $child ) {
             $result = array_merge( $result, $this->getCategoryList( $child, $breadcrumb . ' > ' . $child->getName() ) );
         }
 

@@ -24,7 +24,7 @@ class CheckoutControllerTest
 
         $uriBuilder->setRequest( $request );
 
-        if( method_exists( $response, 'setRequest' ) ) {
+        if (method_exists( $response, 'setRequest' ) ) {
             $response->setRequest( $request );
         }
 

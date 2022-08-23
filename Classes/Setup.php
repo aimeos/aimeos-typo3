@@ -150,7 +150,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
             ->context( $ctx->setEditor( 'aimeos:setup' ) )
             ->up( $site, $template );
 
-        if( defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
+        if (defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ) {
             $extconf->set( 'aimeos', 'useDemoData', '' );
         } else {
             $extconf->set( 'aimeos', ['useDemoData' => ''] );
@@ -169,20 +169,20 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
         $tables = [];
         $conn = self::context()->db();
 
-        foreach( ['fe_users_', 'madmin_', 'mshop_'] as $prefix )
+        foreach ( ['fe_users_', 'madmin_', 'mshop_'] as $prefix )
         {
             $result = $conn->create( 'SHOW TABLES like \'' . $prefix . '%\'' )->execute();
 
-            while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null ) {
+            while ( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null ) {
                 $tables[] = $row[0];
             }
         }
 
-        foreach( $tables as $table )
+        foreach ( $tables as $table )
         {
             $result = $conn->create( 'SHOW CREATE TABLE ' . $table )->execute();
 
-            while( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null )
+            while ( ( $row = $result->fetch( \Aimeos\Base\DB\Result\Base::FETCH_NUM ) ) !== null )
             {
                 $str = preg_replace( '/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1] );
                 $str = str_replace( '"', '`', $str );
@@ -213,7 +213,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
      */
     public static function signal( string $extname = null )
     {
-        if( $extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
+        if ($extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
             self::execute();
         }
     }
@@ -228,7 +228,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
     {
         $list = self::schema( [] );
 
-        foreach( $list['sqlString'] ?? [] as $sql ) {
+        foreach ( $list['sqlString'] ?? [] as $sql ) {
             $event->addSqlData( $sql );
         }
     }
@@ -241,7 +241,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
      */
     public function setupEvent( AfterPackageActivationEvent $event )
     {
-        if( $event->getPackageKey() === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
+        if ($event->getPackageKey() === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig( 'autoSetup', true ) ) {
             self::execute();
         }
     }
@@ -257,7 +257,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
     {
         $aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 
-        if( file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
+        if (file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
             require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
         }
 
@@ -271,7 +271,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
         $ctx->setCache( new \Aimeos\Base\Cache\None() );
 
         // Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-        if( php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )
+        if (php_sapi_name() === 'cli' && class_exists( '\TYPO3\CMS\Core\Database\ConnectionPool' )
             && method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' )
         ) {
             $ctx->setProcess( new \Aimeos\Base\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) ) );

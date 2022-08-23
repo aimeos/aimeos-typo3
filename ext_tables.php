@@ -1,18 +1,18 @@
 <?php
 
-if( !defined( 'TYPO3_MODE' ) ) {
+if (!defined( 'TYPO3_MODE' ) ) {
     die ( 'Access denied.' );
 }
 
 
 $aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
 
-if( file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
+if (file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
     require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 }
 
 
-if( TYPO3_MODE === 'BE' )
+if (TYPO3_MODE === 'BE' )
 {
     /**
      * Register Aimeos icon
@@ -36,7 +36,7 @@ if( TYPO3_MODE === 'BE' )
         'labels' => 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf',
     );
 
-    if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'showPageTree', false ) == false )
+    if ((bool) \Aimeos\Aimeos\Base::getExtConfig( 'showPageTree', false ) == false )
     {
         $_aimeosConfiguration['navigationComponentId'] = null;
         $_aimeosConfiguration['inheritNavigationComponentFromMainModule'] = false;

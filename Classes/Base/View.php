@@ -36,7 +36,7 @@ class View
         $engines = ['.html' => new \Aimeos\Base\View\Engine\Typo3( $obj )];
 
         $prefix = 'ai';
-        if( $uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
+        if ($uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
             $prefix = $uriBuilder->getArgumentPrefix();
         }
 
@@ -70,18 +70,18 @@ class View
      */
     protected static function addAccess( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] ) )
         ) {
             return $fcn( $view );
         }
 
-        if( TYPO3_MODE === 'BE' )
+        if (TYPO3_MODE === 'BE' )
         {
-            if( $GLOBALS['BE_USER']->isAdmin() === false )
+            if ($GLOBALS['BE_USER']->isAdmin() === false )
             {
                 $groups = [];
-                foreach( (array) $GLOBALS['BE_USER']->userGroups as $entry ) {
+                foreach ( (array) $GLOBALS['BE_USER']->userGroups as $entry ) {
                     $groups[] = $entry['title'];
                 }
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard( $view, $groups );
@@ -95,7 +95,7 @@ class View
         {
             $t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
 
-            if( $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) ) {
+            if ($t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) ) {
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard( $view, $GLOBALS['TSFE']->fe_user->groupData['title'] );
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard( $view, [] );
@@ -117,7 +117,7 @@ class View
      */
     protected static function addConfig( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_config'] ) )
         ) {
             return $fcn( $view, $config );
@@ -142,7 +142,7 @@ class View
     protected static function addDate( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config,
         string $locale = null ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'] ) )
         ) {
             return $fcn( $view, $config, $locale );
@@ -166,7 +166,7 @@ class View
      */
     protected static function addFormparam( \Aimeos\Base\View\Iface $view, array $prefixes ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_formparam'] ) )
         ) {
             return $fcn( $view, $prefixes );
@@ -190,7 +190,7 @@ class View
     protected static function addNumber( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config,
         string $locale = null ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'] ) )
         ) {
             return $fcn( $view, $config, $locale );
@@ -215,7 +215,7 @@ class View
     protected static function addParam( \Aimeos\Base\View\Iface $view,
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'] ) )
         ) {
             return $fcn( $view, $request );
@@ -239,7 +239,7 @@ class View
     protected static function addRequest( \Aimeos\Base\View\Iface $view,
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'] ) )
         ) {
             return $fcn( $view, $request );
@@ -264,7 +264,7 @@ class View
      */
     protected static function addResponse( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_response'] ) )
         ) {
             return $fcn( $view );
@@ -303,13 +303,13 @@ class View
      */
     protected static function addTranslate( \Aimeos\Base\View\Iface $view, string $langid = null, array $local ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'] ) )
         ) {
             return $fcn( $view, $langid, $local );
         }
 
-        if( $langid )
+        if ($langid )
         {
             $i18n = \Aimeos\Aimeos\Base::i18n( [$langid], $local );
             $translation = $i18n[$langid];
@@ -338,7 +338,7 @@ class View
     protected static function addUrl( \Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config, $uriBuilder,
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\Base\View\Iface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'] ) )
         ) {
             return $fcn( $view, $config, $uriBuilder, $request );
@@ -346,20 +346,20 @@ class View
 
         $fixed = [];
 
-        if( $request )
+        if ($request )
         {
             $name = $config->get( 'typo3/param/name/site', 'site' );
 
-            if( $request !== null && $request->hasArgument( $name ) === true ) {
+            if ($request !== null && $request->hasArgument( $name ) === true ) {
                 $fixed[$name] = $request->getArgument( $name );
-            } elseif( ( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
+            } elseif (( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
                 $fixed['S'] = $value;
             }
 
 
             $name = $config->get( 'typo3/param/name/language', 'locale' );
 
-            if( $request !== null && $request->hasArgument( $name ) === true ) {
+            if ($request !== null && $request->hasArgument( $name ) === true ) {
                 $fixed[$name] = $request->getArgument( $name );
             } else { // TYPO3 9+
                 $fixed['L'] = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' )->getAspect( 'language' )->getId();
@@ -368,16 +368,16 @@ class View
 
             $name = $config->get( 'typo3/param/name/currency', 'currency' );
 
-            if( $request !== null && $request->hasArgument( $name ) === true ) {
+            if ($request !== null && $request->hasArgument( $name ) === true ) {
                 $fixed[$name] = $request->getArgument( $name );
-            } elseif( ( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
+            } elseif (( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
                 $fixed['C'] = $value;
             }
         }
 
-        if( $uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
+        if ($uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder ) {
             $url = new \Aimeos\Base\View\Helper\Url\Typo3( $view, $uriBuilder, $fixed );
-        } elseif( $uriBuilder instanceof \TYPO3\CMS\Core\Routing\RouterInterface ) {
+        } elseif ($uriBuilder instanceof \TYPO3\CMS\Core\Routing\RouterInterface ) {
             $url = new \Aimeos\Base\View\Helper\Url\T3Router( $view, $uriBuilder, $fixed );
         } else {
             throw new \RuntimeException( 'No router for generating URLs available' );

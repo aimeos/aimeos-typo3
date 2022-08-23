@@ -32,7 +32,7 @@ class Locale
     public static function get( \Aimeos\MShop\ContextIface $context,
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
     {
-        if( !isset( self::$locale ) )
+        if (!isset( self::$locale ) )
         {
             $config = $context->config();
 
@@ -40,9 +40,9 @@ class Locale
             $sitecode = $config->get( 'mshop/locale/site', 'default' );
             $name = $config->get( 'typo3/param/name/site', 'site' );
 
-            if( $request !== null && $request->hasArgument( $name ) === true ) {
+            if ($request !== null && $request->hasArgument( $name ) === true ) {
                 $sitecode = $request->getArgument( $name );
-            } elseif( ( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
+            } elseif (( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
                 $sitecode = $value;
             }
 
@@ -50,9 +50,9 @@ class Locale
             $lang = $config->get( 'mshop/locale/language', '' );
             $name = $config->get( 'typo3/param/name/language', 'locale' );
 
-            if( $request !== null && $request->hasArgument( $name ) === true ) {
+            if ($request !== null && $request->hasArgument( $name ) === true ) {
                 $lang = $request->getArgument( $name );
-            } elseif( isset( $GLOBALS['TSFE']->id ) ) { // TYPO3 9+
+            } elseif (isset( $GLOBALS['TSFE']->id ) ) { // TYPO3 9+
                 $langid = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' )->getAspect( 'language' )->getId();
                 $site = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Site\SiteFinder' )->getSiteByPageId( $GLOBALS['TSFE']->id );
                 $lang = substr( $site->getLanguageById( $langid )->getLocale(), 0, 5 );
@@ -62,9 +62,9 @@ class Locale
             $currency = $config->get( 'mshop/locale/currency', '' );
             $name = $config->get( 'typo3/param/name/currency', 'currency' );
 
-            if( $request !== null && $request->hasArgument( $name ) === true ) {
+            if ($request !== null && $request->hasArgument( $name ) === true ) {
                 $currency = $request->getArgument( $name );
-            } elseif( ( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
+            } elseif (( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
                 $currency = $value;
             }
 

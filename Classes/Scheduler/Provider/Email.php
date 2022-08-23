@@ -54,7 +54,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldSenderFrom] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldSenderFrom] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom};
         }
 
@@ -72,7 +72,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldSenderEmail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldSenderEmail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail};
         }
 
@@ -90,7 +90,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldReplyEmail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldReplyEmail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail};
         }
 
@@ -108,7 +108,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldPageCatalog] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldPageCatalog] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog};
         }
 
@@ -126,7 +126,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldPageDetail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldPageDetail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail};
         }
 
@@ -144,7 +144,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldPageDownload] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldPageDownload] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload};
         }
 
@@ -162,7 +162,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldPageLogin] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldPageLogin] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin};
         }
 
@@ -180,13 +180,13 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
             $taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl};
         }
 
         $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8' );
 
-        if( $taskInfo[$this->fieldTemplateBaseurl] == '' ) {
+        if ($taskInfo[$this->fieldTemplateBaseurl] == '' ) {
             $taskInfo[$this->fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
         }
 
@@ -243,23 +243,23 @@ abstract class Email extends AbstractProvider
      */
     protected function validateFields( array &$submittedData, $parentObject )
     {
-        if( preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail] ) !== 1 ) {
+        if (preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail] ) !== 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.from-email.invalid' ) );
         }
 
-        if( $submittedData[$this->fieldReplyEmail] != '' && preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1 ) {
+        if ($submittedData[$this->fieldReplyEmail] != '' && preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid' ) );
         }
 
-        if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
+        if (preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-detail.invalid' ) );
         }
 
-        if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageLogin] ) !== 1 ) {
+        if (preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageLogin] ) !== 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-login.invalid' ) );
         }
 
-        if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ) !== 1 ) {
+        if (preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ) !== 1 ) {
             throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid' ) );
         }
 

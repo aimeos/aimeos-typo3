@@ -34,7 +34,7 @@ class JsonapiControllerTest
             ->disableOriginalConstructor()
             ->getMock();
 
-        if( method_exists( $response, 'setRequest' ) ) {
+        if (method_exists( $response, 'setRequest' ) ) {
             $response->setRequest( $this->request );
         }
 

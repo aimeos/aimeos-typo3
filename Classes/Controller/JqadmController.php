@@ -44,9 +44,9 @@ class JqadmController extends AbstractController
         $files = array();
         $type = $this->request->getArgument( 'type' );
 
-        foreach( Base::aimeos()->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
+        foreach ( Base::aimeos()->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
         {
-            foreach( $paths as $path )
+            foreach ( $paths as $path )
             {
                 $jsbAbsPath = $base . '/' . $path;
                 $jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, dirname( $jsbAbsPath ) );
@@ -54,20 +54,20 @@ class JqadmController extends AbstractController
             }
         }
 
-        foreach( $files as $file )
+        foreach ( $files as $file )
         {
-            if( ( $content = file_get_contents( $file ) ) === false ) {
+            if (( $content = file_get_contents( $file ) ) === false ) {
                 throw new \RuntimeException( sprintf( 'File "%1$s" not found', $jsbAbsPath ) );
             }
 
             $contents .= $content;
         }
 
-        if( !isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset( $this->responseFactory ) ) // TYPO3 10
         {
-            if( $type === 'js' ) {
+            if ($type === 'js' ) {
                 $this->response->setHeader( 'Content-Type', 'application/javascript' );
-            } elseif( $type === 'css' ) {
+            } elseif ($type === 'css' ) {
                 $this->response->setHeader( 'Content-Type', 'text/css' );
             }
 
@@ -77,9 +77,9 @@ class JqadmController extends AbstractController
         $response = $this->responseFactory->createResponse()
             ->withBody( $this->streamFactory->createStream( $contents ) );
 
-        if( $type === 'js' ) {
+        if ($type === 'js' ) {
             $response = $response->withAddedHeader( 'Content-Type', 'application/javascript' );
-        } elseif( $type === 'css' ) {
+        } elseif ($type === 'css' ) {
             $response = $response->withAddedHeader( 'Content-Type', 'text/css' );
         }
 
@@ -96,7 +96,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->batch() ) == '' ) {
+        if (( $html = $cntl->batch() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -114,7 +114,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->copy() ) == '' ) {
+        if (( $html = $cntl->copy() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -132,7 +132,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->create() ) == '' ) {
+        if (( $html = $cntl->create() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -150,7 +150,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->delete() ) == '' ) {
+        if (( $html = $cntl->delete() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -168,7 +168,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->export() ) == '' ) {
+        if (( $html = $cntl->export() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -186,7 +186,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->get() ) == '' ) {
+        if (( $html = $cntl->get() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -204,7 +204,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->import() ) == '' ) {
+        if (( $html = $cntl->import() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -222,7 +222,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->save() ) == '' ) {
+        if (( $html = $cntl->save() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -240,7 +240,7 @@ class JqadmController extends AbstractController
     {
         $cntl = $this->createAdmin();
 
-        if( ( $html = $cntl->search() ) == '' ) {
+        if (( $html = $cntl->search() ) == '' ) {
             return $this->setPsrResponse( $cntl->response() );
         }
 
@@ -258,7 +258,7 @@ class JqadmController extends AbstractController
     {
         $resource = 'dashboard';
 
-        if( $this->request->hasArgument( 'resource' )
+        if ($this->request->hasArgument( 'resource' )
             && ( $value = $this->request->getArgument( 'resource' ) ) != ''
         ) {
             $resource = $value;
@@ -284,7 +284,7 @@ class JqadmController extends AbstractController
      */
     protected function render()
     {
-        if( isset( $this->responseFactory ) ) // TYPO3 11
+        if (isset( $this->responseFactory ) ) // TYPO3 11
         {
             return $this->responseFactory->createResponse()
                 ->withAddedHeader( 'Content-Type', 'text/html; charset=utf-8' )
@@ -300,9 +300,9 @@ class JqadmController extends AbstractController
      */
     protected function resolveView()
     {
-        if( $this->request->hasArgument( 'locale' ) && ( $value = $this->request->getArgument( 'locale' ) ) != '' ) {
+        if ($this->request->hasArgument( 'locale' ) && ( $value = $this->request->getArgument( 'locale' ) ) != '' ) {
             $lang = $value;
-        } elseif( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
+        } elseif (isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) {
             $lang = $GLOBALS['BE_USER']->uc['lang'];
         } else {
             $lang = 'en';
@@ -326,12 +326,12 @@ class JqadmController extends AbstractController
      */
     protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
     {
-        if( !isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset( $this->responseFactory ) ) // TYPO3 10
         {
             $this->response->setStatus( $response->getStatusCode() );
 
-            foreach( $response->getHeaders() as $key => $value ) {
-                foreach( (array) $value as $val ) {
+            foreach ( $response->getHeaders() as $key => $value ) {
+                foreach ( (array) $value as $val ) {
                     $this->response->setHeader( $key, $val );
                 }
             }

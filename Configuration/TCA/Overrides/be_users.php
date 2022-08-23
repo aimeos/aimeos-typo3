@@ -1,6 +1,6 @@
 <?php
 
-if( !defined( 'TYPO3_MODE' ) ) {
+if (!defined( 'TYPO3_MODE' ) ) {
     die( 'Access denied.' );
 }
 
@@ -19,24 +19,24 @@ $beUsersSiteFcn = function() {
 
         $fcn = function( $result, $parents, $right ) use ( &$fcn, &$list ) {
 
-            while( $row = $result->fetch() ) {
+            while ( $row = $result->fetch() ) {
                 $list[] = [join( ' > ', array_merge( $parents, [$row['label']] ) ), $row['siteid']];
 
-                if( $row['nright'] - $row['nleft'] > 1 ) {
+                if ($row['nright'] - $row['nleft'] > 1 ) {
                     $fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
                 }
 
-                if( $row['nright'] + 1 == $right ) {
+                if ($row['nright'] + 1 == $right ) {
                     return;
                 }
             }
         };
 
-        while( $row = $result->fetch() )
+        while ( $row = $result->fetch() )
         {
             $list[] = [$row['label'], $row['siteid']];
 
-            if( $row['nright'] - $row['nleft'] > 1 ) {
+            if ($row['nright'] - $row['nleft'] > 1 ) {
                 $fcn( $result, array_merge( $parents, [$row['label']] ), $row['nright'] );
             }
         }

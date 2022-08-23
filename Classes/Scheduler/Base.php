@@ -45,7 +45,7 @@ class Base
 
         $manager = \Aimeos\MShop::create( $context, 'locale' );
 
-        foreach( self::getSiteItems( $context, $sites ) as $siteItem )
+        foreach ( self::getSiteItems( $context, $sites ) as $siteItem )
         {
             \Aimeos\MShop::cache( true );
             \Aimeos\MAdmin::cache( true );
@@ -56,7 +56,7 @@ class Base
 
             $context->setLocale( $localeItem );
 
-            foreach( $jobs as $jobname )
+            foreach ( $jobs as $jobname )
             {
                 $fcn = function( $context, $aimeos, $jobname ) {
                     \Aimeos\Controller\Jobs::create( $context, $aimeos, $jobname )->run();
@@ -89,7 +89,7 @@ class Base
         $expr[] = $search->getConditions();
         $expr[] = $search->compare( '==', 'locale.language.id', 'en' ); // default language
 
-        if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) { // BE language
+        if (isset( $GLOBALS['BE_USER']->uc['lang'] ) && $GLOBALS['BE_USER']->uc['lang'] != '' ) { // BE language
             $expr[] = $search->compare( '==', 'locale.language.id', $GLOBALS['BE_USER']->uc['lang'] );
         }
 
@@ -116,14 +116,14 @@ class Base
      */
     public static function getSiteItems( \Aimeos\MShop\ContextIface $context, $sites ) : \Aimeos\Map
     {
-        if( !is_array( $sites ) ) {
+        if (!is_array( $sites ) ) {
             $sites = explode( ' ', $sites );
         }
 
         $manager = \Aimeos\MShop::create( $context, 'locale/site' );
         $search = $manager->filter();
 
-        if( !empty( $sites ) ) {
+        if (!empty( $sites ) ) {
             $search->setConditions( $search->compare( '==', 'locale.site.code', $sites ) );
         }
 
@@ -143,7 +143,7 @@ class Base
         $siteFinder = GeneralUtility::makeInstance( SiteFinder::class );
         $site = $pid ? $siteFinder->getSiteByPageId( $pid ) : current( $siteFinder->getAllSites() );
 
-        if( $site ) {
+        if ($site ) {
             return $site->getRouter();
         }
 

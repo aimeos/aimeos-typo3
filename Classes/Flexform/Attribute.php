@@ -31,14 +31,14 @@ class Attribute
     {
         try
         {
-            if( !isset( $config['flexParentDatabaseRow']['pid'] ) ) {
+            if (!isset( $config['flexParentDatabaseRow']['pid'] ) ) {
                 throw new \Exception( 'No PID found in "flexParentDatabaseRow" or "row" array key: ' . print_r( $config, true ) );
             }
 
             $pid = $config['flexParentDatabaseRow']['pid'];
             $pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig( $pid );
 
-            if( isset( $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'] ) ) {
+            if (isset( $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'] ) ) {
                 $sitecode = $pageTSConfig['tx_aimeos.']['mshop.']['locale.']['site'];
             }
 
@@ -51,7 +51,7 @@ class Attribute
             $manager = \Aimeos\MShop::create( $context, 'attribute/type' );
             $items = $manager->search( $manager->filter( true ) );
 
-            foreach( $items as $item ) {
+            foreach ( $items as $item ) {
                 $config['items'][] = [$item->getName(), $item->getCode()];
             }
         }

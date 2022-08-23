@@ -40,13 +40,13 @@ class JsonadmController extends AbstractController
     {
         $resource = null;
 
-        if( $this->request->hasArgument( 'resource' )
+        if ($this->request->hasArgument( 'resource' )
             && ( $value = $this->request->getArgument( 'resource' ) ) != ''
         ) {
             $resource = $value;
         }
 
-        switch( $this->request->getMethod() )
+        switch ($this->request->getMethod() )
         {
             case 'DELETE': return $this->deleteAction( $resource );
             case 'PATCH': return $this->patchAction( $resource );
@@ -177,12 +177,12 @@ class JsonadmController extends AbstractController
      */
     protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
     {
-        if( !isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset( $this->responseFactory ) ) // TYPO3 10
         {
             $this->response->setStatus( $response->getStatusCode() );
 
-            foreach( $response->getHeaders() as $key => $value ) {
-                foreach( (array) $value as $val ) {
+            foreach ( $response->getHeaders() as $key => $value ) {
+                foreach ( (array) $value as $val ) {
                     $this->response->setHeader( $key, $val );
                 }
             }

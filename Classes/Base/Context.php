@@ -30,7 +30,7 @@ class Context
      */
     public static function get( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\ContextIface
     {
-        if( self::$context === null )
+        if (self::$context === null )
         {
             // TYPO3 specifc context with password hasher
             $context = new \Aimeos\MShop\Context\Item\Typo3();
@@ -69,18 +69,18 @@ class Context
      */
     protected static function addCache( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_cache'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_cache'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_cache'] ) )
         ) {
             return $fcn( $context );
         }
 
         $cacheName = \Aimeos\Aimeos\Base::getExtConfig( 'cacheName', 'Typo3' );
-        if( isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
+        if (isset( $GLOBALS['TSFE'] ) && $GLOBALS['TSFE']->headerNoCache() ) {
              $cacheName = 'None';
         }
 
-        switch( $cacheName )
+        switch ($cacheName )
         {
             case 'None':
                 $context->config()->set( 'client/html/basket/cache/enable', false );
@@ -108,7 +108,7 @@ class Context
      */
     protected static function addDatabaseManager( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_dbm'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_dbm'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_dbm'] ) )
         ) {
             return $fcn( $context );
@@ -127,7 +127,7 @@ class Context
      */
     protected static function addFilesystemManager( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_fsm'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_fsm'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_fsm'] ) )
         ) {
             return $fcn( $context );
@@ -145,7 +145,7 @@ class Context
      */
     protected static function addHasher( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_hasher'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_hasher'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_hasher'] ) )
         ) {
             return $fcn( $context );
@@ -164,7 +164,7 @@ class Context
      */
     protected static function addLogger( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] ) )
         ) {
             return $fcn( $context );
@@ -182,7 +182,7 @@ class Context
      */
     protected static function addMailer( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mailer'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mailer'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mailer'] ) )
         ) {
             return $fcn( $context );
@@ -202,7 +202,7 @@ class Context
      */
     protected static function addMessageQueueManager( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mqueue'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mqueue'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_mqueue'] ) )
         ) {
             return $fcn( $context );
@@ -220,7 +220,7 @@ class Context
      */
     protected static function addNonce( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_nounce'] ) )
         ) {
             return $fcn( $context );
@@ -238,7 +238,7 @@ class Context
      */
     protected static function addProcess( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_process'] ) )
         ) {
             return $fcn( $context );
@@ -247,7 +247,7 @@ class Context
         $process = new \Aimeos\Base\Process\Pcntl( \Aimeos\Aimeos\Base::getExtConfig( 'pcntlMax', 4 ) );
 
         // Reset before child processes are spawned to avoid lost DB connections afterwards
-        if( method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) === false
+        if (method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) === false
             || $process->isAvailable() === false
         ) {
             $process = new \Aimeos\Base\Process\None();
@@ -265,7 +265,7 @@ class Context
      */
     protected static function addSession( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_session'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_session'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_session'] ) )
         ) {
             return $fcn( $context );
@@ -273,9 +273,9 @@ class Context
 
         $class = \TYPO3\CMS\Core\Authentication\CommandLineUserAuthentication::class;
 
-        if( isset( $GLOBALS['TSFE']->fe_user ) ) {
+        if (isset( $GLOBALS['TSFE']->fe_user ) ) {
             $session = new \Aimeos\Base\Session\Typo3( $GLOBALS['TSFE']->fe_user );
-        } elseif( isset( $GLOBALS['BE_USER'] ) && !( $GLOBALS['BE_USER'] instanceof $class ) ) {
+        } elseif (isset( $GLOBALS['BE_USER'] ) && !( $GLOBALS['BE_USER'] instanceof $class ) ) {
             $session = new \Aimeos\Base\Session\Typo3( $GLOBALS['BE_USER'] );
         } else {
             $session = new \Aimeos\Base\Session\None();
@@ -293,7 +293,7 @@ class Context
      */
     protected static function addToken( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_token'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_token'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_token'] ) )
         ) {
             return $fcn( $context );
@@ -311,7 +311,7 @@ class Context
      */
     protected static function addUser( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user'] ) )
         ) {
             return $fcn( $context );
@@ -319,12 +319,12 @@ class Context
 
         $t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
 
-        if( TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) )
+        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) )
         {
             $context->setUserId( $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column] );
             $context->setEditor( (string) $GLOBALS['TSFE']->fe_user->user['username'] );
         }
-        elseif( TYPO3_MODE === 'BE' && isset( $GLOBALS['BE_USER']->user['username'] ) )
+        elseif (TYPO3_MODE === 'BE' && isset( $GLOBALS['BE_USER']->user['username'] ) )
         {
             $context->setEditor( (string) $GLOBALS['BE_USER']->user['username'] );
         }
@@ -345,7 +345,7 @@ class Context
      */
     protected static function addGroups( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups'] )
+        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups'] )
             && is_callable( ( $fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups'] ) )
         ) {
             return $fcn( $context );
@@ -353,12 +353,12 @@ class Context
 
         $t3context = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' );
 
-        if( TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) )
+        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect( 'frontend.user', 'isLoggedIn' ) )
         {
             $ids = GeneralUtility::trimExplode( ',', $GLOBALS['TSFE']->fe_user->user['usergroup'] );
             $context->setGroupIds( $ids );
         }
-        elseif( TYPO3_MODE === 'BE' && $GLOBALS['BE_USER']->userGroups )
+        elseif (TYPO3_MODE === 'BE' && $GLOBALS['BE_USER']->userGroups )
         {
             $ids = array_keys( $GLOBALS['BE_USER']->userGroups );
             $context->setGroupIds( $ids );
@@ -376,13 +376,13 @@ class Context
      */
     protected static function addDateTime( \Aimeos\MShop\ContextIface $context ) : \Aimeos\MShop\ContextIface
     {
-        if( TYPO3_MODE === 'FE' && isset( $GLOBALS['BE_USER']->adminPanel )
+        if (TYPO3_MODE === 'FE' && isset( $GLOBALS['BE_USER']->adminPanel )
             && class_exists( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' ) )
         {
             $service = GeneralUtility::makeInstance( 'TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService' );
             $tstamp = strtotime( $service->getConfigurationOption( 'preview', 'simulateDate' ) );
 
-            if( !empty( $tstamp ) ) {
+            if (!empty( $tstamp ) ) {
                 $context->setDateTime( date( 'Y-m-d H:i:s', $tstamp ) );
             }
         }

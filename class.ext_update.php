@@ -14,7 +14,7 @@ use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 
-if( file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
+if (file_exists( __DIR__ . '/Resources/Libraries/autoload.php' ) === true ) {
     require_once __DIR__ . '/Resources/Libraries/autoload.php';
 }
 
@@ -47,7 +47,7 @@ class ext_update
         ob_start();
         $exectimeStart = microtime( true );
 
-        if( ( $result = $this->checkEnvironment() ) !== null ) {
+        if (( $result = $this->checkEnvironment() ) !== null ) {
             return $result;
         }
 
@@ -85,7 +85,7 @@ class ext_update
         $connection = $connectionPool->getQueryBuilderForTable( 'fe_user' )->getConnection();
         $params = $connection->getParams();
 
-        if( strpos( $connection->getServerVersion(), 'MySQL' ) === false ) {
+        if (strpos( $connection->getServerVersion(), 'MySQL' ) === false ) {
             return;
         }
 
@@ -94,28 +94,28 @@ class ext_update
         $result->execute();
         $rows = $result->fetchAll();
 
-        if( !isset( $rows[0]['version()'] ) ) {
+        if (!isset( $rows[0]['version()'] ) ) {
             return;
         }
 
         $version = $rows[0]['version()']; // Something like '10.1.29-MariaDB' or '5.6.33-0ubuntu0'
 
         // Only MySQL < 5.7 and MariaDB < 10.2 don't work
-        if( ( strpos( $version, 'MariaDB' ) !== false && version_compare( $version, '10.2', '>=' ) )
+        if (( strpos( $version, 'MariaDB' ) !== false && version_compare( $version, '10.2', '>=' ) )
             || version_compare( $version, '5.7', '>=' )
         ) {
             return;
         }
 
         // MySQL < 5.7 and utf8mb4 charset doesn't work due to missing long index support
-        if( isset( $params['tableoptions']['charset'] ) && $params['tableoptions']['charset'] !== 'utf8mb4' ) {
+        if (isset( $params['tableoptions']['charset'] ) && $params['tableoptions']['charset'] !== 'utf8mb4' ) {
             return;
         }
 
         // Retrieve the name of the connection (which is not part of the connection class)
         foreach( $connectionPool->getConnectionNames() as $name )
         {
-            if( $connectionPool->getConnectionByName( $name ) === $connection ) {
+            if ($connectionPool->getConnectionByName( $name ) === $connection ) {
                 break;
             }
         }

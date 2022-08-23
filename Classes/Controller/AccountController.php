@@ -42,13 +42,13 @@ class AccountController extends AbstractController
         $client = \Aimeos\Client\Html::create( $context, 'account/download' );
         $client->setView( $view )->init();
 
-        if( !isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset( $this->responseFactory ) ) // TYPO3 10
         {
             $response = $view->response();
 
             $this->response->setStatus( $response->getStatusCode() );
 
-            foreach( $response->getHeaders() as $key => $value ) {
+            foreach ( $response->getHeaders() as $key => $value ) {
                 $this->response->setHeader( $key, implode( ', ', $value ) );
             }
 

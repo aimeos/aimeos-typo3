@@ -34,11 +34,11 @@ class TranslateViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractView
         $iface = '\Aimeos\Base\View\Iface';
         $view = $this->templateVariableContainer->get( '_aimeos_view' );
 
-        if( !is_object( $view ) || !( $view instanceof $iface ) ) {
+        if (!is_object( $view ) || !( $view instanceof $iface ) ) {
             throw new Exception( 'Aimeos view object is missing' );
         }
 
-        if( !isset( $this->arguments['singular'] ) ) {
+        if (!isset( $this->arguments['singular'] ) ) {
             throw new Exception( 'Attribute "singular" missing for Aimeos translate view helper' );
         }
 
@@ -51,7 +51,7 @@ class TranslateViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractView
 
         $string = vsprintf( $view->translate( $domain, $singular, $plural, $number ), (array) $values );
 
-        if( $escape === false ) {
+        if ($escape === false ) {
             return $string;
         }
 

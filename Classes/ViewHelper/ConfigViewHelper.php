@@ -30,11 +30,11 @@ class ConfigViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHel
         $iface = '\Aimeos\Base\View\Iface';
         $view = $this->templateVariableContainer->get( '_aimeos_view' );
 
-        if( !is_object( $view ) || !( $view instanceof $iface ) ) {
+        if (!is_object( $view ) || !( $view instanceof $iface ) ) {
             throw new Exception( 'Aimeos view object is missing' );
         }
 
-        if( !isset( $this->arguments['key'] ) ) {
+        if (!isset( $this->arguments['key'] ) ) {
             throw new Exception( 'Attribute "key" missing for Aimeos config view helper' );
         }
 

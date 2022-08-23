@@ -29,15 +29,15 @@ class Config
      */
     public static function get( array $paths, array $local = [] ) : \Aimeos\Base\Config\Iface
     {
-        if( self::$config === null )
+        if (self::$config === null )
         {
             // Using extension config directories
-            if( is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
+            if (is_array( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ) )
             {
                 ksort( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] );
-                foreach( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir )
+                foreach ( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir )
                 {
-                    if( ( $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir ) ) !== '' ) {
+                    if (( $absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName( $dir ) ) !== '' ) {
                         $paths[] = $absPath;
                     }
                 }
@@ -45,14 +45,14 @@ class Config
 
             $conf = new \Aimeos\Base\Config\PHPArray( array(), $paths );
 
-            if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
+            if ((bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
                 $conf = new \Aimeos\Base\Config\Decorator\APC( $conf, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
             }
 
             self::$config = $conf;
         }
 
-        if( isset( $local['typo3']['tsconfig'] ) ) {
+        if (isset( $local['typo3']['tsconfig'] ) ) {
             $local = array_replace_recursive( $local, \Aimeos\Aimeos\Base::parseTS( $local['typo3']['tsconfig'] ) );
         }
 

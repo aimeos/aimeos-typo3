@@ -50,7 +50,7 @@ class CheckoutController extends AbstractController
         $header = (string) $client->header();
         $html = (string) $client->body();
 
-        if( !isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset( $this->responseFactory ) ) // TYPO3 10
         {
             $this->response->addAdditionalHeaderData( $header );
             return $html;
@@ -84,7 +84,7 @@ class CheckoutController extends AbstractController
             $header = (string) $client->header();
             $html = (string) $client->body();
 
-            if( !isset( $this->responseFactory ) ) // TYPO3 10
+            if (!isset( $this->responseFactory ) ) // TYPO3 10
             {
                 $this->response->addAdditionalHeaderData( $header );
                 return $html;
@@ -97,7 +97,7 @@ class CheckoutController extends AbstractController
         }
         catch( \Exception $e )
         {
-            if( !isset( $this->responseFactory ) ) // TYPO3 10
+            if (!isset( $this->responseFactory ) ) // TYPO3 10
             {
                 @header( 'HTTP/1.1 500 Internal server error', true, 500 );
                 return 'Error: ' . $e->getMessage();

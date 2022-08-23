@@ -30,19 +30,19 @@ class JsonapiController extends AbstractController
     {
         $resource = $related = null;
 
-        if( $this->request->hasArgument( 'resource' )
+        if ($this->request->hasArgument( 'resource' )
             && ( $value = $this->request->getArgument( 'resource' ) ) != ''
         ) {
             $resource = $value;
         }
 
-        if( $this->request->hasArgument( 'related' )
+        if ($this->request->hasArgument( 'related' )
             && ( $value = $this->request->getArgument( 'related' ) ) != ''
         ) {
             $related = $value;
         }
 
-        switch( $this->request->getMethod() )
+        switch ($this->request->getMethod() )
         {
             case 'DELETE': return $this->deleteAction( (string) $resource, $related );
             case 'PATCH': return $this->patchAction( (string) $resource, $related );
@@ -179,12 +179,12 @@ class JsonapiController extends AbstractController
      */
     protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
     {
-        if( !isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset( $this->responseFactory ) ) // TYPO3 10
         {
             $this->response->setStatus( $response->getStatusCode() );
 
-            foreach( $response->getHeaders() as $key => $value ) {
-                foreach( (array) $value as $val ) {
+            foreach ( $response->getHeaders() as $key => $value ) {
+                foreach ( (array) $value as $val ) {
                     $this->response->setHeader( $key, $val );
                 }
             }

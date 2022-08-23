@@ -39,7 +39,7 @@ class CatalogController extends AbstractController
     {
         $client = \Aimeos\Client\Html::create( $this->context(), 'catalog/count' );
 
-        if( !isset( $this->responseFactory ) ) { // TYPO3 10
+        if (!isset( $this->responseFactory ) ) { // TYPO3 10
             return $this->getClientOutput( $client );
         }
 
@@ -149,7 +149,7 @@ class CatalogController extends AbstractController
     {
         $client = \Aimeos\Client\Html::create( $this->context(), 'catalog/stock' );
 
-        if( !isset( $this->responseFactory ) ) { // TYPO3 10
+        if (!isset( $this->responseFactory ) ) { // TYPO3 10
             return $this->getClientOutput( $client );
         }
 
@@ -169,7 +169,7 @@ class CatalogController extends AbstractController
     {
         $client = \Aimeos\Client\Html::create( $this->context(), 'catalog/suggest' );
 
-        if( !isset( $this->responseFactory ) ) { // TYPO3 10
+        if (!isset( $this->responseFactory ) ) { // TYPO3 10
             return $this->getClientOutput( $client );
         }
 
@@ -217,7 +217,7 @@ class CatalogController extends AbstractController
      */
     protected function exception( \Exception $e )
     {
-        if( $e->getCode() > 400 )
+        if ($e->getCode() > 400 )
         {
             $name = \TYPO3\CMS\Frontend\Controller\ErrorController::class;
 
@@ -236,13 +236,13 @@ class CatalogController extends AbstractController
      */
     protected function removeMetatags()
     {
-        if( is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) )
+        if (is_object( $GLOBALS['TSFE'] ) && isset( $GLOBALS['TSFE']->config['config'] ) )
         {
             $GLOBALS['TSFE']->config['config']['disableCanonical'] = true;
             $GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
         }
 
-        if( class_exists( '\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' )
+        if (class_exists( '\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' )
             && !\Aimeos\Aimeos\Base::getExtConfig( 'typo3Metatags', true )
         ) {
             $registry = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry' );

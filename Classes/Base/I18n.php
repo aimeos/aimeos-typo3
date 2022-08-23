@@ -32,15 +32,15 @@ class I18n
     {
         $i18nList = array();
 
-        foreach( $languageIds as $langid )
+        foreach ( $languageIds as $langid )
         {
-            if( in_array( $langid, ['', 'default'] ) ) { continue; }
+            if (in_array( $langid, ['', 'default'] ) ) { continue; }
 
-            if( !isset( self::$i18n[$langid] ) )
+            if (!isset( self::$i18n[$langid] ) )
             {
                 $i18n = new \Aimeos\Base\Translation\Gettext( $i18nPaths, $langid );
 
-                if( (bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
+                if ((bool) \Aimeos\Aimeos\Base::getExtConfig( 'useAPC', false ) === true ) {
                     $i18n = new \Aimeos\Base\Translation\Decorator\APC( $i18n, \Aimeos\Aimeos\Base::getExtConfig( 'apcPrefix', 't3:' ) );
                 }
 
@@ -49,7 +49,7 @@ class I18n
 
             $i18nList[$langid] = self::$i18n[$langid];
 
-            if( isset( $local[$langid] ) )
+            if (isset( $local[$langid] ) )
             {
                 $translations = self::parseTranslations( (array) $local[$langid] );
                 $i18nList[$langid] = new \Aimeos\Base\Translation\Decorator\Memory( $i18nList[$langid], $translations );
@@ -70,14 +70,14 @@ class I18n
     {
         $translations = array();
 
-        foreach( $entries as $entry )
+        foreach ( $entries as $entry )
         {
-            if( isset( $entry['domain'] ) && isset( $entry['string'] ) && isset( $entry['trans'] ) )
+            if (isset( $entry['domain'] ) && isset( $entry['string'] ) && isset( $entry['trans'] ) )
             {
                 $string = str_replace( ['\\n', '\\'], ["\n", ''], $entry['string'] );
                 $trans = array();
 
-                foreach( (array) $entry['trans'] as $str ) {
+                foreach ( (array) $entry['trans'] as $str ) {
                     $trans[] = str_replace( ['\\n', '\\'], ["\n", ''], $str );
                 }
 
