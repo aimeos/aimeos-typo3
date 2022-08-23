@@ -48,7 +48,7 @@ class AccountControllerTest
     public function downloadAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Account\\Download\\Standard';
-        $client = $this->getMock($name, array('process'), array(), '', false);
+        $client = $this->getMock($name, array('process'), [], '', false);
 
         \Aimeos\Client\Html\Account\Download\Factory::injectClient($name, $client);
         $output = $this->object->downloadAction();
@@ -64,7 +64,7 @@ class AccountControllerTest
     public function historyAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Account\\History\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));

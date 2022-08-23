@@ -49,7 +49,7 @@ class Catalog
             $context->setLocale($localeManager->bootstrap($sitecode, '', '', false));
 
             $manager = \Aimeos\MShop::create($context, 'catalog');
-            $item = $manager->getTree(null, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE);
+            $item = $manager->getTree(null, [], \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE);
 
 
             $config['items'] = array_merge($config['items'], $this->getCategoryList($item, $item->getName()));
@@ -70,8 +70,8 @@ class Catalog
      */
     protected function getCategoryList(\Aimeos\MShop\Catalog\Item\Iface $item, string $breadcrumb) : array
     {
-        $result = array();
-        $result[] = array($breadcrumb, $item->getId());
+        $result = [];
+        $result[] = [$breadcrumb, $item->getId()];
 
         foreach ($item->getChildren() as $child) {
             $result = array_merge($result, $this->getCategoryList($child, $breadcrumb . ' > ' . $child->getName()));

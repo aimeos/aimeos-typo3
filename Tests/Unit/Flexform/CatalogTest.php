@@ -27,7 +27,7 @@ class CatalogTest
      */
     public function getCategories()
     {
-        $result = $this->object->getCategories(array('items' => array()));
+        $result = $this->object->getCategories(array('items' => []));
 
         $this->assertArrayHasKey('items', $result);
     }

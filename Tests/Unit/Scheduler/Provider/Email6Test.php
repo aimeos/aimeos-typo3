@@ -31,7 +31,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getAdditionalFields()
     {
-        $taskInfo = array();
+        $taskInfo = [];
         $module = new SchedulerModuleController();
 
         $result = $this->object->getAdditionalFields($taskInfo, $this->object, $module);
@@ -51,19 +51,19 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getAdditionalFieldsException()
     {
-        $taskInfo = array();
+        $taskInfo = [];
         $module = new SchedulerModuleController();
         $module->setCurrentAction(new Action('EDIT'));
 
         $mock = $this->getMockBuilder('\Aimeos\Aimeos\Scheduler\Provider\Email6')
-            ->setMethods(array('getFields'))->getMock();
+            ->setMethods(['getFields'])->getMock();
 
         $mock->expects($this->once())->method('getFields')
             ->will($this->throwException(new \RuntimeException()));
 
         $result = $mock->getAdditionalFields($taskInfo, $mock, $module);
 
-        $this->assertEquals(array(), $result);
+        $this->assertEquals([], $result);
     }
 
 
@@ -72,14 +72,14 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function saveAdditionalFields()
     {
-        $data = array(
+        $data = [
             'aimeos_sitecode' => 'testsite',
             'aimeos_controller' => 'testcntl',
             'aimeos_config' => 'testconf',
             'aimeos_sender_from' => 'test name',
             'aimeos_sender_email' => 'sender@test',
             'aimeos_reply_email' => 'reply@test',
-        );
+        ];
         $task = new Scheduler\Task\Typo6();
 
         $this->object->saveAdditionalFields($data, $task);
@@ -98,7 +98,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoController()
     {
-        $data = array();
+        $data = [];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -110,9 +110,9 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoSite()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -124,12 +124,12 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoSiteFound()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_config' => 'testconf',
             'aimeos_sender_email' => 'sender@test',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -141,11 +141,11 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoSenderEmail()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_config' => 'testconf',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -157,12 +157,12 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsInvalidSenderEmail()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_config' => 'testconf',
             'aimeos_sender_email' => 'sender-test',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -174,13 +174,13 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsInvalidReplyEmail()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_config' => 'testconf',
             'aimeos_sender_email' => 'sender@test',
             'aimeos_reply_email' => 'reply-test',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -192,12 +192,12 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsInvalidPageID()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_sender_email' => 'sender@test',
             'aimeos_pageid_detail' => 'a',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -209,13 +209,13 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsInvalidDownloadPage()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_sender_email' => 'sender@test',
             'aimeos_pageid_detail' => '123',
             'aimeos_pageid_download' => 'a',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -227,12 +227,12 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsInvalidBaseurlNoProtocol()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_sender_email' => 'sender@test',
             'aimeos_content_baseurl' => 'localhost',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -244,12 +244,12 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsInvalidBaseurlNoDomain()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_sender_email' => 'sender@test',
             'aimeos_content_baseurl' => 'https:///',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -261,7 +261,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFields()
     {
-        $data = array(
+        $data = [
             'aimeos_sitecode' => 'default',
             'aimeos_controller' => 'index/optimize',
             'aimeos_sender_email' => 'sender@test',
@@ -270,7 +270,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'aimeos_site_baseurl' => 'https://www.aimeos.org:80/',
             'aimeos_content_baseurl' => 'https://www.aimeos.org:80/up/tx_/',
             'aimeos_template_baseurl' => 'https://www.aimeos.org:80/fa/elegance',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertTrue($this->object->validateAdditionalFields($data, $module));

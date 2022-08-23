@@ -48,7 +48,7 @@ class LocaleControllerTest
     public function selectAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Locale\\Select\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));

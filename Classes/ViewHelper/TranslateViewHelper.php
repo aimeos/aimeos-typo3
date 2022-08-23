@@ -47,7 +47,7 @@ class TranslateViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractView
         $number = (isset($this->arguments['number']) ? $this->arguments['number'] : 1);
         $escape = (isset($this->arguments['escape']) ? $this->arguments['escape'] : true);
         $domain = (isset($this->arguments['domain']) ? $this->arguments['domain'] : 'client');
-        $values = (isset($this->arguments['arguments']) ? $this->arguments['arguments'] : array());
+        $values = (isset($this->arguments['arguments']) ? $this->arguments['arguments'] : []);
 
         $string = vsprintf($view->translate($domain, $singular, $plural, $number), (array) $values);
 

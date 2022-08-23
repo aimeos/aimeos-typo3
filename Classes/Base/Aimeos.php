@@ -28,7 +28,7 @@ class Aimeos
     public static function get() : \Aimeos\Bootstrap
     {
         if (self::$aimeos === null) {
-            $extDirs = array();
+            $extDirs = [];
 
             // Extension directories
             if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'])) {

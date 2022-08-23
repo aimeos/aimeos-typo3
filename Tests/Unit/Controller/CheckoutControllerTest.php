@@ -48,7 +48,7 @@ class CheckoutControllerTest
     public function indexAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Checkout\\Standard\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -67,7 +67,7 @@ class CheckoutControllerTest
     public function confirmAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Checkout\\Confirm\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -86,7 +86,7 @@ class CheckoutControllerTest
     public function updateAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Checkout\\Update\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));

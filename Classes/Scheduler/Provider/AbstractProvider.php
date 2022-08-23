@@ -45,7 +45,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
      */
     protected function getFields(array &$taskInfo, $task, $parentObject)
     {
-        $additionalFields = array();
+        $additionalFields = [];
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldController]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
@@ -58,12 +58,12 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $fieldCode .= $this->getControllerOptions($taskInfo[$this->fieldController]);
         $fieldCode .= '</select>';
 
-        $additionalFields[$this->fieldController] = array(
+        $additionalFields[$this->fieldController] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.controller',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldController
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -77,12 +77,12 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $fieldCode .= $this->getSiteOptions($this->getAvailableSites(), $taskInfo[$this->fieldSite], 0);
         $fieldCode .= '</select>';
 
-        $additionalFields[$this->fieldSite] = array(
+        $additionalFields[$this->fieldSite] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.sitecode',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldSite
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -95,12 +95,12 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
         $fieldCode = sprintf($fieldStr, $this->fieldTSconfig, $taskInfo[$this->fieldTSconfig]);
 
-        $additionalFields[$this->fieldTSconfig] = array(
+        $additionalFields[$this->fieldTSconfig] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.tsconfig',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldTSconfig
-        );
+        ];
 
         return $additionalFields;
     }
@@ -181,7 +181,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $sites = $manager->search($search);
 
         foreach ($sites as $id => $siteItem) {
-            $sites[$id] = $manager->getTree($id, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE);
+            $sites[$id] = $manager->getTree($id, [], \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE);
         }
 
         return $sites;

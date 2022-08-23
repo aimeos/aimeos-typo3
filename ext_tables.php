@@ -30,11 +30,11 @@ if (TYPO3_MODE === 'BE')
      * Register backend module
      */
 
-    $_aimeosConfiguration = array(
+    $_aimeosConfiguration = [
         'access' => 'user,group',
         'icon' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg',
         'labels' => 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf',
-    );
+    ];
 
     if ((bool) \Aimeos\Aimeos\Base::getExtConfig('showPageTree', false) == false) {
         $_aimeosConfiguration['navigationComponentId'] = null;

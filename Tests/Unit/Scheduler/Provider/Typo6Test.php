@@ -30,7 +30,7 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getAdditionalFields()
     {
-        $taskInfo = array();
+        $taskInfo = [];
         $module = new SchedulerModuleController();
         $module->setCurrentAction(new Action('EDIT'));
 
@@ -48,19 +48,19 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getAdditionalFieldsException()
     {
-        $taskInfo = array();
+        $taskInfo = [];
         $module = new SchedulerModuleController();
         $module->setCurrentAction(new Action('EDIT'));
 
         $mock = $this->getMockBuilder('\Aimeos\Aimeos\Scheduler\Provider\Typo6')
-            ->setMethods(array('getFields'))->getMock();
+            ->setMethods(['getFields'])->getMock();
 
         $mock->expects($this->once())->method('getFields')
             ->will($this->throwException(new \RuntimeException()));
 
         $result = $mock->getAdditionalFields($taskInfo, $mock, $module);
 
-        $this->assertEquals(array(), $result);
+        $this->assertEquals([], $result);
     }
 
 
@@ -69,11 +69,11 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function saveAdditionalFields()
     {
-        $data = array(
+        $data = [
             'aimeos_sitecode' => 'testsite',
             'aimeos_controller' => 'testcntl',
             'aimeos_config' => 'testconf',
-        );
+        ];
         $task = new \Aimeos\Aimeos\Scheduler\Task\Typo6();
 
         $this->object->saveAdditionalFields($data, $task);
@@ -89,7 +89,7 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoController()
     {
-        $data = array();
+        $data = [];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -101,9 +101,9 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoSite()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -115,11 +115,11 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFieldsNoSiteFound()
     {
-        $data = array(
+        $data = [
             'aimeos_controller' => 'testcntl',
             'aimeos_sitecode' => 'testsite',
             'aimeos_config' => 'testconf',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertFalse($this->object->validateAdditionalFields($data, $module));
@@ -131,10 +131,10 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function validateAdditionalFields()
     {
-        $data = array(
+        $data = [
             'aimeos_sitecode' => 'default',
             'aimeos_controller' => 'index/optimize',
-        );
+        ];
         $module = new SchedulerModuleController();
 
         $this->assertTrue($this->object->validateAdditionalFields($data, $module));

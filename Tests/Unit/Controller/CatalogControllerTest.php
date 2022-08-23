@@ -48,7 +48,7 @@ class CatalogControllerTest
     public function countAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Count\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -67,7 +67,7 @@ class CatalogControllerTest
     public function detailAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Detail\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -86,7 +86,7 @@ class CatalogControllerTest
     public function filterAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Filter\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -105,7 +105,7 @@ class CatalogControllerTest
     public function listAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Lists\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -124,7 +124,7 @@ class CatalogControllerTest
     public function suggestAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Suggest\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -143,7 +143,7 @@ class CatalogControllerTest
     public function sessionAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Session\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -162,7 +162,7 @@ class CatalogControllerTest
     public function stageAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Stage\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
@@ -181,7 +181,7 @@ class CatalogControllerTest
     public function stockAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Catalog\\Stock\\Standard';
-        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), [], '', false);
 
         $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
         $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));

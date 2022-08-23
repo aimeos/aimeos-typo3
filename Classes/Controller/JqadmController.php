@@ -41,7 +41,7 @@ class JqadmController extends AbstractController
     public function fileAction()
     {
         $contents = '';
-        $files = array();
+        $files = [];
         $type = $this->request->getArgument('type');
 
         foreach (Base::aimeos()->getCustomPaths('admin/jqadm') as $base => $paths) {

@@ -50,7 +50,7 @@ abstract class Email extends AbstractProvider
      */
     protected function getFields(array &$taskInfo, $task, $parentObject)
     {
-        $additionalFields = array();
+        $additionalFields = [];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -63,12 +63,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldSenderFrom, $taskInfo[$this->fieldSenderFrom]);
 
-        $additionalFields[$this->fieldSenderFrom] = array(
+        $additionalFields[$this->fieldSenderFrom] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.from-name',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldSenderFrom
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -81,12 +81,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldSenderEmail, $taskInfo[$this->fieldSenderEmail]);
 
-        $additionalFields[$this->fieldSenderEmail] = array(
+        $additionalFields[$this->fieldSenderEmail] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.from-email',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldSenderEmail
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -99,12 +99,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldReplyEmail, $taskInfo[$this->fieldReplyEmail]);
 
-        $additionalFields[$this->fieldReplyEmail] = array(
+        $additionalFields[$this->fieldReplyEmail] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.reply-email',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldReplyEmail
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -117,12 +117,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageCatalog, $taskInfo[$this->fieldPageCatalog]);
 
-        $additionalFields[$this->fieldPageCatalog] = array(
+        $additionalFields[$this->fieldPageCatalog] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-catalog',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldPageCatalog
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -135,12 +135,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageDetail, $taskInfo[$this->fieldPageDetail]);
 
-        $additionalFields[$this->fieldPageDetail] = array(
+        $additionalFields[$this->fieldPageDetail] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-detail',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldPageDetail
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -153,12 +153,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageDownload, $taskInfo[$this->fieldPageDownload]);
 
-        $additionalFields[$this->fieldPageDownload] = array(
+        $additionalFields[$this->fieldPageDownload] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-download',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldPageDownload
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -171,12 +171,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageLogin, $taskInfo[$this->fieldPageLogin]);
 
-        $additionalFields[$this->fieldPageLogin] = array(
+        $additionalFields[$this->fieldPageLogin] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.page-login',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldPageLogin
-        );
+        ];
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
@@ -196,12 +196,12 @@ abstract class Email extends AbstractProvider
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldTemplateBaseurl, $path);
 
-        $additionalFields[$this->fieldTemplateBaseurl] = array(
+        $additionalFields[$this->fieldTemplateBaseurl] = [
             'code'     => $fieldCode,
             'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.template-baseurl',
             'cshKey'   => 'xMOD_tx_aimeos',
             'cshLabel' => $this->fieldTemplateBaseurl
-        );
+        ];
 
 
         $additionalFields += parent::getFields($taskInfo, $task, $parentObject);

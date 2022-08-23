@@ -306,18 +306,18 @@ $icons->registerIcon('aimeos-widget-latestorders', $provider, ['name' => 'shoppi
  * Aimeos scheduler tasks
  */
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Typo6'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Typo6'] = [
     'extension'        => 'aimeos',
     'title'            => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.name',
     'description'      => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.description',
     'additionalFields' => 'Aimeos\\Aimeos\\Scheduler\\Provider\\Typo6'
-);
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Email6'] = array(
+];
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Aimeos\\Aimeos\\Scheduler\\Task\\Email6'] = [
     'extension'        => 'aimeos',
     'title'            => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.name',
     'description'      => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.description',
     'additionalFields' => 'Aimeos\\Aimeos\\Scheduler\\Provider\\Email6'
-);
+];
 
 
 /**
@@ -349,7 +349,7 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_mer
  */
 
 if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] = array();
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] = [];
 }
 
 if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] ) ) {
@@ -357,11 +357,11 @@ if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][
 }
 
 if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] = array('defaultLifetime' => 0 );
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] = ['defaultLifetime' => 0];
 }
 
 if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = array('pages' );
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = ['pages'];
 }
 
 

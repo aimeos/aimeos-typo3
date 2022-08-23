@@ -42,7 +42,7 @@ class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProvid
             $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         }
 
-        return array();
+        return [];
     }
 
 

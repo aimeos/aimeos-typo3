@@ -42,7 +42,7 @@ class Typo6 extends AbstractProvider implements \TYPO3\CMS\Scheduler\AdditionalF
             $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         }
 
-        return array();
+        return [];
     }
 
 

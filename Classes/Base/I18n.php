@@ -17,7 +17,7 @@ namespace Aimeos\Aimeos\Base;
  */
 class I18n
 {
-    private static $i18n = array();
+    private static $i18n = [];
 
 
     /**
@@ -30,7 +30,7 @@ class I18n
      */
     public static function get(array $i18nPaths, array $languageIds, array $local = []) : array
     {
-        $i18nList = array();
+        $i18nList = [];
 
         foreach ($languageIds as $langid) {
             if (in_array($langid, ['', 'default'])) { continue; }
@@ -65,12 +65,12 @@ class I18n
      */
     protected static function parseTranslations(array $entries) : array
     {
-        $translations = array();
+        $translations = [];
 
         foreach ($entries as $entry) {
             if (isset($entry['domain']) && isset($entry['string']) && isset($entry['trans'])) {
                 $string = str_replace(['\\n', '\\'], ["\n", ''], $entry['string']);
-                $trans = array();
+                $trans = [];
 
                 foreach ((array) $entry['trans'] as $str) {
                     $trans[] = str_replace(['\\n', '\\'], ["\n", ''], $str);

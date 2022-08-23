@@ -40,7 +40,7 @@ class Config
                 }
             }
 
-            $conf = new \Aimeos\Base\Config\PHPArray(array(), $paths);
+            $conf = new \Aimeos\Base\Config\PHPArray([], $paths);
 
             if ((bool) \Aimeos\Aimeos\Base::getExtConfig('useAPC', false) === true) {
                 $conf = new \Aimeos\Base\Config\Decorator\APC($conf, \Aimeos\Aimeos\Base::getExtConfig('apcPrefix', 't3:'));
