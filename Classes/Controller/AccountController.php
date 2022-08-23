@@ -26,8 +26,8 @@ class AccountController extends AbstractController
      */
     public function basketAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/basket' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/basket');
+        return $this->getClientOutput($client);
     }
 
 
@@ -39,17 +39,17 @@ class AccountController extends AbstractController
         $context = $this->context();
         $view = $context->view();
 
-        $client = \Aimeos\Client\Html::create( $context, 'account/download' );
-        $client->setView( $view )->init();
+        $client = \Aimeos\Client\Html::create($context, 'account/download');
+        $client->setView($view)->init();
 
-        if (!isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset($this->responseFactory)) // TYPO3 10
         {
             $response = $view->response();
 
-            $this->response->setStatus( $response->getStatusCode() );
+            $this->response->setStatus($response->getStatusCode());
 
-            foreach ( $response->getHeaders() as $key => $value ) {
-                $this->response->setHeader( $key, implode( ', ', $value ) );
+            foreach ($response->getHeaders() as $key => $value) {
+                $this->response->setHeader($key, implode(', ', $value));
             }
 
             return (string) $response->getBody();
@@ -64,8 +64,8 @@ class AccountController extends AbstractController
      */
     public function historyAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/history' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/history');
+        return $this->getClientOutput($client);
     }
 
 
@@ -74,8 +74,8 @@ class AccountController extends AbstractController
      */
     public function favoriteAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/favorite' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/favorite');
+        return $this->getClientOutput($client);
     }
 
 
@@ -84,8 +84,8 @@ class AccountController extends AbstractController
      */
     public function profileAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/profile' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/profile');
+        return $this->getClientOutput($client);
     }
 
 
@@ -94,8 +94,8 @@ class AccountController extends AbstractController
      */
     public function reviewAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/review' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/review');
+        return $this->getClientOutput($client);
     }
 
 
@@ -104,8 +104,8 @@ class AccountController extends AbstractController
      */
     public function subscriptionAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/subscription' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/subscription');
+        return $this->getClientOutput($client);
     }
 
 
@@ -114,7 +114,7 @@ class AccountController extends AbstractController
      */
     public function watchAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'account/watch' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'account/watch');
+        return $this->getClientOutput($client);
     }
 }

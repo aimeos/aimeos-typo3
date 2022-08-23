@@ -26,17 +26,17 @@ class AdminController extends AbstractController
     {
         $site = 'default';
 
-        if (isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' )
+        if (isset($GLOBALS['BE_USER']->user['siteid']) && $GLOBALS['BE_USER']->user['siteid'] != '')
         {
-            $siteManager = \Aimeos\MShop::create( $this->contextBackend(), 'locale/site' );
-            $siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
-            $site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
+            $siteManager = \Aimeos\MShop::create($this->contextBackend(), 'locale/site');
+            $siteId = current(array_reverse(explode('.', trim($GLOBALS['BE_USER']->user['siteid'], '.'))));
+            $site = ($siteId ? $siteManager->get($siteId)->getCode() : 'default');
         }
 
-        if (!class_exists( '\TYPO3\CMS\Extbase\Http\ForwardResponse' ) ) {
-            return $this->forward( 'search', 'Jqadm', null, ['site' => $site] );
+        if (!class_exists('\TYPO3\CMS\Extbase\Http\ForwardResponse')) {
+            return $this->forward('search', 'Jqadm', null, ['site' => $site]);
         }
 
-        return ( new ForwardResponse( 'search' ) )->withControllerName( 'Jqadm' )->withArguments( ['site' => $site] );
+        return (new ForwardResponse('search'))->withControllerName('Jqadm')->withArguments(['site' => $site]);
     }
 }

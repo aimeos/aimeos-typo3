@@ -43,53 +43,53 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     {
         $conf = [];
 
-        if (!isset( $conf['client']['html']['catalog']['detail']['url']['config']['absoluteUri'] ) ) {
+        if (!isset($conf['client']['html']['catalog']['detail']['url']['config']['absoluteUri'])) {
             $conf['client']['html']['catalog']['detail']['url']['config']['absoluteUri'] = 1;
         }
 
-        if (!isset( $conf['client']['html']['account']['download']['url']['config']['absoluteUri'] ) ) {
+        if (!isset($conf['client']['html']['account']['download']['url']['config']['absoluteUri'])) {
             $conf['client']['html']['account']['download']['url']['config']['absoluteUri'] = 1;
         }
 
-        if ($this->{$this->fieldSenderFrom} != '' ) {
+        if ($this->{$this->fieldSenderFrom} != '') {
             $conf['resource']['email']['from-name'] = $this->{$this->fieldSenderFrom};
         }
 
-        if ($this->{$this->fieldSenderEmail} != '' ) {
+        if ($this->{$this->fieldSenderEmail} != '') {
             $conf['resource']['email']['from-email'] = $this->{$this->fieldSenderEmail};
         }
 
-        if ($this->{$this->fieldReplyEmail} != '' ) {
+        if ($this->{$this->fieldReplyEmail} != '') {
             $conf['resource']['email']['reply-email'] = $this->{$this->fieldReplyEmail};
         }
 
-        if ($this->{$this->fieldPageDetail} != '' ) {
+        if ($this->{$this->fieldPageDetail} != '') {
             $conf['client']['html']['catalog']['detail']['url']['target'] = $this->{$this->fieldPageDetail};
         }
 
-        if ($this->{$this->fieldPageDownload} != '' ) {
+        if ($this->{$this->fieldPageDownload} != '') {
             $conf['client']['html']['account']['download']['url']['target'] = $this->{$this->fieldPageDownload};
         }
 
-        if ($this->{$this->fieldPageLogin} != '' ) {
+        if ($this->{$this->fieldPageLogin} != '') {
             $conf['client']['html']['account']['index']['url']['target'] = $this->{$this->fieldPageLogin};
         }
 
-        if ($this->{$this->fieldTemplateBaseurl} != '' )
+        if ($this->{$this->fieldTemplateBaseurl} != '')
         {
             $themeDir = $this->{$this->fieldTemplateBaseurl};
 
-            if ($themeDir[0] !== '/' ) {
-                $themeDir = realpath( \TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/' . $themeDir );
+            if ($themeDir[0] !== '/') {
+                $themeDir = realpath(\TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/' . $themeDir);
             }
 
             $conf['resource']['fs-theme']['basedir'] = $themeDir;
         }
 
-        $tsconf = Base::parseTS( $this->{$this->fieldTSconfig} );
+        $tsconf = Base::parseTS($this->{$this->fieldTSconfig});
         $jobs = (array) $this->{$this->fieldController};
 
-        Scheduler\Base::execute( $tsconf, $conf, $jobs, $this->{$this->fieldSite}, $this->{$this->fieldPageDetail} );
+        Scheduler\Base::execute($tsconf, $conf, $jobs, $this->{$this->fieldSite}, $this->{$this->fieldPageDetail});
 
         return true;
     }

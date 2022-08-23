@@ -34,12 +34,12 @@ class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProvid
      *            ['cshKey']        => The CSH key for the field
      *            ['cshLabel']    => The code of the CSH label
      */
-    public function getAdditionalFields( array &$taskInfo, $task, \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController $parentObject )
+    public function getAdditionalFields(array &$taskInfo, $task, \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController $parentObject)
     {
         try {
-            return $this->getFields( $taskInfo, $task, $parentObject );
-        } catch( \Exception $e ) {
-            $this->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
+            return $this->getFields($taskInfo, $task, $parentObject);
+        } catch(\Exception $e) {
+            $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         }
 
         return array();
@@ -54,9 +54,9 @@ class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProvid
      * @param array $submittedData Array containing the data submitted by the user
      * @param tx_scheduler_Task    $task Reference to the current task object
      */
-    public function saveAdditionalFields( array $submittedData, \TYPO3\CMS\Scheduler\Task\AbstractTask $task )
+    public function saveAdditionalFields(array $submittedData, \TYPO3\CMS\Scheduler\Task\AbstractTask $task)
     {
-        $this->saveFields( $submittedData, $task );
+        $this->saveFields($submittedData, $task);
     }
 
 
@@ -69,12 +69,12 @@ class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProvid
      * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
      * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
      */
-    public function validateAdditionalFields( array &$submittedData, \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController $parentObject )
+    public function validateAdditionalFields(array &$submittedData, \TYPO3\CMS\Scheduler\Controller\SchedulerModuleController $parentObject)
     {
         try {
-            return $this->validateFields( $submittedData, $parentObject );
-        } catch( \Exception $e ) {
-            $this->addMessage( $e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR );
+            return $this->validateFields($submittedData, $parentObject);
+        } catch(\Exception $e) {
+            $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         }
 
         return false;

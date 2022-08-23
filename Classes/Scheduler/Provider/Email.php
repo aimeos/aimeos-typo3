@@ -48,20 +48,20 @@ abstract class Email extends AbstractProvider
      *            ['cshKey']        => The CSH key for the field
      *            ['cshLabel']    => The code of the CSH label
      */
-    protected function getFields( array &$taskInfo, $task, $parentObject )
+    protected function getFields(array &$taskInfo, $task, $parentObject)
     {
         $additionalFields = array();
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldSenderFrom] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldSenderFrom]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom};
         }
 
-        $taskInfo[$this->fieldSenderFrom] = htmlspecialchars( $taskInfo[$this->fieldSenderFrom], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldSenderFrom] = htmlspecialchars($taskInfo[$this->fieldSenderFrom], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldSenderFrom, $taskInfo[$this->fieldSenderFrom] );
+        $fieldCode = sprintf($fieldStr, $this->fieldSenderFrom, $taskInfo[$this->fieldSenderFrom]);
 
         $additionalFields[$this->fieldSenderFrom] = array(
             'code'     => $fieldCode,
@@ -72,14 +72,14 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldSenderEmail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldSenderEmail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail};
         }
 
-        $taskInfo[$this->fieldSenderEmail] = htmlspecialchars( $taskInfo[$this->fieldSenderEmail], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldSenderEmail] = htmlspecialchars($taskInfo[$this->fieldSenderEmail], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldSenderEmail, $taskInfo[$this->fieldSenderEmail] );
+        $fieldCode = sprintf($fieldStr, $this->fieldSenderEmail, $taskInfo[$this->fieldSenderEmail]);
 
         $additionalFields[$this->fieldSenderEmail] = array(
             'code'     => $fieldCode,
@@ -90,14 +90,14 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldReplyEmail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldReplyEmail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail};
         }
 
-        $taskInfo[$this->fieldReplyEmail] = htmlspecialchars( $taskInfo[$this->fieldReplyEmail], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldReplyEmail] = htmlspecialchars($taskInfo[$this->fieldReplyEmail], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldReplyEmail, $taskInfo[$this->fieldReplyEmail] );
+        $fieldCode = sprintf($fieldStr, $this->fieldReplyEmail, $taskInfo[$this->fieldReplyEmail]);
 
         $additionalFields[$this->fieldReplyEmail] = array(
             'code'     => $fieldCode,
@@ -108,14 +108,14 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldPageCatalog] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldPageCatalog]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog};
         }
 
-        $taskInfo[$this->fieldPageCatalog] = htmlspecialchars( $taskInfo[$this->fieldPageCatalog], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldPageCatalog] = htmlspecialchars($taskInfo[$this->fieldPageCatalog], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldPageCatalog, $taskInfo[$this->fieldPageCatalog] );
+        $fieldCode = sprintf($fieldStr, $this->fieldPageCatalog, $taskInfo[$this->fieldPageCatalog]);
 
         $additionalFields[$this->fieldPageCatalog] = array(
             'code'     => $fieldCode,
@@ -126,14 +126,14 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldPageDetail] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldPageDetail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail};
         }
 
-        $taskInfo[$this->fieldPageDetail] = htmlspecialchars( $taskInfo[$this->fieldPageDetail], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldPageDetail] = htmlspecialchars($taskInfo[$this->fieldPageDetail], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldPageDetail, $taskInfo[$this->fieldPageDetail] );
+        $fieldCode = sprintf($fieldStr, $this->fieldPageDetail, $taskInfo[$this->fieldPageDetail]);
 
         $additionalFields[$this->fieldPageDetail] = array(
             'code'     => $fieldCode,
@@ -144,14 +144,14 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldPageDownload] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldPageDownload]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload};
         }
 
-        $taskInfo[$this->fieldPageDownload] = htmlspecialchars( $taskInfo[$this->fieldPageDownload], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldPageDownload] = htmlspecialchars($taskInfo[$this->fieldPageDownload], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldPageDownload, $taskInfo[$this->fieldPageDownload] );
+        $fieldCode = sprintf($fieldStr, $this->fieldPageDownload, $taskInfo[$this->fieldPageDownload]);
 
         $additionalFields[$this->fieldPageDownload] = array(
             'code'     => $fieldCode,
@@ -162,14 +162,14 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldPageLogin] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldPageLogin]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin};
         }
 
-        $taskInfo[$this->fieldPageLogin] = htmlspecialchars( $taskInfo[$this->fieldPageLogin], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldPageLogin] = htmlspecialchars($taskInfo[$this->fieldPageLogin], ENT_QUOTES, 'UTF-8');
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldPageLogin, $taskInfo[$this->fieldPageLogin] );
+        $fieldCode = sprintf($fieldStr, $this->fieldPageLogin, $taskInfo[$this->fieldPageLogin]);
 
         $additionalFields[$this->fieldPageLogin] = array(
             'code'     => $fieldCode,
@@ -180,21 +180,21 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty( $taskInfo[$this->fieldTemplateBaseurl] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldTemplateBaseurl]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
             $taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl};
         }
 
-        $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars($taskInfo[$this->fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8');
 
-        if ($taskInfo[$this->fieldTemplateBaseurl] == '' ) {
+        if ($taskInfo[$this->fieldTemplateBaseurl] == '') {
             $taskInfo[$this->fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
         }
 
         $path = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
-        $path = ( $taskInfo[$this->fieldTemplateBaseurl] !== '' ? $taskInfo[$this->fieldTemplateBaseurl] : $path );
+        $path = ($taskInfo[$this->fieldTemplateBaseurl] !== '' ? $taskInfo[$this->fieldTemplateBaseurl] : $path);
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf( $fieldStr, $this->fieldTemplateBaseurl, $path );
+        $fieldCode = sprintf($fieldStr, $this->fieldTemplateBaseurl, $path);
 
         $additionalFields[$this->fieldTemplateBaseurl] = array(
             'code'     => $fieldCode,
@@ -204,7 +204,7 @@ abstract class Email extends AbstractProvider
         );
 
 
-        $additionalFields += parent::getFields( $taskInfo, $task, $parentObject );
+        $additionalFields += parent::getFields($taskInfo, $task, $parentObject);
 
         return $additionalFields;
     }
@@ -218,9 +218,9 @@ abstract class Email extends AbstractProvider
      * @param array $submittedData Array containing the data submitted by the user
      * @param object $task Reference to the current task object
      */
-    protected function saveFields( array $submittedData, $task )
+    protected function saveFields(array $submittedData, $task)
     {
-        parent::saveFields( $submittedData, $task );
+        parent::saveFields($submittedData, $task);
 
         $task->{$this->fieldSenderFrom} = $submittedData[$this->fieldSenderFrom];
         $task->{$this->fieldSenderEmail} = $submittedData[$this->fieldSenderEmail];
@@ -241,29 +241,29 @@ abstract class Email extends AbstractProvider
      * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
      * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
      */
-    protected function validateFields( array &$submittedData, $parentObject )
+    protected function validateFields(array &$submittedData, $parentObject)
     {
-        if (preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail] ) !== 1 ) {
-            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.from-email.invalid' ) );
+        if (preg_match('/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail]) !== 1) {
+            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.from-email.invalid'));
         }
 
-        if ($submittedData[$this->fieldReplyEmail] != '' && preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1 ) {
-            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid' ) );
+        if ($submittedData[$this->fieldReplyEmail] != '' && preg_match('/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail]) !== 1) {
+            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid'));
         }
 
-        if (preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ) !== 1 ) {
-            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-detail.invalid' ) );
+        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageDetail]) !== 1) {
+            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-detail.invalid'));
         }
 
-        if (preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageLogin] ) !== 1 ) {
-            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-login.invalid' ) );
+        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageLogin]) !== 1) {
+            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-login.invalid'));
         }
 
-        if (preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ) !== 1 ) {
-            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid' ) );
+        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageDownload]) !== 1) {
+            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid'));
         }
 
-        parent::validateFields( $submittedData, $parentObject );
+        parent::validateFields($submittedData, $parentObject);
 
         return true;
     }

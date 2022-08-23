@@ -36,16 +36,16 @@ abstract class AbstractController
      * @return bool True if the user is allowed to access the site
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientUserPermissionsException If user doesn't have access
      */
-    protected function checkSite( array $sitePath, $userSiteId ) : bool
+    protected function checkSite(array $sitePath, $userSiteId) : bool
     {
-        foreach ( array_reverse( $sitePath ) as $siteid )
+        foreach (array_reverse($sitePath) as $siteid)
         {
-            if ((string) $userSiteId === (string) $siteid ) {
+            if ((string) $userSiteId === (string) $siteid) {
                 return true;
             }
         }
 
-        throw new \TYPO3\CMS\Core\Resource\Exception\InsufficientUserPermissionsException( 'Access not allowed' );
+        throw new \TYPO3\CMS\Core\Resource\Exception\InsufficientUserPermissionsException('Access not allowed');
     }
 
 
@@ -56,35 +56,35 @@ abstract class AbstractController
      * @param bool $withView True to add view to context object, false for no view
      * @return \Aimeos\MShop\ContextIface Context item
      */
-    protected function context( string $templatePath = 'client/html/templates',
-        bool $withView = true ) : \Aimeos\MShop\ContextIface
+    protected function context(string $templatePath = 'client/html/templates',
+        bool $withView = true) : \Aimeos\MShop\ContextIface
     {
-        $config = Base::config( (array) $this->settings );
+        $config = Base::config((array) $this->settings);
 
-        if (!isset( self::$context ) )
+        if (!isset(self::$context))
         {
-            $context = Base::context( $config );
-            $locale = Base::locale( $context, $this->request );
-            $context->setI18n( Base::i18n( [$locale->getLanguageId()], $config->get( 'i18n', [] ) ) );
-            $context->setLocale( $locale );
+            $context = Base::context($config);
+            $locale = Base::locale($context, $this->request);
+            $context->setI18n(Base::i18n([$locale->getLanguageId()], $config->get('i18n', [])));
+            $context->setLocale($locale);
 
             self::$context = $context;
         }
 
         // Use plugin specific configuration
-        self::$context->setConfig( $config );
+        self::$context->setConfig($config);
 
-        foreach ( self::$context->locale()->getSiteItem()->getConfig() as $key => $value ) {
-            $config->set( $key, $value );
+        foreach (self::$context->locale()->getSiteItem()->getConfig() as $key => $value) {
+            $config->set($key, $value);
         }
 
-        if ($withView === true )
+        if ($withView === true)
         {
             $langid = self::$context->locale()->getLanguageId();
-            $paths = self::$aimeos->getTemplatePaths( $templatePath );
-            $view = Base::view( self::$context, $this->uriBuilder, $paths, $this->request, $langid );
+            $paths = self::$aimeos->getTemplatePaths($templatePath);
+            $view = Base::view(self::$context, $this->uriBuilder, $paths, $this->request, $langid);
 
-            self::$context->setView( $view );
+            self::$context->setView($view);
         }
 
         return self::$context;
@@ -98,50 +98,50 @@ abstract class AbstractController
      * @param bool $withView True to add view to context object, false for no view
      * @return \Aimeos\MShop\ContextIface Context item
      */
-    protected function contextBackend( string $templatePath = 'admin/jqadm/templates',
-        bool $withView = true ) : \Aimeos\MShop\ContextIface
+    protected function contextBackend(string $templatePath = 'admin/jqadm/templates',
+        bool $withView = true) : \Aimeos\MShop\ContextIface
     {
-        if (!isset( $this->contextBE ) )
+        if (!isset($this->contextBE))
         {
             $lang = 'en';
             $site = 'default';
 
-            $config = Base::config( (array) $this->settings );
-            $context = Base::context( $config );
+            $config = Base::config((array) $this->settings);
+            $context = Base::context($config);
 
-            if ($this->request->hasArgument( 'locale' ) && ( $value = $this->request->getArgument( 'locale' ) ) != '' ) {
+            if ($this->request->hasArgument('locale') && ($value = $this->request->getArgument('locale')) != '') {
                 $lang = $value;
-            } elseif (!in_array( $GLOBALS['BE_USER']->uc['lang'] ?? '', ['', 'default'] ) ) {
+            } elseif (!in_array($GLOBALS['BE_USER']->uc['lang'] ?? '', ['', 'default'])) {
                 $lang = $GLOBALS['BE_USER']->uc['lang'];
             }
 
-            if ($this->request->hasArgument( 'site' ) && ( $value = $this->request->getArgument( 'site' ) ) != '' ) {
+            if ($this->request->hasArgument('site') && ($value = $this->request->getArgument('site')) != '') {
                 $site = $value;
-            } elseif (isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' ) {
-                $siteManager = \Aimeos\MShop::create( $context, 'locale/site' );
-                $siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
-                $site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
+            } elseif (isset($GLOBALS['BE_USER']->user['siteid']) && $GLOBALS['BE_USER']->user['siteid'] != '') {
+                $siteManager = \Aimeos\MShop::create($context, 'locale/site');
+                $siteId = current(array_reverse(explode('.', trim($GLOBALS['BE_USER']->user['siteid'], '.'))));
+                $site = ($siteId ? $siteManager->get($siteId)->getCode() : 'default');
             }
 
-            $locale = Base::getLocaleBackend( $context, $site );
-            $context->setLocale( $locale );
+            $locale = Base::getLocaleBackend($context, $site);
+            $context->setLocale($locale);
 
-            if (isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' ) {
-                $this->checkSite( $locale->getSitePath(), $GLOBALS['BE_USER']->user['siteid'] );
+            if (isset($GLOBALS['BE_USER']->user['siteid']) && $GLOBALS['BE_USER']->user['siteid'] != '') {
+                $this->checkSite($locale->getSitePath(), $GLOBALS['BE_USER']->user['siteid']);
             }
 
-            $i18n = Base::i18n( [$lang, 'en'], $config->get( 'i18n', [] ) );
-            $context->setI18n( $i18n );
+            $i18n = Base::i18n([$lang, 'en'], $config->get('i18n', []));
+            $context->setI18n($i18n);
 
-            foreach ( $locale->getSiteItem()->getConfig() as $key => $value ) {
-                $config->set( $key, $value );
+            foreach ($locale->getSiteItem()->getConfig() as $key => $value) {
+                $config->set($key, $value);
             }
 
-            if ($withView )
+            if ($withView)
             {
-                $paths = self::$aimeos->getTemplatePaths( $templatePath );
-                $view = Base::view( $context, $this->uriBuilder, $paths, $this->request, $lang );
-                $context->setView( $view );
+                $paths = self::$aimeos->getTemplatePaths($templatePath);
+                $view = Base::view($context, $this->uriBuilder, $paths, $this->request, $lang);
+                $context->setView($view);
             }
 
             $this->contextBE = $context;
@@ -157,31 +157,31 @@ abstract class AbstractController
      * @param \Aimeos\Client\Html\Iface $client Html client object (no type hint to prevent reflection)
      * @return string HTML code for inserting into the HTML body
      */
-    protected function getClientOutput( \Aimeos\Client\Html\Iface $client )
+    protected function getClientOutput(\Aimeos\Client\Html\Iface $client)
     {
         $uid = $this->ceUid;
         if ($GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface
-            && empty( $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' ) ) === false
+            && empty($GLOBALS['TYPO3_REQUEST']->getAttribute('routing')) === false
         ) {
-            $uid .= '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute( 'routing' )->getPageType();
+            $uid .= '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute('routing')->getPageType();
         }
 
-        $client->setView( $this->context()->view() )->init();
-        $header = (string) $client->header( $uid );
-        $html = (string) $client->body( $uid );
+        $client->setView($this->context()->view())->init();
+        $header = (string) $client->header($uid);
+        $html = (string) $client->body($uid);
 
-        if (!isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset($this->responseFactory)) // TYPO3 10
         {
-            $this->response->addAdditionalHeaderData( $header );
+            $this->response->addAdditionalHeaderData($header);
             return $html;
         }
 
-        $renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Page\PageRenderer::class );
-        $renderer->addHeaderData( $header );
+        $renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $renderer->addHeaderData($header);
 
         return $this->responseFactory->createResponse()
-            ->withAddedHeader( 'Content-Type', 'text/html; charset=utf-8' )
-            ->withBody( $this->streamFactory->createStream( $html ) );
+            ->withAddedHeader('Content-Type', 'text/html; charset=utf-8')
+            ->withBody($this->streamFactory->createStream($html));
     }
 
 
@@ -190,7 +190,7 @@ abstract class AbstractController
      */
     protected function initializeAction()
     {
-        $this->uriBuilder->setArgumentPrefix( 'ai' );
+        $this->uriBuilder->setArgumentPrefix('ai');
 
         $ce = $this->configurationManager->getContentObject();
         $this->ceUid = $ce->data['uid'] ?? null;

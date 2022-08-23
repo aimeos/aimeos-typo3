@@ -1,24 +1,24 @@
 <?php
 
-if (!defined( 'TYPO3_MODE' ) ) {
-    die ( 'Access denied.' );
+if (!defined('TYPO3_MODE')) {
+    die ('Access denied.');
 }
 
 
-$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
+$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('aimeos');
 
-if (file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
+if (file_exists($aimeosExtPath . '/Resources/Libraries/autoload.php') === true) {
     require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 }
 
 
-if (TYPO3_MODE === 'BE' )
+if (TYPO3_MODE === 'BE')
 {
     /**
      * Register Aimeos icon
      */
 
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Imaging\IconRegistry::class );
+    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
     $iconRegistry->registerIcon(
         'aimeos-shop',
         \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
@@ -36,13 +36,13 @@ if (TYPO3_MODE === 'BE' )
         'labels' => 'LLL:EXT:aimeos/Resources/Private/Language/admin.xlf',
     );
 
-    if ((bool) \Aimeos\Aimeos\Base::getExtConfig( 'showPageTree', false ) == false )
+    if ((bool) \Aimeos\Aimeos\Base::getExtConfig('showPageTree', false) == false)
     {
         $_aimeosConfiguration['navigationComponentId'] = null;
         $_aimeosConfiguration['inheritNavigationComponentFromMainModule'] = false;
     }
 
-    $name = defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ? 'Aimeos.' : '';
+    $name = defined('TYPO3_version') && version_compare(constant('TYPO3_version'), '11.0.0', '<') ? 'Aimeos.' : '';
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         $name . 'aimeos',
@@ -58,7 +58,7 @@ if (TYPO3_MODE === 'BE' )
     );
 
 
-    $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher' );
+    $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
 
     /**
      * Execute the setup tasks automatically to create the required tables

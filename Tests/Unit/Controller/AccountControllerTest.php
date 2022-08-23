@@ -14,31 +14,31 @@ class AccountControllerTest
     {
         \Aimeos\Aimeos\Base::aimeos(); // initialize autoloader
 
-        $this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\AccountController', array( 'dummy' ) );
+        $this->object = $this->getAccessibleMock('Aimeos\\Aimeos\\Controller\\AccountController', array('dummy'));
 
         $objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 
-        $uriBuilder = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder' );
-        $response = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response' );
-        $request = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' );
+        $uriBuilder = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder');
+        $response = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
+        $request = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request');
 
-        $uriBuilder->setRequest( $request );
+        $uriBuilder->setRequest($request);
 
-        if (method_exists( $response, 'setRequest' ) ) {
-            $response->setRequest( $request );
+        if (method_exists($response, 'setRequest')) {
+            $response->setRequest($request);
         }
 
-        $this->object->_set( 'uriBuilder', $uriBuilder );
-        $this->object->_set( 'response', $response );
-        $this->object->_set( 'request', $request );
+        $this->object->_set('uriBuilder', $uriBuilder);
+        $this->object->_set('response', $response);
+        $this->object->_set('request', $request);
 
-        $this->object->_call( 'initializeAction' );
+        $this->object->_call('initializeAction');
     }
 
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -48,13 +48,13 @@ class AccountControllerTest
     public function downloadAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Account\\Download\\Standard';
-        $client = $this->getMock( $name, array( 'process' ), array(), '', false );
+        $client = $this->getMock($name, array('process'), array(), '', false);
 
-        \Aimeos\Client\Html\Account\Download\Factory::injectClient( $name, $client );
+        \Aimeos\Client\Html\Account\Download\Factory::injectClient($name, $client);
         $output = $this->object->downloadAction();
-        \Aimeos\Client\Html\Account\Download\Factory::injectClient( $name, null );
+        \Aimeos\Client\Html\Account\Download\Factory::injectClient($name, null);
 
-        $this->assertEquals( '', $output );
+        $this->assertEquals('', $output);
     }
 
 
@@ -64,15 +64,15 @@ class AccountControllerTest
     public function historyAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Account\\History\\Standard';
-        $client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
 
-        $client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
-        $client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
+        $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
+        $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
 
-        \Aimeos\Client\Html\Account\History\Factory::injectClient( $name, $client );
+        \Aimeos\Client\Html\Account\History\Factory::injectClient($name, $client);
         $output = $this->object->historyAction();
-        \Aimeos\Client\Html\Account\History\Factory::injectClient( $name, null );
+        \Aimeos\Client\Html\Account\History\Factory::injectClient($name, null);
 
-        $this->assertEquals( 'body', $output );
+        $this->assertEquals('body', $output);
     }
 }

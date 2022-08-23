@@ -34,11 +34,11 @@ class JobsCommand extends Command
      */
     protected function configure()
     {
-        $this->setName( self::$defaultName );
-        $this->setDescription( 'Executes the job controllers' );
-        $this->addArgument( 'jobs', InputArgument::REQUIRED, 'One or more job controller names like "admin/job customer/email/watch"' );
-        $this->addArgument( 'site', InputArgument::OPTIONAL, 'Site codes to execute the jobs for like "default unittest" (none for all)' );
-        $this->addOption( 'pid', null, InputOption::VALUE_REQUIRED, 'Page ID of the catalog detail page for jobs generating URLs' );
+        $this->setName(self::$defaultName);
+        $this->setDescription('Executes the job controllers');
+        $this->addArgument('jobs', InputArgument::REQUIRED, 'One or more job controller names like "admin/job customer/email/watch"');
+        $this->addArgument('site', InputArgument::OPTIONAL, 'Site codes to execute the jobs for like "default unittest" (none for all)');
+        $this->addOption('pid', null, InputOption::VALUE_REQUIRED, 'Page ID of the catalog detail page for jobs generating URLs');
     }
 
 
@@ -48,41 +48,41 @@ class JobsCommand extends Command
      * @param InputInterface $input Input object
      * @param OutputInterface $output Output object
      */
-    protected function execute( InputInterface $input, OutputInterface $output )
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $context = $this->context( $input->getOption( 'pid' ) );
+        $context = $this->context($input->getOption('pid'));
         $process = $context->process();
 
         $aimeos = \Aimeos\Aimeos\Base::aimeos();
-        $jobs = explode( ' ', $input->getArgument( 'jobs' ) );
-        $localeManager = \Aimeos\MShop::create( $context, 'locale' );
+        $jobs = explode(' ', $input->getArgument('jobs'));
+        $localeManager = \Aimeos\MShop::create($context, 'locale');
 
-        foreach ( $this->getSiteItems( $context, $input ) as $siteItem )
+        foreach ($this->getSiteItems($context, $input) as $siteItem)
         {
-            $localeItem = $localeManager->bootstrap( $siteItem->getCode(), '', '', false );
-            $localeItem->setLanguageId( null );
-            $localeItem->setCurrencyId( null );
-            $context->setLocale( $localeItem );
+            $localeItem = $localeManager->bootstrap($siteItem->getCode(), '', '', false);
+            $localeItem->setLanguageId(null);
+            $localeItem->setCurrencyId(null);
+            $context->setLocale($localeItem);
 
             $config = $context->config();
-            foreach ( $localeItem->getSiteItem()->getConfig() as $key => $value ) {
-                $config->set( $key, $value );
+            foreach ($localeItem->getSiteItem()->getConfig() as $key => $value) {
+                $config->set($key, $value);
             }
 
-            $output->writeln( sprintf( 'Executing the Aimeos jobs for "<info>%s</info>"', $siteItem->getCode() ) );
+            $output->writeln(sprintf('Executing the Aimeos jobs for "<info>%s</info>"', $siteItem->getCode()));
 
             // Reset before child processes are spawned to avoid lost DB connections afterwards (TYPO3 9.4 and above)
-            if (method_exists( '\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections' ) ) {
-                GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Database\ConnectionPool' )->resetConnections();
+            if (method_exists('\TYPO3\CMS\Core\Database\ConnectionPool', 'resetConnections')) {
+                GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\ConnectionPool')->resetConnections();
             }
 
-            foreach ( $jobs as $jobname )
+            foreach ($jobs as $jobname)
             {
-                $fcn = function( $context, $aimeos, $jobname ) {
-                    \Aimeos\Controller\Jobs::create( $context, $aimeos, $jobname )->run();
+                $fcn = function($context, $aimeos, $jobname) {
+                    \Aimeos\Controller\Jobs::create($context, $aimeos, $jobname)->run();
                 };
 
-                $process->start( $fcn, [$context, $aimeos, $jobname], true );
+                $process->start($fcn, [$context, $aimeos, $jobname], true);
             }
         }
 
@@ -98,27 +98,27 @@ class JobsCommand extends Command
      * @param string|null $pid Page ID if available
      * @return \Aimeos\MShop\ContextIface Context object containing only the most necessary dependencies
      */
-    protected function context( ?string $pid ) : \Aimeos\MShop\ContextIface
+    protected function context(?string $pid) : \Aimeos\MShop\ContextIface
     {
         $aimeos = \Aimeos\Aimeos\Base::aimeos();
-        $tmplPaths = $aimeos->getTemplatePaths( 'controller/jobs/templates' );
+        $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates');
 
         $config = \Aimeos\Aimeos\Base::config();
-        $context = \Aimeos\Aimeos\Base::context( $config );
+        $context = \Aimeos\Aimeos\Base::context($config);
 
-        $langManager = \Aimeos\MShop::create( $context, 'locale/language' );
-        $langids = $langManager->search( $langManager->filter( true ) )->keys()->toArray();
+        $langManager = \Aimeos\MShop::create($context, 'locale/language');
+        $langids = $langManager->search($langManager->filter(true))->keys()->toArray();
 
-        $i18n = \Aimeos\Aimeos\Base::i18n( $langids, $config->get( 'i18n', [] ) );
-        $context->setI18n( $i18n );
+        $i18n = \Aimeos\Aimeos\Base::i18n($langids, $config->get('i18n', []));
+        $context->setI18n($i18n);
 
-        $view = \Aimeos\Aimeos\Base::view( $context, $this->getRouter( $pid ), $tmplPaths );
-        $context->setView( $view );
+        $view = \Aimeos\Aimeos\Base::view($context, $this->getRouter($pid), $tmplPaths);
+        $context->setView($view);
 
-        $context->setSession( new \Aimeos\Base\Session\None() );
-        $context->setCache( new \Aimeos\Base\Cache\None() );
+        $context->setSession(new \Aimeos\Base\Session\None());
+        $context->setCache(new \Aimeos\Base\Cache\None());
 
-        return $context->setEditor( 'aimeos:jobs' );
+        return $context->setEditor('aimeos:jobs');
     }
 
 
@@ -129,16 +129,16 @@ class JobsCommand extends Command
      * @param InputInterface $input Input object
      * @return \Aimeos\Map List of site items implementing \Aimeos\MShop\Locale\Item\Site\Iface
      */
-    protected function getSiteItems( \Aimeos\MShop\ContextIface $context, InputInterface $input ) : \Aimeos\Map
+    protected function getSiteItems(\Aimeos\MShop\ContextIface $context, InputInterface $input) : \Aimeos\Map
     {
-        $manager = \Aimeos\MShop::create( $context, 'locale/site' );
+        $manager = \Aimeos\MShop::create($context, 'locale/site');
         $search = $manager->filter();
 
-        if (( $codes = (string) $input->getArgument( 'site' ) ) !== '' ) {
-            $search->setConditions( $search->compare( '==', 'locale.site.code', explode( ' ', $codes ) ) );
+        if (($codes = (string) $input->getArgument('site')) !== '') {
+            $search->setConditions($search->compare('==', 'locale.site.code', explode(' ', $codes)));
         }
 
-        return $manager->search( $search );
+        return $manager->search($search);
     }
 
 
@@ -149,15 +149,15 @@ class JobsCommand extends Command
      * @return \TYPO3\CMS\Core\Routing\RouterInterface Page router
      * @throws \RuntimeException If no site configuraiton is available
      */
-    protected function getRouter( ?string $pid ) : \TYPO3\CMS\Core\Routing\RouterInterface
+    protected function getRouter(?string $pid) : \TYPO3\CMS\Core\Routing\RouterInterface
     {
-        $siteFinder = GeneralUtility::makeInstance( SiteFinder::class );
-        $site = $pid ? $siteFinder->getSiteByPageId( $pid ) : current( $siteFinder->getAllSites() );
+        $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+        $site = $pid ? $siteFinder->getSiteByPageId($pid) : current($siteFinder->getAllSites());
 
-        if ($site ) {
+        if ($site) {
             return $site->getRouter();
         }
 
-        throw new \RuntimeException( 'No site configuration found' );
+        throw new \RuntimeException('No site configuration found');
     }
 }

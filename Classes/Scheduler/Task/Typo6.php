@@ -38,7 +38,7 @@ class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
         $controllers = (array) $this->{$this->fieldController};
         $tsconfig = $this->{$this->fieldTSconfig};
 
-        Scheduler\Base::execute( Base::parseTS( $tsconfig ), [], $controllers, $sitecodes );
+        Scheduler\Base::execute(Base::parseTS($tsconfig), [], $controllers, $sitecodes);
 
         return true;
     }

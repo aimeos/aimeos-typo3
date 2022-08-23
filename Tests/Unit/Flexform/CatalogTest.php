@@ -18,7 +18,7 @@ class CatalogTest
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -27,8 +27,8 @@ class CatalogTest
      */
     public function getCategories()
     {
-        $result = $this->object->getCategories( array( 'items' => array() ) );
+        $result = $this->object->getCategories(array('items' => array()));
 
-        $this->assertArrayHasKey( 'items', $result );
+        $this->assertArrayHasKey('items', $result);
     }
 }

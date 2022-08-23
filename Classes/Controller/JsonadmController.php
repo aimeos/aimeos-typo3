@@ -27,7 +27,7 @@ class JsonadmController extends AbstractController
     protected function initializeAction()
     {
         parent::initializeAction();
-        $this->uriBuilder->setArgumentPrefix( 'tx_aimeos_web_aimeostxaimeosadmin' );
+        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeostxaimeosadmin');
     }
 
 
@@ -40,20 +40,20 @@ class JsonadmController extends AbstractController
     {
         $resource = null;
 
-        if ($this->request->hasArgument( 'resource' )
-            && ( $value = $this->request->getArgument( 'resource' ) ) != ''
+        if ($this->request->hasArgument('resource')
+            && ($value = $this->request->getArgument('resource')) != ''
         ) {
             $resource = $value;
         }
 
-        switch ($this->request->getMethod() )
+        switch ($this->request->getMethod())
         {
-            case 'DELETE': return $this->deleteAction( $resource );
-            case 'PATCH': return $this->patchAction( $resource );
-            case 'POST': return $this->postAction( $resource );
-            case 'PUT': return $this->putAction( $resource );
-            case 'GET': return $this->getAction( $resource );
-            default: return $this->optionsAction( $resource );
+            case 'DELETE': return $this->deleteAction($resource);
+            case 'PATCH': return $this->patchAction($resource);
+            case 'POST': return $this->postAction($resource);
+            case 'PUT': return $this->putAction($resource);
+            case 'GET': return $this->getAction($resource);
+            default: return $this->optionsAction($resource);
         }
     }
 
@@ -64,10 +64,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function deleteAction( $resource )
+    public function deleteAction($resource)
     {
-        $response = $this->createAdmin( $resource )->delete( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
-        return $this->setPsrResponse( $response );
+        $response = $this->createAdmin($resource)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->setPsrResponse($response);
     }
 
 
@@ -77,10 +77,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function getAction( $resource )
+    public function getAction($resource)
     {
-        $response = $this->createAdmin( $resource )->get( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
-        return $this->setPsrResponse( $response );
+        $response = $this->createAdmin($resource)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->setPsrResponse($response);
     }
 
 
@@ -90,10 +90,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function patchAction( $resource )
+    public function patchAction($resource)
     {
-        $response = $this->createAdmin( $resource )->patch( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
-        return $this->setPsrResponse( $response );
+        $response = $this->createAdmin($resource)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->setPsrResponse($response);
     }
 
 
@@ -103,10 +103,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function postAction( $resource )
+    public function postAction($resource)
     {
-        $response = $this->createAdmin( $resource )->post( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
-        return $this->setPsrResponse( $response );
+        $response = $this->createAdmin($resource)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->setPsrResponse($response);
     }
 
 
@@ -116,10 +116,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function putAction( $resource )
+    public function putAction($resource)
     {
-        $response = $this->createAdmin( $resource )->put( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
-        return $this->setPsrResponse( $response );
+        $response = $this->createAdmin($resource)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->setPsrResponse($response);
     }
 
 
@@ -129,10 +129,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function optionsAction( $resource )
+    public function optionsAction($resource)
     {
-        $response = $this->createAdmin( $resource ?? '' )->options( $this->getPsrRequest(), ( new Psr17Factory )->createResponse() );
-        return $this->setPsrResponse( $response );
+        $response = $this->createAdmin($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->setPsrResponse($response);
     }
 
 
@@ -142,10 +142,10 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return \Aimeos\Admin\JsonAdm\Iface Jsonadm client
      */
-    protected function createAdmin( string $resource ) : \Aimeos\Admin\JsonAdm\Iface
+    protected function createAdmin(string $resource) : \Aimeos\Admin\JsonAdm\Iface
     {
-        $context = $this->contextBackend( 'admin/jsonadm/templates' );
-        return \Aimeos\Admin\JsonAdm::create( $context, Base::aimeos(), $resource );
+        $context = $this->contextBackend('admin/jsonadm/templates');
+        return \Aimeos\Admin\JsonAdm::create($context, Base::aimeos(), $resource);
     }
 
 
@@ -175,15 +175,15 @@ class JsonadmController extends AbstractController
      * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
      * @return string Generated output
      */
-    protected function setPsrResponse( \Psr\Http\Message\ResponseInterface $response )
+    protected function setPsrResponse(\Psr\Http\Message\ResponseInterface $response)
     {
-        if (!isset( $this->responseFactory ) ) // TYPO3 10
+        if (!isset($this->responseFactory)) // TYPO3 10
         {
-            $this->response->setStatus( $response->getStatusCode() );
+            $this->response->setStatus($response->getStatusCode());
 
-            foreach ( $response->getHeaders() as $key => $value ) {
-                foreach ( (array) $value as $val ) {
-                    $this->response->setHeader( $key, $val );
+            foreach ($response->getHeaders() as $key => $value) {
+                foreach ((array) $value as $val) {
+                    $this->response->setHeader($key, $val);
                 }
             }
 

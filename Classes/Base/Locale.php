@@ -29,50 +29,50 @@ class Locale
      * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
      * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
      */
-    public static function get( \Aimeos\MShop\ContextIface $context,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
+    public static function get(\Aimeos\MShop\ContextIface $context,
+        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
     {
-        if (!isset( self::$locale ) )
+        if (!isset(self::$locale))
         {
             $config = $context->config();
 
 
-            $sitecode = $config->get( 'mshop/locale/site', 'default' );
-            $name = $config->get( 'typo3/param/name/site', 'site' );
+            $sitecode = $config->get('mshop/locale/site', 'default');
+            $name = $config->get('typo3/param/name/site', 'site');
 
-            if ($request !== null && $request->hasArgument( $name ) === true ) {
-                $sitecode = $request->getArgument( $name );
-            } elseif (( $value = GeneralUtility::_GP( 'S' ) ) !== null ) {
+            if ($request !== null && $request->hasArgument($name) === true) {
+                $sitecode = $request->getArgument($name);
+            } elseif (($value = GeneralUtility::_GP('S')) !== null) {
                 $sitecode = $value;
             }
 
 
-            $lang = $config->get( 'mshop/locale/language', '' );
-            $name = $config->get( 'typo3/param/name/language', 'locale' );
+            $lang = $config->get('mshop/locale/language', '');
+            $name = $config->get('typo3/param/name/language', 'locale');
 
-            if ($request !== null && $request->hasArgument( $name ) === true ) {
-                $lang = $request->getArgument( $name );
-            } elseif (isset( $GLOBALS['TSFE']->id ) ) { // TYPO3 9+
-                $langid = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Context\Context' )->getAspect( 'language' )->getId();
-                $site = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Site\SiteFinder' )->getSiteByPageId( $GLOBALS['TSFE']->id );
-                $lang = substr( $site->getLanguageById( $langid )->getLocale(), 0, 5 );
+            if ($request !== null && $request->hasArgument($name) === true) {
+                $lang = $request->getArgument($name);
+            } elseif (isset($GLOBALS['TSFE']->id)) { // TYPO3 9+
+                $langid = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context')->getAspect('language')->getId();
+                $site = GeneralUtility::makeInstance('TYPO3\CMS\Core\Site\SiteFinder')->getSiteByPageId($GLOBALS['TSFE']->id);
+                $lang = substr($site->getLanguageById($langid)->getLocale(), 0, 5);
             }
 
 
-            $currency = $config->get( 'mshop/locale/currency', '' );
-            $name = $config->get( 'typo3/param/name/currency', 'currency' );
+            $currency = $config->get('mshop/locale/currency', '');
+            $name = $config->get('typo3/param/name/currency', 'currency');
 
-            if ($request !== null && $request->hasArgument( $name ) === true ) {
-                $currency = $request->getArgument( $name );
-            } elseif (( $value = GeneralUtility::_GP( 'C' ) ) !== null ) {
+            if ($request !== null && $request->hasArgument($name) === true) {
+                $currency = $request->getArgument($name);
+            } elseif (($value = GeneralUtility::_GP('C')) !== null) {
                 $currency = $value;
             }
 
 
-            $localeManager = \Aimeos\MShop::create( $context, 'locale' );
-            self::$locale = $localeManager->bootstrap( $sitecode, $lang, $currency );
+            $localeManager = \Aimeos\MShop::create($context, 'locale');
+            self::$locale = $localeManager->bootstrap($sitecode, $lang, $currency);
 
-            $config->apply( self::$locale->getSiteItem()->getConfig() );
+            $config->apply(self::$locale->getSiteItem()->getConfig());
         }
 
         return self::$locale;
@@ -86,20 +86,20 @@ class Locale
      * @param string $site Unique site code
      * @return \Aimeos\MShop\ContextIface Modified context object
      */
-    public static function getBackend( \Aimeos\MShop\ContextIface $context, string $site ) : \Aimeos\MShop\Locale\Item\Iface
+    public static function getBackend(\Aimeos\MShop\ContextIface $context, string $site) : \Aimeos\MShop\Locale\Item\Iface
     {
-        $localeManager = \Aimeos\MShop::create( $context, 'locale' );
+        $localeManager = \Aimeos\MShop::create($context, 'locale');
 
         try
         {
-            $localeItem = $localeManager->bootstrap( $site, '', '', false, null, true );
-            $context->config()->apply( $localeItem->getSiteItem()->getConfig() );
+            $localeItem = $localeManager->bootstrap($site, '', '', false, null, true);
+            $context->config()->apply($localeItem->getSiteItem()->getConfig());
         }
-        catch( \Aimeos\MShop\Exception $e )
+        catch(\Aimeos\MShop\Exception $e)
         {
             $localeItem = $localeManager->create();
         }
 
-        return $localeItem->setCurrencyId( null )->setLanguageId( null );
+        return $localeItem->setCurrencyId(null)->setLanguageId(null);
     }
 }

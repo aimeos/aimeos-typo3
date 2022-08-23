@@ -19,7 +19,7 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
     private $view;
 
 
-    public function __construct( \TYPO3\CMS\Fluid\View\StandaloneView $view )
+    public function __construct(\TYPO3\CMS\Fluid\View\StandaloneView $view)
     {
         $this->view = $view;
     }
@@ -32,8 +32,8 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
      */
     public function renderWidgetContent() : string
     {
-        return $this->view->setTemplate( 'Widget/LatestOrdersWidget' )
-            ->assign( 'items', $this->getOrderItems() )
+        return $this->view->setTemplate('Widget/LatestOrdersWidget')
+            ->assign('items', $this->getOrderItems())
             ->render();
     }
 
@@ -46,11 +46,11 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
     protected function getOrderItems() : array
     {
         $config = \Aimeos\Aimeos\Base::config();
-        $context = \Aimeos\Aimeos\Base::context( $config );
+        $context = \Aimeos\Aimeos\Base::context($config);
 
-        $manager = \Aimeos\MShop::create( $context, 'order' );
-        $filter = $manager->filter()->sort( '-order.id' )->slice( 0, 20 );
+        $manager = \Aimeos\MShop::create($context, 'order');
+        $filter = $manager->filter()->sort('-order.id')->slice(0, 20);
 
-        return $manager->search( $filter, ['order/base', 'order/base/address'] )->toArray();
+        return $manager->search($filter, ['order/base', 'order/base/address'])->toArray();
     }
 }

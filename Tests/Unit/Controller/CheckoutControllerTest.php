@@ -14,31 +14,31 @@ class CheckoutControllerTest
     {
         \Aimeos\Aimeos\Base::aimeos(); // initialize autoloader
 
-        $this->object = $this->getAccessibleMock( 'Aimeos\\Aimeos\\Controller\\CheckoutController', array( 'dummy' ) );
+        $this->object = $this->getAccessibleMock('Aimeos\\Aimeos\\Controller\\CheckoutController', array('dummy'));
 
         $objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
 
-        $uriBuilder = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder' );
-        $response = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response' );
-        $request = $objManager->get( 'TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request' );
+        $uriBuilder = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder');
+        $response = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
+        $request = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request');
 
-        $uriBuilder->setRequest( $request );
+        $uriBuilder->setRequest($request);
 
-        if (method_exists( $response, 'setRequest' ) ) {
-            $response->setRequest( $request );
+        if (method_exists($response, 'setRequest')) {
+            $response->setRequest($request);
         }
 
-        $this->object->_set( 'uriBuilder', $uriBuilder );
-        $this->object->_set( 'response', $response );
-        $this->object->_set( 'request', $request );
+        $this->object->_set('uriBuilder', $uriBuilder);
+        $this->object->_set('response', $response);
+        $this->object->_set('request', $request);
 
-        $this->object->_call( 'initializeAction' );
+        $this->object->_call('initializeAction');
     }
 
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -48,16 +48,16 @@ class CheckoutControllerTest
     public function indexAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Checkout\\Standard\\Standard';
-        $client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
 
-        $client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
-        $client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
+        $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
+        $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
 
-        \Aimeos\Client\Html\Checkout\Standard\Factory::injectClient( $name, $client );
+        \Aimeos\Client\Html\Checkout\Standard\Factory::injectClient($name, $client);
         $output = $this->object->indexAction();
-        \Aimeos\Client\Html\Checkout\Standard\Factory::injectClient( $name, null );
+        \Aimeos\Client\Html\Checkout\Standard\Factory::injectClient($name, null);
 
-        $this->assertEquals( 'body', $output );
+        $this->assertEquals('body', $output);
     }
 
 
@@ -67,16 +67,16 @@ class CheckoutControllerTest
     public function confirmAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Checkout\\Confirm\\Standard';
-        $client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
 
-        $client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
-        $client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
+        $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
+        $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
 
-        \Aimeos\Client\Html\Checkout\Confirm\Factory::injectClient( $name, $client );
+        \Aimeos\Client\Html\Checkout\Confirm\Factory::injectClient($name, $client);
         $output = $this->object->confirmAction();
-        \Aimeos\Client\Html\Checkout\Confirm\Factory::injectClient( $name, null );
+        \Aimeos\Client\Html\Checkout\Confirm\Factory::injectClient($name, null);
 
-        $this->assertEquals( 'body', $output );
+        $this->assertEquals('body', $output);
     }
 
 
@@ -86,15 +86,15 @@ class CheckoutControllerTest
     public function updateAction()
     {
         $name = '\\Aimeos\\Client\\Html\\Checkout\\Update\\Standard';
-        $client = $this->getMock( $name, array( 'getBody', 'getHeader', 'process' ), array(), '', false );
+        $client = $this->getMock($name, array('getBody', 'getHeader', 'process'), array(), '', false);
 
-        $client->expects( $this->once() )->method( 'getBody' )->will( $this->returnValue( 'body' ) );
-        $client->expects( $this->once() )->method( 'getHeader' )->will( $this->returnValue( 'header' ) );
+        $client->expects($this->once())->method('getBody')->will($this->returnValue('body'));
+        $client->expects($this->once())->method('getHeader')->will($this->returnValue('header'));
 
-        \Aimeos\Client\Html\Checkout\Update\Factory::injectClient( $name, $client );
+        \Aimeos\Client\Html\Checkout\Update\Factory::injectClient($name, $client);
         $output = $this->object->updateAction();
-        \Aimeos\Client\Html\Checkout\Update\Factory::injectClient( $name, null );
+        \Aimeos\Client\Html\Checkout\Update\Factory::injectClient($name, null);
 
-        $this->assertEquals( 'body', $output );
+        $this->assertEquals('body', $output);
     }
 }

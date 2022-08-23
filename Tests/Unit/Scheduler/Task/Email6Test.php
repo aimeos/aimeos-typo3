@@ -18,7 +18,7 @@ class Email6Test
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -29,6 +29,6 @@ class Email6Test
     {
         $result = $this->object->execute();
 
-        $this->assertTrue( $result );
+        $this->assertTrue($result);
     }
 }

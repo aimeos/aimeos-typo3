@@ -22,7 +22,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -34,15 +34,15 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $taskInfo = array();
         $module = new SchedulerModuleController();
 
-        $result = $this->object->getAdditionalFields( $taskInfo, $this->object, $module );
+        $result = $this->object->getAdditionalFields($taskInfo, $this->object, $module);
 
-        $this->assertInternalType( 'array', $result );
-        $this->assertArrayHasKey( 'aimeos_controller', $result );
-        $this->assertArrayHasKey( 'aimeos_sitecode', $result );
-        $this->assertArrayHasKey( 'aimeos_config', $result );
-        $this->assertArrayHasKey( 'aimeos_sender_from', $result );
-        $this->assertArrayHasKey( 'aimeos_sender_email', $result );
-        $this->assertArrayHasKey( 'aimeos_reply_email', $result );
+        $this->assertInternalType('array', $result);
+        $this->assertArrayHasKey('aimeos_controller', $result);
+        $this->assertArrayHasKey('aimeos_sitecode', $result);
+        $this->assertArrayHasKey('aimeos_config', $result);
+        $this->assertArrayHasKey('aimeos_sender_from', $result);
+        $this->assertArrayHasKey('aimeos_sender_email', $result);
+        $this->assertArrayHasKey('aimeos_reply_email', $result);
     }
 
 
@@ -53,17 +53,17 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
         $taskInfo = array();
         $module = new SchedulerModuleController();
-        $module->setCurrentAction( new Action( 'EDIT' ) );
+        $module->setCurrentAction(new Action('EDIT'));
 
-        $mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Email6' )
-            ->setMethods( array( 'getFields' ) )->getMock();
+        $mock = $this->getMockBuilder('\Aimeos\Aimeos\Scheduler\Provider\Email6')
+            ->setMethods(array('getFields'))->getMock();
 
-        $mock->expects( $this->once() )->method( 'getFields' )
-            ->will( $this->throwException( new \RuntimeException() ) );
+        $mock->expects($this->once())->method('getFields')
+            ->will($this->throwException(new \RuntimeException()));
 
-        $result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
+        $result = $mock->getAdditionalFields($taskInfo, $mock, $module);
 
-        $this->assertEquals( array(), $result );
+        $this->assertEquals(array(), $result);
     }
 
 
@@ -82,14 +82,14 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $task = new Scheduler\Task\Typo6();
 
-        $this->object->saveAdditionalFields( $data, $task );
+        $this->object->saveAdditionalFields($data, $task);
 
-        $this->assertEquals( 'testsite', $task->aimeos_sitecode );
-        $this->assertEquals( 'testcntl', $task->aimeos_controller );
-        $this->assertEquals( 'testconf', $task->aimeos_config );
-        $this->assertEquals( 'test name', $task->aimeos_sender_from );
-        $this->assertEquals( 'sender@test', $task->aimeos_sender_email );
-        $this->assertEquals( 'reply@test', $task->aimeos_reply_email );
+        $this->assertEquals('testsite', $task->aimeos_sitecode);
+        $this->assertEquals('testcntl', $task->aimeos_controller);
+        $this->assertEquals('testconf', $task->aimeos_config);
+        $this->assertEquals('test name', $task->aimeos_sender_from);
+        $this->assertEquals('sender@test', $task->aimeos_sender_email);
+        $this->assertEquals('reply@test', $task->aimeos_reply_email);
     }
 
 
@@ -101,7 +101,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $data = array();
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -115,7 +115,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -132,7 +132,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -148,7 +148,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -165,7 +165,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -183,7 +183,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -200,7 +200,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -218,7 +218,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -235,7 +235,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -252,7 +252,7 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -273,6 +273,6 @@ class Email6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertTrue( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertTrue($this->object->validateAdditionalFields($data, $module));
     }
 }

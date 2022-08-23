@@ -1,13 +1,13 @@
 <?php
 
-if (!defined( 'TYPO3_MODE' ) ) {
-    die ( 'Access denied.' );
+if (!defined('TYPO3_MODE' ) ) {
+    die ('Access denied.' );
 }
 
 
-$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
+$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('aimeos' );
 
-if (file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
+if (file_exists($aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
     require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 }
 
@@ -23,7 +23,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 /**
  * Aimeos plugins
  */
-$name = defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version' ), '11.0.0', '<' ) ? 'Aimeos.' : '';
+$name = defined('TYPO3_version' ) && version_compare(constant('TYPO3_version' ), '11.0.0', '<' ) ? 'Aimeos.' : '';
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     $name . 'aimeos',
@@ -265,41 +265,41 @@ $name = defined( 'TYPO3_version' ) && version_compare( constant( 'TYPO3_version'
  * Register icons for Aimeos content elements
  */
 $provider = 'TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider';
-$icons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( \TYPO3\CMS\Core\Imaging\IconRegistry::class );
-$icons->registerIcon( 'aimeos_catalog-home', $provider, ['name' => 'globe'] );
-$icons->registerIcon( 'aimeos_catalog-list', $provider, ['name' => 'list'] );
-$icons->registerIcon( 'aimeos_catalog-detail', $provider, ['name' => 'cube'] );
-$icons->registerIcon( 'aimeos_catalog-filter', $provider, ['name' => 'filter'] );
-$icons->registerIcon( 'aimeos_catalog-attribute', $provider, ['name' => 'filter'] );
-$icons->registerIcon( 'aimeos_catalog-price', $provider, ['name' => 'filter'] );
-$icons->registerIcon( 'aimeos_catalog-search', $provider, ['name' => 'filter'] );
-$icons->registerIcon( 'aimeos_catalog-supplier', $provider, ['name' => 'filter'] );
-$icons->registerIcon( 'aimeos_catalog-tree', $provider, ['name' => 'filter'] );
-$icons->registerIcon( 'aimeos_catalog-suggest', $provider, ['name' => 'ellipsis-h'] );
-$icons->registerIcon( 'aimeos_catalog-count', $provider, ['name' => 'bars'] );
-$icons->registerIcon( 'aimeos_catalog-stage', $provider, ['name' => 'image'] );
-$icons->registerIcon( 'aimeos_catalog-session', $provider, ['name' => 'thumb-tack'] );
-$icons->registerIcon( 'aimeos_catalog-stock', $provider, ['name' => 'cubes'] );
-$icons->registerIcon( 'aimeos_supplier-detail', $provider, ['name' => 'industry'] );
-$icons->registerIcon( 'aimeos_locale-select', $provider, ['name' => 'globe'] );
-$icons->registerIcon( 'aimeos_account-download', $provider, ['name' => 'download'] );
-$icons->registerIcon( 'aimeos_account-basket', $provider, ['name' => 'basket'] );
-$icons->registerIcon( 'aimeos_account-history', $provider, ['name' => 'history'] );
-$icons->registerIcon( 'aimeos_account-favorite', $provider, ['name' => 'heart'] );
-$icons->registerIcon( 'aimeos_account-profile', $provider, ['name' => 'user'] );
-$icons->registerIcon( 'aimeos_account-review', $provider, ['name' => 'comments'] );
-$icons->registerIcon( 'aimeos_account-subscription', $provider, ['name' => 'repeat'] );
-$icons->registerIcon( 'aimeos_account-watch', $provider, ['name' => 'eye'] );
-$icons->registerIcon( 'aimeos_basket-standard', $provider, ['name' => 'shopping-cart'] );
-$icons->registerIcon( 'aimeos_basket-small', $provider, ['name' => 'shopping-basket'] );
-$icons->registerIcon( 'aimeos_basket-related', $provider, ['name' => 'link'] );
-$icons->registerIcon( 'aimeos_basket-bulk', $provider, ['name' => 'truck'] );
-$icons->registerIcon( 'aimeos_checkout-standard', $provider, ['name' => 'credit-card'] );
-$icons->registerIcon( 'aimeos_checkout-confirm', $provider, ['name' => 'check'] );
-$icons->registerIcon( 'aimeos_checkout-update', $provider, ['name' => 'euro'] );
-$icons->registerIcon( 'aimeos_jsonapi', $provider, ['name' => 'code'] );
+$icons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class );
+$icons->registerIcon('aimeos_catalog-home', $provider, ['name' => 'globe'] );
+$icons->registerIcon('aimeos_catalog-list', $provider, ['name' => 'list'] );
+$icons->registerIcon('aimeos_catalog-detail', $provider, ['name' => 'cube'] );
+$icons->registerIcon('aimeos_catalog-filter', $provider, ['name' => 'filter'] );
+$icons->registerIcon('aimeos_catalog-attribute', $provider, ['name' => 'filter'] );
+$icons->registerIcon('aimeos_catalog-price', $provider, ['name' => 'filter'] );
+$icons->registerIcon('aimeos_catalog-search', $provider, ['name' => 'filter'] );
+$icons->registerIcon('aimeos_catalog-supplier', $provider, ['name' => 'filter'] );
+$icons->registerIcon('aimeos_catalog-tree', $provider, ['name' => 'filter'] );
+$icons->registerIcon('aimeos_catalog-suggest', $provider, ['name' => 'ellipsis-h'] );
+$icons->registerIcon('aimeos_catalog-count', $provider, ['name' => 'bars'] );
+$icons->registerIcon('aimeos_catalog-stage', $provider, ['name' => 'image'] );
+$icons->registerIcon('aimeos_catalog-session', $provider, ['name' => 'thumb-tack'] );
+$icons->registerIcon('aimeos_catalog-stock', $provider, ['name' => 'cubes'] );
+$icons->registerIcon('aimeos_supplier-detail', $provider, ['name' => 'industry'] );
+$icons->registerIcon('aimeos_locale-select', $provider, ['name' => 'globe'] );
+$icons->registerIcon('aimeos_account-download', $provider, ['name' => 'download'] );
+$icons->registerIcon('aimeos_account-basket', $provider, ['name' => 'basket'] );
+$icons->registerIcon('aimeos_account-history', $provider, ['name' => 'history'] );
+$icons->registerIcon('aimeos_account-favorite', $provider, ['name' => 'heart'] );
+$icons->registerIcon('aimeos_account-profile', $provider, ['name' => 'user'] );
+$icons->registerIcon('aimeos_account-review', $provider, ['name' => 'comments'] );
+$icons->registerIcon('aimeos_account-subscription', $provider, ['name' => 'repeat'] );
+$icons->registerIcon('aimeos_account-watch', $provider, ['name' => 'eye'] );
+$icons->registerIcon('aimeos_basket-standard', $provider, ['name' => 'shopping-cart'] );
+$icons->registerIcon('aimeos_basket-small', $provider, ['name' => 'shopping-basket'] );
+$icons->registerIcon('aimeos_basket-related', $provider, ['name' => 'link'] );
+$icons->registerIcon('aimeos_basket-bulk', $provider, ['name' => 'truck'] );
+$icons->registerIcon('aimeos_checkout-standard', $provider, ['name' => 'credit-card'] );
+$icons->registerIcon('aimeos_checkout-confirm', $provider, ['name' => 'check'] );
+$icons->registerIcon('aimeos_checkout-update', $provider, ['name' => 'euro'] );
+$icons->registerIcon('aimeos_jsonapi', $provider, ['name' => 'code'] );
 
-$icons->registerIcon( 'aimeos-widget-latestorders', $provider, ['name' => 'shopping-cart'] );
+$icons->registerIcon('aimeos-widget-latestorders', $provider, ['name' => 'shopping-cart'] );
 
 
 /**
@@ -348,20 +348,20 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_mer
  * Add cache configuration
  */
 
-if (!isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] ) ) {
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] ) ) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos'] = array();
 }
 
-if (!isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] ) ) {
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] ) ) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['frontend'] = 'TYPO3\\CMS\\Core\\Cache\\Frontend\\VariableFrontend';
 }
 
-if (!isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] = array( 'defaultLifetime' => 0 );
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] ) ) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['options'] = array('defaultLifetime' => 0 );
 }
 
-if (!isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = array( 'pages' );
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = array('pages' );
 }
 
 
@@ -370,13 +370,13 @@ if (!isset( $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
  */
 
 // TYPO3 10, unnecessary in 11
-if (!isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] ) ) {
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] ) ) {
     $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] = \Aimeos\Aimeos\Base::class . '->logout';
 }
 
-if (!isset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = function( array $cacheType, $dataHandler ) {
-        \Aimeos\Aimeos\Base::clearCache( $cacheType );
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] ) ) {
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = function(array $cacheType, $dataHandler ) {
+        \Aimeos\Aimeos\Base::clearCache($cacheType );
     };
 }
 
@@ -392,8 +392,8 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['aimeos'] = \
  * Disable TYPO3 canonical tags so Aimeos ones are used
  */
 
-if (!\Aimeos\Aimeos\Base::getExtConfig( 'typo3Canonical', false ) ) {
-    unset( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
+if (!\Aimeos\Aimeos\Base::getExtConfig('typo3Canonical', false ) ) {
+    unset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
 }
 
 ?>

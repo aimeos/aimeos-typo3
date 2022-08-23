@@ -4,7 +4,7 @@
 namespace Aimeos\Aimeos\Tests\Unit;
 
 
-require_once dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'class.ext_update.php';
+require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'class.ext_update.php';
 
 
 class UpdateTest
@@ -21,7 +21,7 @@ class UpdateTest
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -30,7 +30,7 @@ class UpdateTest
      */
     public function access()
     {
-        $this->assertTrue( $this->object->access() );
+        $this->assertTrue($this->object->access());
     }
 
 
@@ -41,6 +41,6 @@ class UpdateTest
     {
         $result = $this->object->main();
 
-        $this->assertContains( 'Setup process lasted', $result );
+        $this->assertContains('Setup process lasted', $result);
     }
 }

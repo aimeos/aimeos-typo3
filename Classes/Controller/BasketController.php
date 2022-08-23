@@ -26,8 +26,8 @@ class BasketController extends AbstractController
      */
     public function indexAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/standard' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'basket/standard');
+        return $this->getClientOutput($client);
     }
 
 
@@ -36,8 +36,8 @@ class BasketController extends AbstractController
      */
     public function bulkAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/bulk' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'basket/bulk');
+        return $this->getClientOutput($client);
     }
 
 
@@ -46,8 +46,8 @@ class BasketController extends AbstractController
      */
     public function smallAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/mini' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'basket/mini');
+        return $this->getClientOutput($client);
     }
 
 
@@ -56,7 +56,7 @@ class BasketController extends AbstractController
      */
     public function relatedAction()
     {
-        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/related' );
-        return $this->getClientOutput( $client );
+        $client = \Aimeos\Client\Html::create($this->context(), 'basket/related');
+        return $this->getClientOutput($client);
     }
 }

@@ -14,9 +14,9 @@ use \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
-$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'aimeos' );
+$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('aimeos');
 
-if (file_exists( $aimeosExtPath . '/Resources/Libraries/autoload.php' ) === true ) {
+if (file_exists($aimeosExtPath . '/Resources/Libraries/autoload.php') === true) {
     require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
 }
 
@@ -40,8 +40,8 @@ class Base
     {
         $name = 'Aimeos\Aimeos\Base\Aimeos';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'] ) instanceof \Closure ) {
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos']) instanceof \Closure) {
                 return $name();
             }
         }
@@ -56,17 +56,17 @@ class Base
      * @param array $local Multi-dimensional associative list with local configuration
      * @return \Aimeos\Base\Config\Iface Configuration object
      */
-    public static function config( array $local = [] ) : \Aimeos\Base\Config\Iface
+    public static function config(array $local = []) : \Aimeos\Base\Config\Iface
     {
         $name = 'Aimeos\Aimeos\Base\Config';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'] ) instanceof \Closure ) {
-                return $name( self::aimeos()->getConfigPaths(), $local );
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_config']) instanceof \Closure) {
+                return $name(self::aimeos()->getConfigPaths(), $local);
             }
         }
 
-        return $name::get( self::aimeos()->getConfigPaths(), $local );
+        return $name::get(self::aimeos()->getConfigPaths(), $local);
     }
 
 
@@ -76,17 +76,17 @@ class Base
      * @param \Aimeos\Base\Config\Iface Configuration object
      * @return \Aimeos\MShop\ContextIface Context object
      */
-    public static function context( \Aimeos\Base\Config\Iface $config ) : \Aimeos\MShop\ContextIface
+    public static function context(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
     {
         $name = 'Aimeos\Aimeos\Base\Context';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'] ) instanceof \Closure ) {
-                return $name( $config );
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context']) instanceof \Closure) {
+                return $name($config);
             }
         }
 
-        return $name::get( $config );
+        return $name::get($config);
     }
 
 
@@ -97,13 +97,13 @@ class Base
      * @param mixed Value returned if no value in extension configuration was found
      * @return mixed Value associated with the configuration setting
      */
-    public static function getExtConfig( string $name, $default = null )
+    public static function getExtConfig(string $name, $default = null)
     {
-        if (self::$extConfig === null ) {
-            self::$extConfig = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\Configuration\ExtensionConfiguration' )->get( 'aimeos' );
+        if (self::$extConfig === null) {
+            self::$extConfig = GeneralUtility::makeInstance('TYPO3\CMS\Core\Configuration\ExtensionConfiguration')->get('aimeos');
         }
 
-        if (isset( self::$extConfig[$name] ) ) {
+        if (isset(self::$extConfig[$name])) {
             return self::$extConfig[$name];
         }
 
@@ -118,17 +118,17 @@ class Base
      * @param array $local List of local translation entries overwriting the standard ones
      * @return array List of translation objects implementing MW_Translation_Interface
      */
-    public static function i18n( array $languageIds, array $local = [] ) : array
+    public static function i18n(array $languageIds, array $local = []) : array
     {
         $name = 'Aimeos\Aimeos\Base\I18n';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'] ) instanceof \Closure ) {
-                return $name( self::aimeos()->getI18nPaths(), $languageIds, $local );
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_i18n']) instanceof \Closure) {
+                return $name(self::aimeos()->getI18nPaths(), $languageIds, $local);
             }
         }
 
-        return $name::get( self::aimeos()->getI18nPaths(), $languageIds, $local );
+        return $name::get(self::aimeos()->getI18nPaths(), $languageIds, $local);
     }
 
 
@@ -139,22 +139,22 @@ class Base
      * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface|null $request Request object
      * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
      */
-    public static function locale( \Aimeos\MShop\ContextIface $context,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null ) : \Aimeos\MShop\Locale\Item\Iface
+    public static function locale(\Aimeos\MShop\ContextIface $context,
+        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
     {
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'] ) instanceof \Closure ) {
-                return $name( $context, $request );
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend']) instanceof \Closure) {
+                return $name($context, $request);
             }
         }
 
         $name = 'Aimeos\Aimeos\Base\Locale';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'] ) ) {
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'])) {
             $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
         }
 
-        return $name::get( $context, $request );
+        return $name::get($context, $request);
     }
 
 
@@ -165,22 +165,22 @@ class Base
      * @param string $sitecode Unique site code
      * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
      */
-    public static function getLocaleBackend( \Aimeos\MShop\ContextIface $context,
-        string $sitecode ) : \Aimeos\MShop\Locale\Item\Iface
+    public static function getLocaleBackend(\Aimeos\MShop\ContextIface $context,
+        string $sitecode) : \Aimeos\MShop\Locale\Item\Iface
     {
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'] ) instanceof \Closure ) {
-                return $name( $context, $sitecode );
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_backend']) instanceof \Closure) {
+                return $name($context, $sitecode);
             }
         }
 
         $name = 'Aimeos\Aimeos\Base\Locale';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'] ) ) {
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'])) {
             $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale'];
         }
 
-        return $name::getBackend( $context, $sitecode );
+        return $name::getBackend($context, $sitecode);
     }
 
 
@@ -192,9 +192,9 @@ class Base
     public static function getVersion() : string
     {
         $match = [];
-        $content = @file_get_contents( dirname( __DIR__ ) . DIRECTORY_SEPARATOR . 'ext_emconf.php' );
+        $content = @file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 
-        if (preg_match( "/'version' => '([^']+)'/", $content, $match ) === 1 ) {
+        if (preg_match("/'version' => '([^']+)'/", $content, $match) === 1) {
             return $match[1];
         }
 
@@ -212,18 +212,18 @@ class Base
      * @param string|null $langid ISO code of the current language ("de"/"de_CH") or null for no translation
      * @return \Aimeos\Base\View\Iface View object
      */
-    public static function view( \Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null ) : \Aimeos\Base\View\Iface
+    public static function view(\Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
+        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null) : \Aimeos\Base\View\Iface
     {
         $name = 'Aimeos\Aimeos\Base\View';
 
-        if (isset( $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] ) ) {
-            if (( $name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] ) instanceof \Closure ) {
-                return $name( $context, $uriBuilder, $templatePaths, $request, $langid );
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'])) {
+            if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view']) instanceof \Closure) {
+                return $name($context, $uriBuilder, $templatePaths, $request, $langid);
             }
         }
 
-        return $name::get( $context, $uriBuilder, $templatePaths, $request, $langid );
+        return $name::get($context, $uriBuilder, $templatePaths, $request, $langid);
     }
 
 
@@ -234,24 +234,24 @@ class Base
      * @return array Mulit-dimensional, associative list of key/value pairs
      * @throws Exception If parsing the configuration string fails
      */
-    public static function parseTS( string $tsString ) : array
+    public static function parseTS(string $tsString) : array
     {
-        $parser = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser' );
-        $parser->parse( TypoScriptParser::checkIncludeLines( $tsString ) );
+        $parser = GeneralUtility::makeInstance('TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser');
+        $parser->parse(TypoScriptParser::checkIncludeLines($tsString));
 
-        if (!empty( $parser->errors ) ) {
-            throw new \InvalidArgumentException( 'Invalid TypoScript: \"' . $tsString . "\"\n" . print_r( $parser->errors, true ) );
+        if (!empty($parser->errors)) {
+            throw new \InvalidArgumentException('Invalid TypoScript: \"' . $tsString . "\"\n" . print_r($parser->errors, true));
         }
 
-        $service = GeneralUtility::makeInstance( 'TYPO3\CMS\Core\TypoScript\TypoScriptService' );
-        $tsConfig = $service->convertTypoScriptArrayToPlainArray( $parser->setup );
+        $service = GeneralUtility::makeInstance('TYPO3\CMS\Core\TypoScript\TypoScriptService');
+        $tsConfig = $service->convertTypoScriptArrayToPlainArray($parser->setup);
 
         // Allows "plugin.tx_aimeos.settings." prefix everywhere
-        if (isset( $tsConfig['plugin']['tx_aimeos']['settings'] )
-            && is_array( $tsConfig['plugin']['tx_aimeos']['settings'] )
+        if (isset($tsConfig['plugin']['tx_aimeos']['settings'])
+            && is_array($tsConfig['plugin']['tx_aimeos']['settings'])
         ) {
-            $tsConfig = array_replace_recursive( $tsConfig['plugin']['tx_aimeos']['settings'], $tsConfig );
-            unset( $tsConfig['plugin']['tx_aimeos'] );
+            $tsConfig = array_replace_recursive($tsConfig['plugin']['tx_aimeos']['settings'], $tsConfig);
+            unset($tsConfig['plugin']['tx_aimeos']);
         }
 
         return $tsConfig;
@@ -265,10 +265,10 @@ class Base
      */
     public static function logout()
     {
-        $session = self::context( self::config() )->session();
+        $session = self::context(self::config())->session();
 
-        $session->remove( array_keys( $session->get( 'aimeos/basket/list', [] ) ) );
-        $session->remove( array_keys( $session->get( 'aimeos/basket/cache', [] ) ) );
+        $session->remove(array_keys($session->get('aimeos/basket/list', [])));
+        $session->remove(array_keys($session->get('aimeos/basket/cache', [])));
     }
 
 
@@ -281,11 +281,11 @@ class Base
      *
      * @return void
      */
-    public static function clearCache( array $cacheType )
+    public static function clearCache(array $cacheType)
     {
-        if (isset( $cacheType['cacheCmd'] ) && $cacheType['cacheCmd'] === 'all'
-            && (bool) static::getExtConfig( 'useAPC', false ) === true
-            && function_exists( 'apcu_clear_cache' )
+        if (isset($cacheType['cacheCmd']) && $cacheType['cacheCmd'] === 'all'
+            && (bool) static::getExtConfig('useAPC', false) === true
+            && function_exists('apcu_clear_cache')
         ) {
             apcu_clear_cache();
         }

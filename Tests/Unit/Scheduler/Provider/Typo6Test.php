@@ -21,7 +21,7 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
     public function tearDown()
     {
-        unset( $this->object );
+        unset($this->object);
     }
 
 
@@ -32,14 +32,14 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
         $taskInfo = array();
         $module = new SchedulerModuleController();
-        $module->setCurrentAction( new Action( 'EDIT' ) );
+        $module->setCurrentAction(new Action('EDIT'));
 
-        $result = $this->object->getAdditionalFields( $taskInfo, $this->object, $module );
+        $result = $this->object->getAdditionalFields($taskInfo, $this->object, $module);
 
-        $this->assertInternalType( 'array', $result );
-        $this->assertArrayHasKey( 'aimeos_controller', $result );
-        $this->assertArrayHasKey( 'aimeos_sitecode', $result );
-        $this->assertArrayHasKey( 'aimeos_config', $result );
+        $this->assertInternalType('array', $result);
+        $this->assertArrayHasKey('aimeos_controller', $result);
+        $this->assertArrayHasKey('aimeos_sitecode', $result);
+        $this->assertArrayHasKey('aimeos_config', $result);
     }
 
 
@@ -50,17 +50,17 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
         $taskInfo = array();
         $module = new SchedulerModuleController();
-        $module->setCurrentAction( new Action( 'EDIT' ) );
+        $module->setCurrentAction(new Action('EDIT'));
 
-        $mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Typo6' )
-            ->setMethods( array( 'getFields' ) )->getMock();
+        $mock = $this->getMockBuilder('\Aimeos\Aimeos\Scheduler\Provider\Typo6')
+            ->setMethods(array('getFields'))->getMock();
 
-        $mock->expects( $this->once() )->method( 'getFields' )
-            ->will( $this->throwException( new \RuntimeException() ) );
+        $mock->expects($this->once())->method('getFields')
+            ->will($this->throwException(new \RuntimeException()));
 
-        $result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
+        $result = $mock->getAdditionalFields($taskInfo, $mock, $module);
 
-        $this->assertEquals( array(), $result );
+        $this->assertEquals(array(), $result);
     }
 
 
@@ -76,11 +76,11 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $task = new \Aimeos\Aimeos\Scheduler\Task\Typo6();
 
-        $this->object->saveAdditionalFields( $data, $task );
+        $this->object->saveAdditionalFields($data, $task);
 
-        $this->assertEquals( 'testsite', $task->aimeos_sitecode );
-        $this->assertEquals( 'testcntl', $task->aimeos_controller );
-        $this->assertEquals( 'testconf', $task->aimeos_config );
+        $this->assertEquals('testsite', $task->aimeos_sitecode);
+        $this->assertEquals('testcntl', $task->aimeos_controller);
+        $this->assertEquals('testconf', $task->aimeos_config);
     }
 
 
@@ -92,7 +92,7 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $data = array();
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -106,7 +106,7 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -122,7 +122,7 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertFalse($this->object->validateAdditionalFields($data, $module));
     }
 
 
@@ -137,6 +137,6 @@ class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
         $module = new SchedulerModuleController();
 
-        $this->assertTrue( $this->object->validateAdditionalFields( $data, $module ) );
+        $this->assertTrue($this->object->validateAdditionalFields($data, $module));
     }
 }

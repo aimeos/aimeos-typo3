@@ -29,13 +29,13 @@ class SetupCommand extends Command
      */
     protected function configure()
     {
-        $this->setName( 'aimeos:setup' );
-        $this->setDescription( 'Initialize or update the Aimeos database tables' );
-        $this->addArgument( 'site', InputArgument::OPTIONAL, 'Site for updating database entries', 'default' );
-        $this->addArgument( 'tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default' );
-        $this->addOption( 'option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', [] );
-        $this->addOption( 'v', null, InputOption::VALUE_OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', 'vv' );
-        $this->addOption( 'q', null, InputOption::VALUE_NONE, 'Quiet mode without any output' );
+        $this->setName('aimeos:setup');
+        $this->setDescription('Initialize or update the Aimeos database tables');
+        $this->addArgument('site', InputArgument::OPTIONAL, 'Site for updating database entries', 'default');
+        $this->addArgument('tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default');
+        $this->addOption('option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', []);
+        $this->addOption('v', null, InputOption::VALUE_OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', 'vv');
+        $this->addOption('q', null, InputOption::VALUE_NONE, 'Quiet mode without any output');
     }
 
 
@@ -45,24 +45,24 @@ class SetupCommand extends Command
      * @param InputInterface $input Input object
      * @param OutputInterface $output Output object
      */
-    protected function execute( InputInterface $input, OutputInterface $output )
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
-        \Aimeos\MShop::cache( false );
-        \Aimeos\MAdmin::cache( false );
+        \Aimeos\MShop::cache(false);
+        \Aimeos\MAdmin::cache(false);
 
-        $site = $input->getArgument( 'site' );
-        $template = $input->getArgument( 'tplsite' );
+        $site = $input->getArgument('site');
+        $template = $input->getArgument('tplsite');
 
         $config = \Aimeos\Aimeos\Base::config();
         $boostrap = \Aimeos\Aimeos\Base::aimeos();
-        $ctx = \Aimeos\Aimeos\Base::context( $config )->setEditor( 'aimeos:setup' );
+        $ctx = \Aimeos\Aimeos\Base::context($config)->setEditor('aimeos:setup');
 
-        $output->writeln( sprintf( 'Initializing or updating the Aimeos database tables for site <info>%1$s</info>', $site ) );
+        $output->writeln(sprintf('Initializing or updating the Aimeos database tables for site <info>%1$s</info>', $site));
 
-        \Aimeos\Setup::use( $boostrap )
-            ->context( $this->addConfig( $ctx->setEditor( 'aimeos:setup' ), $input->getOption( 'option' ) ) )
-            ->verbose( $input->getOption( 'q' ) ? '' : $input->getOption( 'v' ) )
-            ->up( $site, $template );
+        \Aimeos\Setup::use($boostrap)
+            ->context($this->addConfig($ctx->setEditor('aimeos:setup'), $input->getOption('option')))
+            ->verbose($input->getOption('q') ? '' : $input->getOption('v'))
+            ->up($site, $template);
 
         return 0;
     }
@@ -75,14 +75,14 @@ class SetupCommand extends Command
      * @param \Aimeos\MShop\ContextIface $ctx Context object
      * @return array Associative list of key/value pairs of configuration options
      */
-    protected function addConfig( \Aimeos\MShop\ContextIface $ctx, $options ) : \Aimeos\MShop\ContextIface
+    protected function addConfig(\Aimeos\MShop\ContextIface $ctx, $options) : \Aimeos\MShop\ContextIface
     {
         $config = $ctx->config();
 
-        foreach ( (array) $options as $option )
+        foreach ((array) $options as $option)
         {
-            list( $name, $value ) = explode( ':', $option );
-            $config->set( $name, $value );
+            list($name, $value) = explode(':', $option);
+            $config->set($name, $value);
         }
 
         return $ctx;
