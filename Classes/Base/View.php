@@ -76,23 +76,17 @@ class View
             return $fcn($view);
         }
 
-        if (TYPO3_MODE === 'BE')
-        {
-            if ($GLOBALS['BE_USER']->isAdmin() === false)
-            {
+        if (TYPO3_MODE === 'BE') {
+            if ($GLOBALS['BE_USER']->isAdmin() === false) {
                 $groups = [];
                 foreach ((array) $GLOBALS['BE_USER']->userGroups as $entry) {
                     $groups[] = $entry['title'];
                 }
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, $groups);
-            }
-            else
-            {
+            } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\All($view);
             }
-        }
-        else
-        {
+        } else {
             $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
             if ($t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
@@ -309,13 +303,10 @@ class View
             return $fcn($view, $langid, $local);
         }
 
-        if ($langid)
-        {
+        if ($langid) {
             $i18n = \Aimeos\Aimeos\Base::i18n([$langid], $local);
             $translation = $i18n[$langid];
-        }
-        else
-        {
+        } else {
             $translation = new \Aimeos\Base\Translation\None('en');
         }
 
@@ -346,8 +337,7 @@ class View
 
         $fixed = [];
 
-        if ($request)
-        {
+        if ($request) {
             $name = $config->get('typo3/param/name/site', 'site');
 
             if ($request !== null && $request->hasArgument($name) === true) {

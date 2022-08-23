@@ -30,8 +30,7 @@ class Catalog
      */
     public function getCategories(array $config, $tceForms = null, string $sitecode = 'default') : array
     {
-        try
-        {
+        try {
             if (!isset($config['flexParentDatabaseRow']['pid'])) {
                 throw new \Exception('No PID found in "flexParentDatabaseRow" array key: ' . print_r($config, true));
             }
@@ -54,9 +53,7 @@ class Catalog
 
 
             $config['items'] = array_merge($config['items'], $this->getCategoryList($item, $item->getName()));
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             error_log($e->getMessage() . PHP_EOL . $e->getTraceAsString());
         }
 

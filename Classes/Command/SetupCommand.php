@@ -79,8 +79,7 @@ class SetupCommand extends Command
     {
         $config = $ctx->config();
 
-        foreach ((array) $options as $option)
-        {
+        foreach ((array) $options as $option) {
             list($name, $value) = explode(':', $option);
             $config->set($name, $value);
         }

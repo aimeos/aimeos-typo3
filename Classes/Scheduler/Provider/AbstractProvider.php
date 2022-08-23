@@ -202,8 +202,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $html = '';
         $prefix = str_repeat('-', $level) . ' ';
 
-        foreach ($siteItems as $item)
-        {
+        foreach ($siteItems as $item) {
             $active = (in_array($item->getCode(), $selected) ? 'selected="selected"' : '');
             $disabled = ($item->getStatus() > 0 ? '' : 'disabled="disabled"');
             $string = '<option value="%1$s" %2$s %3$s>%4$s</option>';
@@ -240,8 +239,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         $controllers = \Aimeos\Controller\Jobs::get($context, $aimeos, $cntlPaths);
 
-        foreach ($controllers as $name => $controller)
-        {
+        foreach ($controllers as $name => $controller) {
             $active = (in_array($name, $selected) ? 'selected="selected"' : '');
             $title = htmlspecialchars($controller->getDescription(), ENT_QUOTES, 'UTF-8');
             $cntl = htmlspecialchars(sprintf('%1$s: %2$s', $name, $controller->getName()), ENT_QUOTES, 'UTF-8');

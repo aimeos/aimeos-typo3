@@ -75,8 +75,7 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
             $conf['client']['html']['account']['index']['url']['target'] = $this->{$this->fieldPageLogin};
         }
 
-        if ($this->{$this->fieldTemplateBaseurl} != '')
-        {
+        if ($this->{$this->fieldTemplateBaseurl} != '') {
             $themeDir = $this->{$this->fieldTemplateBaseurl};
 
             if ($themeDir[0] !== '/') {

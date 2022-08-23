@@ -38,8 +38,7 @@ abstract class AbstractController
      */
     protected function checkSite(array $sitePath, $userSiteId) : bool
     {
-        foreach (array_reverse($sitePath) as $siteid)
-        {
+        foreach (array_reverse($sitePath) as $siteid) {
             if ((string) $userSiteId === (string) $siteid) {
                 return true;
             }
@@ -61,8 +60,7 @@ abstract class AbstractController
     {
         $config = Base::config((array) $this->settings);
 
-        if (!isset(self::$context))
-        {
+        if (!isset(self::$context)) {
             $context = Base::context($config);
             $locale = Base::locale($context, $this->request);
             $context->setI18n(Base::i18n([$locale->getLanguageId()], $config->get('i18n', [])));
@@ -78,8 +76,7 @@ abstract class AbstractController
             $config->set($key, $value);
         }
 
-        if ($withView === true)
-        {
+        if ($withView === true) {
             $langid = self::$context->locale()->getLanguageId();
             $paths = self::$aimeos->getTemplatePaths($templatePath);
             $view = Base::view(self::$context, $this->uriBuilder, $paths, $this->request, $langid);
@@ -101,8 +98,7 @@ abstract class AbstractController
     protected function contextBackend(string $templatePath = 'admin/jqadm/templates',
         bool $withView = true) : \Aimeos\MShop\ContextIface
     {
-        if (!isset($this->contextBE))
-        {
+        if (!isset($this->contextBE)) {
             $lang = 'en';
             $site = 'default';
 
@@ -137,8 +133,7 @@ abstract class AbstractController
                 $config->set($key, $value);
             }
 
-            if ($withView)
-            {
+            if ($withView) {
                 $paths = self::$aimeos->getTemplatePaths($templatePath);
                 $view = Base::view($context, $this->uriBuilder, $paths, $this->request, $lang);
                 $context->setView($view);

@@ -70,8 +70,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
      */
     public function executeUpdate() : bool
     {
-        try
-        {
+        try {
             ob_start();
             $exectimeStart = microtime(true);
 
@@ -79,9 +78,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
             $this->output->writeln(ob_get_clean());
             $this->output->writeln(sprintf('Setup process lasted %1$f sec', (microtime(true) - $exectimeStart)));
-        }
-        catch(\Throwable $t)
-        {
+        } catch(\Throwable $t) {
             $this->output->writeln(ob_get_clean());
             $this->output->writeln($t->getMessage());
             $this->output->writeln($t->getTraceAsString());
@@ -169,8 +166,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
         $tables = [];
         $conn = self::context()->db();
 
-        foreach (['fe_users_', 'madmin_', 'mshop_'] as $prefix)
-        {
+        foreach (['fe_users_', 'madmin_', 'mshop_'] as $prefix) {
             $result = $conn->create('SHOW TABLES like \'' . $prefix . '%\'')->execute();
 
             while (($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
@@ -178,12 +174,10 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
             }
         }
 
-        foreach ($tables as $table)
-        {
+        foreach ($tables as $table) {
             $result = $conn->create('SHOW CREATE TABLE ' . $table)->execute();
 
-            while (($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null)
-            {
+            while (($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
                 $str = preg_replace('/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1]);
                 $str = str_replace('"', '`', $str);
 

@@ -57,14 +57,11 @@ class CatalogController extends AbstractController
      */
     public function detailAction()
     {
-        try
-        {
+        try {
             $this->removeMetatags();
             $client = \Aimeos\Client\Html::create($this->context(), 'catalog/detail');
             return $this->getClientOutput($client);
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             $this->exception($e);
         }
     }
@@ -197,13 +194,10 @@ class CatalogController extends AbstractController
      */
     public function treeAction()
     {
-        try
-        {
+        try {
             $client = \Aimeos\Client\Html::create($this->context(), 'catalog/tree');
             return $this->getClientOutput($client);
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             $this->exception($e);
         }
     }
@@ -217,8 +211,7 @@ class CatalogController extends AbstractController
      */
     protected function exception(\Exception $e)
     {
-        if ($e->getCode() > 400)
-        {
+        if ($e->getCode() > 400) {
             $name = \TYPO3\CMS\Frontend\Controller\ErrorController::class;
 
             $response = GeneralUtility::makeInstance($name)->pageNotFoundAction(
@@ -236,8 +229,7 @@ class CatalogController extends AbstractController
      */
     protected function removeMetatags()
     {
-        if (is_object($GLOBALS['TSFE']) && isset($GLOBALS['TSFE']->config['config']))
-        {
+        if (is_object($GLOBALS['TSFE']) && isset($GLOBALS['TSFE']->config['config'])) {
             $GLOBALS['TSFE']->config['config']['disableCanonical'] = true;
             $GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
         }

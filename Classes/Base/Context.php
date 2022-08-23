@@ -30,8 +30,7 @@ class Context
      */
     public static function get(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
     {
-        if (self::$context === null)
-        {
+        if (self::$context === null) {
             // TYPO3 specifc context with password hasher
             $context = new \Aimeos\MShop\Context\Item\Typo3();
             $context->setConfig($config);
@@ -80,8 +79,7 @@ class Context
              $cacheName = 'None';
         }
 
-        switch ($cacheName)
-        {
+        switch ($cacheName) {
             case 'None':
                 $context->config()->set('client/html/basket/cache/enable', false);
                 $cache = \Aimeos\Base\Cache\Factory::create('None', [], null);
@@ -319,17 +317,12 @@ class Context
 
         $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
-        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn'))
-        {
+        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
             $context->setUserId($GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column]);
             $context->setEditor((string) $GLOBALS['TSFE']->fe_user->user['username']);
-        }
-        elseif (TYPO3_MODE === 'BE' && isset($GLOBALS['BE_USER']->user['username']))
-        {
+        } elseif (TYPO3_MODE === 'BE' && isset($GLOBALS['BE_USER']->user['username'])) {
             $context->setEditor((string) $GLOBALS['BE_USER']->user['username']);
-        }
-        else
-        {
+        } else {
             $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));
         }
 
@@ -353,13 +346,10 @@ class Context
 
         $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
-        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn'))
-        {
+        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
             $ids = GeneralUtility::trimExplode(',', $GLOBALS['TSFE']->fe_user->user['usergroup']);
             $context->setGroupIds($ids);
-        }
-        elseif (TYPO3_MODE === 'BE' && $GLOBALS['BE_USER']->userGroups)
-        {
+        } elseif (TYPO3_MODE === 'BE' && $GLOBALS['BE_USER']->userGroups) {
             $ids = array_keys($GLOBALS['BE_USER']->userGroups);
             $context->setGroupIds($ids);
         }
@@ -377,8 +367,7 @@ class Context
     protected static function addDateTime(\Aimeos\MShop\ContextIface $context) : \Aimeos\MShop\ContextIface
     {
         if (TYPO3_MODE === 'FE' && isset($GLOBALS['BE_USER']->adminPanel)
-            && class_exists('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService'))
-        {
+            && class_exists('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService')) {
             $service = GeneralUtility::makeInstance('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService');
             $tstamp = strtotime($service->getConfigurationOption('preview', 'simulateDate'));
 

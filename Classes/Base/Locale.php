@@ -32,8 +32,7 @@ class Locale
     public static function get(\Aimeos\MShop\ContextIface $context,
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
     {
-        if (!isset(self::$locale))
-        {
+        if (!isset(self::$locale)) {
             $config = $context->config();
 
 
@@ -90,13 +89,10 @@ class Locale
     {
         $localeManager = \Aimeos\MShop::create($context, 'locale');
 
-        try
-        {
+        try {
             $localeItem = $localeManager->bootstrap($site, '', '', false, null, true);
             $context->config()->apply($localeItem->getSiteItem()->getConfig());
-        }
-        catch(\Aimeos\MShop\Exception $e)
-        {
+        } catch(\Aimeos\MShop\Exception $e) {
             $localeItem = $localeManager->create();
         }
 

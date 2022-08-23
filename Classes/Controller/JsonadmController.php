@@ -46,8 +46,7 @@ class JsonadmController extends AbstractController
             $resource = $value;
         }
 
-        switch ($this->request->getMethod())
-        {
+        switch ($this->request->getMethod()) {
             case 'DELETE': return $this->deleteAction($resource);
             case 'PATCH': return $this->patchAction($resource);
             case 'POST': return $this->postAction($resource);

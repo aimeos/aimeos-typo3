@@ -57,8 +57,7 @@ class JobsCommand extends Command
         $jobs = explode(' ', $input->getArgument('jobs'));
         $localeManager = \Aimeos\MShop::create($context, 'locale');
 
-        foreach ($this->getSiteItems($context, $input) as $siteItem)
-        {
+        foreach ($this->getSiteItems($context, $input) as $siteItem) {
             $localeItem = $localeManager->bootstrap($siteItem->getCode(), '', '', false);
             $localeItem->setLanguageId(null);
             $localeItem->setCurrencyId(null);
@@ -76,8 +75,7 @@ class JobsCommand extends Command
                 GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\ConnectionPool')->resetConnections();
             }
 
-            foreach ($jobs as $jobname)
-            {
+            foreach ($jobs as $jobname) {
                 $fcn = function($context, $aimeos, $jobname) {
                     \Aimeos\Controller\Jobs::create($context, $aimeos, $jobname)->run();
                 };

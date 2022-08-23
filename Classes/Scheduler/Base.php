@@ -45,8 +45,7 @@ class Base
 
         $manager = \Aimeos\MShop::create($context, 'locale');
 
-        foreach (self::getSiteItems($context, $sites) as $siteItem)
-        {
+        foreach (self::getSiteItems($context, $sites) as $siteItem) {
             \Aimeos\MShop::cache(true);
             \Aimeos\MAdmin::cache(true);
 
@@ -56,8 +55,7 @@ class Base
 
             $context->setLocale($localeItem);
 
-            foreach ($jobs as $jobname)
-            {
+            foreach ($jobs as $jobname) {
                 $fcn = function($context, $aimeos, $jobname) {
                     \Aimeos\Controller\Jobs::create($context, $aimeos, $jobname)->run();
                 };

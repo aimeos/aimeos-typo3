@@ -29,14 +29,11 @@ class Config
      */
     public static function get(array $paths, array $local = []) : \Aimeos\Base\Config\Iface
     {
-        if (self::$config === null)
-        {
+        if (self::$config === null) {
             // Using extension config directories
-            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs']))
-            {
+            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'])) {
                 ksort($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs']);
-                foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir)
-                {
+                foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir) {
                     if (($absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($dir)) !== '') {
                         $paths[] = $absPath;
                     }

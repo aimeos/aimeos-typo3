@@ -9,8 +9,7 @@ $beUsersSiteFcn = function() {
 
     $list = [['', '']];
 
-    try
-    {
+    try {
         $config = \Aimeos\Aimeos\Base::config();
         $context = \Aimeos\Aimeos\Base::context($config);
 
@@ -32,8 +31,7 @@ $beUsersSiteFcn = function() {
             }
         };
 
-        while ($row = $result->fetch())
-        {
+        while ($row = $result->fetch()) {
             $list[] = [$row['label'], $row['siteid']];
 
             if ($row['nright'] - $row['nleft'] > 1) {
@@ -41,8 +39,7 @@ $beUsersSiteFcn = function() {
             }
         }
     }
-    catch(\Exception $e)
-    {
+    catch(\Exception $e) {
         $log = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogManager::class);
         $log->getLogger(__CLASS__)->warning('Unable to retrieve Aimeos sites: ' . $e->getMessage());
     }

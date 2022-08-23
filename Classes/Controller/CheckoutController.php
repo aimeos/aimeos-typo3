@@ -69,8 +69,7 @@ class CheckoutController extends AbstractController
      */
     public function updateAction()
     {
-        try
-        {
+        try {
             $context = $this->context();
             $client = \Aimeos\Client\Html::create($context, 'checkout/update');
 
@@ -94,9 +93,7 @@ class CheckoutController extends AbstractController
 
             return $this->responseFactory->createResponse()
                 ->withBody($this->streamFactory->createStream($html));
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             if (!isset($this->responseFactory)) // TYPO3 10
             {
                 @header('HTTP/1.1 500 Internal server error', true, 500);

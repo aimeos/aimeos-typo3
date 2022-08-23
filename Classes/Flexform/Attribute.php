@@ -29,8 +29,7 @@ class Attribute
      */
     public function getTypes(array $config, $tceForms = null, string $sitecode = 'default') : array
     {
-        try
-        {
+        try {
             if (!isset($config['flexParentDatabaseRow']['pid'])) {
                 throw new \Exception('No PID found in "flexParentDatabaseRow" or "row" array key: ' . print_r($config, true));
             }
@@ -54,9 +53,7 @@ class Attribute
             foreach ($items as $item) {
                 $config['items'][] = [$item->getName(), $item->getCode()];
             }
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             error_log($e->getMessage() . PHP_EOL . $e->getTraceAsString());
         }
 

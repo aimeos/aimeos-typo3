@@ -34,8 +34,7 @@ class Composer
         $installer = $event->getComposer()->getInstallationManager();
         $t3path = $installer->getInstallPath($t3package);
 
-        if (($package = $repository->findPackage('aimeos/ai-client-html', '*')) !== null)
-        {
+        if (($package = $repository->findPackage('aimeos/ai-client-html', '*')) !== null) {
             $event->getIO()->write('Installing Aimeos public files from HTML client');
 
             $path = $installer->getInstallPath($package);
@@ -62,18 +61,14 @@ class Composer
             \RecursiveIteratorIterator::SELF_FIRST
         );
 
-        foreach ($iterator as $item)
-        {
+        foreach ($iterator as $item) {
             $target = $dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName();
 
-            if ($item->isDir() === false)
-            {
+            if ($item->isDir() === false) {
                 if (copy($item, $target) === false) {
                     throw new \RuntimeException(sprintf('Unable to copy file "%1$s"', $item));
                 }
-            }
-            else
-            {
+            } else {
                 self::createDirectory($target);
             }
         }
@@ -90,8 +85,7 @@ class Composer
     {
         $perm = 0755;
 
-        if (is_dir($dir) === false && mkdir($dir, $perm, true) === false)
-        {
+        if (is_dir($dir) === false && mkdir($dir, $perm, true) === false) {
             $msg = 'Unable to create directory "%1$s" with permission "%2$s"';
             throw new \RuntimeException(sprintf($msg, $dir, $perm));
         }
@@ -106,8 +100,7 @@ class Composer
      */
     protected static function join(\Composer\Script\Event $event)
     {
-        try
-        {
+        try {
             if (!$event->getIO()->hasAuthentication('github.com')) {
                     return;
             }
@@ -128,17 +121,13 @@ class Composer
             ];
             $config = $event->getComposer()->config();
 
-            if (method_exists('\Composer\Factory', 'createHttpDownloader'))
-            {
+            if (method_exists('\Composer\Factory', 'createHttpDownloader')) {
                 \Composer\Factory::createHttpDownloader($event->getIO(), $config)
                     ->get('https://api.github.com/graphql', $options);
-            }
-            else
-            {
+            } else {
                 \Composer\Factory::createRemoteFilesystem($event->getIO(), $config)
                     ->getContents('github.com', 'https://api.github.com/graphql', false, $options);
             }
-        }
-        catch(\Exception $e) {}
+        } catch(\Exception $e) {}
     }
 }

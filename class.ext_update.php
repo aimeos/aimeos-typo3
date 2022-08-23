@@ -51,13 +51,10 @@ class ext_update
             return $result;
         }
 
-        try
-        {
+        try {
             \Aimeos\Aimeos\Setup::execute();
             $output = ob_get_contents();
-        }
-        catch(Exception $e)
-        {
+        } catch(Exception $e) {
             $output = ob_get_contents();
             $output .= PHP_EOL . $e->getMessage();
             $output .= PHP_EOL . $e->getTraceAsString();
@@ -113,8 +110,7 @@ class ext_update
         }
 
         // Retrieve the name of the connection (which is not part of the connection class)
-        foreach($connectionPool->getConnectionNames() as $name)
-        {
+        foreach($connectionPool->getConnectionNames() as $name) {
             if ($connectionPool->getConnectionByName($name) === $connection) {
                 break;
             }

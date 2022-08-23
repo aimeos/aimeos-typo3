@@ -11,8 +11,7 @@ return function(ContainerConfigurator $configurator, ContainerBuilder $container
 {
     $services = $configurator->services();
 
-    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('aimeos'))
-    {
+    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('aimeos')) {
         $services->set('widgets.dashboard.widget.latestorders')
             ->class(\Aimeos\Aimeos\Widgets\LatestOrderWidget::class)
             ->arg('$view', new \Symfony\Component\DependencyInjection\Reference('dashboard.views.widget'))

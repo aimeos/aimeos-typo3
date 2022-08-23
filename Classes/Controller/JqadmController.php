@@ -44,18 +44,15 @@ class JqadmController extends AbstractController
         $files = array();
         $type = $this->request->getArgument('type');
 
-        foreach (Base::aimeos()->getCustomPaths('admin/jqadm') as $base => $paths)
-        {
-            foreach($paths as $path)
-            {
+        foreach (Base::aimeos()->getCustomPaths('admin/jqadm') as $base => $paths) {
+            foreach($paths as $path) {
                 $jsbAbsPath = $base . '/' . $path;
                 $jsb2 = new \Aimeos\MW\Jsb2\Standard($jsbAbsPath, dirname($jsbAbsPath));
                 $files = array_merge($files, $jsb2->getFiles($type));
             }
         }
 
-        foreach ($files as $file)
-        {
+        foreach ($files as $file) {
             if (($content = file_get_contents($file)) === false) {
                 throw new \RuntimeException(sprintf('File "%1$s" not found', $jsbAbsPath));
             }
@@ -63,8 +60,7 @@ class JqadmController extends AbstractController
             $contents .= $content;
         }
 
-        if (!isset($this->responseFactory)) // TYPO3 10
-        {
+        if (!isset($this->responseFactory)) { // TYPO3 10
             if ($type === 'js') {
                 $this->response->setHeader('Content-Type', 'application/javascript');
             } elseif ($type === 'css') {
@@ -284,8 +280,7 @@ class JqadmController extends AbstractController
      */
     protected function render()
     {
-        if (isset($this->responseFactory)) // TYPO3 11
-        {
+        if (isset($this->responseFactory)) { // TYPO3 11
             return $this->responseFactory->createResponse()
                 ->withAddedHeader('Content-Type', 'text/html; charset=utf-8')
                 ->withBody($this->streamFactory->createStream($this->view->render()));
@@ -326,8 +321,7 @@ class JqadmController extends AbstractController
      */
     protected function setPsrResponse(\Psr\Http\Message\ResponseInterface $response)
     {
-        if (!isset($this->responseFactory)) // TYPO3 10
-        {
+        if (!isset($this->responseFactory)) { // TYPO3 10
             $this->response->setStatus($response->getStatusCode());
 
             foreach ($response->getHeaders() as $key => $value) {
