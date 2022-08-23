@@ -22,234 +22,234 @@ use TYPO3\CMS\Scheduler\Task\Enumeration\Action;
  */
 abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalFieldProvider
 {
-	private $fieldSite = 'aimeos_sitecode';
-	private $fieldController = 'aimeos_controller';
-	private $fieldTSconfig = 'aimeos_config';
+    private $fieldSite = 'aimeos_sitecode';
+    private $fieldController = 'aimeos_controller';
+    private $fieldTSconfig = 'aimeos_config';
 
 
-	/**
-	 * Fields generation.
-	 * This method is used to define new fields for adding or editing a task
-	 * In this case, it adds a page ID field
-	 *
-	 * @param array $taskInfo Reference to the array containing the info used in the add/edit form
-	 * @param object $task When editing, reference to the current task object. Null when adding.
-	 * @param object $parentObject Reference to the calling object (Scheduler's BE module)
-	 * @return array Array containg all the information pertaining to the additional fields
-	 *		The array is multidimensional, keyed to the task class name and each field's id
-	 *		For each field it provides an associative sub-array with the following:
-	 *			['code']		=> The HTML code for the field
-	 *			['label']		=> The label of the field (possibly localized)
-	 *			['cshKey']		=> The CSH key for the field
-	 *			['cshLabel']	=> The code of the CSH label
-	 */
-	protected function getFields( array &$taskInfo, $task, $parentObject )
-	{
-		$additionalFields = array();
+    /**
+     * Fields generation.
+     * This method is used to define new fields for adding or editing a task
+     * In this case, it adds a page ID field
+     *
+     * @param array $taskInfo Reference to the array containing the info used in the add/edit form
+     * @param object $task When editing, reference to the current task object. Null when adding.
+     * @param object $parentObject Reference to the calling object (Scheduler's BE module)
+     * @return array Array containg all the information pertaining to the additional fields
+     *        The array is multidimensional, keyed to the task class name and each field's id
+     *        For each field it provides an associative sub-array with the following:
+     *            ['code']        => The HTML code for the field
+     *            ['label']        => The label of the field (possibly localized)
+     *            ['cshKey']        => The CSH key for the field
+     *            ['cshLabel']    => The code of the CSH label
+     */
+    protected function getFields( array &$taskInfo, $task, $parentObject )
+    {
+        $additionalFields = array();
 
-		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldController] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
-			$taskInfo[$this->fieldController] = $task->{$this->fieldController};
-		}
+        // In case of editing a task, set to the internal value if data wasn't already submitted
+        if( empty( $taskInfo[$this->fieldController] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+            $taskInfo[$this->fieldController] = $task->{$this->fieldController};
+        }
 
-		$taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
+        $taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
 
-		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController );
-		$fieldCode .= $this->getControllerOptions( $taskInfo[$this->fieldController] );
-		$fieldCode .= '</select>';
+        $fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController );
+        $fieldCode .= $this->getControllerOptions( $taskInfo[$this->fieldController] );
+        $fieldCode .= '</select>';
 
-		$additionalFields[$this->fieldController] = array(
-			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.controller',
-			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->fieldController
-		);
-
-
-		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldSite] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
-			$taskInfo[$this->fieldSite] = $task->{$this->fieldSite};
-		}
-
-		$taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite];
-
-		$fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldSite );
-		$fieldCode .= $this->getSiteOptions( $this->getAvailableSites(), $taskInfo[$this->fieldSite], 0 );
-		$fieldCode .= '</select>';
-
-		$additionalFields[$this->fieldSite] = array(
-			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.sitecode',
-			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->fieldSite
-		);
+        $additionalFields[$this->fieldController] = array(
+            'code'     => $fieldCode,
+            'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.controller',
+            'cshKey'   => 'xMOD_tx_aimeos',
+            'cshLabel' => $this->fieldController
+        );
 
 
-		// In case of editing a task, set to the internal value if data wasn't already submitted
-		if( empty( $taskInfo[$this->fieldTSconfig] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
-			$taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig};
-		}
+        // In case of editing a task, set to the internal value if data wasn't already submitted
+        if( empty( $taskInfo[$this->fieldSite] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+            $taskInfo[$this->fieldSite] = $task->{$this->fieldSite};
+        }
 
-		$taskInfo[$this->fieldTSconfig] = htmlspecialchars( $taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8' );
+        $taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite];
 
-		$fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
-		$fieldCode = sprintf( $fieldStr, $this->fieldTSconfig, $taskInfo[$this->fieldTSconfig] );
+        $fieldCode = sprintf( '<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldSite );
+        $fieldCode .= $this->getSiteOptions( $this->getAvailableSites(), $taskInfo[$this->fieldSite], 0 );
+        $fieldCode .= '</select>';
 
-		$additionalFields[$this->fieldTSconfig] = array(
-			'code'     => $fieldCode,
-			'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.tsconfig',
-			'cshKey'   => 'xMOD_tx_aimeos',
-			'cshLabel' => $this->fieldTSconfig
-		);
-
-		return $additionalFields;
-	}
+        $additionalFields[$this->fieldSite] = array(
+            'code'     => $fieldCode,
+            'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.sitecode',
+            'cshKey'   => 'xMOD_tx_aimeos',
+            'cshLabel' => $this->fieldSite
+        );
 
 
-	/**
-	 * Store fields.
-	 * This method is used to save any additional input into the current task object
-	 * if the task class matches
-	 *
-	 * @param array $submittedData Array containing the data submitted by the user
-	 * @param object $task Reference to the current task object
-	 */
-	protected function saveFields( array $submittedData, $task )
-	{
-		$task->{$this->fieldSite} = $submittedData[$this->fieldSite];
-		$task->{$this->fieldController} = $submittedData[$this->fieldController];
-		$task->{$this->fieldTSconfig} = $submittedData[$this->fieldTSconfig];
-	}
+        // In case of editing a task, set to the internal value if data wasn't already submitted
+        if( empty( $taskInfo[$this->fieldTSconfig] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+            $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig};
+        }
+
+        $taskInfo[$this->fieldTSconfig] = htmlspecialchars( $taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8' );
+
+        $fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
+        $fieldCode = sprintf( $fieldStr, $this->fieldTSconfig, $taskInfo[$this->fieldTSconfig] );
+
+        $additionalFields[$this->fieldTSconfig] = array(
+            'code'     => $fieldCode,
+            'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.label.tsconfig',
+            'cshKey'   => 'xMOD_tx_aimeos',
+            'cshLabel' => $this->fieldTSconfig
+        );
+
+        return $additionalFields;
+    }
 
 
-	/**
-	 * Fields validation.
-	 * This method checks if page id given in the 'Hide content' specific task is int+
-	 * If the task class is not relevant, the method is expected to return true
-	 *
-	 * @param array $submittedData Reference to the array containing the data submitted by the user
-	 * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
-	 * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
-	 */
-	protected function validateFields( array &$submittedData, $parentObject )
-	{
-		if( count( (array) $submittedData[$this->fieldController] ) < 1 ) {
-			throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing' ) );
-		}
-
-		if( count( (array) $submittedData[$this->fieldSite] ) < 1 ) {
-			throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode.missing' ) );
-		}
-
-		Base::parseTS( $submittedData[$this->fieldTSconfig] );
+    /**
+     * Store fields.
+     * This method is used to save any additional input into the current task object
+     * if the task class matches
+     *
+     * @param array $submittedData Array containing the data submitted by the user
+     * @param object $task Reference to the current task object
+     */
+    protected function saveFields( array $submittedData, $task )
+    {
+        $task->{$this->fieldSite} = $submittedData[$this->fieldSite];
+        $task->{$this->fieldController} = $submittedData[$this->fieldController];
+        $task->{$this->fieldTSconfig} = $submittedData[$this->fieldTSconfig];
+    }
 
 
-		$context = Scheduler\Base::context();
-		$submittedData[$this->fieldSite] = array_unique( (array) $submittedData[$this->fieldSite] );
-		$siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
+    /**
+     * Fields validation.
+     * This method checks if page id given in the 'Hide content' specific task is int+
+     * If the task class is not relevant, the method is expected to return true
+     *
+     * @param array $submittedData Reference to the array containing the data submitted by the user
+     * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
+     * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
+     */
+    protected function validateFields( array &$submittedData, $parentObject )
+    {
+        if( count( (array) $submittedData[$this->fieldController] ) < 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing' ) );
+        }
 
-		if( count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
-			throw new \RuntimeException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode' ) );
-		}
+        if( count( (array) $submittedData[$this->fieldSite] ) < 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode.missing' ) );
+        }
 
-
-		$aimeos = Base::aimeos();
-		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
-		$submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] );
-
-		foreach( $submittedData[$this->fieldController] as $name ) {
-			\Aimeos\Controller\Jobs::create( $context, $aimeos, $name );
-		}
-
-		return true;
-	}
-
-
-	/**
-	 * Returns the list of site trees.
-	 *
-	 * @return \Aimeos\Map Associative list of items and children implementing \Aimeos\MShop\Locale\Item\Site\Iface
-	 */
-	protected function getAvailableSites() : \Aimeos\Map
-	{
-		$manager = \Aimeos\MShop::create( Scheduler\Base::context(), 'locale/site' );
-
-		$search = $manager->filter();
-		$search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
-		$search->setSortations( array( $search->sort( '+', 'locale.site.label' ) ) );
-
-		$sites = $manager->search( $search );
-
-		foreach( $sites as $id => $siteItem ) {
-			$sites[$id] = $manager->getTree( $id, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
-		}
-
-		return $sites;
-	}
+        Base::parseTS( $submittedData[$this->fieldTSconfig] );
 
 
-	/**
-	 * Returns the HTML code for the select control.
-	 * The method adds every site and its children recursively.
-	 *
-	 * @param \Aimeos\Map $siteItems List of items implementing \Aimeos\MShop\Locale\Item\Site\Iface
-	 * @param array $selected List of site codes that were previously selected by the user
-	 * @param int $level Nesting level of the sites (should start with 0)
-	 * @return string HTML code with <option> tags for the select box
-	 */
-	protected function getSiteOptions( \Aimeos\Map $siteItems, array $selected, int $level ) : string
-	{
-		$html = '';
-		$prefix = str_repeat( '-', $level ) . ' ';
+        $context = Scheduler\Base::context();
+        $submittedData[$this->fieldSite] = array_unique( (array) $submittedData[$this->fieldSite] );
+        $siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
-		foreach( $siteItems as $item )
-		{
-			$active = ( in_array( $item->getCode(), $selected ) ? 'selected="selected"' : '' );
-			$disabled = ( $item->getStatus() > 0 ? '' : 'disabled="disabled"' );
-			$string = '<option value="%1$s" %2$s %3$s>%4$s</option>';
-			$html .= sprintf( $string, $item->getCode(), $active, $disabled, $prefix . $item->getLabel() );
-
-			$html .= $this->getSiteOptions( $item->getChildren(), $selected, $level + 1 );
-		}
-
-		return $html;
-	}
+        if( count( $siteItems ) !== count( $submittedData[$this->fieldSite] ) ) {
+            throw new \RuntimeException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode' ) );
+        }
 
 
-	/**
-	 * Returns the HTML code for the controller control.
-	 *
-	 * @param array $selected List of site codes that were previously selected by the user
-	 * @return string HTML code with <option> tags for the select box
-	 */
-	protected function getControllerOptions( array $selected ) : string
-	{
-		$html = '';
-		$aimeos = Base::aimeos();
-		$context = Scheduler\Base::context();
-		$cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
+        $aimeos = Base::aimeos();
+        $cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
+        $submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] );
 
-		$langid = 'en';
-		if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && !in_array( $GLOBALS['BE_USER']->uc['lang'], ['', 'default'] ) ) {
-			$langid = $GLOBALS['BE_USER']->uc['lang'];
-		}
+        foreach( $submittedData[$this->fieldController] as $name ) {
+            \Aimeos\Controller\Jobs::create( $context, $aimeos, $name );
+        }
 
-		$localeItem = \Aimeos\MShop::create( $context, 'locale' )->create();
-		$localeItem->setLanguageId( $langid );
-		$context->setLocale( $localeItem );
+        return true;
+    }
 
-		$controllers = \Aimeos\Controller\Jobs::get( $context, $aimeos, $cntlPaths );
 
-		foreach( $controllers as $name => $controller )
-		{
-			$active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
-			$title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
-			$cntl = htmlspecialchars( sprintf( '%1$s: %2$s', $name, $controller->getName() ), ENT_QUOTES, 'UTF-8' );
-			$name = htmlspecialchars( $name, ENT_QUOTES, 'UTF-8' );
+    /**
+     * Returns the list of site trees.
+     *
+     * @return \Aimeos\Map Associative list of items and children implementing \Aimeos\MShop\Locale\Item\Site\Iface
+     */
+    protected function getAvailableSites() : \Aimeos\Map
+    {
+        $manager = \Aimeos\MShop::create( Scheduler\Base::context(), 'locale/site' );
 
-			$html .= sprintf( '<option value="%1$s" title="%2$s" %3$s>%4$s</option>', $name, $title, $active, $cntl );
-		}
+        $search = $manager->filter();
+        $search->setConditions( $search->compare( '==', 'locale.site.level', 0 ) );
+        $search->setSortations( array( $search->sort( '+', 'locale.site.label' ) ) );
 
-		return $html;
-	}
+        $sites = $manager->search( $search );
+
+        foreach( $sites as $id => $siteItem ) {
+            $sites[$id] = $manager->getTree( $id, array(), \Aimeos\MW\Tree\Manager\Base::LEVEL_TREE );
+        }
+
+        return $sites;
+    }
+
+
+    /**
+     * Returns the HTML code for the select control.
+     * The method adds every site and its children recursively.
+     *
+     * @param \Aimeos\Map $siteItems List of items implementing \Aimeos\MShop\Locale\Item\Site\Iface
+     * @param array $selected List of site codes that were previously selected by the user
+     * @param int $level Nesting level of the sites (should start with 0)
+     * @return string HTML code with <option> tags for the select box
+     */
+    protected function getSiteOptions( \Aimeos\Map $siteItems, array $selected, int $level ) : string
+    {
+        $html = '';
+        $prefix = str_repeat( '-', $level ) . ' ';
+
+        foreach( $siteItems as $item )
+        {
+            $active = ( in_array( $item->getCode(), $selected ) ? 'selected="selected"' : '' );
+            $disabled = ( $item->getStatus() > 0 ? '' : 'disabled="disabled"' );
+            $string = '<option value="%1$s" %2$s %3$s>%4$s</option>';
+            $html .= sprintf( $string, $item->getCode(), $active, $disabled, $prefix . $item->getLabel() );
+
+            $html .= $this->getSiteOptions( $item->getChildren(), $selected, $level + 1 );
+        }
+
+        return $html;
+    }
+
+
+    /**
+     * Returns the HTML code for the controller control.
+     *
+     * @param array $selected List of site codes that were previously selected by the user
+     * @return string HTML code with <option> tags for the select box
+     */
+    protected function getControllerOptions( array $selected ) : string
+    {
+        $html = '';
+        $aimeos = Base::aimeos();
+        $context = Scheduler\Base::context();
+        $cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
+
+        $langid = 'en';
+        if( isset( $GLOBALS['BE_USER']->uc['lang'] ) && !in_array( $GLOBALS['BE_USER']->uc['lang'], ['', 'default'] ) ) {
+            $langid = $GLOBALS['BE_USER']->uc['lang'];
+        }
+
+        $localeItem = \Aimeos\MShop::create( $context, 'locale' )->create();
+        $localeItem->setLanguageId( $langid );
+        $context->setLocale( $localeItem );
+
+        $controllers = \Aimeos\Controller\Jobs::get( $context, $aimeos, $cntlPaths );
+
+        foreach( $controllers as $name => $controller )
+        {
+            $active = ( in_array( $name, $selected ) ? 'selected="selected"' : '' );
+            $title = htmlspecialchars( $controller->getDescription(), ENT_QUOTES, 'UTF-8' );
+            $cntl = htmlspecialchars( sprintf( '%1$s: %2$s', $name, $controller->getName() ), ENT_QUOTES, 'UTF-8' );
+            $name = htmlspecialchars( $name, ENT_QUOTES, 'UTF-8' );
+
+            $html .= sprintf( '<option value="%1$s" title="%2$s" %3$s>%4$s</option>', $name, $title, $active, $cntl );
+        }
+
+        return $html;
+    }
 }

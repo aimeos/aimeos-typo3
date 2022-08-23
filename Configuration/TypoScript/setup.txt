@@ -4,44 +4,44 @@ page.includeJSFooter.aimeos = {$plugin.tx_aimeos.theme.js.aimeos}
 page.includeJSFooter.aimeos-custom = {$plugin.tx_aimeos.theme.js.aimeos-custom}
 
 plugin.tx_aimeos {
-	features {
-		skipDefaultArguments = 1
-	}
-	mvc {
-		throwPageNotFoundExceptionIfActionCantBeResolved = 0
-		callDefaultActionIfActionCantBeResolved = 1
-	}
-	view {
-		pluginNamespace = ai
-	}
-	settings {
-		admin.jsonadm.url {
-			config.absoluteUri = 1
-			options.config.absoluteUri = 1
-		}
-		client {
-			html {
-				account.download.url.config.absoluteUri = 1
-				catalog {
-					count.url.config.type = 191351524
-					suggest.url.config.type = 191351524
-					stock.url.config.type = 191351524
-				}
-				checkout {
-					confirm.url.config {
-						absoluteUri = 1
-						namespace = 0
-					}
-					update.url.config {
-						type = 191351525
-						absoluteUri = 1
-						namespace = 0
-					}
-				}
-			}
-			jsonapi.url.config.absoluteUri = 1
-		}
-	}
+    features {
+        skipDefaultArguments = 1
+    }
+    mvc {
+        throwPageNotFoundExceptionIfActionCantBeResolved = 0
+        callDefaultActionIfActionCantBeResolved = 1
+    }
+    view {
+        pluginNamespace = ai
+    }
+    settings {
+        admin.jsonadm.url {
+            config.absoluteUri = 1
+            options.config.absoluteUri = 1
+        }
+        client {
+            html {
+                account.download.url.config.absoluteUri = 1
+                catalog {
+                    count.url.config.type = 191351524
+                    suggest.url.config.type = 191351524
+                    stock.url.config.type = 191351524
+                }
+                checkout {
+                    confirm.url.config {
+                        absoluteUri = 1
+                        namespace = 0
+                    }
+                    update.url.config {
+                        type = 191351525
+                        absoluteUri = 1
+                        namespace = 0
+                    }
+                }
+            }
+            jsonapi.url.config.absoluteUri = 1
+        }
+    }
 }
 
 
@@ -50,38 +50,38 @@ module.tx_aimeos.settings.typo3.admin.default = {$module.tx_aimeos.typo3.admin.d
 
 aimeosJs = PAGE
 aimeosJs {
-	typeNum = 191351524
-	headerData >
-	config {
-		additionalHeaders.10.header = Content-type:application/javascript
-		disableAllHeaderCode = 1
-		disableCharsetHeader = 1
-		disablePrefixComment = 1
-	}
-	10 = CONTENT
-	10 {
-		table = tt_content
-		select.orderBy = sorting
-		select.languageField = sys_language_uid
-	}
+    typeNum = 191351524
+    headerData >
+    config {
+        additionalHeaders.10.header = Content-type:application/javascript
+        disableAllHeaderCode = 1
+        disableCharsetHeader = 1
+        disablePrefixComment = 1
+    }
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.languageField = sys_language_uid
+    }
 }
 
 aimeosPlain = PAGE
 aimeosPlain {
-	typeNum = 191351525
-	headerData >
-	config {
-		additionalHeaders.10.header = Content-type:text/plain
-		disableAllHeaderCode = 1
-		disableCharsetHeader = 1
-		disablePrefixComment = 1
-	}
-	10 = CONTENT
-	10 {
-		table = tt_content
-		select.orderBy = sorting
-		select.languageField = sys_language_uid
-	}
+    typeNum = 191351525
+    headerData >
+    config {
+        additionalHeaders.10.header = Content-type:text/plain
+        disableAllHeaderCode = 1
+        disableCharsetHeader = 1
+        disablePrefixComment = 1
+    }
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.languageField = sys_language_uid
+    }
 }
 
 [getTSFE().type in [191351524, 191351525]]

@@ -3,15 +3,15 @@
 
 plugin.tx_aimeos {
 
-	# cat=ai140theme/file/100; type=string; label=Aimeos CSS:Path to the Aimeos CSS file
-	theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/default/aimeos.css
+    # cat=ai140theme/file/100; type=string; label=Aimeos CSS:Path to the Aimeos CSS file
+    theme.css.aimeos = EXT:aimeos/Resources/Public/Themes/default/aimeos.css
 
-	# cat=ai140theme/file/100; type=string; label=Custom CSS:Path to your custom CSS for Aimeos
-	theme.css.aimeos-custom = EXT:aimeos/Resources/Public/Themes/default/typo3.css
+    # cat=ai140theme/file/100; type=string; label=Custom CSS:Path to your custom CSS for Aimeos
+    theme.css.aimeos-custom = EXT:aimeos/Resources/Public/Themes/default/typo3.css
 
-	# cat=ai140theme/file/110; type=string; label=Aimeos JS:Path to your Aimeos Javascript file
-	theme.js.aimeos = EXT:aimeos/Resources/Public/Themes/default/aimeos.js
+    # cat=ai140theme/file/110; type=string; label=Aimeos JS:Path to your Aimeos Javascript file
+    theme.js.aimeos = EXT:aimeos/Resources/Public/Themes/default/aimeos.js
 
-	# cat=ai140theme/file/110; type=string; label=Custom JS:Path to your custom Javascript for Aimeos
-	theme.js.aimeos-custom =
+    # cat=ai140theme/file/110; type=string; label=Custom JS:Path to your custom Javascript for Aimeos
+    theme.js.aimeos-custom =
 }

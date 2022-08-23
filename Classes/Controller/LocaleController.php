@@ -21,12 +21,12 @@ use Aimeos\Aimeos\Base;
  */
 class LocaleController extends AbstractController
 {
-	/**
-	 * Processes requests and renders the locale selector.
-	 */
-	public function selectAction()
-	{
-		$client = \Aimeos\Client\Html::create( $this->context(), 'locale/select' );
-		return $this->getClientOutput( $client );
-	}
+    /**
+     * Processes requests and renders the locale selector.
+     */
+    public function selectAction()
+    {
+        $client = \Aimeos\Client\Html::create( $this->context(), 'locale/select' );
+        return $this->getClientOutput( $client );
+    }
 }

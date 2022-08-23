@@ -19,24 +19,24 @@ use TYPO3\CMS\Extbase\Http\ForwardResponse;
  */
 class AdminController extends AbstractController
 {
-	/**
-	 * Forwards to the configured admin interface
-	 */
-	public function indexAction()
-	{
-		$site = 'default';
+    /**
+     * Forwards to the configured admin interface
+     */
+    public function indexAction()
+    {
+        $site = 'default';
 
-		if( isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' )
-		{
-			$siteManager = \Aimeos\MShop::create( $this->contextBackend(), 'locale/site' );
-			$siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
-			$site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
-		}
+        if( isset( $GLOBALS['BE_USER']->user['siteid'] ) && $GLOBALS['BE_USER']->user['siteid'] != '' )
+        {
+            $siteManager = \Aimeos\MShop::create( $this->contextBackend(), 'locale/site' );
+            $siteId = current( array_reverse( explode( '.', trim( $GLOBALS['BE_USER']->user['siteid'], '.' ) ) ) );
+            $site = ( $siteId ? $siteManager->get( $siteId )->getCode() : 'default' );
+        }
 
-		if( !class_exists( '\TYPO3\CMS\Extbase\Http\ForwardResponse' ) ) {
-			return $this->forward( 'search', 'Jqadm', null, ['site' => $site] );
-		}
+        if( !class_exists( '\TYPO3\CMS\Extbase\Http\ForwardResponse' ) ) {
+            return $this->forward( 'search', 'Jqadm', null, ['site' => $site] );
+        }
 
-		return ( new ForwardResponse( 'search' ) )->withControllerName( 'Jqadm' )->withArguments( ['site' => $site] );
-	}
+        return ( new ForwardResponse( 'search' ) )->withControllerName( 'Jqadm' )->withArguments( ['site' => $site] );
+    }
 }

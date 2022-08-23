@@ -15,28 +15,28 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 class BlockViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
-	protected $escapeOutput = false;
+    protected $escapeOutput = false;
 
 
-	public function initializeArguments()
-	{
-		$this->registerArgument( 'name', 'string', 'Name of the content block' );
-	}
+    public function initializeArguments()
+    {
+        $this->registerArgument( 'name', 'string', 'Name of the content block' );
+    }
 
 
-	public function render()
-	{
-		$iface = '\Aimeos\Base\View\Iface';
-		$view = $this->templateVariableContainer->get( '_aimeos_view' );
+    public function render()
+    {
+        $iface = '\Aimeos\Base\View\Iface';
+        $view = $this->templateVariableContainer->get( '_aimeos_view' );
 
-		if( !is_object( $view ) || !( $view instanceof $iface ) ) {
-			throw new Exception( 'Aimeos view object is missing' );
-		}
+        if( !is_object( $view ) || !( $view instanceof $iface ) ) {
+            throw new Exception( 'Aimeos view object is missing' );
+        }
 
-		if( !isset( $this->arguments['name'] ) ) {
-			throw new Exception( 'Attribute "name" missing for Aimeos block view helper' );
-		}
+        if( !isset( $this->arguments['name'] ) ) {
+            throw new Exception( 'Attribute "name" missing for Aimeos block view helper' );
+        }
 
-		$view->block()->set( $this->arguments['name'], $this->renderChildren() );
-	}
+        $view->block()->set( $this->arguments['name'], $this->renderChildren() );
+    }
 }

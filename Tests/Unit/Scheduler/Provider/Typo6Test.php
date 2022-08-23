@@ -10,133 +10,133 @@ use TYPO3\CMS\Scheduler\Task\Enumeration\Action;
 
 class Typo6Test extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $object;
+    private $object;
 
 
-	public function setUp()
-	{
-		$this->object = new \Aimeos\Aimeos\Scheduler\Provider\Typo6();
-	}
+    public function setUp()
+    {
+        $this->object = new \Aimeos\Aimeos\Scheduler\Provider\Typo6();
+    }
 
 
-	public function tearDown()
-	{
-		unset( $this->object );
-	}
+    public function tearDown()
+    {
+        unset( $this->object );
+    }
 
 
-	/**
-	 * @test
-	 */
-	public function getAdditionalFields()
-	{
-		$taskInfo = array();
-		$module = new SchedulerModuleController();
-		$module->setCurrentAction( new Action( 'EDIT' ) );
+    /**
+     * @test
+     */
+    public function getAdditionalFields()
+    {
+        $taskInfo = array();
+        $module = new SchedulerModuleController();
+        $module->setCurrentAction( new Action( 'EDIT' ) );
 
-		$result = $this->object->getAdditionalFields( $taskInfo, $this->object, $module );
+        $result = $this->object->getAdditionalFields( $taskInfo, $this->object, $module );
 
-		$this->assertInternalType( 'array', $result );
-		$this->assertArrayHasKey( 'aimeos_controller', $result );
-		$this->assertArrayHasKey( 'aimeos_sitecode', $result );
-		$this->assertArrayHasKey( 'aimeos_config', $result );
-	}
-
-
-	/**
-	 * @test
-	 */
-	public function getAdditionalFieldsException()
-	{
-		$taskInfo = array();
-		$module = new SchedulerModuleController();
-		$module->setCurrentAction( new Action( 'EDIT' ) );
-
-		$mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Typo6' )
-			->setMethods( array( 'getFields' ) )->getMock();
-
-		$mock->expects( $this->once() )->method( 'getFields' )
-			->will( $this->throwException( new \RuntimeException() ) );
-
-		$result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
-
-		$this->assertEquals( array(), $result );
-	}
+        $this->assertInternalType( 'array', $result );
+        $this->assertArrayHasKey( 'aimeos_controller', $result );
+        $this->assertArrayHasKey( 'aimeos_sitecode', $result );
+        $this->assertArrayHasKey( 'aimeos_config', $result );
+    }
 
 
-	/**
-	 * @test
-	 */
-	public function saveAdditionalFields()
-	{
-		$data = array(
-			'aimeos_sitecode' => 'testsite',
-			'aimeos_controller' => 'testcntl',
-			'aimeos_config' => 'testconf',
-		);
-		$task = new \Aimeos\Aimeos\Scheduler\Task\Typo6();
+    /**
+     * @test
+     */
+    public function getAdditionalFieldsException()
+    {
+        $taskInfo = array();
+        $module = new SchedulerModuleController();
+        $module->setCurrentAction( new Action( 'EDIT' ) );
 
-		$this->object->saveAdditionalFields( $data, $task );
+        $mock = $this->getMockBuilder( '\Aimeos\Aimeos\Scheduler\Provider\Typo6' )
+            ->setMethods( array( 'getFields' ) )->getMock();
 
-		$this->assertEquals( 'testsite', $task->aimeos_sitecode );
-		$this->assertEquals( 'testcntl', $task->aimeos_controller );
-		$this->assertEquals( 'testconf', $task->aimeos_config );
-	}
+        $mock->expects( $this->once() )->method( 'getFields' )
+            ->will( $this->throwException( new \RuntimeException() ) );
 
+        $result = $mock->getAdditionalFields( $taskInfo, $mock, $module );
 
-	/**
-	 * @test
-	 */
-	public function validateAdditionalFieldsNoController()
-	{
-		$data = array();
-		$module = new SchedulerModuleController();
-
-		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
-	}
+        $this->assertEquals( array(), $result );
+    }
 
 
-	/**
-	 * @test
-	 */
-	public function validateAdditionalFieldsNoSite()
-	{
-		$data = array(
-			'aimeos_controller' => 'testcntl',
-		);
-		$module = new SchedulerModuleController();
+    /**
+     * @test
+     */
+    public function saveAdditionalFields()
+    {
+        $data = array(
+            'aimeos_sitecode' => 'testsite',
+            'aimeos_controller' => 'testcntl',
+            'aimeos_config' => 'testconf',
+        );
+        $task = new \Aimeos\Aimeos\Scheduler\Task\Typo6();
 
-		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
-	}
+        $this->object->saveAdditionalFields( $data, $task );
 
-
-	/**
-	 * @test
-	 */
-	public function validateAdditionalFieldsNoSiteFound()
-	{
-		$data = array(
-			'aimeos_controller' => 'testcntl',
-			'aimeos_sitecode' => 'testsite',
-			'aimeos_config' => 'testconf',
-		);
-		$module = new SchedulerModuleController();
-
-		$this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
-	}
+        $this->assertEquals( 'testsite', $task->aimeos_sitecode );
+        $this->assertEquals( 'testcntl', $task->aimeos_controller );
+        $this->assertEquals( 'testconf', $task->aimeos_config );
+    }
 
 
-	/**
-	 * @test
-	 */
-	public function validateAdditionalFields()
-	{
-		$data = array(
-			'aimeos_sitecode' => 'default',
-			'aimeos_controller' => 'index/optimize',
-		);
-		$module = new SchedulerModuleController();
+    /**
+     * @test
+     */
+    public function validateAdditionalFieldsNoController()
+    {
+        $data = array();
+        $module = new SchedulerModuleController();
 
-		$this->assertTrue( $this->object->validateAdditionalFields( $data, $module ) );
-	}
+        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+    }
+
+
+    /**
+     * @test
+     */
+    public function validateAdditionalFieldsNoSite()
+    {
+        $data = array(
+            'aimeos_controller' => 'testcntl',
+        );
+        $module = new SchedulerModuleController();
+
+        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+    }
+
+
+    /**
+     * @test
+     */
+    public function validateAdditionalFieldsNoSiteFound()
+    {
+        $data = array(
+            'aimeos_controller' => 'testcntl',
+            'aimeos_sitecode' => 'testsite',
+            'aimeos_config' => 'testconf',
+        );
+        $module = new SchedulerModuleController();
+
+        $this->assertFalse( $this->object->validateAdditionalFields( $data, $module ) );
+    }
+
+
+    /**
+     * @test
+     */
+    public function validateAdditionalFields()
+    {
+        $data = array(
+            'aimeos_sitecode' => 'default',
+            'aimeos_controller' => 'index/optimize',
+        );
+        $module = new SchedulerModuleController();
+
+        $this->assertTrue( $this->object->validateAdditionalFields( $data, $module ) );
+    }
 }

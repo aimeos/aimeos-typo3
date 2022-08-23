@@ -21,42 +21,42 @@ use Aimeos\Aimeos\Base;
  */
 class BasketController extends AbstractController
 {
-	/**
-	 * Processes requests and renders the basket.
-	 */
-	public function indexAction()
-	{
-		$client = \Aimeos\Client\Html::create( $this->context(), 'basket/standard' );
-		return $this->getClientOutput( $client );
-	}
+    /**
+     * Processes requests and renders the basket.
+     */
+    public function indexAction()
+    {
+        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/standard' );
+        return $this->getClientOutput( $client );
+    }
 
 
-	/**
-	 * Renders a bulk order form.
-	 */
-	public function bulkAction()
-	{
-		$client = \Aimeos\Client\Html::create( $this->context(), 'basket/bulk' );
-		return $this->getClientOutput( $client );
-	}
+    /**
+     * Renders a bulk order form.
+     */
+    public function bulkAction()
+    {
+        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/bulk' );
+        return $this->getClientOutput( $client );
+    }
 
 
-	/**
-	 * Renders a small basket.
-	 */
-	public function smallAction()
-	{
-		$client = \Aimeos\Client\Html::create( $this->context(), 'basket/mini' );
-		return $this->getClientOutput( $client );
-	}
+    /**
+     * Renders a small basket.
+     */
+    public function smallAction()
+    {
+        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/mini' );
+        return $this->getClientOutput( $client );
+    }
 
 
-	/**
-	 * Renders the related basket.
-	 */
-	public function relatedAction()
-	{
-		$client = \Aimeos\Client\Html::create( $this->context(), 'basket/related' );
-		return $this->getClientOutput( $client );
-	}
+    /**
+     * Renders the related basket.
+     */
+    public function relatedAction()
+    {
+        $client = \Aimeos\Client\Html::create( $this->context(), 'basket/related' );
+        return $this->getClientOutput( $client );
+    }
 }

@@ -1,304 +1,304 @@
 mod.wizards.newContentElement.wizardItems.aimeos {
-	after = common
-	header = Aimeos
-	elements {
-		aimeos_catalog-home {
-			iconIdentifier = aimeos_catalog-home
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-home
-			}
-		}
-		aimeos_catalog-list {
-			iconIdentifier = aimeos_catalog-list
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-list
-			}
-		}
-		aimeos_catalog-detail {
-			iconIdentifier = aimeos_catalog-detail
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-detail.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-detail.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-detail
-			}
-		}
-		aimeos_catalog-filter {
-			iconIdentifier = aimeos_catalog-filter
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-filter.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-filter.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-filter
-			}
-		}
-		aimeos_catalog-attribute {
-			iconIdentifier = aimeos_catalog-attribute
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-attribute.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-attribute.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-attribute
-			}
-		}
-		aimeos_catalog-price {
-			iconIdentifier = aimeos_catalog-price
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-price
-			}
-		}
-		aimeos_catalog-search {
-			iconIdentifier = aimeos_catalog-search
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-search
-			}
-		}
-		aimeos_catalog-supplier {
-			iconIdentifier = aimeos_catalog-supplier
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-supplier.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-supplier.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-supplier
-			}
-		}
-		aimeos_catalog-tree {
-			iconIdentifier = aimeos_catalog-tree
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-tree
-			}
-		}
-		aimeos_catalog-stage {
-			iconIdentifier = aimeos_catalog-stage
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-stage
-			}
-		}
-		aimeos_catalog-session {
-			iconIdentifier = aimeos_catalog-session
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-session.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-session.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-session
-			}
-		}
-		aimeos_catalog-suggest {
-			iconIdentifier = aimeos_catalog-suggest
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-suggest.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-suggest.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-suggest
-			}
-		}
-		aimeos_catalog-count {
-			iconIdentifier = aimeos_catalog-count
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-count.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-count.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-count
-			}
-		}
-		aimeos_catalog-stock {
-			iconIdentifier = aimeos_catalog-stock
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-stock
-			}
-		}
-		aimeos_catalog-stock {
-			iconIdentifier = aimeos_catalog-stock
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_catalog-stock
-			}
-		}
-		aimeos_supplier-detail {
-			iconIdentifier = aimeos_supplier-detail
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_supplier-detail
-			}
-		}
-		aimeos_locale-select {
-			iconIdentifier = aimeos_locale-select
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_locale-select
-			}
-		}
-		aimeos_account-basket {
-			iconIdentifier = aimeos_account-basket
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-basket
-			}
-		}
-		aimeos_account-history {
-			iconIdentifier = aimeos_account-history
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-history
-			}
-		}
-		aimeos_account-subscription {
-			iconIdentifier = aimeos_account-subscription
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-subscription.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-subscription.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-subscription
-			}
-		}
-		aimeos_account-review {
-			iconIdentifier = aimeos_account-review
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-review
-			}
-		}
-		aimeos_account-favorite {
-			iconIdentifier = aimeos_account-favorite
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-favorite
-			}
-		}
-		aimeos_account-watch {
-			iconIdentifier = aimeos_account-watch
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-watch.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-watch.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-watch
-			}
-		}
-		aimeos_account-profile {
-			iconIdentifier = aimeos_account-profile
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-profile.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-profile.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-profile
-			}
-		}
-		aimeos_account-download {
-			iconIdentifier = aimeos_account-download
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-download.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-download.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_account-download
-			}
-		}
-		aimeos_basket-standard {
-			iconIdentifier = aimeos_basket-standard
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-standard.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-standard.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_basket-standard
-			}
-		}
-		aimeos_basket-small {
-			iconIdentifier = aimeos_basket-small
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-small.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-small.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_basket-small
-			}
-		}
-		aimeos_basket-related {
-			iconIdentifier = aimeos_basket-related
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-related.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-related.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_basket-related
-			}
-		}
-		aimeos_basket-bulk {
-			iconIdentifier = aimeos_basket-bulk
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-bulk.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-bulk.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_basket-bulk
-			}
-		}
-		aimeos_checkout-standard {
-			iconIdentifier = aimeos_checkout-standard
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-standard.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-standard.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_checkout-standard
-			}
-		}
-		aimeos_checkout-confirm {
-			iconIdentifier = aimeos_checkout-confirm
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-confirm.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-confirm.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_checkout-confirm
-			}
-		}
-		aimeos_checkout-update {
-			iconIdentifier = aimeos_checkout-update
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-update.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-update.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_checkout-update
-			}
-		}
-		aimeos_jsonapi {
-			iconIdentifier = aimeos_jsonapi
-			title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_jsonapi.title
-			description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_jsonapi.description
-			tt_content_defValues {
-				CType = list
-				list_type = aimeos_jsonapi
-			}
-		}
-	}
-	show = *
+    after = common
+    header = Aimeos
+    elements {
+        aimeos_catalog-home {
+            iconIdentifier = aimeos_catalog-home
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-home
+            }
+        }
+        aimeos_catalog-list {
+            iconIdentifier = aimeos_catalog-list
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-list
+            }
+        }
+        aimeos_catalog-detail {
+            iconIdentifier = aimeos_catalog-detail
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-detail.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-detail.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-detail
+            }
+        }
+        aimeos_catalog-filter {
+            iconIdentifier = aimeos_catalog-filter
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-filter.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-filter.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-filter
+            }
+        }
+        aimeos_catalog-attribute {
+            iconIdentifier = aimeos_catalog-attribute
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-attribute.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-attribute.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-attribute
+            }
+        }
+        aimeos_catalog-price {
+            iconIdentifier = aimeos_catalog-price
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-price
+            }
+        }
+        aimeos_catalog-search {
+            iconIdentifier = aimeos_catalog-search
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-search
+            }
+        }
+        aimeos_catalog-supplier {
+            iconIdentifier = aimeos_catalog-supplier
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-supplier.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-supplier.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-supplier
+            }
+        }
+        aimeos_catalog-tree {
+            iconIdentifier = aimeos_catalog-tree
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-tree
+            }
+        }
+        aimeos_catalog-stage {
+            iconIdentifier = aimeos_catalog-stage
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-stage
+            }
+        }
+        aimeos_catalog-session {
+            iconIdentifier = aimeos_catalog-session
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-session.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-session.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-session
+            }
+        }
+        aimeos_catalog-suggest {
+            iconIdentifier = aimeos_catalog-suggest
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-suggest.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-suggest.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-suggest
+            }
+        }
+        aimeos_catalog-count {
+            iconIdentifier = aimeos_catalog-count
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-count.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-count.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-count
+            }
+        }
+        aimeos_catalog-stock {
+            iconIdentifier = aimeos_catalog-stock
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-stock
+            }
+        }
+        aimeos_catalog-stock {
+            iconIdentifier = aimeos_catalog-stock
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_catalog-stock
+            }
+        }
+        aimeos_supplier-detail {
+            iconIdentifier = aimeos_supplier-detail
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_supplier-detail
+            }
+        }
+        aimeos_locale-select {
+            iconIdentifier = aimeos_locale-select
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_locale-select
+            }
+        }
+        aimeos_account-basket {
+            iconIdentifier = aimeos_account-basket
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-basket
+            }
+        }
+        aimeos_account-history {
+            iconIdentifier = aimeos_account-history
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-history
+            }
+        }
+        aimeos_account-subscription {
+            iconIdentifier = aimeos_account-subscription
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-subscription.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-subscription.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-subscription
+            }
+        }
+        aimeos_account-review {
+            iconIdentifier = aimeos_account-review
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-review
+            }
+        }
+        aimeos_account-favorite {
+            iconIdentifier = aimeos_account-favorite
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-favorite
+            }
+        }
+        aimeos_account-watch {
+            iconIdentifier = aimeos_account-watch
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-watch.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-watch.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-watch
+            }
+        }
+        aimeos_account-profile {
+            iconIdentifier = aimeos_account-profile
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-profile.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-profile.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-profile
+            }
+        }
+        aimeos_account-download {
+            iconIdentifier = aimeos_account-download
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-download.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-download.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_account-download
+            }
+        }
+        aimeos_basket-standard {
+            iconIdentifier = aimeos_basket-standard
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-standard.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-standard.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_basket-standard
+            }
+        }
+        aimeos_basket-small {
+            iconIdentifier = aimeos_basket-small
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-small.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-small.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_basket-small
+            }
+        }
+        aimeos_basket-related {
+            iconIdentifier = aimeos_basket-related
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-related.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-related.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_basket-related
+            }
+        }
+        aimeos_basket-bulk {
+            iconIdentifier = aimeos_basket-bulk
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-bulk.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-bulk.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_basket-bulk
+            }
+        }
+        aimeos_checkout-standard {
+            iconIdentifier = aimeos_checkout-standard
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-standard.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-standard.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_checkout-standard
+            }
+        }
+        aimeos_checkout-confirm {
+            iconIdentifier = aimeos_checkout-confirm
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-confirm.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-confirm.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_checkout-confirm
+            }
+        }
+        aimeos_checkout-update {
+            iconIdentifier = aimeos_checkout-update
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-update.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-update.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_checkout-update
+            }
+        }
+        aimeos_jsonapi {
+            iconIdentifier = aimeos_jsonapi
+            title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_jsonapi.title
+            description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_jsonapi.description
+            tt_content_defValues {
+                CType = list
+                list_type = aimeos_jsonapi
+            }
+        }
+    }
+    show = *
 }

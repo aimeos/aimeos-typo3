@@ -9,34 +9,34 @@
 ########################################################################
 
 $EM_CONF['aimeos'] = array(
-	'title' => 'Aimeos shop and e-commerce framework',
-	'description' => 'Professional, full-featured and ultra-fast TYPO3 e-commerce extension for online shops, complex B2B applications and #gigacommerce. Turns TYPO3 into the best platform for content commerce and your e-commerce requirements (also available as TYPO3 distribution)',
-	'category' => 'plugin',
-	'version' => '22.04.0-dev',
-	'module' => '',
-	'state' => 'beta',
-	'modify_tables' => '',
-	'clearcacheonload' => 1,
-	'author' => 'Aimeos',
-	'author_email' => 'aimeos@aimeos.org',
-	'author_company' => '',
-	'constraints' => array(
-		'depends' => array(
-			'php' => '7.2.0-8.99.99',
-			'typo3' => '10.4.0-11.99.99',
-			'scheduler' => '10.4.0-11.99.99',
-			'pdfviewhelpers' => '2.4.0-2.99.99',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
-	'autoload' => array(
-		'psr-4' => array(
-			'Aimeos\\Aimeos\\' => 'Classes',
-		),
-	),
+    'title' => 'Aimeos shop and e-commerce framework',
+    'description' => 'Professional, full-featured and ultra-fast TYPO3 e-commerce extension for online shops, complex B2B applications and #gigacommerce. Turns TYPO3 into the best platform for content commerce and your e-commerce requirements (also available as TYPO3 distribution)',
+    'category' => 'plugin',
+    'version' => '22.04.0-dev',
+    'module' => '',
+    'state' => 'beta',
+    'modify_tables' => '',
+    'clearcacheonload' => 1,
+    'author' => 'Aimeos',
+    'author_email' => 'aimeos@aimeos.org',
+    'author_company' => '',
+    'constraints' => array(
+        'depends' => array(
+            'php' => '7.2.0-8.99.99',
+            'typo3' => '10.4.0-11.99.99',
+            'scheduler' => '10.4.0-11.99.99',
+            'pdfviewhelpers' => '2.4.0-2.99.99',
+        ),
+        'conflicts' => array(
+        ),
+        'suggests' => array(
+        ),
+    ),
+    'autoload' => array(
+        'psr-4' => array(
+            'Aimeos\\Aimeos\\' => 'Classes',
+        ),
+    ),
 );
 
 ?>

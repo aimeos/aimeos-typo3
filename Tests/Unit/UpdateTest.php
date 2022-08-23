@@ -8,39 +8,39 @@ require_once dirname( dirname( __DIR__ ) ) . DIRECTORY_SEPARATOR . 'class.ext_up
 
 
 class UpdateTest
-	extends \TYPO3\CMS\Core\Tests\UnitTestCase
+    extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-	private $object;
+    private $object;
 
 
-	public function setUp()
-	{
-		$this->object = new \ext_update();
-	}
+    public function setUp()
+    {
+        $this->object = new \ext_update();
+    }
 
 
-	public function tearDown()
-	{
-		unset( $this->object );
-	}
+    public function tearDown()
+    {
+        unset( $this->object );
+    }
 
 
-	/**
-	 * @test
-	 */
-	public function access()
-	{
-		$this->assertTrue( $this->object->access() );
-	}
+    /**
+     * @test
+     */
+    public function access()
+    {
+        $this->assertTrue( $this->object->access() );
+    }
 
 
-	/**
-	 * @test
-	 */
-	public function main()
-	{
-		$result = $this->object->main();
+    /**
+     * @test
+     */
+    public function main()
+    {
+        $result = $this->object->main();
 
-		$this->assertContains( 'Setup process lasted', $result );
-	}
+        $this->assertContains( 'Setup process lasted', $result );
+    }
 }

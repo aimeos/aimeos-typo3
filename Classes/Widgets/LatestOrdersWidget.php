@@ -16,41 +16,41 @@ namespace Aimeos\Aimeos\Widget;
  */
 class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
 {
-	private $view;
+    private $view;
 
 
-	public function __construct( \TYPO3\CMS\Fluid\View\StandaloneView $view )
-	{
-		$this->view = $view;
-	}
+    public function __construct( \TYPO3\CMS\Fluid\View\StandaloneView $view )
+    {
+        $this->view = $view;
+    }
 
 
-	/**
-	 * Renders the content for the widget
-	 *
-	 * @return string HTML code
-	 */
-	public function renderWidgetContent() : string
-	{
-		return $this->view->setTemplate( 'Widget/LatestOrdersWidget' )
-			->assign( 'items', $this->getOrderItems() )
-			->render();
-	}
+    /**
+     * Renders the content for the widget
+     *
+     * @return string HTML code
+     */
+    public function renderWidgetContent() : string
+    {
+        return $this->view->setTemplate( 'Widget/LatestOrdersWidget' )
+            ->assign( 'items', $this->getOrderItems() )
+            ->render();
+    }
 
 
-	/**
-	 * Returns the latest order items
-	 *
-	 * @return array Associative list of order IDs as keys and order items as values
-	 */
-	protected function getOrderItems() : array
-	{
-		$config = \Aimeos\Aimeos\Base::config();
-		$context = \Aimeos\Aimeos\Base::context( $config );
+    /**
+     * Returns the latest order items
+     *
+     * @return array Associative list of order IDs as keys and order items as values
+     */
+    protected function getOrderItems() : array
+    {
+        $config = \Aimeos\Aimeos\Base::config();
+        $context = \Aimeos\Aimeos\Base::context( $config );
 
-		$manager = \Aimeos\MShop::create( $context, 'order' );
-		$filter = $manager->filter()->sort( '-order.id' )->slice( 0, 20 );
+        $manager = \Aimeos\MShop::create( $context, 'order' );
+        $filter = $manager->filter()->sort( '-order.id' )->slice( 0, 20 );
 
-		return $manager->search( $filter, ['order/base', 'order/base/address'] )->toArray();
-	}
+        return $manager->search( $filter, ['order/base', 'order/base/address'] )->toArray();
+    }
 }
