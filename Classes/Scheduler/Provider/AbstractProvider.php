@@ -49,10 +49,10 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldController]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldController] = $task->{$this->fieldController};
+			$taskInfo[$this->fieldController] = (isset($task->{$this->fieldController}) ? $task->{$this->fieldController} : false);
         }
 
-        $taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
+		(isset($taskInfo[$this->fieldController]) ? (array) $taskInfo[$this->fieldController] : $taskInfo[$this->fieldController] = []);
 
         $fieldCode = sprintf('<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController);
         $fieldCode .= $this->getControllerOptions($taskInfo[$this->fieldController]);
@@ -68,10 +68,10 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldSite]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldSite] = $task->{$this->fieldSite};
+			$taskInfo[$this->fieldSite] = (isset($task->{$this->fieldSite}) ? $task->{$this->fieldSite} : false);
         }
 
-        $taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite];
+		(isset($taskInfo[$this->fieldSite]) ? (array) $taskInfo[$this->fieldSite] : $taskInfo[$this->fieldSite] = []);
 
         $fieldCode = sprintf('<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldSite);
         $fieldCode .= $this->getSiteOptions($this->getAvailableSites(), $taskInfo[$this->fieldSite], 0);
@@ -87,10 +87,10 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldTSconfig]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig};
+			$taskInfo[$this->fieldTSconfig] = (isset($task->{$this->fieldTSconfig}) ? $task->{$this->fieldTSconfig} : false);
         }
 
-        $taskInfo[$this->fieldTSconfig] = htmlspecialchars($taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8');
+		(isset($taskInfo[$this->fieldTSconfig]) ? (array) htmlspecialchars( $taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8' ) : $taskInfo[$this->fieldTSconfig] = null);
 
         $fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
         $fieldCode = sprintf($fieldStr, $this->fieldTSconfig, $taskInfo[$this->fieldTSconfig]);
