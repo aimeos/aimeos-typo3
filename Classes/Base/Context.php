@@ -315,12 +315,17 @@ class Context
             return $fcn($context);
         }
 
+        $appType = null;
         $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
-        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
+        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
+            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+        }
+
+        if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
             $context->setUserId($GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column]);
             $context->setEditor((string) $GLOBALS['TSFE']->fe_user->user['username']);
-        } elseif (TYPO3_MODE === 'BE' && isset($GLOBALS['BE_USER']->user['username'])) {
+        } elseif ($appType && $appType->isBackend() && isset($GLOBALS['BE_USER']->user['username'])) {
             $context->setEditor((string) $GLOBALS['BE_USER']->user['username']);
         } else {
             $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));
@@ -346,10 +351,15 @@ class Context
 
         $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
-        if (TYPO3_MODE === 'FE' && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
+        $appType = null;
+        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
+            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+        }
+
+        if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
             $ids = GeneralUtility::trimExplode(',', $GLOBALS['TSFE']->fe_user->user['usergroup']);
             $context->setGroupIds($ids);
-        } elseif (TYPO3_MODE === 'BE' && $GLOBALS['BE_USER']->userGroups) {
+        } elseif ($appType && $appType->isBackend() && $GLOBALS['BE_USER']->userGroups) {
             $ids = array_keys($GLOBALS['BE_USER']->userGroups);
             $context->setGroupIds($ids);
         }
@@ -366,7 +376,12 @@ class Context
      */
     protected static function addDateTime(\Aimeos\MShop\ContextIface $context) : \Aimeos\MShop\ContextIface
     {
-        if (TYPO3_MODE === 'FE' && isset($GLOBALS['BE_USER']->adminPanel)
+        $appType = null;
+        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
+            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+        }
+
+        if ($appType && $appType->isFrontend() && isset($GLOBALS['BE_USER']->adminPanel)
             && class_exists('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService')) {
             $service = GeneralUtility::makeInstance('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService');
             $tstamp = strtotime($service->getConfigurationOption('preview', 'simulateDate'));

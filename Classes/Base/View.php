@@ -76,7 +76,12 @@ class View
             return $fcn($view);
         }
 
-        if (TYPO3_MODE === 'BE') {
+        $appType = null;
+        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
+            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+        }
+
+        if ($appType && $appType->isBackend()) {
             if ($GLOBALS['BE_USER']->isAdmin() === false) {
                 $groups = [];
                 foreach ((array) $GLOBALS['BE_USER']->userGroups as $entry) {

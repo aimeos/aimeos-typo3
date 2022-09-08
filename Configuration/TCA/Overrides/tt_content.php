@@ -1,8 +1,6 @@
 <?php
 
-if (!defined('TYPO3_MODE')) {
-    die ('Access denied.');
-}
+defined('TYPO3') or die();
 
 
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_jsonapi'] = 'pi_flexform';

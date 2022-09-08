@@ -1,8 +1,6 @@
 <?php
 
-if (!defined('TYPO3_MODE' ) ) {
-    die ('Access denied.' );
-}
+defined('TYPO3') or die();
 
 
 $aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('aimeos' );
