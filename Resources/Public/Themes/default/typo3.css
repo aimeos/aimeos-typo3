@@ -45,7 +45,7 @@ body .body-bg-top {
 }
 
 body > .content, body .main-section {
-	margin-top: 0;
+	margin-top: 4rem;
 }
 
 .backendlayout-2_columns_25_75 .maincontent-wrap {
