@@ -55,7 +55,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldSenderFrom]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom};
+            $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom} ?? '';
         }
 
         $taskInfo[$this->fieldSenderFrom] = htmlspecialchars($taskInfo[$this->fieldSenderFrom], ENT_QUOTES, 'UTF-8');
@@ -73,7 +73,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldSenderEmail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail};
+            $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail} ?? '';
         }
 
         $taskInfo[$this->fieldSenderEmail] = htmlspecialchars($taskInfo[$this->fieldSenderEmail], ENT_QUOTES, 'UTF-8');
@@ -91,7 +91,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldReplyEmail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail};
+            $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail} ?? '';
         }
 
         $taskInfo[$this->fieldReplyEmail] = htmlspecialchars($taskInfo[$this->fieldReplyEmail], ENT_QUOTES, 'UTF-8');
@@ -109,7 +109,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldPageCatalog]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog};
+            $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog} ?? '';
         }
 
         $taskInfo[$this->fieldPageCatalog] = htmlspecialchars($taskInfo[$this->fieldPageCatalog], ENT_QUOTES, 'UTF-8');
@@ -127,7 +127,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldPageDetail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail};
+            $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail} ?? '';
         }
 
         $taskInfo[$this->fieldPageDetail] = htmlspecialchars($taskInfo[$this->fieldPageDetail], ENT_QUOTES, 'UTF-8');
@@ -145,7 +145,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldPageDownload]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload};
+            $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload} ?? '';
         }
 
         $taskInfo[$this->fieldPageDownload] = htmlspecialchars($taskInfo[$this->fieldPageDownload], ENT_QUOTES, 'UTF-8');
@@ -163,7 +163,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldPageLogin]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin};
+            $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin} ?? '';
         }
 
         $taskInfo[$this->fieldPageLogin] = htmlspecialchars($taskInfo[$this->fieldPageLogin], ENT_QUOTES, 'UTF-8');
@@ -181,7 +181,7 @@ abstract class Email extends AbstractProvider
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldTemplateBaseurl]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl};
+            $taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl} ?? '';
         }
 
         $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars($taskInfo[$this->fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8');
@@ -222,13 +222,13 @@ abstract class Email extends AbstractProvider
     {
         parent::saveFields($submittedData, $task);
 
-        $task->{$this->fieldSenderFrom} = $submittedData[$this->fieldSenderFrom];
-        $task->{$this->fieldSenderEmail} = $submittedData[$this->fieldSenderEmail];
-        $task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail];
-        $task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail];
-        $task->{$this->fieldPageLogin} = $submittedData[$this->fieldPageLogin];
-        $task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload];
-        $task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl];
+        $task->{$this->fieldSenderFrom} = $submittedData[$this->fieldSenderFrom] ?? '';
+        $task->{$this->fieldSenderEmail} = $submittedData[$this->fieldSenderEmail] ?? '';
+        $task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail] ?? '';
+        $task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail] ?? '';
+        $task->{$this->fieldPageLogin} = $submittedData[$this->fieldPageLogin] ?? '';
+        $task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload] ?? '';
+        $task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl] ?? '';
     }
 
 

@@ -49,7 +49,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldController]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldController] = $task->{$this->fieldController};
+            $taskInfo[$this->fieldController] = $task->{$this->fieldController} ?? '';
         }
 
         $taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
@@ -68,7 +68,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldSite]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldSite] = $task->{$this->fieldSite};
+            $taskInfo[$this->fieldSite] = $task->{$this->fieldSite} ?? '';
         }
 
         $taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite];
@@ -87,7 +87,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
         if (empty($taskInfo[$this->fieldTSconfig]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig};
+            $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig} ?? '';
         }
 
         $taskInfo[$this->fieldTSconfig] = htmlspecialchars($taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8');
@@ -116,9 +116,9 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
      */
     protected function saveFields(array $submittedData, $task)
     {
-        $task->{$this->fieldSite} = $submittedData[$this->fieldSite];
-        $task->{$this->fieldController} = $submittedData[$this->fieldController];
-        $task->{$this->fieldTSconfig} = $submittedData[$this->fieldTSconfig];
+        $task->{$this->fieldSite} = $submittedData[$this->fieldSite] ?? '';
+        $task->{$this->fieldController} = $submittedData[$this->fieldController] ?? '';
+        $task->{$this->fieldTSconfig} = $submittedData[$this->fieldTSconfig] ?? '';
     }
 
 
