@@ -146,7 +146,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 		$boostrap = \Aimeos\Aimeos\Base::aimeos();
 		$ctx = self::context( ['setup' => ['default' => ['demo' => (string) $demo]]] )->setEditor( 'setup' );
 
-		\Aimeos\Setup::use( $boostrap )
+		\Aimeos\Setup::use( $boostrap )->verbose( 'vvv' )
 			->context( $ctx->setEditor( 'aimeos:setup' ) )
 			->up( $site, $template );
 
