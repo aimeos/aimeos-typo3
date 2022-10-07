@@ -58,7 +58,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom} ?? '';
         }
 
-        $taskInfo[$this->fieldSenderFrom] = htmlspecialchars($taskInfo[$this->fieldSenderFrom], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldSenderFrom] = htmlspecialchars( $taskInfo[$this->fieldSenderFrom] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldSenderFrom, $taskInfo[$this->fieldSenderFrom]);
@@ -76,7 +76,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail} ?? '';
         }
 
-        $taskInfo[$this->fieldSenderEmail] = htmlspecialchars($taskInfo[$this->fieldSenderEmail], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldSenderEmail] = htmlspecialchars( $taskInfo[$this->fieldSenderEmail] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldSenderEmail, $taskInfo[$this->fieldSenderEmail]);
@@ -94,7 +94,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail} ?? '';
         }
 
-        $taskInfo[$this->fieldReplyEmail] = htmlspecialchars($taskInfo[$this->fieldReplyEmail], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldReplyEmail] = htmlspecialchars( $taskInfo[$this->fieldReplyEmail] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldReplyEmail, $taskInfo[$this->fieldReplyEmail]);
@@ -112,7 +112,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog} ?? '';
         }
 
-        $taskInfo[$this->fieldPageCatalog] = htmlspecialchars($taskInfo[$this->fieldPageCatalog], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldPageCatalog] = htmlspecialchars( $taskInfo[$this->fieldPageCatalog] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageCatalog, $taskInfo[$this->fieldPageCatalog]);
@@ -130,7 +130,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail} ?? '';
         }
 
-        $taskInfo[$this->fieldPageDetail] = htmlspecialchars($taskInfo[$this->fieldPageDetail], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldPageDetail] = htmlspecialchars( $taskInfo[$this->fieldPageDetail] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageDetail, $taskInfo[$this->fieldPageDetail]);
@@ -148,7 +148,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload} ?? '';
         }
 
-        $taskInfo[$this->fieldPageDownload] = htmlspecialchars($taskInfo[$this->fieldPageDownload], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldPageDownload] = htmlspecialchars( $taskInfo[$this->fieldPageDownload] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageDownload, $taskInfo[$this->fieldPageDownload]);
@@ -166,7 +166,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin} ?? '';
         }
 
-        $taskInfo[$this->fieldPageLogin] = htmlspecialchars($taskInfo[$this->fieldPageLogin], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldPageLogin] = htmlspecialchars( $taskInfo[$this->fieldPageLogin] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldPageLogin, $taskInfo[$this->fieldPageLogin]);
@@ -184,7 +184,7 @@ abstract class Email extends AbstractProvider
             $taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl} ?? '';
         }
 
-        $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars($taskInfo[$this->fieldTemplateBaseurl], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->fieldTemplateBaseurl] ?? '', ENT_QUOTES, 'UTF-8' );
 
         if ($taskInfo[$this->fieldTemplateBaseurl] == '') {
             $taskInfo[$this->fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
@@ -241,26 +241,26 @@ abstract class Email extends AbstractProvider
      * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
      * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
      */
-    protected function validateFields(array &$submittedData, $parentObject)
+    protected function validateFields( array &$submittedData, $parentObject )
     {
-        if (preg_match('/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail]) !== 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.from-email.invalid'));
+        if( preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldSenderEmail] ?? '' ) !== 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.from-email.invalid' ) );
         }
 
-        if ($submittedData[$this->fieldReplyEmail] != '' && preg_match('/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail]) !== 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid'));
+        if( $submittedData[$this->fieldReplyEmail] ?? '' && preg_match( '/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail] ) !== 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid' ) );
         }
 
-        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageDetail]) !== 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-detail.invalid'));
+        if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ?? '' ) !== 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-detail.invalid' ) );
         }
 
-        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageLogin]) !== 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-login.invalid'));
+        if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageLogin] ?? '' ) !== 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-login.invalid' ) );
         }
 
-        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageDownload]) !== 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid'));
+        if( preg_match( '/^[0-9]+$/', $submittedData[$this->fieldPageDownload] ?? '' ) !== 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-download.invalid' ) );
         }
 
         parent::validateFields($submittedData, $parentObject);

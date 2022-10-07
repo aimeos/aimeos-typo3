@@ -48,11 +48,11 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $additionalFields = [];
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldController]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldController] = $task->{$this->fieldController} ?? '';
+        if( empty( $taskInfo[$this->fieldController] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+            $taskInfo[$this->fieldController] = $task->{$this->fieldController} ?? [];
         }
 
-        $taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController];
+        $taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController] ?? [];
 
         $fieldCode = sprintf('<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController);
         $fieldCode .= $this->getControllerOptions($taskInfo[$this->fieldController]);
@@ -67,11 +67,11 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldSite]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldSite] = $task->{$this->fieldSite} ?? '';
+        if( empty( $taskInfo[$this->fieldSite] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+            $taskInfo[$this->fieldSite] = $task->{$this->fieldSite} ?? [];
         }
 
-        $taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite];
+        $taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite] ?? [];
 
         $fieldCode = sprintf('<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldSite);
         $fieldCode .= $this->getSiteOptions($this->getAvailableSites(), $taskInfo[$this->fieldSite], 0);
@@ -90,7 +90,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
             $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig} ?? '';
         }
 
-        $taskInfo[$this->fieldTSconfig] = htmlspecialchars($taskInfo[$this->fieldTSconfig], ENT_QUOTES, 'UTF-8');
+        $taskInfo[$this->fieldTSconfig] = htmlspecialchars( $taskInfo[$this->fieldTSconfig] ?? '', ENT_QUOTES, 'UTF-8' );
 
         $fieldStr = '<textarea class="form-control" name="tx_scheduler[%1$s]" id="%1$s" rows="20" cols="80" >%2$s</textarea>';
         $fieldCode = sprintf($fieldStr, $this->fieldTSconfig, $taskInfo[$this->fieldTSconfig]);
@@ -131,22 +131,22 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
      * @param tx_scheduler_Module $parentObject Reference to the calling object (Scheduler's BE module)
      * @return boolean True if validation was ok (or selected class is not relevant), false otherwise
      */
-    protected function validateFields(array &$submittedData, $parentObject)
+    protected function validateFields( array &$submittedData, $parentObject )
     {
-        if (count((array) $submittedData[$this->fieldController]) < 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing'));
+        if( count( (array) $submittedData[$this->fieldController] ?? [] ) < 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.controller.missing' ) );
         }
 
-        if (count((array) $submittedData[$this->fieldSite]) < 1) {
-            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode.missing'));
+        if( count( (array) $submittedData[$this->fieldSite] ?? [] ) < 1 ) {
+            throw new \InvalidArgumentException( $GLOBALS['LANG']->sL( 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode.missing' ) );
         }
 
-        Base::parseTS($submittedData[$this->fieldTSconfig]);
+        Base::parseTS( $submittedData[$this->fieldTSconfig] ?? '' );
 
 
         $context = Scheduler\Base::context();
-        $submittedData[$this->fieldSite] = array_unique((array) $submittedData[$this->fieldSite]);
-        $siteItems = Scheduler\Base::getSiteItems($context, $submittedData[$this->fieldSite]);
+        $submittedData[$this->fieldSite] = array_unique( (array) $submittedData[$this->fieldSite] ?? [] );
+        $siteItems = Scheduler\Base::getSiteItems( $context, $submittedData[$this->fieldSite] );
 
         if (count($siteItems) !== count($submittedData[$this->fieldSite])) {
             throw new \RuntimeException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:default.error.sitecode'));
@@ -154,8 +154,8 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         $aimeos = Base::aimeos();
-        $cntlPaths = $aimeos->getCustomPaths('controller/jobs');
-        $submittedData[$this->fieldController] = array_unique((array) $submittedData[$this->fieldController]);
+        $cntlPaths = $aimeos->getCustomPaths( 'controller/jobs' );
+        $submittedData[$this->fieldController] = array_unique( (array) $submittedData[$this->fieldController] ?? [] );
 
         foreach ($submittedData[$this->fieldController] as $name) {
             \Aimeos\Controller\Jobs::create($context, $aimeos, $name);
