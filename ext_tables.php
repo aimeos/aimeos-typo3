@@ -48,6 +48,7 @@ $name = defined('TYPO3_version') && version_compare(constant('TYPO3_version'), '
         'Aimeos\\Aimeos\\Controller\\AdminController' => 'index',
         'Aimeos\\Aimeos\\Controller\\JqadmController' => 'search,batch,copy,create,delete,export,get,import,save,file',
         'Aimeos\\Aimeos\\Controller\\JsonadmController' => 'index',
+        'Aimeos\\Aimeos\\Controller\\GraphqlController' => 'index',
     ],
     $_aimeosConfiguration
 );
