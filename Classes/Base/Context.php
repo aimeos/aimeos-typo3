@@ -297,7 +297,7 @@ class Context
             return $fcn($context);
         }
 
-        return $context->setToken($GLOBALS['TSFE']->fe_user->id);
+        return $context->setToken(isset($GLOBALS['TSFE']->fe_user) ? $GLOBALS['TSFE']->fe_user->id : '');
     }
 
 
