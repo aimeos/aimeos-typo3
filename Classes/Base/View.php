@@ -77,7 +77,7 @@ class View
         }
 
         $appType = null;
-        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
+        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof \TYPO3\CMS\Core\Http\ServerRequest) {
             $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
         }
 
