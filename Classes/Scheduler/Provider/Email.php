@@ -186,12 +186,8 @@ abstract class Email extends AbstractProvider
 
         $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars( $taskInfo[$this->fieldTemplateBaseurl] ?? '', ENT_QUOTES, 'UTF-8' );
 
-        if ($taskInfo[$this->fieldTemplateBaseurl] == '') {
-            $taskInfo[$this->fieldTemplateBaseurl] = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
-        }
-
         $path = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
-        $path = ($taskInfo[$this->fieldTemplateBaseurl] !== '' ? $taskInfo[$this->fieldTemplateBaseurl] : $path);
+        $path = $taskInfo[$this->fieldTemplateBaseurl] = $taskInfo[$this->fieldTemplateBaseurl] ?? $path;
 
         $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
         $fieldCode = sprintf($fieldStr, $this->fieldTemplateBaseurl, $path);

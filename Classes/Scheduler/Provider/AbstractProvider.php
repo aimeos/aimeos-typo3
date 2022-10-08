@@ -52,7 +52,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
             $taskInfo[$this->fieldController] = $task->{$this->fieldController} ?? [];
         }
 
-        $taskInfo[$this->fieldController] = (array) $taskInfo[$this->fieldController] ?? [];
+        $taskInfo[$this->fieldController] = (array) ($taskInfo[$this->fieldController] ?? []);
 
         $fieldCode = sprintf('<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldController);
         $fieldCode .= $this->getControllerOptions($taskInfo[$this->fieldController]);
@@ -71,7 +71,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
             $taskInfo[$this->fieldSite] = $task->{$this->fieldSite} ?? [];
         }
 
-        $taskInfo[$this->fieldSite] = (array) $taskInfo[$this->fieldSite] ?? [];
+        $taskInfo[$this->fieldSite] = (array) ($taskInfo[$this->fieldSite] ?? []);
 
         $fieldCode = sprintf('<select class="form-control" name="tx_scheduler[%1$s][]" id="%1$s" multiple="multiple" size="10" />', $this->fieldSite);
         $fieldCode .= $this->getSiteOptions($this->getAvailableSites(), $taskInfo[$this->fieldSite], 0);
