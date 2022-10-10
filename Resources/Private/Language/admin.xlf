@@ -107,6 +107,12 @@
 			<trans-unit id="aimeos_locale-select.description" xml:space="preserve">
 				<source>Switcher for multi-currency sites</source>
 			</trans-unit>
+			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
+				<source>Saved baskets</source>
+			</trans-unit>
+			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
+				<source>List of saved baskets by the user</source>
+			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
 			</trans-unit>
