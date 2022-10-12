@@ -313,7 +313,7 @@ img {
 }
 
 .aimeos .prototype {
-	display: none;
+	display: none !important;
 }
 
 .aimeos .lazy-image {
@@ -629,10 +629,6 @@ body > .content, body .main-section {
 
 .navbar-collapse {
 	justify-content: flex-end;
-}
-
-.navbar-mainnavigation {
-	position: fixed !important;
 }
 
 .navbar-nav {

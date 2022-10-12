@@ -4,6 +4,29 @@
 	padding: 2rem 0;
 }
 
+.basket-standard .header {
+	align-items: center;
+	padding: 0 1rem;
+}
+
+.basket-standard .header h1 {
+	margin: 0;
+}
+
+.basket-standard .basket-save.input-group {
+    border-bottom: 1px solid var(--ai-secondary);
+	width: auto;
+}
+
+.basket-standard .basket-save .basket-name {
+	border: none;
+}
+
+.basket-standard .basket-save .btn {
+	border: none;
+	width: 5rem;
+}
+
 .basket-standard-main {
 	border: 1px solid var(--ai-tertiary);
 	padding: 1rem;

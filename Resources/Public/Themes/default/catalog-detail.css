@@ -871,7 +871,6 @@
 .catalog-detail-bought .product,
 .catalog-detail-bundle .product,
 .catalog-detail-suggest .product {
-	display: inline-block;
 	vertical-align: top;
 	position: relative;
 	width: 160px;

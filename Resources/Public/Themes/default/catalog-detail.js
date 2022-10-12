@@ -165,6 +165,8 @@ AimeosCatalogDetail = {
 			const pswp = $(".pswp", gallery);
 			const options = $(gallery).data("options") || {};
 
+			options.index = $(ev.currentTarget).closest('.media-item').data('index') || 0;
+
 			if( pswp.length === 0 ) {
 				console.log( 'No element with class .pswp for PhotoSwipe found' );
 				return false;
