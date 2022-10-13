@@ -23,10 +23,9 @@ class GraphqlController extends AbstractController
     /**
      * Creates a new resource object or a list of resource objects
      *
-     * @param \Psr\Http\Message\ServerRequestInterface $request Request object
      * @return \Psr\Http\Message\ResponseInterface Response object containing the generated output
      */
-    public function indexAction( ServerRequestInterface $request )
+    public function indexAction()
     {
         return \Aimeos\Admin\Graphql::execute($this->contextBackend(''), $this->getPsrRequest());
     }
