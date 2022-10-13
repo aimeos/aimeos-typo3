@@ -23,6 +23,7 @@
 		"aimeos/aimeos-core": "2022.10.*",
 		"aimeos/ai-typo3": "2022.10.*",
 		"aimeos/ai-admin-jqadm": "2022.10.*",
+		"aimeos/ai-admin-graphql": "2022.10.*",
 		"aimeos/ai-admin-jsonadm": "2022.10.*",
 		"aimeos/ai-controller-jobs": "2022.10.*",
 		"aimeos/ai-client-jsonapi": "2022.10.*",
