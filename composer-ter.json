@@ -18,6 +18,7 @@
 		"aimeos/aimeos-core": "dev-master",
 		"aimeos/ai-typo3": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
+		"aimeos/ai-admin-graphql": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-controller-jobs": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
