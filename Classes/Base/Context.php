@@ -10,6 +10,7 @@
 namespace Aimeos\Aimeos\Base;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Psr\Http\Message\ServerRequestInterface;
 
 
 /**
