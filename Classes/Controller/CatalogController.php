@@ -215,7 +215,7 @@ class CatalogController extends AbstractController
             $name = \TYPO3\CMS\Frontend\Controller\ErrorController::class;
 
             $response = GeneralUtility::makeInstance($name)->pageNotFoundAction(
-                $this->request, $e->getMessage(), ['code' => $e->getCode]
+                $this->request, $e->getMessage(), ['code' => $e->getCode()]
             );
             throw new \TYPO3\CMS\Core\Http\ImmediateResponseException($response);
         }
