@@ -260,6 +260,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
         $ctx->setConfig($conf);
         $ctx->setDatabaseManager(\Aimeos\Base\DB\Factory::create($conf, 'DBAL'));
+        $ctx->setFilesystemManager(new \Aimeos\Base\Filesystem\Manager\Standard($conf->get('resource', [])));
         $ctx->setLogger(new \Aimeos\Base\Logger\Errorlog(\Aimeos\Base\Logger\Iface::INFO));
         $ctx->setSession(new \Aimeos\Base\Session\None());
         $ctx->setCache(new \Aimeos\Base\Cache\None());

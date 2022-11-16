@@ -132,7 +132,7 @@ class Context
             return $fcn($context);
         }
 
-        return $context->setFilesystemManager(new \Aimeos\Base\Filesystem\Manager\Standard($context->config()->get('resource')));
+        return $context->setFilesystemManager(new \Aimeos\Base\Filesystem\Manager\Standard($context->config()->get('resource', [])));
     }
 
 
