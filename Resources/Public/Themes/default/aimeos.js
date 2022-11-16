@@ -562,7 +562,7 @@ AimeosBasket = {
 		$(".articleitem", item).removeClass("price-actual");
 		newPrice.addClass("price-actual");
 
-		if(!(item.data("reqstock") && $(".stockitem", newStock).hasClass("stock-out"))) {
+		if(!(item.data("reqstock") && $(".stockitem", newStock).filter(".stock-out").length == $(".stockitem", newStock).length)) {
 			stock = true;
 		}
 
