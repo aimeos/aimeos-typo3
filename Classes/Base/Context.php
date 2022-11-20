@@ -113,7 +113,7 @@ class Context
             return $fcn($context);
         }
 
-        $dbm = \Aimeos\Base\DB\Factory::create($context->config()->get('resource', []), 'DBAL');
+        $dbm = new \Aimeos\Base\DB\Manager\Standard($context->config()->get('resource', []), 'DBAL');
         return $context->setDatabaseManager($dbm);
     }
 
@@ -132,7 +132,8 @@ class Context
             return $fcn($context);
         }
 
-        return $context->setFilesystemManager(new \Aimeos\Base\Filesystem\Manager\Standard($context->config()->get('resource', [])));
+        $fsm = new \Aimeos\Base\Filesystem\Manager\Standard($context->config()->get('resource', []));
+        return $context->setFilesystemManager($fsm);
     }
 
 
