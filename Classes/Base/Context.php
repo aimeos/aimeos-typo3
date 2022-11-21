@@ -208,7 +208,8 @@ class Context
             return $fcn($context);
         }
 
-        return $context->setMessageQueueManager(new \Aimeos\Base\MQueue\Manager\Standard($context->config()));
+        $mqm = new \Aimeos\Base\MQueue\Manager\Standard($context->config()->get('resource', []));
+        return $context->setMessageQueueManager($mqm);
     }
 
 
