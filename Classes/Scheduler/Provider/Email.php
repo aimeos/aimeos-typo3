@@ -221,6 +221,7 @@ abstract class Email extends AbstractProvider
         $task->{$this->fieldSenderFrom} = $submittedData[$this->fieldSenderFrom] ?? '';
         $task->{$this->fieldSenderEmail} = $submittedData[$this->fieldSenderEmail] ?? '';
         $task->{$this->fieldReplyEmail} = $submittedData[$this->fieldReplyEmail] ?? '';
+        $task->{$this->fieldPageCatalog} = $submittedData[$this->fieldPageCatalog] ?? '';
         $task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail] ?? '';
         $task->{$this->fieldPageLogin} = $submittedData[$this->fieldPageLogin] ?? '';
         $task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload] ?? '';
@@ -245,6 +246,10 @@ abstract class Email extends AbstractProvider
 
         if (($submittedData[$this->fieldReplyEmail] ?? '') && preg_match('/^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$/', $submittedData[$this->fieldReplyEmail]) !== 1) {
             throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.reply-email.invalid'));
+        }
+
+        if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageCatalog] ?? '') !== 1) {
+            throw new \InvalidArgumentException($GLOBALS['LANG']->sL('LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.error.page-catalog.invalid'));
         }
 
         if (preg_match('/^[0-9]+$/', $submittedData[$this->fieldPageDetail] ?? '') !== 1) {
