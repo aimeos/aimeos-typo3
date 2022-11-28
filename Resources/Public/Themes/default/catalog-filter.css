@@ -6,28 +6,24 @@
 		flex-wrap: wrap;
 	}
 
-	aside .catalog-filter section {
+	aside .catalog-filter .section {
 		width: 50%;
 	}
 }
 
-aside .catalog-filter section {
+aside .catalog-filter .section {
 	margin-bottom: 1rem;
 	border: 1px solid var(--ai-bg-light);
 }
 
-.catalog-filter h1 {
-	display: none;
-}
-
-.catalog-filter h2 {
+.catalog-filter .header-name {
 	cursor: pointer;
 	font-size: 120%;
 	padding: .5rem .75rem ;
 	margin: 0;
 }
 
-.navbar .catalog-filter h2 {
+.navbar .catalog-filter .header-name {
 	display: none;
 }
 
@@ -564,10 +560,6 @@ aside .catalog-filter section {
 	.catalog-filter-tree .category-selected {
 		display: none;
 	}
-
-	.catalog-filter-tree .cat-link {
-		display: none;
-	}
 }
 
 .catalog-filter-tree .media-list {
@@ -593,7 +585,6 @@ aside .catalog-filter section {
 
 @media (min-width:992px) {
 
-	.catalog-filter-tree .item-links,
 	.catalog-filter-tree .submenu-header {
 		display: none;
 	}
@@ -616,9 +607,10 @@ aside .catalog-filter section {
 		display: flex;
 	}
 
-	.catalog-filter-tree .level-1 > .cat-item > .cat-link {
+	.catalog-filter-tree .level-1 > .cat-item > .item-links > .cat-link {
 		display: block;
 		padding: 1rem;
+		width: 100%;
 	}
 
 	[dir="ltr"] .catalog-filter-tree .level-1 > .withchild > .cat-link::before {
@@ -657,7 +649,7 @@ aside .catalog-filter section {
 		margin: 0 1rem;
 	}
 
-	.catalog-filter-tree .level-2 > .cat-item > .cat-link {
+	.catalog-filter-tree .level-2 > .cat-item > .item-links > .cat-link {
 		margin-bottom: .25rem;
 		font-weight: bold;
 		display: block;
@@ -666,15 +658,19 @@ aside .catalog-filter section {
 	/* MEGAMENU */
 
 	.catalog-filter-tree .megamenu .level-2 {
-		display: flex;
-		flex-flow: column wrap;
-		max-height: 15rem;
+		break-inside: avoid;
+		column-count: 4;
 		width: 100%;
 	}
 
 	.catalog-filter-tree .megamenu .level-2 > .cat-item {
-		margin: 0 1rem;
-		width: 15rem;
+		break-inside: avoid;
+		margin-bottom: 2rem;
+		max-width: 15rem;
+	}
+
+	.catalog-filter-tree .megamenu .level-3 {
+		break-inside: avoid;
 	}
 
 	.catalog-filter-tree .megamenu .cat-item.hover > .submenu,
@@ -693,6 +689,21 @@ aside .catalog-filter section {
 	}
 
 }
+
+@media (min-width:1200px) {
+
+	.catalog-filter-tree .megamenu .level-2 {
+		column-count: 5;
+	}
+}
+
+@media (min-width:1400px) {
+
+	.catalog-filter-tree .megamenu .level-2 {
+		column-count: 6;
+	}
+}
+
 
 /* Tree offscreen menu */
 

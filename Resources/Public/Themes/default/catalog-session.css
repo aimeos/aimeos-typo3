@@ -56,6 +56,7 @@ aside:nth-child(1) {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	display: block;
 	height: 213px;
 	width: 160px;
 }
@@ -162,6 +163,7 @@ aside .catalog-session-pinned .seen-items .price-item .rebatepercent {
 		float: left;
 		width: 60px;
 		height: 80px;
+		display: block;
 		margin-bottom: .5rem;
 		margin-inline-end: 1rem;
 		background-position: top left;

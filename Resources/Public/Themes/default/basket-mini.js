@@ -16,7 +16,7 @@ AimeosBasketMini = {
 		const price = Number.parseFloat(attr['order.base.price']);
 		const delivery = Number.parseFloat(attr['order.base.costs']);
 
-		const formatter = new Intl.NumberFormat([], {
+		const formatter = new Intl.NumberFormat(attr['order.base.languageid'], {
 			currency: attr['order.base.currencyid'],
 			style: "currency"
 		});

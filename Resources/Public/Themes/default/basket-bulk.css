@@ -7,6 +7,9 @@
 .basket-bulk .headline,
 .basket-bulk .bulk-content .details {
 	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.basket-bulk .row {
 	align-items: center;
 }
 

@@ -1,0 +1,62 @@
+.account-basket {
+	margin: 0 auto;
+}
+
+.account-basket .header {
+	text-transform: uppercase;
+	text-align: start;
+	font-weight: normal;
+	padding: 0.5rem 1rem;
+	color: var(--ai-secondary);
+	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.account-basket .basket-item {
+	border: 1px solid var(--ai-tertiary);
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.account-basket .basket-basic {
+	font-weight: bold;
+}
+
+.account-basket .name:after {
+	content: ": ";
+}
+
+.account-basket .action {
+	margin-top: 0.5rem;
+}
+
+.account-basket .action .btn {
+	border: 1px solid var(--ai-secondary);
+	display: block;
+	width: 100%;
+	max-width: 6rem;
+	margin: auto;
+}
+
+.account-basket-detail {
+	padding-top: 1rem;
+	display: none;
+}
+
+.account-basket-detail a:hover {
+	text-decoration: underline;
+}
+
+.account-basket-detail h2 {
+	margin: 0.5rem 0;
+}
+
+.account-basket-detail h3 {
+	display: inline-block;
+	font-size: 1rem;
+	margin: 0;
+}
+
+.account-basket-detail li.attr-item .name,
+.account-basket-detail li.attr-item .value {
+	min-width: 0;
+}

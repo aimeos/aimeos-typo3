@@ -583,6 +583,7 @@
 }
 
 .catalog-detail-supplier .media-item {
+	display: block;
 	float: right;
 	margin: 1rem;
 }
@@ -871,7 +872,6 @@
 .catalog-detail-bought .product,
 .catalog-detail-bundle .product,
 .catalog-detail-suggest .product {
-	display: inline-block;
 	vertical-align: top;
 	position: relative;
 	width: 160px;
@@ -891,6 +891,7 @@
 .catalog-detail-bought .media-item,
 .catalog-detail-bundle .media-item,
 .catalog-detail-suggest .media-item {
+	display: block;
 	height: 213px;
 	width: 160px;
 }

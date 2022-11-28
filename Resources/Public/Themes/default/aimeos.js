@@ -62,6 +62,22 @@ Aimeos = {
 
 
 	/**
+	 * Delays the function by the given timeout
+	 *
+	 * @param {Function} fcn Function to delay
+	 * @param {int} timeout Timeout in milliseconds
+	 * @returns {Function} Function wrapped into timer function
+	 */
+	 debounce( fcn, timeout = 300) {
+		let timer;
+		return (...args) => {
+		  clearTimeout(timer);
+		  timer = setTimeout(() => { fcn.apply(this, args); }, timeout);
+		};
+	},
+
+
+	/**
 	 * Removes an existing overlay from the current page
 	 */
 	removeOverlay() {
@@ -125,7 +141,7 @@ Aimeos = {
 
 			$(".aimeos .lazy-image").each((idx, el) => {
 				(new IntersectionObserver(callback, {
-					root: $(el).closest('.product')[0],
+					root: null,
 					rootMargin: '320px',
 					threshold: 0
 				})).observe(el);
@@ -314,7 +330,8 @@ AimeosBasket = {
 				}
 
 				if( index === 0 ) {
-					$(".select-option", select).removeAttr("disabled").data("disabled", 0).data("by", {});
+					$(".select-option", select).prop("checked", false).prop("selected", false)
+						.removeAttr("disabled").data("disabled", 0).data("by", {});
 				}
 
 				$(".select-option", select).each((idx, option) => {
@@ -545,7 +562,7 @@ AimeosBasket = {
 		$(".articleitem", item).removeClass("price-actual");
 		newPrice.addClass("price-actual");
 
-		if(!(item.data("reqstock") && $(".stockitem", newStock).hasClass("stock-out"))) {
+		if(!(item.data("reqstock") && $(".stockitem", newStock).filter(".stock-out").length == $(".stockitem", newStock).length)) {
 			stock = true;
 		}
 

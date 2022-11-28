@@ -153,6 +153,21 @@ AimeosCatalogDetail = {
 
 
 	/**
+	 * Check for variants in URL
+	 * Set the variant attributes and trigger select-dropdown´s to show the variant article
+	 */
+	selectVariant() {
+		const product = $('article.product');
+
+		if(product && product.data('varattributes')) {
+			$.each(product.data('varattributes'), function (key, val) {
+				$('#select-' + product.data('id') + '-' + key).val(val).trigger('change');
+			});
+		}
+	},
+
+
+	/**
 	 * Opens the lightbox with big images
 	 */
 	onOpenLightbox() {
@@ -164,6 +179,8 @@ AimeosCatalogDetail = {
 			const gallery = $(ev.delegateTarget);
 			const pswp = $(".pswp", gallery);
 			const options = $(gallery).data("options") || {};
+
+			options.index = $(ev.currentTarget).closest('.media-item').data('index') || 0;
 
 			if( pswp.length === 0 ) {
 				console.log( 'No element with class .pswp for PhotoSwipe found' );
@@ -377,6 +394,8 @@ AimeosCatalogDetail = {
 		this.onSortReviews();
 
 		this.onAddBasket();
+
+		this.selectVariant();
 	}
 };
 
