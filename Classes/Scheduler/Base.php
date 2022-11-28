@@ -36,8 +36,7 @@ class Base
     public static function execute(array $tsconf, array $conf, array $jobs, $sites, ?string $pid = null)
     {
         $aimeos = Aimeos\Base::aimeos();
-        $context = self::context($tsconf, $pid);
-        $context->config()->apply($conf);
+        $context = self::context($tsconf, $conf, $pid);
         $process = $context->process();
 
         // Reset before child processes are spawned to avoid lost DB connections afterwards
@@ -74,10 +73,11 @@ class Base
      * @param array $tsconf Multi-dimensional associative list of key/value pairs
      * @return \Aimeos\MShop\ContextIface Context object
      */
-    public static function context(array $tsconf = [], ?string $pid = null) : \Aimeos\MShop\ContextIface
+    public static function context(array $tsconf = [], array $conf = [], ?string $pid = null) : \Aimeos\MShop\ContextIface
     {
         $config = Aimeos\Base::config($tsconf);
         $context = Aimeos\Base::context($config);
+        $context->config()->apply($conf);
 
 
         $langManager = \Aimeos\MShop::create($context, 'locale/language');
