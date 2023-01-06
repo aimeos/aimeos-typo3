@@ -57,7 +57,7 @@ In order to tell install TYPO3, you have to execute
 ```bash
 composer create-project typo3/cms-base-distribution myshop
 
-# add a specific TYPO3 version
+# If you want to use a specific TYPO3 version, use this:
 composer create-project "typo3/cms-base-distribution:^11" myshop
 ```
 
@@ -72,7 +72,9 @@ Change to the `./mshop/` directory and add these lines to your composer.json, if
 
 Then install the Aimeos extension for TYPO3 with:
 
-`composer req aimeos/aimeos-typo3:~22.10`
+```bash
+composer req aimeos/aimeos-typo3:~22.10
+```
 
 This will install stable TYPO3 version and the latest Aimeos TYPO3 extension. If you want a more or less working installation out of the box for new installations, you should install the Bootstrap package too:
 
