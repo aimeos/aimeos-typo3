@@ -48,11 +48,18 @@ This document is for the latest Aimeos TYPO3 **21.10 release and later**.
 
 The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first if it isn't already available:
 
-`php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer`
+```bash
+php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
+```
 
 In order to tell install TYPO3, you have to execute
 
-`composer create-project typo3/cms-base-distribution myshop`
+```bash
+composer create-project typo3/cms-base-distribution myshop
+
+# add a specific TYPO3 version
+composer create-project "typo3/cms-base-distribution:^11" myshop
+```
 
 This will install TYPO3 into the `./myshop/` directory.
 
@@ -69,7 +76,9 @@ Then install the Aimeos extension for TYPO3 with:
 
 This will install stable TYPO3 version and the latest Aimeos TYPO3 extension. If you want a more or less working installation out of the box for new installations, you should install the Bootstrap package too:
 
-`composer req bk2k/bootstrap-package`
+```bash
+composer req bk2k/bootstrap-package
+```
 
 #### TYPO3 11
 
@@ -129,25 +138,25 @@ If you use MySQL < 5.7.8, you have to use `utf8` and `utf8_unicode_ci` instead b
 
 To avoid that, change your database settings in your `./typo3conf/LocalConfiguration.php` to:
 
-```
-'DB' => [
-    'Connections' => [
-        'Default' => [
-            'tableoptions' => [
-                'charset' => 'utf8',
-                'collate' => 'utf8_unicode_ci',
+```php
+    'DB' => [
+        'Connections' => [
+            'Default' => [
+                'tableoptions' => [
+                    'charset' => 'utf8',
+                    'collate' => 'utf8_unicode_ci',
+                ],
+                // ...
             ],
-            // ...
         ],
     ],
-],
 ```
 
 ### Security
 
 Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts when browsers send cookies to your site. This is a problem when customers are redirected from external payment provider domain. Then, there's no session available on the confirmation page. To circumvent that problem, you need to set the configuration option `cookieSameSite` to `none` in your `./typo3conf/LocalConfiguration.php`:
 
-```
+```php
     'FE' => [
         'cookieSameSite' => 'none'
     ]
