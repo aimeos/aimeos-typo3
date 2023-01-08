@@ -52,31 +52,28 @@ The latest version can be installed via composer too. This is especially useful 
 php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
 ```
 
-In order to tell install TYPO3, you have to execute
+To install the TYPO3 base distribution first, execute this command:
 
 ```bash
 composer create-project typo3/cms-base-distribution myshop
-
-# If you want to use a specific TYPO3 version, use this:
+# or install a specific TYPO3 version:
 composer create-project "typo3/cms-base-distribution:^11" myshop
 ```
 
-This will install TYPO3 into the `./myshop/` directory.
+It will install TYPO3 into the `./myshop/` directory. Then, change into the directory and install the Aimeos extension for TYPO3 using:
 
-Change to the `./mshop/` directory and add these lines to your composer.json, if they are not already there:
+```bash
+composer req aimeos/aimeos-typo3:~22.10
+```
+
+If composer complains that one or more packages can't be installed because the required minimum stability isn't met, add this to your `composer.json`:
 
 ```json
 "minimum-stability": "dev",
 "prefer-stable": true,
 ```
 
-Then install the Aimeos extension for TYPO3 with:
-
-```bash
-composer req aimeos/aimeos-typo3:~22.10
-```
-
-This will install stable TYPO3 version and the latest Aimeos TYPO3 extension. If you want a more or less working installation out of the box for new installations, you should install the Bootstrap package too:
+If you want a more or less working installation out of the box for new installations, you can install the Bootstrap package too:
 
 ```bash
 composer req bk2k/bootstrap-package
