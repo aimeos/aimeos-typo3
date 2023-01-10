@@ -23,6 +23,7 @@ and customize anything to your needs.
     - [Composer](#composer)
         - [TYPO3 11](#typo3-11)
         - [TYPO3 10](#typo3-10)
+    - [DDev or Colima](#ddev)
     - [TER](#typo3-extension)
 - [TYPO3 setup](#typo3-setup)
     - [Database setup](#database-setup)
@@ -48,7 +49,7 @@ This document is for the latest Aimeos TYPO3 **21.10 release and later**.
 
 **Note:** composer 2.1+ is required!
 
-The latest version can be installed via composer too. This is especially useful if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first if it isn't already available:
+The latest TYPO3 version can be installed via composer. This is especially useful, if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first, if it isn't already available:
 
 ```bash
 php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
@@ -65,6 +66,7 @@ composer create-project "typo3/cms-base-distribution:^11" myshop
 It will install TYPO3 into the `./myshop/` directory. Then, change into the directory and install the Aimeos extension for TYPO3 using:
 
 ```bash
+cd ./myshop
 composer req aimeos/aimeos-typo3:~22.10
 ```
 
@@ -101,11 +103,16 @@ php ./vendor/bin/typo3 extension:activate aimeos
 
 Please keep on reading below the "TER Extension" installation section!
 
+### DDev
+
+*Note:* Installation instructions for TYPO3 with `ddev` or `Colima` can be found here:
+[TYPO3 with ddev or colima](https://ddev.readthedocs.io/en/latest/users/quickstart/)
+
 ### TER Extension
 
 If you want to install Aimeos into your existing TYPO3 installation, the [Aimeos extension from the TER](https://typo3.org/extensions/repository/view/aimeos) is recommended. You can download and install it directly from the Extension Manager of your TYPO3 instance.
 
-* Log into the TYPO3 back end
+* Log into the TYPO3 backend
 * Click on "Admin Tools::Extensions" in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry
 
@@ -121,7 +128,7 @@ Afterwards, you have to execute the update script of the extension to create the
 
 #### Aimeos Distribution
 
-For new TYPO3 installations, there's a 1-click [Aimeos distribution](https://typo3.org/extensions/repository/view/aimeos_dist) available too. Choose the Aimeos distribution from the list of available distributions in the Extension Manager and you will get a completely set up shop system including demo data for a quick start.
+For new TYPO3 installations, there is a 1-click [Aimeos distribution](https://typo3.org/extensions/repository/view/aimeos_dist) available, too. Choose the Aimeos distribution from the list of available distributions in the Extension Manager and you will get a completely set up shop system including demo data for a quick start.
 
 ## TYPO3 Setup
 
@@ -175,7 +182,7 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 ### Download the Aimeos Page Tree t3d file
 
-The page setup for an Aimeos web shop is easy if you import the example page tree for TYPO3 10/11. You can download the version you need from here:
+The page setup for an Aimeos web shop is easy, if you import the example page tree for TYPO3 10/11. You can download the version you need from here:
 
 * [22.4+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2022.04-2.t3d) and later
 * [21.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d)
