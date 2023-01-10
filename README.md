@@ -24,7 +24,7 @@ and customize anything to your needs.
         - [TYPO3 11](#typo3-11)
         - [TYPO3 10](#typo3-10)
     - [DDev or Colima](#ddev)
-    - [TER](#typo3-extension)
+    - [TER](#ter-extension)
 - [TYPO3 setup](#typo3-setup)
     - [Database setup](#database-setup)
     - [Security](#security)
@@ -110,7 +110,7 @@ Please keep on reading below the "TER Extension" installation section!
 
 ### TER Extension
 
-If you want to install Aimeos into your existing TYPO3 installation, the [Aimeos extension from the TER](https://typo3.org/extensions/repository/view/aimeos) is recommended. You can download and install it directly from the Extension Manager of your TYPO3 instance.
+If you want to install Aimeos into a traditionally installed TYPO3 ("legacy installation"), the [Aimeos extension from the TER](https://typo3.org/extensions/repository/view/aimeos) is recommended. You can download and install it directly from the Extension Manager of your TYPO3 instance.
 
 * Log into the TYPO3 backend
 * Click on "Admin Tools::Extensions" in the left navigation
