@@ -556,6 +556,11 @@ aside .catalog-filter .section {
 	content: " ×";
 }
 
+.catalog-filter-tree a.cat-link {
+	white-space: nowrap;
+}
+
+
 @media (max-width:991px) {
 	.catalog-filter-tree .category-selected {
 		display: none;

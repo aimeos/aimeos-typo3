@@ -13,11 +13,11 @@ AimeosBasketMini = {
 		}
 
 		const attr = basket.data.attributes;
-		const price = Number.parseFloat(attr['order.base.price']);
-		const delivery = Number.parseFloat(attr['order.base.costs']);
+		const price = Number.parseFloat(attr['order.price']);
+		const delivery = Number.parseFloat(attr['order.costs']);
 
-		const formatter = new Intl.NumberFormat(attr['order.base.languageid'], {
-			currency: attr['order.base.currencyid'],
+		const formatter = new Intl.NumberFormat(attr['order.languageid'], {
+			currency: attr['order.currencyid'],
 			style: "currency"
 		});
 
@@ -48,16 +48,16 @@ AimeosBasketMini = {
 						product.data("url", entry.links.self.href + urldata);
 					}
 
-					$(".name", product).html(entry.attributes['order.base.product.name']);
-					$(".quantity", product).html(entry.attributes['order.base.product.quantity']);
-					$(".price", product).html(formatter.format(entry.attributes['order.base.product.price']));
+					$(".name", product).html(entry.attributes['order.product.name']);
+					$(".quantity", product).html(entry.attributes['order.product.quantity']);
+					$(".price", product).html(formatter.format(entry.attributes['order.product.price']));
 
-					if(entry.attributes['order.base.product.flags']) {
+					if(entry.attributes['order.product.flags']) {
 						$(".action .delete", product).addClass("hidden");
 					}
 
 					body.append(product);
-					count += Number.parseInt(entry.attributes["order.base.product.quantity"]);
+					count += Number.parseInt(entry.attributes["order.product.quantity"]);
 				}
 			}
 
