@@ -41,7 +41,11 @@
 		}
 	},
 	"config": {
-		"vendor-dir": "Resources/Libraries"
+		"vendor-dir": "Resources/Libraries",
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		}
 	},
 	"extra": {
 		"typo3/cms": {
