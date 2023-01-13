@@ -21,8 +21,6 @@ and customize anything to your needs.
 
 - [Installation](#installation)
     - [Composer](#composer)
-        - [TYPO3 11](#typo3-11)
-        - [TYPO3 10](#typo3-10)
     - [DDev or Colima](#ddev)
     - [TER](#ter-extension)
 - [TYPO3 setup](#typo3-setup)
@@ -63,10 +61,16 @@ composer create-project typo3/cms-base-distribution myshop
 composer create-project "typo3/cms-base-distribution:^11" myshop
 ```
 
-It will install TYPO3 into the `./myshop/` directory. Then, change into the directory and install the Aimeos extension for TYPO3 using:
+It will install TYPO3 into the `./myshop/` directory. Change into the directory and install TYPO3 as usual:
 
 ```bash
 cd ./myshop
+touch public/FIRST_INSTALL
+```
+
+Open the TYPO3 URL in your browser and follow the setup steps. Afterwards, install the Aimeos extension using:
+
+```bash
 composer req aimeos/aimeos-typo3:~22.10
 ```
 
@@ -85,7 +89,7 @@ composer req bk2k/bootstrap-package
 
 Finally, depending on your TYPO3 version, run the following commands from your installation directory:
 
-#### TYPO3 11
+**For TYPO3 11:**
 
 ```bash
 php ./vendor/bin/typo3 extension:setup
@@ -94,7 +98,7 @@ php ./vendor/bin/typo3 aimeos:setup --option=setup/default/demo:1
 
 If you don't want to add the Aimeos demo data, you should remove `--option=setup/default/demo:1` from the Aimeos setup command.
 
-#### TYPO3 10
+**For TYPO3 10:**
 
 ```bash
 php ./vendor/bin/typo3 extension:activate scheduler
@@ -116,7 +120,7 @@ If you want to install Aimeos into a traditionally installed TYPO3 ("legacy inst
 * Click on "Admin Tools::Extensions" in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry
 
-![Install Aimeos TYPO3 extension](https://user-images.githubusercontent.com/213803/211545083-d0820b63-26f2-453e-877f-ecd5ec128713.jpg)
+![Install Aimeos TYPO3 extension](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-install.jpg)
 
 Afterwards, you have to execute the update script of the extension to create the required database structure:
 
@@ -124,7 +128,7 @@ Afterwards, you have to execute the update script of the extension to create the
 * Click "Run Upgrade Wizard" in the "Upgrade Wizard" tile
 * Click "Execute"
 
-![Execute update script](https://user-images.githubusercontent.com/213803/211545122-8fd94abd-78b2-47ad-ad3c-1ef1b9c052b4.jpg)
+![Execute update script](https://aimeos.org/docs/images/Aimeos-typo3-upgrade-wizard.jpg)
 
 #### Aimeos Distribution
 
@@ -184,7 +188,7 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 The page setup for an Aimeos web shop is easy, if you import the example page tree for TYPO3 10/11. You can download the version you need from here:
 
-* [22.4+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2022.04-2.t3d) and later
+* [22.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2022.10.t3d) and later
 * [21.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d)
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
@@ -195,13 +199,13 @@ In order to upload and install the file, follow the following steps:
 
 **Note:** It is recommended to import the Aimeos page tree to a page that is defined as "root page". To create a root page, simply create a new page and, in the "Edit page properties", activate the "Use as Root Page" option under "Behaviour". The icon of the root page will change to a globe.
 
-![Create a root page](https://user-images.githubusercontent.com/213803/211549273-1d3883dd-710c-4e27-8dbb-3de6e45680d7.jpg)
+![Create a root page](https://aimeos.org/docs/images/Aimeos-typo3-root-page.jpg)
 
 * In "Web::Page", right-click on the root page (the one with the globe)
 * Click on "More options..."
 * Click on "Import"
 
-![Go to the import view](https://user-images.githubusercontent.com/213803/211550212-df6daa73-74cd-459e-8d25-a56c413c175d.jpg)
+![Go to the import view](https://aimeos.org/docs/images/Aimeos-typo3-pages-menu.jpg)
 
 ### Upload the page tree file
 
