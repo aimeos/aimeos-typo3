@@ -15,7 +15,7 @@ high performance e-commerce extension for TYPO3!  You can install it in your
 existing TYPO3 web site within 5 minutes and can adapt, extend, overwrite
 and customize anything to your needs.
 
-[![Aimeos TYPO3 demo](https://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
+![aimeos-frontend](https://user-images.githubusercontent.com/8647429/212348410-55cbaa00-722a-4a30-8b57-da9e173e0675.jpg)
 
 ## Table Of Content
 
@@ -215,7 +215,7 @@ In order to upload and install the file, follow the following steps:
 * Choose the T3D file you've downloaded
 * Press the "Upload files" button
 
-![Upload the page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-upload.png)
+![Upload the page tree file](https://user-images.githubusercontent.com/8647429/212347778-17238e05-7494-4413-adb3-a54b2b524e05.png)
 
 ### Import the page tree
 
@@ -226,7 +226,7 @@ In order to upload and install the file, follow the following steps:
 * Click on the "Import" button that has appeared
 * Confirm to import the pages
 
-![Import the uploaded page tree file](https://aimeos.org/docs/images/Aimeos-typo3-pages-import.png)
+![Import the uploaded page tree file](https://user-images.githubusercontent.com/8647429/212348040-c3e10b60-5579-4d1b-becc-72548826c6db.png)
 
 Now you have a new page "Shop" in your page tree including all required sub-pages.
 
