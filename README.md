@@ -120,7 +120,7 @@ If you want to install Aimeos into a traditionally installed TYPO3 ("legacy inst
 * Click on "Admin Tools::Extensions" in the left navigation
 * Click the icon with the little plus sign left from the Aimeos list entry
 
-![Install Aimeos TYPO3 extension](https://aimeos.org/docs/images/Aimeos-typo3-extmngr-install.jpg)
+![Install Aimeos TYPO3 extension](https://user-images.githubusercontent.com/213803/211545083-d0820b63-26f2-453e-877f-ecd5ec128713.jpg)
 
 Afterwards, you have to execute the update script of the extension to create the required database structure:
 
@@ -128,7 +128,7 @@ Afterwards, you have to execute the update script of the extension to create the
 * Click "Run Upgrade Wizard" in the "Upgrade Wizard" tile
 * Click "Execute"
 
-![Execute update script](https://aimeos.org/docs/images/Aimeos-typo3-upgrade-wizard.jpg)
+![Execute update script](https://user-images.githubusercontent.com/213803/211545122-8fd94abd-78b2-47ad-ad3c-1ef1b9c052b4.jpg)
 
 #### Aimeos Distribution
 
@@ -199,13 +199,13 @@ In order to upload and install the file, follow the following steps:
 
 **Note:** It is recommended to import the Aimeos page tree to a page that is defined as "root page". To create a root page, simply create a new page and, in the "Edit page properties", activate the "Use as Root Page" option under "Behaviour". The icon of the root page will change to a globe.
 
-![Create a root page](https://aimeos.org/docs/images/Aimeos-typo3-root-page.jpg)
+![Create a root page](https://user-images.githubusercontent.com/213803/211549273-1d3883dd-710c-4e27-8dbb-3de6e45680d7.jpg)
 
 * In "Web::Page", right-click on the root page (the one with the globe)
 * Click on "More options..."
 * Click on "Import"
 
-![Go to the import view](https://aimeos.org/docs/images/Aimeos-typo3-pages-menu.jpg)
+![Go to the import view](https://user-images.githubusercontent.com/213803/211550212-df6daa73-74cd-459e-8d25-a56c413c175d.jpg)
 
 ### Upload the page tree file
 
