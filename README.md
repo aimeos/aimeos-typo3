@@ -87,6 +87,8 @@ If you want a more or less working installation out of the box for new installat
 composer req bk2k/bootstrap-package
 ```
 
+***Note***: Remember to create a root page and a root template, which includes the Bootstrap package templates! (See also below.)
+
 Finally, depending on your TYPO3 version, run the following commands from your installation directory:
 
 **For TYPO3 11:**
@@ -104,6 +106,8 @@ If you don't want to add the Aimeos demo data, you should remove `--option=setup
 php ./vendor/bin/typo3 extension:activate scheduler
 php ./vendor/bin/typo3 extension:activate aimeos
 ```
+
+If you experience any errors with the database, please check the [Database Setup](#database-setup) section below.
 
 Please keep on reading below the "TER Extension" installation section!
 
@@ -180,7 +184,7 @@ Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts wh
 
 ## Site Setup
 
-TYPO3 10+ requires a site configuration which you have to add in "Site Management" > "Sites" available in the left navigation.
+TYPO3 10+ requires a site configuration which you have to add in "Site Management" > "Sites" available in the left navigation. When creating a root page (a page with a globe icon), a basic site configuration is automatically created (see below at [Go to the Import View](#go-to-the-import-view)).
 
 ## Page Setup
 
@@ -197,7 +201,7 @@ In order to upload and install the file, follow the following steps:
 
 ### Go to the Import View
 
-**Note:** It is recommended to import the Aimeos page tree to a page that is defined as "root page". To create a root page, simply create a new page and, in the "Edit page properties", activate the "Use as Root Page" option under "Behaviour". The icon of the root page will change to a globe.
+**Note:** It is recommended to import the Aimeos page tree to a page that is defined as "root page". To create a root page, simply create a new page and, in the "Edit page properties", activate the "Use as Root Page" option under "Behaviour". The icon of the root page will change to a globe. This will also create a basic site configuration. Don't forget to also create a typoscript root template and include the bootstrap templates with it!
 
 ![Create a root page](https://user-images.githubusercontent.com/213803/211549273-1d3883dd-710c-4e27-8dbb-3de6e45680d7.jpg)
 
