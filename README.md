@@ -87,6 +87,8 @@ If you want a more or less working installation out of the box for new installat
 composer req bk2k/bootstrap-package
 ```
 
+***Note***: Remember to create a root page and a root template, which includes the Bootstrap package templates! (See also below.)
+
 Finally, depending on your TYPO3 version, run the following commands from your installation directory:
 
 **For TYPO3 11:**
@@ -105,7 +107,7 @@ php ./vendor/bin/typo3 extension:activate scheduler
 php ./vendor/bin/typo3 extension:activate aimeos
 ```
 
-If you experience any errors with the database, please check the (Database Setup)[#database-setup] section below.
+If you experience any errors with the database, please check the [Database Setup](#database-setup) section below.
 
 Please keep on reading below the "TER Extension" installation section!
 
@@ -182,7 +184,7 @@ Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts wh
 
 ## Site Setup
 
-TYPO3 10+ requires a site configuration which you have to add in "Site Management" > "Sites" available in the left navigation. When creating a root page (a page with a globe icon), a basic site configuration is automatically created (see below at (Go to the Import View)[#go-to-the-import-view]).
+TYPO3 10+ requires a site configuration which you have to add in "Site Management" > "Sites" available in the left navigation. When creating a root page (a page with a globe icon), a basic site configuration is automatically created (see below at [Go to the Import View](#go-to-the-import-view)).
 
 ## Page Setup
 
