@@ -44,6 +44,10 @@ plugin.tx_aimeos {
     }
 }
 
+# Exclude the shopping basket from the page cache, once it has been initialized
+[session("aimeos/basket/list") !== null]
+    tt_content.list.20.aimeos_basket-small = USER_INT
+[end]
 
 module.tx_aimeos.settings.typo3.admin.default = {$module.tx_aimeos.typo3.admin.default}
 
