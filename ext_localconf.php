@@ -147,7 +147,6 @@ $name = defined('TYPO3_version' ) && version_compare(constant('TYPO3_version' ),
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     $name . 'aimeos',
     'basket-small',
-    ['Aimeos\\Aimeos\\Controller\\BasketController' => 'small'],
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'small']
 );
 
