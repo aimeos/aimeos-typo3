@@ -300,7 +300,13 @@ class Context
             return $fcn($context);
         }
 
-        return $context->setToken(isset($GLOBALS['TSFE']->fe_user) ? $GLOBALS['TSFE']->fe_user->id : '');
+        $session = $context->session();
+
+        if (($token = $session->get('token')) === null) {
+            $session->set('token', isset($GLOBALS['TSFE']->fe_user) ? $GLOBALS['TSFE']->fe_user->id : md5(microtime(true) . getmypid()));
+        }
+
+        return $context->setToken($token);
     }
 
 
