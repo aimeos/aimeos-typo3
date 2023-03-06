@@ -179,6 +179,8 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
             while (($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
                 $str = preg_replace('/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1]);
+                $str = preg_replace('/ DEFAULT CHARSET=[^ ;]+/', '', $str);
+                $str = preg_replace('/ COLLATE=[^ ;]+/', '', $str);
                 $str = str_replace('"', '`', $str);
 
                 $sql[] = $str . ";\n";
