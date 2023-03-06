@@ -88,11 +88,11 @@ class Context
 
             case 'Typo3':
                 $manager = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class);
-                $cache = new \Aimeos\MAdmin\Cache\Proxy\Typo3($context, $manager->getCache('aimeos'));
+                $cache = (new \Aimeos\MAdmin\Cache\Manager\Typo3($context, $manager->getCache('aimeos')))->getCache();
                 break;
 
             default:
-                $cache = new \Aimeos\MAdmin\Cache\Proxy\Standard($context);
+                $cache = (new \Aimeos\MAdmin\Cache\Manager\Standard($context))->getCache();
         }
 
         return $context->setCache($cache);
