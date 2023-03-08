@@ -163,27 +163,35 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
      */
     public static function schema(array $sql) : array
     {
-        $tables = [];
-        $conn = self::context()->db();
+        $ctx = self::getContext();
+        $connectionNames = array_keys($ctx->getConfig()->get( 'resource'));
+        $connectionNames = array_filter($connectionNames, fn (string $key): bool => str_starts_with($key, 'db'));
 
-        foreach (['fe_users_', 'madmin_', 'mshop_'] as $prefix) {
-            $result = $conn->create('SHOW TABLES like \'' . $prefix . '%\'')->execute();
+        foreach ($connectionNames as $connectionName) {
+            $conn = $ctx->db($connectionName);
 
-            while (($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
-                $tables[] = $row[0];
+            $tables = [];
+            foreach(['fe_users_', 'madmin_', 'mshop_'] as $prefix) {
+                $result = $conn->create('SHOW TABLES like \'' . $prefix . '%\'')->execute();
+
+                while(($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
+                    $tables[] = $row[0];
+                }
             }
-        }
 
-        foreach ($tables as $table) {
-            $result = $conn->create('SHOW CREATE TABLE ' . $table)->execute();
+            foreach($tables as $table) {
+                $result = $conn->create('SHOW CREATE TABLE `' . $table . '`')->execute();
 
-            while (($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
-                $str = preg_replace('/,[\n ]*CONSTRAINT.+CASCADE/', '', $row[1]);
-                $str = preg_replace('/ DEFAULT CHARSET=[^ ;]+/', '', $str);
-                $str = preg_replace('/ COLLATE=[^ ;]+/', '', $str);
-                $str = str_replace('"', '`', $str);
+                while(($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
+                    $str = $row[1];
 
-                $sql[] = $str . ";\n";
+                    $str = str_replace('"', '`', $str);
+                    $str = preg_replace('/CONSTRAINT `[a-zA-Z0-9_-]+` /', '', $str);
+                    $str = preg_replace('/ DEFAULT CHARSET=[^ ;]+/', '', $str);
+                    $str = preg_replace('/ COLLATE=[^ ;]+/', '', $str);
+
+                    $sql[] = $str . ";\n";
+                }
             }
         }
 
