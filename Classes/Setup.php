@@ -137,13 +137,14 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
         \Aimeos\MShop::cache(false);
         \Aimeos\MAdmin::cache(false);
 
-        $site = \Aimeos\Aimeos\Base::getExtConfig('siteCode', 'default');
-        $template = \Aimeos\Aimeos\Base::getExtConfig('siteTpl', 'default');
+        $site = $extconf->get('siteCode', 'default');
+        $template = $extconf->get('siteTpl', 'default');
+        $codelen = $extconf->get('codeLength', 64);
 
         $boostrap = \Aimeos\Aimeos\Base::aimeos();
         $ctx = self::context(['setup' => ['default' => ['demo' => (string) $demo]]])->setEditor('setup');
 
-        \Aimeos\Setup::use($boostrap)->verbose('vvv')
+        \Aimeos\Setup::use($boostrap, ['codelength' => $codelen])->verbose('vvv')
             ->context($ctx->setEditor('aimeos:setup'))
             ->up($site, $template);
 

@@ -6,6 +6,8 @@ siteTpl = default
 autoSetup = 1
 # cat=basic/demo; type=options[Remove=0,No action=,Overwrite=1]; label=Updates demo data:Adds a new set of demo data, keeps the current set untouched or removes the existing demo data during execution of the update script. This setting will be reset to "No action" after the setup tasks have been executed.
 useDemoData = 1
+# cat=basic/codelen; type=integer; label=Maximum length of code and type column in bytes
+codeLength = 64
 # cat=cache/name; type=string; label=Cache name:Name of the used cache implementation ("Typo3" for native caching, "None" for no caching)
 cacheName = Typo3
 # cat=cache/apc; type=boolean; label=Use APC cache:If Aimeos configuration values should be cached in the APC user cache
