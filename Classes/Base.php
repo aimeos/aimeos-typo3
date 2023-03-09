@@ -265,8 +265,12 @@ class Base
      */
     public static function logout()
     {
-        $session = self::context(self::config())->session();
+        $context = self::context(self::config());
+        $context->setLocale(self::locale($context));
 
+        \Aimeos\Controller\Frontend::create( $context, 'basket' )->clear();
+
+        $session = $context->session();
         $session->remove(array_keys($session->get('aimeos/basket/list', [])));
         $session->remove(array_keys($session->get('aimeos/basket/cache', [])));
     }
