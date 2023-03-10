@@ -5,7 +5,7 @@ $defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']
 
 return [
 	'db' => [
-		'adapter' => 'mysql',
+		'adapter' => ($defaultConnection['driver'] ?? 'mysql') !== 'mysqli' ?: 'mysql',
 		'host' => $defaultConnection['host'] ?? null,
 		'port' => $defaultConnection['port'] ?? null,
 		'socket' => $defaultConnection['socket'] ?? null,
