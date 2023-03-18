@@ -170,10 +170,16 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
         foreach ($connectionNames as $connectionName) {
             $conn = $ctx->db($connectionName);
+            $adapter = $ctx->config('resource/' . $connectionName . '/adapter');
 
             $tables = [];
             foreach(['fe_users_', 'madmin_', 'mshop_'] as $prefix) {
-                $result = $conn->create('SHOW TABLES like \'' . $prefix . '%\'')->execute();
+                switch ($adapter) {
+                    case "pgsql": $sql = 'SELECT tablename FROM pg_catalog.pg_tables where tablename ~ \'^' . $prefix . '\''; break;
+                    default: $sql = 'SHOW TABLES like \'' . $prefix . '%\'';
+                }
+
+                $result = $conn->create($sql)->execute();
 
                 while(($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
                     $tables[] = $row[0];
@@ -181,7 +187,12 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
             }
 
             foreach($tables as $table) {
-                $result = $conn->create('SHOW CREATE TABLE `' . $table . '`')->execute();
+                switch ($adapter) {
+                    case "pgsql":  $sql = 'CREATE TABLE IF NOT EXISTS ' . $table . '()'; break;
+                    default: $sql = 'SHOW CREATE TABLE `' . $table . '`';
+                }
+
+                $result = $conn->create($sql)->execute();
 
                 while(($row = $result->fetch(\Aimeos\Base\DB\Result\Base::FETCH_NUM)) !== null) {
                     $str = $row[1];
