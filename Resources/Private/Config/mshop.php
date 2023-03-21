@@ -1,5 +1,20 @@
 <?php
 
+$defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
+$driver = $defaultConnection['driver'];
+
+/* setup class name for aimeos-core/src/MShop/Index/Manager/ */
+switch($driver) {
+	case 'mysql':
+	case 'mysqli':
+	case 'pdo_mysql': $mshopIndexManagerAdapter = 'MySQL'; break;
+	case 'pgsql':
+	case 'pdo_pgsql': $mshopIndexManagerAdapter = 'PgSQL'; break;
+	case 'sqlsrv':
+	case 'pdo_sqlsrv': $mshopIndexManagerAdapter = 'SQLSrv'; break;
+	default: $mshopIndexManagerAdapter = 'Standard';
+}
+
 return [
 	'customer' => [
 		'manager' => [
@@ -8,21 +23,21 @@ return [
 	],
 	'index' => [
 		'manager' => [
-			'name' => 'MySQL',
+			'name' => $mshopIndexManagerAdapter,
 			'attribute' => [
-				'name' => 'MySQL',
+				'name' => $mshopIndexManagerAdapter,
 			],
 			'catalog' => [
-				'name' => 'MySQL',
+				'name' => $mshopIndexManagerAdapter,
 			],
 			'price' => [
-				'name' => 'MySQL',
+				'name' => $mshopIndexManagerAdapter,
 			],
 			'supplier' => [
-				'name' => 'MySQL',
+				'name' => $mshopIndexManagerAdapter,
 			],
 			'text' => [
-				'name' => 'MySQL',
+				'name' => $mshopIndexManagerAdapter,
 			],
 		],
 	],
