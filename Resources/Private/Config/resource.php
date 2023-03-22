@@ -1,8 +1,8 @@
 <?php
 
 $publicPath = \TYPO3\CMS\Core\Core\Environment::getPublicPath();
-$defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
-$driver = $defaultConnection['driver'];
+$defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'] ?? [];
+$driver = $defaultConnection['driver'] ?? null;
 
 switch($driver) {
 	case 'mysqli':
