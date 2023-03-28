@@ -159,13 +159,13 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
     /**
      * Returns the current schema for the install tool
      *
-     * @param array $sql List of SQL statements
+     * @param array $list List of SQL statements
      * @return array SQL statements required for the install tool
      */
-    public static function schema(array $sql) : array
+    public static function schema(array $list) : array
     {
-        $ctx = self::getContext();
-        $connectionNames = array_keys($ctx->getConfig()->get( 'resource'));
+        $ctx = self::context();
+        $connectionNames = array_keys($ctx->config()->get( 'resource'));
         $connectionNames = array_filter($connectionNames, fn (string $key): bool => str_starts_with($key, 'db'));
 
         foreach ($connectionNames as $connectionName) {
@@ -202,12 +202,12 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
                     $str = preg_replace('/ DEFAULT CHARSET=[^ ;]+/', '', $str);
                     $str = preg_replace('/ COLLATE=[^ ;]+/', '', $str);
 
-                    $sql[] = $str . ";\n";
+                    $list[] = $str . ";\n";
                 }
             }
         }
 
-        return ['sqlString' => $sql];
+        return ['sqlString' => $list];
     }
 
 
