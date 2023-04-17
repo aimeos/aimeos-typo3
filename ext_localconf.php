@@ -22,7 +22,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
  * Aimeos plugins
  */
 $name = defined('TYPO3_version' ) && version_compare(constant('TYPO3_version' ), '11.0.0', '<' ) ? 'Aimeos.' : '';
-
+/*
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     $name . 'aimeos',
     'locale-select',
@@ -249,7 +249,7 @@ $name = defined('TYPO3_version' ) && version_compare(constant('TYPO3_version' ),
     ['Aimeos\\Aimeos\\Controller\\SupplierController' => 'detail'],
     ['Aimeos\\Aimeos\\Controller\\SupplierController' => 'detail']
 );
-
+*/
 
 /**
  * Register Aimeos content elements
