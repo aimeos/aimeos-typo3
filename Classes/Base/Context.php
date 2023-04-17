@@ -85,12 +85,12 @@ class Context
                 $context->config()->set('client/html/basket/cache/enable', false);
                 $cache = \Aimeos\Base\Cache\Factory::create('None', [], null);
                 break;
-
+/*
             case 'Typo3':
                 $manager = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class);
                 $cache = (new \Aimeos\MAdmin\Cache\Manager\Typo3($context, $manager->getCache('aimeos')))->getCache();
                 break;
-
+*/
             default:
                 $cache = (new \Aimeos\MAdmin\Cache\Manager\Standard($context))->getCache();
         }
