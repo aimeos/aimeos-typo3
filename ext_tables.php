@@ -25,7 +25,7 @@ $iconRegistry->registerIcon(
 /**
  * Register backend module
  */
-
+/*
 $_aimeosConfiguration = [
     'access' => 'user,group',
     'icon' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg',
@@ -56,9 +56,6 @@ $name = defined('TYPO3_version') && version_compare(constant('TYPO3_version'), '
 
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
 
-/**
- * Execute the setup tasks automatically to create the required tables
- */
 $signalSlotDispatcher->connect(
     'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
     'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10+ and PSR Events in 11+
@@ -72,15 +69,12 @@ $signalSlotDispatcher->connect(
     'signal'
 );
 
-/**
- * Prevent install tool from dropping Aimeos tables
- */
 $signalSlotDispatcher->connect(
     'TYPO3\\CMS\\Install\\Service\\SqlExpectedSchemaService',
     'tablesDefinitionIsBeingBuilt', // @deprecated, use PSR Events in 11+
     'Aimeos\\Aimeos\\Setup',
     'schema'
 );
-
+*/
 
 ?>
