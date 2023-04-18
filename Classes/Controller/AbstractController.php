@@ -22,7 +22,6 @@ abstract class AbstractController
     extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     implements \TYPO3\CMS\Extbase\Mvc\Controller\ControllerInterface
 {
-    private static $aimeos;
     private static $context;
     private $contextBE;
     private $ceUid;
@@ -78,7 +77,7 @@ abstract class AbstractController
 
         if ($withView === true) {
             $langid = self::$context->locale()->getLanguageId();
-            $paths = self::$aimeos->getTemplatePaths($templatePath);
+            $paths = Base::aimeos()->getTemplatePaths($templatePath);
             $view = Base::view(self::$context, $this->uriBuilder, $paths, $this->request, $langid);
 
             self::$context->setView($view);
@@ -134,7 +133,7 @@ abstract class AbstractController
             }
 
             if ($withView) {
-                $paths = self::$aimeos->getTemplatePaths($templatePath);
+                $paths = Base::aimeos()->getTemplatePaths($templatePath);
                 $view = Base::view($context, $this->uriBuilder, $paths, $this->request, $lang);
                 $context->setView($view);
             }
@@ -189,8 +188,5 @@ abstract class AbstractController
 
         $ce = $this->configurationManager->getContentObject();
         $this->ceUid = $ce->data['uid'] ?? null;
-
-        // initialize bootstrapping
-        self::$aimeos = Base::aimeos();
     }
 }
