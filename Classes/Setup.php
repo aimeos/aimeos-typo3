@@ -130,16 +130,15 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
     {
         ini_set('max_execution_time', 0);
 
-        $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-        $extconf = $objectManager->get('TYPO3\CMS\Core\Configuration\ExtensionConfiguration');
-        $demo = $extconf->get('aimeos', 'useDemoData');
+        $extconf = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class);
+        $demo = $extconf->get('aimeos', 'useDemoData') ?: false;
 
         \Aimeos\MShop::cache(false);
         \Aimeos\MAdmin::cache(false);
 
-        $site = $extconf->get('siteCode', 'default');
-        $template = $extconf->get('siteTpl', 'default');
-        $codelen = $extconf->get('codeLength', 64);
+        $site = $extconf->get('aimeos', 'siteCode') ?: 'default';
+        $template = $extconf->get('aimeos', 'siteTpl') ?: 'default';
+        $codelen = $extconf->get('aimeos', 'codeLength') ?: 64;
 
         $boostrap = \Aimeos\Aimeos\Base::aimeos();
         $ctx = self::context(['setup' => ['default' => ['demo' => (string) $demo]]])->setEditor('setup');
@@ -148,11 +147,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
             ->context($ctx->setEditor('aimeos:setup'))
             ->up($site, $template);
 
-        if (defined('TYPO3_version') && version_compare(constant('TYPO3_version'), '11.0.0', '<')) {
-            $extconf->set('aimeos', 'useDemoData', '');
-        } else {
-            $extconf->set('aimeos', ['useDemoData' => '']);
-        }
+        $extconf->set('aimeos', ['useDemoData' => '']);
     }
 
 
@@ -208,30 +203,6 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
         }
 
         return ['sqlString' => $list];
-    }
-
-
-    /**
-     * For existing installations
-     *
-     * @param string|null $extname Installed extension name
-     */
-    public static function executeOnSignal(string $extname = null)
-    {
-        self::signal($extname);
-    }
-
-
-    /**
-     * Update schema if extension is installed
-     *
-     * @param string|null $extname Installed extension name
-     */
-    public static function signal(string $extname = null)
-    {
-        if ($extname === 'aimeos' && \Aimeos\Aimeos\Base::getExtConfig('autoSetup', true)) {
-            self::execute();
-        }
     }
 
 
