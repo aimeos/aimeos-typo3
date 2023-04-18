@@ -29,3 +29,17 @@ services:
       - name: 'console.command'
         command: 'aimeos:setup'
         description: 'Creates or updates the database tables'
+
+  dashboard.widget.latestorders:
+    class: 'TYPO3\CMS\Dashboard\Widgets\RssWidget'
+    arguments:
+      $cache: '@cache.dashboard.rss'
+    tags:
+      - name: dashboard.widget
+        identifier: 'aimeos-latestorders'
+        groupNames: 'general'
+        title: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.title'
+        description: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.description'
+        iconIdentifier: 'aimeos-widget-latestorders'
+        height: 'medium'
+        width: 'large'
