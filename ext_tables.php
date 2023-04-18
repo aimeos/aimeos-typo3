@@ -51,28 +51,4 @@ if ((bool) \Aimeos\Aimeos\Base::getExtConfig('showPageTree', false) == false) {
     $_aimeosConfiguration
 );
 
-
-$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
-
-$signalSlotDispatcher->connect(
-    'TYPO3\\CMS\\Extensionmanager\\Service\\ExtensionManagementService',
-    'hasInstalledExtensions', // @deprecated, use "afterExtensionInstall" in TYPO3 10+ and PSR Events in 11+
-    'Aimeos\\Aimeos\\Setup',
-    'signal'
-);
-$signalSlotDispatcher->connect(
-    'TYPO3\CMS\Extensionmanager\Utility\InstallUtility',
-    'afterExtensionInstall', // @deprecated, use PSR Events in 11+
-    'Aimeos\\Aimeos\\Setup',
-    'signal'
-);
-
-$signalSlotDispatcher->connect(
-    'TYPO3\\CMS\\Install\\Service\\SqlExpectedSchemaService',
-    'tablesDefinitionIsBeingBuilt', // @deprecated, use PSR Events in 11+
-    'Aimeos\\Aimeos\\Setup',
-    'schema'
-);
-*/
-
 ?>
