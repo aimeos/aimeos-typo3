@@ -291,9 +291,9 @@ class JqadmController extends AbstractController
     /**
      * Uses default view.
      *
-     * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface|null View object
+     * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface View object
      */
-    protected function resolveView()
+    protected function resolveView() : \TYPO3Fluid\Fluid\View\ViewInterface
     {
         if ($this->request->hasArgument('locale') && ($value = $this->request->getArgument('locale')) != '') {
             $lang = $value;

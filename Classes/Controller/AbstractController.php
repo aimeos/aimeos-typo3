@@ -193,15 +193,4 @@ abstract class AbstractController
         // initialize bootstrapping
         self::$aimeos = Base::aimeos();
     }
-
-
-    /**
-     * Disables Fluid views for performance reasons
-     *
-     * return null
-     */
-    protected function resolveView()
-    {
-        return null;
-    }
 }
