@@ -20,16 +20,11 @@ use Aimeos\Aimeos\Base;
  */
 class JqadmController extends AbstractController
 {
-    private static $aimeos;
-
-
     /**
      * Initializes the object before the real action is called.
      */
     protected function initializeAction()
     {
-        parent::initializeAction();
-        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeostxaimeosadmin');
     }
 
 
@@ -93,7 +88,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->batch()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -111,7 +106,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->copy()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -129,7 +124,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->create()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -147,7 +142,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->delete()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -165,7 +160,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->export()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -183,7 +178,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->get()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -201,7 +196,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->import()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -219,7 +214,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->save()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -237,7 +232,7 @@ class JqadmController extends AbstractController
         $cntl = $this->createAdmin();
 
         if (($html = $cntl->search()) == '') {
-            return $this->setPsrResponse($cntl->response());
+            return $cntl->response();
         }
 
         $this->view->assign('content', $html);
@@ -310,29 +305,5 @@ class JqadmController extends AbstractController
         $view->assign('locale', $lang);
 
         return $view;
-    }
-
-
-    /**
-     * Set the response data from a PSR-7 response object and returns the message content
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
-     * @return string Generated output
-     */
-    protected function setPsrResponse(\Psr\Http\Message\ResponseInterface $response)
-    {
-        if (!isset($this->responseFactory)) { // TYPO3 10
-            $this->response->setStatus($response->getStatusCode());
-
-            foreach ($response->getHeaders() as $key => $value) {
-                foreach ((array) $value as $val) {
-                    $this->response->setHeader($key, $val);
-                }
-            }
-
-            return (string) $response->getBody();
-        }
-
-        return $response;
     }
 }
