@@ -7,7 +7,7 @@
  */
 
 
-namespace Aimeos\Aimeos\Widget;
+namespace Aimeos\Aimeos\Widgets;
 
 
 /**
@@ -16,12 +16,28 @@ namespace Aimeos\Aimeos\Widget;
  */
 class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
 {
-    private $view;
+    private ServerRequestInterface $request;
 
 
-    public function __construct(\TYPO3\CMS\Fluid\View\StandaloneView $view)
+    public function __construct(
+        private readonly WidgetConfigurationInterface $configuration,
+        private readonly Cache $cache,
+        private readonly BackendViewFactory $backendViewFactory,
+        private readonly ?ButtonProviderInterface $buttonProvider = null,
+        private readonly array $options = []
+    ) {
+    }
+
+
+    public function getOptions(): array
     {
-        $this->view = $view;
+        return $this->options;
+    }
+
+
+    public function setRequest(ServerRequestInterface $request): void
+    {
+        $this->request = $request;
     }
 
 
@@ -30,11 +46,11 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
      *
      * @return string HTML code
      */
-    public function renderWidgetContent() : string
+    public function renderWidgetContent(): string
     {
-        return $this->view->setTemplate('Widget/LatestOrdersWidget')
-            ->assign('items', $this->getOrderItems())
-            ->render();
+        $view = $this->backendViewFactory->create($this->request);
+        return $this->view->assign('items', $this->getOrderItems())
+            ->render('Widgets/LatestOrdersWidget');
     }
 
 
