@@ -25,7 +25,7 @@ $iconRegistry->registerIcon(
 /**
  * Register backend module
  */
-/*
+
 $_aimeosConfiguration = [
     'access' => 'user,group',
     'icon' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg',
@@ -37,10 +37,8 @@ if ((bool) \Aimeos\Aimeos\Base::getExtConfig('showPageTree', false) == false) {
     $_aimeosConfiguration['inheritNavigationComponentFromMainModule'] = false;
 }
 
-$name = defined('TYPO3_version') && version_compare(constant('TYPO3_version'), '11.0.0', '<') ? 'Aimeos.' : '';
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-    $name . 'aimeos',
+    'aimeos',
     'web',
     'tx_aimeos_admin',
     '', // position
