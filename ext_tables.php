@@ -11,19 +11,7 @@ if (file_exists($aimeosExtPath . '/Resources/Libraries/autoload.php') === true) 
 
 
 /**
- * Register Aimeos icon
- */
-
-$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-$iconRegistry->registerIcon(
-    'aimeos-shop',
-    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-    ['source' => 'EXT:aimeos/Resources/Public/Icons/Extension.svg']
-);
-
-
-/**
- * Register backend module
+ * Register backend module (up toTYPO3 11, removed in TYPO3 12)
  */
 
 $_aimeosConfiguration = [
