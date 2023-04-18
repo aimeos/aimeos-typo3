@@ -1,4 +1,12 @@
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Aimeos\Aimeos\:
+    resource: '../Classes/*'
+
   Aimeos\Aimeos\Setup:
     tags:
       - name: event.listener
