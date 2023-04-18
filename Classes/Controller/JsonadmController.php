@@ -26,8 +26,6 @@ class JsonadmController extends AbstractController
      */
     protected function initializeAction()
     {
-        parent::initializeAction();
-        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeostxaimeosadmin');
     }
 
 
@@ -65,8 +63,7 @@ class JsonadmController extends AbstractController
      */
     public function deleteAction($resource)
     {
-        $response = $this->createAdmin($resource)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createAdmin($resource)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -78,8 +75,7 @@ class JsonadmController extends AbstractController
      */
     public function getAction($resource)
     {
-        $response = $this->createAdmin($resource)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createAdmin($resource)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -91,8 +87,7 @@ class JsonadmController extends AbstractController
      */
     public function patchAction($resource)
     {
-        $response = $this->createAdmin($resource)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createAdmin($resource)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -104,8 +99,7 @@ class JsonadmController extends AbstractController
      */
     public function postAction($resource)
     {
-        $response = $this->createAdmin($resource)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createAdmin($resource)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -117,8 +111,7 @@ class JsonadmController extends AbstractController
      */
     public function putAction($resource)
     {
-        $response = $this->createAdmin($resource)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createAdmin($resource)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -130,8 +123,7 @@ class JsonadmController extends AbstractController
      */
     public function optionsAction($resource)
     {
-        $response = $this->createAdmin($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createAdmin($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -165,30 +157,5 @@ class JsonadmController extends AbstractController
         );
 
         return $creator->fromGlobals();
-    }
-
-
-    /**
-     * Set the response data from a PSR-7 response object and returns the message content
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
-     * @return string Generated output
-     */
-    protected function setPsrResponse(\Psr\Http\Message\ResponseInterface $response)
-    {
-        if (!isset($this->responseFactory)) // TYPO3 10
-        {
-            $this->response->setStatus($response->getStatusCode());
-
-            foreach ($response->getHeaders() as $key => $value) {
-                foreach ((array) $value as $val) {
-                    $this->response->setHeader($key, $val);
-                }
-            }
-
-            return (string) $response->getBody();
-        }
-
-        return $response;
     }
 }
