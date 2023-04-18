@@ -10,6 +10,7 @@
 namespace Aimeos\Aimeos\Base;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 
 
 /**
@@ -32,8 +33,9 @@ class View
     public static function get(\Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null) : \Aimeos\Base\View\Iface
     {
-        $obj = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-        $engines = ['.html' => new \Aimeos\Base\View\Engine\Typo3($obj)];
+        $config = GeneralUtility::makeInstance(ConfigurationManager::class)->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FRAMEWORK);
+        $view = GeneralUtility::makeInstance(\TYPO3\CMS\Fluid\View\StandaloneView::class);
+        $engines = ['.html' => new \Aimeos\Base\View\Engine\Typo3($view, $config)];
 
         $prefix = 'ai';
         if ($uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder) {
