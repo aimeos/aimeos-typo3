@@ -83,14 +83,14 @@ class Context
         switch ($cacheName) {
             case 'None':
                 $context->config()->set('client/html/basket/cache/enable', false);
-                $cache = \Aimeos\Base\Cache\Factory::create('None', [], null);
+                $cache = \Aimeos\Base\Cache\Factory::create('None');
                 break;
-/*
+
             case 'Typo3':
-                $manager = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class);
-                $cache = (new \Aimeos\MAdmin\Cache\Manager\Typo3($context, $manager->getCache('aimeos')))->getCache();
+                $t3cache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('aimeos');
+                $cache = (new \Aimeos\MAdmin\Cache\Manager\Typo3($context))->setCache($t3cache)->getCache();
                 break;
-*/
+
             default:
                 $cache = (new \Aimeos\MAdmin\Cache\Manager\Standard($context))->getCache();
         }
