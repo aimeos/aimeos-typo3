@@ -87,8 +87,8 @@ class Context
                 break;
 
             case 'Typo3':
-                $t3cache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('aimeos');
-                $cache = (new \Aimeos\MAdmin\Cache\Manager\Typo3($context))->setCache($t3cache)->getCache();
+                $manager = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class);
+                $cache = new \Aimeos\Base\Cache\Typo3($manager->getCache('aimeos'));
                 break;
 
             default:
