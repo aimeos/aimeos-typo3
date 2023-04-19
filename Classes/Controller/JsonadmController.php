@@ -26,7 +26,7 @@ class JsonadmController extends AbstractController
      */
     protected function initializeAction()
     {
-        $this->uriBuilder->setArgumentPrefix('ai');
+        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeos');
     }
 
 
@@ -37,8 +37,7 @@ class JsonadmController extends AbstractController
      */
     public function indexAction()
     {
-        $params = $this->request->hasArgument('ai') ? $this->request->getArgument('ai') : [];
-        $resource = $params['resource'] ?? '';
+        $resource = $this->request->hasArgument('resource') ? $this->request->getArgument('resource') : '';
 
         switch ($this->request->getMethod()) {
             case 'DELETE': return $this->deleteAction($resource);

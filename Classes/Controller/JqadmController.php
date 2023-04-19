@@ -25,7 +25,7 @@ class JqadmController extends AbstractController
      */
     protected function initializeAction()
     {
-        $this->uriBuilder->setArgumentPrefix('ai');
+        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeos');
     }
 
 
@@ -238,11 +238,7 @@ class JqadmController extends AbstractController
      */
     protected function createAdmin() : \Aimeos\Admin\JQAdm\Iface
     {
-        $params = [];
-
-        if ($this->request->hasArgument('ai')) {
-            $params = $this->request->getArgument('ai');
-        }
+        $resource = $this->request->hasArgument('resource') ? $this->request->getArgument('resource') : 'dashboard';
 
         $aimeos = Base::aimeos();
         $context = $this->contextBackend('admin/jqadm/templates');
@@ -255,7 +251,7 @@ class JqadmController extends AbstractController
 
         $context->setView($view);
 
-        return \Aimeos\Admin\JQAdm::create($context, $aimeos, $params['resource'] ?? 'dashboard');
+        return \Aimeos\Admin\JQAdm::create($context, $aimeos, $resource);
     }
 
 
