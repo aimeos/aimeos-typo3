@@ -300,7 +300,7 @@ class Context
         $session = $context->session();
 
         if (($token = $session->get('token')) === null) {
-            $token = isset($GLOBALS['TSFE']->fe_user) ? $GLOBALS['TSFE']->fe_user->id : md5(microtime(true) . getmypid());
+            $token = $GLOBALS['TSFE']->fe_user->id ?? md5(microtime(true) . getmypid());
             $session->set('token', $token);
         }
 
