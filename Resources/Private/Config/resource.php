@@ -1,6 +1,8 @@
 <?php
 
 $publicPath = \TYPO3\CMS\Core\Core\Environment::getPublicPath();
+$assetPath = \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:aimeos/Resources/Public'));
+
 $defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'] ?? [];
 $driver = $defaultConnection['driver'] ?? null;
 
@@ -49,14 +51,14 @@ return [
 	],
 	'fs-mimeicon' => [
 		'adapter' => 'Standard',
-		'baseurl' => '/typo3conf/ext/aimeos/Resources/Public/Images/Mimeicons',
-		'basedir' => $publicPath . '/typo3conf/ext/aimeos/Resources/Public/Images/Mimeicons',
+		'baseurl' => $assetPath . '/Images/Mimeicons',
+		'basedir' => $assetPath . '/Images/Mimeicons',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-theme' => [
 		'adapter' => 'Standard',
-		'baseurl' => '/typo3conf/ext/aimeos/Resources/Public/Themes',
-		'basedir' => $publicPath . '/typo3conf/ext/aimeos/Resources/Public/Themes',
+		'baseurl' => $assetPath . '/Themes',
+		'basedir' => $assetPath . '/Themes',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-admin' => [
