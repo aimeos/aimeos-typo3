@@ -13,13 +13,6 @@ namespace Aimeos\Aimeos;
 use \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/*
-$aimeosExtPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('aimeos');
-
-if (file_exists($aimeosExtPath . '/Resources/Libraries/autoload.php') === true) {
-    require_once $aimeosExtPath . '/Resources/Libraries/autoload.php';
-}
-*/
 
 /**
  * Aimeos base class with common functionality.
