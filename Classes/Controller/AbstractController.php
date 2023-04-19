@@ -100,18 +100,17 @@ abstract class AbstractController
         if (!isset($this->contextBE)) {
             $lang = 'en';
             $site = 'default';
-            $params = $this->request->hasArgument('ai') ? $this->request->getArgument('ai') : [];
 
             $config = Base::config((array) $this->settings);
             $context = Base::context($config);
 
-            if ($value = $params['locale'] ?? null) {
+            if ($this->request->hasArgument('locale') && ($value = $this->request->getArgument('locale')) != '') {
                 $lang = $value;
             } elseif (!in_array($GLOBALS['BE_USER']->uc['lang'] ?? '', ['', 'default'])) {
                 $lang = $GLOBALS['BE_USER']->uc['lang'];
             }
 
-            if ($value = $params['site'] ?? null) {
+            if ($this->request->hasArgument('site') && ($value = $this->request->getArgument('site')) != '') {
                 $site = $value;
             } elseif (isset($GLOBALS['BE_USER']->user['siteid']) && $GLOBALS['BE_USER']->user['siteid'] != '') {
                 $siteManager = \Aimeos\MShop::create($context, 'locale/site');
