@@ -26,6 +26,7 @@ class JsonadmController extends AbstractController
      */
     protected function initializeAction()
     {
+        $this->uriBuilder->setArgumentPrefix('ai');
     }
 
 
@@ -36,13 +37,8 @@ class JsonadmController extends AbstractController
      */
     public function indexAction()
     {
-        $resource = null;
-
-        if ($this->request->hasArgument('resource')
-            && ($value = $this->request->getArgument('resource')) != ''
-        ) {
-            $resource = $value;
-        }
+        $params = $this->request->hasArgument('ai') ? $this->request->getArgument('ai') : [];
+        $resource = $params['resource'] ?? '';
 
         switch ($this->request->getMethod()) {
             case 'DELETE': return $this->deleteAction($resource);
@@ -61,7 +57,7 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function deleteAction($resource)
+    public function deleteAction(string $resource)
     {
         return $this->createAdmin($resource)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
@@ -73,7 +69,7 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function getAction($resource)
+    public function getAction(string $resource)
     {
         return $this->createAdmin($resource)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
@@ -85,7 +81,7 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function patchAction($resource)
+    public function patchAction(string $resource)
     {
         return $this->createAdmin($resource)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
@@ -97,7 +93,7 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function postAction($resource)
+    public function postAction(string $resource)
     {
         return $this->createAdmin($resource)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
@@ -109,7 +105,7 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function putAction($resource)
+    public function putAction(string $resource)
     {
         return $this->createAdmin($resource)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
@@ -121,9 +117,9 @@ class JsonadmController extends AbstractController
      * @param string Resource location, e.g. "product/property/type"
      * @return string Generated output
      */
-    public function optionsAction($resource)
+    public function optionsAction(string $resource)
     {
-        return $this->createAdmin($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        return $this->createAdmin($resource)->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 

@@ -25,6 +25,7 @@ class JqadmController extends AbstractController
      */
     protected function initializeAction()
     {
+        $this->uriBuilder->setArgumentPrefix('ai');
     }
 
 
@@ -53,16 +54,6 @@ class JqadmController extends AbstractController
             }
 
             $contents .= $content;
-        }
-
-        if (!isset($this->responseFactory)) { // TYPO3 10
-            if ($type === 'js') {
-                $this->response->setHeader('Content-Type', 'application/javascript');
-            } elseif ($type === 'css') {
-                $this->response->setHeader('Content-Type', 'text/css');
-            }
-
-            return $contents;
         }
 
         $response = $this->responseFactory->createResponse()
@@ -247,12 +238,10 @@ class JqadmController extends AbstractController
      */
     protected function createAdmin() : \Aimeos\Admin\JQAdm\Iface
     {
-        $resource = 'dashboard';
+        $params = [];
 
-        if ($this->request->hasArgument('resource')
-            && ($value = $this->request->getArgument('resource')) != ''
-        ) {
-            $resource = $value;
+        if ($this->request->hasArgument('ai')) {
+            $params = $this->request->getArgument('ai');
         }
 
         $aimeos = Base::aimeos();
@@ -266,7 +255,7 @@ class JqadmController extends AbstractController
 
         $context->setView($view);
 
-        return \Aimeos\Admin\JQAdm::create($context, $aimeos, $resource);
+        return \Aimeos\Admin\JQAdm::create($context, $aimeos, $params['resource'] ?? 'dashboard');
     }
 
 
