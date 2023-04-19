@@ -67,6 +67,6 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
         $manager = \Aimeos\MShop::create($context, 'order');
         $filter = $manager->filter()->sort('-order.id')->slice(0, 20);
 
-        return $manager->search($filter, ['order/base', 'order/base/address'])->toArray();
+        return $manager->search($filter, ['order/base/address'])->toArray();
     }
 }
