@@ -1,0 +1,3 @@
+module.tx_aimeos {
+    features.enableNamespacedArgumentsForBackend = 1
+}
