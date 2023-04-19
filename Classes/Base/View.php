@@ -228,7 +228,7 @@ class View
         }
 
         $params = $request ? $request->getArguments() : [];
-        $helper = new \Aimeos\Base\View\Helper\Param\Standard($view, $params);
+        $helper = new \Aimeos\Base\View\Helper\Param\Standard($view, $params['ai'] ?? $params);
         $view->addHelper('param', $helper);
 
         return $view;
