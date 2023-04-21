@@ -2,22 +2,22 @@
 host = https://www.transifex.com
 type = XLIFF
 
-[aimeos-typo3.scheduler]
+[o:aimeos:p:aimeos-typo3:r:scheduler]
 file_filter = Resources/Private/Language/<lang>.scheduler.xlf
 source_file = Resources/Private/Language/scheduler.xlf
 source_lang = en
 
-[aimeos-typo3.plugins]
+[o:aimeos:p:aimeos-typo3:r:plugins]
 file_filter = Resources/Private/Language/<lang>.plugins.xlf
 source_file = Resources/Private/Language/plugins.xlf
 source_lang = en
 
-[aimeos-typo3.extension]
+[o:aimeos:p:aimeos-typo3:r:extension]
 file_filter = Resources/Private/Language/<lang>.extension.xlf
 source_file = Resources/Private/Language/extension.xlf
 source_lang = en
 
-[aimeos-typo3.admin]
+[o:aimeos:p:aimeos-typo3:r:admin]
 file_filter = Resources/Private/Language/<lang>.admin.xlf
 source_file = Resources/Private/Language/admin.xlf
 source_lang = en
