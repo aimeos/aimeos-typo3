@@ -8,9 +8,9 @@ AimeosCatalogLists = {
 	 *
 	 * @param DomNode form Form DOM element
 	 */
-	showBasket(form) {
+	async showBasket(form) {
 
-		fetch(form.getAttribute("action"), {
+		await fetch(form.getAttribute("action"), {
 			body: new FormData(form),
 			method: 'POST'
 		}).then(response => {
@@ -75,10 +75,10 @@ AimeosCatalogLists = {
 	/**
 	 * Enables infinite scroll if available
 	 */
-	onScroll() {
+	async onScroll() {
 
 		if($('.catalog-list-items').data('infiniteurl')) {
-			const scroll = function() {
+			const scroll = async function() {
 
 				const list = $('.catalog-list-items');
 				const infiniteUrl = list.data('infiniteurl');
@@ -86,7 +86,7 @@ AimeosCatalogLists = {
 				if(infiniteUrl && list.length && list[0].getBoundingClientRect().bottom < window.innerHeight * 3) {
 					list.data('infiniteurl', '');
 
-					fetch(infiniteUrl).then(response => {
+					await fetch(infiniteUrl).then(response => {
 						return response.text();
 					}).then(data => {
 						const nextPage = $('<html/>').html(data);
@@ -120,7 +120,7 @@ AimeosCatalogLists = {
 	 */
 	onPin() {
 
-		$("body").on("click", ".catalog-list-items .product .btn-pin", ev => {
+		$("body").on("click", ".catalog-list-items .product .btn-pin", async ev => {
 
 			const el = $(ev.currentTarget);
 			const url = el.hasClass('active') ? el.data('rmurl') : el.attr('href');
@@ -132,7 +132,7 @@ AimeosCatalogLists = {
 				form.append(csrf.attr('name'), csrf.attr('value'));
 				el.toggleClass('active');
 
-				fetch(url, {
+				await fetch(url, {
 					method: 'POST',
 					body: form
 				}).then(response => {

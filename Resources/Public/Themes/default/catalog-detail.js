@@ -24,19 +24,19 @@
  */
 AimeosCatalogDetail = {
 
-	fetchReviews(container) {
+	async fetchReviews(container) {
 
 		const jsonUrl = $(".catalog-detail").data("jsonurl");
 		const prodid = $(container).data("productid");
 
 		if(prodid && jsonUrl) {
 
-			fetch(jsonUrl, {
+			await fetch(jsonUrl, {
 				method: "OPTIONS",
 				headers: {'Content-type': 'application/json'}
 			}).then(response => {
 				return response.json();
-			}).then(options => {
+			}).then(async options => {
 
 				if(options && options.meta && options.meta.resources && options.meta.resources.review) {
 
@@ -56,7 +56,7 @@ AimeosCatalogDetail = {
 					url = new URL(options.meta.resources.review);
 					url.search = url.search ? url.search + '&' + window.param(params) : '?' + window.param(params);
 
-					fetch(url, {
+					await fetch(url, {
 						headers: {'Content-type': 'application/json'}
 					}).then(response => {
 						return response.json();
@@ -76,7 +76,7 @@ AimeosCatalogDetail = {
 					url = new URL(options.meta.resources.review);
 					url.search = url.search ? url.search + '&' + window.param(params) : '?' + window.param(params);
 
-					fetch(url, {
+					await fetch(url, {
 						headers: {'Content-type': 'application/json'}
 					}).then(response => {
 						return response.json();
@@ -296,10 +296,10 @@ AimeosCatalogDetail = {
 	 */
 	onMoreReviews() {
 
-		$(".catalog-detail-additional .reviews").on("click", ".more", ev => {
+		$(".catalog-detail-additional .reviews").on("click", ".more", async ev => {
 			ev.preventDefault();
 
-			fetch($(ev.currentTarget).attr("href"), {
+			await fetch($(ev.currentTarget).attr("href"), {
 				headers: {'Content-type': 'application/json'}
 			}).then(response => {
 				return response.json();
@@ -317,10 +317,10 @@ AimeosCatalogDetail = {
 	 */
 	onSortReviews() {
 
-		$(".catalog-detail-additional .reviews").on("click", ".sort .sort-option", ev => {
+		$(".catalog-detail-additional .reviews").on("click", ".sort .sort-option", async ev => {
 			ev.preventDefault();
 
-			fetch($(ev.currentTarget).attr("href"), {
+			await fetch($(ev.currentTarget).attr("href"), {
 				headers: {'Content-type': 'application/json'}
 			}).then(response => {
 				return response.json();
@@ -361,10 +361,10 @@ AimeosCatalogDetail = {
 	 */
 	onAddBasket() {
 
-		$(document).on("submit", ".product form.basket", ev => {
+		$(document).on("submit", ".product form.basket", async ev => {
 			Aimeos.createOverlay();
 
-			fetch($(ev.currentTarget).attr("action"), {
+			await fetch($(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
 			}).then(response => {

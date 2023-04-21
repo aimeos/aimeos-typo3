@@ -34,12 +34,12 @@ AimeosCatalogSession = {
 	 */
 	onRemovePinned() {
 
-		$("body").on("click", ".catalog-session-pinned .delete", ev => {
+		$("body").on("click", ".catalog-session-pinned .delete", async ev => {
 
 			const form = $(ev.currentTarget).closest("form");
 			const prodid = $(ev.currentTarget).closest(".product").data('prodid');
 
-			fetch(form.attr("action"), {
+			await fetch(form.attr("action"), {
 				method: "POST",
 				body: new FormData(form[0])
 			}).then(response => {

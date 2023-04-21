@@ -855,7 +855,6 @@
 .catalog-detail-bought,
 .catalog-detail-bundle,
 .catalog-detail-suggest {
-	clear: both;
 	padding: 0;
 	text-align: center;
 	margin: 1rem 0;

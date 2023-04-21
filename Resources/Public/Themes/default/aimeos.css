@@ -819,15 +819,15 @@ body > .content, body .main-section {
 	--swiffy-slider-item-ratio: var(--ai-product-image-ratio);
 }
 
-.aimeos .list .product .media-list span:first-of-type,
-.aimeos .product-list .media-list span:first-of-type {
+.aimeos .list .product .media-list .media-item:first-of-type,
+.aimeos .product-list .media-list .media-item:first-of-type {
 	z-index: 1;
 	opacity: 1;
 	transition: opacity .3s linear;
 }
 
-.aimeos .list .product .media-list.multiple:hover span:first-of-type,
-.aimeos .product-list .media-list.multiple:hover span:first-of-type {
+.aimeos .list .product .media-list.multiple:hover .media-item:first-of-type,
+.aimeos .product-list .media-list.multiple:hover .media-item:first-of-type {
 	transition: opacity .3s linear;
 	opacity: 0;
 }

@@ -21,7 +21,7 @@ AimeosBasketBulk = {
 				input: node,
 				debounceWaitMs: 200,
 				minLength: AimeosBasketBulk.MIN_INPUT_LEN,
-				fetch(text, update) {
+				async fetch(text, update) {
 
 					if(AimeosBasketBulk.meta.resources && AimeosBasketBulk.meta.resources['product']) {
 						let params = {};
@@ -43,7 +43,7 @@ AimeosBasketBulk = {
 						const url = new URL(AimeosBasketBulk.meta.resources['product']);
 						url.search = url.search ? url.search + '&' + window.param(params) : '?' + window.param(params);
 
-						fetch(url).then(response => {
+						await fetch(url).then(response => {
 							return response.json();
 						}).then(response => {
 							let data = [];
@@ -199,11 +199,11 @@ AimeosBasketBulk = {
 	/**
 	 * Sets up autocompletion for bulk order form
 	 */
-	setup() {
+	async setup() {
 		const jsonurl = $(".aimeos.basket-bulk[data-jsonurl]").data("jsonurl");
 
 		if(jsonurl) {
-			fetch(jsonurl, {
+			await fetch(jsonurl, {
 				method: "OPTIONS",
 				headers: {'Content-type': 'application/json'}
 			}).then(response => {

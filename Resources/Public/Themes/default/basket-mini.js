@@ -40,7 +40,7 @@ AimeosBasketMini = {
 			for(let i=0; i<basket.included.length; i++) {
 				let entry = basket.included[i];
 
-				if(entry.type === 'basket/product') {
+				if(entry.type === 'basket.product') {
 					let product = prototype.clone().removeClass("prototype");
 
 					if(entry.links && entry.links.self && entry.links.self.href) {
@@ -71,9 +71,9 @@ AimeosBasketMini = {
 	 */
 	onDelete() {
 
-		$(".aimeos .basket-mini-product").on("click", ".delete", ev => {
+		$(".aimeos .basket-mini-product").on("click", ".delete", async ev => {
 
-			fetch($(ev.currentTarget).closest(".product-item").data("url"), {
+			await fetch($(ev.currentTarget).closest(".product-item").data("url"), {
 				method: "DELETE",
 				headers: {'Content-Type': 'application/json'}
 			}).then(response => {

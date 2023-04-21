@@ -8,12 +8,12 @@ AimeosAccountFavorite = {
 	 */
 	onRemoveProduct() {
 
-		$("body").on("click", ".account-favorite .delete", ev => {
+		$("body").on("click", ".account-favorite .delete", async ev => {
 
 			const form = $(ev.currentTarget).closest("form");
 			$(ev.currentTarget).closest("favorite-item").addClass("loading");
 
-			fetch(form.attr("action"), {
+			await fetch(form.attr("action"), {
 				body: new FormData(form[0]),
 				method: 'POST'
 			}).then(response => {

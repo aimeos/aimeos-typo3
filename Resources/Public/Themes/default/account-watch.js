@@ -8,12 +8,12 @@ AimeosAccountWatch = {
 	 */
 	onRemoveProduct() {
 
-		$("body").on("click", ".account-watch .delete", ev => {
+		$("body").on("click", ".account-watch .delete", async ev => {
 
 			const form = $(ev.currentTarget).closest("form");
 			$(ev.currentTarget).closest("watch-item").addClass("loading");
 
-			fetch(form.attr("action"), {
+			await fetch(form.attr("action"), {
 				body: new FormData(form[0]),
 				method: 'POST'
 			}).then(response => {
@@ -38,12 +38,12 @@ AimeosAccountWatch = {
 	 */
 	onSaveProduct() {
 
-		$("body").on("click", ".account-watch .btn-action", ev => {
+		$("body").on("click", ".account-watch .btn-action", async ev => {
 
 			const form = $(ev.currentTarget).closest("form");
 			form.addClass("loading");
 
-			fetch(form.attr("action"), {
+			await fetch(form.attr("action"), {
 				body: new FormData(form[0]),
 				method: 'POST'
 			}).then(response => {

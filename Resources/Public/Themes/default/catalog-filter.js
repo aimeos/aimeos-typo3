@@ -12,6 +12,91 @@ AimeosCatalogFilter = {
 
 
 	/**
+	 * Attribute filter counts
+	 */
+	async loadAttributeCounts() {
+
+		const nodes = $('.catalog-filter-attribute[data-counturl]');
+
+		for(const node of nodes) {
+
+			await fetch($(node).data('counturl')).then(response => {
+				return response.json();
+			}).then(data => {
+
+				$('.attribute-lists li.attr-item', node).each(function(idx, item) {
+					const itemId = $(item).data( "id" );
+
+					if(data[itemId]) {
+						$(".attr-name", item).append('&nbsp;' + '<span class="attr-count">' + data[itemId] + '</span>');
+					} else {
+						$(item).addClass("disabled");
+					}
+				});
+
+				$('.attribute-lists .attr-count', node).each((idx, el) => {
+					$(el).closest("fieldset.attr-sets").show();
+				});
+			});
+		}
+	},
+
+
+	/**
+	 * Supplier filter counts
+	 */
+	async loadSupplierCounts() {
+
+		const nodes = $('.catalog-filter-supplier[data-counturl]');
+
+		for(const node of nodes) {
+
+			await fetch($(node).data('counturl')).then(response => {
+				return response.json();
+			}).then(data => {
+
+				$('.supplier-lists li.attr-item', node).each(function(idx, item) {
+					const itemId = $(item).data( "id" );
+
+					if(data[itemId]) {
+						$(".attr-name", item).append('&nbsp;' + '<span class="attr-count">' + data[itemId] + '</span>');
+					} else {
+						$(item).addClass( 'disabled' );
+					}
+				});
+			});
+		}
+	},
+
+
+	/**
+	 * Tree filter counts
+	 */
+	async loadTreeCounts() {
+
+		const nodes = $('.catalog-filter-tree[data-counturl]');
+
+		for(const node of nodes) {
+
+			await fetch($(node).data('counturl')).then(response => {
+				return response.json();
+			}).then(data => {
+
+				$('.cat-item', node).each(function(idx, item) {
+					const id = $(item).data("id");
+
+					if(data[id]) {
+						$(":scope > a.cat-link, :scope > .item-links > a.name", item).append('<span class="cat-count">' + data[id] + '</span>');
+					} else if( $(item).hasClass("nochild") ) {
+						$(item).addClass("disabled");
+					}
+				});
+			});
+		}
+	},
+
+
+	/**
 	 * Mega menu
 	 */
 	onMenuHover() {
@@ -108,8 +193,8 @@ AimeosCatalogFilter = {
 				input: el,
 				debounceWaitMs: 200,
 				minLength: AimeosCatalogFilter.MIN_INPUT_LEN,
-				fetch: function(text, update) {
-					fetch(url.replace('_term_', encodeURIComponent(text))).then(response => {
+				fetch: async function(text, update) {
+					await fetch(url.replace('_term_', encodeURIComponent(text))).then(response => {
 						return response.json();
 					}).then(data => {
 						update(data);
@@ -208,17 +293,6 @@ AimeosCatalogFilter = {
 
 
 	/**
-	 * Shows the attribute filter if products are available for
-	 */
-	onShowAttributes() {
-
-		$(".catalog-filter-attribute .attribute-lists .attr-count").each((idx, el) => {
-			$(el).closest("fieldset.attr-sets").show();
-		});
-	},
-
-
-	/**
 	 * Submits the form when clicking on filter attribute names or counts
 	 */
 	onSubmitAttribute() {
@@ -300,7 +374,7 @@ AimeosCatalogFilter = {
 		};
 
 
-		const search = Aimeos.debounce(ev => {
+		const search = Aimeos.debounce(async ev => {
 
 			const val = $(ev.currentTarget).val();
 
@@ -324,7 +398,7 @@ AimeosCatalogFilter = {
 				}
 				url.search = url.search ? url.search + '&' + window.param(params) : '?' + window.param(params);
 
-				fetch(url).then(response => {
+				await fetch(url).then(response => {
 					return response.json();
 				}).then(data => {
 					update(data, ev);
@@ -375,13 +449,13 @@ AimeosCatalogFilter = {
 	 *
 	 * @param {String} url
 	 */
-	setupMeta(url) {
+	async setupMeta(url) {
 
 		if(url && !this.meta) {
 
 			this.meta = {};
 
-			fetch(url, {method: 'OPTIONS'}).then(response => {
+			await fetch(url, {method: 'OPTIONS'}).then(response => {
 				return response.json();
 			}).then(data => {
 				this.meta = data['meta'] || null;
@@ -402,7 +476,6 @@ AimeosCatalogFilter = {
 		this.onSyncPrice();
 		this.onTogglePrice();
 
-		this.onShowAttributes();
 		this.onSubmitAttribute();
 		this.onToggleAttribute();
 		this.onToggleAttributes();
@@ -416,6 +489,10 @@ AimeosCatalogFilter = {
 		this.onToggleSearch();
 
 		this.onCheckForm();
+
+		this.loadAttributeCounts();
+		this.loadSupplierCounts();
+		this.loadTreeCounts();
 	}
 };
 
