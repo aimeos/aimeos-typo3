@@ -1,0 +1,37 @@
+<div class="widget-content-title"><span>Aimeos: Latest orders</span></div>
+<div class="widget-content-main">
+	<div class="widget-table-wrapper">
+		<table class="widget-table">
+			<thead>
+				<tr>
+					<td class="order-id">Order ID</td>
+					<td class="order-price">Price</td>
+					<td class="order-datepayment">Payment</td>
+				</tr>
+			</thead>
+			<tbody>
+				<f:for each="{items}" as="item">
+					<tr>
+						<td class="order-id">{item.id}</td>
+						<td class="order-price"><strong>{item.price.value + item.price.costs} {item.price.currencyid}</strong></td>
+						<td class="order-datepayment">{item.datepayment}
+							<strong>
+								(<f:switch expression="{item.statuspayment}">
+									<f:case value="-1">unfinished</f:case>
+									<f:case value="0">deleted</f:case>
+									<f:case value="1">canceled</f:case>
+									<f:case value="2">refused</f:case>
+									<f:case value="3">refunded</f:case>
+									<f:case value="4">pending</f:case>
+									<f:case value="5">authorized</f:case>
+									<f:case value="6">received</f:case>
+									<f:case value="7">transfered</f:case>
+								</f:switch>)
+							</strong>
+						</td>
+					</tr>
+				</f:for>
+			</tbody>
+		</table>
+	</div>
+</div>

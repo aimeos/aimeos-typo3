@@ -31,9 +31,9 @@ services:
         description: 'Creates or updates the database tables'
 
   dashboard.widget.latestorders:
-    class: 'TYPO3\CMS\Dashboard\Widgets\RssWidget'
+    class: 'Aimeos\Aimeos\Widgets\LatestOrdersWidget'
     arguments:
-      $cache: '@cache.dashboard.rss'
+      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'aimeos-latestorders'
@@ -42,4 +42,4 @@ services:
         description: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.description'
         iconIdentifier: 'aimeos-widget-latestorders'
         height: 'medium'
-        width: 'large'
+        width: 'medium'

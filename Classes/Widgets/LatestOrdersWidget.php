@@ -2,42 +2,38 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2020
+ * @copyright Aimeos (aimeos.org), 2020-2023
  * @package TYPO3
  */
 
 
 namespace Aimeos\Aimeos\Widgets;
 
+use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
+use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
+use TYPO3\CMS\Fluid\View\StandaloneView;
+
 
 /**
  * Renders a widgent of the latest orders
  * @package TYPO3
  */
-class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
+class LatestOrdersWidget implements WidgetInterface
 {
-    private ServerRequestInterface $request;
+    private WidgetConfigurationInterface $configuration;
+    private StandaloneView $view;
 
 
-    public function __construct(
-        private readonly WidgetConfigurationInterface $configuration,
-        private readonly Cache $cache,
-        private readonly BackendViewFactory $backendViewFactory,
-        private readonly ?ButtonProviderInterface $buttonProvider = null,
-        private readonly array $options = []
-    ) {
+    public function __construct(WidgetConfigurationInterface $configuration, StandaloneView $view)
+    {
+        $this->configuration = $configuration;
+        $this->view = $view;
     }
 
 
     public function getOptions(): array
     {
-        return $this->options;
-    }
-
-
-    public function setRequest(ServerRequestInterface $request): void
-    {
-        $this->request = $request;
+        return [];
     }
 
 
@@ -48,9 +44,7 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
      */
     public function renderWidgetContent(): string
     {
-        $view = $this->backendViewFactory->create($this->request);
-        return $this->view->assign('items', $this->getOrderItems())
-            ->render('Widgets/LatestOrdersWidget');
+        return $this->view->assign('items', $this->getOrderItems())->render('Widgets/LatestOrdersWidget');
     }
 
 
@@ -64,8 +58,12 @@ class LatestOrdersWidget implements \TYPO3\CMS\Dashboard\Widgets\WidgetInterface
         $config = \Aimeos\Aimeos\Base::config();
         $context = \Aimeos\Aimeos\Base::context($config);
 
+        $manager = \Aimeos\MShop::create( $context, 'locale' );
+        $item = $manager->bootstrap( 'default', '', '', true );
+        $context->setLocale( $item );
+
         $manager = \Aimeos\MShop::create($context, 'order');
-        $filter = $manager->filter()->sort('-order.id')->slice(0, 20);
+        $filter = $manager->filter()->order('-order.id')->slice(0, 10);
 
         return $manager->search($filter, ['order/base/address'])->toArray();
     }
