@@ -6,26 +6,16 @@
 		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true" passthru="true" />
 	</target>
 
-	<target name="clean" description="Cleans up build artefacts">
-		<delete dir="Resources/Libraries/doctrine" includeemptydirs="true" />
-		<delete dir="typo3conf" includeemptydirs="true" />
-		<delete dir="typo3_src" includeemptydirs="true" />
-		<delete dir="public" includeemptydirs="true" />
-		<delete dir="typo3" includeemptydirs="true" />
-		<delete file="composer.lock" />
-		<delete file="index.php" />
-	</target>
-
 	<target name="composer" description="Updates composer dependencies">
 		<delete dir="Resources/Libraries" includeemptydirs="true" />
-		<exec command="COMPOSER=composer-ter.json php ~/bin/composer remove --no-update --working-dir ${project.basedir} typo3/cms-core typo3/cms-backend typo3/cms-extbase typo3/cms-scheduler bithost-gmbh/pdfviewhelpers" checkreturn="true" logoutput="true" />
 		<exec command="COMPOSER=composer-ter.json php ~/bin/composer update --no-dev --no-autoloader --working-dir ${project.basedir}" checkreturn="true" logoutput="true" passthru="true" />
-		<exec command="rm -rf Resources/Libraries/tecnickcom/" checkreturn="true" logoutput="true" />
+		<delete dir="Resources/Libraries/enshrined" includeemptydirs="true" />
+		<delete dir="Resources/Libraries/doctrine" includeemptydirs="true" />
+		<delete dir="Resources/Libraries/psr" includeemptydirs="true" />
 		<exec command="COMPOSER=composer-ter.json php ~/bin/composer dump-autoload --working-dir ${project.basedir}" checkreturn="true" logoutput="true" />
-		<exec command="git checkout composer-ter.json" checkreturn="true" logoutput="true" />
 	</target>
 
-	<target name="deploy" description="Creates new package" depends="composer,clean">
+	<target name="deploy" description="Creates new package" depends="composer">
 		<propertyprompt propertyName="version" promptText="Release version" promptCharacter=":" useExistingValue="true"/>
 		<propertyprompt propertyName="state" promptText="Stablility state" promptCharacter=":" defaultValue="stable"/>
 		<reflexive>
@@ -41,14 +31,6 @@
 			checkreturn="true" logoutput="true"/>
 		<filehash file="../aimeos_${version}.zip" hashtype="1" />
 		<echo msg="SHA1 hash value: ${filehashvalue}" />
-	</target>
-
-	<target name="release" description="Creates new release" depends="deploy">
-		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
-		<exec command="git commit -m 'Release ${version}' ext_emconf.php" checkreturn="true" logoutput="true" />
-		<exec command="git tag ${version}" checkreturn="true" logoutput="true" />
-		<exec command="git push" checkreturn="true" logoutput="true" />
-		<exec command="git push --tags" checkreturn="true" logoutput="true" />
 	</target>
 
 </project>
