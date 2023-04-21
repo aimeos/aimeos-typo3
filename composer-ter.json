@@ -14,20 +14,14 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"php": ">=7.2.0",
-		"aimeos/aimeos-core": "dev-master",
+		"php": "^8.0.11",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-graphql": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-controller-jobs": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
-		"aimeos/ai-typo3": "dev-master",
-		"friendsoftypo3/fontawesome-provider": "^1.0",
-		"nyholm/psr7-server": "^1.0",
-		"nyholm/psr7": "^1.2",
-		"psr/cache": "^1.0||^2.0",
-		"psr/log": "^1.0"
+		"aimeos/ai-typo3": "dev-master"
 	},
 	"replace": {
 		"aimeos/aimeos-typo3": "self.version",
@@ -42,7 +36,11 @@
 	"config": {
 		"vendor-dir": "Resources/Libraries",
 		"platform": {
-			"php": "7.4.28"
+			"php": "8.0.11"
+		},
+		"allow-plugins": {
+			"typo3/cms-composer-installers": false,
+			"typo3/class-alias-loader": false
 		}
 	},
 	"extra": {
