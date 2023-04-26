@@ -38,10 +38,10 @@ and customize anything to your needs.
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **21.10 release and later**.
+This document is for the latest Aimeos TYPO3 **22.10 release and later**.
 
+- stable release: 23.04 (TYPO3 12 LTS)
 - LTS release: 22.10 (TYPO3 11 LTS)
-- old LTS release: 21.10 (TYPO3 10/11 LTS)
 
 ### Composer
 
@@ -58,7 +58,7 @@ To install the TYPO3 base distribution first, execute this command:
 ```bash
 composer create-project typo3/cms-base-distribution myshop
 # or install a specific TYPO3 version:
-composer create-project "typo3/cms-base-distribution:^11" myshop
+composer create-project "typo3/cms-base-distribution:^12" myshop
 ```
 
 It will install TYPO3 into the `./myshop/` directory. Change into the directory and install TYPO3 as usual:
@@ -71,7 +71,7 @@ touch public/FIRST_INSTALL
 Open the TYPO3 URL in your browser and follow the setup steps. Afterwards, install the Aimeos extension using:
 
 ```bash
-composer req aimeos/aimeos-typo3:~22.10
+composer req aimeos/aimeos-typo3:~23.4
 ```
 
 If composer complains that one or more packages can't be installed because the required minimum stability isn't met, add this to your `composer.json`:
@@ -192,6 +192,7 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 The page setup for an Aimeos web shop is easy, if you import the example page tree for TYPO3 10/11. You can download the version you need from here:
 
+* [23.4+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2023.04.t3d) and later
 * [22.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2022.10.t3d) and later
 * [21.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_21.10.t3d)
 
