@@ -338,6 +338,7 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_mer
         'ai[site]', 'ai[locale]', 'ai[currency]',
         'ai[resource]', 'ai[include]', 'ai[related]', 'ai[id]', 'ai[filter]',
         'ai[fields]', 'ai[page]', 'ai[sort]',
+        'controller', 'action', 'code'
     ]
 );
 
