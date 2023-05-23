@@ -27,7 +27,7 @@ AimeosBasketStandard = {
 		$(document).on("submit", ".basket-standard form", ev => {
 			Aimeos.createSpinner();
 
-			fetch(product.data("url"), {
+			fetch($(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
 			}).then(response => {
