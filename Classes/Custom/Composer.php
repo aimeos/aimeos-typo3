@@ -38,7 +38,7 @@ class Composer
             $event->getIO()->write('Installing Aimeos public files from HTML client');
 
             $path = $installer->getInstallPath($package);
-            self::copyRecursive($path . '/client/html/themes', $t3path . '/Resources/Public/Themes');
+            self::copyRecursive($path . '/themes/client/html', $t3path . '/Resources/Public/Themes');
         }
 
         self::join($event);
