@@ -24,10 +24,10 @@ AimeosBasketStandard = {
 	 */
 	onSubmit() {
 
-		$(document).on("submit", ".basket-standard form", async ev => {
+		$(document).on("submit", ".basket-standard form", ev => {
 			Aimeos.createSpinner();
 
-			await fetch(product.data("url"), {
+			fetch($(ev.submitter).attr("formaction") || $(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
 			}).then(response => {
@@ -48,10 +48,10 @@ AimeosBasketStandard = {
 	 */
 	onChange() {
 
-		$(document).on("click", ".basket-standard a.change", async ev => {
+		$(document).on("click", ".basket-standard a.change", ev => {
 			Aimeos.createSpinner();
 
-			await fetch($(ev.currentTarget).attr("href")).then(response => {
+			fetch($(ev.currentTarget).attr("href")).then(response => {
 				return response.text();
 			}).then(data => {
 				$(".basket-standard").html(AimeosBasket.updateBasket(data).html());
