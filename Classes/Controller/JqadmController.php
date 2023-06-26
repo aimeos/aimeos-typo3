@@ -277,8 +277,8 @@ class JqadmController extends AbstractController
     {
         if ($this->request->hasArgument('locale') && ($value = $this->request->getArgument('locale')) != '') {
             $lang = $value;
-        } elseif (isset($GLOBALS['BE_USER']->uc['lang']) && $GLOBALS['BE_USER']->uc['lang'] != '') {
-            $lang = $GLOBALS['BE_USER']->uc['lang'];
+        } elseif (($GLOBALS['BE_USER']->user['lang'] ?? '') != 'default') {
+            $lang = $GLOBALS['BE_USER']->user['lang'];
         } else {
             $lang = 'en';
         }

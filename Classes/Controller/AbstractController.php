@@ -106,8 +106,8 @@ abstract class AbstractController
 
             if ($this->request->hasArgument('locale') && ($value = $this->request->getArgument('locale')) != '') {
                 $lang = $value;
-            } elseif (!in_array($GLOBALS['BE_USER']->uc['lang'] ?? '', ['', 'default'])) {
-                $lang = $GLOBALS['BE_USER']->uc['lang'];
+            } elseif (($GLOBALS['BE_USER']->user['lang'] ?? '') != 'default') {
+                $lang = $GLOBALS['BE_USER']->user['lang'];
             }
 
             if ($this->request->hasArgument('site') && ($value = $this->request->getArgument('site')) != '') {
