@@ -52,13 +52,13 @@ return [
 	'fs-mimeicon' => [
 		'adapter' => 'Standard',
 		'baseurl' => $assetPath . '/Images/Mimeicons',
-		'basedir' => $assetPath . '/Images/Mimeicons',
+		'basedir' => $publicPath . $assetPath . '/Images/Mimeicons',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-theme' => [
 		'adapter' => 'Standard',
 		'baseurl' => $assetPath . '/Themes',
-		'basedir' => $assetPath . '/Themes',
+		'basedir' => $publicPath . $assetPath . '/Themes',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-admin' => [
