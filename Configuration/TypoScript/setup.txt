@@ -39,7 +39,10 @@ plugin.tx_aimeos {
                     }
                 }
             }
-            jsonapi.url.config.absoluteUri = 1
+            jsonapi.url.config {
+                type = 191351524
+                absoluteUri = 1
+            }
         }
     }
 }
