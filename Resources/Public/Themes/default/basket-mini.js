@@ -62,6 +62,11 @@ AimeosBasketMini = {
 			}
 
 			$(".aimeos .basket-mini-main .quantity").html(count);
+
+			$(".aimeos .basket-mini-main").addClass("highlight");
+			setTimeout(() => {
+					$(".aimeos .basket-mini-main").removeClass("highlight");
+			}, 250);
 		}
 	},
 

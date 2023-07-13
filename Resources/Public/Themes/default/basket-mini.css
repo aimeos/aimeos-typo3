@@ -23,6 +23,17 @@
 	color: var(--ai-bg);
 }
 
+.basket-mini-main {
+	border-radius: 50%;
+	transition: background-color .5s, box-shadow .5s;
+}
+
+.basket-mini-main.highlight {
+	background-color: var(--ai-tertiary);
+	box-shadow: 0px 0px 10px 15px var(--ai-tertiary);
+	transition: background-color .5s, box-shadow .5s;
+}
+
 .basket-mini-main .quantity {
 	background-color: var(--ai-warning);
 	color: var(--ai-bg);

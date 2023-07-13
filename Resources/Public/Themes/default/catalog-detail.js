@@ -361,10 +361,10 @@ AimeosCatalogDetail = {
 	 */
 	onAddBasket() {
 
-		$(document).on("submit", ".product form.basket", async ev => {
+		$(document).on("submit", ".product form.basket", ev => {
 			Aimeos.createOverlay();
 
-			await fetch($(ev.currentTarget).attr("action"), {
+			fetch($(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
 			}).then(response => {
