@@ -29,7 +29,6 @@ abstract class Email extends AbstractProvider
     private $fieldPageDetail = 'aimeos_pageid_detail';
     private $fieldPageCatalog = 'aimeos_pageid_catalog';
     private $fieldPageDownload = 'aimeos_pageid_download';
-    private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
 
     /**
@@ -179,27 +178,6 @@ abstract class Email extends AbstractProvider
         ];
 
 
-        // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldTemplateBaseurl]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
-            $taskInfo[$this->fieldTemplateBaseurl] = $task->{$this->fieldTemplateBaseurl} ?? '';
-        }
-
-        $taskInfo[$this->fieldTemplateBaseurl] = htmlspecialchars($taskInfo[$this->fieldTemplateBaseurl] ?? '', ENT_QUOTES, 'UTF-8');
-
-        $path = 'typo3conf/ext/aimeos/Resources/Public/Themes/default';
-        $path = $taskInfo[$this->fieldTemplateBaseurl] = $taskInfo[$this->fieldTemplateBaseurl] ?? $path;
-
-        $fieldStr = '<input class="form-control" name="tx_scheduler[%1$s]" id="%1$s" value="%2$s">';
-        $fieldCode = sprintf($fieldStr, $this->fieldTemplateBaseurl, $path);
-
-        $additionalFields[$this->fieldTemplateBaseurl] = [
-            'code'     => $fieldCode,
-            'label'    => 'LLL:EXT:aimeos/Resources/Private/Language/scheduler.xlf:email.label.template-baseurl',
-            'cshKey'   => 'xMOD_tx_aimeos',
-            'cshLabel' => $this->fieldTemplateBaseurl
-        ];
-
-
         $additionalFields += parent::getFields($taskInfo, $task, $parentObject);
 
         return $additionalFields;
@@ -225,7 +203,6 @@ abstract class Email extends AbstractProvider
         $task->{$this->fieldPageDetail} = $submittedData[$this->fieldPageDetail] ?? '';
         $task->{$this->fieldPageLogin} = $submittedData[$this->fieldPageLogin] ?? '';
         $task->{$this->fieldPageDownload} = $submittedData[$this->fieldPageDownload] ?? '';
-        $task->{$this->fieldTemplateBaseurl} = $submittedData[$this->fieldTemplateBaseurl] ?? '';
     }
 
 

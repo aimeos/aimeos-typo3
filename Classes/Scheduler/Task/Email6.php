@@ -31,7 +31,6 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     private $fieldPageDetail = 'aimeos_pageid_detail';
     private $fieldPageCatalog = 'aimeos_pageid_catalog';
     private $fieldPageDownload = 'aimeos_pageid_download';
-    private $fieldTemplateBaseurl = 'aimeos_template_baseurl';
 
 
     /**
@@ -78,16 +77,6 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 
         if ($this->{$this->fieldPageLogin} != '') {
             $conf['client']['html']['account']['index']['url']['target'] = $this->{$this->fieldPageLogin};
-        }
-
-        if ($this->{$this->fieldTemplateBaseurl} != '') {
-            $themeDir = $this->{$this->fieldTemplateBaseurl};
-
-            if ($themeDir[0] !== '/') {
-                $themeDir = realpath(\TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/' . $themeDir);
-            }
-
-            $conf['resource']['fs-theme']['basedir'] = $themeDir;
         }
 
         $tsconf = Base::parseTS($this->{$this->fieldTSconfig});
