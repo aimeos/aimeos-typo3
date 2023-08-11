@@ -12,6 +12,7 @@ CREATE TABLE fe_users (
     zip varchar(20) DEFAULT '' NOT NULL,
     date_of_birth int(11) DEFAULT '0' NOT NULL,
     vatid varchar(32) DEFAULT '' NOT NULL,
+    mobile varchar(32) DEFAULT '' NOT NULL,
     longitude decimal(8,6) DEFAULT NULL,
     latitude decimal(8,6) DEFAULT NULL,
     vdate date DEFAULT NULL,
