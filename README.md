@@ -71,7 +71,7 @@ touch public/FIRST_INSTALL
 Open the TYPO3 URL in your browser and follow the setup steps. Afterwards, install the Aimeos extension using:
 
 ```bash
-composer req aimeos/aimeos-typo3:~23.4
+composer req -W aimeos/aimeos-typo3:~23.7
 ```
 
 If composer complains that one or more packages can't be installed because the required minimum stability isn't met, add this to your `composer.json`:
