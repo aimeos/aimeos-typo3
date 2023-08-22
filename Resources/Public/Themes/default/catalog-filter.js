@@ -271,7 +271,7 @@ AimeosCatalogFilter = {
 	 */
 	onToggleAttribute() {
 
-		$('.catalog-filter-attribute h2').on("click", ev => {
+		$('.catalog-filter-attribute').on("click", '.header-name', ev => {
 			$(".attribute-lists", $(ev.currentTarget).closest(".catalog-filter-attribute")).each((idx, el) => {
 				slideToggle(el, 300);
 			});
@@ -328,7 +328,7 @@ AimeosCatalogFilter = {
 	 */
 	onTogglePrice() {
 
-		$('.catalog-filter-price h2').on("click", ev => {
+		$('.catalog-filter-price').on("click", '.header-name', ev => {
 			$(".price-lists", $(ev.currentTarget).closest(".catalog-filter-price")).each((idx, el) => {
 				slideToggle(el, 300);
 			});
@@ -341,7 +341,7 @@ AimeosCatalogFilter = {
 	 */
 	onToggleSearch() {
 
-		$('.catalog-filter-search').on("click", 'h2', ev => {
+		$('.catalog-filter-search').on("click", '.header-name', ev => {
 			$(".search-lists", $(ev.currentTarget).closest(".catalog-filter-search")).each((idx, el) => {
 				slideToggle(el, 300);
 			});
@@ -436,7 +436,7 @@ AimeosCatalogFilter = {
 	 */
 	onToggleSupplier() {
 
-		$('.catalog-filter-supplier').on("click", 'h2', ev => {
+		$('.catalog-filter-supplier').on("click", '.header-name', ev => {
 			$(".supplier-lists", $(ev.currentTarget).closest(".catalog-filter-supplier")).each((idx, el) => {
 				slideToggle(el, 300);
 			});

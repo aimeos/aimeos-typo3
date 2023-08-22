@@ -58,7 +58,7 @@ AimeosAccountProfile = {
 			const node = $(this).parents(".form-item");
 			const regex = new RegExp(node.data('regex') || '.*');
 
-			if((value !== '' && value.match(regex)) || (value === '' && !node.hasClass("mandatory"))) {
+			if((value && value.match(regex)) || (value === '' && !node.hasClass("mandatory"))) {
 				node.removeClass("error").addClass("success");
 			} else {
 				node.removeClass("success").addClass("error");

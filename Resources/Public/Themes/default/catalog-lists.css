@@ -38,6 +38,8 @@
 .catalog-list-head,
 .catalog-list-footer {
 	padding: 1rem .5rem;
+	color: var(--ai-secondary);
+	letter-spacing: 1.5px;
 }
 
 .catalog-list-head h1 {
@@ -46,13 +48,6 @@
 	letter-spacing: 1.5px;
 	margin: 0;
 	text-align: center;
-}
-
-.catalog-list-head .long,
-.catalog-list-footer .long {
-	padding: 0.5rem 0;
-	color: var(--ai-secondary);
-	letter-spacing: 1.5px;
 }
 
 .catalog-list .list-search {
