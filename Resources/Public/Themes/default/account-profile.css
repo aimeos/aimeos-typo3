@@ -54,14 +54,10 @@
 	margin: 8px 15px;
 }
 
-.account-profile-address .row {
-	padding: 0 1rem;
-}
-
 .account-profile-address .panel {
-	box-shadow: none;
 	border: 1px solid var(--ai-tertiary);
 	margin: 0.5rem 0;
+	box-shadow: none;
 }
 
 .account-profile-address .panel-heading {

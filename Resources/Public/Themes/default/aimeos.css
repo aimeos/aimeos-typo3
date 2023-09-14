@@ -161,6 +161,10 @@ img {
 	width: auto;
 }
 
+.aimeos .form-control:invalid {
+	border: 1px solid var(--ai-danger);
+}
+
 .aimeos .form-item label {
 	letter-spacing: 1.5px;
 	margin: 0.5rem 0;

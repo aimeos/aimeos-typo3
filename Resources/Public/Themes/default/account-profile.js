@@ -38,53 +38,6 @@ AimeosAccountProfile = {
 				$("input,select", ev.currentTarget).prop("disabled", true);
 			});
 		});
-
-		document.querySelectorAll(".account-profile-address .address-delivery-new .btn-cancel").forEach(el => {
-			el.addEventListener("click", ev => {
-				var node = $(".panel-body", $(ev.currentTarget).parents(".address-delivery-new")).get(0);
-				bootstrap.Collapse.getInstance(node).hide();
-			});
-		});
-	},
-
-
-	/**
-	 * Checks address form for missing or wrong values
-	 */
-	onCheckMandatory() {
-
-		$(".account-profile .form-item").on("blur", "input,select",() => {
-			const value = $(this).val();
-			const node = $(this).parents(".form-item");
-			const regex = new RegExp(node.data('regex') || '.*');
-
-			if((value && value.match(regex)) || (value === '' && !node.hasClass("mandatory"))) {
-				node.removeClass("error").addClass("success");
-			} else {
-				node.removeClass("success").addClass("error");
-			}
-		});
-
-		$(".account-profile form").on("submit", () => {
-			let retval = true;
-			const nodes = [];
-
-			$(".form-list .mandatory", this).each((idx, el) => {
-
-				const elem = $(el);
-				const value = $("input,select", elem).val();
-
-				if(value === null || value.trim() === "") {
-					elem.addClass("error");
-					nodes.push(el);
-					retval = false;
-				} else {
-					elem.removeClass("error");
-				}
-			});
-
-			return retval;
-		});
 	},
 
 
@@ -94,7 +47,6 @@ AimeosAccountProfile = {
 	init() {
 		this.onAddress();
 		this.onAddressNew();
-		this.onCheckMandatory();
 	}
 };
 
