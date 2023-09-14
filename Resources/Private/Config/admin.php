@@ -86,4 +86,14 @@ return array(
 			),
 		),
 	),
+	'graphql' => array(
+		'url' => array(
+			'controller' => 'Graphql',
+			'action' => 'index',
+			'config' => array(
+				'absoluteUri' => true,
+				'BE' => true,
+			),
+		),
+	),
 );
