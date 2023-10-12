@@ -8,15 +8,11 @@
 }
 
 .account-review h2 {
-	margin: 8px 15px;
+	margin: 0.5rem 1rem;
 }
 
 .account-review .review-item {
 	padding: 1rem;
-}
-
-.account-review h3 {
-	padding: 0 1rem;
 }
 
 .account-review .col-md-6 {
