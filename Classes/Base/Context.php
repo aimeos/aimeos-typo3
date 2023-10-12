@@ -89,7 +89,7 @@ class Context
                 break;
 
             default:
-                $cache = (new \Aimeos\MAdmin\Cache\Manager\Standard($context))->getCache();
+                $cache = \Aimeos\MAdmin::create( $context, 'cache' )->getCache();
         }
 
         return $context->setCache($cache);
