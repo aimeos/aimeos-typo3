@@ -40,8 +40,8 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos TYPO3 **22.10 release and later**.
 
-- stable release: 23.04 (TYPO3 12 LTS)
-- LTS release: 22.10 (TYPO3 11 LTS)
+- LTS release: 23.10 (TYPO3 12 LTS)
+- Old LTS release: 22.10 (TYPO3 11 LTS)
 
 ### Composer
 
@@ -91,7 +91,7 @@ composer req bk2k/bootstrap-package
 
 Finally, depending on your TYPO3 version, run the following commands from your installation directory:
 
-**For TYPO3 11:**
+**For TYPO3 11+:**
 
 ```bash
 php ./vendor/bin/typo3 extension:setup
