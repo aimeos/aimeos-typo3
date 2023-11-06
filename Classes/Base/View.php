@@ -90,10 +90,7 @@ class View
 
         if ($appType && $appType->isBackend()) {
             if ($GLOBALS['BE_USER']->isAdmin() === false) {
-                $groups = [];
-                foreach ((array) $GLOBALS['BE_USER']->userGroups as $entry) {
-                    $groups[] = $entry['title'];
-                }
+                $groups = array_column((array) $GLOBALS['BE_USER']->userGroups, 'title', 'uid');
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, $groups);
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\All($view);
@@ -102,7 +99,8 @@ class View
             $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
             if ($t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
-                $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, $GLOBALS['TSFE']->fe_user->groupData['title']);
+                $groups = array_column((array) $GLOBALS['TSFE']->fe_user->groupData, 'title', 'uid');
+                $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, $groups);
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, []);
             }

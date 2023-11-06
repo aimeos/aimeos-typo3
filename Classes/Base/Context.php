@@ -309,12 +309,12 @@ class Context
 
 
     /**
-     * Adds the user ID and editor name to the context
+     * Adds the user, groups and editor name to the context
      *
      * @param \Aimeos\MShop\ContextIface $context Context object
      * @return \Aimeos\MShop\ContextIface Modified context object
      */
-    protected static function addUser(\Aimeos\MShop\ContextIface $context) : \Aimeos\MShop\ContextIface
+    protected static function addUserGroups(\Aimeos\MShop\ContextIface $context) : \Aimeos\MShop\ContextIface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_user']))
@@ -330,11 +330,35 @@ class Context
         }
 
         if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
-            $context->setUserId($GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column]);
+
+            $userid = $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column];
+            $groupids = GeneralUtility::trimExplode(',', $GLOBALS['TSFE']->fe_user->user['usergroup']);
+
+            $context->setUser(function() use ( $context, $userid ) {
+                return \Aimeos\MShop::create( $context, 'customer' )->get( $userid );
+            });
+
+            $context->setGroups(function() use ( $context, $groupids ) {
+
+                $manager = \Aimeos\MShop::create( $context, 'group' );
+                $filter = $manager->filter( true )->add( 'group.id', '==', $groupIds );
+
+                return $manager->search( $filter )->col( 'group.code', 'group.id' )->all();
+            });
+
             $context->setEditor((string) $GLOBALS['TSFE']->fe_user->user['username']);
-        } elseif ($appType && $appType->isBackend() && isset($GLOBALS['BE_USER']->user['username'])) {
-            $context->setEditor((string) $GLOBALS['BE_USER']->user['username']);
-        } else {
+
+        } elseif ($appType && $appType->isBackend()) {
+
+            if (isset($GLOBALS['BE_USER']->user['username'])) {
+                $context->setEditor((string) $GLOBALS['BE_USER']->user['username']);
+            }
+
+            if ($GLOBALS['BE_USER']->userGroups) {
+                $context->setGroups(array_column($GLOBALS['BE_USER']->userGroups, 'title', 'uid'));
+            }
+        } else
+        {
             $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));
         }
 
