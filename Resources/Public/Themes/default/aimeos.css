@@ -896,7 +896,14 @@ body > .content, body .main-section {
 	font-weight: bold;
 }
 
+.aimeos .product .price-item:first-of-type .original {
+	text-decoration: line-through;
+	color: var(--ai-danger);
+	font-size: 75%;
+}
+
 .aimeos .product .price-item:first-of-type .quantity,
+.aimeos .product .price-item:first-of-type .original,
 .aimeos .product .price-item:first-of-type .rebate,
 .aimeos .product .price-item:first-of-type .costs,
 .aimeos .product .price-item:first-of-type .taxrate {
