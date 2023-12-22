@@ -248,6 +248,7 @@
 }
 
 .catalog-detail-basket .price-item .quantity,
+.catalog-detail-basket .price-item .original,
 .catalog-detail-basket .price-item .value,
 .catalog-detail-basket .price-item .costs,
 .catalog-detail-basket .price-item .rebate,
@@ -256,6 +257,11 @@
 	display: inline-block;
 	margin: 0.25rem 0;
 	min-width: 4rem;
+}
+
+.catalog-detail-basket .price-item .original {
+	text-decoration: line-through;
+	color: var(--ai-danger);
 }
 
 .catalog-detail-basket .price-item .rebatepercent {
@@ -271,6 +277,7 @@
 }
 
 .catalog-detail-basket .price-item:first-of-type .quantity,
+.catalog-detail-basket .price-item .original,
 .catalog-detail-basket .price-item .rebate,
 .catalog-detail-basket .price-item .taxrate {
 	display: none;

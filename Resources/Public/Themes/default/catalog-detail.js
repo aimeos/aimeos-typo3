@@ -153,26 +153,11 @@ AimeosCatalogDetail = {
 
 
 	/**
-	 * Check for variants in URL
-	 * Set the variant attributes and trigger select-dropdown´s to show the variant article
-	 */
-	selectVariant() {
-		const product = $('article.product');
-
-		if(product && product.data('varattributes')) {
-			$.each(product.data('varattributes'), function (key, val) {
-				$('#select-' + product.data('id') + '-' + key).val(val).trigger('change');
-			});
-		}
-	},
-
-
-	/**
 	 * Opens the lightbox with big images
 	 */
 	onOpenLightbox() {
 
-		$(".catalog-detail-image").on("click", ".image-single .item", ev => {
+		$(".catalog-detail").on("click", ".catalog-detail-image .image-single .item", ev => {
 
 			const list = [];
 			const vwidth = $(window).width();
@@ -228,6 +213,21 @@ AimeosCatalogDetail = {
 		    const sliderElement = document.querySelector('.catalog-detail-image div:first-child');
 		    swiffyslider.slideTo(sliderElement, index);
 		});
+	},
+
+
+	/**
+	 * Check for variants in URL
+	 * Set the variant attributes and trigger select-dropdown´s to show the variant article
+	 */
+	onSelectVariant() {
+		const product = $('article.product');
+
+		if(product && product.data('varattributes')) {
+			$.each(product.data('varattributes'), function (key, val) {
+				$('#select-' + product.data('id') + '-' + key).val(val).trigger('change');
+			});
+		}
 	},
 
 
@@ -395,7 +395,7 @@ AimeosCatalogDetail = {
 
 		this.onAddBasket();
 
-		this.selectVariant();
+		this.onSelectVariant();
 	}
 };
 

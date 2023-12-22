@@ -179,7 +179,7 @@
 .aimeos .common-summary-detail .quantity input {
 	display: inline-block;
 	text-align: center;
-	width: 3rem;
+	max-width: 6rem;
 }
 
 .aimeos .common-summary-detail .action .delete:after {
