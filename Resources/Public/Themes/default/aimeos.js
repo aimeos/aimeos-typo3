@@ -111,7 +111,7 @@ Aimeos = {
 			if(element.tagName === 'IMG') {
 				element.setAttribute("srcset", element.getAttribute("data-srcset"));
 				element.setAttribute("src", element.getAttribute("data-src"));
-			} else if(element.classList.contains('background')) {
+			} else if(element.getAttribute("data-background")) {
 				const srcset = element.getAttribute("data-background");
 				let url = '';
 

@@ -320,7 +320,7 @@ img {
 	display: none !important;
 }
 
-.aimeos .lazy-image {
+.aimeos img.lazy-image {
 	background-image: url(assets/spinner.svg);
 	background-repeat: no-repeat;
 	background-position: center;

@@ -172,7 +172,7 @@ AimeosCatalogDetail = {
 	 */
 	onOpenLightbox() {
 
-		$(".catalog-detail-image").on("click", ".image-single .item", ev => {
+		$(".catalog-detail").on("click", ".catalog-detail-image .image-single .item", ev => {
 
 			const list = [];
 			const vwidth = $(window).width();
