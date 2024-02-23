@@ -47,8 +47,10 @@ class JobsCommand extends Command
      *
      * @param InputInterface $input Input object
      * @param OutputInterface $output Output object
+     * @return Status code
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    #[\ReturnTypeWillChange]
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $context = $this->context($input->getOption('pid'));
         $process = $context->process();
