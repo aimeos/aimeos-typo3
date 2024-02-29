@@ -10,13 +10,13 @@
 
 		<f:if condition="{localeDir} == 'rtl'">
 			<f:then>
-				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/css/bootstrap.rtl.min.css">
+				<link rel="stylesheet" href="{f:uri.action(action: 'file', arguments: {name: 'index-rtl-css'})}">
 			</f:then>
 			<f:else>
-				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/css/bootstrap.min.css">
+				<link rel="stylesheet" href="{f:uri.action(action: 'file', arguments: {name: 'index-ltr-css'})}">
 			</f:else>
 		</f:if>
-		<link rel="stylesheet" href="{f:uri.action(action: 'file', arguments: {type: 'css'})}">
+		<link rel="stylesheet" href="{f:uri.action(action: 'file', arguments: {name: 'index-css'})}">
 
 		<style>
 			body.dark .btn-theme.dark-mode {display:none}
@@ -37,6 +37,6 @@
 
 		<f:render section="content" />
 
-		<script src="{f:uri.action(action: 'file', arguments: {type: 'js'})}"></script>
+		<script src="{f:uri.action(action: 'file', arguments: {name: 'index-js'})}"></script>
 	</body>
 </html>

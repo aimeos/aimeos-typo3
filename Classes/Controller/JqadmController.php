@@ -38,13 +38,13 @@ class JqadmController extends AbstractController
     {
         $contents = '';
         $files = [];
-        $type = $this->request->getArgument('type');
+        $name = $this->request->getArgument('name');
 
         foreach (Base::aimeos()->getCustomPaths('admin/jqadm') as $base => $paths) {
             foreach($paths as $path) {
                 $jsbAbsPath = $base . '/' . $path;
                 $jsb2 = new \Aimeos\MW\Jsb2\Standard($jsbAbsPath, dirname($jsbAbsPath));
-                $files = array_merge($files, $jsb2->getFiles($type));
+                $files = array_merge($files, $jsb2->getFiles($name));
             }
         }
 
@@ -59,9 +59,9 @@ class JqadmController extends AbstractController
         $response = $this->responseFactory->createResponse()
             ->withBody($this->streamFactory->createStream($contents));
 
-        if ($type === 'js') {
+        if (str_ends_with($name, 'js')) {
             $response = $response->withAddedHeader('Content-Type', 'application/javascript');
-        } elseif ($type === 'css') {
+        } elseif (str_ends_with($name, 'css')) {
             $response = $response->withAddedHeader('Content-Type', 'text/css');
         }
 

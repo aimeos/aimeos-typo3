@@ -62,7 +62,7 @@ class JqadmControllerTest
     public function fileActionCss()
     {
         $this->request->expects($this->any())->method('getArgument')
-            ->will($this->returnValue('css'));
+            ->will($this->returnValue('index-css'));
 
         $result = $this->object->fileAction();
 
@@ -76,7 +76,7 @@ class JqadmControllerTest
     public function fileActionJs()
     {
         $this->request->expects($this->any())->method('getArgument')
-        ->will($this->returnValue('js'));
+        ->will($this->returnValue('index-js'));
 
         $result = $this->object->fileAction();
 
