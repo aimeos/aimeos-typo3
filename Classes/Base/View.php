@@ -39,6 +39,7 @@ class View
         $view = GeneralUtility::makeInstance(\TYPO3\CMS\Fluid\View\StandaloneView::class);
         $view->setPartialRootPaths( $config['view']['partialRootPaths'] ?? [] );
         $view->setLayoutRootPaths( $config['view']['layoutRootPaths'] ?? [] );
+        $view->setRequest($request);
 
         $engines = ['.html' => new \Aimeos\Base\View\Engine\Typo3($view)];
 
