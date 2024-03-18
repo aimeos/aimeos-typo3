@@ -309,9 +309,7 @@ if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']
 }
 
 if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = function(array $cacheType, $dataHandler ) {
-        \Aimeos\Aimeos\Base::clearCache($cacheType );
-    };
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = \Aimeos\Aimeos\Base::class . '->clearCache';
 }
 
 
