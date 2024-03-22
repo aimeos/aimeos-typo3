@@ -16,9 +16,7 @@ AimeosCatalogFilter = {
 	 */
 	async loadAttributeCounts() {
 
-		const nodes = $('.catalog-filter-attribute[data-counturl]');
-
-		for(const node of nodes) {
+		$('.catalog-filter-attribute[data-counturl]').each(async (idx, node) => {
 
 			await fetch($(node).data('counturl')).then(response => {
 				return response.json();
@@ -38,7 +36,7 @@ AimeosCatalogFilter = {
 					$(el).closest("fieldset.attr-sets").show();
 				});
 			});
-		}
+		})
 	},
 
 
@@ -47,9 +45,7 @@ AimeosCatalogFilter = {
 	 */
 	async loadSupplierCounts() {
 
-		const nodes = $('.catalog-filter-supplier[data-counturl]');
-
-		for(const node of nodes) {
+		$('.catalog-filter-supplier[data-counturl]').each(async (idx, node) => {
 
 			await fetch($(node).data('counturl')).then(response => {
 				return response.json();
@@ -65,7 +61,7 @@ AimeosCatalogFilter = {
 					}
 				});
 			});
-		}
+		})
 	},
 
 
@@ -74,9 +70,7 @@ AimeosCatalogFilter = {
 	 */
 	async loadTreeCounts() {
 
-		const nodes = $('.catalog-filter-tree[data-counturl]');
-
-		for(const node of nodes) {
+		$('.catalog-filter-tree[data-counturl]').each(async (idx, node) => {
 
 			await fetch($(node).data('counturl')).then(response => {
 				return response.json();
@@ -92,7 +86,7 @@ AimeosCatalogFilter = {
 					}
 				});
 			});
-		}
+		})
 	},
 
 
