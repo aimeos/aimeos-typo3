@@ -11,7 +11,7 @@
 	text-decoration: none;
 	display: block;
 	cursor: pointer;
-	padding: .5rem;
+	padding: .75rem;
 	line-height: 1;
 	text-align: end;
 }
@@ -36,10 +36,10 @@
 
 .basket-mini-main .quantity {
 	background-color: var(--ai-warning);
-	color: var(--ai-bg);
+	color: var(--ai-primary);
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 0.1rem;
+	right: 0.1rem;
 	font-size: 75%;
 	border-radius: var(--ai-radius-round);
 	padding: 0.15rem 0.3rem;
@@ -83,13 +83,16 @@
 
 .basket-mini .zeynep .header {
 	display: flex;
-	color: var(--ai-bg);
+	flex-direction: row-reverse;
 	background-color: var(--ai-secondary);
+	color: var(--ai-bg);
 }
 
 .basket-mini .zeynep .header .close,
+.basket-mini .zeynep .header .close:hover,
 .basket-mini .zeynep .header .name {
 	line-height: var(--bs-body-line-height);
+	color: var(--ai-bg);
 	text-align: center;
 	font-size: 125%;
 	cursor: pointer;

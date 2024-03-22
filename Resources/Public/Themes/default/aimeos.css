@@ -2,7 +2,7 @@
  * Aimeos elegance template CSS
  *
  * @license LGPLv3, https://opensource.org/licenses/LGPL-3.0
- * @copyright Aimeos (aimeos.org), 2014-2023
+ * @copyright Aimeos (aimeos.org), 2014-2024
  */
 
 
@@ -48,8 +48,8 @@
 	--ai-bg-alt: #F6F6F6;
 	--ai-primary: #282828;
 	--ai-primary-alt: #282828;
-	--ai-secondary: #555;
-	--ai-secondary-alt: #555;
+	--ai-secondary: #505050;
+	--ai-secondary-alt: #505050;
 	--ai-tertiary: #CCC;
 	--ai-tertiary-alt: #F6F6F6;
 	--ai-danger: #A00000;
@@ -104,6 +104,7 @@ img {
 }
 
 .aimeos .btn {
+	--bs-btn-padding-y: 0.6rem;
 	width: 15rem;
 	vertical-align: top;
 	border-radius: var(--ai-radius);
@@ -151,6 +152,7 @@ img {
 	color: var(--ai-secondary);
 	box-shadow: none;
 	letter-spacing: 1.5px;
+	padding: 0.6rem 0.75rem;
 }
 
 .aimeos .form-control::placeholder {
@@ -514,8 +516,10 @@ footer p {
 }
 
 footer p a {
+	display: inline-block;
 	letter-spacing: 1.5px;
 	color: var(--ai-bg);
+	padding: 0.75rem 0;
 }
 
 footer p a:hover {
@@ -722,7 +726,7 @@ body > .content, body .main-section {
 .navbar-nav .login > .nav-link,
 .navbar-nav .register > .nav-link,
 .navbar-nav .profile > .nav-link {
-	padding: 0.25rem;
+	padding: 0.75rem;
 }
 
 .navbar-nav .login > .nav-link::before,

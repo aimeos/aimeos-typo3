@@ -49,9 +49,14 @@ aside .catalog-filter .section {
 
 .catalog-filter-attribute .attribute-lists,
 .catalog-filter-supplier .supplier-lists,
-.catalog-filter-search .search-lists,
 .catalog-filter-price .price-lists {
 	padding: 0.75rem;
+}
+
+.catalog-filter-attribute .attribute-lists,
+.catalog-filter-supplier .supplier-lists,
+.catalog-filter-search .search-lists,
+.catalog-filter-price .price-lists {
 	display: none;
 	z-index: 1;
 }
@@ -258,6 +263,7 @@ aside .catalog-filter .section {
 .catalog-filter-price input[type=range] {
 	-webkit-appearance: none;
 	margin: 1.5rem 0 .5rem;
+	padding: 0.33rem;
 	width: 100%;
 	border: none;
 }
@@ -352,7 +358,7 @@ aside .catalog-filter .section {
 .catalog-filter-price .price-high, .catalog-filter-price .price-low {
 	font-size: 80%;
 	width: 3.75rem;
-	padding: .5rem;
+	padding: .75rem;
 	margin-bottom: 0;
 }
 
@@ -368,9 +374,9 @@ aside .catalog-filter .section {
 	background: none;
 	border: none;
 	margin: 0;
-	padding: 0.5rem;
+	padding: 0.75rem;
 	line-height: 1;
-	min-width: 2.5rem;
+	min-width: 3rem;
 	width: 15%;
 }
 
