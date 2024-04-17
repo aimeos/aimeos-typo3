@@ -147,7 +147,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
             ->context($ctx->setEditor('aimeos:setup'))
             ->up($site, $template);
 
-        $extconf->set('aimeos', ['useDemoData' => '']);
+        $extconf->set('aimeos', array_merge($extconf->get('aimeos'), ['useDemoData' => '']));
     }
 
 
