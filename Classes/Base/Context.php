@@ -32,8 +32,7 @@ class Context
     public static function get(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
     {
         if (self::$context === null) {
-            // TYPO3 specifc context with password hasher
-            $context = new \Aimeos\MShop\Context\Item\Typo3();
+            $context = new \Aimeos\MShop\Context\Item\Standard();
             $context->setConfig($config);
 
             self::addDataBaseManager($context);
