@@ -32,7 +32,7 @@ class Context
     public static function get(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
     {
         if (self::$context === null) {
-            $context = new \Aimeos\MShop\Context\Item\Standard();
+            $context = new \Aimeos\MShop\Context();
             $context->setConfig($config);
 
             self::addDataBaseManager($context);
