@@ -46,8 +46,7 @@ class Context
             self::addSession($context);
             self::addHasher($context);
             self::addToken($context);
-            self::addUser($context);
-            self::addGroups($context);
+            self::addUserGroups($context);
             self::addDateTime($context);
 
             self::$context = $context;
@@ -359,39 +358,6 @@ class Context
         } else
         {
             $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));
-        }
-
-        return $context;
-    }
-
-
-    /**
-     * Adds the group IDs to the context
-     *
-     * @param \Aimeos\MShop\ContextIface $context Context object
-     * @return \Aimeos\MShop\ContextIface Modified context object
-     */
-    protected static function addGroups(\Aimeos\MShop\ContextIface $context) : \Aimeos\MShop\ContextIface
-    {
-        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups'])
-            && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_groups']))
-        ) {
-            return $fcn($context);
-        }
-
-        $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
-
-        $appType = null;
-        if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
-            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
-        }
-
-        if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
-            $ids = GeneralUtility::trimExplode(',', $GLOBALS['TSFE']->fe_user->user['usergroup']);
-            $context->setGroupIds($ids);
-        } elseif ($appType && $appType->isBackend() && $GLOBALS['BE_USER']->userGroups) {
-            $ids = array_keys($GLOBALS['BE_USER']->userGroups);
-            $context->setGroupIds($ids);
         }
 
         return $context;
