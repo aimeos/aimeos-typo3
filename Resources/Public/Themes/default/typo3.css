@@ -87,8 +87,9 @@ body > .content, body .main-section {
 	display: none;
 }
 
-.aimeos.catalog-stage {
-	z-index: -1;
+.aimeos.catalog-filter {
+	position: relative;
+	z-index: 10;
 }
 
 .aimeos.catalog-home {
