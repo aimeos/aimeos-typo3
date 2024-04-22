@@ -14,14 +14,14 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"php": "^8.0.11",
-		"aimeos/ai-admin-jqadm": "dev-master",
-		"aimeos/ai-admin-graphql": "dev-master",
-		"aimeos/ai-admin-jsonadm": "dev-master",
-		"aimeos/ai-controller-jobs": "dev-master",
-		"aimeos/ai-client-jsonapi": "dev-master",
-		"aimeos/ai-client-html": "dev-master",
-		"aimeos/ai-typo3": "dev-master"
+		"php": "^8.1",
+		"aimeos/ai-admin-jqadm": "2024.04.*",
+		"aimeos/ai-admin-graphql": "2024.04.*",
+		"aimeos/ai-admin-jsonadm": "2024.04.*",
+		"aimeos/ai-controller-jobs": "2024.04.*",
+		"aimeos/ai-client-jsonapi": "2024.04.*",
+		"aimeos/ai-client-html": "2024.04.*",
+		"aimeos/ai-typo3": "2024.04.*"
 	},
 	"replace": {
 		"aimeos/aimeos-typo3": "self.version",
@@ -36,7 +36,7 @@
 	"config": {
 		"vendor-dir": "Resources/Libraries",
 		"platform": {
-			"php": "8.0.11"
+			"php": "8.1"
 		},
 		"allow-plugins": {
 			"typo3/cms-composer-installers": false,
