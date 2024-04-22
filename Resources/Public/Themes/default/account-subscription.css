@@ -1,3 +1,7 @@
+.account-subscription {
+	padding: 2rem 0;
+}
+
 .account-subscription .header {
 	text-transform: uppercase;
 	text-align: start;
@@ -5,10 +9,6 @@
 	padding: 0.5rem 1rem;
 	color: var(--ai-secondary);
 	border-bottom: 1px solid var(--ai-secondary);
-}
-
-.account-subscription {
-	margin: 0 auto;
 }
 
 .account-subscription .subscription-item {

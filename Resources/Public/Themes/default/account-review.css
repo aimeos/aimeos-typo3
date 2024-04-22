@@ -1,14 +1,14 @@
-.account-review h1.header {
-	border-bottom: 1px solid var(--ai-secondary);
+.account-review {
+	padding: 2rem 0;
+}
+
+.account-review .header {
 	text-transform: uppercase;
 	text-align: start;
 	font-weight: normal;
 	padding: 0.5rem 1rem;
 	color: var(--ai-secondary);
-}
-
-.account-review h2 {
-	margin: 0.5rem 1rem;
+	border-bottom: 1px solid var(--ai-secondary);
 }
 
 .account-review .review-item {

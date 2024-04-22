@@ -78,6 +78,10 @@ img {
 	max-width: 100%;
 }
 
+.aimeos legend {
+    font-size: 100%;
+}
+
 .section {
 	overflow: unset !important;
 }
@@ -104,8 +108,9 @@ img {
 }
 
 .aimeos .btn {
-	--bs-btn-padding-y: 0.6rem;
+	--bs-btn-padding-y: 0.625rem;
 	width: 15rem;
+	max-width: 50%;
 	vertical-align: top;
 	border-radius: var(--ai-radius);
 	margin: .5rem 0;
@@ -144,7 +149,8 @@ img {
 	box-shadow: none;
 }
 
-.aimeos .form-control {
+.aimeos .form-control,
+.aimeos .form-select {
 	border: none;
 	border-radius: var(--ai-radius);
 	border-bottom: 1px solid var(--ai-secondary);
@@ -189,12 +195,13 @@ img {
 }
 
 .aimeos h1 {
-	font-size: 125%;
+	font-size: 150%;
 	letter-spacing: 1.5px;
+	padding-top: 2rem;
 }
 
 .aimeos h2 {
-	font-size: 110%;
+	font-size: 125%;
 	letter-spacing: 1.5px;
 }
 
@@ -210,19 +217,25 @@ img {
 	text-decoration: none;
 }
 
-.aimeos input {
+.aimeos input,
+.aimeos textarea {
 	border: 1px solid var(--ai-tertiary);
 	background-color: var(--ai-bg);
 	color: var(--ai-secondary);
+	padding: 0.575rem 0.5rem;
 }
 
-.aimeos input:focus {
+.aimeos input:focus,
+.aimeos textarea:focus {
 	outline: none;
 }
 
 .aimeos input:disabled,
 .aimeos select:disabled
-.aimeos textarea:disabled {
+.aimeos textarea:disabled,
+.aimeos .form-control:disabled,
+.aimeos .form-select:disabled {
+	color: var(--ai-tertiary);
 	border-color: var(--ai-bg-alt);
 	background-color: var(--ai-bg-alt);
 }
@@ -231,9 +244,8 @@ img {
 	color: var(--ai-secondary);
 	vertical-align: middle;
 	display: inline-block;
-	font-size: 100%;
-	min-width: 1rem;
-	padding: 0;
+	min-width: 2.75rem;
+	padding: 0.75rem;
 	margin: 0;
 	border: none;
 	background-color: var(--ai-bg);
@@ -245,13 +257,17 @@ img {
 }
 
 .aimeos .minibutton:after {
-	font: normal normal normal 14px/1 bootstrap-icons;
-	font-size: 100%;
 	vertical-align: text-top;
+	font: normal normal normal 14px/1 bootstrap-icons;
+	font-size: 115%;
 }
 
 .aimeos .minibutton.add:after {
 	content: "\f4fa";
+}
+
+.aimeos .minibutton.modify:after {
+	content: "\f4cb";
 }
 
 .aimeos .minibutton.delete:after {
@@ -297,8 +313,8 @@ img {
 
 .aimeos .attr-list,
 .aimeos .form-list {
+	margin: 1rem;
 	padding: 0;
-	margin: 0;
 }
 
 .aimeos .attr-list .custom-checkbox,
@@ -316,6 +332,20 @@ img {
 
 .aimeos li.attr-item .name:after {
 	content: ": ";
+}
+
+.aimeos .address .form-list .form-item {
+	display: none;
+}
+
+.aimeos .address .form-list .mandatory,
+.aimeos .address .form-list .optional {
+	align-items: center;
+	display: flex;
+}
+
+.aimeos .address .form-list .mandatory label:after {
+	content: "*";
 }
 
 .aimeos .prototype {

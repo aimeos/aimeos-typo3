@@ -13,7 +13,7 @@
 .catalog-detail-navigator a:hover {
 	text-decoration: none;
 	display: inline-block;
-	padding: 0 0.5rem;
+	padding: 0.75rem 0.5rem;
 	margin: 0.5rem 0;
 }
 
@@ -93,7 +93,10 @@
 
 .catalog-detail .catalog-actions,
 .catalog-detail .catalog-social {
+	display: inline-flex;
+	list-style: none;
 	margin: .5rem 0;
+	padding: 0;
 }
 
 .catalog-detail .catalog-social .social-button,
@@ -645,6 +648,9 @@
 }
 
 .catalog-detail-additional .nav-tabs .nav-link {
+	font-size: 120%;
+	text-transform: uppercase;
+	color: var(--ai-primary);
 	margin-bottom: -1px;
 	border: 1px solid transparent;
 	border-top-left-radius: var(--ai-radius);
@@ -652,23 +658,17 @@
 	transition: all .3s linear;
 }
 
-.catalog-detail-additional .nav-tabs a:link:not(.btn):hover {
-	border: 1px solid transparent;
-	color: var(--ai-primary);
-	background-color: var(--ai-bg-light);
-	transition: all .3s linear;
-}
-
-.catalog-detail-additional .nav-tabs a {
-	font-size: 120%;
-	text-transform: uppercase;
-	color: var(--ai-primary);
-}
-
 .catalog-detail-additional .nav-tabs .nav-link.active:not(.btn) {
 	color: var(--ai-bg);
 	border: 1px solid transparent;
 	background-color: var(--ai-primary);
+}
+
+.catalog-detail-additional .nav-tabs .nav-link:not(.btn):hover {
+	border: 1px solid transparent;
+	color: var(--ai-primary);
+	background-color: var(--ai-bg-light);
+	transition: all .3s linear;
 }
 
 .catalog-detail-additional .nav-review .ratings {
@@ -682,11 +682,15 @@
 	vertical-align: text-bottom;
 	border-radius: var(--ai-radius);
 	background-color: var(--ai-warning);
-	color: var(--ai-bg);
+	color: var(--ai-primary);
 }
 
 
 /* Rating */
+
+.catalog-detail-additional .rating-dist thead {
+	display: none;
+}
 
 .catalog-detail-additional progress {
 	vertical-align: middle;

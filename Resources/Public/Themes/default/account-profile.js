@@ -4,38 +4,38 @@
 AimeosAccountProfile = {
 
 	/**
-	 * Reset and close the new address form
+	 * Enables/disables the address form
 	 */
 	onAddress() {
 
-		document.querySelectorAll(".account-profile-address .panel").forEach(el => {
+		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
 			el.addEventListener("show.bs.collapse", ev => {
-				$(".act-show", ev.currentTarget).removeClass("act-show").addClass("act-hide");
+				$("input,select", ev.currentTarget).prop("disabled", false);
 			});
 		});
 
-		document.querySelectorAll(".account-profile-address .panel").forEach(el => {
+		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
 			el.addEventListener("hidden.bs.collapse", ev => {
-				$(".act-hide", ev.currentTarget).removeClass("act-hide").addClass("act-show");
+				$("input,select", ev.currentTarget).prop("disabled", true);
 			});
 		});
 	},
 
 
 	/**
-	 * Adds a new delivery address form
+	 * Show and close the address form
 	 */
-	onAddressNew() {
+	onAddressToggle() {
 
-		document.querySelectorAll(".account-profile-address .address-delivery-new").forEach(el => {
+		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
 			el.addEventListener("show.bs.collapse", ev => {
-				$("input,select", ev.currentTarget).prop("disabled", false);
+				$(".act-show", ev.currentTarget).removeClass("act-show").addClass("act-hide");
 			});
 		});
 
-		document.querySelectorAll(".account-profile-address .address-delivery-new").forEach(el => {
+		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
 			el.addEventListener("hidden.bs.collapse", ev => {
-				$("input,select", ev.currentTarget).prop("disabled", true);
+				$(".act-hide", ev.currentTarget).removeClass("act-hide").addClass("act-show");
 			});
 		});
 	},
@@ -46,7 +46,7 @@ AimeosAccountProfile = {
 	 */
 	init() {
 		this.onAddress();
-		this.onAddressNew();
+		this.onAddressToggle();
 	}
 };
 

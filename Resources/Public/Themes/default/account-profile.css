@@ -1,10 +1,18 @@
-.account-profile h1.header {
+.account-profile {
+	padding: 2rem 0;
+}
+
+.account-profile h2.header {
 	text-transform: uppercase;
 	text-align: start;
 	font-weight: normal;
 	padding: 0.5rem 1rem;
 	color: var(--ai-secondary);
 	border-bottom: 1px solid var(--ai-secondary);
+}
+
+.account-profile .account-profile-address form {
+	margin: 1rem;
 }
 
 .account-profile .account-salutation {
@@ -39,8 +47,8 @@
 	position: relative;
 	text-align: center;
 	border: 1px solid var(--ai-primary-dark);
-	height: 32px;
-	width: 32px;
+	height: 2rem;
+	width: 2rem;
 	border-radius: 50%;
 	vertical-align: middle;
 	margin-right: .5rem;
@@ -50,37 +58,30 @@
 	margin: 0 1rem 0 auto;
 }
 
-.account-profile-address h2 {
-	margin: 8px 15px;
+.account-profile-address h3 {
+	margin: 0.5rem 1rem;
 }
 
-.account-profile-address .panel {
+.account-profile-address .address-item {
 	border: 1px solid var(--ai-tertiary);
+	border-radius: 0;
 	margin: 0.5rem 0;
-	box-shadow: none;
+	padding: 1%;
 }
 
-.account-profile-address .panel-heading {
-	padding: 15px;
+.account-profile-address .header {
+	justify-content: space-between;
+	display: flex;
+	padding: 1rem;
 }
 
-.account-profile-address .panel-heading .act-show,
-.account-profile-address .panel-heading .act-hide {
-	float: right;
-}
-
-[dir="rtl"] .account-profile-address .panel-heading .act-show,
-[dir="rtl"] .account-profile-address .panel-heading .act-hide {
-	float: left;
-}
-
-.account-profile-address .panel-heading .act-show:after {
+.account-profile-address .header .act-show:after {
 	font: normal normal normal 14px/1 bootstrap-icons;
 	content: "\f4cb";
 	font-size: 130%;
 }
 
-.account-profile-address .panel-heading .act-hide:after {
+.account-profile-address .header .act-hide:after {
 	font: normal normal normal 14px/1 bootstrap-icons;
 	content: "\f62a";
 	font-size: 130%;

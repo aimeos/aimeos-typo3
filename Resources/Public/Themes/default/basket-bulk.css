@@ -16,6 +16,7 @@
 .basket-bulk .headline {
 	background-color: var(--ai-bg-light);
 	font-weight: bold;
+	font-size: 115%;
 }
 
 .basket-bulk .quantity,
@@ -34,13 +35,6 @@
 
 .basket-bulk .buttons {
 	text-align: center;
-}
-
-.basket-bulk .minibutton {
-	color: var(--ai-primary);
-	line-height: 1;
-	width: 2.5rem;
-	padding: 0.75rem;
 }
 
 

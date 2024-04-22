@@ -6,59 +6,17 @@ AimeosCheckoutStandard = {
 	/**
 	 * Shows only selected address forms
 	 */
-	setupAddressForms: function() {
+	onAddress: function() {
 
-		$(".checkout-standard-address .item-address").has(".header input:not(:checked)").find(".form-list").hide();
-
-		$(".checkout-standard-address-billing .header input, .checkout-standard-address-delivery .header input").on("click", function(ev) {
-			$(".checkout-standard-address .item-address").has(".header input:not(:checked)").find(".form-list").each(function() {
-				slideUp(this, 300);
-			});
-			$(".form-list", $(ev.currentTarget).parents(".item-address")).each(function() {
-				slideDown(this, 300);
+		document.querySelectorAll(".checkout-standard-address .item-address").forEach(el => {
+			el.addEventListener("show.bs.collapse", ev => {
+				$(".form-list input,select", ev.currentTarget).prop("disabled", false);
 			});
 		});
-	},
 
-
-	/**
-	 * Shows states only from selected countries
-	 */
-	setupCountryState: function() {
-
-		$(".checkout-standard-address .form-list .countryid select").each(function() {
-			if($(this).val() !== "") {
-				$(this).parents(".form-list").find(".state optgroup:not(." + $(this).val() + ")").hide();
-			}
-		});
-
-		$(".checkout-standard-address .form-list .countryid select").on("change", function() {
-			var list = $(this).parents(".form-list");
-			$(".state select", list).val("");
-			$(".state optgroup", list).hide();
-			$(".state ." + $(this).val(), list).show();
-		});
-	},
-
-
-	/**
-	 * Shows only form fields of selected service option
-	 */
-	setupServiceForms: function() {
-
-		/* Hide form fields if delivery/payment option is not selected */
-		$(".checkout-standard-delivery,.checkout-standard-payment").each(function() {
-			$(this).find(".form-list").hide();
-			$(this).find(".item-service").has("input.option:checked").find(".form-list").show();
-		});
-
-		/* Delivery/payment form slide up/down when selected */
-		$(".checkout-standard-delivery .option, .checkout-standard-payment .option").on("click", function() {
-			$(".item-service").has("label input:not(:checked)").find(".form-list").each(function() {
-				slideUp(this, 300);
-			});
-			$(this).parents(".item-service").find(".form-list").each(function() {
-				slideDown(this, 300);
+		document.querySelectorAll(".checkout-standard-address .item-address").forEach(el => {
+			el.addEventListener("hidden.bs.collapse", ev => {
+				$(".form-list input,select", ev.currentTarget).prop("disabled", true);
 			});
 		});
 	},
@@ -67,7 +25,7 @@ AimeosCheckoutStandard = {
 	/**
 	 * Checks for mandatory fields in all forms
 	 */
-	setupMandatoryCheck: function() {
+	onCheck: function() {
 
 		$(".checkout-standard .form-item").on("blur", "input,select", function(ev) {
 			var node = $(ev.currentTarget).parents(".form-item");
@@ -119,9 +77,29 @@ AimeosCheckoutStandard = {
 
 
 	/**
+	 * Shows states only from selected countries
+	 */
+	onCountryState: function() {
+
+		$(".checkout-standard-address .form-list .countryid select").each(function() {
+			if($(this).val() !== "") {
+				$(this).parents(".form-list").find(".state optgroup:not(." + $(this).val() + ")").hide();
+			}
+		});
+
+		$(".checkout-standard-address .form-list .countryid select").on("change", function() {
+			var list = $(this).parents(".form-list");
+			$(".state select", list).val("");
+			$(".state optgroup", list).hide();
+			$(".state ." + $(this).val(), list).show();
+		});
+	},
+
+
+	/**
 	 * Redirect to payment provider / confirm page when order has been created successfully
 	 */
-	setupPaymentRedirect: function() {
+	onRedirect: function() {
 
 		var form = $(".checkout-standard form").first();
 		var node = $(".checkout-standard-process", form);
@@ -136,17 +114,40 @@ AimeosCheckoutStandard = {
 
 
 	/**
+	 * Shows only form fields of selected service option
+	 */
+	onService: function() {
+
+		/* Hide form fields if delivery/payment option is not selected */
+		$(".checkout-standard-delivery,.checkout-standard-payment").each(function() {
+			$(this).find(".form-list").hide();
+			$(this).find(".item-service").has("input.option:checked").find(".form-list").show();
+		});
+
+		/* Delivery/payment form slide up/down when selected */
+		$(".checkout-standard-delivery .option, .checkout-standard-payment .option").on("click", function() {
+			$(".item-service").has("label input:not(:checked)").find(".form-list").each(function() {
+				slideUp(this, 300);
+			});
+			$(this).parents(".item-service").find(".form-list").each(function() {
+				slideDown(this, 300);
+			});
+		});
+	},
+
+
+	/**
 	 * Initializes the checkout standard section
 	 */
 	init: function() {
 
-		this.setupAddressForms();
-		this.setupServiceForms();
+		this.onAddress();
+		this.onService();
 
-		this.setupCountryState();
+		this.onCountryState();
 
-		this.setupMandatoryCheck();
-		this.setupPaymentRedirect();
+		this.onCheck();
+		this.onRedirect();
 	}
 };
 

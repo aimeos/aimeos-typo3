@@ -1,5 +1,5 @@
 .account-basket {
-	margin: 0 auto;
+	padding: 2rem 0;
 }
 
 .account-basket .header {
@@ -17,8 +17,12 @@
 	margin: 1rem;
 }
 
-.account-basket .basket-basic {
+.account-basket .basket-basic .name {
 	font-weight: bold;
+}
+
+.account-basket .basket-basic .value {
+	text-transform: none;
 }
 
 .account-basket .name:after {
