@@ -2,15 +2,13 @@
 
 /**
  * @license GPLv3, http://www.gnu.org/copyleft/gpl.html
- * @copyright Aimeos (aimeos.org), 2017
+ * @copyright Aimeos (aimeos.org), 2017-2024
  * @package TYPO3
  */
 
 
 namespace Aimeos\Aimeos\Controller;
 
-
-use Aimeos\Aimeos\Base;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
 
@@ -63,8 +61,7 @@ class JsonapiController extends AbstractController
      */
     public function deleteAction(string $resource, string $related = null)
     {
-        $response = $this->createClient($resource, $related)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createClient($resource, $related)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -77,8 +74,7 @@ class JsonapiController extends AbstractController
      */
     public function getAction(string $resource, string $related = null)
     {
-        $response = $this->createClient($resource, $related)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createClient($resource, $related)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -91,8 +87,7 @@ class JsonapiController extends AbstractController
      */
     public function patchAction(string $resource, string $related = null)
     {
-        $response = $this->createClient($resource, $related)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createClient($resource, $related)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -105,8 +100,7 @@ class JsonapiController extends AbstractController
      */
     public function postAction(string $resource, string $related = null)
     {
-        $response = $this->createClient($resource, $related)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createClient($resource, $related)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -119,8 +113,7 @@ class JsonapiController extends AbstractController
      */
     public function putAction(string $resource, string $related = null)
     {
-        $response = $this->createClient($resource, $related)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createClient($resource, $related)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -132,8 +125,7 @@ class JsonapiController extends AbstractController
      */
     public function optionsAction(string $resource = null)
     {
-        $response = $this->createClient($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
-        return $this->setPsrResponse($response);
+        return $this->createClient($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
     }
 
 
@@ -168,30 +160,5 @@ class JsonapiController extends AbstractController
         );
 
         return $creator->fromGlobals();
-    }
-
-
-    /**
-     * Set the response data from a PSR-7 response object and returns the message content
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response PSR-7 response object
-     * @return string Generated output
-     */
-    protected function setPsrResponse(\Psr\Http\Message\ResponseInterface $response)
-    {
-        if (!isset($this->responseFactory)) // TYPO3 10
-        {
-            $this->response->setStatus($response->getStatusCode());
-
-            foreach ($response->getHeaders() as $key => $value) {
-                foreach ((array) $value as $val) {
-                    $this->response->setHeader($key, $val);
-                }
-            }
-
-            return (string) $response->getBody();
-        }
-
-        return $response;
     }
 }
