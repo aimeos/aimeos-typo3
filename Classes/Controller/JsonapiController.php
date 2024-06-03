@@ -57,7 +57,7 @@ class JsonapiController extends AbstractController
      *
      * @param string Resource location, e.g. "basket"
      * @param string|null Related resource, e.g. "product"
-     * @return string Generated output
+     * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
     public function deleteAction(string $resource, string $related = null)
     {
@@ -70,7 +70,7 @@ class JsonapiController extends AbstractController
      *
      * @param string Resource location, e.g. "basket"
      * @param string|null Related resource, e.g. "product"
-     * @return string Generated output
+     * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
     public function getAction(string $resource, string $related = null)
     {
@@ -83,7 +83,7 @@ class JsonapiController extends AbstractController
      *
      * @param string Resource location, e.g. "basket"
      * @param string|null Related resource, e.g. "product"
-     * @return string Generated output
+     * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
     public function patchAction(string $resource, string $related = null)
     {
@@ -96,7 +96,7 @@ class JsonapiController extends AbstractController
      *
      * @param string Resource location, e.g. "basket"
      * @param string|null Related resource, e.g. "product"
-     * @return string Generated output
+     * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
     public function postAction(string $resource, string $related = null)
     {
@@ -109,7 +109,7 @@ class JsonapiController extends AbstractController
      *
      * @param string Resource location, e.g. "basket"
      * @param string|null Related resource, e.g. "product"
-     * @return string Generated output
+     * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
     public function putAction(string $resource, string $related = null)
     {
@@ -121,11 +121,16 @@ class JsonapiController extends AbstractController
      * Returns the available HTTP verbs and the resource URLs
      *
      * @param string Resource location, e.g. "product"
-     * @return string Generated output
+     * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
     public function optionsAction(string $resource = null)
     {
-        return $this->createClient($resource ?? '')->options($this->getPsrRequest(), (new Psr17Factory)->createResponse());
+        $request = $this->getPsrRequest();
+
+        return $this->createClient($resource ?? '')->options($request, (new Psr17Factory)->createResponse())
+            ->withHeader('access-control-allow-headers', 'authorization,content-type')
+            ->withHeader('access-control-allow-methods', 'DELETE, GET, OPTIONS, PATCH, POST, PUT')
+            ->withHeader('access-control-allow-origin', $request->getHeaderLine( 'origin'));
     }
 
 
