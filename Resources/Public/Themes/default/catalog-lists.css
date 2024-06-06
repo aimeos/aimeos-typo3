@@ -335,6 +335,7 @@
 
 .catalog-list-items .addbasket .btn-primary {
 	width: calc(100% - 6rem);
+	max-width: 100%;
 }
 
 .catalog-list-items .addbasket .btn-primary:before {
