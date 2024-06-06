@@ -110,6 +110,7 @@ img {
 .aimeos .btn {
 	--bs-btn-padding-y: 0.625rem;
 	width: 15rem;
+	max-width: 50%;
 	vertical-align: top;
 	border-radius: var(--ai-radius);
 	margin: .5rem 0;
