@@ -36,28 +36,18 @@ class JqadmController extends AbstractController
      */
     public function fileAction()
     {
-        $contents = '';
         $files = [];
         $name = $this->request->getArgument('name');
 
-        foreach (Base::aimeos()->getCustomPaths('admin/jqadm') as $base => $paths) {
-            foreach($paths as $path) {
-                $jsbAbsPath = $base . '/' . $path;
-                $jsb2 = new \Aimeos\MW\Jsb2\Standard($jsbAbsPath, dirname($jsbAbsPath));
-                $files = array_merge($files, $jsb2->getFiles($name));
-            }
-        }
-
-        foreach ($files as $file) {
-            if (($content = file_get_contents($file)) === false) {
-                throw new \RuntimeException(sprintf('File "%1$s" not found', $jsbAbsPath));
-            }
-
-            $contents .= $content;
-        }
+		foreach( $aimeos->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
+		{
+			foreach( $paths as $path ) {
+				$files[] = $base . '/' . $path;
+			}
+		}
 
         $response = $this->responseFactory->createResponse()
-            ->withBody($this->streamFactory->createStream($contents));
+            ->withBody($this->streamFactory->createStream(\Aimeos\Admin\JQAdm\Bundle::get( $files, $name )));
 
         if (str_ends_with($name, 'js')) {
             $response = $response->withAddedHeader('Content-Type', 'application/javascript');

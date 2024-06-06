@@ -8,6 +8,7 @@
 
 		<title>Aimeos administration interface</title>
 
+		<link rel="stylesheet" href="{f:uri.action(action: 'file', arguments: {name: 'vendor-css'})}">
 		<f:if condition="{localeDir} == 'rtl'">
 			<f:then>
 				<link rel="stylesheet" href="{f:uri.action(action: 'file', arguments: {name: 'index-rtl-css'})}">
@@ -35,6 +36,7 @@
 
 		<f:render section="content" />
 
+		<script src="{f:uri.action(action: 'file', arguments: {name: 'vendor-js'})}"></script>
 		<script src="{f:uri.action(action: 'file', arguments: {name: 'index-js'})}"></script>
 	</body>
 </html>
