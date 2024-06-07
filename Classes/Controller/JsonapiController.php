@@ -10,6 +10,7 @@
 namespace Aimeos\Aimeos\Controller;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Log\LoggerAwareInterface;
 
 
 /**
@@ -17,8 +18,10 @@ use Nyholm\Psr7\Factory\Psr17Factory;
  *
  * @package TYPO3
  */
-class JsonapiController extends AbstractController
+class JsonapiController extends AbstractController implements LoggerAwareInterface
 {
+    use \Psr\Log\LoggerAwareTrait;
+
     /**
      * Dispatches the REST API requests
      *
@@ -40,14 +43,23 @@ class JsonapiController extends AbstractController
             $related = $value;
         }
 
-        switch ($this->request->getMethod())
-        {
-            case 'DELETE': return $this->deleteAction((string) $resource, $related);
-            case 'PATCH': return $this->patchAction((string) $resource, $related);
-            case 'POST': return $this->postAction((string) $resource, $related);
-            case 'PUT': return $this->putAction((string) $resource, $related);
-            case 'GET': return $this->getAction((string) $resource, $related);
-            default: return $this->optionsAction($resource);
+        try {
+            switch ($this->request->getMethod())
+            {
+                case 'DELETE': return $this->deleteAction((string) $resource, $related);
+                case 'PATCH': return $this->patchAction((string) $resource, $related);
+                case 'POST': return $this->postAction((string) $resource, $related);
+                case 'PUT': return $this->putAction((string) $resource, $related);
+                case 'GET': return $this->getAction((string) $resource, $related);
+                default: return $this->optionsAction($resource);
+            }
+        } catch (\Throwable $e) {
+            $this->logger->alert(
+                'Error while processing JSON API request: ' . $e->getMessage(),
+                ['exception' => $e, 'request' => $this->request, 'resource' => $resource, 'related' => $related]
+            );
+
+            return $this->responseFactory->createResponse(503, 'Internal server error');
         }
     }
 
