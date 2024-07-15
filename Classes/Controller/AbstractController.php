@@ -119,7 +119,7 @@ abstract class AbstractController
             }
 
             $locale = Base::getLocaleBackend($context, $site);
-            $context->setLocale($locale);
+            $context->setLocale($locale->setLanguageId( $lang ));
 
             if (isset($GLOBALS['BE_USER']->user['siteid']) && $GLOBALS['BE_USER']->user['siteid'] != '') {
                 $this->checkSite($locale->getSitePath(), $GLOBALS['BE_USER']->user['siteid']);
@@ -163,12 +163,6 @@ abstract class AbstractController
         $client->setView($this->context()->view())->init();
         $header = (string) $client->header($uid);
         $html = (string) $client->body($uid);
-
-        if (!isset($this->responseFactory)) // TYPO3 10
-        {
-            $this->response->addAdditionalHeaderData($header);
-            return $html;
-        }
 
         $renderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
         $renderer->addHeaderData($header);
