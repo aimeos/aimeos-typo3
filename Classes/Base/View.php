@@ -251,10 +251,8 @@ class View
         }
 
         $target = $GLOBALS["TSFE"]->id ?? null;
-        $get = GeneralUtility::_GET();
-        $post = GeneralUtility::_POST();
 
-        $helper = new \Aimeos\Base\View\Helper\Request\Typo3($view, $target, $_FILES, $get, $post, $_COOKIE, $_SERVER);
+        $helper = new \Aimeos\Base\View\Helper\Request\Typo3($view, $target, $_FILES, $_GET, $_POST, $_COOKIE, $_SERVER);
         $view->addHelper('request', $helper);
 
         return $view;
@@ -353,8 +351,6 @@ class View
 
             if ($request !== null && $request->hasArgument($name) === true) {
                 $fixed[$name] = $request->getArgument($name);
-            } elseif (($value = GeneralUtility::_GP('S')) !== null) {
-                $fixed['S'] = $value;
             }
 
 
@@ -362,8 +358,6 @@ class View
 
             if ($request !== null && $request->hasArgument($name) === true) {
                 $fixed[$name] = $request->getArgument($name);
-            } else { // TYPO3 9+
-                $fixed['L'] = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context')->getAspect('language')->getId();
             }
 
 
@@ -371,8 +365,6 @@ class View
 
             if ($request !== null && $request->hasArgument($name) === true) {
                 $fixed[$name] = $request->getArgument($name);
-            } elseif (($value = GeneralUtility::_GP('C')) !== null) {
-                $fixed['C'] = $value;
             }
         }
 

@@ -41,8 +41,6 @@ class Locale
 
             if ($request !== null && $request->hasArgument($name) === true) {
                 $sitecode = $request->getArgument($name);
-            } elseif (($value = GeneralUtility::_GP('S')) !== null) {
-                $sitecode = $value;
             }
 
 
@@ -51,10 +49,6 @@ class Locale
 
             if ($request !== null && $request->hasArgument($name) === true) {
                 $lang = $request->getArgument($name);
-            } elseif (isset($GLOBALS['TSFE']->id)) { // TYPO3 9+
-                $langid = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context')->getAspect('language')->getId();
-                $site = GeneralUtility::makeInstance('TYPO3\CMS\Core\Site\SiteFinder')->getSiteByPageId($GLOBALS['TSFE']->id);
-                $lang = substr($site->getLanguageById($langid)->getLocale(), 0, 5);
             }
 
 
@@ -63,8 +57,6 @@ class Locale
 
             if ($request !== null && $request->hasArgument($name) === true) {
                 $currency = $request->getArgument($name);
-            } elseif (($value = GeneralUtility::_GP('C')) !== null) {
-                $currency = $value;
             }
 
 
