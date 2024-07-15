@@ -298,7 +298,8 @@ class Context
         $session = $context->session();
 
         if (($token = $session->get('token')) === null) {
-            $token = $GLOBALS['TSFE']->fe_user->id ?? md5(microtime(true) . getmypid());
+            $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
+            $token = $t3context->getPropertyFromAspect('frontend.user', 'id') ?: md5(microtime(true) . getmypid());
             $session->set('token', $token);
         }
 
@@ -329,8 +330,8 @@ class Context
 
         if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
 
-            $userid = $GLOBALS['TSFE']->fe_user->user[$GLOBALS['TSFE']->fe_user->userid_column];
-            $groupids = GeneralUtility::trimExplode(',', $GLOBALS['TSFE']->fe_user->user['usergroup']);
+            $userid = $t3context->getPropertyFromAspect('frontend.user', 'id');
+            $groupids = $t3context->getPropertyFromAspect('frontend.user', 'getGroupIds', []);
 
             $context->setUser(function() use ( $context, $userid ) {
                 return \Aimeos\MShop::create( $context, 'customer' )->get( $userid );
@@ -344,17 +345,16 @@ class Context
                 return $manager->search( $filter )->col( 'group.code', 'group.id' )->all();
             });
 
-            $context->setEditor((string) $GLOBALS['TSFE']->fe_user->user['username']);
+            $ipaddr = (string) GeneralUtility::getIndpEnv('REMOTE_ADDR');
+            $context->setEditor($t3context->getPropertyFromAspect('frontend.user', 'username', $ipaddr));
 
         } elseif ($appType && $appType->isBackend()) {
 
-            if (isset($GLOBALS['BE_USER']->user['username'])) {
-                $context->setEditor((string) $GLOBALS['BE_USER']->user['username']);
-            }
+            $ids = $t3context->getPropertyFromAspect('backend.user', 'getGroupIds', []);
+            $names = $t3context->getPropertyFromAspect('backend.user', 'getGroupNames', []);
 
-            if ($GLOBALS['BE_USER']->userGroups) {
-                $context->setGroups(array_column($GLOBALS['BE_USER']->userGroups, 'title', 'uid'));
-            }
+            $context->setEditor($t3context->getPropertyFromAspect('backend.user', 'username', ''));
+            $context->setGroups(array_combine($ids, $names));
         } else
         {
             $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));

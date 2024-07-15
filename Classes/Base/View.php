@@ -89,19 +89,21 @@ class View
             $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
         }
 
+        $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
+
         if ($appType && $appType->isBackend()) {
-            if ($GLOBALS['BE_USER']->isAdmin() === false) {
-                $groups = array_column((array) $GLOBALS['BE_USER']->userGroups, 'title', 'uid');
-                $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, $groups);
+            if ($t3context->getPropertyFromAspect('backend.user', 'isAdmin', false) === false) {
+                $ids = $t3context->getPropertyFromAspect('backend.user', 'getGroupIds', []);
+                $names = $t3context->getPropertyFromAspect('backend.user', 'getGroupNames', []);
+                $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, array_combine($ids, $names));
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\All($view);
             }
         } else {
-            $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
-
-            if ($t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
-                $groups = array_column((array) $GLOBALS['TSFE']->fe_user->groupData, 'title', 'uid');
-                $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, $groups);
+            if ($t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn', false)) {
+                $ids = $t3context->getPropertyFromAspect('frontend.user', 'getGroupIds', []);
+                $names = $t3context->getPropertyFromAspect('frontend.user', 'getGroupNames', []);
+                $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, array_combine($ids, $names));
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, []);
             }
