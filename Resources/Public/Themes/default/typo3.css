@@ -45,7 +45,7 @@ body .body-bg-top {
 }
 
 body > .content, body .main-section {
-	margin-top: 4rem;
+	margin-top: 4.5rem;
 }
 
 .backendlayout-2_columns_25_75 .maincontent-wrap {
@@ -77,6 +77,11 @@ body > .content, body .main-section {
 
 .container {
 	max-width: 1320px !important;
+}
+
+.main-section > .aimeos.catalog-filter {
+	position: relative;
+	z-index: 1;
 }
 
 .main-section > section.catalog-filter:first-of-type {
