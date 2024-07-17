@@ -183,7 +183,7 @@ class Context
             return $fcn($context);
         }
 
-        return $context->setMail(new \Aimeos\Base\Mail\Typo3(function() {
+        return $context->setMail(new \Aimeos\Base\Mail\Manager\Typo3(function() {
             return GeneralUtility::makeInstance(\TYPO3\CMS\Core\Mail\MailMessage::class);
         }));
     }
