@@ -269,10 +269,10 @@ class Context
 
         $class = \TYPO3\CMS\Core\Authentication\CommandLineUserAuthentication::class;
 
-        if (isset($GLOBALS['TSFE']->fe_user)) {
-            $session = new \Aimeos\Base\Session\Typo3($GLOBALS['TSFE']->fe_user);
-        } elseif (isset($GLOBALS['BE_USER']) && !($GLOBALS['BE_USER'] instanceof $class)) {
+        if (isset($GLOBALS['BE_USER']) && !($GLOBALS['BE_USER'] instanceof $class)) {
             $session = new \Aimeos\Base\Session\Typo3($GLOBALS['BE_USER']);
+        } elseif (isset($GLOBALS['TYPO3_REQUEST']) && ($user = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.user'))) {
+            $session = new \Aimeos\Base\Session\Typo3($user);
         } else {
             $session = new \Aimeos\Base\Session\None();
         }
