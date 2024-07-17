@@ -1,5 +1,5 @@
 body {
-	background-size: 100% 64px !important;
+	background-size: 100% 128px !important;
 }
 
 .dropdown-item {
@@ -85,11 +85,6 @@ body > .content, body .main-section {
 
 .aimeos .catalog-filter-tree .category-selected {
 	display: none;
-}
-
-.aimeos.catalog-filter {
-	position: relative;
-	z-index: 10;
 }
 
 .aimeos.catalog-home {
