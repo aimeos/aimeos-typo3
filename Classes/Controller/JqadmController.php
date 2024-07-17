@@ -39,12 +39,12 @@ class JqadmController extends AbstractController
         $files = [];
         $name = $this->request->getArgument('name');
 
-		foreach( $aimeos->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
-		{
-			foreach( $paths as $path ) {
-				$files[] = $base . '/' . $path;
-			}
-		}
+        foreach (Base::aimeos()->getCustomPaths('admin/jqadm') as $base => $paths)
+        {
+            foreach ($paths as $path) {
+                $files[] = $base . '/' . $path;
+            }
+        }
 
         $response = $this->responseFactory->createResponse()
             ->withBody($this->streamFactory->createStream(\Aimeos\Admin\JQAdm\Bundle::get( $files, $name )));
