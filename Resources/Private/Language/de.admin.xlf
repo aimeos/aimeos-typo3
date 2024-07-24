@@ -17,7 +17,7 @@
 
 			<trans-unit id="beusers_site.title" xml:space="preserve">
 				<source>Aimeos shop site</source>
-				<target>Aimeos Shop Mandant</target>
+				<target>Aimeos Shop</target>
 			</trans-unit>
 
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
