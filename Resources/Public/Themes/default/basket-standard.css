@@ -23,8 +23,10 @@
 }
 
 .basket-standard .basket-save .btn {
+	font-weight: bold;
+	font-size: 110%;
 	border: none;
-	width: 5rem;
+	width: 8rem;
 }
 
 .basket-standard-main {
@@ -40,15 +42,9 @@
 
 .basket-standard-coupon {
 	padding: 1rem !important;
+	align-items: center;
 	text-align: center;
 	margin: 0;
-}
-
-.basket-standard-coupon .header,
-.basket-standard-coupon .content {
-	vertical-align: middle;
-	display: inline-block;
-	width: 49%;
 }
 
 .basket-standard-coupon .header h2 {
@@ -56,11 +52,8 @@
 	margin: 10px 0;
 }
 
-.basket-standard-coupon .attr-list {
-	display: inline-block;
-	font-weight: bold;
-	list-style: none;
-	margin: 0.5rem;
+.basket-standard-coupon .coupon-detail {
+	align-items: center;
 }
 
 .basket-standard-coupon .attr-item .coupon-code,
@@ -76,7 +69,7 @@
 	border: none;
 	color: var(--ai-primary);
 	font-weight: bold;
-	font-size: 125%;
+	font-size: 110%;
 }
 
 .basket-standard-coupon .input-group {
@@ -84,23 +77,27 @@
 }
 
 .basket-standard-coupon .coupon-new .btn {
-	width: 5rem;
+	width: 8rem;
 }
 
 .basket-standard-coupon .coupon-new .coupon-code {
-	width: calc(100% - 5rem);
+	width: calc(100% - 8rem);
 	border: none;
+}
+
+.basket-standard-coupon .coupon-detail {
+	font-size: 125%;
+}
+
+.basket-standard-coupon .coupon-detail .name {
+	text-align: start;
+	padding: 0 0.75rem;
+}
+
+.basket-standard-coupon .coupon-detail .coupon-codes {
+	text-align: end;
 }
 
 .basket-standard-coupon .minibutton.delete:after {
 	display: inline-block;
-	font-size: 125%;
-}
-
-@media (max-width: 480px) {
-	.basket-standard-coupon .header,
-	.basket-standard-coupon .content {
-		display: block;
-		width: 100%;
-	}
 }

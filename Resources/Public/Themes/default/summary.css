@@ -159,7 +159,6 @@
 	content: ":";
 }
 
-.aimeos .common-summary-detail .quantity,
 .aimeos .common-summary-detail .subtotal,
 .aimeos .common-summary-detail .delivery,
 .aimeos .common-summary-detail .payment,
@@ -178,9 +177,7 @@
 	padding: 0.25rem 0;
 }
 
-.aimeos .common-summary-detail .quantity,
 .aimeos .common-summary-detail .quantity {
-	white-space: nowrap;
 	text-align: center;
 }
 
@@ -196,7 +193,6 @@
 	content: "\f5de";
 }
 
-.aimeos .common-summary-detail .action,
 .aimeos .common-summary-detail .action {
 	text-align: center;
 }
@@ -233,4 +229,28 @@
 .aimeos .common-summary-additional .customerref-value,
 .aimeos .common-summary-additional .comment-value {
 	width: 100%;
+}
+
+@media (max-width: 575px) {
+	.aimeos .common-summary-detail .headline .price,
+	.aimeos .common-summary-detail .product-item .price {
+		display: none;
+	}
+}
+
+
+@media (max-width: 767px) {
+	.aimeos .common-summary-detail .headline .unitprice,
+	.aimeos .common-summary-detail .product-item .unitprice {
+		display: none;
+	}
+}
+
+
+@media (max-width: 991px) {
+	.aimeos .common-summary-detail .product-item .quantity .minibutton,
+	.aimeos .common-summary-detail .product-item .quantity .value {
+		display: block;
+		margin: auto;
+	}
 }

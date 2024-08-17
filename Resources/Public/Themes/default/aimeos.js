@@ -216,9 +216,12 @@ AimeosBasket = {
 			basket.append(el);
 		});
 
-		$('script.basket-standard', doc).each((idx, el) => {
-			basket.append($('<script/>').attr('src', el.getAttribute('src')));
-		});
+		if(!$('body').hasClass('basket')) {
+			$('script.basket-standard', doc).each((idx, el) => {
+				basket.append(el);
+			});
+			$('body').addClass('basket');
+		}
 
 		$(".btn-update", basket).hide();
 
