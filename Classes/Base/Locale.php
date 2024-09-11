@@ -34,29 +34,31 @@ class Locale
     {
         if (!isset(self::$locale)) {
             $config = $context->config();
-
-
             $sitecode = $config->get('mshop/locale/site', 'default');
-            $name = $config->get('typo3/param/name/site', 'site');
-
-            if ($request !== null && $request->hasArgument($name) === true) {
-                $sitecode = $request->getArgument($name);
-            }
-
-
             $lang = $config->get('mshop/locale/language', '');
-            $name = $config->get('typo3/param/name/language', 'locale');
-
-            if ($request !== null && $request->hasArgument($name) === true) {
-                $lang = $request->getArgument($name);
-            }
-
-
             $currency = $config->get('mshop/locale/currency', '');
-            $name = $config->get('typo3/param/name/currency', 'currency');
 
-            if ($request !== null && $request->hasArgument($name) === true) {
-                $currency = $request->getArgument($name);
+            if ($request !== null) {
+                $name = $config->get('typo3/param/name/site', 'site');
+                if ($request->hasArgument($name) === true) {
+                    $sitecode = $request->getArgument($name);
+                } else {
+                    $sitecode = $request->getAttribute('site')?->getSettings()->get('aimeos.site') ?? $sitecode;
+                }
+
+                $name = $config->get('typo3/param/name/language', 'locale');
+                if ($request->hasArgument($name) === true) {
+                    $lang = $request->getArgument($name);
+                } else {
+                    $lang = str_replace('-', '_', $request->getAttribute('language')?->getLocale() ?? $lang );
+                }
+
+                $name = $config->get('typo3/param/name/currency', 'currency');
+                if ($request->hasArgument($name) === true) {
+                    $currency = $request->getArgument($name);
+                } else {
+                    $currency = $request->getAttribute('language')?->toArray()['currency'] ?? $currency;
+                }
             }
 
 
