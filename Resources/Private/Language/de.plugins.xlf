@@ -150,6 +150,10 @@
 				<source>The TypoScript configuration is invalid</source>
 				<target>Die TypoScript Konfiguration ist ungültig</target>
 			</trans-unit>
+			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
+				<source>Start time</source>
+				<target>Startzeit</target>
+			</trans-unit>	
 		</body>
 	</file>
 </xliff>
