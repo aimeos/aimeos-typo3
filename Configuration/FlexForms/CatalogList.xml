@@ -165,6 +165,10 @@
                                 <numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-ctimedesc</numIndex>
                                 <numIndex index="1">-ctime</numIndex>
                             </numIndex>
+                             <numIndex index="7" type="array">
+                                <numIndex index="0">LLL:EXT:aimeos/Resources/Private/Language/plugins.xlf:catalog-list.sort-start</numIndex>
+                                <numIndex index="1">start</numIndex>
+                            </numIndex>
                         </items>
                         <size>10</size>
                         <maxitems>1</maxitems>
