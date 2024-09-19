@@ -182,6 +182,7 @@ AimeosCatalogFilter = {
 
 		$(".catalog-filter-search .value").each((idx, el) => {
 			const url = $(el).data("url");
+			let cache = {} // workaround for re-rendering on Swiffy slider animation
 
 			autocomplete({
 				input: el,
@@ -194,8 +195,16 @@ AimeosCatalogFilter = {
 						update(data);
 					});
 				},
-				render: function(item) {
-					return $(item.html.trim()).get(0);
+				render: function(item, value) {
+					if(!cache[value]) {
+						cache = {}; cache[value] = {};
+					}
+
+					if(!cache[value][item.label]) {
+						cache[value][item.label] = $(item.html.trim()).get(0);
+					}
+
+					return cache[value][item.label];
 				}
 			});
 		});
