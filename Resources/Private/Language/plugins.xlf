@@ -66,6 +66,9 @@
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
 			</trans-unit>
+			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
+				<source>Start time</source>
+			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
 			</trans-unit>
