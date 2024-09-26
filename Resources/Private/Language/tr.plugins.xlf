@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file datatype="plaintext" date="2015-04-04T14:18:19Z" original="messages" product-name="aimeos" source-language="en" target-language="tr">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:18:19Z" product-name="aimeos" target-language="tr">
 		<header/>
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
@@ -86,6 +86,9 @@
 				<source>Creation time (newest first)</source>
 				<target>Oluşturma tarihi (önce en yeni)</target>
 			</trans-unit>
+			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
+				<source>Start time</source>
+			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
 				<target>Katalog detay sayfası</target>
@@ -141,6 +144,9 @@
 			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
 				<source>Default supplier ID if no parameter is available</source>
 				<target>Hiçbir parametre mevcut değilse varsayılan tedarikçi kimlik numarası</target>
+			</trans-unit>
+			<trans-unit id="supplier-detail.target" xml:space="preserve">
+				<source>Supplier detail page</source>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>
