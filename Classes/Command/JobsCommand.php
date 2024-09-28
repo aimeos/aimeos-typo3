@@ -39,6 +39,7 @@ class JobsCommand extends Command
         $this->addArgument('jobs', InputArgument::REQUIRED, 'One or more job controller names like "admin/job customer/email/watch"');
         $this->addArgument('site', InputArgument::OPTIONAL, 'Site codes to execute the jobs for like "default unittest" (none for all)');
         $this->addOption('pid', null, InputOption::VALUE_REQUIRED, 'Page ID of the catalog detail page for jobs generating URLs');
+        $this->addOption('option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', []);
     }
 
 
@@ -93,6 +94,26 @@ class JobsCommand extends Command
 
 
     /**
+     * Adds the configuration options from the input object to the given context
+     *
+     * @param array|string $options Input object
+     * @param \Aimeos\MShop\ContextIface $ctx Context object
+     * @return array Associative list of key/value pairs of configuration options
+     */
+    protected function addConfig(\Aimeos\MShop\ContextIface $ctx, $options) : \Aimeos\MShop\ContextIface
+    {
+        $config = $ctx->config();
+
+        foreach ((array) $options as $option) {
+            list($name, $value) = explode(':', $option);
+            $config->set($name, $value);
+        }
+
+        return $ctx;
+    }
+
+
+    /**
      * Returns a context object
      *
      * @param string|null $pid Page ID if available
@@ -101,24 +122,24 @@ class JobsCommand extends Command
     protected function context(?string $pid) : \Aimeos\MShop\ContextIface
     {
         $aimeos = \Aimeos\Aimeos\Base::aimeos();
-        $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates');
-
         $config = \Aimeos\Aimeos\Base::config();
         $context = \Aimeos\Aimeos\Base::context($config);
 
+        $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates');
+        $view = \Aimeos\Aimeos\Base::view($context, $this->getRouter($pid), $tmplPaths);
+
         $langManager = \Aimeos\MShop::create($context, 'locale/language');
         $langids = $langManager->search($langManager->filter(true))->keys()->toArray();
-
         $i18n = \Aimeos\Aimeos\Base::i18n($langids, $config->get('i18n', []));
-        $context->setI18n($i18n);
-
-        $view = \Aimeos\Aimeos\Base::view($context, $this->getRouter($pid), $tmplPaths);
-        $context->setView($view);
 
         $context->setSession(new \Aimeos\Base\Session\None());
         $context->setCache(new \Aimeos\Base\Cache\None());
 
-        return $context->setEditor('aimeos:jobs');
+		$context->setEditor('aimeos:jobs');
+        $context->setI18n($i18n);
+        $context->setView($view);
+
+        return $this->addConfig( $context );
     }
 
 
