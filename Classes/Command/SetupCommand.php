@@ -33,7 +33,7 @@ class SetupCommand extends Command
         $this->setDescription('Initialize or update the Aimeos database tables');
         $this->addArgument('site', InputArgument::OPTIONAL, 'Site for updating database entries', 'default');
         $this->addArgument('tplsite', InputArgument::OPTIONAL, 'Template site for creating or updating database entries', 'default');
-        $this->addOption('option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', []);
+        $this->addOption('option', null, InputOption::VALUE_IS_ARRAY, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', []);
         $this->addOption('v', null, InputOption::VALUE_OPTIONAL, 'Verbosity level, "v", "vv" or "vvv"', 'vv');
         $this->addOption('q', null, InputOption::VALUE_NONE, 'Quiet mode without any output');
     }
