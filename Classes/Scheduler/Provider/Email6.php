@@ -39,7 +39,7 @@ class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProvid
         try {
             return $this->getFields($taskInfo, $task, $parentObject);
         } catch(\Exception $e) {
-            $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $this->addMessage($e->getMessage());
         }
 
         return [];
@@ -74,7 +74,7 @@ class Email6 extends Email implements \TYPO3\CMS\Scheduler\AdditionalFieldProvid
         try {
             return $this->validateFields($submittedData, $parentObject);
         } catch(\Exception $e) {
-            $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $this->addMessage($e->getMessage());
         }
 
         return false;

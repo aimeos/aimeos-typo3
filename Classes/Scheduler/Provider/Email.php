@@ -12,7 +12,6 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
 
 use Aimeos\Aimeos\Base;
 use Aimeos\Aimeos\Scheduler;
-use TYPO3\CMS\Scheduler\Task\Enumeration\Action;
 
 
 /**
@@ -53,7 +52,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldSenderFrom]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldSenderFrom]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom} ?? '';
         }
 
@@ -71,7 +70,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldSenderEmail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldSenderEmail]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail} ?? '';
         }
 
@@ -89,7 +88,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldReplyEmail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldReplyEmail]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail} ?? '';
         }
 
@@ -107,7 +106,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageCatalog]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldPageCatalog]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog} ?? '';
         }
 
@@ -125,7 +124,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageDetail]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldPageDetail]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail} ?? '';
         }
 
@@ -143,7 +142,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageDownload]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldPageDownload]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload} ?? '';
         }
 
@@ -161,7 +160,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageLogin]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldPageLogin]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin} ?? '';
         }
 

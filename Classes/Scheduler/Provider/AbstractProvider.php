@@ -12,7 +12,6 @@ namespace Aimeos\Aimeos\Scheduler\Provider;
 
 use Aimeos\Aimeos\Base;
 use Aimeos\Aimeos\Scheduler;
-use TYPO3\CMS\Scheduler\Task\Enumeration\Action;
 
 
 /**
@@ -48,7 +47,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
         $additionalFields = [];
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldController] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldController]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldController] = $task->{$this->fieldController} ?? [];
         }
 
@@ -67,7 +66,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if( empty( $taskInfo[$this->fieldSite] ) && $parentObject->getCurrentAction()->equals( Action::EDIT ) ) {
+        if (empty($taskInfo[$this->fieldSite]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldSite] = $task->{$this->fieldSite} ?? [];
         }
 
@@ -86,7 +85,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldTSconfig]) && $parentObject->getCurrentAction()->equals(Action::EDIT)) {
+        if (empty($taskInfo[$this->fieldTSconfig]) && $parentObject->getCurrentAction() === 'edit') {
             $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig} ?? '';
         }
 

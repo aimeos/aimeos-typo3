@@ -39,7 +39,7 @@ class Typo6 extends AbstractProvider implements \TYPO3\CMS\Scheduler\AdditionalF
         try {
             return $this->getFields($taskInfo, $task, $parentObject);
         } catch(\Exception $e) {
-            $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $this->addMessage($e->getMessage());
         }
 
         return [];
@@ -74,7 +74,7 @@ class Typo6 extends AbstractProvider implements \TYPO3\CMS\Scheduler\AdditionalF
         try {
             return $this->validateFields($submittedData, $parentObject);
         } catch(\Exception $e) {
-            $this->addMessage($e->getMessage(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $this->addMessage($e->getMessage());
         }
 
         return false;
