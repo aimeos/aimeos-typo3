@@ -25,7 +25,7 @@ class JqadmController extends AbstractController
      */
     protected function initializeAction()
     {
-        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeos');
+        $this->uriBuilder->setArgumentPrefix('');
     }
 
 
