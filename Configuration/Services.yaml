@@ -30,16 +30,16 @@ services:
         command: 'aimeos:setup'
         description: 'Creates or updates the database tables'
 
-  dashboard.widget.latestorders:
-    class: 'Aimeos\Aimeos\Widgets\LatestOrdersWidget'
-    arguments:
-      $view: '@dashboard.views.widget'
-    tags:
-      - name: dashboard.widget
-        identifier: 'aimeos-latestorders'
-        groupNames: 'general'
-        title: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.title'
-        description: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.description'
-        iconIdentifier: 'aimeos-widget-latestorders'
-        height: 'medium'
-        width: 'medium'
+#  dashboard.widget.latestorders:
+#    class: 'Aimeos\Aimeos\Widgets\LatestOrdersWidget'
+#    arguments:
+#      $view: '@dashboard.views.widget'
+#    tags:
+#      - name: dashboard.widget
+#        identifier: 'aimeos-latestorders'
+#        groupNames: 'general'
+#        title: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.title'
+#        description: 'LLL:EXT:aimeos/Resources/Private/Language/extension.xlf:widgets.dashboard.latestorder.description'
+#        iconIdentifier: 'aimeos-widget-latestorders'
+#        height: 'medium'
+#        width: 'medium'

@@ -65,6 +65,6 @@ class LatestOrdersWidget implements WidgetInterface
         $manager = \Aimeos\MShop::create($context, 'order');
         $filter = $manager->filter()->order('-order.id')->slice(0, 10);
 
-        return $manager->search($filter, ['order/base/address'])->toArray();
+        return $manager->search($filter, ['order/address'])->toArray();
     }
 }
