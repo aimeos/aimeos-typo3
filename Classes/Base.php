@@ -229,15 +229,9 @@ class Base
      */
     public static function parseTS(string $tsString) : array
     {
-        $parser = GeneralUtility::makeInstance('TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser');
-        $parser->parse(TypoScriptParser::checkIncludeLines($tsString));
-
-        if (!empty($parser->errors)) {
-            throw new \InvalidArgumentException('Invalid TypoScript: \"' . $tsString . "\"\n" . print_r($parser->errors, true));
-        }
-
-        $service = GeneralUtility::makeInstance('TYPO3\CMS\Core\TypoScript\TypoScriptService');
-        $tsConfig = $service->convertTypoScriptArrayToPlainArray($parser->setup);
+        $parser = GeneralUtility::makeInstance(\TYPO3\CMS\Core\TypoScript\TypoScriptStringFactory::class);
+        $ast = new \TYPO3\CMS\Core\TypoScript\AST\AstBuilder(new \TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher());
+        $tsConfig = GeneralUtility::removeDotsFromTS($parser->parseFromString($tsString, $ast)->toArray());
 
         // Allows "plugin.tx_aimeos.settings." prefix everywhere
         if (isset($tsConfig['plugin']['tx_aimeos']['settings'])
