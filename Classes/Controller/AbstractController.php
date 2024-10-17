@@ -176,11 +176,11 @@ abstract class AbstractController
     /**
      * Initializes the object before the real action is called.
      */
-    protected function initializeAction()
+    protected function initializeAction() : void
     {
         $this->uriBuilder->setArgumentPrefix('ai');
 
-        $ce = $this->configurationManager->getContentObject();
+        $ce = $this->request->getAttribute('currentContentObject');
         $this->ceUid = $ce->data['uid'] ?? null;
     }
 }

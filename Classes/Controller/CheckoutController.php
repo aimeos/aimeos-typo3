@@ -41,7 +41,7 @@ class CheckoutController extends AbstractController
         $client = \Aimeos\Client\Html::create($context, 'checkout/confirm');
 
         $view = $context->view();
-        $param = array_merge(GeneralUtility::_GET(), GeneralUtility::_POST());
+        $param = array_merge($this->request->getQueryParams() ?? [], $this->request->getParsedBody() ?? []);
         $helper = new \Aimeos\Base\View\Helper\Param\Standard($view, $param);
         $view->addHelper('param', $helper);
 
@@ -49,12 +49,6 @@ class CheckoutController extends AbstractController
 
         $header = (string) $client->header();
         $html = (string) $client->body();
-
-        if (!isset($this->responseFactory)) // TYPO3 10
-        {
-            $this->response->addAdditionalHeaderData($header);
-            return $html;
-        }
 
         GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class)->addHeaderData($header);
 
@@ -74,7 +68,7 @@ class CheckoutController extends AbstractController
             $client = \Aimeos\Client\Html::create($context, 'checkout/update');
 
             $view = $context->view();
-            $param = array_merge(GeneralUtility::_GET(), GeneralUtility::_POST());
+            $param = array_merge($this->request->getQueryParams() ?? [], $this->request->getParsedBody() ?? []);
             $helper = new \Aimeos\Base\View\Helper\Param\Standard($view, $param);
             $view->addHelper('param', $helper);
 
@@ -83,23 +77,11 @@ class CheckoutController extends AbstractController
             $header = (string) $client->header();
             $html = (string) $client->body();
 
-            if (!isset($this->responseFactory)) // TYPO3 10
-            {
-                $this->response->addAdditionalHeaderData($header);
-                return $html;
-            }
-
             GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class)->addHeaderData($header);
 
             return $this->responseFactory->createResponse()
                 ->withBody($this->streamFactory->createStream($html));
         } catch(\Exception $e) {
-            if (!isset($this->responseFactory)) // TYPO3 10
-            {
-                @header('HTTP/1.1 500 Internal server error', true, 500);
-                return 'Error: ' . $e->getMessage();
-            }
-
             return $this->responseFactory->createResponse()->withStatus(500)
                 ->withBody($this->streamFactory->createStream('Error: ' . $e->getMessage()));
         }
