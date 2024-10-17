@@ -58,7 +58,7 @@ class View
         self::addParam($view, $request);
         self::addConfig($view, $config);
         self::addDate($view, $config, $locale);
-        self::addFormparam($view, [$prefix]);
+        self::addFormparam($view, $prefix ? [$prefix] : []);
         self::addNumber($view, $config, $locale);
         self::addUrl($view, $config, $uriBuilder, $request);
         self::addSession($view, $session);

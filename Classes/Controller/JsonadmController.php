@@ -26,7 +26,7 @@ class JsonadmController extends AbstractController
      */
     protected function initializeAction() : void
     {
-        $this->uriBuilder->setArgumentPrefix('tx_aimeos_web_aimeos');
+        $this->uriBuilder->setArgumentPrefix('');
     }
 
 
