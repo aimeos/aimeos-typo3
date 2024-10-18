@@ -193,6 +193,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
                     $str = $row[1];
 
                     $str = str_replace('"', '`', $str);
+                    $str = preg_replace('/DEFAULT \(NULL\),/', 'DEFAULT NULL,', $str);
                     $str = preg_replace('/CONSTRAINT `[a-zA-Z0-9_-]+` /', '', $str);
                     $str = preg_replace('/ DEFAULT CHARSET=[^ ;]+/', '', $str);
                     $str = preg_replace('/ COLLATE=[^ ;]+/', '', $str);
