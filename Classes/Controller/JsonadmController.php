@@ -26,7 +26,9 @@ class JsonadmController extends AbstractController
      */
     protected function initializeAction() : void
     {
-        $this->uriBuilder->setArgumentPrefix('');
+        // workaround for TYPO3 v12/v13 differences
+        $prefix = (new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 13 ? 'tx_aimeos_web_aimeos' : '';
+        $this->uriBuilder->setArgumentPrefix($prefix);
     }
 
 

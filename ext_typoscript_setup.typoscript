@@ -1,3 +1,7 @@
+module.tx_aimeos {
+    features.enableNamespacedArgumentsForBackend = 1
+}
+
 module.tx_dashboard {
   view {
     templateRootPaths {
