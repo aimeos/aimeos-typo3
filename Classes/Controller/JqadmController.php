@@ -21,17 +21,6 @@ use Aimeos\Aimeos\Base;
 class JqadmController extends AbstractController
 {
     /**
-     * Initializes the object before the real action is called.
-     */
-    protected function initializeAction() : void
-    {
-        // workaround for TYPO3 v12/v13 differences
-        $prefix = (new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 13 ? 'tx_aimeos_web_aimeos' : '';
-        $this->uriBuilder->setArgumentPrefix($prefix);
-    }
-
-
-    /**
      * Returns the CSS/JS file content
      *
      * @return string CSS/JS files content
@@ -230,7 +219,8 @@ class JqadmController extends AbstractController
      */
     protected function createAdmin() : \Aimeos\Admin\JQAdm\Iface
     {
-        $resource = $this->request->hasArgument('resource') ? $this->request->getArgument('resource') : 'dashboard';
+        $params = $this->request->getArguments();
+        $resource = $params['ai']['resource'] ?? 'dashboard';
 
         $aimeos = Base::aimeos();
         $context = $this->contextBackend('admin/jqadm/templates');
@@ -252,11 +242,9 @@ class JqadmController extends AbstractController
      */
     protected function render()
     {
-        if (isset($this->responseFactory)) { // TYPO3 11
-            return $this->responseFactory->createResponse()
-                ->withAddedHeader('Content-Type', 'text/html; charset=utf-8')
-                ->withBody($this->streamFactory->createStream($this->view->render()));
-        }
+        return $this->responseFactory->createResponse()
+            ->withAddedHeader('Content-Type', 'text/html; charset=utf-8')
+            ->withBody($this->streamFactory->createStream($this->view->render()));
     }
 
 
@@ -267,7 +255,10 @@ class JqadmController extends AbstractController
      */
     protected function resolveView() : \TYPO3Fluid\Fluid\View\ViewInterface
     {
-        if ($this->request->hasArgument('locale') && ($value = $this->request->getArgument('locale')) != '') {
+        $params = $this->request->getArguments();
+        $value = $params['ai']['locale'] ?? '';
+
+        if ($value) {
             $lang = $value;
         } elseif (($GLOBALS['BE_USER']->user['lang'] ?? '') != 'default') {
             $lang = $GLOBALS['BE_USER']->user['lang'];

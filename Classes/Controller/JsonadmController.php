@@ -22,24 +22,14 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 class JsonadmController extends AbstractController
 {
     /**
-     * Initializes the object before the real action is called.
-     */
-    protected function initializeAction() : void
-    {
-        // workaround for TYPO3 v12/v13 differences
-        $prefix = (new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 13 ? 'tx_aimeos_web_aimeos' : '';
-        $this->uriBuilder->setArgumentPrefix($prefix);
-    }
-
-
-    /**
      * Dispatches the REST API requests
      *
      * @return string Generated output
      */
     public function indexAction()
     {
-        $resource = $this->request->hasArgument('resource') ? $this->request->getArgument('resource') : '';
+        $params = $this->request->getArguments();
+        $resource = $params['ai']['resource'] ?? '';
 
         switch ($this->request->getMethod()) {
             case 'DELETE': return $this->deleteAction($resource);
