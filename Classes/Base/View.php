@@ -348,7 +348,7 @@ class View
 
         $fixed = [];
 
-        if ($request) {
+        if ($request && $request->getAttribute('applicationType') === 1) { // for frontend requests only
             $name = $config->get('typo3/param/name/site', 'site');
 
             if ($request !== null && $request->hasArgument($name) === true) {
