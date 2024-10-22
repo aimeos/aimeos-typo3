@@ -14,7 +14,7 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"php": "^8.0.10",
+		"php": "^8.1",
 		"composer-runtime-api": "^2.1",
 		"typo3/cms-core": "^12.4.11||^13.4",
 		"typo3/cms-backend": "^12.4.11||^13.4",
