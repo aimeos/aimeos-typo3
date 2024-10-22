@@ -27,6 +27,9 @@ AimeosAccountHistory = {
 	 * Initializes the account history actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onToggleDetail();
 	}
 };

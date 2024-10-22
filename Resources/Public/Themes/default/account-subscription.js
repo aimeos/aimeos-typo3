@@ -27,6 +27,9 @@ AimeosAccountSubscription = {
 	 * Initializes the account subscription actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onToggleDetail();
 	}
 };

@@ -382,6 +382,9 @@ AimeosCatalogDetail = {
 	 * Initializes the catalog detail actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onOpenLightbox();
 		this.onSelectThumbnail();
 

@@ -156,6 +156,9 @@ AimeosCatalogLists = {
 	 * Initializes the catalog list actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.setPinned();
 		this.onAddBasket();
 		this.onScroll();

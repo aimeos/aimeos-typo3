@@ -37,6 +37,9 @@ AimeosAccountFavorite = {
 	 * Initializes the account favorite actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onRemoveProduct();
 	}
 };

@@ -19,6 +19,9 @@ AimeosLocaleSelect = {
 	 * Initializes the locale selector actions
 	 */
 	init: function() {
+		if(this.once) return;
+		this.once = true;
+
 		this.setupMenuToggle();
 	}
 };

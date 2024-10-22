@@ -10,13 +10,13 @@ AimeosAccountProfile = {
 
 		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
 			el.addEventListener("show.bs.collapse", ev => {
-				$("input,select", ev.currentTarget).prop("disabled", false);
+				$(".form-item.mandatory input, .form-item.mandatory select, .form-item.optional input, .form-item.optional select", ev.currentTarget).prop("disabled", false);
 			});
 		});
 
 		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
 			el.addEventListener("hidden.bs.collapse", ev => {
-				$("input,select", ev.currentTarget).prop("disabled", true);
+				$(".form-item input, .form-item select", ev.currentTarget).prop("disabled", true);
 			});
 		});
 	},
@@ -45,6 +45,9 @@ AimeosAccountProfile = {
 	 * Initializes the account watch actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onAddress();
 		this.onAddressToggle();
 	}

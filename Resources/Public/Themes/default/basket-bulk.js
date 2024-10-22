@@ -256,6 +256,9 @@ AimeosBasketBulk = {
 	 * Initializes the basket bulk actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.setup();
 		this.onDelete();
 	}

@@ -120,6 +120,9 @@ AimeosBasketMini = {
 	 * Initializes the basket mini actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onDelete();
 		this.onShowBasket();
 		this.onHideBasket();

@@ -68,6 +68,9 @@ AimeosBasketStandard = {
 	 * Initializes the basket standard actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onChange();
 		this.onSubmit();
 		this.onQuantity();

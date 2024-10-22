@@ -179,6 +179,10 @@ Aimeos = {
 	 * Initializes the setup methods
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
+		this.loadImages();
 		this.onCloseContainer();
 	}
 };
@@ -264,6 +268,9 @@ AimeosBasket = {
 	 * Initializes the basket actions
 	 */
 	init: function() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onBack();
 	}
 };
@@ -605,6 +612,9 @@ AimeosBasket = {
 	 * Initializes the common catalog actions
 	 */
 	init: function() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onSelectDependencies();
 		this.onSelectVariant();
 		this.onCheckVariant();
@@ -692,6 +702,9 @@ AimeosPage = {
 	 * Initializes the menu actions
 	 */
 	init: function() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onLinkTop();
 		this.onMenuScroll();
 		this.onHideOffscreen();
@@ -710,6 +723,5 @@ $(function() {
 	Aimeos.init();
 	AimeosPage.init();
 	AimeosCatalog.init();
-
-	Aimeos.loadImages();
+	AimeosBasket.init();
 });

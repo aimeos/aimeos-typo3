@@ -471,6 +471,9 @@ AimeosCatalogFilter = {
 	 * Initialize the catalog filter actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onMenuHover();
 
 		this.onShowCategories();

@@ -27,6 +27,9 @@ AimeosAccountBasket = {
 	 * Initializes the account basket actions
 	 */
 	init() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onToggleDetail();
 	}
 };

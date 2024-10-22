@@ -60,6 +60,9 @@ AimeosCatalogSession = {
 	 * Initializes the catalog session actions
 	 */
 	init: function() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onRemovePinned();
 		this.onTogglePinned();
 		this.onToggleSeen();

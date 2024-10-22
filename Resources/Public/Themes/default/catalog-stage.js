@@ -20,6 +20,9 @@
 	 * Initializes the catalog session actions
 	 */
 	init: function() {
+		if(this.once) return;
+		this.once = true;
+
 		this.onBack();
 	}
 };
