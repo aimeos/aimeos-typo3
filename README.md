@@ -91,8 +91,6 @@ composer req bk2k/bootstrap-package
 
 Finally, depending on your TYPO3 version, run the following commands from your installation directory:
 
-**For TYPO3 11+:**
-
 ```bash
 php ./vendor/bin/typo3 extension:setup
 php ./vendor/bin/typo3 aimeos:setup --option=setup/default/demo:1
@@ -100,16 +98,7 @@ php ./vendor/bin/typo3 aimeos:setup --option=setup/default/demo:1
 
 If you don't want to add the Aimeos demo data, you should remove `--option=setup/default/demo:1` from the Aimeos setup command.
 
-**For TYPO3 10:**
-
-```bash
-php ./vendor/bin/typo3 extension:activate scheduler
-php ./vendor/bin/typo3 extension:activate aimeos
-```
-
 If you experience any errors with the database, please check the [Database Setup](#database-setup) section below.
-
-Please keep on reading below the "TER Extension" installation section!
 
 ### DDev
 
