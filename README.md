@@ -38,10 +38,10 @@ and customize anything to your needs.
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **22.10 release and later**.
+This document is for the latest Aimeos TYPO3 **23.10 release and later**.
 
-- LTS release: 23.10 (TYPO3 12 LTS)
-- Old LTS release: 22.10 (TYPO3 11 LTS)
+- LTS release: 24.10 (TYPO3 12/13 LTS)
+- Old LTS release: 23.10 (TYPO3 12 LTS)
 
 ### Composer
 
@@ -58,7 +58,7 @@ To install the TYPO3 base distribution first, execute this command:
 ```bash
 composer create-project typo3/cms-base-distribution myshop
 # or install a specific TYPO3 version:
-composer create-project "typo3/cms-base-distribution:^12" myshop
+composer create-project "typo3/cms-base-distribution:^13" myshop
 ```
 
 It will install TYPO3 into the `./myshop/` directory. Change into the directory and install TYPO3 as usual:
@@ -71,7 +71,7 @@ touch public/FIRST_INSTALL
 Open the TYPO3 URL in your browser and follow the setup steps. Afterwards, install the Aimeos extension using:
 
 ```bash
-composer req -W aimeos/aimeos-typo3:~23.7
+composer req -W aimeos/aimeos-typo3:~24.10
 ```
 
 If composer complains that one or more packages can't be installed because the required minimum stability isn't met, add this to your `composer.json`:
@@ -148,30 +148,6 @@ touch public/FIRST_INSTALL
 
 Open the URL of your installation in the browser and follow the steps in the TYPO3 setup scripts.
 
-### Database Setup
-
-If you use MySQL < 5.7.8, you have to use `utf8` and `utf8_unicode_ci` instead because those MySQL versions can't handle the long indexes created by `utf8mb4` (up to four bytes per character) and you will get errors like
-
-```
-1071 Specified key was too long; max key length is 767 bytes
-```
-
-To avoid that, change your database settings in your `./typo3conf/LocalConfiguration.php` to:
-
-```php
-    'DB' => [
-        'Connections' => [
-            'Default' => [
-                'tableoptions' => [
-                    'charset' => 'utf8',
-                    'collate' => 'utf8_unicode_ci',
-                ],
-                // ...
-            ],
-        ],
-    ],
-```
-
 ### Security
 
 Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts when browsers send cookies to your site. This is a problem when customers are redirected from external payment provider domain. Then, there's no session available on the confirmation page. To circumvent that problem, you need to set the configuration option `cookieSameSite` to `none` in your `./typo3conf/LocalConfiguration.php`:
@@ -192,9 +168,8 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 The page setup for an Aimeos web shop is easy, if you import the example page tree for TYPO3 10/11. You can download the version you need from here:
 
-* [24.4+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2024.04.t3d) and later
+* [24.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2024.10.t3d) and later
 * [23.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2023.04.t3d)
-* [22.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2022.10.t3d)
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
 
