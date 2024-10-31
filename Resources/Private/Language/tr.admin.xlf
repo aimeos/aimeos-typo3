@@ -142,9 +142,11 @@
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
 				<source>Saved baskets</source>
+				<target>Kaydedilen sepetler</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
 				<source>List of saved baskets by the user</source>
+				<target>Kullanıcı tarafından kaydedilen sepetlerin listesi</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
