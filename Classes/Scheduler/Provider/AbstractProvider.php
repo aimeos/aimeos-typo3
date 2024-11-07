@@ -45,9 +45,10 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
     protected function getFields(array &$taskInfo, $task, $parentObject)
     {
         $additionalFields = [];
+        $edit = (string) $parentObject->getCurrentAction() === 'edit';
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldController]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldController])) {
             $taskInfo[$this->fieldController] = $task->{$this->fieldController} ?? [];
         }
 
@@ -66,7 +67,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldSite]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldSite])) {
             $taskInfo[$this->fieldSite] = $task->{$this->fieldSite} ?? [];
         }
 
