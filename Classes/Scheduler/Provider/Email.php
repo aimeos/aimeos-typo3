@@ -49,10 +49,11 @@ abstract class Email extends AbstractProvider
     protected function getFields(array &$taskInfo, $task, $parentObject)
     {
         $additionalFields = [];
+        $edit = (string) $parentObject->getCurrentAction() === 'edit';
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldSenderFrom]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldSenderFrom])) {
             $taskInfo[$this->fieldSenderFrom] = $task->{$this->fieldSenderFrom} ?? '';
         }
 
@@ -70,7 +71,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldSenderEmail]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldSenderEmail])) {
             $taskInfo[$this->fieldSenderEmail] = $task->{$this->fieldSenderEmail} ?? '';
         }
 
@@ -88,7 +89,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldReplyEmail]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldReplyEmail])) {
             $taskInfo[$this->fieldReplyEmail] = $task->{$this->fieldReplyEmail} ?? '';
         }
 
@@ -106,7 +107,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageCatalog]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldPageCatalog])) {
             $taskInfo[$this->fieldPageCatalog] = $task->{$this->fieldPageCatalog} ?? '';
         }
 
@@ -124,7 +125,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageDetail]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldPageDetail])) {
             $taskInfo[$this->fieldPageDetail] = $task->{$this->fieldPageDetail} ?? '';
         }
 
@@ -142,7 +143,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageDownload]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldPageDownload])) {
             $taskInfo[$this->fieldPageDownload] = $task->{$this->fieldPageDownload} ?? '';
         }
 
@@ -160,7 +161,7 @@ abstract class Email extends AbstractProvider
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldPageLogin]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldPageLogin])) {
             $taskInfo[$this->fieldPageLogin] = $task->{$this->fieldPageLogin} ?? '';
         }
 
