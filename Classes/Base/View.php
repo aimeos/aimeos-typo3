@@ -375,7 +375,7 @@ class View
         if ($uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder) {
             $url = new \Aimeos\Base\View\Helper\Url\Typo3($view, $uriBuilder->setTargetPageUid( $pageId ), $fixed);
         } elseif ($uriBuilder instanceof \TYPO3\CMS\Core\Routing\RouterInterface) {
-            $url = new \Aimeos\Base\View\Helper\Url\T3Router($view, $uriBuilder->setTargetPageUid( $pageId ), $fixed);
+            $url = new \Aimeos\Base\View\Helper\Url\T3Router($view, $uriBuilder, $fixed, $pageId);
         } else {
             throw new \RuntimeException('No router for generating URLs available');
         }
