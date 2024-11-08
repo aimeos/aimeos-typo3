@@ -93,16 +93,16 @@ class View
 
         if ($appType && $appType->isBackend()) {
             if ($t3context->getPropertyFromAspect('backend.user', 'isAdmin', false) === false) {
-                $ids = $t3context->getPropertyFromAspect('backend.user', 'getGroupIds', []);
-                $names = $t3context->getPropertyFromAspect('backend.user', 'getGroupNames', []);
+                $ids = $t3context->getPropertyFromAspect('backend.user', 'groupIds', []);
+                $names = $t3context->getPropertyFromAspect('backend.user', 'groupNames', []);
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, array_combine($ids, $names));
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\All($view);
             }
         } else {
             if ($t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn', false)) {
-                $ids = $t3context->getPropertyFromAspect('frontend.user', 'getGroupIds', []);
-                $names = $t3context->getPropertyFromAspect('frontend.user', 'getGroupNames', []);
+                $ids = $t3context->getPropertyFromAspect('frontend.user', 'groupIds', []);
+                $names = $t3context->getPropertyFromAspect('frontend.user', 'groupNames', []);
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, array_combine($ids, $names));
             } else {
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, []);
