@@ -86,7 +86,7 @@ abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalF
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
-        if (empty($taskInfo[$this->fieldTSconfig]) && $parentObject->getCurrentAction() === 'edit') {
+        if ($edit && empty($taskInfo[$this->fieldTSconfig])) {
             $taskInfo[$this->fieldTSconfig] = $task->{$this->fieldTSconfig} ?? '';
         }
 
