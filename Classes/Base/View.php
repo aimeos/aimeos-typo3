@@ -93,7 +93,7 @@ class View
 
         if ($appType && $appType->isBackend()) {
             if ($t3context->getPropertyFromAspect('backend.user', 'isAdmin', false) === false) {
-                $ids = $t3context->getPropertyFromAspect('backend.user', 'groupIds', []);
+                $ids = array_filter($t3context->getPropertyFromAspect('backend.user', 'groupIds', []), fn ($id) => $id > 0);
                 $names = $t3context->getPropertyFromAspect('backend.user', 'groupNames', []);
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, array_combine($ids, $names));
             } else {
@@ -101,7 +101,7 @@ class View
             }
         } else {
             if ($t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn', false)) {
-                $ids = $t3context->getPropertyFromAspect('frontend.user', 'groupIds', []);
+                $ids = array_filter($t3context->getPropertyFromAspect('frontend.user', 'groupIds', []), fn ($id) => $id > 0);
                 $names = $t3context->getPropertyFromAspect('frontend.user', 'groupNames', []);
                 $helper = new \Aimeos\Base\View\Helper\Access\Standard($view, array_combine($ids, $names));
             } else {
@@ -347,6 +347,7 @@ class View
         }
 
         $fixed = [];
+        $pageId = 0;
 
         if ($request && $request->getAttribute('applicationType') === 1) { // for frontend requests only
             $name = $config->get('typo3/param/name/site', 'site');
@@ -368,9 +369,9 @@ class View
             if ($request !== null && $request->hasArgument($name) === true) {
                 $fixed[$name] = $request->getArgument($name);
             }
-        }
 
-        $pageId = $request ? $request->getAttribute('routing')->getPageId() : 0;
+            $pageId = $request->getAttribute('routing')->getPageId();
+        }
 
         if ($uriBuilder instanceof \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder) {
             $url = new \Aimeos\Base\View\Helper\Url\Typo3($view, $uriBuilder->setTargetPageUid( $pageId ), $fixed);
