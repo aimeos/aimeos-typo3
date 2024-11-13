@@ -31,7 +31,7 @@ class View
      * @return \Aimeos\Base\View\Iface View object
      */
     public static function get(\Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $locale = null) : \Aimeos\Base\View\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, ?string $locale = null) : \Aimeos\Base\View\Iface
     {
         $configManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         $config = $configManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FRAMEWORK);
@@ -147,7 +147,7 @@ class View
      * @return \Aimeos\Base\View\Iface Modified view object
      */
     protected static function addDate(\Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config,
-        string $locale = null) : \Aimeos\Base\View\Iface
+        ?string $locale = null) : \Aimeos\Base\View\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_date']))
@@ -195,7 +195,7 @@ class View
      * @return \Aimeos\Base\View\Iface Modified view object
      */
     protected static function addNumber(\Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config,
-        string $locale = null) : \Aimeos\Base\View\Iface
+        ?string $locale = null) : \Aimeos\Base\View\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_number']))
@@ -306,7 +306,7 @@ class View
      * @param array $local Local translations
      * @return \Aimeos\Base\View\Iface Modified view object
      */
-    protected static function addTranslate(\Aimeos\Base\View\Iface $view, string $langid = null, array $local) : \Aimeos\Base\View\Iface
+    protected static function addTranslate(\Aimeos\Base\View\Iface $view, ?string $langid, array $local) : \Aimeos\Base\View\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_translate']))
