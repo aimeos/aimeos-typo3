@@ -61,7 +61,7 @@ class JsonapiController extends AbstractController
      * @param string|null Related resource, e.g. "product"
      * @return string Generated output
      */
-    public function deleteAction(string $resource, string $related = null)
+    public function deleteAction(string $resource, ?string $related = null)
     {
         $response = $this->createClient($resource, $related)->delete($this->getPsrRequest(), (new Psr17Factory)->createResponse());
         return $this->setPsrResponse($response);
@@ -75,7 +75,7 @@ class JsonapiController extends AbstractController
      * @param string|null Related resource, e.g. "product"
      * @return string Generated output
      */
-    public function getAction(string $resource, string $related = null)
+    public function getAction(string $resource, ?string $related = null)
     {
         $response = $this->createClient($resource, $related)->get($this->getPsrRequest(), (new Psr17Factory)->createResponse());
         return $this->setPsrResponse($response);
@@ -89,7 +89,7 @@ class JsonapiController extends AbstractController
      * @param string|null Related resource, e.g. "product"
      * @return string Generated output
      */
-    public function patchAction(string $resource, string $related = null)
+    public function patchAction(string $resource, ?string $related = null)
     {
         $response = $this->createClient($resource, $related)->patch($this->getPsrRequest(), (new Psr17Factory)->createResponse());
         return $this->setPsrResponse($response);
@@ -103,7 +103,7 @@ class JsonapiController extends AbstractController
      * @param string|null Related resource, e.g. "product"
      * @return string Generated output
      */
-    public function postAction(string $resource, string $related = null)
+    public function postAction(string $resource, ?string $related = null)
     {
         $response = $this->createClient($resource, $related)->post($this->getPsrRequest(), (new Psr17Factory)->createResponse());
         return $this->setPsrResponse($response);
@@ -117,7 +117,7 @@ class JsonapiController extends AbstractController
      * @param string|null Related resource, e.g. "product"
      * @return string Generated output
      */
-    public function putAction(string $resource, string $related = null)
+    public function putAction(string $resource, ?string $related = null)
     {
         $response = $this->createClient($resource, $related)->put($this->getPsrRequest(), (new Psr17Factory)->createResponse());
         return $this->setPsrResponse($response);
@@ -144,7 +144,7 @@ class JsonapiController extends AbstractController
      * @param string|null Related resource, e.g. "product"
      * @return \Aimeos\Client\JsonApi\Iface Jsonapi client
      */
-    protected function createClient(string $resource, string $related = null) : \Aimeos\Client\JsonApi\Iface
+    protected function createClient(string $resource, ?string $related = null) : \Aimeos\Client\JsonApi\Iface
     {
         $context = $this->context('client/jsonapi/templates');
         return \Aimeos\Client\JsonApi::create($context, $resource . '/' . $related);

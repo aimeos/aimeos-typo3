@@ -206,7 +206,7 @@ class Base
      * @return \Aimeos\Base\View\Iface View object
      */
     public static function view(\Aimeos\MShop\ContextIface $context, $uriBuilder, array $templatePaths,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, string $langid = null) : \Aimeos\Base\View\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null, ?string $langid = null) : \Aimeos\Base\View\Iface
     {
         $name = 'Aimeos\Aimeos\Base\View';
 
