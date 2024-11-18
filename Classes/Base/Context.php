@@ -340,7 +340,7 @@ class Context
             $context->setGroups(function() use ( $context, $groupids ) {
 
                 $manager = \Aimeos\MShop::create( $context, 'group' );
-                $filter = $manager->filter( true )->add( 'group.id', '==', $groupIds );
+                $filter = $manager->filter( true )->add( 'group.id', '==', $groupids );
 
                 return $manager->search( $filter )->col( 'group.code', 'group.id' )->all();
             });
