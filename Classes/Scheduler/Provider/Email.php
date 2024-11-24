@@ -49,7 +49,8 @@ abstract class Email extends AbstractProvider
     protected function getFields(array &$taskInfo, $task, $parentObject)
     {
         $additionalFields = [];
-        $edit = (string) $parentObject->getCurrentAction() === 'edit';
+        $action = $parentObject->getCurrentAction();
+        $edit = ( $action instanceof \BackedEnum ? $action->value : (string) $action ) === 'edit';
 
 
         // In case of editing a task, set to the internal value if data wasn't already submitted
