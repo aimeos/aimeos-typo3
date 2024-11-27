@@ -334,7 +334,7 @@ class Context
             $names = $t3context->getPropertyFromAspect('frontend.user', 'groupNames', []);
             $ids = array_filter($t3context->getPropertyFromAspect('frontend.user', 'groupIds', []), fn ($id) => $id > 0);
 
-            $context->setGroups(array_combine($ids, $names));
+            $context->setGroups(array_combine($names, $ids));
             $context->setUser(function() use ($context, $userid) {
                 return \Aimeos\MShop::create($context, 'customer')->get($userid);
             });
@@ -347,7 +347,7 @@ class Context
             $ids = array_filter($t3context->getPropertyFromAspect('backend.user', 'groupIds', []), fn ($id) => $id > 0);
             $names = $t3context->getPropertyFromAspect('backend.user', 'groupNames', []);
 
-            $context->setGroups(array_combine($ids, $names));
+            $context->setGroups(array_combine($names, $ids));
             $context->setEditor($t3context->getPropertyFromAspect('backend.user', 'username', ''));
 
         } else {
