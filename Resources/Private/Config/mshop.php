@@ -20,6 +20,11 @@ return [
 			'name' => 'Typo3',
 		],
 	],
+	'group' => [
+		'manager' => [
+			'name' => 'Typo3',
+		],
+	],
 	'index' => [
 		'manager' => [
 			'name' => $manager,
