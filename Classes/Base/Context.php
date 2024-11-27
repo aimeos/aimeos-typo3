@@ -331,18 +331,12 @@ class Context
         if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
 
             $userid = $t3context->getPropertyFromAspect('frontend.user', 'id');
-            $groupids = $t3context->getPropertyFromAspect('frontend.user', 'getGroupIds', []);
+            $names = $t3context->getPropertyFromAspect('frontend.user', 'groupNames', []);
+            $ids = array_filter($t3context->getPropertyFromAspect('frontend.user', 'groupIds', []), fn ($id) => $id > 0);
 
-            $context->setUser(function() use ( $context, $userid ) {
-                return \Aimeos\MShop::create( $context, 'customer' )->get( $userid );
-            });
-
-            $context->setGroups(function() use ( $context, $groupids ) {
-
-                $manager = \Aimeos\MShop::create( $context, 'group' );
-                $filter = $manager->filter( true )->add( 'group.id', '==', $groupids );
-
-                return $manager->search( $filter )->col( 'group.code', 'group.id' )->all();
+            $context->setGroups(array_combine($ids, $names));
+            $context->setUser(function() use ($context, $userid) {
+                return \Aimeos\MShop::create($context, 'customer')->get($userid);
             });
 
             $ipaddr = (string) GeneralUtility::getIndpEnv('REMOTE_ADDR');
@@ -350,13 +344,13 @@ class Context
 
         } elseif ($appType && $appType->isBackend()) {
 
-            $ids = $t3context->getPropertyFromAspect('backend.user', 'getGroupIds', []);
-            $names = $t3context->getPropertyFromAspect('backend.user', 'getGroupNames', []);
+            $ids = array_filter($t3context->getPropertyFromAspect('backend.user', 'groupIds', []), fn ($id) => $id > 0);
+            $names = $t3context->getPropertyFromAspect('backend.user', 'groupNames', []);
 
-            $context->setEditor($t3context->getPropertyFromAspect('backend.user', 'username', ''));
             $context->setGroups(array_combine($ids, $names));
-        } else
-        {
+            $context->setEditor($t3context->getPropertyFromAspect('backend.user', 'username', ''));
+
+        } else {
             $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));
         }
 
