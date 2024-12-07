@@ -1,0 +1,20 @@
+page = PAGE
+page {
+    typeNum = 0
+    headerData >
+    config {
+        disableAllHeaderCode = 1
+        disableCharsetHeader = 1
+        disablePrefixComment = 1
+    }
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.languageField = sys_language_uid
+        renderObj =< tt_content
+        renderObj {
+            list.templateRootPaths.5 = EXT:aimeos/Resources/Private/Templates/Fluid
+        }
+    }
+}
