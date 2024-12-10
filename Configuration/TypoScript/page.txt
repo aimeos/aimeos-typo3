@@ -1,3 +1,4 @@
+page >
 page = PAGE
 page {
     typeNum = 0
