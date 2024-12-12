@@ -43,6 +43,7 @@ AimeosCatalogLists = {
 
 		$(document).on("click", ".catalog-list-items .product .btn-action", ev => {
 			const target = $(ev.currentTarget).closest(".product");
+			ev.preventDefault();
 
 			Aimeos.createOverlay();
 
@@ -58,16 +59,18 @@ AimeosCatalogLists = {
 				});
 
 				node.on("click", ".btn-action", (ev) => {
-					this.showBasket($(ev.currentTarget).closest("form.basket")[0]);
-					return false;
+					if(AimeosCatalog.checkVariants(ev.currentTarget)) {
+						this.showBasket($(ev.currentTarget).closest("form.basket")[0]);
+					}
+					ev.stopPropagation();
+					ev.preventDefault();
 				});
 
 				Aimeos.createContainer($('<div class="catalog-list catalog-list-items list">').append(node));
-				return false;
+				return;
 			}
 
 			this.showBasket($("form.basket", target)[0]);
-			return false;
 		});
 	},
 

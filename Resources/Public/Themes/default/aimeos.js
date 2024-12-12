@@ -282,6 +282,29 @@ AimeosBasket = {
  AimeosCatalog = {
 
 	/**
+	 * Checks if all selection variants have been choosen
+	 *
+	 * @param {DOMNode} node
+	 * @returns TRUE if selection is complete, FALSE if not
+	 */
+	checkVariants(node) {
+		let result = true;
+
+		$(".items-selection .selection[data-attrdeps] .select-item", $(node).closest(".basket")).each((idx, el) => {
+
+			if($(".select-list", el).val() !== '' || $(".select-option:checked", el).length > 0) {
+				$(el).removeClass("error");
+			} else {
+				$(el).addClass("error");
+				result = false;
+			}
+		});
+
+		return result;
+	},
+
+
+	/**
 	 * Checks if all variant attributes of a variant article have been selected
 	 *
 	 * @param DomNode node Node of the product item
@@ -454,19 +477,9 @@ AimeosBasket = {
 	onCheckVariant() {
 
 		$(document).on("click", ".product .addbasket .btn-action", ev => {
-			let result = true;
-
-			$(".selection[data-attrdeps] .select-item", $(ev.currentTarget).closest(".items-selection")).each((idx, el) => {
-
-				if($(".select-list", el).val() !== '' || $(".select-option:checked", el).length > 0) {
-					$(el).removeClass("error");
-				} else {
-					$(el).addClass("error");
-					result = false;
-				}
-			});
-
-			return result;
+			if(!this.checkVariants(ev.currentTarget)) {
+				ev.preventDefault();
+			}
 		});
 	},
 

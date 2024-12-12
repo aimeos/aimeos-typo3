@@ -93,6 +93,14 @@
 	padding: 0.25rem 0;
 }
 
+.aimeos .common-summary-detail .headline .row {
+	align-items: center;
+}
+
+.aimeos .common-summary-detail .headline .minibutton {
+	background-color: transparent;
+}
+
 .aimeos .common-summary-detail .order {
 	align-items: center;
 }
