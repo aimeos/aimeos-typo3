@@ -5,14 +5,16 @@ defined('TYPO3') or die();
 
 $beUsersSiteFcn = function() {
 
-    $list = [['', '']];
+    $parents = [];
+    $list = [['label' => '', 'value' => '']];
 
     try {
         $config = \Aimeos\Aimeos\Base::config();
         $context = \Aimeos\Aimeos\Base::context($config);
 
-        $result = $context->db('db-locale')->create('SELECT * FROM "mshop_locale_site" ORDER BY "nleft"')->execute();
-        $parents = [];
+        $result = $context->db('db-locale')
+            ->create('SELECT "siteid", "label", "nleft", "nright" FROM "mshop_locale_site" ORDER BY "nleft"')
+            ->execute();
 
         $fcn = function($result, $parents, $right) use (&$fcn, &$list) {
 
@@ -30,7 +32,7 @@ $beUsersSiteFcn = function() {
         };
 
         while ($row = $result->fetch()) {
-            $list[] = [$row['label'], $row['siteid']];
+            $list[] = ['label' => $row['label'], 'value' => $row['siteid']];
 
             if ($row['nright'] - $row['nleft'] > 1) {
                 $fcn($result, array_merge($parents, [$row['label']]), $row['nright']);
