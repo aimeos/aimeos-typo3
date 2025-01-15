@@ -39,7 +39,7 @@ class JobsCommand extends Command
         $this->addArgument('jobs', InputArgument::REQUIRED, 'One or more job controller names like "admin/job customer/email/watch"');
         $this->addArgument('site', InputArgument::OPTIONAL, 'Site codes to execute the jobs for like "default unittest" (none for all)');
         $this->addOption('pid', null, InputOption::VALUE_REQUIRED, 'Page ID of the catalog detail page for jobs generating URLs');
-        $this->addOption('option', null, InputOption::VALUE_REQUIRED, 'Optional setup configuration, name and value are separated by ":" like "setup/default/demo:1"', []);
+        $this->addOption('option', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Optional configuration, name and value are separated by ":" like "setup/default/demo:1"', []);
     }
 
 
@@ -54,6 +54,7 @@ class JobsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $context = $this->context($input->getOption('pid'));
+        $context = $this->addConfig($context, $input->getOption('option'));
         $process = $context->process();
 
         $aimeos = \Aimeos\Aimeos\Base::aimeos();
@@ -135,11 +136,11 @@ class JobsCommand extends Command
         $context->setSession(new \Aimeos\Base\Session\None());
         $context->setCache(new \Aimeos\Base\Cache\None());
 
-		$context->setEditor('aimeos:jobs');
+        $context->setEditor('aimeos:jobs');
         $context->setI18n($i18n);
         $context->setView($view);
 
-        return $this->addConfig( $context );
+        return $context;
     }
 
 
