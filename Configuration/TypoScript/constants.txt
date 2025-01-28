@@ -14,4 +14,7 @@ plugin.tx_aimeos {
 
     # cat=ai140theme/file/110; type=string; label=Custom JS:Path to your custom Javascript for Aimeos
     theme.js.aimeos-custom =
+
+    # cat=ai140theme/file/110; type=string; label=Theme name:For custom php-templates (e.g. your_extension/templates/[theme_name]/client/html)
+    theme.name =
 }
