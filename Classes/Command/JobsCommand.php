@@ -126,7 +126,7 @@ class JobsCommand extends Command
         $config = \Aimeos\Aimeos\Base::config();
         $context = \Aimeos\Aimeos\Base::context($config);
 
-        $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates', $config->get('client/html/theme/name', null));
+        $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates', $context->locale()->getSiteItem()->getTheme());
         $view = \Aimeos\Aimeos\Base::view($context, $this->getRouter($pid), $tmplPaths);
 
         $langManager = \Aimeos\MShop::create($context, 'locale/language');
