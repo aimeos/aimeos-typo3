@@ -18,7 +18,6 @@ plugin.tx_aimeos {
         }
         client {
             html {
-                theme.name = {$plugin.tx_aimeos.theme.name}
                 account.download.url.config.absoluteUri = 1
                 catalog {
                     count.url.config.type = 191351524
