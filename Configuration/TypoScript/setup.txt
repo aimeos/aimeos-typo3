@@ -45,7 +45,7 @@ plugin.tx_aimeos {
 }
 
 # Exclude the shopping basket from the page cache, once it has been initialized
-[session("aimeos/basket/list") !== null]
+[request && session("aimeos/basket/list") !== null]
     tt_content.list.20.aimeos_basket-small = USER_INT
 [end]
 
