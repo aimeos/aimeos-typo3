@@ -17,6 +17,7 @@
 
 			<trans-unit id="beusers_site.title" xml:space="preserve">
 				<source>Aimeos shop site</source>
+				<target>Tienda Aimeos</target>
 			</trans-unit>
 
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
@@ -141,9 +142,11 @@
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
 				<source>Saved baskets</source>
+				<target>Cestas guardadas</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
 				<source>List of saved baskets by the user</source>
+				<target>Lista de cestas guardadas por el usuario</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
@@ -267,9 +270,11 @@
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
 				<source>Supplier detail view</source>
+				<target>Vista detallada del proveedor</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
 				<source>Supplier details for passed parameters or configuration</source>
+				<target>Detalles del proveedor para los parámetros o la configuración transmitidos</target>
 			</trans-unit>
 		</body>
 	</file>

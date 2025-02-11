@@ -88,6 +88,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
 				<source>Start time</source>
+				<target>Čas začetka</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -143,9 +144,11 @@
 			</trans-unit>
 			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
 				<source>Default supplier ID if no parameter is available</source>
+				<target>Privzeto ID dobavitelja, če parameter ni na voljo</target>
 			</trans-unit>
 			<trans-unit id="supplier-detail.target" xml:space="preserve">
 				<source>Supplier detail page</source>
+				<target>Podrobna stran dobavitelja</target>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>

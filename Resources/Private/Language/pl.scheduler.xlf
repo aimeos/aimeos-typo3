@@ -52,6 +52,7 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-catalog.invalid" xml:space="preserve">
 				<source>The page ID of the product catalog page is invalid</source>
+				<target>Identyfikator strony katalogu produktów jest nieprawidłowy</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
@@ -59,6 +60,7 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
 				<source>The page ID of the account login page is invalid</source>
+				<target>Identyfikator strony logowania do konta jest nieprawidłowy</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
@@ -86,6 +88,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-catalog" xml:space="preserve">
 				<source>Product catalog page ID</source>
+				<target>Identyfikator strony katalogu produktów</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
@@ -93,6 +96,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-login" xml:space="preserve">
 				<source>Account login page ID</source>
+				<target>Identyfikator strony logowania do konta</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
@@ -100,6 +104,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
 				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>Podstawowy adres URL do obrazów produktów (np. https://localhost/uploads/tx_aimeos/)</target>
 			</trans-unit>
 			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
 				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
@@ -107,6 +112,7 @@
 			</trans-unit>
 			<trans-unit id="email.name" xml:space="preserve">
 				<source>Aimeos Shop advanced scheduler</source>
+				<target>Zaawansowany harmonogram Aimeos Shop</target>
 			</trans-unit>
 		</body>
 	</file>

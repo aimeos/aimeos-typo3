@@ -1,264 +1,264 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:12:15Z" product-name="aimeos" target-language="zh">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:12:15Z" product-name="aimeos" target-language="da">
 		<header/>
 		<body>
 			<trans-unit id="mlang_tabs_tab" xml:space="preserve">
 				<source>Aimeos Shop</source>
-				<target>Aimeos商店</target>
+				<target>Aimeos butik</target>
 			</trans-unit>
 			<trans-unit id="mlang_labels_tablabel" xml:space="preserve">
 				<source>Aimeos Shop Plugin</source>
-				<target>Aimeos商店插件</target>
+				<target>Aimeos Shop Plugin</target>
 			</trans-unit>
 			<trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
 				<source>Administration Aimeos Shop</source>
-				<target>管理員 Aemios 商店</target>
+				<target>Administration Aimeos Shop</target>
 			</trans-unit>
 
 			<trans-unit id="beusers_site.title" xml:space="preserve">
 				<source>Aimeos shop site</source>
-				<target>Aimeos 商店网站</target>
+				<target>Aimeos' butiksside</target>
 			</trans-unit>
 
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
-				<target>商店主页</target>
+				<target>Butikkens startside</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-home.description" xml:space="preserve">
 				<source>Home page component displaying category images and promoted products</source>
-				<target>显示分类图片和促销产品的主页组件</target>
+				<target>Hjemmesidekomponent, der viser kategoribilleder og promoverede produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.title" xml:space="preserve">
 				<source>Product list view</source>
-				<target>产品列表视图</target>
+				<target>Visning af produktliste</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.description" xml:space="preserve">
 				<source>Product list filtered by parameters and configuration</source>
-				<target>按参数和配置筛选的产品列表</target>
+				<target>Produktliste filtreret efter parametre og konfiguration</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.title" xml:space="preserve">
 				<source>Product detail view</source>
-				<target>产品详细视图</target>
+				<target>Visning af produktdetaljer</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.description" xml:space="preserve">
 				<source>Product details for passed parameters or configuration</source>
-				<target>传递参数或配置的产品详细信息</target>
+				<target>Produktdetaljer for overførte parametre eller konfiguration</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.title" xml:space="preserve">
 				<source>Catalog filter</source>
-				<target>目录过滤器</target>
+				<target>Katalog-filter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.description" xml:space="preserve">
 				<source>Combined search bar for all filters</source>
-				<target>所有筛选器的组合搜索栏</target>
+				<target>Kombineret søgefelt for alle filtre</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
 				<source>Price filter</source>
-				<target>价格过滤器</target>
+				<target>Prisfilter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
 				<source>Price range filter for facetted search</source>
-				<target>分面搜索的价格范围过滤器</target>
+				<target>Prisintervalfilter til facetteret søgning</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.title" xml:space="preserve">
 				<source>Text search bar</source>
-				<target>文本搜索栏</target>
+				<target>Søgefelt til tekst</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.description" xml:space="preserve">
 				<source>Full text search in product texts</source>
-				<target>产品文本中的全文检索</target>
+				<target>Fuldtekstsøgning i produkttekster</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.title" xml:space="preserve">
 				<source>Category tree</source>
-				<target>树类</target>
+				<target>Kategori træ</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.description" xml:space="preserve">
 				<source>Expandable category tree</source>
-				<target>可扩展的类别树</target>
+				<target>Udvideligt kategoritræ</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.title" xml:space="preserve">
 				<source>Attribute filter</source>
-				<target>属性过滤器</target>
+				<target>Attribut-filter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.description" xml:space="preserve">
 				<source>Facetted search for product attributes</source>
-				<target>产品属性分面搜索</target>
+				<target>Facetteret søgning efter produktattributter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.title" xml:space="preserve">
 				<source>Supplier filter</source>
-				<target>供应商过滤器</target>
+				<target>Leverandørens filter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.description" xml:space="preserve">
 				<source>Facetted search for product suppliers</source>
-				<target>分面搜索产品供应商</target>
+				<target>Facetteret søgning efter produktleverandører</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.title" xml:space="preserve">
 				<source>Product counts</source>
-				<target>产品数量</target>
+				<target>Produkt tæller</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.description" xml:space="preserve">
 				<source>Number of matching products for facet filters</source>
-				<target>面过滤器的匹配产品数量</target>
+				<target>Antal matchende produkter for facetfiltre</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.title" xml:space="preserve">
 				<source>Search suggestions</source>
-				<target>搜索建议</target>
+				<target>Forslag til søgning</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.description" xml:space="preserve">
 				<source>Product suggestions for full text search</source>
-				<target>全文搜索产品建议</target>
+				<target>Produktforslag til fuldtekstsøgning</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.title" xml:space="preserve">
 				<source>Stage area</source>
-				<target>舞台区</target>
+				<target>Scenens område</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.description" xml:space="preserve">
 				<source>Breadcrumb and product navigation</source>
-				<target>面包屑和产品导航</target>
+				<target>Breadcrumb og produktnavigation</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.title" xml:space="preserve">
 				<source>Session content</source>
-				<target>会议内容</target>
+				<target>Sessionens indhold</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.description" xml:space="preserve">
 				<source>User related session for pinned and last seen products</source>
-				<target>与用户相关的会话，用于显示已固定和最后查看的产品</target>
+				<target>Brugerrelateret session for fastgjorte og sidst sete produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.title" xml:space="preserve">
 				<source>Product stock levels</source>
-				<target>产品库存水平</target>
+				<target>Produktlagerniveauer</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.description" xml:space="preserve">
 				<source>Stock level indicators for products</source>
-				<target>产品库存水平指标</target>
+				<target>Lagerindikatorer for produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.title" xml:space="preserve">
 				<source>Currency switcher</source>
-				<target>货币转换器</target>
+				<target>Valutaombytter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.description" xml:space="preserve">
 				<source>Switcher for multi-currency sites</source>
-				<target>多币种网站切换器</target>
+				<target>Switcher til websteder med flere valutaer</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
 				<source>Saved baskets</source>
-				<target>保存的篮子</target>
+				<target>Gemte kurve</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
 				<source>List of saved baskets by the user</source>
-				<target>用户保存的篮子列表</target>
+				<target>Liste over gemte kurve af brugeren</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
-				<target>订购历史</target>
+				<target>Ordrehistorik</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.description" xml:space="preserve">
 				<source>List of orders created by the user</source>
-				<target>用户创建的订单列表</target>
+				<target>Liste over ordrer oprettet af brugeren</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.title" xml:space="preserve">
 				<source>User subscriptions</source>
-				<target>用户订阅</target>
+				<target>Brugerabonnementer</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.description" xml:space="preserve">
 				<source>List of subscriptions created by the user</source>
-				<target>用户创建的订阅列表</target>
+				<target>Liste over abonnementer oprettet af brugeren</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.title" xml:space="preserve">
 				<source>Review products</source>
-				<target>审查产品</target>
+				<target>Gennemgå produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.description" xml:space="preserve">
 				<source>List of products for review by the customer</source>
-				<target>供客户审查的产品清单</target>
+				<target>Liste over produkter til gennemgang af kunden</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.title" xml:space="preserve">
 				<source>Favorite products</source>
-				<target>最喜爱的产品</target>
+				<target>Favoritprodukter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.description" xml:space="preserve">
 				<source>List of favorite products liked by users</source>
-				<target>用户喜爱的产品列表</target>
+				<target>Liste over favoritprodukter, som brugerne kan lide</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.title" xml:space="preserve">
 				<source>Product watch list</source>
-				<target>产品观察列表</target>
+				<target>Produktets overvågningsliste</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.description" xml:space="preserve">
 				<source>List of watched products by the user</source>
-				<target>用户关注的产品列表</target>
+				<target>Liste over produkter, som brugeren har set</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.title" xml:space="preserve">
 				<source>User profile</source>
-				<target>用户配置文件</target>
+				<target>Brugerprofil</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.description" xml:space="preserve">
 				<source>Change profile data by the user</source>
-				<target>用户更改个人资料数据</target>
+				<target>Ændre profildata af brugeren</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.title" xml:space="preserve">
 				<source>Product download</source>
-				<target>产品下载</target>
+				<target>Download af produkt</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.description" xml:space="preserve">
 				<source>Digital downloads of bought products</source>
-				<target>购买产品的数字下载</target>
+				<target>Digitale downloads af købte produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.title" xml:space="preserve">
 				<source>Shopping cart</source>
-				<target>购物车</target>
+				<target>Indkøbskurv</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.description" xml:space="preserve">
 				<source>Full-featured shopping cart</source>
-				<target>全功能购物车</target>
+				<target>Fuldt udstyret indkøbskurv</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.title" xml:space="preserve">
 				<source>Small basket</source>
-				<target>小篮子</target>
+				<target>Lille kurv</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.description" xml:space="preserve">
 				<source>Small basket for all content pages</source>
-				<target>所有内容页面的小篮子</target>
+				<target>Lille kurv til alle indholdssider</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.title" xml:space="preserve">
 				<source>Related products</source>
-				<target>相关产品</target>
+				<target>Relaterede produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.description" xml:space="preserve">
 				<source>Products related to the ones in the basket</source>
-				<target>与篮子里的产品相关的产品</target>
+				<target>Produkter relateret til dem i kurven</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.title" xml:space="preserve">
 				<source>Bulk order</source>
-				<target>批量订购</target>
+				<target>Massebestilling</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.description" xml:space="preserve">
 				<source>Product bulk order form</source>
-				<target>产品批量订购表</target>
+				<target>Formular til bulkbestilling af produkter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.title" xml:space="preserve">
 				<source>Checkout process</source>
-				<target>结账流程</target>
+				<target>Checkout-proces</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.description" xml:space="preserve">
 				<source>Checkout forms to collect user and order data</source>
-				<target>收集用户和订单数据的结账表单</target>
+				<target>Checkout-formularer til indsamling af bruger- og ordredata</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.title" xml:space="preserve">
 				<source>Checkout confirmation</source>
-				<target>结账确认</target>
+				<target>Bekræftelse af checkout</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.description" xml:space="preserve">
 				<source>Thank you and order confirmation</source>
-				<target>感谢并确认订单</target>
+				<target>Tak og ordrebekræftelse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.title" xml:space="preserve">
 				<source>Order update</source>
-				<target>订单更新</target>
+				<target>Opdatering af ordre</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.description" xml:space="preserve">
 				<source>Asynchronous payment and delivery updates</source>
-				<target>异步付款和交货更新</target>
+				<target>Asynkrone opdateringer af betaling og levering</target>
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.title" xml:space="preserve">
 				<source>JSON REST API</source>
@@ -266,15 +266,15 @@
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
 				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
-				<target>JSON 格式的 Aimeos HTTP REST API 端点</target>
+				<target>Slutpunkt for Aimeos HTTP REST API i JSON-format</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
 				<source>Supplier detail view</source>
-				<target>供应商详情视图</target>
+				<target>Visning af leverandørdetaljer</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
 				<source>Supplier details for passed parameters or configuration</source>
-				<target>传递参数或配置的供应商详细信息</target>
+				<target>Leverandøroplysninger for overførte parametre eller konfiguration</target>
 			</trans-unit>
 		</body>
 	</file>
