@@ -88,6 +88,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
 				<source>Start time</source>
+				<target>Heure de début</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -143,9 +144,11 @@
 			</trans-unit>
 			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
 				<source>Default supplier ID if no parameter is available</source>
+				<target>ID fournisseur par défaut si aucun paramètre n'est disponible</target>
 			</trans-unit>
 			<trans-unit id="supplier-detail.target" xml:space="preserve">
 				<source>Supplier detail page</source>
+				<target>Page détaillée du fournisseur</target>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>

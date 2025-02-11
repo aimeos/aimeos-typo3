@@ -4,12 +4,15 @@
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
 				<source>Page with JSON REST API plugin</source>
+				<target>Side med JSON REST API-plugin</target>
 			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
+				<target>Side til download af konto</target>
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
+				<target>Fejlside, hvis download er forbudt</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
@@ -21,21 +24,27 @@
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
 				<source>Display categories beginning from the following node</source>
+				<target>Vis kategorier, der begynder fra følgende node</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
 				<source>Always display these category levels</source>
+				<target>Vis altid disse kategoriniveauer</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
 				<source>Only display up to these category levels</source>
+				<target>Vis kun op til disse kategoriniveauer</target>
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
+				<target>Viste attributtyper til facetteret søgning</target>
 			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
+				<target>Side med forslag til søgefilter</target>
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>Kategoriside (eller side med katalogliste)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -43,33 +52,43 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
+				<target>Standardkategori eller -kategorier, hvis ingen parameter er tilgængelig</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
+				<target>Standardsortering af produktlisten</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
+				<target>Relevans (position)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
+				<target>Navn (A-Z)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
 				<source>Name (Z-A)</source>
+				<target>Navn (Z-A)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
 				<source>Price (lowest first)</source>
+				<target>Pris (laveste først)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
 				<source>Price (highest first)</source>
+				<target>Pris (den højeste først)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
+				<target>Oprettelsestidspunkt (ældste først)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
+				<target>Oprettelsestidspunkt (nyeste først)</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
 				<source>Start time</source>
+				<target>Starttidspunkt</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -81,12 +100,15 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>Standard SKU, hvis ingen parameter er tilgængelig</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
+				<target>Side med plugin til katalogsession</target>
 			</trans-unit>
 			<trans-unit id="catalog-count.target" xml:space="preserve">
 				<source>Page with product counts for catalog filter</source>
+				<target>Side med produktantal for katalogfilter</target>
 			</trans-unit>
 			<trans-unit id="catalog-stock.target" xml:space="preserve">
 				<source>Page with stock level data</source>
@@ -110,6 +132,7 @@
 			</trans-unit>
 			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
 				<source>Cancellation policy page</source>
+				<target>Side med afbestillingsregler</target>
 			</trans-unit>
 			<trans-unit id="checkout-confirm.target" xml:space="preserve">
 				<source>Confirmation page</source>
@@ -121,9 +144,11 @@
 			</trans-unit>
 			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
 				<source>Default supplier ID if no parameter is available</source>
+				<target>Standard leverandør-ID, hvis ingen parameter er tilgængelig</target>
 			</trans-unit>
 			<trans-unit id="supplier-detail.target" xml:space="preserve">
 				<source>Supplier detail page</source>
+				<target>Detaljeret side for leverandør</target>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>

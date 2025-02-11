@@ -52,6 +52,7 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-catalog.invalid" xml:space="preserve">
 				<source>The page ID of the product catalog page is invalid</source>
+				<target>产品目录页面的页面 ID 无效</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
 				<source>The page ID of the product detail page is invalid</source>
@@ -59,6 +60,7 @@
 			</trans-unit>
 			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
 				<source>The page ID of the account login page is invalid</source>
+				<target>账户登录页面的页面 ID 无效</target>
 			</trans-unit>
 			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
 				<source>The page ID of the account download page is invalid</source>
@@ -86,6 +88,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-catalog" xml:space="preserve">
 				<source>Product catalog page ID</source>
+				<target>产品目录页面 ID</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-detail" xml:space="preserve">
 				<source>Product detail page ID</source>
@@ -93,6 +96,7 @@
 			</trans-unit>
 			<trans-unit id="email.label.page-login" xml:space="preserve">
 				<source>Account login page ID</source>
+				<target>账户登录页面 ID</target>
 			</trans-unit>
 			<trans-unit id="email.label.page-download" xml:space="preserve">
 				<source>Account download page ID</source>
