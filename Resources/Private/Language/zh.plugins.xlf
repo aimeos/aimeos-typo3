@@ -4,6 +4,7 @@
 		<body>
 			<trans-unit id="jsonapi-options.target" xml:space="preserve">
 				<source>Page with JSON REST API plugin</source>
+				<target>带有 JSON REST API 插件的页面</target>
 			</trans-unit>
 			<trans-unit id="account-download.target" xml:space="preserve">
 				<source>Account download page</source>
@@ -11,6 +12,7 @@
 			</trans-unit>
 			<trans-unit id="account-download-error.target" xml:space="preserve">
 				<source>Error page if download is prohibited</source>
+				<target>如果禁止下载，则出现错误页面</target>
 			</trans-unit>
 			<trans-unit id="account-favorite.target" xml:space="preserve">
 				<source>Favorite products page</source>
@@ -34,6 +36,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
 				<source>Displayed attribute types for faceted search</source>
+				<target>用于分面搜索的显示属性类型</target>
 			</trans-unit>
 			<trans-unit id="catalog-suggest.target" xml:space="preserve">
 				<source>Page with suggestions for search filter</source>
@@ -41,6 +44,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-tree.target" xml:space="preserve">
 				<source>Category page (or catalog list page)</source>
+				<target>类别页面（或目录列表页面）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.target" xml:space="preserve">
 				<source>Catalog list page</source>
@@ -48,6 +52,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
 				<source>Default category or categories if no parameter is available</source>
+				<target>如果没有参数，则默认为一个或多个类别</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort" xml:space="preserve">
 				<source>Default sorting of the product list</source>
@@ -55,6 +60,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
 				<source>Relevance (position)</source>
+				<target>相关性（位置）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
 				<source>Name (A-Z)</source>
@@ -74,12 +80,15 @@
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
 				<source>Creation time (oldest first)</source>
+				<target>创建时间（最旧的在前）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
 				<source>Creation time (newest first)</source>
+				<target>创建时间（最新的在前）</target>
 			</trans-unit>
 			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
 				<source>Start time</source>
+				<target>开始时间</target>
 			</trans-unit>
 			<trans-unit id="catalog-detail.target" xml:space="preserve">
 				<source>Catalog detail page</source>
@@ -91,6 +100,7 @@
 			</trans-unit>
 			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
 				<source>Default SKU if no parameter is available</source>
+				<target>无参数时的默认 SKU</target>
 			</trans-unit>
 			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
 				<source>Page with catalog session plugin</source>
@@ -134,9 +144,11 @@
 			</trans-unit>
 			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
 				<source>Default supplier ID if no parameter is available</source>
+				<target>如果没有参数，则默认供应商 ID</target>
 			</trans-unit>
 			<trans-unit id="supplier-detail.target" xml:space="preserve">
 				<source>Supplier detail page</source>
+				<target>供应商详情页</target>
 			</trans-unit>
 			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
 				<source>TypoScript configuration</source>

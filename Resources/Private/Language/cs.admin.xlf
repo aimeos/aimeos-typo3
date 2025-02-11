@@ -17,199 +17,264 @@
 
 			<trans-unit id="beusers_site.title" xml:space="preserve">
 				<source>Aimeos shop site</source>
+				<target>Stránky obchodu Aimeos</target>
 			</trans-unit>
 
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
+				<target>Úvodní stránka obchodu</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-home.description" xml:space="preserve">
 				<source>Home page component displaying category images and promoted products</source>
+				<target>Komponenta domovské stránky zobrazující obrázky kategorií a propagované produkty</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.title" xml:space="preserve">
 				<source>Product list view</source>
+				<target>Zobrazení seznamu produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.description" xml:space="preserve">
 				<source>Product list filtered by parameters and configuration</source>
+				<target>Seznam produktů filtrovaný podle parametrů a konfigurace</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.title" xml:space="preserve">
 				<source>Product detail view</source>
+				<target>Zobrazení detailu produktu</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.description" xml:space="preserve">
 				<source>Product details for passed parameters or configuration</source>
+				<target>Podrobnosti o produktu pro předané parametry nebo konfiguraci</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.title" xml:space="preserve">
 				<source>Catalog filter</source>
+				<target>Katalogový filtr</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.description" xml:space="preserve">
 				<source>Combined search bar for all filters</source>
+				<target>Kombinovaný vyhledávací panel pro všechny filtry</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
 				<source>Price filter</source>
+				<target>Cenový filtr</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
 				<source>Price range filter for facetted search</source>
+				<target>Filtr cenového rozpětí pro aspektové vyhledávání</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.title" xml:space="preserve">
 				<source>Text search bar</source>
+				<target>Textový vyhledávací panel</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.description" xml:space="preserve">
 				<source>Full text search in product texts</source>
+				<target>Fulltextové vyhledávání v textech produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.title" xml:space="preserve">
 				<source>Category tree</source>
+				<target>Strom kategorie</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.description" xml:space="preserve">
 				<source>Expandable category tree</source>
+				<target>Rozšiřitelný strom kategorií</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.title" xml:space="preserve">
 				<source>Attribute filter</source>
+				<target>Filtr atributů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.description" xml:space="preserve">
 				<source>Facetted search for product attributes</source>
+				<target>Fazetové vyhledávání atributů produktu</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.title" xml:space="preserve">
 				<source>Supplier filter</source>
+				<target>Filtr dodavatele</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.description" xml:space="preserve">
 				<source>Facetted search for product suppliers</source>
+				<target>Hranaté vyhledávání dodavatelů produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.title" xml:space="preserve">
 				<source>Product counts</source>
+				<target>Počty výrobků</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.description" xml:space="preserve">
 				<source>Number of matching products for facet filters</source>
+				<target>Počet odpovídajících produktů pro fasetové filtry</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.title" xml:space="preserve">
 				<source>Search suggestions</source>
+				<target>Návrhy na vyhledávání</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.description" xml:space="preserve">
 				<source>Product suggestions for full text search</source>
+				<target>Návrhy produktů pro fulltextové vyhledávání</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.title" xml:space="preserve">
 				<source>Stage area</source>
+				<target>Prostor jeviště</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.description" xml:space="preserve">
 				<source>Breadcrumb and product navigation</source>
+				<target>Drobečková navigace a navigace po produktech</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.title" xml:space="preserve">
 				<source>Session content</source>
+				<target>Obsah zasedání</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.description" xml:space="preserve">
 				<source>User related session for pinned and last seen products</source>
+				<target>Relace související s uživatelem pro připnuté a naposledy zobrazené produkty</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.title" xml:space="preserve">
 				<source>Product stock levels</source>
+				<target>Úroveň zásob produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.description" xml:space="preserve">
 				<source>Stock level indicators for products</source>
+				<target>Ukazatele stavu zásob produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.title" xml:space="preserve">
 				<source>Currency switcher</source>
+				<target>Přepínač měn</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.description" xml:space="preserve">
 				<source>Switcher for multi-currency sites</source>
+				<target>Přepínač pro weby ve více měnách</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
 				<source>Saved baskets</source>
+				<target>Uložené koše</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
 				<source>List of saved baskets by the user</source>
+				<target>Seznam uložených košů uživatelem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
+				<target>Historie objednávek</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.description" xml:space="preserve">
 				<source>List of orders created by the user</source>
+				<target>Seznam objednávek vytvořených uživatelem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.title" xml:space="preserve">
 				<source>User subscriptions</source>
+				<target>Odběry uživatelů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.description" xml:space="preserve">
 				<source>List of subscriptions created by the user</source>
+				<target>Seznam odběrů vytvořených uživatelem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.title" xml:space="preserve">
 				<source>Review products</source>
+				<target>Recenze produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.description" xml:space="preserve">
 				<source>List of products for review by the customer</source>
+				<target>Seznam produktů k posouzení zákazníkem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.title" xml:space="preserve">
 				<source>Favorite products</source>
+				<target>Oblíbené produkty</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.description" xml:space="preserve">
 				<source>List of favorite products liked by users</source>
+				<target>Seznam oblíbených produktů, které si uživatelé oblíbili</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.title" xml:space="preserve">
 				<source>Product watch list</source>
+				<target>Seznam sledovaných produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.description" xml:space="preserve">
 				<source>List of watched products by the user</source>
+				<target>Seznam sledovaných produktů uživatelem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.title" xml:space="preserve">
 				<source>User profile</source>
+				<target>Profil uživatele</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.description" xml:space="preserve">
 				<source>Change profile data by the user</source>
+				<target>Změna profilových údajů uživatelem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.title" xml:space="preserve">
 				<source>Product download</source>
+				<target>Stažení produktu</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.description" xml:space="preserve">
 				<source>Digital downloads of bought products</source>
+				<target>Digitální stahování zakoupených produktů</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.title" xml:space="preserve">
 				<source>Shopping cart</source>
+				<target>Nákupní košík</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.description" xml:space="preserve">
 				<source>Full-featured shopping cart</source>
+				<target>Plnohodnotný nákupní košík</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.title" xml:space="preserve">
 				<source>Small basket</source>
+				<target>Malý koš</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.description" xml:space="preserve">
 				<source>Small basket for all content pages</source>
+				<target>Malý košík pro všechny stránky s obsahem</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.title" xml:space="preserve">
 				<source>Related products</source>
+				<target>Související produkty</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.description" xml:space="preserve">
 				<source>Products related to the ones in the basket</source>
+				<target>Produkty související s produkty v košíku</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.title" xml:space="preserve">
 				<source>Bulk order</source>
+				<target>Hromadná objednávka</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.description" xml:space="preserve">
 				<source>Product bulk order form</source>
+				<target>Formulář pro hromadnou objednávku produktu</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.title" xml:space="preserve">
 				<source>Checkout process</source>
+				<target>Proces odhlášení</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.description" xml:space="preserve">
 				<source>Checkout forms to collect user and order data</source>
+				<target>Pokladní formuláře pro shromažďování údajů o uživatelích a objednávkách</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.title" xml:space="preserve">
 				<source>Checkout confirmation</source>
+				<target>Potvrzení objednávky</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.description" xml:space="preserve">
 				<source>Thank you and order confirmation</source>
+				<target>Děkujeme a potvrzení objednávky</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.title" xml:space="preserve">
 				<source>Order update</source>
+				<target>Aktualizace objednávky</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.description" xml:space="preserve">
 				<source>Asynchronous payment and delivery updates</source>
+				<target>Asynchronní aktualizace plateb a dodávek</target>
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.title" xml:space="preserve">
 				<source>JSON REST API</source>
+				<target>JSON REST API</target>
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
 				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
+				<target>Koncový bod pro rozhraní Aimeos HTTP REST API ve formátu JSON</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
 				<source>Supplier detail view</source>
+				<target>Zobrazení detailu dodavatele</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
 				<source>Supplier details for passed parameters or configuration</source>
+				<target>Podrobnosti o dodavateli pro předané parametry nebo konfiguraci</target>
 			</trans-unit>
 		</body>
 	</file>

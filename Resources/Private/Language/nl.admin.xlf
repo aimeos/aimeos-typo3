@@ -17,199 +17,264 @@
 
 			<trans-unit id="beusers_site.title" xml:space="preserve">
 				<source>Aimeos shop site</source>
+				<target>Aimeos winkelsite</target>
 			</trans-unit>
 
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
+				<target>Startpagina van de winkel</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-home.description" xml:space="preserve">
 				<source>Home page component displaying category images and promoted products</source>
+				<target>Component voor de startpagina die categorieafbeeldingen en gepromote producten weergeeft</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.title" xml:space="preserve">
 				<source>Product list view</source>
+				<target>Productlijst bekijken</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.description" xml:space="preserve">
 				<source>Product list filtered by parameters and configuration</source>
+				<target>Productlijst gefilterd op parameters en configuratie</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.title" xml:space="preserve">
 				<source>Product detail view</source>
+				<target>Detailweergave product</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.description" xml:space="preserve">
 				<source>Product details for passed parameters or configuration</source>
+				<target>Productdetails voor doorgegeven parameters of configuratie</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.title" xml:space="preserve">
 				<source>Catalog filter</source>
+				<target>Catalogus filter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.description" xml:space="preserve">
 				<source>Combined search bar for all filters</source>
+				<target>Gecombineerde zoekbalk voor alle filters</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
 				<source>Price filter</source>
+				<target>Prijsfilter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
 				<source>Price range filter for facetted search</source>
+				<target>Prijsbereikfilter voor gefacetteerd zoeken</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.title" xml:space="preserve">
 				<source>Text search bar</source>
+				<target>Tekst zoekbalk</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.description" xml:space="preserve">
 				<source>Full text search in product texts</source>
+				<target>Volledige tekst zoeken in productteksten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.title" xml:space="preserve">
 				<source>Category tree</source>
+				<target>Categorie boom</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.description" xml:space="preserve">
 				<source>Expandable category tree</source>
+				<target>Uitklapbare categoriestructuur</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.title" xml:space="preserve">
 				<source>Attribute filter</source>
+				<target>Attribuut filter</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.description" xml:space="preserve">
 				<source>Facetted search for product attributes</source>
+				<target>Gefacetteerd zoeken naar productkenmerken</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.title" xml:space="preserve">
 				<source>Supplier filter</source>
+				<target>Filter leverancier</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.description" xml:space="preserve">
 				<source>Facetted search for product suppliers</source>
+				<target>Gefacetteerd zoeken naar productleveranciers</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.title" xml:space="preserve">
 				<source>Product counts</source>
+				<target>Product telt</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.description" xml:space="preserve">
 				<source>Number of matching products for facet filters</source>
+				<target>Aantal overeenkomende producten voor facetfilters</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.title" xml:space="preserve">
 				<source>Search suggestions</source>
+				<target>Zoeksuggesties</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.description" xml:space="preserve">
 				<source>Product suggestions for full text search</source>
+				<target>Productsuggesties voor zoeken in volledige tekst</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.title" xml:space="preserve">
 				<source>Stage area</source>
+				<target>Podium</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.description" xml:space="preserve">
 				<source>Breadcrumb and product navigation</source>
+				<target>Broodkruimel- en productnavigatie</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.title" xml:space="preserve">
 				<source>Session content</source>
+				<target>Inhoud van de sessie</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.description" xml:space="preserve">
 				<source>User related session for pinned and last seen products</source>
+				<target>Gebruikersgerelateerde sessie voor vastgemaakte en laatst bekeken producten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.title" xml:space="preserve">
 				<source>Product stock levels</source>
+				<target>Productvoorraad</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.description" xml:space="preserve">
 				<source>Stock level indicators for products</source>
+				<target>Voorraadindicatoren voor producten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.title" xml:space="preserve">
 				<source>Currency switcher</source>
+				<target>Valuta wisselen</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.description" xml:space="preserve">
 				<source>Switcher for multi-currency sites</source>
+				<target>Switcher voor sites met meerdere valuta</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
 				<source>Saved baskets</source>
+				<target>Opgeslagen manden</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
 				<source>List of saved baskets by the user</source>
+				<target>Lijst van opgeslagen manden door de gebruiker</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
+				<target>Bestelgeschiedenis</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.description" xml:space="preserve">
 				<source>List of orders created by the user</source>
+				<target>Lijst van bestellingen aangemaakt door de gebruiker</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.title" xml:space="preserve">
 				<source>User subscriptions</source>
+				<target>Gebruikersabonnementen</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.description" xml:space="preserve">
 				<source>List of subscriptions created by the user</source>
+				<target>Lijst van abonnementen aangemaakt door de gebruiker</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.title" xml:space="preserve">
 				<source>Review products</source>
+				<target>Producten beoordelen</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.description" xml:space="preserve">
 				<source>List of products for review by the customer</source>
+				<target>Lijst met producten ter beoordeling door de klant</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.title" xml:space="preserve">
 				<source>Favorite products</source>
+				<target>Favoriete producten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.description" xml:space="preserve">
 				<source>List of favorite products liked by users</source>
+				<target>Lijst met favoriete producten geliked door gebruikers</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.title" xml:space="preserve">
 				<source>Product watch list</source>
+				<target>Product bekijken</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.description" xml:space="preserve">
 				<source>List of watched products by the user</source>
+				<target>Lijst van bekeken producten door de gebruiker</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.title" xml:space="preserve">
 				<source>User profile</source>
+				<target>Gebruikersprofiel</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.description" xml:space="preserve">
 				<source>Change profile data by the user</source>
+				<target>Profielgegevens wijzigen door de gebruiker</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.title" xml:space="preserve">
 				<source>Product download</source>
+				<target>Product downloaden</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.description" xml:space="preserve">
 				<source>Digital downloads of bought products</source>
+				<target>Digitale downloads van gekochte producten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.title" xml:space="preserve">
 				<source>Shopping cart</source>
+				<target>Winkelwagen</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.description" xml:space="preserve">
 				<source>Full-featured shopping cart</source>
+				<target>Winkelwagentje met alle functies</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.title" xml:space="preserve">
 				<source>Small basket</source>
+				<target>Kleine mand</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.description" xml:space="preserve">
 				<source>Small basket for all content pages</source>
+				<target>Klein mandje voor alle inhoudspagina's</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.title" xml:space="preserve">
 				<source>Related products</source>
+				<target>Verwante producten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.description" xml:space="preserve">
 				<source>Products related to the ones in the basket</source>
+				<target>Producten gerelateerd aan die in het winkelmandje</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.title" xml:space="preserve">
 				<source>Bulk order</source>
+				<target>Bulkbestelling</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.description" xml:space="preserve">
 				<source>Product bulk order form</source>
+				<target>Bulkbestelformulier voor producten</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.title" xml:space="preserve">
 				<source>Checkout process</source>
+				<target>Afrekenen</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.description" xml:space="preserve">
 				<source>Checkout forms to collect user and order data</source>
+				<target>Afrekenformulieren om gebruikers- en bestelgegevens te verzamelen</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.title" xml:space="preserve">
 				<source>Checkout confirmation</source>
+				<target>Bevestiging bij uitchecken</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.description" xml:space="preserve">
 				<source>Thank you and order confirmation</source>
+				<target>Bedankt en orderbevestiging</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.title" xml:space="preserve">
 				<source>Order update</source>
+				<target>Update bestelling</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.description" xml:space="preserve">
 				<source>Asynchronous payment and delivery updates</source>
+				<target>Asynchrone betalings- en leveringsupdates</target>
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.title" xml:space="preserve">
 				<source>JSON REST API</source>
+				<target>JSON REST API</target>
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
 				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
+				<target>Eindpunt voor de Aimeos HTTP REST API in JSON-indeling</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
 				<source>Supplier detail view</source>
+				<target>Detailweergave leverancier</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
 				<source>Supplier details for passed parameters or configuration</source>
+				<target>Leveranciersdetails voor doorgegeven parameters of configuratie</target>
 			</trans-unit>
 		</body>
 	</file>
