@@ -1,264 +1,264 @@
 <?xml version="1.0" ?><xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:12:15Z" product-name="aimeos" target-language="bg">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:12:15Z" product-name="aimeos" target-language="ro">
 		<header/>
 		<body>
 			<trans-unit id="mlang_tabs_tab" xml:space="preserve">
 				<source>Aimeos Shop</source>
-				<target>Магазин Aimeos</target>
+				<target>Magazinul Aimeos</target>
 			</trans-unit>
 			<trans-unit id="mlang_labels_tablabel" xml:space="preserve">
 				<source>Aimeos Shop Plugin</source>
-				<target>Aimeos Магазин Plugin</target>
+				<target>Plugin pentru magazin Aimeos</target>
 			</trans-unit>
 			<trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
 				<source>Administration Aimeos Shop</source>
-				<target>Администрация Магазин Aimeos</target>
+				<target>Administrație Magazin Aimeos</target>
 			</trans-unit>
 
 			<trans-unit id="beusers_site.title" xml:space="preserve">
 				<source>Aimeos shop site</source>
-				<target>Сайт на магазин Aimeos</target>
+				<target>Site-ul magazinului Aimeos</target>
 			</trans-unit>
 
 			<trans-unit id="aimeos_catalog-home.title" xml:space="preserve">
 				<source>Shop home page</source>
-				<target>Начална страница на магазина</target>
+				<target>Pagina de pornire a magazinului</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-home.description" xml:space="preserve">
 				<source>Home page component displaying category images and promoted products</source>
-				<target>Компонент на началната страница, показващ изображения на категории и промотирани продукти</target>
+				<target>Componenta paginii de pornire care afișează imagini ale categoriei și produse promovate</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.title" xml:space="preserve">
 				<source>Product list view</source>
-				<target>Преглед на списъка с продукти</target>
+				<target>Vizualizarea listei de produse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-list.description" xml:space="preserve">
 				<source>Product list filtered by parameters and configuration</source>
-				<target>Списък с продукти, филтриран по параметри и конфигурация</target>
+				<target>Lista de produse filtrată după parametri și configurație</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.title" xml:space="preserve">
 				<source>Product detail view</source>
-				<target>Подробен преглед на продукта</target>
+				<target>Vizualizare detalii produs</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-detail.description" xml:space="preserve">
 				<source>Product details for passed parameters or configuration</source>
-				<target>Подробности за продукта за предадени параметри или конфигурация</target>
+				<target>Detalii despre produs pentru parametrii sau configurația transmisă</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.title" xml:space="preserve">
 				<source>Catalog filter</source>
-				<target>Филтър по каталог</target>
+				<target>Catalog filtru</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-filter.description" xml:space="preserve">
 				<source>Combined search bar for all filters</source>
-				<target>Combined search bar for all filters</target>
+				<target>Bară de căutare combinată pentru toate filtrele</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.title" xml:space="preserve">
 				<source>Price filter</source>
-				<target>Ценови филтър</target>
+				<target>Filtru de preț</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-price.description" xml:space="preserve">
 				<source>Price range filter for facetted search</source>
-				<target>Филтър за ценови диапазон за фасетирано търсене</target>
+				<target>Filtru de gamă de prețuri pentru căutarea fațetată</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.title" xml:space="preserve">
 				<source>Text search bar</source>
-				<target>Бар за търсене на текст</target>
+				<target>Bară de căutare text</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-search.description" xml:space="preserve">
 				<source>Full text search in product texts</source>
-				<target>Пълнотекстово търсене в текстовете на продуктите</target>
+				<target>Căutarea textului integral în textele produselor</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.title" xml:space="preserve">
 				<source>Category tree</source>
-				<target>Категория дърво</target>
+				<target>Categorie copac</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-tree.description" xml:space="preserve">
 				<source>Expandable category tree</source>
-				<target>Разширяващо се дърво на категориите</target>
+				<target>Arbore de categorii extensibil</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.title" xml:space="preserve">
 				<source>Attribute filter</source>
-				<target>Атрибутен филтър</target>
+				<target>Filtru de atribute</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-attribute.description" xml:space="preserve">
 				<source>Facetted search for product attributes</source>
-				<target>Фасетно търсене на атрибути на продукта</target>
+				<target>Căutare fațetată pentru atributele produsului</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.title" xml:space="preserve">
 				<source>Supplier filter</source>
-				<target>Филтър на доставчика</target>
+				<target>Furnizor filtru</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-supplier.description" xml:space="preserve">
 				<source>Facetted search for product suppliers</source>
-				<target>Фасетно търсене на доставчици на продукти</target>
+				<target>Căutare fațetată pentru furnizorii de produse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.title" xml:space="preserve">
 				<source>Product counts</source>
-				<target>Брой на продуктите</target>
+				<target>Număr de produse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-count.description" xml:space="preserve">
 				<source>Number of matching products for facet filters</source>
-				<target>Брой съвпадащи продукти за фасетни филтри</target>
+				<target>Numărul de produse potrivite pentru filtre cu fațete</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.title" xml:space="preserve">
 				<source>Search suggestions</source>
-				<target>Предложения за търсене</target>
+				<target>Sugestii de căutare</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-suggest.description" xml:space="preserve">
 				<source>Product suggestions for full text search</source>
-				<target>Предложения за продукти за търсене в пълен текст</target>
+				<target>Sugestii de produse pentru căutarea textului integral</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.title" xml:space="preserve">
 				<source>Stage area</source>
-				<target>Сценична зона</target>
+				<target>Zona scenei</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stage.description" xml:space="preserve">
 				<source>Breadcrumb and product navigation</source>
-				<target>Навигация по трохи и продукти</target>
+				<target>Breadcrumb și navigarea prin produse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.title" xml:space="preserve">
 				<source>Session content</source>
-				<target>Съдържание на сесията</target>
+				<target>Conținutul sesiunii</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-session.description" xml:space="preserve">
 				<source>User related session for pinned and last seen products</source>
-				<target>Свързани с потребителя сесии за прикачени и последно видени продукти</target>
+				<target>Sesiune legată de utilizator pentru produsele fixate și ultimele produse văzute</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.title" xml:space="preserve">
 				<source>Product stock levels</source>
-				<target>Нива на наличност на продукта</target>
+				<target>Nivelul stocurilor de produse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_catalog-stock.description" xml:space="preserve">
 				<source>Stock level indicators for products</source>
-				<target>Показатели за нивото на запасите от продукти</target>
+				<target>Indicatori ai nivelului stocurilor pentru produse</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.title" xml:space="preserve">
 				<source>Currency switcher</source>
-				<target>Превключвател на валути</target>
+				<target>Comutator de monedă</target>
 			</trans-unit>
 			<trans-unit id="aimeos_locale-select.description" xml:space="preserve">
 				<source>Switcher for multi-currency sites</source>
-				<target>Превключвател за сайтове с различни валути</target>
+				<target>Comutator pentru site-uri în mai multe valute</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.title" xml:space="preserve">
 				<source>Saved baskets</source>
-				<target>Запазени кошници</target>
+				<target>Coșuri salvate</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-basket.description" xml:space="preserve">
 				<source>List of saved baskets by the user</source>
-				<target>Списък на запазените кошници от потребителя</target>
+				<target>Lista coșurilor salvate de utilizator</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.title" xml:space="preserve">
 				<source>Order history</source>
-				<target>История на поръчките</target>
+				<target>Istoricul comenzilor</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-history.description" xml:space="preserve">
 				<source>List of orders created by the user</source>
-				<target>Списък на поръчките, създадени от потребителя</target>
+				<target>Lista comenzilor create de utilizator</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.title" xml:space="preserve">
 				<source>User subscriptions</source>
-				<target>Потребителски абонаменти</target>
+				<target>Abonamente utilizator</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-subscription.description" xml:space="preserve">
 				<source>List of subscriptions created by the user</source>
-				<target>Списък на абонаментите, създадени от потребителя</target>
+				<target>Lista de abonamente create de utilizator</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.title" xml:space="preserve">
 				<source>Review products</source>
-				<target>Преглед на продукти</target>
+				<target>Produse de revizuire</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-review.description" xml:space="preserve">
 				<source>List of products for review by the customer</source>
-				<target>Списък с продукти за преглед от клиента</target>
+				<target>Lista de produse pentru examinarea de către client</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.title" xml:space="preserve">
 				<source>Favorite products</source>
-				<target>Любими продукти</target>
+				<target>Produse preferate</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-favorite.description" xml:space="preserve">
 				<source>List of favorite products liked by users</source>
-				<target>Списък с любими продукти, харесвани от потребителите</target>
+				<target>Lista de produse preferate de utilizatori</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.title" xml:space="preserve">
 				<source>Product watch list</source>
-				<target>Списък с продукти за наблюдение</target>
+				<target>Lista de monitorizare a produselor</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-watch.description" xml:space="preserve">
 				<source>List of watched products by the user</source>
-				<target>Списък на наблюдаваните продукти от потребителя</target>
+				<target>Lista de produse urmărite de utilizator</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.title" xml:space="preserve">
 				<source>User profile</source>
-				<target>Профил на потребителя</target>
+				<target>Profilul utilizatorului</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-profile.description" xml:space="preserve">
 				<source>Change profile data by the user</source>
-				<target>Промяна на данните в профила от страна на потребителя</target>
+				<target>Modificarea datelor de profil de către utilizator</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.title" xml:space="preserve">
 				<source>Product download</source>
-				<target>Изтегляне на продукта</target>
+				<target>Descărcare produs</target>
 			</trans-unit>
 			<trans-unit id="aimeos_account-download.description" xml:space="preserve">
 				<source>Digital downloads of bought products</source>
-				<target>Цифрово изтегляне на закупени продукти</target>
+				<target>Descărcări digitale ale produselor cumpărate</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.title" xml:space="preserve">
 				<source>Shopping cart</source>
-				<target>Количка за пазаруване</target>
+				<target>Coș de cumpărături</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-standard.description" xml:space="preserve">
 				<source>Full-featured shopping cart</source>
-				<target>Пълнофункционална количка за пазаруване</target>
+				<target>Coș de cumpărături cu funcții complete</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.title" xml:space="preserve">
 				<source>Small basket</source>
-				<target>Малка кошница</target>
+				<target>Coș mic</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-small.description" xml:space="preserve">
 				<source>Small basket for all content pages</source>
-				<target>Малка кошница за всички страници със съдържание</target>
+				<target>Coș mic pentru toate paginile de conținut</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.title" xml:space="preserve">
 				<source>Related products</source>
-				<target>Свързани продукти</target>
+				<target>Produse conexe</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-related.description" xml:space="preserve">
 				<source>Products related to the ones in the basket</source>
-				<target>Продукти, свързани с тези в кошницата</target>
+				<target>Produse legate de cele din coș</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.title" xml:space="preserve">
 				<source>Bulk order</source>
-				<target>Поръчка в насипно състояние</target>
+				<target>Comandă în vrac</target>
 			</trans-unit>
 			<trans-unit id="aimeos_basket-bulk.description" xml:space="preserve">
 				<source>Product bulk order form</source>
-				<target>Формуляр за поръчка на продукти в насипно състояние</target>
+				<target>Formular de comandă de produse în vrac</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.title" xml:space="preserve">
 				<source>Checkout process</source>
-				<target>Процес на изписване</target>
+				<target>Procesul de checkout</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-standard.description" xml:space="preserve">
 				<source>Checkout forms to collect user and order data</source>
-				<target>Формуляри за регистрация за събиране на данни за потребителите и поръчките</target>
+				<target>Formulare de plată pentru a colecta datele utilizatorului și ale comenzii</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.title" xml:space="preserve">
 				<source>Checkout confirmation</source>
-				<target>Потвърждение за отписване</target>
+				<target>Confirmare checkout</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-confirm.description" xml:space="preserve">
 				<source>Thank you and order confirmation</source>
-				<target>Благодаря ви и потвърждение на поръчката</target>
+				<target>Vă mulțumim și confirmarea comenzii</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.title" xml:space="preserve">
 				<source>Order update</source>
-				<target>Актуализация на поръчката</target>
+				<target>Actualizarea comenzii</target>
 			</trans-unit>
 			<trans-unit id="aimeos_checkout-update.description" xml:space="preserve">
 				<source>Asynchronous payment and delivery updates</source>
-				<target>Асинхронни актуализации на плащания и доставки</target>
+				<target>Actualizări asincrone ale plăților și livrărilor</target>
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.title" xml:space="preserve">
 				<source>JSON REST API</source>
@@ -266,15 +266,15 @@
 			</trans-unit>
 			<trans-unit id="aimeos_jsonapi.description" xml:space="preserve">
 				<source>Endpoint for the Aimeos HTTP REST API in JSON format</source>
-				<target>Крайна точка за HTTP REST API на Aimeos във формат JSON</target>
+				<target>Punct final pentru Aimeos HTTP REST API în format JSON</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.title" xml:space="preserve">
 				<source>Supplier detail view</source>
-				<target>Преглед на детайлите на доставчика</target>
+				<target>Vizualizare detaliată a furnizorului</target>
 			</trans-unit>
 			<trans-unit id="aimeos_supplier-detail.description" xml:space="preserve">
 				<source>Supplier details for passed parameters or configuration</source>
-				<target>Подробности за доставчика за предадените параметри или конфигурация</target>
+				<target>Detalii furnizor pentru parametrii sau configurația transmisă</target>
 			</trans-unit>
 		</body>
 	</file>

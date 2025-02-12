@@ -1,0 +1,119 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:20:05Z" product-name="aimeos" target-language="ro">
+		<header/>
+		<body>
+			<trans-unit id="default.description" xml:space="preserve">
+				<source>Executes the selected Aimeos Shop jobs</source>
+				<target>Execută lucrările Aimeos Shop selectate</target>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode" xml:space="preserve">
+				<source>One or more sites is invalid or already disabled</source>
+				<target>Unul sau mai multe site-uri sunt invalide sau deja dezactivate</target>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
+				<source>Please choose at least one site</source>
+				<target>Vă rugăm să alegeți cel puțin un site</target>
+			</trans-unit>
+			<trans-unit id="default.error.controller.missing" xml:space="preserve">
+				<source>Please choose at least one job</source>
+				<target>Vă rugăm să alegeți cel puțin un loc de muncă</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>Configurația TypoScript este invalidă</target>
+			</trans-unit>
+			<trans-unit id="default.label.controller" xml:space="preserve">
+				<source>Jobs</source>
+				<target>Locuri de muncă</target>
+			</trans-unit>
+			<trans-unit id="default.label.sitecode" xml:space="preserve">
+				<source>Sites</source>
+				<target>Situri</target>
+			</trans-unit>
+			<trans-unit id="default.label.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Configurația TypoScript</target>
+			</trans-unit>
+			<trans-unit id="default.name" xml:space="preserve">
+				<source>Aimeos Shop scheduler</source>
+				<target>Aimeos Programator magazin</target>
+			</trans-unit>
+			<trans-unit id="email.description" xml:space="preserve">
+				<source>Specialized task for sending the e-mails</source>
+				<target>Sarcină specializată pentru trimiterea e-mailurilor</target>
+			</trans-unit>
+			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
+				<source>The sender e-mail address is invalid or none was entered</source>
+				<target>Adresa de e-mail a expeditorului nu este valabilă sau nu a fost introdusă niciuna</target>
+			</trans-unit>
+			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
+				<source>The reply e-mail address is invalid</source>
+				<target>Adresa de e-mail de răspuns nu este valabilă</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-catalog.invalid" xml:space="preserve">
+				<source>The page ID of the product catalog page is invalid</source>
+				<target>ID-ul paginii catalogului de produse nu este valabil</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
+				<source>The page ID of the product detail page is invalid</source>
+				<target>ID-ul paginii detaliate a produsului este invalid</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
+				<source>The page ID of the account login page is invalid</source>
+				<target>ID-ul de pagină al paginii de conectare la cont este invalid</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
+				<source>The page ID of the account download page is invalid</source>
+				<target>ID-ul de pagină al paginii de descărcare a contului este invalid</target>
+			</trans-unit>
+			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
+				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+				<target>URL-ul site-ului web nu este valabil. Utilizați o adresă URL care să includă protocolul și domeniul, cum ar fi „https://aimeos.org/”</target>
+			</trans-unit>
+			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
+				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
+				<target>URL-ul de bază pentru imaginile produsului este invalid. Utilizați un URL de bază care să includă protocolul și domeniul, cum ar fi „https://aimeos.org/uploads/tx_aimeos”</target>
+			</trans-unit>
+			<trans-unit id="email.label.from-name" xml:space="preserve">
+				<source>Sender name</source>
+				<target>Numele expeditorului</target>
+			</trans-unit>
+			<trans-unit id="email.label.from-email" xml:space="preserve">
+				<source>Sender e-mail</source>
+				<target>E-mail expeditor</target>
+			</trans-unit>
+			<trans-unit id="email.label.reply-email" xml:space="preserve">
+				<source>Reply e-mail</source>
+				<target>Răspunde e-mail</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-catalog" xml:space="preserve">
+				<source>Product catalog page ID</source>
+				<target>ID-ul paginii catalogului de produse</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-detail" xml:space="preserve">
+				<source>Product detail page ID</source>
+				<target>Pagina detaliată a produsului ID</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-login" xml:space="preserve">
+				<source>Account login page ID</source>
+				<target>ID-ul paginii de conectare la cont</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-download" xml:space="preserve">
+				<source>Account download page ID</source>
+				<target>ID-ul paginii de descărcare a contului</target>
+			</trans-unit>
+			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
+				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>URL de bază pentru imaginile produsului (de exemplu, https://localhost/uploads/tx_aimeos/)</target>
+			</trans-unit>
+			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
+				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+				<target>Calea absolută sau calea relativă de la rădăcina TYPO3 la fișierele CSS din directorul temei</target>
+			</trans-unit>
+			<trans-unit id="email.name" xml:space="preserve">
+				<source>Aimeos Shop advanced scheduler</source>
+				<target>Programator avansat Aimeos Shop</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
