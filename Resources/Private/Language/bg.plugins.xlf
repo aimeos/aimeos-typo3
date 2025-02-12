@@ -1,0 +1,163 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:18:19Z" product-name="aimeos" target-language="bg">
+		<header/>
+		<body>
+			<trans-unit id="jsonapi-options.target" xml:space="preserve">
+				<source>Page with JSON REST API plugin</source>
+				<target>Страница с приставка JSON REST API</target>
+			</trans-unit>
+			<trans-unit id="account-download.target" xml:space="preserve">
+				<source>Account download page</source>
+				<target>Страница за изтегляне на акаунт</target>
+			</trans-unit>
+			<trans-unit id="account-download-error.target" xml:space="preserve">
+				<source>Error page if download is prohibited</source>
+				<target>Страница за грешка, ако изтеглянето е забранено</target>
+			</trans-unit>
+			<trans-unit id="account-favorite.target" xml:space="preserve">
+				<source>Favorite products page</source>
+				<target>Страница с любими продукти</target>
+			</trans-unit>
+			<trans-unit id="account-watch.target" xml:space="preserve">
+				<source>Watched products page</source>
+				<target>Страница на наблюдаваните продукти</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-startid" xml:space="preserve">
+				<source>Display categories beginning from the following node</source>
+				<target>Показвайте категории, започващи от следния възел</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-always" xml:space="preserve">
+				<source>Always display these category levels</source>
+				<target>Винаги показвайте тези нива на категориите</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.tree-levels-only" xml:space="preserve">
+				<source>Only display up to these category levels</source>
+				<target>Показва се само до тези нива на категория</target>
+			</trans-unit>
+			<trans-unit id="catalog-filter.attribute-types" xml:space="preserve">
+				<source>Displayed attribute types for faceted search</source>
+				<target>Показвани типове атрибути за фасетно търсене</target>
+			</trans-unit>
+			<trans-unit id="catalog-suggest.target" xml:space="preserve">
+				<source>Page with suggestions for search filter</source>
+				<target>Страница с предложения за филтър за търсене</target>
+			</trans-unit>
+			<trans-unit id="catalog-tree.target" xml:space="preserve">
+				<source>Category page (or catalog list page)</source>
+				<target>Страница с категория (или страница със списък на каталога)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.target" xml:space="preserve">
+				<source>Catalog list page</source>
+				<target>Страница със списъка на каталога</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.catid-default" xml:space="preserve">
+				<source>Default category or categories if no parameter is available</source>
+				<target>Категория или категории по подразбиране, ако няма наличен параметър</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort" xml:space="preserve">
+				<source>Default sorting of the product list</source>
+				<target>Сортиране по подразбиране на списъка с продукти</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-relevance" xml:space="preserve">
+				<source>Relevance (position)</source>
+				<target>Уместност (позиция)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-name" xml:space="preserve">
+				<source>Name (A-Z)</source>
+				<target>Име (А-Z)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-namedesc" xml:space="preserve">
+				<source>Name (Z-A)</source>
+				<target>Име (Z-А)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-price" xml:space="preserve">
+				<source>Price (lowest first)</source>
+				<target>Цена (първата най-ниска)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-pricedesc" xml:space="preserve">
+				<source>Price (highest first)</source>
+				<target>Цена (първо най-високата)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-ctime" xml:space="preserve">
+				<source>Creation time (oldest first)</source>
+				<target>Време на създаване (най-старото първо)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-ctimedesc" xml:space="preserve">
+				<source>Creation time (newest first)</source>
+				<target>Време на създаване (най-новото първо)</target>
+			</trans-unit>
+			<trans-unit id="catalog-list.sort-start" xml:space="preserve">
+				<source>Start time</source>
+				<target>Начален час</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.target" xml:space="preserve">
+				<source>Catalog detail page</source>
+				<target>Подробна страница на каталога</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.prodid-default" xml:space="preserve">
+				<source>Default product ID if no parameter is available</source>
+				<target>Идентификатор на продукта по подразбиране, ако няма наличен параметър</target>
+			</trans-unit>
+			<trans-unit id="catalog-detail.prodcode-default" xml:space="preserve">
+				<source>Default SKU if no parameter is available</source>
+				<target>SKU по подразбиране, ако няма наличен параметър</target>
+			</trans-unit>
+			<trans-unit id="catalog-session-pinned.target" xml:space="preserve">
+				<source>Page with catalog session plugin</source>
+				<target>Страница с плъгин за сесия на каталога</target>
+			</trans-unit>
+			<trans-unit id="catalog-count.target" xml:space="preserve">
+				<source>Page with product counts for catalog filter</source>
+				<target>Страница с броя на продуктите за филтъра на каталога</target>
+			</trans-unit>
+			<trans-unit id="catalog-stock.target" xml:space="preserve">
+				<source>Page with stock level data</source>
+				<target>Страница с данни за нивото на запасите</target>
+			</trans-unit>
+			<trans-unit id="basket-standard.target" xml:space="preserve">
+				<source>Basket page</source>
+				<target>Страница на кошницата</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard.target" xml:space="preserve">
+				<source>Checkout page</source>
+				<target>Страница за поръчка</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms.target" xml:space="preserve">
+				<source>Terms and conditions page</source>
+				<target>Страница с правила и условия</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-privacy.target" xml:space="preserve">
+				<source>Privacy policy page</source>
+				<target>Страница с политика за поверителност</target>
+			</trans-unit>
+			<trans-unit id="checkout-standard-summary-option-terms-cancel.target" xml:space="preserve">
+				<source>Cancellation policy page</source>
+				<target>Страница с правила за анулиране</target>
+			</trans-unit>
+			<trans-unit id="checkout-confirm.target" xml:space="preserve">
+				<source>Confirmation page</source>
+				<target>Страница за потвърждение</target>
+			</trans-unit>
+			<trans-unit id="checkout-update.target" xml:space="preserve">
+				<source>Page with &quot;checkout payment update&quot; plugin</source>
+				<target>Страница с плъгин „актуализация на плащането на касата“</target>
+			</trans-unit>
+			<trans-unit id="supplier-detail.supid-default" xml:space="preserve">
+				<source>Default supplier ID if no parameter is available</source>
+				<target>Идентификатор на доставчика по подразбиране, ако няма наличен параметър</target>
+			</trans-unit>
+			<trans-unit id="supplier-detail.target" xml:space="preserve">
+				<source>Supplier detail page</source>
+				<target>Подробна страница на доставчика</target>
+			</trans-unit>
+			<trans-unit id="default.typo3.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Конфигурация на TypoScript</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>Конфигурацията на TypoScript е невалидна</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
