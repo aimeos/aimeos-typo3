@@ -1,0 +1,119 @@
+<?xml version="1.0" ?><xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:20:05Z" product-name="aimeos" target-language="bg">
+		<header/>
+		<body>
+			<trans-unit id="default.description" xml:space="preserve">
+				<source>Executes the selected Aimeos Shop jobs</source>
+				<target>Изпълнява избраните задачи на Aimeos Shop</target>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode" xml:space="preserve">
+				<source>One or more sites is invalid or already disabled</source>
+				<target>Един или повече сайтове са невалидни или вече са деактивирани</target>
+			</trans-unit>
+			<trans-unit id="default.error.sitecode.missing" xml:space="preserve">
+				<source>Please choose at least one site</source>
+				<target>Моля, изберете поне един сайт</target>
+			</trans-unit>
+			<trans-unit id="default.error.controller.missing" xml:space="preserve">
+				<source>Please choose at least one job</source>
+				<target>Моля, изберете поне една работа</target>
+			</trans-unit>
+			<trans-unit id="default.error.tsconfig.invalid" xml:space="preserve">
+				<source>The TypoScript configuration is invalid</source>
+				<target>Конфигурацията на TypoScript е невалидна</target>
+			</trans-unit>
+			<trans-unit id="default.label.controller" xml:space="preserve">
+				<source>Jobs</source>
+				<target>Работни места</target>
+			</trans-unit>
+			<trans-unit id="default.label.sitecode" xml:space="preserve">
+				<source>Sites</source>
+				<target>Сайтове</target>
+			</trans-unit>
+			<trans-unit id="default.label.tsconfig" xml:space="preserve">
+				<source>TypoScript configuration</source>
+				<target>Конфигурация на TypoScript</target>
+			</trans-unit>
+			<trans-unit id="default.name" xml:space="preserve">
+				<source>Aimeos Shop scheduler</source>
+				<target>График на магазин Aimeos</target>
+			</trans-unit>
+			<trans-unit id="email.description" xml:space="preserve">
+				<source>Specialized task for sending the e-mails</source>
+				<target>Специализирана задача за изпращане на имейли</target>
+			</trans-unit>
+			<trans-unit id="email.error.from-email.invalid" xml:space="preserve">
+				<source>The sender e-mail address is invalid or none was entered</source>
+				<target>Електронният адрес на подателя е невалиден или не е въведен такъв.</target>
+			</trans-unit>
+			<trans-unit id="email.error.reply-email.invalid" xml:space="preserve">
+				<source>The reply e-mail address is invalid</source>
+				<target>Електронният адрес за отговор е невалиден</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-catalog.invalid" xml:space="preserve">
+				<source>The page ID of the product catalog page is invalid</source>
+				<target>Идентификаторът на страницата на продуктовия каталог е невалиден</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-detail.invalid" xml:space="preserve">
+				<source>The page ID of the product detail page is invalid</source>
+				<target>Идентификаторът на страницата с подробности за продукта е невалиден</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-login.invalid" xml:space="preserve">
+				<source>The page ID of the account login page is invalid</source>
+				<target>Идентификаторът на страницата за влизане в профила е невалиден</target>
+			</trans-unit>
+			<trans-unit id="email.error.page-download.invalid" xml:space="preserve">
+				<source>The page ID of the account download page is invalid</source>
+				<target>Идентификаторът на страницата за изтегляне на акаунт е невалиден</target>
+			</trans-unit>
+			<trans-unit id="email.error.site-baseurl.invalid" xml:space="preserve">
+				<source>The web site URL is invalid. Use a URL including the protocol and the domain like &quot;https://aimeos.org/&quot;</source>
+				<target>URL адресът на уеб сайта е невалиден. Използвайте URL адрес, включващ протокола и домейна, например „https://aimeos.org/“.</target>
+			</trans-unit>
+			<trans-unit id="email.error.content-baseurl.invalid" xml:space="preserve">
+				<source>The base URL to the product images is invalid. Use a base URL including the protocol and the domain like &quot;https://aimeos.org/uploads/tx_aimeos&quot;</source>
+				<target>Базовият URL адрес на изображенията на продукта е невалиден. Използвайте базов URL адрес, включващ протокола и домейна, например „https://aimeos.org/uploads/tx_aimeos“.</target>
+			</trans-unit>
+			<trans-unit id="email.label.from-name" xml:space="preserve">
+				<source>Sender name</source>
+				<target>Име на подателя</target>
+			</trans-unit>
+			<trans-unit id="email.label.from-email" xml:space="preserve">
+				<source>Sender e-mail</source>
+				<target>Имейл на изпращача</target>
+			</trans-unit>
+			<trans-unit id="email.label.reply-email" xml:space="preserve">
+				<source>Reply e-mail</source>
+				<target>Имейл за отговор</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-catalog" xml:space="preserve">
+				<source>Product catalog page ID</source>
+				<target>Идентификатор на страницата на продуктовия каталог</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-detail" xml:space="preserve">
+				<source>Product detail page ID</source>
+				<target>ID на страницата с подробности за продукта</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-login" xml:space="preserve">
+				<source>Account login page ID</source>
+				<target>ID на страницата за влизане в профила</target>
+			</trans-unit>
+			<trans-unit id="email.label.page-download" xml:space="preserve">
+				<source>Account download page ID</source>
+				<target>Идентификатор на страницата за изтегляне на профила</target>
+			</trans-unit>
+			<trans-unit id="email.label.content-baseurl" xml:space="preserve">
+				<source>Base URL to the product images (e.g. https://localhost/uploads/tx_aimeos/)</source>
+				<target>Базов URL адрес на изображенията на продукта (напр. https://localhost/uploads/tx_aimeos/)</target>
+			</trans-unit>
+			<trans-unit id="email.label.template-baseurl" xml:space="preserve">
+				<source>Absolute path or path relative from TYPO3 root to the CSS files of the theme directory</source>
+				<target>Абсолютен път или относителен път от корена на TYPO3 до CSS файловете в директорията на темата</target>
+			</trans-unit>
+			<trans-unit id="email.name" xml:space="preserve">
+				<source>Aimeos Shop advanced scheduler</source>
+				<target>Усъвършенстван график на Aimeos Shop</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
