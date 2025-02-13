@@ -17,7 +17,7 @@ AimeosBasketMini = {
 		const delivery = Number.parseFloat(attr['order.costs']);
 
 		const formatter = new Intl.NumberFormat(attr['order.languageid'], {
-			currency: attr['order.currencyid'],
+			currency: attr['order.currencyid'].replace(/_/g, '-'),
 			style: "currency"
 		});
 

@@ -92,6 +92,7 @@ AimeosCatalogLists = {
 					await fetch(infiniteUrl).then(response => {
 						return response.text();
 					}).then(data => {
+						const nonce = $('script.items-stock', document)?.attr('nonce');
 						const nextPage = $('<html/>').html(data);
 						const newList = $('.catalog-list-items', nextPage);
 						const ids = newList.data('pinned') || {};
@@ -101,8 +102,9 @@ AimeosCatalogLists = {
 							list.append(node);
 						});
 
-						$('head .items-stock', nextPage).each((idx, node) => {
-							$(document.head).append($('<script/>').attr('src', $(node).attr('src')));
+						$('script.items-stock', nextPage).each((idx, node) => {
+							node.setAttribute('nonce', nonce);
+							$(document.head).append(node);
 						});
 
 						list.data('infiniteurl', newList.data('infiniteurl'));
