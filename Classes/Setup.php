@@ -165,7 +165,7 @@ class Setup implements UpgradeWizardInterface, RepeatableInterface, ChattyInterf
 
         foreach ($connectionNames as $connectionName) {
             $conn = $ctx->db($connectionName);
-            $adapter = $ctx->config('resource/' . $connectionName . '/adapter');
+            $adapter = $ctx->config()->get('resource/' . $connectionName . '/adapter');
 
             $tables = [];
             foreach(['fe_users_', 'madmin_', 'mshop_'] as $prefix) {
