@@ -28,21 +28,6 @@ return [
 	'index' => [
 		'manager' => [
 			'name' => $manager,
-			'attribute' => [
-				'name' => $manager,
-			],
-			'catalog' => [
-				'name' => $manager,
-			],
-			'price' => [
-				'name' => $manager,
-			],
-			'supplier' => [
-				'name' => $manager,
-			],
-			'text' => [
-				'name' => $manager,
-			],
 		],
 	],
 ];
