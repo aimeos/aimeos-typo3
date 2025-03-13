@@ -141,6 +141,15 @@ class Base
         $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
         $site = $pid ? $siteFinder->getSiteByPageId($pid) : current($siteFinder->getAllSites());
 
+        // Workaround for TYPO3 v13
+        $type = \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_BE;
+        $serverRequest = new \TYPO3\CMS\Core\Http\ServerRequest();
+        $serverRequest = $serverRequest->withAttribute('extbase', []);
+        $serverRequest = $serverRequest->withAttribute('applicationType', $type);
+
+        $cm = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager::class);
+        $cm->setRequest($serverRequest);
+
         if ($site) {
             return $site->getRouter();
         }
