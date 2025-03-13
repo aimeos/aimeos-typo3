@@ -147,7 +147,7 @@ class Base
         $serverRequest = $serverRequest->withAttribute('extbase', []);
         $serverRequest = $serverRequest->withAttribute('applicationType', $type);
 
-        $cm = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager::class);
+        $cm = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
         $cm->setRequest($serverRequest);
 
         if ($site) {
