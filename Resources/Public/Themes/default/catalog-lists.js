@@ -43,6 +43,7 @@ AimeosCatalogLists = {
 
 		$(document).on("click", ".catalog-list-items .product .btn-action", ev => {
 			const target = $(ev.currentTarget).closest(".product");
+			ev.preventDefault();
 
 			Aimeos.createOverlay();
 
@@ -58,16 +59,18 @@ AimeosCatalogLists = {
 				});
 
 				node.on("click", ".btn-action", (ev) => {
-					this.showBasket($(ev.currentTarget).closest("form.basket")[0]);
-					return false;
+					if(AimeosCatalog.checkVariants(ev.currentTarget)) {
+						this.showBasket($(ev.currentTarget).closest("form.basket")[0]);
+					}
+					ev.stopPropagation();
+					ev.preventDefault();
 				});
 
 				Aimeos.createContainer($('<div class="catalog-list catalog-list-items list">').append(node));
-				return false;
+				return;
 			}
 
 			this.showBasket($("form.basket", target)[0]);
-			return false;
 		});
 	},
 
@@ -89,6 +92,7 @@ AimeosCatalogLists = {
 					await fetch(infiniteUrl).then(response => {
 						return response.text();
 					}).then(data => {
+						const nonce = $('script.items-stock', document)?.attr('nonce');
 						const nextPage = $('<html/>').html(data);
 						const newList = $('.catalog-list-items', nextPage);
 						const ids = newList.data('pinned') || {};
@@ -98,8 +102,9 @@ AimeosCatalogLists = {
 							list.append(node);
 						});
 
-						$('head .items-stock', nextPage).each((idx, node) => {
-							$(document.head).append($('<script/>').attr('src', $(node).attr('src')));
+						$('script.items-stock', nextPage).each((idx, node) => {
+							node.setAttribute('nonce', nonce);
+							$(document.head).append(node);
 						});
 
 						list.data('infiniteurl', newList.data('infiniteurl'));

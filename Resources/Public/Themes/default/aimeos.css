@@ -2,7 +2,7 @@
  * Aimeos elegance template CSS
  *
  * @license LGPLv3, https://opensource.org/licenses/LGPL-3.0
- * @copyright Aimeos (aimeos.org), 2014-2024
+ * @copyright Aimeos (aimeos.org), 2014-2025
  */
 
 
@@ -257,7 +257,7 @@ img {
 }
 
 .aimeos .minibutton:after {
-	vertical-align: text-top;
+	vertical-align: middle;
 	font: normal normal normal 14px/1 bootstrap-icons;
 	font-size: 115%;
 }
