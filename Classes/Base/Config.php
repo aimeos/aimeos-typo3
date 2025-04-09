@@ -31,7 +31,7 @@ class Config
     {
         if (self::$config === null) {
             // Using extension config directories
-            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'])) {
+            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] ?? null)) {
                 ksort($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs']);
                 foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['confDirs'] as $dir) {
                     if (($absPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($dir)) !== '') {

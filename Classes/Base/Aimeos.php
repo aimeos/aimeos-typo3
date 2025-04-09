@@ -31,7 +31,7 @@ class Aimeos
             $extDirs = [];
 
             // Extension directories
-            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'])) {
+            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] ?? null)) {
                 ksort($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']);
 
                 foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs'] as $dir) {
