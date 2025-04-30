@@ -53,7 +53,7 @@ class JobsCommand extends Command
     #[\ReturnTypeWillChange]
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $context = $this->context($input->getOption('pid'));
+        $context = $this->context();
         $context = $this->addConfig($context, $input->getOption('option'));
         $process = $context->process();
 
@@ -71,6 +71,10 @@ class JobsCommand extends Command
             foreach ($localeItem->getSiteItem()->getConfig() as $key => $value) {
                 $config->set($key, $value);
             }
+
+            $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates', $localeItem->getSiteItem()->getTheme());
+            $view = \Aimeos\Aimeos\Base::view($context, $this->getRouter($input->getOption('pid')), $tmplPaths);
+            $context->setView($view);
 
             $output->writeln(sprintf('Executing the Aimeos jobs for "<info>%s</info>"', $siteItem->getCode()));
 
@@ -117,17 +121,13 @@ class JobsCommand extends Command
     /**
      * Returns a context object
      *
-     * @param string|null $pid Page ID if available
      * @return \Aimeos\MShop\ContextIface Context object containing only the most necessary dependencies
      */
-    protected function context(?string $pid) : \Aimeos\MShop\ContextIface
+    protected function context() : \Aimeos\MShop\ContextIface
     {
         $aimeos = \Aimeos\Aimeos\Base::aimeos();
         $config = \Aimeos\Aimeos\Base::config();
         $context = \Aimeos\Aimeos\Base::context($config);
-
-        $tmplPaths = $aimeos->getTemplatePaths('controller/jobs/templates', $context->locale()->getSiteItem()->getTheme());
-        $view = \Aimeos\Aimeos\Base::view($context, $this->getRouter($pid), $tmplPaths);
 
         $langManager = \Aimeos\MShop::create($context, 'locale/language');
         $langids = $langManager->search($langManager->filter(true))->keys()->toArray();
@@ -138,7 +138,6 @@ class JobsCommand extends Command
 
         $context->setEditor('aimeos:jobs');
         $context->setI18n($i18n);
-        $context->setView($view);
 
         return $context;
     }
