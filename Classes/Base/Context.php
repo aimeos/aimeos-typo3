@@ -328,7 +328,7 @@ class Context
             $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
         }
 
-        if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
+        if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn') && $t3context->getPropertyFromAspect('frontend.user', 'id') !== PHP_INT_MAX) {
 
             $userid = $t3context->getPropertyFromAspect('frontend.user', 'id');
             $names = $t3context->getPropertyFromAspect('frontend.user', 'groupNames', []);
