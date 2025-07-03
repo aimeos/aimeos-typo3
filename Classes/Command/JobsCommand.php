@@ -53,6 +53,8 @@ class JobsCommand extends Command
     #[\ReturnTypeWillChange]
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
+        $this->environment();
+
         $context = $this->context();
         $context = $this->addConfig($context, $input->getOption('option'));
         $process = $context->process();
@@ -140,6 +142,20 @@ class JobsCommand extends Command
         $context->setI18n($i18n);
 
         return $context;
+    }
+
+
+    /**
+     * Workaround to fix TYPO3 13.x+ environment for CLI
+     */
+    protected function environment()
+    {
+        // \TYPO3\CMS\Core\Core\Bootstrap::initializeBackendAuthentication();
+        $type = \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_BE;
+        $cmiface = \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::class;
+
+        $cm = GeneralUtility::makeInstance($cmiface);
+        $cm->setRequest((new \TYPO3\CMS\Core\Http\ServerRequest())->withAttribute('applicationType', $type));
     }
 
 
