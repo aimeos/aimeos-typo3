@@ -340,6 +340,21 @@ AimeosCatalogFilter = {
 
 
 	/**
+	 * Uses the price filters
+	 */
+	onUsePrice() {
+
+		$('.catalog-filter-price').on("click", 'button[type="submit"]', ev => {
+			$(".price-lists input", $(ev.currentTarget).closest(".catalog-filter-price")).each((idx, el) => {
+				if(el.dataset.name) {
+					el.name = el.dataset.name;
+				}
+			});
+		});
+	},
+
+
+	/**
 	 * Toggles the search filters if hover isn't available
 	 */
 	onToggleSearch() {
@@ -481,6 +496,7 @@ AimeosCatalogFilter = {
 
 		this.onSyncPrice();
 		this.onTogglePrice();
+		this.onUsePrice();
 
 		this.onSubmitAttribute();
 		this.onToggleAttribute();
