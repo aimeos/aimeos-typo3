@@ -93,9 +93,13 @@ class CatalogController extends AbstractController
      */
     public function listAction()
     {
-        $this->removeMetatags();
-        $client = \Aimeos\Client\Html::create($this->context(), 'catalog/lists');
-        return $this->getClientOutput($client);
+        try {
+            $this->removeMetatags();
+            $client = \Aimeos\Client\Html::create($this->context(), 'catalog/lists');
+            return $this->getClientOutput($client);
+        } catch(\Exception $e) {
+            $this->exception($e);
+        }
     }
 
 
@@ -211,7 +215,7 @@ class CatalogController extends AbstractController
      */
     protected function exception(\Exception $e)
     {
-        if ($e->getCode() > 400) {
+        if ($e->getCode() > 400 && $e->getCode() < 500) {
             $name = \TYPO3\CMS\Frontend\Controller\ErrorController::class;
 
             $response = GeneralUtility::makeInstance($name)->pageNotFoundAction(
