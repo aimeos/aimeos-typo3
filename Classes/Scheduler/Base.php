@@ -54,7 +54,7 @@ class Base
 
             $context->setLocale($localeItem);
 
-            $theme = $locale->getSiteItem()?->getTheme();
+            $theme = $localeItem->getSiteItem()?->getTheme();
             $tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths('controller/jobs/templates', $theme);
             $context->setView(Aimeos\Base::view($context, self::getRouter($pid), $tmplPaths));
 
