@@ -54,6 +54,10 @@ class Base
 
             $context->setLocale($localeItem);
 
+            $theme = $locale->getSiteItem()?->getTheme();
+            $tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths('controller/jobs/templates', $theme);
+            $context->setView(Aimeos\Base::view($context, self::getRouter($pid), $tmplPaths));
+
             foreach ($jobs as $jobname) {
                 $fcn = function($context, $aimeos, $jobname) {
                     \Aimeos\Controller\Jobs::create($context, $aimeos, $jobname)->run();
@@ -95,10 +99,6 @@ class Base
         $langids = $langManager->search($search)->keys()->toArray();
 
         $context->setI18n(Aimeos\Base::i18n($langids, (array) ($tsconf['i18n'] ?? [])));
-
-        $tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths('controller/jobs/templates');
-        $context->setView(Aimeos\Base::view($context, self::getRouter($pid), $tmplPaths));
-
         $context->setEditor('scheduler');
 
         return $context;
