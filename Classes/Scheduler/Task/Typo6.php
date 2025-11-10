@@ -25,6 +25,9 @@ class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     private $fieldController = 'aimeos_controller';
     private $fieldTSconfig = 'aimeos_config';
 
+    public array $aimeos_sitecode;
+    public array $aimeos_controller;
+    public string $aimeos_config;
 
     /**
      * Executes the configured tasks.

@@ -32,6 +32,16 @@ class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     private $fieldPageCatalog = 'aimeos_pageid_catalog';
     private $fieldPageDownload = 'aimeos_pageid_download';
 
+    public array $aimeos_sitecode;
+    public string $aimeos_config;
+    public array $aimeos_controller;
+    public string $aimeos_sender_from;
+    public string $aimeos_sender_email;
+    public string $aimeos_reply_email;
+    public string $aimeos_pageid_login;
+    public string $aimeos_pageid_detail;
+    public string $aimeos_pageid_catalog;
+    public string $aimeos_pageid_download;
 
     /**
      * Executes the configured tasks.
