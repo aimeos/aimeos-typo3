@@ -39,9 +39,6 @@ class Base
         $context = self::context($tsconf, $conf, $pid);
         $process = $context->process();
 
-        // Reset before child processes are spawned to avoid lost DB connections afterwards
-        GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\ConnectionPool')->resetConnections();
-
         $manager = \Aimeos\MShop::create($context, 'locale');
 
         foreach (self::getSiteItems($context, $sites) as $siteItem) {
@@ -58,6 +55,8 @@ class Base
             $tmplPaths = Aimeos\Base::aimeos()->getTemplatePaths('controller/jobs/templates', $theme);
             $context->setView(Aimeos\Base::view($context, self::getRouter($pid), $tmplPaths));
 
+            // Reset before child processes are spawned to avoid lost DB connections afterwards
+            GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\ConnectionPool')->resetConnections();
             foreach ($jobs as $jobname) {
                 $fcn = function($context, $aimeos, $jobname) {
                     \Aimeos\Controller\Jobs::create($context, $aimeos, $jobname)->run();
