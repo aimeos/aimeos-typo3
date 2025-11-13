@@ -21,27 +21,28 @@ use Aimeos\Aimeos\Scheduler;
  */
 class Email6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {
-    private $fieldSite = 'aimeos_sitecode';
-    private $fieldTSconfig = 'aimeos_config';
-    private $fieldController = 'aimeos_controller';
-    private $fieldSenderFrom = 'aimeos_sender_from';
-    private $fieldSenderEmail = 'aimeos_sender_email';
-    private $fieldReplyEmail = 'aimeos_reply_email';
-    private $fieldPageLogin = 'aimeos_pageid_login';
-    private $fieldPageDetail = 'aimeos_pageid_detail';
-    private $fieldPageCatalog = 'aimeos_pageid_catalog';
-    private $fieldPageDownload = 'aimeos_pageid_download';
+    private string $fieldSite = 'aimeos_sitecode';
+    private string $fieldTSconfig = 'aimeos_config';
+    private string $fieldController = 'aimeos_controller';
+    private string $fieldSenderFrom = 'aimeos_sender_from';
+    private string $fieldSenderEmail = 'aimeos_sender_email';
+    private string $fieldReplyEmail = 'aimeos_reply_email';
+    private string $fieldPageLogin = 'aimeos_pageid_login';
+    private string $fieldPageDetail = 'aimeos_pageid_detail';
+    private string $fieldPageCatalog = 'aimeos_pageid_catalog';
+    private string $fieldPageDownload = 'aimeos_pageid_download';
 
-    public array $aimeos_sitecode;
-    public string $aimeos_config;
-    public array $aimeos_controller;
-    public string $aimeos_sender_from;
-    public string $aimeos_sender_email;
-    public string $aimeos_reply_email;
-    public string $aimeos_pageid_login;
-    public string $aimeos_pageid_detail;
-    public string $aimeos_pageid_catalog;
-    public string $aimeos_pageid_download;
+    public array $aimeos_sitecode = [];
+    public string $aimeos_config = '';
+    public array $aimeos_controller = [];
+    public string $aimeos_sender_from = '';
+    public string $aimeos_sender_email = '';
+    public string $aimeos_reply_email = '';
+    public string $aimeos_pageid_login = '';
+    public string $aimeos_pageid_detail = '';
+    public string $aimeos_pageid_catalog = '';
+    public string $aimeos_pageid_download = '';
+
 
     /**
      * Executes the configured tasks.
