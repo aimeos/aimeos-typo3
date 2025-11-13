@@ -21,13 +21,14 @@ use Aimeos\Aimeos\Scheduler;
  */
 class Typo6 extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {
-    private $fieldSite = 'aimeos_sitecode';
-    private $fieldController = 'aimeos_controller';
-    private $fieldTSconfig = 'aimeos_config';
+    private string $fieldSite = 'aimeos_sitecode';
+    private string $fieldController = 'aimeos_controller';
+    private string $fieldTSconfig = 'aimeos_config';
 
-    public array $aimeos_sitecode;
-    public array $aimeos_controller;
-    public string $aimeos_config;
+    public array $aimeos_sitecode = [];
+    public array $aimeos_controller = [];
+    public string $aimeos_config = '';
+
 
     /**
      * Executes the configured tasks.
