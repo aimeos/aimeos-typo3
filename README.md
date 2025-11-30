@@ -17,7 +17,7 @@ and customize anything to your needs.
 
 ![aimeos-frontend](https://user-images.githubusercontent.com/8647429/212348410-55cbaa00-722a-4a30-8b57-da9e173e0675.jpg)
 
-## Table Of Content
+## Table Of Contents
 
 - [Installation](#installation)
     - [Composer](#composer)
