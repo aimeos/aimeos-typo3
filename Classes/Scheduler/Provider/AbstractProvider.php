@@ -21,9 +21,9 @@ use Aimeos\Aimeos\Scheduler;
  */
 abstract class AbstractProvider extends \TYPO3\CMS\Scheduler\AbstractAdditionalFieldProvider
 {
-    private $fieldSite = 'aimeos_sitecode';
-    private $fieldController = 'aimeos_controller';
-    private $fieldTSconfig = 'aimeos_config';
+    private string $fieldSite = 'aimeos_sitecode';
+    private string $fieldController = 'aimeos_controller';
+    private string $fieldTSconfig = 'aimeos_config';
 
 
     /**
