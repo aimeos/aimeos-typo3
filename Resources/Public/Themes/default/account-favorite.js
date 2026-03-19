@@ -8,28 +8,29 @@ AimeosAccountFavorite = {
 	 */
 	onRemoveProduct() {
 
-		$("body").on("click", ".account-favorite .delete", async ev => {
+        $("body").on("click", ".account-favorite .delete", async ev => {
 
-			const form = $(ev.currentTarget).closest("form");
-			$(ev.currentTarget).closest("favorite-item").addClass("loading");
+            ev.preventDefault();
 
-			await fetch(form.attr("action"), {
-				body: new FormData(form[0]),
-				method: 'POST'
-			}).then(response => {
-				return response.text();
-			}).then(data => {
-				const doc = $("<html/>").html(data);
+            const $btn = $(ev.currentTarget);
+            const form = $btn.closest("form");
+            $btn.closest(".favorite-item").addClass("loading");
 
-				$(".aimeos.account-favorite").replaceWith($(".aimeos.account-favorite", doc));
+            const response = await fetch(form.attr("action"), {
+                method: "POST",
+                body: new FormData(form[0])
+            });
 
-				if(!$(".aimeos.account-favorite .favorite-items").length) {
-					Aimeos.removeOverlay();
-				}
-			});
+            const html = await response.text();
+            const doc = $("<html/>").html(html);
 
-			return false;
-		});
+            $(".aimeos.account-favorite")
+                .replaceWith($(".aimeos.account-favorite", doc));
+
+            if (!$(".aimeos.account-favorite .favorite-items").length) {
+                Aimeos.removeOverlay();
+            }
+        });
 	},
 
 
