@@ -38,11 +38,6 @@ class CatalogController extends AbstractController
     public function countAction()
     {
         $client = \Aimeos\Client\Html::create($this->context(), 'catalog/count');
-
-        if (!isset($this->responseFactory)) { // TYPO3 10
-            return $this->getClientOutput($client);
-        }
-
         $client->setView($this->context()->view())->init();
 
         return $this->responseFactory->createResponse()
@@ -149,11 +144,6 @@ class CatalogController extends AbstractController
     public function stockAction()
     {
         $client = \Aimeos\Client\Html::create($this->context(), 'catalog/stock');
-
-        if (!isset($this->responseFactory)) { // TYPO3 10
-            return $this->getClientOutput($client);
-        }
-
         $client->setView($this->context()->view())->init();
 
         return $this->responseFactory->createResponse()
@@ -169,11 +159,6 @@ class CatalogController extends AbstractController
     public function suggestAction()
     {
         $client = \Aimeos\Client\Html::create($this->context(), 'catalog/suggest');
-
-        if (!isset($this->responseFactory)) { // TYPO3 10
-            return $this->getClientOutput($client);
-        }
-
         $client->setView($this->context()->view())->init();
 
         return $this->responseFactory->createResponse()
@@ -233,9 +218,12 @@ class CatalogController extends AbstractController
      */
     protected function removeMetatags()
     {
-        if (is_object($GLOBALS['TSFE']) && isset($GLOBALS['TSFE']->config['config'])) {
-            $GLOBALS['TSFE']->config['config']['disableCanonical'] = true;
-            $GLOBALS['TSFE']->config['config']['noPageTitle'] = 2;
+        $typoScript = $this->request->getAttribute('frontend.typoscript');
+        if ($typoScript !== null) {
+            $configArray = $typoScript->getConfigArray();
+            $configArray['disableCanonical'] = true;
+            $configArray['noPageTitle'] = 2;
+            $typoScript->setConfigArray($configArray);
         }
 
         if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')

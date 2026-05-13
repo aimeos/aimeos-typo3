@@ -321,14 +321,17 @@ class Context
             return $fcn($context);
         }
 
-        $appType = null;
+        $isFrontend = false;
+        $isBackend = false;
         $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
         if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
-            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+            $applicationType = $GLOBALS['TYPO3_REQUEST']->getAttribute('applicationType');
+            $isFrontend = $applicationType === \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_FE;
+            $isBackend = $applicationType === \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_BE;
         }
 
-        if ($appType && $appType->isFrontend() && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn') && $t3context->getPropertyFromAspect('frontend.user', 'id') !== PHP_INT_MAX) {
+        if ($isFrontend && $t3context->getPropertyFromAspect('frontend.user', 'isLoggedIn') && $t3context->getPropertyFromAspect('frontend.user', 'id') !== PHP_INT_MAX) {
 
             $userid = $t3context->getPropertyFromAspect('frontend.user', 'id');
             $names = $t3context->getPropertyFromAspect('frontend.user', 'groupNames', []);
@@ -339,10 +342,10 @@ class Context
                 return \Aimeos\MShop::create($context, 'customer')->get($userid);
             });
 
-            $ipaddr = (string) GeneralUtility::getIndpEnv('REMOTE_ADDR');
+            $ipaddr = $_SERVER['REMOTE_ADDR'] ?? '';
             $context->setEditor($t3context->getPropertyFromAspect('frontend.user', 'username', $ipaddr));
 
-        } elseif ($appType && $appType->isBackend()) {
+        } elseif ($isBackend) {
 
             $ids = array_filter($t3context->getPropertyFromAspect('backend.user', 'groupIds', []), fn ($id) => $id > 0);
             $names = $t3context->getPropertyFromAspect('backend.user', 'groupNames', []);
@@ -351,7 +354,7 @@ class Context
             $context->setEditor($t3context->getPropertyFromAspect('backend.user', 'username', ''));
 
         } else {
-            $context->setEditor((string) GeneralUtility::getIndpEnv('REMOTE_ADDR'));
+            $context->setEditor($_SERVER['REMOTE_ADDR'] ?? '');
         }
 
         return $context;
@@ -366,12 +369,12 @@ class Context
      */
     protected static function addDateTime(\Aimeos\MShop\ContextIface $context) : \Aimeos\MShop\ContextIface
     {
-        $appType = null;
+        $isFrontend = false;
         if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof ServerRequestInterface) {
-            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+            $isFrontend = $GLOBALS['TYPO3_REQUEST']->getAttribute('applicationType') === \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_FE;
         }
 
-        if ($appType && $appType->isFrontend() && isset($GLOBALS['BE_USER']->adminPanel)
+        if ($isFrontend && isset($GLOBALS['BE_USER']->adminPanel)
             && class_exists('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService')) {
             $service = GeneralUtility::makeInstance('TYPO3\\CMS\\Adminpanel\\Service\\ConfigurationService');
             $tstamp = strtotime($service->getConfigurationOption('preview', 'simulateDate'));

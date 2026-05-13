@@ -36,10 +36,13 @@ class View
         $configManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         $config = $configManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FRAMEWORK);
 
-        $view = GeneralUtility::makeInstance(\TYPO3\CMS\Fluid\View\StandaloneView::class);
-        $view->setPartialRootPaths( $config['view']['partialRootPaths'] ?? [] );
-        $view->setLayoutRootPaths( $config['view']['layoutRootPaths'] ?? [] );
-        $view->setRequest($request);
+        $viewFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\View\ViewFactoryInterface::class);
+        $viewFactoryData = new \TYPO3\CMS\Core\View\ViewFactoryData(
+            partialRootPaths: $config['view']['partialRootPaths'] ?? [],
+            layoutRootPaths: $config['view']['layoutRootPaths'] ?? [],
+            request: $request,
+        );
+        $view = $viewFactory->create($viewFactoryData);
 
         $engines = ['.html' => new \Aimeos\Base\View\Engine\Typo3($view)];
 
@@ -84,14 +87,14 @@ class View
             return $fcn($view);
         }
 
-        $appType = null;
+        $isBackend = false;
         if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof \TYPO3\CMS\Core\Http\ServerRequest) {
-            $appType = \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST']);
+            $isBackend = $GLOBALS['TYPO3_REQUEST']->getAttribute('applicationType') === \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_BE;
         }
 
         $t3context = GeneralUtility::makeInstance('TYPO3\CMS\Core\Context\Context');
 
-        if ($appType && $appType->isBackend()) {
+        if ($isBackend) {
             if ($t3context->getPropertyFromAspect('backend.user', 'isAdmin', false) === false) {
                 $ids = array_filter($t3context->getPropertyFromAspect('backend.user', 'groupIds', []), fn ($id) => $id > 0);
                 $names = $t3context->getPropertyFromAspect('backend.user', 'groupNames', []);
@@ -252,7 +255,10 @@ class View
             return $fcn($view, $request);
         }
 
-        $target = $GLOBALS["TSFE"]->id ?? null;
+        $target = null;
+        if ($request !== null) {
+            $target = $request->getAttribute('routing')?->getPageId();
+        }
 
         $helper = new \Aimeos\Base\View\Helper\Request\Typo3($view, $target, $_FILES, $_GET, $_POST, $_COOKIE, $_SERVER);
         $view->addHelper('request', $helper);
@@ -349,7 +355,7 @@ class View
         $fixed = [];
         $pageId = 0;
 
-        if ($request && $request->getAttribute('applicationType') === 1) { // for frontend requests only
+        if ($request && $request->getAttribute('applicationType') === \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_FE) {
             $name = $config->get('typo3/param/name/site', 'site');
 
             if ($request !== null && $request->hasArgument($name) === true) {

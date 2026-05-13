@@ -155,10 +155,9 @@ abstract class AbstractController
     protected function getClientOutput(\Aimeos\Client\Html\Iface $client)
     {
         $uid = $this->ceUid;
-        if ($GLOBALS['TYPO3_REQUEST'] instanceof \Psr\Http\Message\ServerRequestInterface
-            && empty($GLOBALS['TYPO3_REQUEST']->getAttribute('routing')) === false
-        ) {
-            $uid .= '-' . $GLOBALS['TYPO3_REQUEST']->getAttribute('routing')->getPageType();
+        $routing = $this->request->getAttribute('routing');
+        if ($routing !== null) {
+            $uid .= '-' . $routing->getPageType();
         }
 
         $client->setView($this->context()->view())->init();
