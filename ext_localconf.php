@@ -249,7 +249,6 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 );
 
 
-
 /**
  * Aimeos scheduler tasks
  */
@@ -297,36 +296,3 @@ if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][
 if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] ) ) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['aimeos']['groups'] = ['pages'];
 }
-
-
-/**
- * Add TYPO3 Hooks
- */
-
-// TYPO3 10, unnecessary in 11
-if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['logout_confirmed']['aimeos'] = \Aimeos\Aimeos\Base::class . '->logout';
-}
-
-if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] ) ) {
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['aimeos'] = \Aimeos\Aimeos\Base::class . '->clearCache';
-}
-
-
-/**
- * Add update wizard
- */
-
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['aimeos'] = \Aimeos\Aimeos\Setup::class;
-
-
-/**
- * Disable TYPO3 canonical tags so Aimeos ones are used
- */
-
-if (!\Aimeos\Aimeos\Base::getExtConfig('typo3Canonical', false) ) {
-    unset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3\CMS\Frontend\Page\PageGenerator']['generateMetaTags']['canonical'] );
-}
-
-
-?>
