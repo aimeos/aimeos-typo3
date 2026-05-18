@@ -18,7 +18,7 @@ class BlockViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelp
     protected $escapeOutput = false;
 
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('name', 'string', 'Name of the content block');
     }

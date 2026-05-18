@@ -18,7 +18,7 @@ class ConfigViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHel
     protected $escapeOutput = false;
 
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('key', 'string', 'Configuration key, e.g. client/html/catalog/lists/basket-add');
         $this->registerArgument('default', 'mixed', 'Value if no configuration for the given key was found', false);
