@@ -253,7 +253,7 @@ class JqadmController extends AbstractController
      *
      * return \TYPO3\CMS\Extbase\Mvc\View\ViewInterface View object
      */
-    protected function resolveView() : \TYPO3Fluid\Fluid\View\ViewInterface
+    protected function resolveView(): \TYPO3\CMS\Core\View\ViewInterface
     {
         $params = $this->request->getArguments();
         $value = $params['ai']['locale'] ?? '';
