@@ -18,7 +18,7 @@ class TranslateViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractView
     protected $escapeOutput = false;
 
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('singular', 'string', 'Singular form of the text to translate');
         $this->registerArgument('plural', 'string', 'Plural form of the text, used if $number is greater than one', false);
