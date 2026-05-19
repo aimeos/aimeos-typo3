@@ -4,6 +4,11 @@ services:
     autoconfigure: true
     public: false
 
+  cache.aimeos:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['aimeos']
+
   Aimeos\Aimeos\:
     resource: '../Classes/*'
 
