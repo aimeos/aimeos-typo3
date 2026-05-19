@@ -257,7 +257,10 @@ class View
 
         $target = null;
         if ($request !== null) {
-            $target = $request->getAttribute('routing')?->getPageId();
+            $routing = $request->getAttribute('routing');
+            if ($routing instanceof \TYPO3\CMS\Core\Routing\PageArguments) {
+                $target = $routing->getPageId();
+            }
         }
 
         $helper = new \Aimeos\Base\View\Helper\Request\Typo3($view, $target, $_FILES, $_GET, $_POST, $_COOKIE, $_SERVER);
