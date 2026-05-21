@@ -24,6 +24,10 @@ services:
         event: TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent
       - name: 'install.upgradewizard'
 
+  Aimeos\Aimeos\Upgrade\CTypeMigrationWizard:
+    tags:
+      - name: 'install.upgradewizard'
+
   Aimeos\Aimeos\Command\JobsCommand:
     tags:
       - name: 'console.command'
