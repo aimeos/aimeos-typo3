@@ -14,8 +14,5 @@ page {
         select.orderBy = sorting
         select.languageField = sys_language_uid
         renderObj =< tt_content
-        renderObj {
-            list.templateRootPaths.5 = EXT:aimeos/Resources/Private/Templates/Fluid
-        }
     }
 }

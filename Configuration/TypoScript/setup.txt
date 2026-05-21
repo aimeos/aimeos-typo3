@@ -44,13 +44,6 @@ plugin.tx_aimeos {
     }
 }
 
-tt_content.list.20.aimeos_basket-small = USER
-tt_content.list.20.aimeos_basket-small.userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-# Exclude the shopping basket from the page cache, once it has been initialized
-[request && session("aimeos/basket/list") !== null]
-    tt_content.list.20.aimeos_basket-small = USER_INT
-[end]
-
 module.tx_aimeos.settings.typo3.admin.default = {$module.tx_aimeos.typo3.admin.default}
 
 
@@ -70,9 +63,6 @@ aimeosJs {
         select.orderBy = sorting
         select.languageField = sys_language_uid
         renderObj =< tt_content
-        renderObj {
-            list.templateRootPaths.5 = EXT:aimeos/Resources/Private/Templates/Fluid
-        }
     }
 }
 
@@ -92,8 +82,5 @@ aimeosPlain {
         select.orderBy = sorting
         select.languageField = sys_language_uid
         renderObj =< tt_content
-        renderObj {
-            list.templateRootPaths.5 = EXT:aimeos/Resources/Private/Templates/Fluid
-        }
     }
 }
