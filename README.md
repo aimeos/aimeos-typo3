@@ -27,7 +27,7 @@ and customize anything to your needs.
     - [Database setup](#database-setup)
     - [Security](#security)
 - [Page setup](#page-setup)
-    - [Download the Aimeos Page Tree t3d file](#download-the-aimeos-page-tree-t3d-file)
+    - [Download the Aimeos Page Tree file](#download-the-aimeos-page-tree-file)
     - [Go to the Import View](#go-to-the-import-view)
     - [Upload the page tree file](#upload-the-page-tree-file)
     - [Go to the import view](#go-to-the-import-view)
@@ -38,14 +38,14 @@ and customize anything to your needs.
 
 ## Installation
 
-This document is for the latest Aimeos TYPO3 **23.10 release and later**.
+This document is for the latest Aimeos TYPO3 **25.10 release and later**.
 
-- LTS release: 24.10 (TYPO3 12/13 LTS)
-- Old LTS release: 23.10 (TYPO3 12 LTS)
+- Stable release: 26.04 (TYPO3 13/14 LTS)
+- LTS release: 25.10 (TYPO3 12/13 LTS)
 
 ### Composer
 
-**Note:** composer 2.1+ is required!
+**Note:** composer 2.2+ is required!
 
 The latest TYPO3 version can be installed via composer. This is especially useful, if you want to create new TYPO3 installations automatically or play with the latest code. You need to install the composer package first, if it isn't already available:
 
@@ -61,17 +61,16 @@ composer create-project typo3/cms-base-distribution myshop
 composer create-project "typo3/cms-base-distribution:^13" myshop
 ```
 
-It will install TYPO3 into the `./myshop/` directory. Change into the directory and install TYPO3 as usual:
+It will install TYPO3 into the `./myshop/` directory. Change into the directory and install TYPO3 using:
 
 ```bash
-cd ./myshop
-touch public/FIRST_INSTALL
+./vendor/bin/typo3 setup
 ```
 
 Open the TYPO3 URL in your browser and follow the setup steps. Afterwards, install the Aimeos extension using:
 
 ```bash
-composer req -W aimeos/aimeos-typo3:~24.10
+composer req -W aimeos/aimeos-typo3:~25.10
 ```
 
 If composer complains that one or more packages can't be installed because the required minimum stability isn't met, add this to your `composer.json`:
@@ -129,14 +128,6 @@ For new TYPO3 installations, there is a 1-click [Aimeos distribution](https://ty
 
 ## TYPO3 Setup
 
-Setup TYPO3 by creating a `FIRST_INSTALL` file in the `./public` directory:
-
-```bash
-touch public/FIRST_INSTALL
-```
-
-Open the URL of your installation in the browser and follow the steps in the TYPO3 setup scripts.
-
 ### Security
 
 Since **TYPO3 9.5.14+** implements **SameSite cookie handling** and restricts when browsers send cookies to your site. This is a problem when customers are redirected from external payment provider domain. Then, there's no session available on the confirmation page. To circumvent that problem, you need to set the configuration option `cookieSameSite` to `None` in your `./typo3conf/LocalConfiguration.php` or `./config/system/settings.php`:
@@ -153,12 +144,12 @@ TYPO3 10+ requires a site configuration which you have to add in "Site Managemen
 
 ## Page Setup
 
-### Download the Aimeos Page Tree t3d file
+### Download the Aimeos Page Tree file
 
 The page setup for an Aimeos web shop is easy, if you import the example page tree for TYPO3 10/11. You can download the version you need from here:
 
-* [24.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2024.10-2.t3d) and later
-* [23.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2023.04.t3d)
+* [25.10+ page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2026.04.xml) and later
+* [24.10 page tree](https://aimeos.org/fileadmin/download/Aimeos-pages_2024.10-2.t3d)
 
 **Note:** The Aimeos layout expects [Bootstrap](https://getbootstrap.com) providing the grid layout!
 
