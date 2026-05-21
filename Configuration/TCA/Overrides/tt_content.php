@@ -3,139 +3,71 @@
 defined('TYPO3') or die();
 
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_jsonapi'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_jsonapi', 'FILE:EXT:aimeos/Configuration/FlexForms/Jsonapi.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'jsonapi', 'Aimeos Shop - JSON REST API');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'Jsonapi', 'Aimeos Shop - JSON REST API', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/Jsonapi.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'LocaleSelect', 'Aimeos Shop - Locale selector', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/LocaleSelect.xml');
 
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_locale-select'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_locale-select', 'FILE:EXT:aimeos/Configuration/FlexForms/LocaleSelect.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'locale-select', 'Aimeos Shop - Locale selector');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogAttribute', 'Aimeos Shop - Catalog attributes', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogAttribute.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogCount', 'Aimeos Shop - Catalog count JSON', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogCount.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogDetail', 'Aimeos Shop - Catalog detail', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogDetail.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogFilter', 'Aimeos Shop - Catalog filter', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogFilter.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogHome', 'Aimeos Shop - Catalog home', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogHome.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogList', 'Aimeos Shop - Catalog list', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogList.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogPrice', 'Aimeos Shop - Catalog price', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogPrice.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogSearch', 'Aimeos Shop - Catalog search', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSearch.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogSession', 'Aimeos Shop - Catalog user related session', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSession.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogStage', 'Aimeos Shop - Catalog stage area', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogStage.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogStock', 'Aimeos Shop - Catalog stock JSON', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogStock.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogSuggest', 'Aimeos Shop - Catalog suggest JSON', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSuggest.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogSupplier', 'Aimeos Shop - Catalog supplier', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSupplier.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CatalogTree', 'Aimeos Shop - Catalog tree', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogTree.xml');
 
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-attribute'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-attribute', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogAttribute.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-attribute', 'Aimeos Shop - Catalog attributes');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'BasketBulk', 'Aimeos Shop - Basket bulk order', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketBulk.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-count'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-count', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogCount.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-count', 'Aimeos Shop - Catalog count JSON');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'BasketRelated', 'Aimeos Shop - Basket related', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketRelated.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-detail'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-detail', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogDetail.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-detail', 'Aimeos Shop - Catalog detail');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'BasketSmall', 'Aimeos Shop - Basket small', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketSmall.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-filter'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-filter', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogFilter.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-filter', 'Aimeos Shop - Catalog filter');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-home'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-home', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogHome.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-home', 'Aimeos Shop - Catalog home');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-list'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-list', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogList.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-list', 'Aimeos Shop - Catalog list');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-price'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-price', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogPrice.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-price', 'Aimeos Shop - Catalog price');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-search'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-search', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSearch.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-search', 'Aimeos Shop - Catalog search');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-session'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-session', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSession.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-session', 'Aimeos Shop - Catalog user related session');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-stage'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-stage', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogStage.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-stage', 'Aimeos Shop - Catalog stage area');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-stock'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-stock', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogStock.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-stock', 'Aimeos Shop - Catalog stock JSON');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-suggest'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-suggest', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSuggest.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-suggest', 'Aimeos Shop - Catalog suggest JSON');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-supplier'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-supplier', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogSupplier.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-supplier', 'Aimeos Shop - Catalog supplier');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_catalog-tree'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_catalog-tree', 'FILE:EXT:aimeos/Configuration/FlexForms/CatalogTree.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'catalog-tree', 'Aimeos Shop - Catalog tree');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'BasketStandard', 'Aimeos Shop - Basket standard', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketStandard.xml');
 
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_basket-bulk'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_basket-bulk', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketBulk.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'basket-bulk', 'Aimeos Shop - Basket bulk order');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CheckoutConfirm', 'Aimeos Shop - Checkout confirm', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CheckoutConfirm.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_basket-related'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_basket-related', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketRelated.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'basket-related', 'Aimeos Shop - Basket related');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CheckoutStandard', 'Aimeos Shop - Checkout standard', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CheckoutStandard.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_basket-small'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_basket-small', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketSmall.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'basket-small', 'Aimeos Shop - Basket small');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_basket-standard'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_basket-standard', 'FILE:EXT:aimeos/Configuration/FlexForms/BasketStandard.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'basket-standard', 'Aimeos Shop - Basket standard');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'CheckoutUpdate', 'Aimeos Shop - Checkout payment update', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/CheckoutUpdate.xml');
 
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_checkout-confirm'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_checkout-confirm', 'FILE:EXT:aimeos/Configuration/FlexForms/CheckoutConfirm.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'checkout-confirm', 'Aimeos Shop - Checkout confirm');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountBasket', 'Aimeos Shop - Account basket', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountBasket.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_checkout-standard'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_checkout-standard', 'FILE:EXT:aimeos/Configuration/FlexForms/CheckoutStandard.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'checkout-standard', 'Aimeos Shop - Checkout standard');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountDownload', 'Aimeos Shop - Account download', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountDownload.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_checkout-update'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_checkout-update', 'FILE:EXT:aimeos/Configuration/FlexForms/CheckoutUpdate.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'checkout-update', 'Aimeos Shop - Checkout payment update');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountHistory', 'Aimeos Shop - Account history', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountHistory.xml');
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountFavorite', 'Aimeos Shop - Account favorite', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountFavorite.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-basket'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-basket', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountBasket.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-basket', 'Aimeos Shop - Account basket');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountProfile', 'Aimeos Shop - Account profile', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountProfile.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-download'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-download', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountDownload.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-download', 'Aimeos Shop - Account download');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountReview', 'Aimeos Shop - Account review', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountReview.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-history'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-history', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountHistory.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-history', 'Aimeos Shop - Account history');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountSubscription', 'Aimeos Shop - Account subscriptions', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountSubscription.xml');
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-favorite'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-favorite', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountFavorite.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-favorite', 'Aimeos Shop - Account favorite');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-profile'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-profile', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountProfile.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-profile', 'Aimeos Shop - Account profile');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-review'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-review', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountReview.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-review', 'Aimeos Shop - Account review');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-subscription'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-subscription', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountSubscription.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-subscription', 'Aimeos Shop - Account subscriptions');
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_account-watch'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_account-watch', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountWatch.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'account-watch', 'Aimeos Shop - Account watch list');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'AccountWatch', 'Aimeos Shop - Account watch list', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/AccountWatch.xml');
 
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['aimeos_supplier-detail'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('aimeos_supplier-detail', 'FILE:EXT:aimeos/Configuration/FlexForms/SupplierDetail.xml');
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'supplier-detail', 'Aimeos Shop - Supplier detail');
-
-
-?>
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin('aimeos', 'SupplierDetail', 'Aimeos Shop - Supplier detail', 'content-plugin', 'aimeos', '', 'FILE:EXT:aimeos/Configuration/FlexForms/SupplierDetail.xml');

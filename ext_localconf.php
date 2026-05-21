@@ -23,7 +23,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'locale-select',
+    'LocaleSelect',
     ['Aimeos\\Aimeos\\Controller\\LocaleController' => 'select'],
     ['Aimeos\\Aimeos\\Controller\\LocaleController' => 'select']
 );
@@ -31,98 +31,98 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-attribute',
+    'CatalogAttribute',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'attribute'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'attribute']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-count',
+    'CatalogCount',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'count'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'count']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-detail',
+    'CatalogDetail',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'detail'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'detail']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-filter',
+    'CatalogFilter',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'filter'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'filter']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-home',
+    'CatalogHome',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'home'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'home']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-list',
+    'CatalogList',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'list'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'list']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-price',
+    'CatalogPrice',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'price'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'price']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-search',
+    'CatalogSearch',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'search'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'search']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-session',
+    'CatalogSession',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'session'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'session']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-stage',
+    'CatalogStage',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'stage'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'stage']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-stock',
+    'CatalogStock',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'stock'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'stock']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-suggest',
+    'CatalogSuggest',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'suggest'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'suggest']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-supplier',
+    'CatalogSupplier',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'supplier'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'supplier']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'catalog-tree',
+    'CatalogTree',
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'tree'],
     ['Aimeos\\Aimeos\\Controller\\CatalogController' => 'tree']
 );
@@ -130,27 +130,28 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'basket-bulk',
+    'BasketBulk',
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'bulk'],
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'bulk']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'basket-related',
+    'BasketRelated',
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'related'],
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'related']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'basket-small',
+    'BasketSmall',
+    ['Aimeos\\Aimeos\\Controller\\BasketController' => 'small'],
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'small']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'basket-standard',
+    'BasketStandard',
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'index'],
     ['Aimeos\\Aimeos\\Controller\\BasketController' => 'index']
 );
@@ -158,21 +159,21 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'checkout-standard',
+    'CheckoutStandard',
     ['Aimeos\\Aimeos\\Controller\\CheckoutController' => 'index'],
     ['Aimeos\\Aimeos\\Controller\\CheckoutController' => 'index']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'checkout-confirm',
+    'CheckoutConfirm',
     ['Aimeos\\Aimeos\\Controller\\CheckoutController' => 'confirm'],
     ['Aimeos\\Aimeos\\Controller\\CheckoutController' => 'confirm']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'checkout-update',
+    'CheckoutUpdate',
     ['Aimeos\\Aimeos\\Controller\\CheckoutController' => 'update'],
     ['Aimeos\\Aimeos\\Controller\\CheckoutController' => 'update']
 );
@@ -180,70 +181,70 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['extDirs']['0_aimeos'] = 'EXT:a
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-basket',
+    'AccountBasket',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'basket'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'basket']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-download',
+    'AccountDownload',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'download'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'download']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-history',
+    'AccountHistory',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'history'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'history']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-favorite',
+    'AccountFavorite',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'favorite'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'favorite']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-review',
+    'AccountReview',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'review'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'review']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-profile',
+    'AccountProfile',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'profile'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'profile']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-subscription',
+    'AccountSubscription',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'subscription'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'subscription']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'account-watch',
+    'AccountWatch',
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'watch'],
     ['Aimeos\\Aimeos\\Controller\\AccountController' => 'watch']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'jsonapi',
+    'Jsonapi',
     ['Aimeos\\Aimeos\\Controller\\JsonapiController' => 'index'],
     ['Aimeos\\Aimeos\\Controller\\JsonapiController' => 'index']
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'aimeos',
-    'supplier-detail',
+    'SupplierDetail',
     ['Aimeos\\Aimeos\\Controller\\SupplierController' => 'detail'],
     ['Aimeos\\Aimeos\\Controller\\SupplierController' => 'detail']
 );
