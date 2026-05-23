@@ -84,3 +84,22 @@ aimeosPlain {
         renderObj =< tt_content
     }
 }
+
+page >
+page = PAGE
+page {
+    typeNum = 0
+    headerData >
+    config {
+        disableAllHeaderCode = 1
+        disableCharsetHeader = 1
+        disablePrefixComment = 1
+    }
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select.orderBy = sorting
+        select.languageField = sys_language_uid
+        renderObj =< tt_content
+    }
+}

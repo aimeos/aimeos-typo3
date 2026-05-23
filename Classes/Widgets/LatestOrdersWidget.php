@@ -9,9 +9,9 @@
 
 namespace Aimeos\Aimeos\Widgets;
 
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 
 /**
@@ -20,14 +20,10 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 class LatestOrdersWidget implements WidgetInterface
 {
-    private WidgetConfigurationInterface $configuration;
-    private StandaloneView $view;
-
-
-    public function __construct(WidgetConfigurationInterface $configuration, StandaloneView $view)
-    {
-        $this->configuration = $configuration;
-        $this->view = $view;
+    public function __construct(
+        private readonly WidgetConfigurationInterface $configuration,
+        private readonly ViewFactoryInterface $viewFactory,
+    ) {
     }
 
 
@@ -44,7 +40,12 @@ class LatestOrdersWidget implements WidgetInterface
      */
     public function renderWidgetContent(): string
     {
-        return $this->view->assign('items', $this->getOrderItems())->render('Widgets/LatestOrdersWidget');
+        $view = $this->viewFactory->create(
+            new \TYPO3\CMS\Core\View\ViewFactoryData(
+                templateRootPaths: ['EXT:aimeos/Resources/Private/Templates/Dashboard/'],
+            )
+        );
+        return $view->assign('items', $this->getOrderItems())->render('Widgets/LatestOrdersWidget');
     }
 
 

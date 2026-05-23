@@ -26,8 +26,7 @@ class JsonadmControllerTest
             ->disableOriginalConstructor()
             ->getMock();
 
-        $objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
-        $uriBuilder = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder');
+        $uriBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class);
 
         $uriBuilder->setRequest($this->request);
 

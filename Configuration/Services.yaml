@@ -42,8 +42,6 @@ services:
 
 #  dashboard.widget.latestorders:
 #    class: 'Aimeos\Aimeos\Widgets\LatestOrdersWidget'
-#    arguments:
-#      $view: '@dashboard.views.widget'
 #    tags:
 #      - name: dashboard.widget
 #        identifier: 'aimeos-latestorders'
