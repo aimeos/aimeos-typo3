@@ -30,7 +30,7 @@ class Locale
      * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
      */
     public static function get(\Aimeos\MShop\ContextIface $context,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
     {
         if (!isset(self::$locale)) {
             $config = $context->config();

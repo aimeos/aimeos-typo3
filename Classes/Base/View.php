@@ -223,7 +223,7 @@ class View
      * @return \Aimeos\Base\View\Iface Modified view object
      */
     protected static function addParam(\Aimeos\Base\View\Iface $view,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\Base\View\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\Base\View\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_param']))
@@ -247,7 +247,7 @@ class View
      * @return \Aimeos\Base\View\Iface Modified view object
      */
     protected static function addRequest(\Aimeos\Base\View\Iface $view,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\Base\View\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\Base\View\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_request']))
@@ -347,7 +347,7 @@ class View
      * @return \Aimeos\Base\View\Iface Modified view object
      */
     protected static function addUrl(\Aimeos\Base\View\Iface $view, \Aimeos\Base\Config\Iface $config, $uriBuilder,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\Base\View\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\Base\View\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url'])
             && is_callable(($fcn = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_url']))
