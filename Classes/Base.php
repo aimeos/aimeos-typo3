@@ -132,7 +132,7 @@ class Base
      * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
      */
     public static function locale(\Aimeos\MShop\ContextIface $context,
-        \TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
+        ?\TYPO3\CMS\Extbase\Mvc\RequestInterface $request = null) : \Aimeos\MShop\Locale\Item\Iface
     {
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend'])) {
             if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_locale_frontend']) instanceof \Closure) {

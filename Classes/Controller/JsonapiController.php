@@ -135,7 +135,7 @@ class JsonapiController extends AbstractController implements LoggerAwareInterfa
      * @param string Resource location, e.g. "product"
      * @return \Psr\Http\Message\ResponseInterface PSR-7 response
      */
-    public function optionsAction(string $resource = null)
+    public function optionsAction(?string $resource = null)
     {
         $request = $this->getPsrRequest();
 
