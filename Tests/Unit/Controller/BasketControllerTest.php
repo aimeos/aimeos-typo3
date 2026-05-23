@@ -3,6 +3,8 @@
 
 namespace Aimeos\Aimeos\Tests\Unit\Controller;
 
+use TYPO3\CMS\Core\Http\Response;
+use TYPO3\CMS\Extbase\Mvc\Request;
 
 class BasketControllerTest
     extends \TYPO3\CMS\Core\Tests\UnitTestCase
@@ -16,11 +18,9 @@ class BasketControllerTest
 
         $this->object = $this->getAccessibleMock('Aimeos\\Aimeos\\Controller\\BasketController', array('dummy'));
 
-        $objManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
-
-        $uriBuilder = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder');
-        $response = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
-        $request = $objManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Request');
+        $uriBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class);
+        $response = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Response::class);
+        $request = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Request::class);
 
         $uriBuilder->setRequest($request);
 
