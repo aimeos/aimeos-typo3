@@ -7,7 +7,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-home.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-home
                 list_type = aimeos_catalog-home
             }
         }
@@ -16,7 +16,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-list.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-list
                 list_type = aimeos_catalog-list
             }
         }
@@ -25,7 +25,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-detail.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-detail.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-detail
                 list_type = aimeos_catalog-detail
             }
         }
@@ -34,7 +34,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-filter.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-filter.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-filter
                 list_type = aimeos_catalog-filter
             }
         }
@@ -43,7 +43,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-attribute.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-attribute.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-attribute
                 list_type = aimeos_catalog-attribute
             }
         }
@@ -52,7 +52,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-price.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-price
                 list_type = aimeos_catalog-price
             }
         }
@@ -61,7 +61,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-search.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-search
                 list_type = aimeos_catalog-search
             }
         }
@@ -70,7 +70,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-supplier.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-supplier.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-supplier
                 list_type = aimeos_catalog-supplier
             }
         }
@@ -79,7 +79,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-tree.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-tree
                 list_type = aimeos_catalog-tree
             }
         }
@@ -88,7 +88,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stage.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-stage
                 list_type = aimeos_catalog-stage
             }
         }
@@ -97,7 +97,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-session.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-session.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-session
                 list_type = aimeos_catalog-session
             }
         }
@@ -106,7 +106,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-suggest.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-suggest.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-suggest
                 list_type = aimeos_catalog-suggest
             }
         }
@@ -115,7 +115,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-count.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-count.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-count
                 list_type = aimeos_catalog-count
             }
         }
@@ -124,7 +124,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_catalog-stock.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_catalog-stock
                 list_type = aimeos_catalog-stock
             }
         }
@@ -142,7 +142,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_supplier-detail.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_supplier-detail
                 list_type = aimeos_supplier-detail
             }
         }
@@ -151,7 +151,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_locale-select.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_locale-select
                 list_type = aimeos_locale-select
             }
         }
@@ -160,7 +160,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-basket.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-basket
                 list_type = aimeos_account-basket
             }
         }
@@ -169,7 +169,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-history.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-history
                 list_type = aimeos_account-history
             }
         }
@@ -178,7 +178,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-subscription.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-subscription.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-subscription
                 list_type = aimeos_account-subscription
             }
         }
@@ -187,7 +187,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-review.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-review
                 list_type = aimeos_account-review
             }
         }
@@ -196,7 +196,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-favorite.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-favorite
                 list_type = aimeos_account-favorite
             }
         }
@@ -205,7 +205,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-watch.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-watch.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-watch
                 list_type = aimeos_account-watch
             }
         }
@@ -214,7 +214,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-profile.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-profile.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-profile
                 list_type = aimeos_account-profile
             }
         }
@@ -223,7 +223,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-download.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_account-download.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_account-download
                 list_type = aimeos_account-download
             }
         }
@@ -232,7 +232,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-standard.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-standard.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_basket-standard
                 list_type = aimeos_basket-standard
             }
         }
@@ -241,7 +241,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-small.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-small.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_basket-small
                 list_type = aimeos_basket-small
             }
         }
@@ -250,7 +250,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-related.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-related.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_basket-related
                 list_type = aimeos_basket-related
             }
         }
@@ -259,7 +259,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-bulk.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_basket-bulk.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_basket-bulk
                 list_type = aimeos_basket-bulk
             }
         }
@@ -268,7 +268,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-standard.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-standard.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_checkout-standard
                 list_type = aimeos_checkout-standard
             }
         }
@@ -277,7 +277,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-confirm.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-confirm.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_checkout-confirm
                 list_type = aimeos_checkout-confirm
             }
         }
@@ -286,7 +286,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-update.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_checkout-update.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_checkout-update
                 list_type = aimeos_checkout-update
             }
         }
@@ -295,7 +295,7 @@ mod.wizards.newContentElement.wizardItems.aimeos {
             title = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_jsonapi.title
             description = LLL:EXT:aimeos/Resources/Private/Language/admin.xlf:aimeos_jsonapi.description
             tt_content_defValues {
-                CType = list
+                CType = aimeos_jsonapi
                 list_type = aimeos_jsonapi
             }
         }
