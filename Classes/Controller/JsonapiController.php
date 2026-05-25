@@ -139,10 +139,19 @@ class JsonapiController extends AbstractController implements LoggerAwareInterfa
     {
         $request = $this->getPsrRequest();
 
-        return $this->createClient($resource ?? '')->options($request, (new Psr17Factory)->createResponse())
+        $response = $this->createClient($resource ?? '')->options($request, (new Psr17Factory)->createResponse())
             ->withHeader('access-control-allow-headers', 'authorization,content-type')
-            ->withHeader('access-control-allow-methods', 'DELETE, GET, OPTIONS, PATCH, POST, PUT')
-            ->withHeader('access-control-allow-origin', $request->getHeaderLine( 'origin'));
+            ->withHeader('access-control-allow-methods', 'DELETE, GET, OPTIONS, PATCH, POST, PUT');
+
+        $origin = $request->getHeaderLine('origin');
+        $config = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class);
+        $allowed = array_map('trim', explode(',', (string) $config->get('aimeos', 'corsOrigins')));
+
+        if ($origin && (in_array('*', $allowed) || in_array($origin, $allowed))) {
+            $response = $response->withHeader('access-control-allow-origin', $origin);
+        }
+
+        return $response;
     }
 
 

@@ -22,3 +22,5 @@ typo3Canonical = 0
 showPageTree = 0
 # cat=backend; type=integer; label=Number of parallel processes:Command line tasks can start several tasks in parallel to speed up task execution
 pcntlMax = 4
+# cat=basic/cors; type=string; label=Allowed CORS origins:Comma-separated list of allowed origins for JSON API requests (use * to allow all)
+corsOrigins = *
