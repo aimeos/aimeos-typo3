@@ -229,8 +229,7 @@ class Base
     public static function parseTS(string $tsString) : array
     {
         $parser = GeneralUtility::makeInstance(\TYPO3\CMS\Core\TypoScript\TypoScriptStringFactory::class);
-        $ast = new \TYPO3\CMS\Core\TypoScript\AST\AstBuilder(new \TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher());
-        $tsConfig = GeneralUtility::removeDotsFromTS($parser->parseFromString($tsString, $ast)->toArray());
+        $tsConfig = GeneralUtility::removeDotsFromTS($parser->parseFromStringWithIncludes('ai'.md5($tsString),$tsString)->toArray());
 
         // Allows "plugin.tx_aimeos.settings." prefix everywhere
         if (isset($tsConfig['plugin']['tx_aimeos']['settings'])
