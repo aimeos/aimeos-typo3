@@ -22,7 +22,6 @@
 		"typo3/cms-scheduler": "^13.4||^14.3",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-graphql": "dev-master",
-		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-controller-jobs": "dev-master",
 		"aimeos/ai-client-jsonapi": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
