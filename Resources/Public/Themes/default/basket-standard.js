@@ -25,6 +25,7 @@ AimeosBasketStandard = {
 	onSubmit() {
 
 		$(document).on("submit", ".basket-standard form", ev => {
+			ev.preventDefault();
 			Aimeos.createSpinner();
 			const selector = ev.submitter || ev.originalEvent.submitter;
 
@@ -38,8 +39,6 @@ AimeosBasketStandard = {
 			}).finally(() => {
 				Aimeos.removeSpinner();
 			});
-
-			return false;
 		});
 	},
 
@@ -48,8 +47,9 @@ AimeosBasketStandard = {
 	 * Updates quantity and deletes products without page reload
 	 */
 	onChange() {
-
+		
 		$(document).on("click", ".basket-standard a.change", ev => {
+			ev.preventDefault();
 			Aimeos.createSpinner();
 
 			fetch($(ev.currentTarget).attr("href")).then(response => {
@@ -59,8 +59,6 @@ AimeosBasketStandard = {
 			}).finally(() => {
 				Aimeos.removeSpinner();
 			});
-
-			return false;
 		});
 	},
 
@@ -71,6 +69,8 @@ AimeosBasketStandard = {
 	init() {
 		if(this.once) return;
 		this.once = true;
+		
+		$('body').addClass('basket');
 
 		this.onChange();
 		this.onSubmit();
