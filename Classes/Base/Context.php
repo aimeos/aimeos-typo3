@@ -185,7 +185,7 @@ class Context
 
         return $context->setMail(new \Aimeos\Base\Mail\Manager\Typo3(function() {
             return GeneralUtility::makeInstance(\TYPO3\CMS\Core\Mail\MailMessage::class);
-        }));
+        }, GeneralUtility::makeInstance(\TYPO3\CMS\Core\Mail\Mailer::class)));
     }
 
 
