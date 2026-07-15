@@ -129,10 +129,6 @@ abstract class AbstractController
             $i18n = Base::i18n([$lang, 'en'], $config->get('i18n', []));
             $context->setI18n($i18n);
 
-            foreach ($locale->getSiteItem()->getConfig() as $key => $value) {
-                $config->set($key, $value);
-            }
-
             if ($withView) {
                 $paths = Base::aimeos()->getTemplatePaths($templatePath, $locale->getSiteItem()->getTheme());
                 $view = Base::view($context, $this->uriBuilder, $paths, $this->request, $lang);
