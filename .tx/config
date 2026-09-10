@@ -12,13 +12,7 @@ file_filter = Resources/Private/Language/<lang>.plugins.xlf
 source_file = Resources/Private/Language/plugins.xlf
 source_lang = en
 
-[o:aimeos:p:aimeos-typo3:r:extension]
-file_filter = Resources/Private/Language/<lang>.extension.xlf
-source_file = Resources/Private/Language/extension.xlf
-source_lang = en
-
 [o:aimeos:p:aimeos-typo3:r:admin]
 file_filter = Resources/Private/Language/<lang>.admin.xlf
 source_file = Resources/Private/Language/admin.xlf
 source_lang = en
-

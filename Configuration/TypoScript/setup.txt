@@ -62,7 +62,17 @@ aimeosJs {
         table = tt_content
         select.orderBy = sorting
         select.languageField = sys_language_uid
-        renderObj =< tt_content
+        # Render only the endpoint plugins and bypass lib.contentElement because
+        # site layouts can add HTML wrappers or anchors to machine responses.
+        renderObj = CASE
+        renderObj {
+            key.field = CType
+            list =< tt_content.list.20
+            aimeos_catalogcount =< tt_content.aimeos_catalogcount.20
+            aimeos_catalogstock =< tt_content.aimeos_catalogstock.20
+            aimeos_catalogsuggest =< tt_content.aimeos_catalogsuggest.20
+            aimeos_jsonapi =< tt_content.aimeos_jsonapi.20
+        }
     }
 }
 
@@ -81,6 +91,13 @@ aimeosPlain {
         table = tt_content
         select.orderBy = sorting
         select.languageField = sys_language_uid
-        renderObj =< tt_content
+        # Render only the endpoint plugins and bypass lib.contentElement because
+        # site layouts can add HTML wrappers or anchors to machine responses.
+        renderObj = CASE
+        renderObj {
+            key.field = CType
+            list =< tt_content.list.20
+            aimeos_checkoutupdate =< tt_content.aimeos_checkoutupdate.20
+        }
     }
 }
