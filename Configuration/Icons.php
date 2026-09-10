@@ -133,9 +133,4 @@ return [
         'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
         'source' => 'EXT:aimeos/Resources/Public/Icons/braces.svg'
     ],
-
-    'aimeos-widget-latestorders' => [
-        'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        'source' => 'EXT:aimeos/Resources/Public/Icons/cart.svg'
-    ],
 ];
