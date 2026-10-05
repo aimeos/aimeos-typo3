@@ -11,7 +11,7 @@
 	border-bottom: 1px solid var(--ai-secondary);
 }
 
-.account-profile .account-profile-address form {
+.account-profile .account-profile-address .profile-address-forms {
 	margin: 1rem;
 }
 

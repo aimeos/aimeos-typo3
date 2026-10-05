@@ -4,20 +4,17 @@
 AimeosAccountProfile = {
 
 	/**
-	 * Enables/disables the address form
+	 * Opens address forms activated through WebMCP
 	 */
-	onAddress() {
+	onToolActivate() {
 
-		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
-			el.addEventListener("show.bs.collapse", ev => {
-				$(".form-item.mandatory input, .form-item.mandatory select, .form-item.optional input, .form-item.optional select", ev.currentTarget).prop("disabled", false);
-			});
-		});
+		window.addEventListener("toolactivated", ev => {
+			const form = document.querySelector(`.account-profile-address form[toolname="${CSS.escape(ev.toolName)}"]`);
+			const collapse = form?.closest(".accordion-collapse");
 
-		document.querySelectorAll(".account-profile-address .address-item").forEach(el => {
-			el.addEventListener("hidden.bs.collapse", ev => {
-				$(".form-item input, .form-item select", ev.currentTarget).prop("disabled", true);
-			});
+			if(collapse) {
+				bootstrap.Collapse.getOrCreateInstance(collapse, {toggle: false}).show();
+			}
 		});
 	},
 
@@ -48,8 +45,8 @@ AimeosAccountProfile = {
 		if(this.once) return;
 		this.once = true;
 
-		this.onAddress();
 		this.onAddressToggle();
+		this.onToolActivate();
 	}
 };
 
