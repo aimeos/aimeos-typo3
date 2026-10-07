@@ -60,7 +60,7 @@ abstract class AbstractController
         $config = Base::config((array) $this->settings);
 
         if (!isset(self::$context)) {
-            $context = Base::context($config);
+            $context = clone Base::context($config);
             $locale = Base::locale($context, $this->request);
             $context->setI18n(Base::i18n([$locale->getLanguageId()], $config->get('i18n', [])));
             $context->setLocale($locale);
