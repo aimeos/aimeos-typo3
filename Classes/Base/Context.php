@@ -335,8 +335,8 @@ class Context
             $ids = array_filter($t3context->getPropertyFromAspect('frontend.user', 'groupIds', []), fn ($id) => $id > 0);
 
             $context->setGroups(array_combine($names, $ids));
-            $context->setUser(function() use ($context, $userid) {
-                return \Aimeos\MShop::create($context, 'customer')->get($userid);
+            $context->setUser(function(?\Aimeos\MShop\ContextIface $ctx = null) use ($context, $userid) {
+                return \Aimeos\MShop::create($ctx ?: $context, 'customer')->get($userid);
             });
 
             $ipaddr = (string) GeneralUtility::getIndpEnv('REMOTE_ADDR');
