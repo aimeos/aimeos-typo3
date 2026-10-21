@@ -14,7 +14,7 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"php": "^8.1",
+		"php": "^8.2",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-graphql": "dev-master",
 		"aimeos/ai-controller-jobs": "dev-master",
@@ -35,7 +35,7 @@
 	"config": {
 		"vendor-dir": "Resources/Libraries",
 		"platform": {
-			"php": "8.1"
+			"php": "8.2"
 		},
 		"allow-plugins": {
 			"typo3/cms-composer-installers": false,
