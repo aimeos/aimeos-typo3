@@ -16,19 +16,23 @@ AimeosAccountFavorite = {
             const form = $btn.closest("form");
             $btn.closest(".favorite-item").addClass("loading");
 
-            const response = await fetch(form.attr("action"), {
-                method: "POST",
-                body: new FormData(form[0])
-            });
+            try {
+                const html = await Aimeos.fetchHtml(form.attr("action"), {
+                    method: "POST",
+                    body: new FormData(form[0])
+                });
 
-            const html = await response.text();
-            const doc = $("<html/>").html(html);
+                const doc = Aimeos.parseHtml(html);
 
-            $(".aimeos.account-favorite")
-                .replaceWith($(".aimeos.account-favorite", doc));
+                $(".aimeos.account-favorite")
+                    .replaceWith($(".aimeos.account-favorite", doc));
 
-            if (!$(".aimeos.account-favorite .favorite-items").length) {
-                Aimeos.removeOverlay();
+                if (!$(".aimeos.account-favorite .favorite-items").length) {
+                    Aimeos.removeOverlay();
+                }
+            } catch(error) {
+                $btn.closest('.favorite-item').removeClass('loading');
+                console.warn('Unable to update favorites', error);
             }
         });
 	},

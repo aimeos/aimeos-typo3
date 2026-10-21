@@ -48,8 +48,8 @@ AimeosBasketMini = {
 						product.data("url", entry.links.self.href + urldata);
 					}
 
-					$(".name", product).html(entry.attributes['order.product.name']);
-					$(".quantity", product).html(entry.attributes['order.product.quantity']);
+					$(".name", product).text(entry.attributes['order.product.name']);
+					$(".quantity", product).text(entry.attributes['order.product.quantity']);
 					$(".price", product).html(
 						formatter.format(Number(entry.attributes['order.product.price'])
 						+ Number(entry.attributes['order.product.costs']))

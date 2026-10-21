@@ -153,6 +153,73 @@ AimeosCatalogDetail = {
 
 
 	/**
+	 * Accepts typed display settings only, never arbitrary PhotoSwipe renderer options.
+	 * @param {Object} value Options supplied by gallery markup
+	 * @returns {Object} Validated options with code-owned HTML renderers
+	 */
+	lightboxOptions(value) {
+		const options = {
+			errorMsg: '<div class="pswp__error-msg">The image could not be loaded.</div>',
+			shareEl: false,
+			shareButtons: [],
+			indexIndicatorSep: ' / '
+		};
+		if(!value || typeof value !== 'object' || Array.isArray(value)) return options;
+
+		const booleans = ['allowPanToNext', 'loop', 'pinchToClose', 'closeOnScroll', 'closeOnVerticalDrag',
+			'showHideOpacity', 'focus', 'escKey', 'arrowKeys', 'history', 'modal', 'closeEl', 'captionEl',
+			'fullscreenEl', 'zoomEl', 'counterEl', 'arrowEl', 'preloaderEl', 'tapToClose',
+			'tapToToggleControls', 'clickToCloseNonZoomable'];
+		const numbers = ['hideAnimationDuration', 'showAnimationDuration', 'timeToIdle',
+			'timeToIdleOutside', 'loadingIndicatorDelay', 'fitControlsWidth'];
+		const fractions = ['spacing', 'bgOpacity', 'verticalDragRange', 'mainScrollEndFriction', 'panEndFriction'];
+
+		for(const [key, val] of Object.entries(value)) {
+			if(booleans.includes(key) && typeof val === 'boolean'
+				|| numbers.includes(key) && Number.isFinite(val) && val >= 0
+				|| fractions.includes(key) && Number.isFinite(val) && val >= 0 && val <= 1
+				|| key === 'maxSpreadZoom' && Number.isFinite(val) && val > 0
+				|| key === 'galleryUID' && Number.isSafeInteger(val) && val > 0
+				|| key === 'scaleMode' && ['fit', 'orig'].includes(val)
+				|| key === 'indexIndicatorSep' && typeof val === 'string' && val.length <= 128) {
+				options[key] = val;
+			}
+		}
+
+		if(Array.isArray(value.preload) && value.preload.length === 2
+			&& value.preload.every(val => Number.isSafeInteger(val) && val >= 0 && val <= 10)) {
+			options.preload = value.preload.slice();
+		}
+		if(value.barsSize && typeof value.barsSize === 'object' && !Array.isArray(value.barsSize)) {
+			const {top, bottom} = value.barsSize;
+			if(Number.isFinite(top) && top >= 0 && (bottom === 'auto' || Number.isFinite(bottom) && bottom >= 0)) {
+				options.barsSize = {top, bottom};
+			}
+		}
+		return options;
+	},
+
+
+	/**
+	 * PhotoSwipe UI constructor with a text-only counter, including legacy stored separators.
+	 * @param {Object} gallery PhotoSwipe instance
+	 * @param {Object} framework PhotoSwipe framework
+	 * @returns {Object} Default UI with a safe counter renderer
+	 */
+	lightboxUi: function(gallery, framework) {
+		const ui = new PhotoSwipeUI_Default(gallery, framework);
+		ui.updateIndexIndicator = () => {
+			if(gallery.options.counterEl) {
+				gallery.template.querySelectorAll('.pswp__counter').forEach(node => {
+					node.textContent = (gallery.getCurrentIndex() + 1) + gallery.options.indexIndicatorSep + gallery.options.getNumItemsFn();
+				});
+			}
+		};
+		return ui;
+	},
+
+
+	/**
 	 * Opens the lightbox with big images
 	 */
 	onOpenLightbox() {
@@ -163,7 +230,7 @@ AimeosCatalogDetail = {
 			const vwidth = $(window).width();
 			const gallery = $(ev.delegateTarget);
 			const pswp = $(".pswp", gallery);
-			const options = $(gallery).data("options") || {};
+			const options = AimeosCatalogDetail.lightboxOptions($(gallery).data("options"));
 
 			options.index = $(ev.currentTarget).closest('.media-item').data('index') || 0;
 
@@ -171,6 +238,8 @@ AimeosCatalogDetail = {
 				console.log( 'No element with class .pswp for PhotoSwipe found' );
 				return false;
 			}
+			// The bundled UI still recognizes clicks on disabled share controls.
+			pswp.find('.pswp__button--share, .pswp__share-modal').remove();
 
 			$(".image-single .item", gallery).each((idx, item) => {
 				list.push({
@@ -182,7 +251,7 @@ AimeosCatalogDetail = {
 				});
 			});
 
-			gallery._photoswipe = new PhotoSwipe(pswp[0], PhotoSwipeUI_Default, list, options);
+			gallery._photoswipe = new PhotoSwipe(pswp[0], AimeosCatalogDetail.lightboxUi, list, options);
 			gallery._photoswipe.init();
 
 			gallery._photoswipe.listen("imageLoadComplete", (idx, item) => {
@@ -364,13 +433,14 @@ AimeosCatalogDetail = {
 		$(document).on("submit", ".product form.basket", ev => {
 			Aimeos.createOverlay();
 
-			fetch($(ev.currentTarget).attr("action"), {
+			Aimeos.fetchHtml($(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
-			}).then(response => {
-				return response.text();
 			}).then(data => {
 				Aimeos.createContainer(AimeosBasket.updateBasket(data));
+			}).catch(error => {
+				Aimeos.removeOverlay();
+				console.warn('Unable to update the basket', error);
 			});
 
 			return false;

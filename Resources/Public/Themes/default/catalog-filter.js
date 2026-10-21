@@ -10,6 +10,17 @@ AimeosCatalogFilter = {
 	MIN_INPUT_LEN: 3,
 	meta: null,
 
+	/**
+	 * Counts are non-negative integers, never HTML or inherited object properties.
+	 */
+	count(data, id) {
+		if(!data || !Object.prototype.hasOwnProperty.call(data, id)) return 0;
+		const value = data[id];
+		if(typeof value !== 'number' && (typeof value !== 'string' || !/^\d+$/.test(value))) return 0;
+		const count = Number(value);
+		return Number.isSafeInteger(count) && count >= 0 ? count : 0;
+	},
+
 
 	/**
 	 * Attribute filter counts
@@ -18,15 +29,18 @@ AimeosCatalogFilter = {
 
 		$('.catalog-filter-attribute[data-counturl]').each(async (idx, node) => {
 
-			await fetch($(node).data('counturl')).then(response => {
-				return response.json();
+			const url = Aimeos.sameOriginUrl($(node).data('counturl'));
+			if(!url) return;
+			await fetch(url.href, {mode: 'same-origin', redirect: 'error'}).then(response => {
+				return response.ok ? response.json() : {};
 			}).then(data => {
 
 				$('.attribute-lists li.attr-item', node).each(function(idx, item) {
 					const itemId = $(item).data( "id" );
+					const count = AimeosCatalogFilter.count(data, itemId);
 
-					if(data[itemId]) {
-						$(".attr-name", item).append('&nbsp;' + '<span class="attr-count">' + data[itemId] + '</span>');
+					if(count) {
+						$(".attr-name", item).append('\u00a0').append($('<span/>').addClass('attr-count').text(count));
 					} else {
 						$(item).addClass("disabled");
 					}
@@ -35,7 +49,7 @@ AimeosCatalogFilter = {
 				$('.attribute-lists .attr-count', node).each((idx, el) => {
 					$(el).closest("fieldset.attr-sets").show();
 				});
-			});
+			}).catch(error => console.warn('Unable to load attribute counts', error));
 		})
 	},
 
@@ -47,20 +61,23 @@ AimeosCatalogFilter = {
 
 		$('.catalog-filter-supplier[data-counturl]').each(async (idx, node) => {
 
-			await fetch($(node).data('counturl')).then(response => {
-				return response.json();
+			const url = Aimeos.sameOriginUrl($(node).data('counturl'));
+			if(!url) return;
+			await fetch(url.href, {mode: 'same-origin', redirect: 'error'}).then(response => {
+				return response.ok ? response.json() : {};
 			}).then(data => {
 
 				$('.supplier-lists li.attr-item', node).each(function(idx, item) {
 					const itemId = $(item).data( "id" );
+					const count = AimeosCatalogFilter.count(data, itemId);
 
-					if(data[itemId]) {
-						$(".attr-name", item).append('&nbsp;' + '<span class="attr-count">' + data[itemId] + '</span>');
+					if(count) {
+						$(".attr-name", item).append('\u00a0').append($('<span/>').addClass('attr-count').text(count));
 					} else {
 						$(item).addClass( 'disabled' );
 					}
 				});
-			});
+			}).catch(error => console.warn('Unable to load supplier counts', error));
 		})
 	},
 
@@ -72,20 +89,23 @@ AimeosCatalogFilter = {
 
 		$('.catalog-filter-tree[data-counturl]').each(async (idx, node) => {
 
-			await fetch($(node).data('counturl')).then(response => {
-				return response.json();
+			const url = Aimeos.sameOriginUrl($(node).data('counturl'));
+			if(!url) return;
+			await fetch(url.href, {mode: 'same-origin', redirect: 'error'}).then(response => {
+				return response.ok ? response.json() : {};
 			}).then(data => {
 
 				$('.cat-item', node).each(function(idx, item) {
 					const id = $(item).data("id");
+					const count = AimeosCatalogFilter.count(data, id);
 
-					if(data[id]) {
-						$('[data-id="' + id + '"] > .item-links > a.cat-link, [data-id="' + id + '"] > .item-links > a.name').append('<span class="cat-count">' + data[id] + '</span>');
+					if(count) {
+						$(item).children('.item-links').children('a.cat-link, a.name').append($('<span/>').addClass('cat-count').text(count));
 					} else if( $(item).hasClass("nochild") ) {
 						$(item).addClass("disabled");
 					}
 				});
-			});
+			}).catch(error => console.warn('Unable to load category counts', error));
 		})
 	},
 
@@ -181,30 +201,35 @@ AimeosCatalogFilter = {
 	onLoadSearch() {
 
 		$(".catalog-filter-search .value").each((idx, el) => {
-			const url = $(el).data("url");
-			let cache = {} // workaround for re-rendering on Swiffy slider animation
+			const url = Aimeos.sameOriginUrl($(el).data("url"));
+			if(!url) return;
+			let cache = new Map(); // workaround for re-rendering on Swiffy slider animation
+			let cachedValue;
 
 			autocomplete({
 				input: el,
 				debounceWaitMs: 200,
 				minLength: AimeosCatalogFilter.MIN_INPUT_LEN,
 				fetch: async function(text, update) {
-					await fetch(url.replace('_term_', encodeURIComponent(text))).then(response => {
+					await Aimeos.fetchResponse(url.href.replace('_term_', encodeURIComponent(text)), 'json').then(response => {
 						return response.json();
 					}).then(data => {
-						update(data);
+						update(Array.isArray(data) ? data.filter(item => item && typeof item.label === 'string' && typeof item.html === 'string') : []);
+					}).catch(error => {
+						update([]);
+						console.warn('Unable to load search suggestions', error);
 					});
 				},
 				render: function(item, value) {
-					if(!cache[value]) {
-						cache = {}; cache[value] = {};
+					if(cachedValue !== value) {
+						cache.clear(); cachedValue = value;
 					}
 
-					if(!cache[value][item.label]) {
-						cache[value][item.label] = $(item.html.trim()).get(0);
+					if(!cache.has(item.label)) {
+						cache.set(item.label, Aimeos.parseHtml(item.html).body.firstElementChild);
 					}
 
-					return cache[value][item.label];
+					return cache.get(item.label);
 				}
 			});
 		});
@@ -249,13 +274,11 @@ AimeosCatalogFilter = {
 
 					if(input.has(".search-hint").length === 0) {
 
-						const node = $('<div class="search-hint">' + input.data("hint") + '</div>');
+						const node = $('<div class="search-hint">').text(input.attr("data-hint") || '');
 						const pos = node.position();
 
 						node.css("left", pos.left).css("top", pos.top);
-						node.delay(3000).fadeOut(1000, () => {
-							node.remove();
-						});
+						setTimeout(() => node.remove(), 4000);
 
 						$(".catalog-filter-search", ev.currentTarget).after(node);
 					}

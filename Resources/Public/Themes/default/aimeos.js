@@ -21,6 +21,114 @@ function slideToggle(t,e,o){0===t.clientHeight?j(t,e,o,!0):j(t,e,o)}function sli
  * Aimeos common actions
  */
 Aimeos = {
+	// Asset authority comes from this executing theme script, never a fetched page.
+	themeScript: typeof document !== 'undefined' && document.currentScript
+		? {src: document.currentScript.src, nonce: document.currentScript.nonce} : null,
+
+	/**
+	 * Resolves a widget endpoint without allowing credentials, foreign origins or data URLs.
+	 */
+	sameOriginUrl(value) {
+		if(typeof value !== 'string' || !value.trim()) return null;
+
+		try {
+			const url = new URL(value, window.location.href);
+			return ['http:', 'https:'].includes(url.protocol) && url.origin === window.location.origin
+				&& !url.username && !url.password ? url : null;
+		} catch(e) {
+			return null;
+		}
+	},
+
+
+	/**
+	 * Fetches same-origin responses with the expected HTML or JSON content type.
+	 * Only account dialogs opt into same-origin redirects for login pages.
+	 */
+	async fetchResponse(value, type, options = {}, followRedirects = false) {
+		const url = this.sameOriginUrl(value);
+		if(!url) throw new Error('Invalid widget endpoint');
+
+		const follow = type === 'html' && followRedirects === true;
+		const response = await fetch(url.href, {...options, mode: 'same-origin', redirect: follow ? 'follow' : 'error'});
+		const mime = (response.headers.get('Content-Type') || '').split(';')[0].trim().toLowerCase();
+		// Some integrations serve the JSON suggestion body as application/javascript.
+		const allowed = type === 'json' ? ['application/json', 'application/javascript', 'text/javascript'] : ['text/html'];
+		if(!response.ok || response.redirected && !follow || response.url && !this.sameOriginUrl(response.url) || !allowed.includes(mime)) {
+			throw new Error('Invalid widget response');
+		}
+		return response;
+	},
+
+
+	/**
+	 * Fetches HTML while rejecting foreign origins and non-HTML responses.
+	 */
+	async fetchHtml(value, options = {}, followRedirects = false) {
+		return (await this.fetchResponse(value, 'html', options, followRedirects)).text();
+	},
+
+
+	/**
+	 * Parses application HTML inertly. Script/asset execution is owned by the page.
+	 * This is not a replacement for server-side rich-text sanitization.
+	 */
+	parseHtml(value) {
+		return this.cleanHtml(new DOMParser().parseFromString(value, 'text/html'));
+	},
+
+
+	/**
+	 * Removes active document elements, including those inside nested templates.
+	 */
+	cleanHtml(doc) {
+		const roots = [doc];
+		while(roots.length) {
+			const root = roots.pop();
+			root.querySelectorAll('template').forEach(node => roots.push(node.content));
+			root.querySelectorAll('script, base, meta[http-equiv]').forEach(node => node.remove());
+		}
+		return doc;
+	},
+
+
+	/**
+	 * Loads known AJAX component assets from the executing theme, not response markup.
+	 */
+	loadComponent(component) {
+		const assets = {
+			'basket-standard': ['summary.css', 'basket-standard.css', 'basket-standard.js'],
+			'account-favorite': ['account-favorite.css', 'account-favorite.js'],
+			'account-watch': ['account-watch.css', 'account-watch.js']
+		};
+		if(!this.themeScript || !Object.prototype.hasOwnProperty.call(assets, component)) return;
+
+		const files = assets[component];
+		for(const file of files) {
+			const url = new URL(file, this.themeScript.src);
+			url.search = new URL(this.themeScript.src).search;
+			const script = file.endsWith('.js');
+			if(Array.from(document.head.querySelectorAll(script ? 'script[src]' : 'link[href]'))
+				.some(node => {
+					const value = script ? node.src : node.href;
+					if(!value) return false;
+					const asset = new URL(value, this.themeScript.src);
+					return asset.origin === url.origin && asset.pathname === url.pathname;
+				})) continue;
+
+			const node = document.createElement(script ? 'script' : 'link');
+			node.className = component;
+			if(script) {
+				node.src = url.href;
+				node.nonce = this.themeScript.nonce;
+			} else {
+				node.rel = 'stylesheet';
+				node.href = url.href;
+			}
+			document.head.appendChild(node);
+		}
+	},
+
 
 	/**
 	 * Creates a floating container over the page displaying the given content node
@@ -209,23 +317,15 @@ AimeosBasket = {
 	 * Updates the basket without page reload
 	 */
 	updateBasket(data) {
-		const doc = $("<html/>").html(data);
+		const doc = Aimeos.parseHtml(data);
 		const basket = $(".aimeos.basket-standard", doc);
 
 		$('.aimeos .error-list, .aimeos .info-list', doc).each((idx, el) => {
 			basket.prepend(el);
 		});
 
-		$('link.basket-standard', doc).each((idx, el) => {
-			basket.append(el);
-		});
-
-		if(!$('body').hasClass('basket')) {
-			$('script.basket-standard', doc).each((idx, el) => {
-				basket.append(el);
-			});
-			$('body').addClass('basket');
-		}
+		Aimeos.loadComponent('basket-standard');
+		$('body').addClass('basket');
 
 		$(".btn-update", basket).hide();
 
@@ -513,29 +613,25 @@ AimeosBasket = {
 			ev.preventDefault();
 			Aimeos.createOverlay();
 
-			await fetch($(ev.currentTarget).attr("action"), {
+			await Aimeos.fetchHtml($(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
-			}).then(response => {
-				return response.text();
-			}).then(data => {
-				const doc = $("<html/>").html(data);
+			}, true).then(data => {
+				const doc = Aimeos.parseHtml(data);
 				const content = $(".aimeos.account-favorite", doc);
 
 				if(content.length > 0) {
 					$('.aimeos .error-list, .aimeos .info-list', doc).each((idx, el) => {
 						content.prepend(el);
 					});
-					$('link.account-favorite', doc).each((idx, el) => {
-						document.head.append(el);
-					});
-					$('script.account-favorite', doc).each((idx, el) => {
-						$(document.head).append($('<script/>').attr('src', el.getAttribute('src')));
-					});
+					Aimeos.loadComponent('account-favorite');
 					Aimeos.createContainer(content);
 				} else {
-					document.replaceChild(doc[0], document.documentElement);
+					document.replaceChild(doc.documentElement, document.documentElement);
 				}
+			}).catch(error => {
+				Aimeos.removeOverlay();
+				console.warn('Unable to update favorites', error);
 			});
 
 			return false;
@@ -553,29 +649,25 @@ AimeosBasket = {
 			ev.preventDefault();
 			Aimeos.createOverlay();
 
-			await fetch($(ev.currentTarget).attr("action"), {
+			await Aimeos.fetchHtml($(ev.currentTarget).attr("action"), {
 				body: new FormData(ev.currentTarget),
 				method: 'POST'
-			}).then(response => {
-				return response.text();
-			}).then(data => {
-				const doc = $("<html/>").html(data);
+			}, true).then(data => {
+				const doc = Aimeos.parseHtml(data);
 				const content = $(".aimeos.account-watch", doc);
 
 				if(content.length > 0) {
 					$('.aimeos .error-list, .aimeos .info-list', doc).each((idx, el) => {
 						content.prepend(el);
 					});
-					$('link.account-watch', doc).each((idx, el) => {
-						document.head.append(el);
-					});
-					$('script.account-watch', doc).each((idx, el) => {
-						$(document.head).append($('<script/>').attr('src', el.getAttribute('src')));
-					});
+					Aimeos.loadComponent('account-watch');
 					Aimeos.createContainer(content);
 				} else {
-					document.replaceChild(doc[0], document.documentElement);
+					document.replaceChild(doc.documentElement, document.documentElement);
 				}
+			}).catch(error => {
+				Aimeos.removeOverlay();
+				console.warn('Unable to update the watch list', error);
 			});
 
 			return false;
