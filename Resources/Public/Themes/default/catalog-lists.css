@@ -120,6 +120,17 @@
 	animation: FadeIn .3s;
 }
 
+/* Infinite scroll: loading indicator while the next page is fetched */
+
+.catalog-list-items[aria-busy="true"]::after {
+	content: "";
+	display: block;
+	flex: 0 0 100%;
+	grid-column: 1 / -1;
+	height: 4rem;
+	background: url(assets/spinner.svg) center / contain no-repeat;
+}
+
 .catalog-list-items .slider-container {
 	overflow-x: hidden;
 }

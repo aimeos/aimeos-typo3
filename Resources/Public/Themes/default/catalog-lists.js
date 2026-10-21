@@ -116,8 +116,10 @@ AimeosCatalogLists = {
 
 				if(url && url.pathname === initial.pathname && element.getBoundingClientRect().bottom < window.innerHeight * 3) {
 					list.data('infiniteurl', '');
+					element.setAttribute('aria-busy', 'true');
 
 					await Aimeos.fetchHtml(url.href).then(data => {
+						element.removeAttribute('aria-busy');
 						const nextPage = new DOMParser().parseFromString(data, 'text/html');
 						const stockScripts = [];
 						for(const node of nextPage.querySelectorAll('script.items-stock[src]')) {
@@ -147,7 +149,10 @@ AimeosCatalogLists = {
 						list.data('infiniteurl', newList.data('infiniteurl'));
 						$(window).trigger('scroll');
 						Aimeos.loadImages();
-					}).catch(error => console.warn('Unable to load the next catalog page', error));
+					}).catch(error => {
+						element.removeAttribute('aria-busy');
+						console.warn('Unable to load the next catalog page', error);
+					});
 				}
 			};
 
