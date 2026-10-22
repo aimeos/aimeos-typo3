@@ -26,6 +26,7 @@ class BasketController extends AbstractController
      */
     public function indexAction()
     {
+        $this->removePageTitle();
         $client = \Aimeos\Client\Html::create($this->context(), 'basket/standard');
         return $this->getClientOutput($client);
     }

@@ -143,6 +143,20 @@ abstract class AbstractController
 
 
     /**
+     * Removes the TYPO3 page title because the Aimeos client adds its own one
+     */
+    protected function removePageTitle()
+    {
+        $typoScript = $this->request->getAttribute('frontend.typoscript');
+        if ($typoScript !== null) {
+            $configArray = $typoScript->getConfigArray();
+            $configArray['noPageTitle'] = 2;
+            $typoScript->setConfigArray($configArray);
+        }
+    }
+
+
+    /**
      * Returns the output of the client and adds the header.
      *
      * @param \Aimeos\Client\Html\Iface $client Html client object (no type hint to prevent reflection)

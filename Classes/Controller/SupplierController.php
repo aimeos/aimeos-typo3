@@ -72,6 +72,8 @@ class SupplierController extends AbstractController
             return;
         }
 
+        $this->removePageTitle();
+
         if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')
             && !\Aimeos\Aimeos\Base::getExtConfig('typo3Metatags', true)
         ) {

@@ -227,11 +227,12 @@ class CatalogController extends AbstractController
             return;
         }
 
+        $this->removePageTitle();
+
         $typoScript = $this->request->getAttribute('frontend.typoscript');
         if ($typoScript !== null) {
             $configArray = $typoScript->getConfigArray();
             $configArray['disableCanonical'] = true;
-            $configArray['noPageTitle'] = 2;
             $typoScript->setConfigArray($configArray);
         }
 
