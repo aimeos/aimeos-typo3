@@ -53,7 +53,7 @@ class CatalogController extends AbstractController
     public function detailAction()
     {
         try {
-            $this->removeMetatags();
+            $this->removeMetatags('client/html/catalog/detail/metatags');
             $client = \Aimeos\Client\Html::create($this->context(), 'catalog/detail');
             return $this->getClientOutput($client);
         } catch(\Exception $e) {
@@ -89,7 +89,7 @@ class CatalogController extends AbstractController
     public function listAction()
     {
         try {
-            $this->removeMetatags();
+            $this->removeMetatags('client/html/catalog/lists/metatags');
             $client = \Aimeos\Client\Html::create($this->context(), 'catalog/lists');
             return $this->getClientOutput($client);
         } catch(\Exception $e) {
@@ -215,9 +215,18 @@ class CatalogController extends AbstractController
 
     /**
      * Removes the meta tags if available
+     *
+     * The TYPO3 page title and meta tags are only removed if the Aimeos client adds its own ones,
+     * e.g. not for list components with "client/html/catalog/lists/metatags" set to false.
+     *
+     * @param string|null $configKey Configuration key of the client meta tag setting
      */
-    protected function removeMetatags()
+    protected function removeMetatags(?string $configKey = null)
     {
+        if ($configKey !== null && !$this->context('client/html/templates', false)->config()->get($configKey, true)) {
+            return;
+        }
+
         $typoScript = $this->request->getAttribute('frontend.typoscript');
         if ($typoScript !== null) {
             $configArray = $typoScript->getConfigArray();

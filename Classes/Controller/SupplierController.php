@@ -28,7 +28,7 @@ class SupplierController extends AbstractController
     public function detailAction()
     {
         try {
-            $this->removeMetatags();
+            $this->removeMetatags('client/html/supplier/detail/metatags');
             $client = \Aimeos\Client\Html::create($this->context(), 'supplier/detail');
             return $this->getClientOutput($client);
         } catch(\Exception $e) {
@@ -60,9 +60,18 @@ class SupplierController extends AbstractController
 
     /**
      * Removes the meta tags if available
+     *
+     * The TYPO3 page title and meta tags are only removed if the Aimeos client adds its own ones,
+     * e.g. not if "client/html/supplier/detail/metatags" is set to false.
+     *
+     * @param string|null $configKey Configuration key of the client meta tag setting
      */
-    protected function removeMetatags()
+    protected function removeMetatags(?string $configKey = null)
     {
+        if ($configKey !== null && !$this->context('client/html/templates', false)->config()->get($configKey, true)) {
+            return;
+        }
+
         if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')
             && !\Aimeos\Aimeos\Base::getExtConfig('typo3Metatags', true)
         ) {
