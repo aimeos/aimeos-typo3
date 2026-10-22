@@ -11,6 +11,7 @@ namespace Aimeos\Aimeos\Controller;
 
 
 use Aimeos\Aimeos\Base;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 /**
@@ -143,20 +144,6 @@ abstract class AbstractController
 
 
     /**
-     * Removes the TYPO3 page title because the Aimeos client adds its own one
-     */
-    protected function removePageTitle()
-    {
-        $typoScript = $this->request->getAttribute('frontend.typoscript');
-        if ($typoScript !== null) {
-            $configArray = $typoScript->getConfigArray();
-            $configArray['noPageTitle'] = 2;
-            $typoScript->setConfigArray($configArray);
-        }
-    }
-
-
-    /**
      * Returns the output of the client and adds the header.
      *
      * @param \Aimeos\Client\Html\Iface $client Html client object (no type hint to prevent reflection)
@@ -192,5 +179,44 @@ abstract class AbstractController
 
         $ce = $this->request->getAttribute('currentContentObject');
         $this->ceUid = $ce->data['uid'] ?? null;
+    }
+
+
+    /**
+     * Removes the meta tags if available
+     *
+     * The TYPO3 page title and meta tags are only removed if the Aimeos client adds its own ones,
+     * e.g. not for list components with "client/html/catalog/lists/metatags" set to false.
+     *
+     * @param string|null $configKey Configuration key of the client meta tag setting
+     */
+    protected function removeMetatags(?string $configKey = null)
+    {
+        if ($configKey !== null && !$this->context('client/html/templates', false)->config()->get($configKey, true)) {
+            return;
+        }
+
+        $typoScript = $this->request->getAttribute('frontend.typoscript');
+        if ($typoScript !== null) {
+            $configArray = $typoScript->getConfigArray();
+            $configArray['disableCanonical'] = true;
+            $configArray['noPageTitle'] = 2;
+            $typoScript->setConfigArray($configArray);
+        }
+
+        if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')
+            && !\Aimeos\Aimeos\Base::getExtConfig('typo3Metatags', true)
+        ) {
+            $registry = GeneralUtility::makeInstance('TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry');
+
+            $registry->getManagerForProperty('keywords')->removeProperty('keywords');
+            $registry->getManagerForProperty('description')->removeProperty('description');
+            $registry->getManagerForProperty('og:type')->removeProperty('og:type');
+            $registry->getManagerForProperty('og:title')->removeProperty('og:title');
+            $registry->getManagerForProperty('og:url')->removeProperty('og:url');
+            $registry->getManagerForProperty('og:description')->removeProperty('og:description');
+            $registry->getManagerForProperty('og:image')->removeProperty('og:image');
+            $registry->getManagerForProperty('twitter:card')->removeProperty('twitter:card');
+        }
     }
 }

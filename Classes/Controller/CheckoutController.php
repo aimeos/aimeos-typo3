@@ -27,7 +27,7 @@ class CheckoutController extends AbstractController
      */
     public function indexAction()
     {
-        $this->removePageTitle();
+        $this->removeMetatags();
         $client = \Aimeos\Client\Html::create($this->context(), 'checkout/standard');
         return $this->getClientOutput($client);
     }
@@ -38,7 +38,7 @@ class CheckoutController extends AbstractController
      */
     public function confirmAction()
     {
-        $this->removePageTitle();
+        $this->removeMetatags();
         $context = $this->context();
         $client = \Aimeos\Client\Html::create($context, 'checkout/confirm');
 
