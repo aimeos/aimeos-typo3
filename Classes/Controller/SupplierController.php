@@ -56,35 +56,4 @@ class SupplierController extends AbstractController
 
         throw $e;
     }
-
-
-    /**
-     * Removes the meta tags if available
-     *
-     * The TYPO3 page title and meta tags are only removed if the Aimeos client adds its own ones,
-     * e.g. not if "client/html/supplier/detail/metatags" is set to false.
-     *
-     * @param string|null $configKey Configuration key of the client meta tag setting
-     */
-    protected function removeMetatags(?string $configKey = null)
-    {
-        if ($configKey !== null && !$this->context('client/html/templates', false)->config()->get($configKey, true)) {
-            return;
-        }
-
-        if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')
-            && !\Aimeos\Aimeos\Base::getExtConfig('typo3Metatags', true)
-        ) {
-            $registry = GeneralUtility::makeInstance('TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry');
-
-            $registry->getManagerForProperty('keywords')->removeProperty('keywords');
-            $registry->getManagerForProperty('description')->removeProperty('description');
-            $registry->getManagerForProperty('og:type')->removeProperty('og:type');
-            $registry->getManagerForProperty('og:title')->removeProperty('og:title');
-            $registry->getManagerForProperty('og:url')->removeProperty('og:url');
-            $registry->getManagerForProperty('og:description')->removeProperty('og:description');
-            $registry->getManagerForProperty('og:image')->removeProperty('og:image');
-            $registry->getManagerForProperty('twitter:card')->removeProperty('twitter:card');
-        }
-    }
 }
