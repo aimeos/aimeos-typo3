@@ -28,7 +28,7 @@ class SupplierController extends AbstractController
     public function detailAction()
     {
         try {
-            $this->removeMetatags();
+            $this->removeMetatags('client/html/supplier/detail/metatags');
             $client = \Aimeos\Client\Html::create($this->context(), 'supplier/detail');
             return $this->getClientOutput($client);
         } catch(\Exception $e) {
@@ -55,27 +55,5 @@ class SupplierController extends AbstractController
         }
 
         throw $e;
-    }
-
-
-    /**
-     * Removes the meta tags if available
-     */
-    protected function removeMetatags()
-    {
-        if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')
-            && !\Aimeos\Aimeos\Base::getExtConfig('typo3Metatags', true)
-        ) {
-            $registry = GeneralUtility::makeInstance('TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry');
-
-            $registry->getManagerForProperty('keywords')->removeProperty('keywords');
-            $registry->getManagerForProperty('description')->removeProperty('description');
-            $registry->getManagerForProperty('og:type')->removeProperty('og:type');
-            $registry->getManagerForProperty('og:title')->removeProperty('og:title');
-            $registry->getManagerForProperty('og:url')->removeProperty('og:url');
-            $registry->getManagerForProperty('og:description')->removeProperty('og:description');
-            $registry->getManagerForProperty('og:image')->removeProperty('og:image');
-            $registry->getManagerForProperty('twitter:card')->removeProperty('twitter:card');
-        }
     }
 }

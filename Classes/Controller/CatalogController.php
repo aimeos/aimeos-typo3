@@ -53,7 +53,7 @@ class CatalogController extends AbstractController
     public function detailAction()
     {
         try {
-            $this->removeMetatags();
+            $this->removeMetatags('client/html/catalog/detail/metatags');
             $client = \Aimeos\Client\Html::create($this->context(), 'catalog/detail');
             return $this->getClientOutput($client);
         } catch(\Exception $e) {
@@ -89,7 +89,7 @@ class CatalogController extends AbstractController
     public function listAction()
     {
         try {
-            $this->removeMetatags();
+            $this->removeMetatags('client/html/catalog/lists/metatags');
             $client = \Aimeos\Client\Html::create($this->context(), 'catalog/lists');
             return $this->getClientOutput($client);
         } catch(\Exception $e) {
@@ -210,35 +210,5 @@ class CatalogController extends AbstractController
         }
 
         throw $e;
-    }
-
-
-    /**
-     * Removes the meta tags if available
-     */
-    protected function removeMetatags()
-    {
-        $typoScript = $this->request->getAttribute('frontend.typoscript');
-        if ($typoScript !== null) {
-            $configArray = $typoScript->getConfigArray();
-            $configArray['disableCanonical'] = true;
-            $configArray['noPageTitle'] = 2;
-            $typoScript->setConfigArray($configArray);
-        }
-
-        if (class_exists('\TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry')
-            && !\Aimeos\Aimeos\Base::getExtConfig('typo3Metatags', true)
-        ) {
-            $registry = GeneralUtility::makeInstance('TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry');
-
-            $registry->getManagerForProperty('keywords')->removeProperty('keywords');
-            $registry->getManagerForProperty('description')->removeProperty('description');
-            $registry->getManagerForProperty('og:type')->removeProperty('og:type');
-            $registry->getManagerForProperty('og:title')->removeProperty('og:title');
-            $registry->getManagerForProperty('og:url')->removeProperty('og:url');
-            $registry->getManagerForProperty('og:description')->removeProperty('og:description');
-            $registry->getManagerForProperty('og:image')->removeProperty('og:image');
-            $registry->getManagerForProperty('twitter:card')->removeProperty('twitter:card');
-        }
     }
 }
