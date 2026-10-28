@@ -66,19 +66,20 @@ class Base
      * Returns the current context
      *
      * @param \Aimeos\Base\Config\Iface Configuration object
+     * @param bool $new True to create a new context object instead of reusing the shared one
      * @return \Aimeos\MShop\ContextIface Context object
      */
-    public static function context(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
+    public static function context(\Aimeos\Base\Config\Iface $config, bool $new = false) : \Aimeos\MShop\ContextIface
     {
         $name = 'Aimeos\Aimeos\Base\Context';
 
         if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context'])) {
             if (($name = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context']) instanceof \Closure) {
-                return $name($config);
+                return $name($config, $new);
             }
         }
 
-        return $name::get($config);
+        return $name::get($config, $new);
     }
 
 

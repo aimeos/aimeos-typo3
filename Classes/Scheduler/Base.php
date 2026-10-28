@@ -36,7 +36,8 @@ class Base
     public static function execute(array $tsconf, array $conf, array $jobs, $sites, ?string $pid = null)
     {
         $aimeos = Aimeos\Base::aimeos();
-        $context = self::context($tsconf, $conf, $pid);
+        // Use a new context for each task so no state is shared between tasks executed in the same process
+        $context = self::context($tsconf, $conf, $pid, true);
         $process = $context->process();
 
         $manager = \Aimeos\MShop::create($context, 'locale');
@@ -74,13 +75,16 @@ class Base
      * Returns the current context.
      *
      * @param array $tsconf Multi-dimensional associative list of key/value pairs
+     * @param array $conf Multi-dimensional array of configuration options (merged)
+     * @param string|null $pid Page ID
+     * @param bool $new True to create a new context object instead of reusing the shared one
      * @return \Aimeos\MShop\ContextIface Context object
      */
-    public static function context(array $tsconf = [], array $conf = [], ?string $pid = null) : \Aimeos\MShop\ContextIface
+    public static function context(array $tsconf = [], array $conf = [], ?string $pid = null, bool $new = false) : \Aimeos\MShop\ContextIface
     {
-        $config = Aimeos\Base::config($tsconf);
-        $context = Aimeos\Base::context($config);
-        $context->config()->apply($conf);
+        // Merge into the local config only because apply() would change the shared base config permanently
+        $config = Aimeos\Base::config(array_replace_recursive($conf, $tsconf));
+        $context = Aimeos\Base::context($config, $new);
 
 
         $langManager = \Aimeos\MShop::create($context, 'locale/language');

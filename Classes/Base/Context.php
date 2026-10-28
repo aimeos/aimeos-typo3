@@ -27,35 +27,52 @@ class Context
      * Returns the current context
      *
      * @param \Aimeos\Base\Config\Iface Configuration object
+     * @param bool $new True to create a new context object instead of reusing the shared one
      * @return \Aimeos\MShop\ContextIface Context object
      */
-    public static function get(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
+    public static function get(\Aimeos\Base\Config\Iface $config, bool $new = false) : \Aimeos\MShop\ContextIface
     {
+        if ($new) {
+            return self::create($config);
+        }
+
         if (self::$context === null) {
-            $context = new \Aimeos\MShop\Context();
-            $context->setConfig($config);
-
-            self::addDataBaseManager($context);
-            self::addFilesystemManager($context);
-            self::addMessageQueueManager($context);
-            self::addLogger($context);
-            self::addCache($context);
-            self::addMailer($context);
-            self::addNonce($context);
-            self::addProcess($context);
-            self::addSession($context);
-            self::addHasher($context);
-            self::addToken($context);
-            self::addUserGroups($context);
-            self::addDateTime($context);
-
-            self::$context = $context;
+            self::$context = self::create($config);
         }
 
         // Use local TS configuration from plugins
         self::$context->setConfig($config);
 
         return self::$context;
+    }
+
+
+    /**
+     * Creates a new context object
+     *
+     * @param \Aimeos\Base\Config\Iface Configuration object
+     * @return \Aimeos\MShop\ContextIface Context object
+     */
+    protected static function create(\Aimeos\Base\Config\Iface $config) : \Aimeos\MShop\ContextIface
+    {
+        $context = new \Aimeos\MShop\Context();
+        $context->setConfig($config);
+
+        self::addDataBaseManager($context);
+        self::addFilesystemManager($context);
+        self::addMessageQueueManager($context);
+        self::addLogger($context);
+        self::addCache($context);
+        self::addMailer($context);
+        self::addNonce($context);
+        self::addProcess($context);
+        self::addSession($context);
+        self::addHasher($context);
+        self::addToken($context);
+        self::addUserGroups($context);
+        self::addDateTime($context);
+
+        return $context;
     }
 
 
