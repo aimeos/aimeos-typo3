@@ -10,7 +10,7 @@ $beUsersSiteFcn = function() {
 
     try {
         $config = \Aimeos\Aimeos\Base::config();
-        $context = \Aimeos\Aimeos\Base::context($config);
+        $context = \Aimeos\Aimeos\Base::context($config, true);
 
         $result = $context->db('db-locale')
             ->create('SELECT "siteid", "label", "nleft", "nright" FROM "mshop_locale_site" ORDER BY "nleft"')
