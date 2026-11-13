@@ -12,10 +12,6 @@ plugin.tx_aimeos {
         pluginNamespace = ai
     }
     settings {
-        admin.jsonadm.url {
-            config.absoluteUri = 1
-            options.config.absoluteUri = 1
-        }
         client {
             html {
                 account.download.url.config.absoluteUri = 1

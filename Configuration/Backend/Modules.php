@@ -27,9 +27,6 @@ return [
                 'save',
                 'file'
             ],
-            \Aimeos\Aimeos\Controller\JsonadmController::class => [
-                'index'
-            ],
             \Aimeos\Aimeos\Controller\GraphqlController::class => [
                 'index'
             ],
