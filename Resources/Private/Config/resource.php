@@ -1,6 +1,7 @@
 <?php
 
 $publicPath = \TYPO3\CMS\Core\Core\Environment::getPublicPath();
+$varPath = \TYPO3\CMS\Core\Core\Environment::getVarPath();
 $assetPath = \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:aimeos/Resources/Public'));
 
 $defaultConnection = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'] ?? [];
@@ -63,22 +64,22 @@ return [
 	],
 	'fs-admin' => [
 		'adapter' => 'Standard',
-		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/admin',
+		'basedir' => $varPath . '/.secure/admin',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-export' => [
 		'adapter' => 'Standard',
-		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/export',
+		'basedir' => $varPath . '/.secure/export',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-import' => [
 		'adapter' => 'Standard',
-		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure/import',
+		'basedir' => $varPath . '/.secure/import',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'fs-secure' => [
 		'adapter' => 'Standard',
-		'basedir' => $publicPath . '/uploads/tx_aimeos/.secure',
+		'basedir' => $varPath . '/.secure',
 		'tempdir' => $publicPath . '/typo3temp',
 	],
 	'mq' => [
