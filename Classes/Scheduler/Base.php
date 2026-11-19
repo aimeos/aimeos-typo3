@@ -91,14 +91,13 @@ class Base
         $search = $langManager->filter(true);
 
         $expr = [];
-        $expr[] = $search->getConditions();
         $expr[] = $search->compare('==', 'locale.language.id', 'en'); // default language
 
         if (isset($GLOBALS['BE_USER']->uc['lang']) && $GLOBALS['BE_USER']->uc['lang'] != '') { // BE language
             $expr[] = $search->compare('==', 'locale.language.id', $GLOBALS['BE_USER']->uc['lang']);
         }
 
-        $search->setConditions($search->combine('||', $expr));
+        $search->setConditions($search->and([$search->getConditions(), $search->or($expr)]));
         $langids = $langManager->search($search)->keys()->toArray();
 
         $context->setI18n(Aimeos\Base::i18n($langids, (array) ($tsconf['i18n'] ?? [])));
