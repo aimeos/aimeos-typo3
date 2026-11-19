@@ -89,16 +89,21 @@ class Base
 
         $langManager = \Aimeos\MShop::create($context, 'locale/language');
         $search = $langManager->filter(true);
-
-        $expr = [];
-        $expr[] = $search->compare('==', 'locale.language.id', 'en'); // default language
+        $default = 'en'; // default language
 
         if (isset($GLOBALS['BE_USER']->uc['lang']) && $GLOBALS['BE_USER']->uc['lang'] != '') { // BE language
-            $expr[] = $search->compare('==', 'locale.language.id', $GLOBALS['BE_USER']->uc['lang']);
+            $default = $GLOBALS['BE_USER']->uc['lang'];
         }
 
-        $search->setConditions($search->and([$search->getConditions(), $search->or($expr)]));
+        // all active languages for e-mails in the language of the customer, plus the default and the BE language
+        $search->setConditions($search->or([
+            $search->getConditions(),
+            $search->compare('==', 'locale.language.id', array_unique(['en', $default]))
+        ]));
         $langids = $langManager->search($search)->keys()->toArray();
+
+        // the first language is used for messages without language, e.g. errors of the jobs
+        usort($langids, fn($a, $b) => ($b === $default) <=> ($a === $default));
 
         $context->setI18n(Aimeos\Base::i18n($langids, (array) ($tsconf['i18n'] ?? [])));
         $context->setEditor('scheduler');
